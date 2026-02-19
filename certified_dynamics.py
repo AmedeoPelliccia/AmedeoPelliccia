@@ -207,9 +207,10 @@ class VoluntadDynamics:
         # Only apply the state if it is fully admissible
         if status == AdmissibilityStatus.FULLY_ADMISSIBLE:
             system.state = proposed_state
-            self.space.audit_log[-1]["applied"] = True
-        else:
-            self.space.audit_log[-1]["applied"] = False
+
+        # Mark whether the proposed state was actually applied
+        if self.space.audit_log:
+            self.space.audit_log[-1]["applied"] = (status == AdmissibilityStatus.FULLY_ADMISSIBLE)
             
         return system.state, status
 
