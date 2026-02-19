@@ -70,7 +70,27 @@ class DynamicsPlotter:
             
         # Extract time series
         sim_times = [entry['simulation_time'] for entry in self.data]
-        state_values = [entry['state_vector'][state_idx] for entry in self.data]
+        state_values = []
+        for i, entry in enumerate(self.data):
+            if 'state_vector' not in entry:
+                raise ValueError(
+                    f"Entry at index {i} is missing 'state_vector'; cannot plot state index {state_idx}."
+                )
+            state_vector = entry['state_vector']
+            try:
+                length = len(state_vector)
+            except TypeError:
+                raise ValueError(
+                    f"'state_vector' at entry index {i} is not indexable (type: {type(state_vector).__name__}); "
+                    f"cannot plot state index {state_idx}."
+                )
+            if state_idx < 0 or state_idx >= length:
+                sim_time = entry.get('simulation_time', 'unknown')
+                raise ValueError(
+                    f"Requested state_idx {state_idx} is out of bounds for entry {i} at simulation_time={sim_time}. "
+                    f"'state_vector' length is {length}."
+                )
+            state_values.append(state_vector[state_idx])
         statuses = [entry['status'] for entry in self.data]
         
         # Calculate regulatory boundary if function is provided
