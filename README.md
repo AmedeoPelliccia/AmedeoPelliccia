@@ -563,3 +563,161 @@ See [`contributions-registry.yaml`](contributions-registry.yaml) for the full sp
 - Nature and externality classification
 - Risk/dependency analysis
 - Consolidated value assessment matrix
+
+---
+
+# 16. Quantum-Governed Topography — 12×12 Intentional Hilbert–Bell Manifold
+
+## 16.1 Foundational Principle
+
+The system is a **deterministically governed, bounded Hilbert manifold** with controlled entanglement and ontology-driven evolution. It is not a stochastic generative engine.
+
+The architecture integrates:
+
+- Deterministic input correction
+- Selective data mining
+- High-quality bounded memory
+- Grover-accelerated admissible selection
+- 12-regime superpositional basis
+- Tunneled entanglement topography
+- Bell-bounded correlation envelope
+- Intentional Hamiltonian evolution
+
+## 16.2 Deterministic Generative Core
+
+Execution law:
+
+```math
+Y_t = F(C(X_t, S_t), S_t)
+```
+
+Where:
+
+- $C$ = deterministic correction operator
+- $F$ = deterministic transition
+- $S_t$ = governed state
+- $Y_t$ = bounded output
+
+No hidden entropy at acceptance stage.
+
+## 16.3 Selective Data Mining Operator Φ
+
+```math
+D_s = \Phi(D)
+```
+
+Selection predicate:
+
+```math
+f(d) = R(d) \land Q(d) \land C(d)
+```
+
+- **R** — Relevance
+- **Q** — Quality
+- **C** — Compliance
+
+Grover algorithm may accelerate candidate discovery when $N \gg 1,\ M \ll N$, but deterministic verification is mandatory before memory commit.
+
+## 16.4 Capacity Bounding — Top-12 Constraint
+
+```math
+K_{\max} = 12
+```
+
+Preselection:
+
+```math
+\Phi_{12}(D) = \operatorname{TopK}(D, \text{score}, 12)
+```
+
+This bounds memory dimensionality, computational growth, and entropy admission.
+
+## 16.5 12 Superpositional Physics Systems
+
+Admissible Hilbert subspace:
+
+```math
+\mathcal{H}_{adm} = \text{span}\{|S_1\rangle, \dots, |S_{12}\rangle\}
+```
+
+Valid state:
+
+```math
+|\psi\rangle = \sum_{k=1}^{12} \alpha_k |S_k\rangle
+```
+
+Constraint:
+
+```math
+\Pi_{adm}|\psi\rangle = |\psi\rangle
+```
+
+No evolution outside this 12-dimensional ontological basis.
+
+## 16.6 Network Topography via Tunneled Entanglement
+
+Entanglement matrix:
+
+```math
+E_{ij}(t) = \mathcal{E}(S_i, S_j)
+```
+
+Tunneling-driven coupling:
+
+```math
+H_{int} = \sum_{i < j} T_{ij}\,|S_i\rangle\langle S_j| + \text{h.c.}
+```
+
+## 16.7 Bell-Bounded Correlation Envelope
+
+CHSH observable for any pair $(S_i, S_j)$:
+
+```math
+B_{ij} = \langle A_1 B_1 \rangle + \langle A_1 B_2 \rangle + \langle A_2 B_1 \rangle - \langle A_2 B_2 \rangle
+```
+
+Constraint:
+
+```math
+|B_{ij}| \le 2
+```
+
+Violations trigger a correlation audit.
+
+## 16.8 Intentional Hamiltonian Evolution
+
+Full Hamiltonian:
+
+```math
+H = H_0 + H_{int} + H_{intent}
+```
+
+Evolution rule:
+
+```math
+i\hbar\,\frac{d|\psi\rangle}{dt} = H\,|\psi\rangle
+```
+
+After each evolution step the state is projected back onto $\mathcal{H}_{adm}$ via $\Pi_{adm}$ to enforce the 12-basis constraint.
+
+## 16.9 Machine-Readable Specification
+
+See [`quantum-manifold.yaml`](quantum-manifold.yaml) for the full specification including:
+
+- 12 admissible basis states with domain labels
+- Entanglement coupling pairs with tunnelling strengths $T_{ij}$
+- Bell-bound enforcement (CHSH ≤ 2)
+- Hamiltonian evolution parameters
+- Deterministic generative core definition
+- Selective data-mining operator Φ and capacity bounding
+
+## 16.10 Implementation
+
+See [`hilbert_bell_manifold.py`](hilbert_bell_manifold.py) for the Python reference implementation including:
+
+- `QuantumState` — normalised 12-dimensional state vector
+- `EntanglementMatrix` — symmetric coupling topography
+- `HamiltonianEvolver` — discrete-time unitary evolution with Π_adm projection
+- `DeterministicCore` — Y_t = F(C(X_t, S_t), S_t) execution engine
+- `selective_mining` — Φ₁₂ with Relevance / Quality / Compliance predicate
+- `HilbertBellManifold` — top-level orchestrator with audit trail
