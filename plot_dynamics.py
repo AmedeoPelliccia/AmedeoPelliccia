@@ -82,12 +82,15 @@ class DynamicsPlotter:
         # Create figure
         fig, ax = plt.subplots()
         
-        # Plot state trajectory with colours by status
+        # Plot state trajectory with colors by status
+        labeled_statuses = set()
         for i in range(len(sim_times) - 1):
             color = self.STATUS_COLORS.get(statuses[i], '#95a5a6')
+            label = statuses[i] if statuses[i] not in labeled_statuses else ""
             ax.plot([sim_times[i], sim_times[i+1]], 
                    [state_values[i], state_values[i+1]], 
-                   color=color, linewidth=2.5, label=statuses[i] if i==0 else "")
+                   color=color, linewidth=2.5, label=label)
+            labeled_statuses.add(statuses[i])
         
         # Plot points with distinctive markers
         for t, val, status in zip(sim_times, state_values, statuses):
@@ -102,10 +105,13 @@ class DynamicsPlotter:
                            alpha=0.1, color='red', label="Inadmissible Region")
         
         # Mark evidence events (status transitions from CONDITIONAL_PENDING -> FULLY_ADMISSIBLE)
+        evidence_labeled = False
         for i in range(1, len(statuses)):
             if statuses[i-1] == 'CONDITIONAL_PENDING' and statuses[i] == 'FULLY_ADMISSIBLE':
+                label = "Evidence Gate Fulfilled" if not evidence_labeled else ""
                 ax.axvline(x=sim_times[i], color='green', linestyle=':', 
-                          linewidth=1, alpha=0.7, label="Evidence Gate Fulfilled")
+                          linewidth=1, alpha=0.7, label=label)
+                evidence_labeled = True
         
         # Axis configuration and legend
         ax.set_xlabel("Simulation Time (arbitrary units)", fontsize=10)
@@ -124,7 +130,8 @@ class DynamicsPlotter:
         # Add tooltip-style annotations for key points
         for entry in self.data:
             if entry['status'] in ['INADMISSIBLE', 'CONDITIONAL_PENDING']:
-                ax.annotate(f"\u26a0 {entry['reason'][:30]}...", 
+                reason_text = entry['reason'][:30] + '...' if len(entry['reason']) > 30 else entry['reason']
+                ax.annotate(f"\u26a0 {reason_text}", 
                            xy=(entry['simulation_time'], entry['state_vector'][state_idx]),
                            xytext=(0, 30), textcoords='offset points',
                            fontsize=8, bbox=dict(boxstyle='round,pad=0.3', facecolor='yellow', alpha=0.3),
