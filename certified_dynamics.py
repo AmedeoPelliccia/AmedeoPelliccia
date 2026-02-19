@@ -64,6 +64,10 @@ class System:
         self.state: np.ndarray = np.zeros(0)
 
     def set_state(self, initial_state: np.ndarray):
+        if not isinstance(initial_state, np.ndarray):
+            initial_state = np.asarray(initial_state)
+        if initial_state.ndim == 0:
+            raise ValueError("State must be at least 1-dimensional.")
         self.state = initial_state
 
 # ==========================================
@@ -203,6 +207,9 @@ class VoluntadDynamics:
         # Only apply the state if it is fully admissible
         if status == AdmissibilityStatus.FULLY_ADMISSIBLE:
             system.state = proposed_state
+            self.space.audit_log[-1]["applied"] = True
+        else:
+            self.space.audit_log[-1]["applied"] = False
             
         return system.state, status
 
