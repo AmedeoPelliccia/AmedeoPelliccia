@@ -494,7 +494,7 @@ Structured technical classification of unpaid contributions by Amedeo Pelliccia,
 | ID | Domain | Type | TRL | Cert. Relevance |
 |----|--------|------|-----|-----------------|
 | CONTRIB-001 | OPT-IN / KISS Open Architecture | Open structural framework | 2–3 | High |
-| CONTRIB-002 | AMPEL360 — H₂-Electric BWB | Open conceptual design | 1–2 | Medium |
+| CONTRIB-002 | AMPEL360 — Hydrogen-Electric BWB | Open conceptual design | 1–2 | Medium |
 | CONTRIB-003 | S1000D / ATA / BREX Standardization | Structured normalization | 3–4 | High |
 | CONTRIB-004 | Critical AI & Determinism | Conceptual framework | 1–2 | Medium |
 | CONTRIB-005 | Open Knowledge Production | Structured documentation | N/A | Low |
