@@ -21,12 +21,12 @@ Defined as:
 
 ### Mathematical Abstraction
 
-Let systems \( S_i \) represent individual system instances.
-Let \( F(S_i) \) denote the invariant structural features extracted from each system.
+Let systems $ S_i $ represent individual system instances.
+Let $ F(S_i) $ denote the invariant structural features extracted from each system.
 
-\[
+```math
 MCD = \bigcap_{i=1}^{n} F(S_i)
-\]
+```
 
 - The core is contained in all systems.
 - Extensions exist outside the invariant core.
@@ -61,15 +61,15 @@ A program outline decomposes into invariant core + extension.
 
 ### Structural Representation
 
-\[
+```math
 M_i = C \oplus E_i
-\]
+```
 
 Where:
 
-- \( C \) = invariant structural core  
-- \( E_i \) = module-specific extension  
-- \( C \cap E_i = \varnothing \)
+- $ C $ = invariant structural core  
+- $ E_i $ = module-specific extension  
+- $ C \cap E_i = \varnothing $
 
 ---
 
@@ -77,21 +77,21 @@ Where:
 
 Define state vector:
 
-\[
+```math
 x \in \mathbb{R}^d
-\]
+```
 
 Admissible set:
 
-\[
+```math
 \mathcal{F} = \{x \mid g_i(x) \le 0,\ h_j(x)=0\}
-\]
+```
 
 Partition domain into simplices:
 
-\[
+```math
 \Omega = \bigcup_{\sigma \in K} \sigma
-\]
+```
 
 Classify simplices:
 
@@ -101,9 +101,9 @@ Classify simplices:
 
 Admissible subcomplex:
 
-\[
+```math
 \mathcal{F} \approx \bigcup_{\sigma \in K_{\text{adm}}} \sigma
-\]
+```
 
 ### Structural Benefits
 
@@ -121,21 +121,21 @@ Voluntad defines **direction of evolution**.
 
 Objective functional:
 
-\[
+```math
 J(x)
-\]
+```
 
 Constrained dynamic:
 
-\[
+```math
 \dot{x} = \Pi_{\mathcal{F}}(\nabla J(x))
-\]
+```
 
 On simplicial adjacency graph:
 
-\[
+```math
 \sigma_0 \rightarrow \sigma_1 \rightarrow \dots
-\]
+```
 
 Maximizing objective under admissibility constraint.
 
@@ -150,17 +150,17 @@ Voluntad operates on:
 
 Civil system defined as:
 
-\[
+```math
 S = (P, I, R, B, C)
-\]
+```
 
 Where:
 
-- \(P\) = Population parameters  
-- \(I\) = Infrastructure  
-- \(R\) = Regulatory framework  
-- \(B\) = Budgetary constraints  
-- \(C\) = Cultural-legitimacy parameters  
+- $P$ = Population parameters  
+- $I$ = Infrastructure  
+- $R$ = Regulatory framework  
+- $B$ = Budgetary constraints  
+- $C$ = Cultural-legitimacy parameters  
 
 Admissibility constraints:
 
@@ -171,9 +171,9 @@ Admissibility constraints:
 
 Admissible civil manifold:
 
-\[
+```math
 \mathcal{F}_{civil}
-\]
+```
 
 Governance = controlled navigation within this manifold.
 
@@ -183,23 +183,23 @@ Governance = controlled navigation within this manifold.
 
 Civil aerospace defined as:
 
-\[
+```math
 S_{aero} = (A, O, R, I, F)
-\]
+```
 
 Where:
 
-- \(A\) = Aircraft & assets  
-- \(O\) = Operators  
-- \(R\) = Regulators  
-- \(I\) = Infrastructure  
-- \(F\) = Financial structure  
+- $A$ = Aircraft & assets  
+- $O$ = Operators  
+- $R$ = Regulators  
+- $I$ = Infrastructure  
+- $F$ = Financial structure  
 
 Admissibility:
 
-\[
+```math
 \mathcal{F}_{aero} = S(x) \land C(x) \land E(x) \land F(x)
-\]
+```
 
 Where:
 
@@ -210,9 +210,9 @@ Where:
 
 Key structural relation:
 
-\[
+```math
 \mathcal{F}_{aero} \subseteq \mathcal{F}_{civil}
-\]
+```
 
 Aerospace is a safety-critical submanifold of civil governance.
 
@@ -228,22 +228,22 @@ Transition principle:
 
 Complete system defined by:
 
-\[
+```math
 (\Omega, K, \mathcal{F}, J)
-\]
+```
 
 Where:
 
-- \( \Omega \) = state space
-- \( K \) = simplicial partition
-- \( \mathcal{F} \) = admissible subcomplex
-- \( J \) = voluntad functional
+- $ \Omega $ = state space
+- $ K $ = simplicial partition
+- $ \mathcal{F} $ = admissible subcomplex
+- $ J $ = Voluntad functional
 
 Dynamics:
 
-\[
+```math
 \dot{x} = \Pi_{\mathcal{F}}(\nabla J(x))
-\]
+```
 
 Interpretation:
 
