@@ -277,3 +277,200 @@ Backend characteristics:
 - Safety-first civil aerospace evolution
 
 It is structural logic, not rhetoric.
+
+---
+
+# 10. Mixed-Boundary Simplex Classification
+
+## 10.1 Formal Classification
+
+Let a simplex $\sigma = \mathrm{conv}\{v_0, \dots, v_d\}$. Let admissibility be $A(x)$ and feasible set $\mathcal{F} = \{x : A(x) = \text{true}\}$.
+
+Define three Boolean tests:
+
+- **Vertex feasibility:** $V(\sigma) = \bigwedge_k A(v_k)$
+- **Existence feasibility:** $E(\sigma) = \exists\, x \in \sigma : A(x)$
+- **Full inclusion:** $I(\sigma) = \forall\, x \in \sigma : A(x)$
+
+Classification:
+
+| Class | Condition |
+|-------|-----------|
+| Fully admissible | $I(\sigma) = \text{true}$ |
+| Inadmissible | $E(\sigma) = \text{false}$ |
+| Mixed boundary | $E(\sigma) = \text{true}\ \land\ I(\sigma) = \text{false}$ |
+
+Mixed means: there is some feasible interior, but not all points are feasible.
+
+## 10.2 Resolution Policies
+
+### Policy A — Conservative Rejection (Fail-Closed)
+
+- Accept only fully admissible simplices: $K_{\text{adm}} = \{\sigma : I(\sigma)\}$
+- Mixed simplices are rejected until refined.
+- **When to use:** early certification basis, safety-critical, unknown nonlinearities, sparse evidence.
+
+### Policy B — Conservative Interpolation (Inner-Approximation)
+
+- Compute a safe polytope $\sigma_{\text{safe}} \subset \sigma \cap \mathcal{F}$
+- Replace $\sigma$ by $\sigma_{\text{safe}}$ (or triangulate into smaller simplices).
+- **When to use:** continuity of design search with no unsafe leakage.
+
+### Policy C — Conditional Admissibility (Evidence-Gated)
+
+Mixed simplices become admissible only under conditions $C_m$ (means of compliance, additional testing, SCs).
+
+```math
+A(x) = A_0(x)\ \land\ \bigwedge_m \bigl(\text{if } C_m(x) \text{ then } A_m(x)\bigr)
+```
+
+Sub-classifications:
+
+- **Admissible (conditional):** feasible iff specified evidence packages are satisfied
+- **Admissible (probationary):** allowed only for prototype/experimental operational envelope
+- **Not admissible:** missing/failed evidence gates
+
+### Policy D — Probabilistic Admissibility
+
+- Not recommended for certification decisions.
+- Useful only for internal exploration via sampling or surrogate models.
+
+## 10.3 AMPEL360 Recommended Approach
+
+Three-tier rule:
+
+1. **Fail-closed for release baselines:** only $I(\sigma)$ cells enter the certifiable set.
+2. **Conditional admissibility for boundary innovation:** mixed cells retained in $K_{\text{cond}}$ with explicit evidence gates.
+3. **Adaptive refinement around boundaries:** recursively subdivide mixed cells until they become fully admissible or localize the noncompliance mode precisely.
+
+---
+
+# 11. Time-Dependent Constraint Dynamics
+
+## 11.1 Constraint Layers
+
+```math
+\mathcal{F}(t) = \{x \in \Omega : A(x,t) = \text{true}\}
+```
+
+Decomposition:
+
+```math
+A(x,t) = A_{\text{hard}}(x,t)\ \land\ A_{\text{soft}}(x,t)\ \land\ A_{\text{evidence}}(x,t)
+```
+
+| Layer | Description | Evolution driver |
+|-------|-------------|------------------|
+| Hard | Statutes, fundamental safety requirements | Rarely relaxed |
+| Soft | AMC/GM, interpretive guidance, acceptable MoC ranges | Regulators |
+| Evidence | TRL, test coverage, approved analyses | Program maturity |
+
+## 11.2 Admissible Subcomplex Evolution
+
+Let $K_{\text{adm}}(t) = \{\sigma \in K : I(\sigma,t)\}$ and $K_{\text{cond}}(t)$ be conditional cells.
+
+Change event stream:
+
+```math
+\Delta K_{\text{adm}}^{+} = K_{\text{adm}}(t+\Delta t) \setminus K_{\text{adm}}(t)
+```
+```math
+\Delta K_{\text{adm}}^{-} = K_{\text{adm}}(t) \setminus K_{\text{adm}}(t+\Delta t)
+```
+
+- **Gains:** cells that become admissible
+- **Losses:** cells that become inadmissible (rare but possible)
+- **Reclassifications:** mixed → conditional → full (typical pathway)
+
+## 11.3 Regulatory Expansion Operator
+
+```math
+\mathcal{F}_{\text{aero}}(t+\Delta t) = \mathcal{F}_{\text{aero}}(t)\ \cup\ \Delta\mathcal{F}_{\text{SC/AMC}}\ \cup\ \Delta\mathcal{F}_{\text{evidence}}
+```
+
+- $\Delta\mathcal{F}_{\text{SC/AMC}}$: new accepted MoC / special conditions that widen certifiable region
+- $\Delta\mathcal{F}_{\text{evidence}}$: new test/analysis results that activate conditional cells
+
+---
+
+# 12. Interface Conditions — Civil–Aero Coupling
+
+## 12.1 Interface Operator
+
+Let $x$ = aero-state (design/ops parameters), $y$ = civil-state (infrastructure, policy, social acceptance).
+
+```math
+\Gamma(x, y, t) = \text{true}
+```
+
+Global admissibility:
+
+```math
+(x \in \mathcal{F}_{\text{aero}}(t))\ \land\ (y \in \mathcal{F}_{\text{civil}}(t))\ \land\ \Gamma(x,y,t) \Rightarrow \text{system is globally admissible}
+```
+
+## 12.2 Coupling Constraints (Hydrogen-Electric)
+
+- Infrastructure readiness (airport LH₂ storage/transfer, ATC procedures)
+- Emergency response (fire services, evacuation, hazmat, training)
+- Energy supply chain (hydrogen production provenance, continuity, DPP traceability)
+- Public risk tolerance (route approvals, overflight constraints, noise/emissions)
+- Operational governance (SMS integration, maintenance capability, workforce licensing)
+
+## 12.3 Documentation as Evidence Functions
+
+S1000D/ATA and Digital Product Passport (DPP) act as boundary certificates:
+
+```math
+\Gamma(x,y,t) = \Gamma_0(x,y,t) \land E_{\text{doc}}(x,t) \land E_{\text{dpp}}(x,t)
+```
+
+| Evidence System | Proves |
+|-----------------|--------|
+| S1000D / ATA | Maintainability, operational control, procedures, configuration management |
+| Digital Product Passport | Provenance, materials compliance, sustainability, lifecycle traceability |
+
+---
+
+# 13. Implementation Pattern — Backend Semantics
+
+## 13.1 Three-Set Partition
+
+Maintain three simplex sets at each time step:
+
+| Set | Purpose | Certification use |
+|-----|---------|-------------------|
+| $K_{\text{full}}(t)$ | Fully admissible simplices | Release / certification baseline |
+| $K_{\text{cond}}(t)$ | Conditionally admissible | Requires evidence gates |
+| $K_{\text{explore}}$ | Exploration-only | Never used for certification claims |
+
+## 13.2 Evidence-Gated State Machine
+
+For each mixed simplex $\sigma$:
+
+```
+Mixed ──[MoC package exists]──▶ Conditional ──[evidence approved]──▶ Full
+                                     │
+                                     └──[evidence fails]──▶ Rejected
+```
+
+## 13.3 Machine-Readable Contract
+
+See [`simplex-contract.yaml`](simplex-contract.yaml) for the full specification including:
+
+- Simplex IDs and classification states
+- Gating conditions (SC-LH2-xx, MoC, test artifacts)
+- Timestamps and delta logs for $\mathcal{F}(t)$
+- Interface operator $\Gamma$ hooks (S1000D DM references, DPP attestations)
+
+---
+
+# 14. Recommended Defaults
+
+| Domain | Policy |
+|--------|--------|
+| Certification baseline | Fail-closed (only $K_{\text{full}}$) |
+| Innovation boundary | Conditional admissibility with SC/AMC/MoC gates |
+| Design exploration | Inner-approximation clipping + refinement; never probabilistic for claims |
+| Regulatory evolution | Time-index predicates $A(x,t)$; log deltas to $K_{\text{full}}(t)$ / $K_{\text{cond}}(t)$ |
+| Civil–aero coupling | Enforce $\Gamma(x,y,t)$ with S1000D/ATA + DPP as evidence functions |
