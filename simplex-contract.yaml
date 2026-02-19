@@ -1,0 +1,419 @@
+# simplex-contract.yaml
+# Machine-readable contract for mixed-boundary simplex classification,
+# evidence-gated admissibility, and civil-aero interface coupling.
+# Aligned with AMPEL360 certification framework.
+# Reference: README.md §10–§14
+# Placement: 00-PROGRAM/PLUMA/simplex-contract.yaml (governance kernel)
+
+schema_version: "2.0.0"
+
+# ─────────────────────────────────────────────
+# 1. Simplex Classification Schema
+# ─────────────────────────────────────────────
+classification:
+  states:
+    - full          # I(σ) = true — fully admissible
+    - mixed         # E(σ) = true ∧ I(σ) = false
+    - inadmissible  # E(σ) = false
+    - conditional   # mixed + MoC package defined
+    - rejected      # conditional + evidence failed
+
+  # Forward (monotone) transitions — the typical pathway
+  transitions:
+    - from: mixed
+      to: conditional
+      trigger: moc_package_defined
+      monotone: true
+      description: >
+        A means-of-compliance package (Issue Paper, SC, or AMC path)
+        has been formally defined for this simplex.
+
+    - from: conditional
+      to: full
+      trigger: evidence_approved
+      monotone: true
+      description: >
+        All required evidence gates have been satisfied and accepted
+        by the certification authority.
+
+    - from: conditional
+      to: rejected
+      trigger: evidence_failed
+      monotone: true
+      description: >
+        One or more evidence gates failed or the regulatory path
+        was closed by the authority.
+
+    - from: mixed
+      to: full
+      trigger: refinement_resolved
+      monotone: true
+      description: >
+        Adaptive mesh refinement resolved the mixed cell into
+        fully admissible sub-simplices.
+
+    - from: mixed
+      to: inadmissible
+      trigger: refinement_resolved
+      monotone: true
+      description: >
+        Adaptive mesh refinement resolved the mixed cell into
+        inadmissible sub-simplices.
+
+  # Rollback transitions — allowed only with explicit regulatory event
+  rollback_transitions:
+    - from: full
+      to: conditional
+      trigger: regulatory_rollback
+      monotone: false
+      requires:
+        regulatory_event_id: required
+        signed_approval: required
+        justification: required
+      description: >
+        Regulatory authority revokes or narrows acceptance.
+        Requires explicit regulatory_event_id and signed approval.
+
+    - from: conditional
+      to: mixed
+      trigger: regulatory_rollback
+      monotone: false
+      requires:
+        regulatory_event_id: required
+        signed_approval: required
+        justification: required
+      description: >
+        MoC package invalidated by regulatory change.
+        Requires explicit regulatory_event_id and signed approval.
+
+# ─────────────────────────────────────────────
+# 1b. Deterministic Invariants
+# ─────────────────────────────────────────────
+invariants:
+  - id: INV-001
+    rule: "No certification claim may reference any simplex outside K_full(t)"
+    enforcement: hard
+    description: >
+      Only simplices with classification == full may appear in any
+      certification basis, type certificate data sheet, or compliance
+      demonstration. Violation is a blocking finding.
+
+  - id: INV-002
+    rule: "State transitions must be monotone unless a regulatory rollback event is recorded"
+    enforcement: hard
+    description: >
+      The typical pathway is Mixed → Conditional → Full.
+      Any reverse transition requires an explicit regulatory_event_id
+      and signed_approval in the delta_log. Unsigned rollbacks are
+      rejected by the validator.
+
+  - id: INV-003
+    rule: "Every gating condition must have evidence_refs[], approvals[], and run_manifest_ref"
+    enforcement: hard
+    description: >
+      No gate may transition to approved/closed without hashable
+      evidence artifacts, role-based approval signatures, and a
+      toolchain provenance reference. Incomplete gates remain open.
+
+# ─────────────────────────────────────────────
+# 2. Simplex Set Definitions
+# ─────────────────────────────────────────────
+sets:
+  K_full:
+    description: Fully admissible simplices (release / certification baseline)
+    filter: "classification == full"
+    certification_use: true
+
+  K_cond:
+    description: Conditionally admissible simplices (evidence gates required)
+    filter: "classification == conditional"
+    certification_use: false
+
+  K_explore:
+    description: Exploration-only simplices (never used for certification claims)
+    filter: "classification in [mixed, inadmissible]"
+    certification_use: false
+
+# ─────────────────────────────────────────────
+# 3. Resolution Policies
+# ─────────────────────────────────────────────
+policies:
+  - id: policy_a
+    name: Conservative Rejection (Fail-Closed)
+    rule: Accept only I(σ) = true
+    use_when:
+      - early certification basis
+      - safety-critical domains
+      - unknown nonlinearities
+      - sparse evidence
+
+  - id: policy_b
+    name: Conservative Interpolation (Inner-Approximation)
+    rule: Replace σ by σ_safe ⊂ σ ∩ F
+    use_when:
+      - continuity of design search needed
+      - no unsafe leakage permitted
+
+  - id: policy_c
+    name: Conditional Admissibility (Evidence-Gated)
+    rule: "A(x) = A_0(x) ∧ ⋀_m (if C_m(x) then A_m(x))"
+    use_when:
+      - hydrogen-electric configurations
+      - incomplete but expandable certification basis
+
+  - id: policy_d
+    name: Probabilistic Admissibility
+    rule: Estimate feasibility probability via sampling
+    use_when:
+      - internal exploration only
+    certification_use: false
+
+# ─────────────────────────────────────────────
+# 4. Constraint Layers (Time-Dependent)
+# ─────────────────────────────────────────────
+constraint_layers:
+  - id: hard
+    description: Statutes, fundamental safety requirements, non-negotiables
+    evolution_driver: rare (legislative change)
+    examples:
+      - CS-25 structural integrity
+      - fundamental fire safety
+
+  - id: soft
+    description: AMC/GM, interpretive guidance, acceptable MoC ranges
+    evolution_driver: regulators
+    examples:
+      - AMC 25.863 fire protection guidance
+      - GM for novel propulsion
+
+  - id: evidence
+    description: Maturity state (TRL, test coverage, approved analyses)
+    evolution_driver: program progress
+    examples:
+      - TRL advancement of LH2 fuel system
+      - completion of full-scale fire test
+
+# ─────────────────────────────────────────────
+# 5. Gating Conditions
+# ─────────────────────────────────────────────
+gating_conditions:
+  - id: SC-LH2-001
+    type: special_condition
+    description: LH2 tank structural integrity under crash loads
+    constraint_layer: hard
+    evidence_required:
+      - full-scale crash test report
+      - FEM analysis (validated)
+    evidence_refs: []          # hashable artifact URIs (populated on submission)
+    approvals: []              # initial empty; closed gates require [{role, signature, date}]
+    run_manifest_ref: null     # initial empty; required before gate closure (INV-003)
+    status: open
+
+  - id: SC-LH2-002
+    type: special_condition
+    description: LH2 fuel system leak detection and isolation
+    constraint_layer: hard
+    evidence_required:
+      - system-level FMEA
+      - leak detection test results
+    evidence_refs: []
+    approvals: []
+    run_manifest_ref: null
+    status: open
+
+  - id: AMC-LH2-001
+    type: acceptable_means_of_compliance
+    description: Hydrogen venting and safe dispersal
+    constraint_layer: soft
+    evidence_required:
+      - CFD analysis of venting scenarios
+      - ground test validation
+    evidence_refs: []
+    approvals: []
+    run_manifest_ref: null
+    status: open
+
+  - id: MoC-ELEC-001
+    type: means_of_compliance
+    description: Electric propulsion power electronics reliability
+    constraint_layer: evidence
+    evidence_required:
+      - MTBF analysis
+      - accelerated life testing report
+    evidence_refs: []
+    approvals: []
+    run_manifest_ref: null
+    status: open
+
+# ─────────────────────────────────────────────
+# 6. Example Simplex Records
+# ─────────────────────────────────────────────
+simplices:
+  - id: sigma-001
+    description: Cruise envelope — conventional kerosene baseline
+    classification: full
+    policy: policy_a
+    gating_conditions: []
+    timestamp: "2026-01-15T00:00:00Z"
+
+  - id: sigma-002
+    description: Cruise envelope — LH2 propulsion at FL350
+    classification: conditional
+    policy: policy_c
+    gating_conditions:
+      - SC-LH2-001
+      - SC-LH2-002
+    timestamp: "2026-02-01T00:00:00Z"
+
+  - id: sigma-003
+    description: Ground operations — LH2 refueling zone
+    classification: mixed
+    policy: policy_b
+    gating_conditions:
+      - AMC-LH2-001
+    timestamp: "2026-02-10T00:00:00Z"
+
+  - id: sigma-004
+    description: Electric taxi — high-power battery thermal envelope
+    classification: conditional
+    policy: policy_c
+    gating_conditions:
+      - MoC-ELEC-001
+    timestamp: "2026-02-15T00:00:00Z"
+
+# ─────────────────────────────────────────────
+# 7. Delta Log — F(t) Evolution
+# ─────────────────────────────────────────────
+delta_log:
+  - timestamp: "2026-01-15T00:00:00Z"
+    event: initial_baseline
+    description: CS-25 conventional baseline established
+    K_full_delta: [sigma-001]
+    K_cond_delta: []
+
+  - timestamp: "2026-02-01T00:00:00Z"
+    event: sc_path_opened
+    description: SC-LH2-001 and SC-LH2-002 accepted for negotiation
+    K_full_delta: []
+    K_cond_delta: [sigma-002]
+
+  - timestamp: "2026-02-10T00:00:00Z"
+    event: amc_draft_issued
+    description: AMC-LH2-001 draft issued for LH2 venting
+    K_full_delta: []
+    K_cond_delta: [sigma-003]
+
+  - timestamp: "2026-02-15T00:00:00Z"
+    event: moc_package_defined
+    description: MoC-ELEC-001 evidence package defined
+    K_full_delta: []
+    K_cond_delta: [sigma-004]
+
+# ─────────────────────────────────────────────
+# 8. Interface Operator Γ — Evidence Hooks
+# ─────────────────────────────────────────────
+interface_operator:
+  description: >
+    Γ(x,y,t) = Γ_0(x,y,t) ∧ E_doc(x,t) ∧ E_dpp(x,t)
+    Global admissibility requires aero feasibility, civil feasibility,
+    and satisfaction of all interface coupling constraints.
+
+  coupling_constraints:
+    - id: infra-readiness
+      description: Airport LH2 storage/transfer capability and ATC procedures
+      evidence_type: s1000d
+      dm_references:
+        - DMC-AMPEL-A-70-00-00-00A-040A-D
+
+    - id: emergency-response
+      description: Fire services, evacuation protocols, hazmat, training
+      evidence_type: s1000d
+      dm_references:
+        - DMC-AMPEL-A-26-00-00-00A-040A-D
+
+    - id: energy-supply-chain
+      description: Hydrogen production provenance, continuity, DPP traceability
+      evidence_type: dpp
+      dpp_attestations:
+        - DPP-LH2-PROVENANCE-001
+        - DPP-LH2-LIFECYCLE-001
+
+    - id: public-risk-tolerance
+      description: Route approvals, overflight constraints, noise/emissions targets
+      evidence_type: s1000d
+      dm_references:
+        - DMC-AMPEL-A-34-00-00-00A-040A-D
+
+    - id: operational-governance
+      description: SMS integration, maintenance capability, workforce licensing
+      evidence_type: s1000d
+      dm_references:
+        - DMC-AMPEL-A-05-00-00-00A-040A-D
+
+  evidence_systems:
+    s1000d_ata:
+      proves:
+        - maintainability
+        - operational control
+        - correct procedures
+        - configuration management
+
+    digital_product_passport:
+      proves:
+        - provenance
+        - materials compliance
+        - sustainability constraints
+        - lifecycle traceability
+
+# ─────────────────────────────────────────────
+# 9. Execution Model
+# ─────────────────────────────────────────────
+execution_model:
+  description: >
+    Minimal state machine + invariants + logs.
+    This is the layer PLUMA validators run against.
+
+  state_machine:
+    #
+    # MIXED ──(moc_pkg)──▶ CONDITIONAL ──(evidence_approved)──▶ FULL
+    #   │                         │
+    #   ├──(refine)───────────────┘
+    #   └──(refine)──▶ INADMISSIBLE
+    #
+    #         CONDITIONAL ──(evidence_fail)──▶ REJECTED
+    #
+    # Rollbacks (require regulatory_event_id + signed_approval):
+    #   FULL ──(regulatory_rollback)──▶ CONDITIONAL
+    #   CONDITIONAL ──(regulatory_rollback)──▶ MIXED
+    #
+    initial_state: mixed
+    terminal_states: [full, inadmissible, rejected]
+    forward_triggers: [moc_package_defined, evidence_approved, evidence_failed, refinement_resolved]
+    rollback_triggers: [regulatory_rollback]
+
+  validator_rules:
+    - id: RULE-001
+      check: "for all sigma in certification_basis: sigma.classification == full"
+      on_violation: blocking_finding
+
+    - id: RULE-002
+      check: "for all transitions: if not monotone then regulatory_event_id != null and signed_approval != null"
+      on_violation: reject_transition
+
+    - id: RULE-003
+      check: "for all gates where status == closed: evidence_refs.length > 0 and approvals.length > 0 and run_manifest_ref != null"
+      on_violation: reopen_gate
+
+# ─────────────────────────────────────────────
+# 10. File Placement (OPT-IN / PLUMA)
+# ─────────────────────────────────────────────
+file_placement:
+  governance_kernel: 00-PROGRAM/PLUMA/
+  contracts:
+    - path: 00-PROGRAM/PLUMA/simplex-contract.yaml
+      description: This file — simplex classification, invariants, execution model
+    - path: 00-PROGRAM/PLUMA/contributions-registry.yaml
+      description: Backend-auditable contributions classification
+  phases:
+    - path: 00-PROGRAM/PLUMA/03-CAX_PHASES/
+      description: CAx phase artifacts linked by run_manifest_ref
