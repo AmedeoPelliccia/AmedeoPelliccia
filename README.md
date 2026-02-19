@@ -20,14 +20,14 @@ Key properties:
 
 Mathematical abstraction:
 
-Let systems \( S_i \)
+Let systems \( S_i \) represent individual system instances.
 
 \[
-MCDA = \bigcap_{i=1}^{n} F(S_i)
+MCD = \bigcap_{i=1}^{n} F(S_i)
 \]
 
-Core ⊂ All systems
-Extensions outside core
+- The core is a subset of all systems.
+- Extensions remain outside the core.
 
 ---
 
