@@ -205,8 +205,8 @@ gating_conditions:
       - full-scale crash test report
       - FEM analysis (validated)
     evidence_refs: []          # hashable artifact URIs (populated on submission)
-    approvals: []              # [{role: "CVE-structures", signature: null, date: null}]
-    run_manifest_ref: null     # toolchain provenance URI
+    approvals: []              # initial empty; closed gates require [{role, signature, date}]
+    run_manifest_ref: null     # initial empty; required before gate closure (INV-003)
     status: open
 
   - id: SC-LH2-002
