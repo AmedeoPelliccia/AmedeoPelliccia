@@ -11,14 +11,15 @@ Defined as:
 
 > The minimal invariant structural core that enables interoperability while remaining extensible.
 
-Key properties:
-- Structural minimalism
-- Shared constraint layer
-- Open extension surface
-- Deterministic governance
-- Aggregation without fragmentation
+### Properties
 
-Mathematical abstraction:
+- Structural minimalism  
+- Shared constraint layer  
+- Open extension surface  
+- Deterministic governance  
+- Aggregation without fragmentation  
+
+### Mathematical Abstraction
 
 Let systems \( S_i \) represent individual system instances.
 Let \( F(S_i) \) denote the invariant structural features extracted from each system.
@@ -27,47 +28,54 @@ Let \( F(S_i) \) denote the invariant structural features extracted from each sy
 MCD = \bigcap_{i=1}^{n} F(S_i)
 \]
 
-- The core is a subset of all systems.
-- Extensions remain outside the core.
+- The core is contained in all systems.
+- Extensions exist outside the invariant core.
 
 ---
 
 # 2. Program Outline as MCD System
 
-A program outline must contain:
+A program outline decomposes into invariant core + extension.
 
-### Identity Layer
-- ID
-- Authority
-- Scope
-- Version
-- Lifecycle
+## Identity Layer (Invariant)
 
-### Functional Core
-- Purpose
-- Interfaces
-- Dependencies
-- Risks
-- Compliance
+- ID  
+- Authority  
+- Scope  
+- Version  
+- Lifecycle  
 
-### Extension Layer
-- Domain-specific models
-- Parametric analysis
-- Trade studies
+## Functional Core (Invariant)
 
-Structure:
+- Purpose  
+- Interfaces  
+- Dependencies  
+- Risks  
+- Compliance  
+
+## Extension Layer (Variable)
+
+- Domain-specific models  
+- Parametric analysis  
+- Trade studies  
+
+### Structural Representation
 
 \[
-M_i = C + E_i
+M_i = C \oplus E_i
 \]
 
-Where C is invariant.
+Where:
+
+- \( C \) = invariant structural core  
+- \( E_i \) = module-specific extension  
+- \( C \cap E_i = \varnothing \)
 
 ---
 
 # 3. Simplicial Partitioning of Possibility Space
 
-State vector:
+Define state vector:
 
 \[
 x \in \mathbb{R}^d
@@ -76,7 +84,7 @@ x \in \mathbb{R}^d
 Admissible set:
 
 \[
-\mathcal{F} = \{x : g_i(x) \le 0,\ h_j(x)=0\}
+\mathcal{F} = \{x \mid g_i(x) \le 0,\ h_j(x)=0\}
 \]
 
 Partition domain into simplices:
@@ -91,24 +99,25 @@ Classify simplices:
 - Mixed boundary
 - Inadmissible
 
-Admissible possibles:
+Admissible subcomplex:
 
 \[
 \mathcal{F} \approx \bigcup_{\sigma \in K_{\text{adm}}} \sigma
 \]
 
-This yields:
-- Enumerability
-- Local linear reasoning
-- Adjacency graph
-- Transition control
+### Structural Benefits
+
+- Enumerability  
+- Local linear reasoning  
+- Adjacency graph  
+- Transition control  
 
 ---
 
 # 4. Voluntad as Directional Operator
 
-Admissibility = what is allowed
-Voluntad = what is chosen
+Admissibility defines **permitted states**.  
+Voluntad defines **direction of evolution**.
 
 Objective functional:
 
@@ -122,17 +131,18 @@ Constrained dynamic:
 \dot{x} = \Pi_{\mathcal{F}}(\nabla J(x))
 \]
 
-On simplicial graph:
+On simplicial adjacency graph:
 
 \[
 \sigma_0 \rightarrow \sigma_1 \rightarrow \dots
 \]
 
-Maximizing value under constraint.
+Maximizing objective under admissibility constraint.
 
 Voluntad operates on:
-- Position within feasibility
-- Evolution of constraint set
+
+- Position within feasible manifold  
+- Evolution of constraint structure  
 
 ---
 
@@ -144,11 +154,20 @@ Civil system defined as:
 S = (P, I, R, B, C)
 \]
 
-Constraints:
-- Legal
-- Fiscal
-- Capacity
-- Stability
+Where:
+
+- \(P\) = Population parameters  
+- \(I\) = Infrastructure  
+- \(R\) = Regulatory framework  
+- \(B\) = Budgetary constraints  
+- \(C\) = Cultural-legitimacy parameters  
+
+Admissibility constraints:
+
+- Legal  
+- Fiscal  
+- Capacity  
+- Stability  
 
 Admissible civil manifold:
 
@@ -156,12 +175,7 @@ Admissible civil manifold:
 \mathcal{F}_{civil}
 \]
 
-Transitions must respect:
-- Rights
-- Budget
-- Institutional throughput
-
-Governance = boundary management.
+Governance = controlled navigation within this manifold.
 
 ---
 
@@ -173,6 +187,14 @@ Civil aerospace defined as:
 S_{aero} = (A, O, R, I, F)
 \]
 
+Where:
+
+- \(A\) = Aircraft & assets  
+- \(O\) = Operators  
+- \(R\) = Regulators  
+- \(I\) = Infrastructure  
+- \(F\) = Financial structure  
+
 Admissibility:
 
 \[
@@ -180,29 +202,31 @@ Admissibility:
 \]
 
 Where:
-- Safety
-- Certification
-- Environmental
-- Financial constraints
 
-Key insight:
+- Safety compliance  
+- Certification validity  
+- Environmental conformity  
+- Financial sustainability  
+
+Key structural relation:
 
 \[
 \mathcal{F}_{aero} \subseteq \mathcal{F}_{civil}
 \]
 
-Aerospace is a safety-critical subspace of civil governance.
+Aerospace is a safety-critical submanifold of civil governance.
 
-Transition model:
-- Adjacency-based reform
-- Certification-bounded evolution
-- No non-admissible jumps
+Transition principle:
+
+- Adjacency-based reform  
+- Certification-bounded evolution  
+- No non-admissible state jumps  
 
 ---
 
 # 7. Structural Synthesis
 
-Complete system:
+Complete system defined by:
 
 \[
 (\Omega, K, \mathcal{F}, J)
@@ -232,7 +256,7 @@ Interpretation:
 
 # 8. Conceptual Backbone
 
-This conversation encoded:
+This architecture encodes:
 
 1. Open structural minimalism (MCD)
 2. Feasible possibility space modeling
@@ -245,13 +269,11 @@ This conversation encoded:
 
 # 9. System Identity
 
-This backend logic defines:
+Backend characteristics:
 
 - Deterministic governance architecture
 - Constraint-bounded innovation
 - Mesh-refinable transition modeling
 - Safety-first civil aerospace evolution
 
-It is not rhetorical.
-
-It is structural.
+It is structural logic, not rhetoric.
