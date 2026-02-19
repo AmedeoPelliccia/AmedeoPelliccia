@@ -1,4 +1,4 @@
-# Amedeopelliccia-backend.md
+# Amedeopelliccia Backend
 ## Conversation Recap — Logical Architecture Encoding
 
 ---
@@ -21,6 +21,7 @@ Key properties:
 Mathematical abstraction:
 
 Let systems \( S_i \) represent individual system instances.
+Let \( F(S_i) \) denote the invariant structural features extracted from each system.
 
 \[
 MCD = \bigcap_{i=1}^{n} F(S_i)
