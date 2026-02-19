@@ -3,8 +3,9 @@
 # evidence-gated admissibility, and civil-aero interface coupling.
 # Aligned with AMPEL360 certification framework.
 # Reference: README.md §10–§14
+# Placement: 00-PROGRAM/PLUMA/simplex-contract.yaml (governance kernel)
 
-schema_version: "1.0.0"
+schema_version: "2.0.0"
 
 # ─────────────────────────────────────────────
 # 1. Simplex Classification Schema
@@ -17,10 +18,12 @@ classification:
     - conditional   # mixed + MoC package defined
     - rejected      # conditional + evidence failed
 
+  # Forward (monotone) transitions — the typical pathway
   transitions:
     - from: mixed
       to: conditional
       trigger: moc_package_defined
+      monotone: true
       description: >
         A means-of-compliance package (Issue Paper, SC, or AMC path)
         has been formally defined for this simplex.
@@ -28,6 +31,7 @@ classification:
     - from: conditional
       to: full
       trigger: evidence_approved
+      monotone: true
       description: >
         All required evidence gates have been satisfied and accepted
         by the certification authority.
@@ -35,6 +39,7 @@ classification:
     - from: conditional
       to: rejected
       trigger: evidence_failed
+      monotone: true
       description: >
         One or more evidence gates failed or the regulatory path
         was closed by the authority.
@@ -42,6 +47,7 @@ classification:
     - from: mixed
       to: full
       trigger: refinement_resolved
+      monotone: true
       description: >
         Adaptive mesh refinement resolved the mixed cell into
         fully admissible sub-simplices.
@@ -49,9 +55,65 @@ classification:
     - from: mixed
       to: inadmissible
       trigger: refinement_resolved
+      monotone: true
       description: >
         Adaptive mesh refinement resolved the mixed cell into
         inadmissible sub-simplices.
+
+  # Rollback transitions — allowed only with explicit regulatory event
+  rollback_transitions:
+    - from: full
+      to: conditional
+      trigger: regulatory_rollback
+      monotone: false
+      requires:
+        regulatory_event_id: required
+        signed_approval: required
+        justification: required
+      description: >
+        Regulatory authority revokes or narrows acceptance.
+        Requires explicit regulatory_event_id and signed approval.
+
+    - from: conditional
+      to: mixed
+      trigger: regulatory_rollback
+      monotone: false
+      requires:
+        regulatory_event_id: required
+        signed_approval: required
+        justification: required
+      description: >
+        MoC package invalidated by regulatory change.
+        Requires explicit regulatory_event_id and signed approval.
+
+# ─────────────────────────────────────────────
+# 1b. Deterministic Invariants
+# ─────────────────────────────────────────────
+invariants:
+  - id: INV-001
+    rule: "No certification claim may reference any simplex outside K_full(t)"
+    enforcement: hard
+    description: >
+      Only simplices with classification == full may appear in any
+      certification basis, type certificate data sheet, or compliance
+      demonstration. Violation is a blocking finding.
+
+  - id: INV-002
+    rule: "State transitions must be monotone unless a regulatory rollback event is recorded"
+    enforcement: hard
+    description: >
+      The typical pathway is Mixed → Conditional → Full.
+      Any reverse transition requires an explicit regulatory_event_id
+      and signed_approval in the delta_log. Unsigned rollbacks are
+      rejected by the validator.
+
+  - id: INV-003
+    rule: "Every gating condition must have evidence_refs[], approvals[], and run_manifest_ref"
+    enforcement: hard
+    description: >
+      No gate may transition to approved/closed without hashable
+      evidence artifacts, role-based approval signatures, and a
+      toolchain provenance reference. Incomplete gates remain open.
 
 # ─────────────────────────────────────────────
 # 2. Simplex Set Definitions
@@ -142,6 +204,9 @@ gating_conditions:
     evidence_required:
       - full-scale crash test report
       - FEM analysis (validated)
+    evidence_refs: []          # hashable artifact URIs (populated on submission)
+    approvals: []              # [{role: "CVE-structures", signature: null, date: null}]
+    run_manifest_ref: null     # toolchain provenance URI
     status: open
 
   - id: SC-LH2-002
@@ -151,6 +216,9 @@ gating_conditions:
     evidence_required:
       - system-level FMEA
       - leak detection test results
+    evidence_refs: []
+    approvals: []
+    run_manifest_ref: null
     status: open
 
   - id: AMC-LH2-001
@@ -160,6 +228,9 @@ gating_conditions:
     evidence_required:
       - CFD analysis of venting scenarios
       - ground test validation
+    evidence_refs: []
+    approvals: []
+    run_manifest_ref: null
     status: open
 
   - id: MoC-ELEC-001
@@ -169,6 +240,9 @@ gating_conditions:
     evidence_required:
       - MTBF analysis
       - accelerated life testing report
+    evidence_refs: []
+    approvals: []
+    run_manifest_ref: null
     status: open
 
 # ─────────────────────────────────────────────
@@ -290,3 +364,56 @@ interface_operator:
         - materials compliance
         - sustainability constraints
         - lifecycle traceability
+
+# ─────────────────────────────────────────────
+# 9. Execution Model
+# ─────────────────────────────────────────────
+execution_model:
+  description: >
+    Minimal state machine + invariants + logs.
+    This is the layer PLUMA validators run against.
+
+  state_machine:
+    #
+    # MIXED ──(moc_pkg)──▶ CONDITIONAL ──(evidence_approved)──▶ FULL
+    #   │                         │
+    #   ├──(refine)───────────────┘
+    #   └──(refine)──▶ INADMISSIBLE
+    #
+    #         CONDITIONAL ──(evidence_fail)──▶ REJECTED
+    #
+    # Rollbacks (require regulatory_event_id + signed_approval):
+    #   FULL ──(regulatory_rollback)──▶ CONDITIONAL
+    #   CONDITIONAL ──(regulatory_rollback)──▶ MIXED
+    #
+    initial_state: mixed
+    terminal_states: [full, inadmissible, rejected]
+    forward_triggers: [moc_package_defined, evidence_approved, evidence_failed, refinement_resolved]
+    rollback_triggers: [regulatory_rollback]
+
+  validator_rules:
+    - id: RULE-001
+      check: "for all sigma in certification_basis: sigma.classification == full"
+      on_violation: blocking_finding
+
+    - id: RULE-002
+      check: "for all transitions: if not monotone then regulatory_event_id != null and signed_approval != null"
+      on_violation: reject_transition
+
+    - id: RULE-003
+      check: "for all gates where status == closed: evidence_refs.length > 0 and approvals.length > 0 and run_manifest_ref != null"
+      on_violation: reopen_gate
+
+# ─────────────────────────────────────────────
+# 10. File Placement (OPT-IN / PLUMA)
+# ─────────────────────────────────────────────
+file_placement:
+  governance_kernel: 00-PROGRAM/PLUMA/
+  contracts:
+    - path: 00-PROGRAM/PLUMA/simplex-contract.yaml
+      description: This file — simplex classification, invariants, execution model
+    - path: 00-PROGRAM/PLUMA/contributions-registry.yaml
+      description: Backend-auditable contributions classification
+  phases:
+    - path: 00-PROGRAM/PLUMA/03-CAX_PHASES/
+      description: CAx phase artifacts linked by run_manifest_ref

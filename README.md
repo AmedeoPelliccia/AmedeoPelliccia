@@ -449,19 +449,56 @@ Maintain three simplex sets at each time step:
 For each mixed simplex $\sigma$:
 
 ```
-Mixed ──[MoC package exists]──▶ Conditional ──[evidence approved]──▶ Full
-                                     │
-                                     └──[evidence fails]──▶ Rejected
+MIXED ──[moc_pkg]──▶ CONDITIONAL ──[evidence approved]──▶ FULL
+  │                         │
+  ├──[refine]───────────────┘
+  └──[refine]──▶ INADMISSIBLE
+
+        CONDITIONAL ──[evidence fail]──▶ REJECTED
+
+Rollbacks (require regulatory_event_id + signed_approval):
+  FULL ──[regulatory_rollback]──▶ CONDITIONAL
+  CONDITIONAL ──[regulatory_rollback]──▶ MIXED
 ```
 
-## 13.3 Machine-Readable Contract
+## 13.3 Deterministic Invariants
+
+| ID | Rule | Enforcement |
+|----|------|-------------|
+| INV-001 | No certification claim may reference any simplex outside $K_{\text{full}}(t)$ | Blocking finding |
+| INV-002 | State transitions must be monotone unless a regulatory rollback event is recorded with `regulatory_event_id` + `signed_approval` | Reject transition |
+| INV-003 | Every gate requires `evidence_refs[]`, `approvals[]`, and `run_manifest_ref` before closing | Reopen gate |
+
+## 13.4 Evidence Provenance per Gate
+
+Every gating condition carries:
+
+- **`evidence_refs[]`** — hashable artifact URIs (reports, analyses, test data)
+- **`approvals[]`** — role-based signatures `[{role, signature, date}]`
+- **`run_manifest_ref`** — toolchain provenance URI linking to `03-CAX_PHASES/`
+
+## 13.5 Machine-Readable Contract
 
 See [`simplex-contract.yaml`](simplex-contract.yaml) for the full specification including:
 
 - Simplex IDs and classification states
-- Gating conditions (SC-LH2-xx, MoC, test artifacts)
+- Gating conditions with evidence provenance (SC-LH2-xx, MoC, test artifacts)
 - Timestamps and delta logs for $\mathcal{F}(t)$
 - Interface operator $\Gamma$ hooks (S1000D DM references, DPP attestations)
+- Deterministic invariants (INV-001–003)
+- Execution model with validator rules
+
+## 13.6 File Placement (OPT-IN / PLUMA)
+
+Backend governance kernel under [`00-PROGRAM/PLUMA/`](00-PROGRAM/PLUMA/):
+
+```
+00-PROGRAM/
+  PLUMA/
+    simplex-contract.yaml         ← classification, invariants, execution model
+    contributions-registry.yaml   ← auditable contributions classification
+    03-CAX_PHASES/                ← toolchain provenance artifacts
+```
 
 ---
 
