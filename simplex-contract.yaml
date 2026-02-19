@@ -2,6 +2,7 @@
 # Machine-readable contract for mixed-boundary simplex classification,
 # evidence-gated admissibility, and civil-aero interface coupling.
 # Aligned with AMPEL360 certification framework.
+# Reference: README.md §10–§14
 
 schema_version: "1.0.0"
 
