@@ -1,0 +1,9 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Generated artifacts
+audit_log.json
+evidence_gates.json
+dynamics_plot.png
