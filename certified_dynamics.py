@@ -17,7 +17,7 @@ class AdmissibilityStatus(Enum):
 
 @dataclass
 class EvidenceGate:
-    """Requisito documental para aprobar una transición condicional."""
+    """Documentary requirement to approve a conditional transition."""
     gate_id: str
     description: str
     standard_ref: str
@@ -36,18 +36,18 @@ class EvidenceGate:
 # ==========================================
 
 class TimeVaryingConstraint:
-    """Restricción que evoluciona con el tiempo: g(x, t) <= 0."""
+    """Constraint that evolves over time: g(x, t) <= 0."""
     def __init__(self, name: str, base_fn: Callable[[np.ndarray], float], 
                  evolution_fn: Callable[[float], float] = lambda t: 1.0):
         self.name = name
         self.base_fn = base_fn
-        self.evolution_fn = evolution_fn  # Por defecto no cambia en el tiempo
+        self.evolution_fn = evolution_fn  # By default does not change over time
 
     def evaluate(self, x: np.ndarray, t: float) -> float:
         return self.base_fn(x) * self.evolution_fn(t)
 
 class InvariantCore:
-    """El denominador común mínimo (C) con restricciones temporales."""
+    """The minimum common denominator (C) with temporal constraints."""
     def __init__(self, sys_id: str, authority: str, purpose: str):
         self.sys_id = sys_id
         self.authority = authority
@@ -71,7 +71,7 @@ class System:
 # ==========================================
 
 class CertifiedAdmissibleSpace:
-    """Evalúa la admisibilidad en el tiempo t, gestiona gates y log de auditoría."""
+    """Evaluates admissibility at time t, manages gates and audit log."""
     def __init__(self, fail_closed: bool = True):
         self.fail_closed = fail_closed
         self.evidence_gates: Dict[int, EvidenceGate] = {}
@@ -79,25 +79,25 @@ class CertifiedAdmissibleSpace:
         self.current_time: float = 0.0
 
     def register_gate(self, constraint_idx: int, gate: EvidenceGate):
-        """Vincula el índice de una restricción a un requisito de evidencia."""
+        """Links the index of a constraint to an evidence requirement."""
         self.evidence_gates[constraint_idx] = gate
 
     def step_time(self, delta_t: float):
         self.current_time += delta_t
 
     def evaluate_state(self, state: np.ndarray, core: InvariantCore) -> Tuple[AdmissibilityStatus, str]:
-        """Evalúa el estado actual y genera el registro de auditoría."""
+        """Evaluates the current state and generates the audit log."""
         violations = []
         conditional_gates = []
         
         for idx, constraint in enumerate(core.constraints):
-            # Evaluamos la restricción en el tiempo actual
+            # Evaluate the constraint at the current time
             val = constraint.evaluate(state, self.current_time)
             
-            if val > 0: # Restricción violada
+            if val > 0: # Constraint violated
                 violations.append(constraint.name)
                 
-                # Comprobar si hay un salvoconducto (Evidence Gate)
+                # Check if there is a safe-conduct pass (Evidence Gate)
                 if idx in self.evidence_gates:
                     gate = self.evidence_gates[idx]
                     if gate.is_fulfilled:
@@ -105,7 +105,7 @@ class CertifiedAdmissibleSpace:
                     else:
                         conditional_gates.append(f"GATE-{gate.gate_id}: PENDING")
         
-        # Lógica de resolución
+        # Resolution logic
         if not violations:
             status = AdmissibilityStatus.FULLY_ADMISSIBLE
             reason = "All constraints satisfied."
@@ -122,7 +122,7 @@ class CertifiedAdmissibleSpace:
             status = AdmissibilityStatus.MIXED_BOUNDARY
             reason = f"Partial violations in {violations}, no evidence gates available."
 
-        # Registrar trazabilidad
+        # Register traceability
         self._log_audit(core.sys_id, state, status, reason, violations)
         return status, reason
 
@@ -131,7 +131,7 @@ class CertifiedAdmissibleSpace:
             "timestamp": datetime.now().isoformat(),
             "simulation_time": self.current_time,
             "system_id": sys_id,
-            "state_vector": state.tolist(), # Convertimos numpy a lista para JSON
+            "state_vector": state.tolist(), # Convert numpy array to list for JSON
             "status": status.value,
             "reason": reason,
             "violations": violations
@@ -147,7 +147,7 @@ class CertifiedAdmissibleSpace:
         print(f"[Export] Audit log saved to {filepath}")
 
     def export_evidence_gates(self, filepath: str = "evidence_gates.json"):
-        # Serializa el diccionario de Dataclasses a JSON
+        # Serialize the dictionary of Dataclasses to JSON
         gates_dict = {str(idx): asdict(gate) for idx, gate in self.evidence_gates.items()}
         with open(filepath, 'w') as f:
             json.dump(gates_dict, f, indent=4)
@@ -158,7 +158,7 @@ class CertifiedAdmissibleSpace:
 # ==========================================
 
 class VoluntadDynamics:
-    """Avanza el sistema hacia el objetivo proyectado en el espacio admisible."""
+    """Advances the system toward the projected objective in the admissible space."""
     def __init__(self, objective_gradient: Callable[[np.ndarray], np.ndarray], space: CertifiedAdmissibleSpace):
         self.grad_J = objective_gradient
         self.space = space
@@ -169,7 +169,7 @@ class VoluntadDynamics:
         
         status, _ = self.space.evaluate_state(proposed_state, system.core)
         
-        # Solo aplicamos el estado si es totalmente admisible
+        # Only apply the state if it is fully admissible
         if status == AdmissibilityStatus.FULLY_ADMISSIBLE:
             system.state = proposed_state
             
@@ -182,8 +182,8 @@ if __name__ == "__main__":
     # 1. Configurar Sistema
     core = InvariantCore("AERO-EVTOL-1", "EASA", "Urban Air Mobility")
     
-    # Restricción Dinámica: Límite de ruido se vuelve más estricto con el tiempo (t)
-    # x[0] = Ruido (dB). Límite base 80 dB, se reduce 1 dB por cada "año" (t) simulado.
+    # Dynamic Constraint: Noise limit becomes stricter over time (t)
+    # x[0] = Noise (dB). Base limit 80 dB, reduced by 1 dB per simulated "year" (t).
     noise_constraint = TimeVaryingConstraint(
         name="Noise_Limit_CS23",
         base_fn=lambda x: x[0] - 80, 
@@ -192,28 +192,28 @@ if __name__ == "__main__":
     core.add_constraint(noise_constraint)
     
     sys = System(core)
-    sys.set_state(np.array([79.0])) # Inicia en 79 dB (Admisible en t=0)
+    sys.set_state(np.array([79.0])) # Starts at 79 dB (Admissible at t=0)
 
     # 2. Configurar Espacio y Gates
     space = CertifiedAdmissibleSpace(fail_closed=True)
     
-    # Añadimos un Gate a la restricción 0 (Ruido) para permitir exceder el límite 
-    # si se presenta un informe de mitigación acústica.
+    # Add a Gate to constraint 0 (Noise) to allow exceeding the limit
+    # if an acoustic mitigation report is presented.
     gate = EvidenceGate("G-NOISE-01", "Acoustic Mitigation Report", "AMC-20", 6)
     space.register_gate(0, gate)
     
-    dynamics = VoluntadDynamics(lambda x: np.array([0.5]), space) # Tendencia a aumentar ruido
+    dynamics = VoluntadDynamics(lambda x: np.array([0.5]), space) # Tendency to increase noise
 
     # 3. Simulación
-    print(f"Estado Inicial: {sys.state[0]} dB")
+    print(f"Initial State: {sys.state[0]} dB")
     for year in range(3):
-        space.step_time(1.0) # Avanza 1 año
+        space.step_time(1.0) # Advance 1 year
         new_state, status = dynamics.step(sys, step_size=1.0)
-        print(f"Año {year+1} | Estado: {new_state[0]:.1f} dB | Status: {status.value}")
+        print(f"Year {year+1} | State: {new_state[0]:.1f} dB | Status: {status.value}")
         
-        # En el año 2, subimos la evidencia para desbloquear la restricción
+        # In year 2, upload evidence to unlock the constraint
         if year == 1:
-            print(">>> Subiendo evidencia documental...")
+            print(">>> Uploading documentary evidence...")
             space.evidence_gates[0].fulfill("uri://dpp/reports/acoustics_v1.pdf")
 
     # 4. Exportar
