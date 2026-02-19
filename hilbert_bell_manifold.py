@@ -13,6 +13,9 @@ Implements the Quantum-Governed Topography described in README §16:
   • Intentional Hamiltonian evolution
 
 Reference: quantum-manifold.yaml (schema_version 1.0.0)
+
+Dependencies (core): none beyond the Python 3.10+ standard library.
+Dependencies (demo): PyYAML — install via ``pip install pyyaml``.
 """
 
 from __future__ import annotations
@@ -75,6 +78,11 @@ class QuantumState:
         self._normalize()
 
     # -- internal ------------------------------------------------------------
+
+    def _set_amplitudes(self, amplitudes: list[complex]) -> None:
+        """Replace amplitudes and re-normalise (used by HamiltonianEvolver)."""
+        self._amplitudes = list(amplitudes)
+        self._normalize()
 
     def _normalize(self) -> None:
         norm = math.sqrt(sum(abs(a) ** 2 for a in self._amplitudes))
@@ -259,10 +267,11 @@ class HamiltonianEvolver:
                 if j != k:
                     t_kj = self._entanglement.get(k, j)
                     coupling_sum += t_kj * state.amplitudes[j]
-            new_amp = state.amplitudes[k] + phase_k * state.amplitudes[k] + complex(0, -self._dt) * coupling_sum
+            phase_contribution = phase_k * state.amplitudes[k]
+            coupling_contribution = complex(0, -self._dt) * coupling_sum
+            new_amp = state.amplitudes[k] + phase_contribution + coupling_contribution
             new_amps.append(new_amp)
-        state._amplitudes = new_amps  # noqa: SLF001 — internal update
-        state.project()  # Π_adm re-normalisation
+        state._set_amplitudes(new_amps)  # Π_adm re-normalisation
 
 
 # ──────────────────────────────────────────────
