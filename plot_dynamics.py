@@ -13,10 +13,19 @@ matplotlib.use("Agg")  # Non-interactive backend for headless environments
 import matplotlib.pyplot as plt
 from datetime import datetime
 from pathlib import Path
-from typing import List, Dict, Optional
+from typing import Callable, List, Dict, Optional
 
 # Professional style configuration (adjustable for technical reports)
-plt.style.use('seaborn-v0_8-whitegrid')
+try:
+    # Preferred style for matplotlib 3.6+ where seaborn styles were renamed
+    plt.style.use('seaborn-v0_8-whitegrid')
+except Exception:
+    try:
+        # Fallback for older matplotlib versions
+        plt.style.use('seaborn-whitegrid')
+    except Exception:
+        # If neither seaborn style is available, continue with default style
+        pass
 plt.rcParams.update({
     'font.size': 10,
     'axes.titlesize': 12,
@@ -51,7 +60,7 @@ class DynamicsPlotter:
                              state_idx: int = 0,
                              state_label: str = "State Variable",
                              constraint_name: Optional[str] = None,
-                             threshold_fn: Optional[callable] = None,
+                             threshold_fn: Optional[Callable[[float], float]] = None,
                              title: Optional[str] = None,
                              output_path: Optional[str] = None):
         """
@@ -147,24 +156,35 @@ class DynamicsPlotter:
         ax.grid(True, alpha=0.3, linestyle='--')
         ax.set_axisbelow(True)
         
-        # Add tooltip-style annotations for key points
-        for entry in self.data:
-            if entry['status'] in ['INADMISSIBLE', 'CONDITIONAL_PENDING']:
-                reason_text = entry['reason'][:30] + '...' if len(entry['reason']) > 30 else entry['reason']
-                ax.annotate(f"\u26a0 {reason_text}", 
-                           xy=(entry['simulation_time'], entry['state_vector'][state_idx]),
-                           xytext=(0, 30), textcoords='offset points',
-                           fontsize=8, bbox=dict(boxstyle='round,pad=0.3', facecolor='yellow', alpha=0.3),
-                           arrowprops=dict(arrowstyle='->', connectionstyle='arc3,rad=0.15'))
+        # Add tooltip-style annotations for key points (limit to avoid clutter)
+        MAX_ANNOTATIONS = 30
+        annot_candidates = [
+            entry for entry in self.data
+            if entry.get('status') in ['INADMISSIBLE', 'CONDITIONAL_PENDING']
+        ]
+        if len(annot_candidates) > MAX_ANNOTATIONS:
+            step = max(1, len(annot_candidates) // MAX_ANNOTATIONS)
+            annot_candidates = annot_candidates[::step]
+
+        for entry in annot_candidates:
+            reason = entry.get('reason', '')
+            reason_text = reason[:30] + '...' if len(reason) > 30 else reason
+            ax.annotate(f"\u26a0 {reason_text}", 
+                       xy=(entry['simulation_time'], entry['state_vector'][state_idx]),
+                       xytext=(0, 30), textcoords='offset points',
+                       fontsize=8, bbox=dict(boxstyle='round,pad=0.3', facecolor='yellow', alpha=0.3),
+                       arrowprops=dict(arrowstyle='->', connectionstyle='arc3,rad=0.15'))
         
         plt.tight_layout()
         
         if output_path:
-            plt.savefig(output_path)
-            print(f"[Plot] Chart saved to: {output_path}")
+            try:
+                plt.savefig(output_path)
+                print(f"[Plot] Chart saved to: {output_path}")
+            except IOError as e:
+                print(f"[Plot] Failed to save chart to {output_path}: {e}")
         
         plt.close(fig)
-        return fig, ax
 
     def generate_summary_report(self, output_path: str = "compliance_summary.json"):
         """Generate an executive summary in JSON with key metrics."""
@@ -176,15 +196,21 @@ class DynamicsPlotter:
             status = entry['status']
             status_counts[status] = status_counts.get(status, 0) + 1
             
+        total_evaluations = len(self.data)
+
         summary = {
             "report_generated": datetime.now().isoformat(),
-            "total_evaluations": len(self.data),
+            "total_evaluations": total_evaluations,
             "time_span": {
                 "start": self.data[0]['simulation_time'],
                 "end": self.data[-1]['simulation_time']
             },
             "status_distribution": status_counts,
-            "compliance_rate": status_counts.get('FULLY_ADMISSIBLE', 0) / len(self.data),
+            "compliance_rate": (
+                status_counts.get('FULLY_ADMISSIBLE', 0) / total_evaluations
+                if total_evaluations
+                else 0.0
+            ),
             "critical_violations": [
                 {
                     "time": entry['simulation_time'],
@@ -202,9 +228,12 @@ class DynamicsPlotter:
             ]
         }
         
-        with open(output_path, 'w') as f:
-            json.dump(summary, f, indent=2, default=str)
-        print(f"[Report] Summary saved to: {output_path}")
+        try:
+            with open(output_path, 'w') as f:
+                json.dump(summary, f, indent=2, default=str)
+            print(f"[Report] Summary saved to: {output_path}")
+        except IOError as e:
+            print(f"[Report] Failed to save summary to {output_path}: {e}")
         return summary
 
 

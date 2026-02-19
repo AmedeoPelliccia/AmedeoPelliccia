@@ -1,12 +1,12 @@
 import numpy as np
 import json
-from enum import Enum, auto
+from enum import Enum
 from dataclasses import dataclass, asdict
 from datetime import datetime
 from typing import Callable, List, Dict, Tuple, Optional
 
 # ==========================================
-# 1. ESTRUCTURAS DE DATOS Y ESTADOS
+# 1. DATA STRUCTURES AND STATES
 # ==========================================
 
 class AdmissibilityStatus(Enum):
@@ -32,7 +32,7 @@ class EvidenceGate:
         self.timestamp = datetime.now().isoformat()
 
 # ==========================================
-# 2. RESTRICCIONES DINÁMICAS Y NÚCLEO
+# 2. DYNAMIC CONSTRAINTS AND CORE
 # ==========================================
 
 class TimeVaryingConstraint:
@@ -67,7 +67,7 @@ class System:
         self.state = initial_state
 
 # ==========================================
-# 3. ESPACIO ADMISIBLE Y TRAZABILIDAD
+# 3. ADMISSIBLE SPACE AND TRACEABILITY
 # ==========================================
 
 class CertifiedAdmissibleSpace:
@@ -82,6 +82,12 @@ class CertifiedAdmissibleSpace:
         """Links the index of a constraint to an evidence requirement."""
         self.evidence_gates[constraint_idx] = gate
 
+    def fulfill_gate(self, constraint_idx: int, uri: str):
+        """Fulfill an evidence gate for a given constraint index."""
+        if constraint_idx not in self.evidence_gates:
+            raise KeyError(f"No evidence gate registered for constraint index {constraint_idx}.")
+        self.evidence_gates[constraint_idx].fulfill(uri)
+
     def step_time(self, delta_t: float):
         self.current_time += delta_t
 
@@ -89,6 +95,7 @@ class CertifiedAdmissibleSpace:
         """Evaluates the current state and generates the audit log."""
         violations = []
         conditional_gates = []
+        ungated_violations = []
         
         for idx, constraint in enumerate(core.constraints):
             # Evaluate the constraint at the current time
@@ -104,6 +111,8 @@ class CertifiedAdmissibleSpace:
                         conditional_gates.append(f"GATE-{gate.gate_id}: PASSED")
                     else:
                         conditional_gates.append(f"GATE-{gate.gate_id}: PENDING")
+                else:
+                    ungated_violations.append(constraint.name)
         
         # Resolution logic
         if not violations:
@@ -112,6 +121,9 @@ class CertifiedAdmissibleSpace:
         elif self.fail_closed and len(violations) == len(core.constraints) and not conditional_gates:
             status = AdmissibilityStatus.INADMISSIBLE
             reason = f"Fail-Closed: Critical violations in {violations}."
+        elif ungated_violations:
+            status = AdmissibilityStatus.MIXED_BOUNDARY
+            reason = f"Partial violations in {ungated_violations}, no evidence gates available."
         elif conditional_gates and all("PASSED" in g for g in conditional_gates):
             status = AdmissibilityStatus.FULLY_ADMISSIBLE
             reason = "Conditional approval granted via valid evidence gates."
@@ -139,22 +151,28 @@ class CertifiedAdmissibleSpace:
         self.audit_log.append(log_entry)
 
     # ==========================================
-    # 4. SERIALIZACIÓN JSON
+    # 4. JSON SERIALIZATION
     # ==========================================
     def export_audit_log(self, filepath: str = "audit_log.json"):
-        with open(filepath, 'w') as f:
-            json.dump(self.audit_log, f, indent=4)
-        print(f"[Export] Audit log saved to {filepath}")
+        try:
+            with open(filepath, 'w') as f:
+                json.dump(self.audit_log, f, indent=4)
+            print(f"[Export] Audit log saved to {filepath}")
+        except IOError as e:
+            print(f"[Export] Failed to save audit log to {filepath}: {e}")
 
     def export_evidence_gates(self, filepath: str = "evidence_gates.json"):
         # Serialize the dictionary of Dataclasses to JSON
         gates_dict = {str(idx): asdict(gate) for idx, gate in self.evidence_gates.items()}
-        with open(filepath, 'w') as f:
-            json.dump(gates_dict, f, indent=4)
-        print(f"[Export] Evidence gates saved to {filepath}")
+        try:
+            with open(filepath, 'w') as f:
+                json.dump(gates_dict, f, indent=4)
+            print(f"[Export] Evidence gates saved to {filepath}")
+        except IOError as e:
+            print(f"[Export] Failed to save evidence gates to {filepath}: {e}")
 
 # ==========================================
-# 5. DINÁMICA DE LA VOLUNTAD
+# 5. WILL DYNAMICS
 # ==========================================
 
 class VoluntadDynamics:
@@ -189,10 +207,10 @@ class VoluntadDynamics:
         return system.state, status
 
 # ==========================================
-# PRUEBA RÁPIDA (MAIN)
+# QUICK TEST (MAIN)
 # ==========================================
 if __name__ == "__main__":
-    # 1. Configurar Sistema
+    # 1. Configure System
     core = InvariantCore("AERO-EVTOL-1", "EASA", "Urban Air Mobility")
     
     # Dynamic Constraint: Noise limit becomes stricter over time (t)
@@ -207,7 +225,7 @@ if __name__ == "__main__":
     sys = System(core)
     sys.set_state(np.array([79.0])) # Starts at 79 dB (Admissible at t=0)
 
-    # 2. Configurar Espacio y Gates
+    # 2. Configure Space and Gates
     space = CertifiedAdmissibleSpace(fail_closed=True)
     
     # Add a Gate to constraint 0 (Noise) to allow exceeding the limit
@@ -217,7 +235,7 @@ if __name__ == "__main__":
     
     dynamics = VoluntadDynamics(lambda x: np.array([0.5]), space) # Tendency to increase noise
 
-    # 3. Simulación
+    # 3. Simulation
     print(f"Initial State: {sys.state[0]} dB")
     for year in range(3):
         space.step_time(1.0) # Advance 1 year
@@ -227,8 +245,8 @@ if __name__ == "__main__":
         # In year 2, upload evidence to unlock the constraint
         if year == 1:
             print(">>> Uploading documentary evidence...")
-            space.evidence_gates[0].fulfill("uri://dpp/reports/acoustics_v1.pdf")
+            space.fulfill_gate(0, "uri://dpp/reports/acoustics_v1.pdf")
 
-    # 4. Exportar
+    # 4. Export
     space.export_audit_log()
     space.export_evidence_gates()
