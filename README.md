@@ -474,3 +474,55 @@ See [`simplex-contract.yaml`](simplex-contract.yaml) for the full specification 
 | Design exploration | Inner-approximation clipping + refinement; never probabilistic for claims |
 | Regulatory evolution | Time-index predicates $A(x,t)$; log deltas to $K_{\text{full}}(t)$ / $K_{\text{cond}}(t)$ |
 | Civil–aero coupling | Enforce $\Gamma(x,y,t)$ with S1000D/ATA + DPP as evidence functions |
+
+---
+
+# 15. Contributions Registry — Backend-Auditable Classification
+
+## 15.1 Purpose
+
+Structured technical classification of unpaid contributions by Amedeo Pelliccia, formalized for backend audit with separation between:
+
+- **Nature** — what kind of technical work
+- **Assets generated** — concrete outputs
+- **Maturity level** — TRL-equivalent readiness
+- **Technical externality** — reusability and external value
+- **Risk / dependency** — adoption and validation requirements
+
+## 15.2 Contribution Domains
+
+| ID | Domain | Type | TRL | Cert. Relevance |
+|----|--------|------|-----|-----------------|
+| CONTRIB-001 | OPT-IN / KISS Open Architecture | Open structural framework | 2–3 | High |
+| CONTRIB-002 | AMPEL360 — H₂-Electric BWB | Open conceptual design | 1–2 | Medium |
+| CONTRIB-003 | S1000D / ATA / BREX Standardization | Structured normalization | 3–4 | High |
+| CONTRIB-004 | Critical AI & Determinism | Conceptual framework | 1–2 | Medium |
+| CONTRIB-005 | Open Knowledge Production | Structured documentation | N/A | Low |
+
+## 15.3 Consolidated Evaluation
+
+| Pattern | Description |
+|---------|-------------|
+| High formal structuring | Systems with architecture, not isolated ideas |
+| Certification orientation | Logic anchored to compliance even at conceptual stage |
+| Determinism pursuit | Explicit reduction of semantic and structural ambiguity |
+| Multi-domain integration | Aeronautics + documentation + AI + governance |
+| Open publication | Intellectual transfer without defined economic model |
+
+## 15.4 Strategic Observation
+
+| Dimension | Assessment |
+|-----------|------------|
+| Structural coherence | High |
+| Institutional formalization | Low |
+| Dependencies | Industrial adoption, academic collaboration, validated-product transformation |
+
+## 15.5 Machine-Readable Registry
+
+See [`contributions-registry.yaml`](contributions-registry.yaml) for the full specification including:
+
+- Contribution IDs with domain, type, and TRL-equivalent maturity
+- Asset inventories per contribution
+- Nature and externality classification
+- Risk/dependency analysis
+- Consolidated value assessment matrix
