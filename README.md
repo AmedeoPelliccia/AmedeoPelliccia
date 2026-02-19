@@ -1,4 +1,4 @@
-# Amedeopelliccia Backend
+# AmedeoPelliccia Backend
 ## Conversation Recap — Logical Architecture Encoding
 
 ---
