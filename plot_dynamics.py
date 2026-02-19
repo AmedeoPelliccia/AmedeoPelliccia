@@ -163,7 +163,7 @@ class DynamicsPlotter:
             if entry.get('status') in ['INADMISSIBLE', 'CONDITIONAL_PENDING']
         ]
         if len(annot_candidates) > MAX_ANNOTATIONS:
-            step = max(1, len(annot_candidates) // MAX_ANNOTATIONS)
+            step = max(1, (len(annot_candidates) + MAX_ANNOTATIONS - 1) // MAX_ANNOTATIONS)
             annot_candidates = annot_candidates[::step]
 
         for entry in annot_candidates:
