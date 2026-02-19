@@ -158,13 +158,26 @@ class CertifiedAdmissibleSpace:
 # ==========================================
 
 class VoluntadDynamics:
-    """Advances the system toward the projected objective in the admissible space."""
+    """Advances the system toward the projected objective in the admissible space.
+
+    The `objective_gradient` callable must accept the current system state
+    (a NumPy array) and return a NumPy array of the *same shape* representing
+    the gradient direction.
+    """
     def __init__(self, objective_gradient: Callable[[np.ndarray], np.ndarray], space: CertifiedAdmissibleSpace):
         self.grad_J = objective_gradient
         self.space = space
         
     def step(self, system: System, step_size: float = 0.1) -> Tuple[np.ndarray, AdmissibilityStatus]:
         direction = self.grad_J(system.state)
+        # Ensure direction is a NumPy array and has the same shape as the state
+        if not isinstance(direction, np.ndarray):
+            direction = np.asarray(direction)
+        if direction.shape != system.state.shape:
+            raise ValueError(
+                f"objective_gradient must return an array with shape {system.state.shape}, "
+                f"but got {direction.shape}."
+            )
         proposed_state = system.state + (step_size * direction)
         
         status, _ = self.space.evaluate_state(proposed_state, system.core)
