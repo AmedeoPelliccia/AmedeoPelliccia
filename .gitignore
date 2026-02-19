@@ -7,3 +7,5 @@ __pycache__/
 audit_log.json
 evidence_gates.json
 dynamics_plot.png
+noise_compliance_plot.png
+compliance_summary.json
