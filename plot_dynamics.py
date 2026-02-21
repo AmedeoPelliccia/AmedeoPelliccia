@@ -184,7 +184,6 @@ class DynamicsPlotter:
             except IOError as e:
                 print(f"[Plot] Failed to save chart to {output_path}: {e}")
         
-        plt.close(fig)
 
     def generate_summary_report(self, output_path: str = "compliance_summary.json"):
         """Generate an executive summary in JSON with key metrics."""
