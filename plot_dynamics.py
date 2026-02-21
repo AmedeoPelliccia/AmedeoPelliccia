@@ -53,8 +53,13 @@ class DynamicsPlotter:
     def _load_log(self) -> List[Dict]:
         if not self.log_path.exists():
             raise FileNotFoundError(f"Audit log not found: {self.log_path}")
-        with open(self.log_path, 'r') as f:
-            return json.load(f)
+        try:
+            with open(self.log_path, 'r') as f:
+                return json.load(f)
+        except IOError as e:
+            raise IOError(f"Failed to read audit log from {self.log_path}: {e}") from e
+        except json.JSONDecodeError as e:
+            raise ValueError(f"Audit log at {self.log_path} contains invalid JSON: {e}") from e
     
     def plot_state_trajectory(self, 
                              state_idx: int = 0,
@@ -184,6 +189,7 @@ class DynamicsPlotter:
             except IOError as e:
                 print(f"[Plot] Failed to save chart to {output_path}: {e}")
         
+        plt.close(fig)
 
     def generate_summary_report(self, output_path: str = "compliance_summary.json"):
         """Generate an executive summary in JSON with key metrics."""
