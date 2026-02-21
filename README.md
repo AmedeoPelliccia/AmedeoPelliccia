@@ -1,7 +1,7 @@
 <p align="center">
   <strong>Amedeo Pelliccia</strong><br>
   Aerospace Engineer · Researcher · Framework Originator<br>
-  Founder, <a href="https://ideal-esg.eu">IDEAL-ESG.eu</a> Enterprise
+  Founder, <a href="https://ideale.eu">IDEALE-ESG.eu</a> Enterprise
 </p>
 
 ---
@@ -14,17 +14,18 @@ What I am building here goes beyond aerospace. It is an integrating model — in
 
 ---
 
-### IDEAL-ESG.eu — European Intelligence Foundation
+### IDEALE-ESG.eu — European Intelligence Foundation
 
-**IDEAL** is both an acronym and a commitment. It names the pillars of an integrated framework for sovereign European capability:
+**IDEALE** is both an acronym and a commitment. It names the six pillars of an integrated framework for sovereign European capability:
 
 <table>
 <tr>
-<td align="center" width="20%"><h3>I</h3><strong>Information</strong></td>
-<td align="center" width="20%"><h3>D</h3><strong>Defense</strong></td>
-<td align="center" width="20%"><h3>E</h3><strong>Energy</strong></td>
-<td align="center" width="20%"><h3>A</h3><strong>Aerospace</strong></td>
-<td align="center" width="20%"><h3>L</h3><strong>Logistics</strong></td>
+<td align="center" width="16.6%"><h3>I</h3><strong>Information</strong></td>
+<td align="center" width="16.6%"><h3>D</h3><strong>Defense</strong></td>
+<td align="center" width="16.6%"><h3>E</h3><strong>Energy</strong></td>
+<td align="center" width="16.6%"><h3>A</h3><strong>Aerospace</strong></td>
+<td align="center" width="16.6%"><h3>L</h3><strong>Logistics</strong></td>
+<td align="center" width="16.6%"><h3>E</h3><strong>Economy</strong></td>
 </tr>
 <tr>
 <td valign="top"><em>Data sovereignty, deterministic AI governance, digital product passports, traceability infrastructure</em></td>
@@ -32,10 +33,11 @@ What I am building here goes beyond aerospace. It is an integrating model — in
 <td valign="top"><em>Hydrogen production and distribution, LH₂ infrastructure, renewable integration, energy system coupling</em></td>
 <td valign="top"><em>Aviation decarbonization, space-quantum systems, certification-grade engineering, technical publications</em></td>
 <td valign="top"><em>Supply chain traceability, manufacturing pipelines, circular economy, end-of-life management</em></td>
+<td valign="top"><em>Governed digital economy: evidence markets, qualified model exchange, contribution assets, tokenized recognition, uncertainty reduction as transferable value</em></td>
 </tr>
 </table>
 
-**ESG** is not a label — it is the structural guarantee that every IDEAL pillar operates under:
+**ESG** is not a label — it is the structural guarantee that every IDEALE pillar operates under:
 
 | | Principle | How it is encoded |
 |---|-----------|-------------------|
@@ -43,7 +45,9 @@ What I am building here goes beyond aerospace. It is an integrating model — in
 | **S** | **Social responsibility** | Fair attribution (C1–C6 taxonomy), governed recognition of third parties, open publication, Teknia Token incentives proportional to contribution |
 | **G** | **Governance** | Deterministic pipelines (PATH → MTL), intent-lock layers (DWGE), acceptance gates, hash-chained ledgers, monotonic safety property, sovereign design authority |
 
-The IDEAL pillars define *what* we build. ESG defines *how* we build it. The combination is an inclusive, integrating model — designed in Europe, structured for export.
+The IDEALE pillars define *what* we build. ESG defines *how* we build it. The sixth pillar — **Economy (Digital)** — closes the loop: it converts the governed production of evidence, models, and contributions into transferable value. Without it, the system is technically coherent but not self-sustaining. With it, uncertainty reduction has a reward, evidence has a market, and traceable contribution becomes an economic asset. The combination is an inclusive, integrating model — designed in Europe, structured for export.
+
+The Economy pillar is not fintech, not crypto, not e-commerce. It is **governed industrial digital economy**: audited, regulated, traceable, and aligned with European regulation. Not speculation — certified impact.
 
 ---
 
@@ -65,7 +69,7 @@ The **AMPEL360 Q100** lives here — a ~100-passenger regional BWB aircraft conc
 
 This is aircraft-level truth: structures, systems, operations, circularity.
 
-**IDEAL pillars touched:** A (primary), E (LH₂ propulsion), L (supply chain / DPP), I (S1000D / CSDB)
+**IDEALE pillars touched:** A (primary), E (LH₂ propulsion), L (supply chain / DPP), I (S1000D / CSDB)
 
 </td>
 <td width="50%" valign="top">
@@ -78,7 +82,7 @@ Space-quantum infrastructure · Manufacturing technology layers · AQUA-V progra
 
 Where the aircraft domain ends, the space and quantum domain begins. Orbital logistics, quantum-classical bridge architectures, synthetic data validation, the manufacturing pipeline that connects design to material reality, and the **GAIA-AIR** ecosystem with its Quantum Aerospace Operating System (**QAOS**) — where NBT gates bridge classical telemetry into quantum-augmented structural analysis, digital twins, and predictive maintenance.
 
-**IDEAL pillars touched:** A (primary), I (quantum-classical data, NBT substrate), D (dual-use awareness), L (manufacturing pipelines)
+**IDEALE pillars touched:** A (primary), I (quantum-classical data, NBT substrate), D (dual-use awareness), L (manufacturing pipelines)
 
 </td>
 </tr>
@@ -88,7 +92,7 @@ The two domains share a strict governance boundary defined in the [IDEALEeu Doma
 
 ---
 
-### The IDEAL-ESG Pillar Map
+### The IDEALE-ESG Pillar Map
 
 Every pillar connects to concrete engineering artefacts:
 
@@ -99,6 +103,7 @@ Every pillar connects to concrete engineering artefacts:
 | **E — Energy** | aircraftmodel.eu | ATA 28 (LH₂ fuel), ATA 24 (electrical power), I-axis (H₂ GSE/supply chain) | AMPEL360 Q100 propulsion, TLAR energy balance |
 | **A — Aerospace** | Both | AMPEL360 Q100 (aircraft), GAIA-AIR/QAOS (space), AQUA-V (orbital), NeuronBit simplicial substrate | TLAR baseline, MTL manufacturing layers, simplicial telemetry |
 | **L — Logistics** | Both | LC09 (production), LC14 (circularity), DPP, TEKNIA ledger | Supply chain traceability, end-of-life management |
+| **E — Economy** | Both | TT v3.14 (Teknia Tokens), KNOT reward pools, evidence valuation, contribution asset registry | Evidence markets, qualified model exchange, contribution scoring, Gaia-X interoperability |
 
 | ESG | Enforcement mechanism | `§STD` reference |
 |-----|----------------------|------------------|
@@ -110,7 +115,7 @@ Every pillar connects to concrete engineering artefacts:
 
 ### What I'm Building
 
-The common engineering spine across all IDEAL pillars:
+The common engineering spine across all IDEALE pillars:
 
 **OPT-IN Framework** — a 5-axis topology (**O**rganizations, **P**rograms, **T**echnologies, **I**nfrastructures, **N**eural Networks) that organizes every artefact, every uncertainty, and every incentive in a programme into a single navigable structure. The **N-axis** is operationally defined by **NBT gates** — Neural Network Bridging and Tunneling connections that link classical computer interface outputs with quantum-augmented complex manifestations.
 
@@ -118,11 +123,17 @@ The common engineering spine across all IDEAL pillars:
 
 **DWGE** — a Deterministic Widget Generator Engine that sits in front of PATH → MTL, normalizing raw prompts into locked intents before any procedure executes. The LLM proposes; the deterministic kernel disposes. Nothing enters the model baseline without passing acceptance gates.
 
-**Teknia Tokens (TT)** — an incentive layer where contributors are rewarded for reducing uncertainty. The formula is simple: effort + impact, weighted and hash-chained. You close a KNOT, you earn TT. The ledger is the evidence, the incentive, and the audit trail in one structure.
+**Teknia Tokens (TT)** — the native instrument of the Economy pillar. Contributors are rewarded for reducing uncertainty: effort + impact, weighted and hash-chained. You close a KNOT, you earn TT. The ledger is the evidence, the incentive, and the audit trail in one structure. TT transforms governed production into transferable value — making the ecosystem self-sustaining.
+
+**Economy (Digital) — the E₂ pillar** — the structured value exchange layer that makes IDEALE self-sustaining. It defines first-class economic objects: Contribution Assets, Evidence Packages, Qualified Models, Certification Bundles, DPP Assets, and Tokenized Recognition Units. These are not speculative instruments — they are governed, audited, and anchored to certified impact. The Economy pillar enables: markets for qualified models and sovereign datasets, markets for approved procedures, contribution scoring based on verified impact (not likes, not stars — auditable uncertainty reduction), and reputation derived from ledger-anchored evidence. This is industrial digital economy: governed by ESG constraints, interoperable with Gaia-X, and aligned with European regulation.
+
+**IDEALE Portal — European Industrial Asset Exchange** — the interface layer between engineering truth and European capital allocation. The portal is not a repository host — it is a regulated innovation marketplace for certified industrial assets. Its primary object is the **Industrial Asset** (hydrogen propulsion architectures, certified procedures, qualified AI models, DPP-compliant supply chain modules), each carrying TRL level, compliance map, lifecycle phase, evidence packages, export classification, and ESG footprint. The portal serves two sides: **innovators** (structured asset registration, governance rails, impact scoring, call visibility) and **EU programmes / capital** (filterable maturity views, risk classification, compliance readiness, evidence audit packs). The funding logic flips: instead of proposals seeking calls, asset maturity auto-matches open calls, generates proposal skeletons from existing artefacts, and shows the readiness delta. This reduces proposal fiction and increases engineering truth. The portal sits between GitHub (technical infrastructure), CORDIS/Horizon (policy), EIB/EBI (capital), and certification authorities (EASA). It does not replace them — it orchestrates visibility. The portal's five-layer architectural stack: (1) Asset Registry — typed artefacts, metadata, lifecycle; (2) Governance Engine — gates, traceability, contribution mapping; (3) Compliance Modules — EU AI Act, CS-25, DPP, export control; (4) Funding Interface — call database integration, readiness scoring, proposal scaffolding; (5) Economic Layer — contribution valuation, impact scoring, structured recognition. The critical differentiator: IDEALE optimizes for admissibility, traceability, maturity, capital efficiency, and regulatory alignment — not speed, openness, or popularity. It is infrastructure for serious industrial innovation. Initial architecture: federated index layer with structured metadata + governance overlay. You do not fight GitHub — you extend it.
+
+**Trace Threads, Responsibility Chairs, and Capillary Merit** — the operational mechanics that make the portal auditable. A **TraceThread** (TTD) is a first-class typed, immutable chain connecting intent → procedure → artefact → evidence → gate decision → baseline, plus contributors, approvers, and accountable roles. A **ResponsibilityChair** is a governance slot bound to scope (programme, ATA, lifecycle phase, artifact type) with authority level, delegation rules, signature policy, and conflict policy — the chair persists when people change, ensuring audit continuity. **Capillary Merit** is the mechanism that makes invisible innovators visible: merit accrues not from commits but from gate-validated uncertainty reduction. The **Capillary Merit Index** (CMI) scores each contribution event by type, criticality, uncertainty reduction ($\Delta U$), and admissibility classification — merit only mints when the artefact is thread-anchored and gate-validated. People who close trace loops, add BREX rules, validate datasets, resolve export classifications, or improve reproducibility earn structural recognition. Not likes. Not stars. Verified impact.
 
 **NBT Gates (Neural Network Bridging and Tunneling)** — the operational definition of the N-axis. NBT gates are the connections that link classical computer interface outputs — the deterministic artefacts produced by DWGE and registered through PATH → MTL — with quantum-augmented complex manifestations: simplicial state spaces, persistent homology computations, and higher-order topological inference executed on quantum processing units. Where DWGE freezes semantic state, NBT gates freeze topological state. Where PATH → MTL projects intent onto admissible trajectories in the classical domain, NBT gates bridge that projection into quantum-accelerated manifolds and tunnel results back as geometrically structured evidence. The gate layer is realized through Quantum Simplicial Neural Networks (QSNs), persistent homology pipelines, and the GAIA-AIR / QAOS ecosystem.
 
-These are not aerospace-specific tools. They are governance and computation primitives that work wherever artefact production must be deterministic, traceable, and fair — and wherever data relationships must be captured in their full topological complexity. The aerospace pillar is where they are first instantiated — but the architecture is designed for any IDEAL pillar to adopt them.
+These are not aerospace-specific tools. They are governance, computation, and economic primitives that work wherever artefact production must be deterministic, traceable, fair, and self-sustaining — and wherever data relationships must be captured in their full topological complexity. The aerospace pillar is where they are first instantiated — but the architecture is designed for any IDEALE pillar to adopt them.
 
 ---
 
@@ -157,7 +168,9 @@ See: [STD-PATH-MTL-001 §3.1b — Contribution Governance](https://github.com/Am
 - Developing the DWGE intent-lock layer for LLM-agnostic aerospace artefact production
 - Governance charters for domain bifurcation between aircraftmodel.eu and aerospacemodel.com
 - OPT-IN Framework Standard v1.1 refinement and ATA chapter lifecycle methodology
-- IDEAL-ESG pillar mapping across Information, Defense, Energy, and Logistics domains
+- IDEALE-ESG pillar mapping across Information, Defense, Energy, Logistics, and Economy domains
+- Economy (Digital) pillar — evidence markets, qualified model exchange, contribution asset registry, Gaia-X interoperability study
+- IDEALE Portal architecture — trace threads (TTD), responsibility chairs, capillary merit index (CMI), 5-layer stack, EU funding interface design
 - NBT gates (Neural Network Bridging and Tunneling) — N-axis connections linking classical pipeline outputs to quantum-augmented simplicial manifolds via QSN inference
 - GAIA-AIR / QAOS ecosystem development — quantum aerospace operating system for real-time telemetry, digital twins, and predictive maintenance
 - European federal strategy integration via [Modello-federativo-europeo](https://github.com/Amedeopelliccia/Modello-federativo-europeo) and [Agenda-2028](https://github.com/Amedeopelliccia/Agenda-2028)
@@ -172,11 +185,12 @@ See: [STD-PATH-MTL-001 §3.1b — Contribution Governance](https://github.com/Am
 
 <p align="center">
   <em>Madrid, Spain</em><br>
-  <em>IDEAL-ESG.eu Enterprise · Capgemini Engineering (Airbus Technical Publications)</em>
+  <em>IDEALE-ESG.eu Enterprise · Capgemini Engineering (Airbus Technical Publications)</em>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/IDEAL--ESG-European%20Intelligence-004494" alt="IDEAL-ESG">
+  <img src="https://img.shields.io/badge/IDEALE--ESG-European%20Intelligence-004494" alt="IDEALE-ESG">
+  <img src="https://img.shields.io/badge/Economy-Digital%20E₂-00875a" alt="Economy">
   <img src="https://img.shields.io/badge/NBT-Bridging%20%26%20Tunneling-ff6b6b" alt="NBT">
   <img src="https://img.shields.io/badge/S1000D-Technical%20Publications-teal" alt="S1000D">
   <img src="https://img.shields.io/badge/ATA%20iSpec-2200-blue" alt="ATA">
@@ -190,7 +204,7 @@ See: [STD-PATH-MTL-001 §3.1b — Contribution Governance](https://github.com/Am
 
 # Backend — Logical Architecture Encoding
 
-> *What follows is the formal mathematical backbone behind the frameworks described above. It is organized to align with [STD-PATH-MTL-001](https://github.com/Amedeopelliccia/aircraftmodel) and its annexes — the governing standard for the PATH → MTL pipeline, the DWGE intent-lock layer (§3.1a), and the Contribution Ledger Layer (§3.1b). The IDEAL-ESG pillar structure provides the domain decomposition; the standard family provides the governance mechanics.*
+> *What follows is the formal mathematical backbone behind the frameworks described above. It is organized to align with [STD-PATH-MTL-001](https://github.com/Amedeopelliccia/aircraftmodel) and its annexes — the governing standard for the PATH → MTL pipeline, the DWGE intent-lock layer (§3.1a), and the Contribution Ledger Layer (§3.1b). The IDEALE-ESG pillar structure provides the domain decomposition; the standard family provides the governance mechanics.*
 
 **Standard alignment key:**
 
@@ -201,23 +215,25 @@ See: [STD-PATH-MTL-001 §3.1b — Contribution Governance](https://github.com/Am
 | `§3.1b` | STD-PATH-MTL-001 §3.1b — CLL (Contribution Ledger Layer) |
 | `§OPT-IN` | STD-OPTIN-001 — OPT-IN Framework Standard v1.1 |
 | `§LC01` | LC01_PROBLEM_STATEMENT — Uncertainty Orchestration & Tokenomics |
-| `§IDEAL` | IDEAL-ESG Pillar Architecture — I·D·E·A·L + E·S·G |
+| `§IDEALE` | IDEALE-ESG Pillar Architecture — I·D·E·A·L·E + E·S·G |
 | `§NBT` | NBT Gates — Neural Network Bridging and Tunneling (N-axis operational definition: connections linking classical interface outputs with quantum-augmented complex manifestations) |
+| `§PORTAL` | IDEALE Portal Architecture — Trace Threads, Responsibility Chairs, Capillary Merit, 5-Layer Stack |
 
 **Navigation:**
 
-- [Part I — Foundational Primitives](#part-i--foundational-primitives) ← mathematical basis for OPT-IN, IDEAL, and NBT
+- [Part I — Foundational Primitives](#part-i--foundational-primitives) ← mathematical basis for OPT-IN, IDEALE, and NBT
 - [Part II — Constrained Evolution](#part-ii--constrained-evolution-path--mtl-as-projected-dynamics) ← PATH → MTL as projected dynamics
 - [Part III — Certification State Space](#part-iii--certification-state-space) ← gate system, simplex classification, evidence machines
 - [Part IIIb — NBT Gates (Neural Network Bridging and Tunneling)](#part-iiib--nbt-gates-neural-network-bridging-and-tunneling) ← N-axis operational definition, quantum-classical gate layer, QSN, GAIA-AIR/QAOS
-- [Part IV — Civil-Aerospace Embedding](#part-iv--civil-aerospace-embedding-and-ideal-pillar-coupling) ← S1000D / DPP as boundary certificates, IDEAL pillar coupling
+- [Part IV — Civil-Aerospace Embedding](#part-iv--civil-aerospace-embedding-and-ideal-pillar-coupling) ← S1000D / DPP as boundary certificates, IDEALE pillar coupling
 - [Part V — Contribution Governance](#part-v--contribution-governance--contributions-registry) ← §3.1b alignment + contributions registry
+- [Part Vb — Portal Architecture](#part-vb--portal-architecture-trace-threads-responsibility-chairs-capillary-merit) ← trace threads, responsibility chairs, capillary merit, 5-layer stack, funding interface
 
 ---
 
 ## Part I — Foundational Primitives
 
-> *These primitives define the mathematical objects that OPT-IN (`§OPT-IN`) implements, that PATH → MTL (`§STD`) operates on, that the IDEAL pillar structure (`§IDEAL`) decomposes across domains, and that NBT gates (`§NBT`) bridge into quantum-augmented computation.*
+> *These primitives define the mathematical objects that OPT-IN (`§OPT-IN`) implements, that PATH → MTL (`§STD`) operates on, that the IDEALE pillar structure (`§IDEALE`) decomposes across domains, and that NBT gates (`§NBT`) bridge into quantum-augmented computation.*
 
 ### 1. Minimum Common Denominator (Open Aggregator)
 
@@ -233,9 +249,9 @@ Let systems $S_i$ represent individual system instances. Let $F(S_i)$ denote the
 
 The core is contained in all systems. Extensions exist outside the invariant core.
 
-**`§OPT-IN` cross-reference:** The OPT-IN 5-axis topology (O-P-T-I-N) *is* the MCD for programme management across any IDEAL pillar. Every programme — whether in Aerospace, Energy, or Defense — instantiates the same five axes; domain-specific content lives in the extension layer. The invariant core guarantees that any two OPT-IN programmes are structurally navigable by the same toolchain.
+**`§OPT-IN` cross-reference:** The OPT-IN 5-axis topology (O-P-T-I-N) *is* the MCD for programme management across any IDEALE pillar. Every programme — whether in Aerospace, Energy, or Defense — instantiates the same five axes; domain-specific content lives in the extension layer. The invariant core guarantees that any two OPT-IN programmes are structurally navigable by the same toolchain.
 
-**`§IDEAL` cross-reference:** IDEAL itself is an MCD at the enterprise level. The five pillars (I·D·E·A·L) share a common governance layer (ESG), a common pipeline (PATH → MTL), and a common incentive structure (TT). The pillar-specific content — hydrogen propulsion for Energy, certification evidence for Aerospace, supply chain traceability for Logistics — lives in the extension layer. The invariant core is the governance machinery.
+**`§IDEALE` cross-reference:** IDEALE itself is an MCD at the enterprise level. The six pillars (I·D·E·A·L·E) share a common governance layer (ESG), a common pipeline (PATH → MTL), and a common incentive structure (TT). The pillar-specific content — hydrogen propulsion for Energy, certification evidence for Aerospace, supply chain traceability for Logistics, token-mediated value exchange for Economy — lives in the extension layer. The invariant core is the governance machinery. The Economy pillar converts the outputs of all other pillars into transferable value: uncertainty reduction becomes reward, evidence becomes asset, contribution becomes economic act.
 
 ### 2. Programme Outline as MCD System
 
@@ -247,9 +263,9 @@ M_i = C \oplus E_i
 
 Where $C$ = invariant structural core, $E_i$ = module-specific extension, $C \cap E_i = \varnothing$.
 
-| Layer | Content | `§OPT-IN` mapping | `§IDEAL` mapping |
+| Layer | Content | `§OPT-IN` mapping | `§IDEALE` mapping |
 |-------|---------|-------------------|------------------|
-| **Identity (invariant)** | ID, Authority, Scope, Version, Lifecycle | OPT-IN axis headers + ATA chapter identifiers | IDEAL pillar + domain identifier |
+| **Identity (invariant)** | ID, Authority, Scope, Version, Lifecycle | OPT-IN axis headers + ATA chapter identifiers | IDEALE pillar + domain identifier |
 | **Functional Core (invariant)** | Purpose, Interfaces, Dependencies, Risks, Compliance | LC01–LC14 lifecycle phases | ESG enforcement layer (E+S+G) |
 | **Extension (variable)** | Domain-specific models, parametric analysis, trade studies | Per-ATA SSOT content | Pillar-specific engineering artefacts |
 
@@ -315,7 +331,7 @@ S(T(B)) \geq S(B) \quad \text{and} \quad R(T(B)) \geq R(B)
 
 or the tool refuses execution. The DWGE intent-lock (`§3.1a` §4.2) is the first enforcement point: nothing enters PATH until intent is frozen. The acceptance gates (`§STD`) are the second: nothing enters SSOT/PUB unless all gates pass. Together they guarantee that the system only moves along admissible trajectories.
 
-**`§IDEAL` cross-reference:** The Voluntad functional $J$ is not purely technical. Across the IDEAL pillars, it encodes: environmental impact minimization (**E**SG), social fairness in attribution (**S** — `§3.1b`), and governance integrity (**G** — MSP + gate invariants). The projection $\Pi_\mathcal{F}$ therefore enforces not just technical admissibility but ESG admissibility at every step.
+**`§IDEALE` cross-reference:** The Voluntad functional $J$ is not purely technical. Across the IDEALE pillars, it encodes: environmental impact minimization (**E**SG), social fairness in attribution (**S** — `§3.1b`), governance integrity (**G** — MSP + gate invariants), and economic sustainability through value transfer (**E** — Economy, via TT incentives and evidence markets). The projection $\Pi_\mathcal{F}$ therefore enforces not just technical admissibility but ESG admissibility and economic viability at every step.
 
 ---
 
@@ -627,15 +643,15 @@ The most concrete implementation of NBT gates is **GAIA-AIR** and its **Quantum 
 
 **Predictive maintenance via NBT gates:** Instead of classical threshold-based wear monitoring, the digital twin bridges structural sensor data across NBT gates to compute persistent homology on the QPU. A material anomaly manifests as a **topological void** ($\beta_2$ increase) in the structural simplicial complex — detectable before physical failure. The result tunnels back as a gated evidence artefact, triggering maintenance action through the classical O-P-T-I axes.
 
-**`§IDEAL` cross-reference:** GAIA-AIR instantiates multiple IDEAL pillars simultaneously: **A** (aerospace platform), **I** (NBT data architecture), **E** (green quantum scheduling), **L** (material lifecycle traceability via DPP). The TerraQueUeing GreenTech philosophy — reserving quantum resources surgically for topological extraction while delegating storage and boolean logic to optimized classical infrastructure — embodies the **E** in ESG at the hardware scheduling level.
+**`§IDEALE` cross-reference:** GAIA-AIR instantiates multiple IDEALE pillars simultaneously: **A** (aerospace platform), **I** (NBT data architecture), **E** (green quantum scheduling), **L** (material lifecycle traceability via DPP), **E_econ** (KNOT closure rewards, evidence valuation for digital twin outputs). The TerraQueUeing GreenTech philosophy — reserving quantum resources surgically for topological extraction while delegating storage and boolean logic to optimized classical infrastructure — embodies the **E** in ESG at the hardware scheduling level.
 
 **Normalization imperative:** NBT gates serve as a **hardware-agnostic topological abstraction layer**. Whether the QPU uses superconducting circuits, trapped ions, neutral atoms, or photonic processors, the classical axes communicate exclusively in simplicial data constraints and information thread specifications — the NBT gate handles the translation. This is the same normalization philosophy that S1000D provides for technical publications, OPT-IN provides for programme structure, and DWGE provides for semantic intent: a common interface standard that makes the underlying implementation swappable without disrupting governance.
 
 ---
 
-## Part IV — Civil-Aerospace Embedding and IDEAL Pillar Coupling
+## Part IV — Civil-Aerospace Embedding and IDEALE Pillar Coupling
 
-> *This section formalizes the relationship between the aerospace design space, the broader civil governance manifold, and the IDEAL pillar structure. S1000D and DPP act as boundary certificates at the interface.*
+> *This section formalizes the relationship between the aerospace design space, the broader civil governance manifold, and the IDEALE pillar structure. S1000D and DPP act as boundary certificates at the interface.*
 
 ### 18. Civil System
 
@@ -669,12 +685,12 @@ Key structural relation:
 
 Aerospace is a safety-critical submanifold of civil governance. Transition principle: adjacency-based reform, certification-bounded evolution, no non-admissible state jumps.
 
-### 20. IDEAL Pillar Coupling
+### 20. IDEALE Pillar Coupling
 
-The IDEAL pillars are not independent. They interact through shared constraints and interface operators:
+The IDEALE pillars are not independent. They interact through shared constraints and interface operators:
 
 ```math
-\mathcal{F}_\text{IDEAL}(t) = \bigcap_{p \in \{I,D,E,A,L\}} \mathcal{F}_p(t) \quad \cap \quad \mathcal{F}_\text{ESG}(t)
+\mathcal{F}_\text{IDEALE}(t) = \bigcap_{p \in \{I,D,E,A,L,E_\text{econ}\}} \mathcal{F}_p(t) \quad \cap \quad \mathcal{F}_\text{ESG}(t)
 ```
 
 Where each pillar has its own admissible set, and ESG provides the transversal constraint:
@@ -686,6 +702,7 @@ Where each pillar has its own admissible set, and ESG provides the transversal c
 | **E — Energy** | H₂ production, storage, distribution, grid coupling | Safety (ATEX, PED), availability, carbon intensity | ATA 28 (LH₂ fuel), I-axis (H₂ GSE), TLAR energy balance |
 | **A — Aerospace** | Aircraft design, certification, operations | CS-25, S1000D, DO-178C, DO-254 | Primary domain |
 | **L — Logistics** | Supply chain, manufacturing, end-of-life | DPP Regulation, circular economy, material traceability | LC09 (production), LC14 (circularity), ATA 96 (DPP) |
+| **E — Economy** | Contribution assets, evidence packages, qualified models, TT token flows | Auditability, non-speculation, regulatory alignment, Gaia-X interoperability | TEKNIA ledger, KNOT reward pools, contribution scoring, model exchange |
 
 **Cross-pillar coupling constraints** (AMPEL360 Q100 specific):
 
@@ -697,18 +714,63 @@ Where each pillar has its own admissible set, and ESG provides the transversal c
 | AI model qualification for flight systems | **I** ↔ **A** | **T** — Technologies | Q-criterion via `§3.1a` §7 |
 | Circular economy compliance | **L** ↔ **A** | **I** — Infrastructures | LC14 + DPP traceability |
 | Topological telemetry processing | **I** ↔ **A** | **T** — Technologies | $\beta_k$ extraction via `§NBT` QSN |
+| KNOT closure reward distribution | **E_econ** ↔ all | **N** — Neural Networks | TT allocation via $w_i = \alpha \hat{E}_i + (1-\alpha)\hat{I}_i$ |
+| Evidence valuation and model exchange | **E_econ** ↔ **I** | **N** — Neural Networks | $V(x) = f(\Delta U, C, R, T)$ |
+| Contribution asset recognition | **E_econ** ↔ **L** | **N** — Neural Networks | C1–C6 taxonomy → contribution asset registry |
 
-**`§IDEAL` cross-reference:** The admissible set $\mathcal{F}_\text{IDEAL}$ is the intersection of all pillar constraints plus ESG. No artefact, in any pillar, enters the model baseline unless it satisfies the governance layer. This is why the standard family (§STD + §3.1a + §3.1b) is pillar-agnostic by design: the pipeline, the gates, and the ledger work the same whether the artefact is a TLAR analysis, a hydrogen safety study, or a supply chain traceability record.
+**`§IDEALE` cross-reference:** The admissible set $\mathcal{F}_\text{IDEALE}$ is the intersection of all pillar constraints plus ESG. The Economy pillar ($E_\text{econ}$) adds a critical dimension: it converts governed artefact production into transferable value. Without it, the system is governed but not self-sustaining. With it, every KNU that closes a KNOT generates not just engineering evidence but an economic event — a contribution asset with auditable provenance. No artefact, in any pillar, enters the model baseline unless it satisfies the governance layer. This is why the standard family (§STD + §3.1a + §3.1b) is pillar-agnostic by design: the pipeline, the gates, and the ledger work the same whether the artefact is a TLAR analysis, a hydrogen safety study, a supply chain traceability record, or a qualified model offered on the evidence market.
+
+### 20b. Economy (Digital) — Value Function and First-Class Objects
+
+The Economy pillar introduces a **value function** that converts governed artefact production into transferable economic value:
+
+```math
+V(x) = f(\Delta U,\ C,\ R,\ T)
+```
+
+Where:
+
+| Variable | Definition | Source |
+|----------|-----------|--------|
+| $\Delta U$ | Uncertainty reduction | KNOT residual delta: $R_\text{before} - R_\text{after}$ |
+| $C$ | Validated contribution | C1–C6 classification + GATE-CONTRIB-DECLARED |
+| $R$ | Certified relevance | Gate pass count + cross-pillar citation index |
+| $T$ | Verified traceability | Hash-chain depth in TEKNIA ledger + DPP links resolved |
+
+This function is what makes the system self-sustaining. Every KNU that closes a KNOT triggers not just an engineering state transition (mixed → full) but an economic event — a contribution asset with computable value.
+
+**First-class economic objects** defined by the E₂ pillar:
+
+| Object | Definition | Provenance |
+|--------|-----------|------------|
+| **Contribution Asset** | Ledger-anchored record of a contributor's verified work, scored by $V(x)$ | `§3.1b` CLL + AWARDS_TT.csv |
+| **Evidence Package** | Bundled KNU artefacts that closed a KNOT, with all gate evidence and hash chain | KNOT closure record + `§STD` gate logs |
+| **Qualified Model** | A registered model artefact that passed all acceptance gates and is available for reuse | WDG-REGISTER-MODEL + Q-criterion compliance |
+| **Certification Bundle** | Aggregated evidence proving a simplex transitioned from $K_\text{cond}$ to $K_\text{full}$ | INV-001 compliance + regulatory signoffs |
+| **DPP Asset** | Digital Product Passport entry with full lifecycle traceability | ATA 96 + LC14_RETIREMENT_CIRCULARITY |
+| **Tokenized Recognition Unit** | TT allocation record for a specific contribution, hash-chained and immutable | TOKENOMICS_TT.yaml + AWARDS_TT.csv + ledger.json |
+
+**What the Economy pillar is not:**
+
+| Not this | But this |
+|----------|----------|
+| Speculative | Value anchored to certified uncertainty reduction |
+| Anonymous | Every asset traces to a declared contributor via C1–C6 |
+| Permissionless | Governed by ESG constraints + acceptance gates |
+| Volatility-based | Deterministic scoring via $V(x)$ + ledger immutability |
+| Fintech / crypto / e-commerce | Industrial digital economy: audited, regulated, European-aligned |
+
+**`§IDEALE` cross-reference:** The Economy pillar is the structural reason the IDEALE framework is not merely a governance tool but an infrastructure. It transforms the system from *technically coherent* to *self-sustaining*: contributors have incentives, evidence has markets, qualified models are exchangeable, and impact is scored by auditable metrics rather than popularity. The interoperability target is Gaia-X — Europe's federated data infrastructure — ensuring that IDEALE economic objects are recognizable across European industrial ecosystems.
 
 ### 21. ESG as Transversal Constraint
 
-ESG is not a reporting layer. It is a structural constraint that binds all IDEAL pillars:
+ESG is not a reporting layer. It is a structural constraint that binds all IDEALE pillars:
 
 ```math
 \mathcal{F}_\text{ESG}(t) = \mathcal{F}_E(t) \land \mathcal{F}_S(t) \land \mathcal{F}_G(t)
 ```
 
-| ESG dimension | Formal constraint | `§STD` enforcement | IDEAL pillars affected |
+| ESG dimension | Formal constraint | `§STD` enforcement | IDEALE pillars affected |
 |---------------|-------------------|-------------------|----------------------|
 | **E — Environment** | No artefact may degrade lifecycle environmental metrics (emissions, materials, circularity) relative to baseline | LC14 evidence, DPP validation, climate impact gates | E, A, L |
 | **S — Social** | No artefact may enter SSOT/PUB without a complete contribution map; no contributor may be erased from the ledger | GATE-CONTRIB-DECLARED, `§3.1b` C1–C6 taxonomy | All pillars |
@@ -722,7 +784,7 @@ This makes ESG a *structural invariant*, not a *compliance add-on*. It is enforc
 \Gamma(x,y,t) = \Gamma_0(x,y,t) \land E_\text{doc}(x,t) \land E_\text{dpp}(x,t)
 ```
 
-| Evidence system | Proves | `§STD` mapping | IDEAL pillar |
+| Evidence system | Proves | `§STD` mapping | IDEALE pillar |
 |-----------------|--------|----------------|-------------|
 | **S1000D / ATA** | Maintainability, operational control, procedures, configuration management | PUB/CSDB — DM, PM, DML, BREX, APPLICABILITY | I, A |
 | **Digital Product Passport** | Provenance, materials compliance, sustainability, lifecycle traceability | SSOT/LC14_RETIREMENT_CIRCULARITY + ATA 96 (N-axis) | L, E, A |
@@ -766,19 +828,21 @@ Per `§3.1b` §3, every external influence is classified into exactly one catego
 
 Structured technical classification of contributions by Amedeo Pelliccia, formalized for backend audit.
 
-| ID | Domain | Type | TRL | Cert. relevance | `§STD` component | IDEAL pillar |
+| ID | Domain | Type | TRL | Cert. relevance | `§STD` component | IDEALE pillar |
 |----|--------|------|-----|-----------------|------------------|-------------|
 | CONTRIB-001 | OPT-IN / Open Architecture | Open structural framework | 2–3 | High | `§OPT-IN` — 5-axis topology + LC01–LC14 | All (MCD) |
 | CONTRIB-002 | AMPEL360 — H₂-Electric BWB | Open conceptual design | 1–2 | Medium | TLAR nodes 01–10, SSOT artefacts | A, E |
 | CONTRIB-003 | S1000D / ATA / BREX Standardization | Structured normalization | 3–4 | High | PUB/CSDB architecture, GATE-BREX | I, A |
 | CONTRIB-004 | Critical AI & Determinism (DWGE) | Deterministic governance layer | 2–3 | High | `§3.1a` — widgets #1–10, MSP, Q-criterion | I, G |
 | CONTRIB-005 | PATH → MTL Pipeline | Traceable production governance | 2–3 | High | `§STD` — pipeline, gates, ledger | G (ESG core) |
-| CONTRIB-006 | Teknia Token Incentive Layer | Hash-chained incentive system | 1–2 | Medium | `§LC01` — TOKENOMICS_TT, AWARDS_TT | S (ESG core) |
-| CONTRIB-007 | Contribution Governance (CLL) | Attribution + sovereignty framework | 2–3 | Medium | `§3.1b` — C1–C6 taxonomy, widget #10 | S (ESG core) |
-| CONTRIB-008 | IDEAL-ESG Pillar Architecture | Integrating model for European capability | 1–2 | Medium | `§IDEAL` — pillar decomposition, ESG constraints | All |
+| CONTRIB-006 | Teknia Token Incentive Layer | Hash-chained incentive system | 1–2 | Medium | `§LC01` — TOKENOMICS_TT, AWARDS_TT | E₂ (Economy), S (ESG) |
+| CONTRIB-007 | Contribution Governance (CLL) | Attribution + sovereignty framework | 2–3 | Medium | `§3.1b` — C1–C6 taxonomy, widget #10 | S (ESG core), E₂ |
+| CONTRIB-008 | IDEALE-ESG Pillar Architecture | Integrating model for European capability | 1–2 | Medium | `§IDEALE` — pillar decomposition, ESG constraints | All |
 | CONTRIB-009 | European Policy Frameworks | Federal strategy + Agenda 2028 | 1 | Low | Modello-federativo-europeo, Agenda-2028 | D, I, L |
 | CONTRIB-010 | NBT Gates (Neural Network Bridging and Tunneling) | N-axis gate layer + NeuronBit simplicial units | 1–2 | High | `§NBT` — bridge/tunnel gates, QSN, persistent homology, quantum-classical boundary | N-axis (all pillars) |
 | CONTRIB-011 | GAIA-AIR / QAOS Ecosystem | Quantum aerospace operating system | 1–2 | Medium | `§NBT` — QAOS orchestration, digital twins, predictive maintenance, QPS | A, E, I, L |
+| CONTRIB-012 | Economy (Digital) — E₂ Pillar | Governed industrial digital economy layer | 1 | Medium | `§IDEALE` E₂ — evidence markets, contribution assets, qualified model exchange, Gaia-X interop | E₂ (all pillars consume) |
+| CONTRIB-013 | IDEALE Portal Architecture | European Industrial Asset Exchange: trace threads, responsibility chairs, capillary merit, 5-layer stack, funding interface | 1 | Medium | `§PORTAL` — TTD, CMI, L1–L5 stack, call matching, evidence-based funding | E₂, G (ESG), all pillars |
 
 **Consolidated evaluation:**
 
@@ -795,10 +859,141 @@ Structured technical classification of contributions by Amedeo Pelliccia, formal
 
 | Dimension | Assessment |
 |-----------|------------|
-| Structural coherence | High — standard family (§STD + §3.1a + §3.1b) + IDEAL-ESG are self-consistent |
+| Structural coherence | High — standard family (§STD + §3.1a + §3.1b) + IDEALE-ESG are self-consistent |
 | Institutional formalization | Low — requires industrial adoption, academic collaboration, policy engagement |
 | Dependencies | Validated-product transformation, regulatory engagement, toolchain implementation, European institutional anchoring |
 | Export potential | High — pillar-agnostic governance, adaptable to non-EU contexts via MCD invariance |
+
+---
+
+## Part Vb — Portal Architecture (Trace Threads, Responsibility Chairs, Capillary Merit)
+
+> *This section formalizes the operational mechanics of the IDEALE Portal — the European Industrial Asset Exchange. Where Part V defines contribution governance (who contributed what), Part Vb defines the threading, accountability, and merit infrastructure that makes contributions discoverable, auditable, and economically valuable under the E₂ pillar.*
+
+### 26. TraceThread (TTD) — First-Class Trace Object
+
+A TraceThread is a typed, immutable chain that connects an intent to its full lifecycle outcome. It is the fundamental audit unit of the portal.
+
+**Canonical fields** (deterministic, all required for registration):
+
+| Field | Type | Source |
+|-------|------|--------|
+| `thread_id` | Stable unique identifier | System-generated at thread creation |
+| `artifact_id` | Target artefact | `§STD` heading block |
+| `parent_threads[]` | Lineage / derivations | Structural: every thread references its ancestors |
+| `intent_hash` | Frozen intent fingerprint | `§3.1a` DWGE IntentSpec hash |
+| `procedure_id`, `procedure_version` | Approved procedure | `§STD` procedure registry |
+| `template_id`, `template_version` | Canonical template | `§STD` template registry |
+| `gate_run_id` | Gate execution record | `§STD` gate log |
+| `gate_results[]` | Pass/fail per gate | Deterministic: COMPLETENESS, BREX, BOUNDS, TRACE, HASH, CONTRIB, IP |
+| `evidence_refs[]` | KNUs, tests, datasets, docs | Structural references to SSOT artefacts |
+| `responsibility_chair` | Accountable governance slot (role, not person) | See §27 |
+| `signatures[]` | Person, organization, timestamp | Cryptographic: who signed, when |
+| `contribution_map[]` | C1–C6 declarations | `§3.1b` CLL |
+| `prev_thread_hash` | Ledger chain link | TEKNIA ledger: hash of previous thread in sequence |
+| `classification` | DEV / COND / FULL | Three-set partition (`§STD` §10) |
+
+**Structural rule:** A TraceThread is queryable and auditable. Every artefact in SSOT/PUB must be reachable from at least one TTD. Orphan artefacts (no thread) are structurally inadmissible.
+
+**`§STD` cross-reference:** The TraceThread subsumes and extends the PATH → MTL heading block. Where the heading block stamps identity on a single artefact, the TTD chains the full provenance: from raw intent through every gate decision to baseline registration and economic valuation. The `prev_thread_hash` field makes the chain immutable — identical in structure to the TEKNIA ledger's `prev_tx_hash`.
+
+### 27. ResponsibilityChair — Auditable Accountability
+
+A ResponsibilityChair is a governance slot bound to scope. It answers: *"Who held accountability for this decision at the time?"* — not *"Who owns the repo now?"*
+
+**Canonical fields:**
+
+| Field | Definition |
+|-------|-----------|
+| `chair_id` | Stable identifier (e.g. `CHAIR-ATA28-BASELINE-AUTH`) |
+| `scope` | {programme, ATA chapter, lifecycle phase, artifact type} |
+| `authority_level` | `review` / `approve` / `certify` / `release` |
+| `delegation_rules` | Who may act on behalf; conditions |
+| `signature_policy` | `single` / `dual` / `quorum` |
+| `conflict_policy` | What blocks approval (e.g. contributor cannot self-approve) |
+
+**Key principle:** A person occupies a chair for a period; the chair persists across personnel changes. Audits follow the chair, not the individual. The chair is the structural equivalent of the RACI matrix entry — but enforceable, versioned, and immutable in the ledger.
+
+**`§LC01` cross-reference:** The RACI.csv in each LC01_PROBLEM_STATEMENT assigns stakeholder roles (R, A, C, I) to KNOT activities. ResponsibilityChairs formalize the **A** (Accountable) column as a first-class governance object: the chair_id replaces the AoR string with a versioned, ledger-anchored slot that survives personnel rotation.
+
+### 28. Capillary Merit Index (CMI) — Invisible Innovators Made Visible
+
+Merit is not commits. Merit is uncertainty reduction that passed gates.
+
+A **ContributionEvent** is any action that creates or improves an artefact/evidence and is trace-linked (anchored in a TTD). A **MeritUnit** is computed only when a gate accepts the resulting state transition.
+
+**Capillary Merit Index:**
+
+```math
+\text{CMI}_i = \sum_{e \in \text{Events}(i)} w_{\text{type}(e)} \cdot w_{\text{crit}(e)} \cdot w_{\Delta U(e)} \cdot w_{\text{adm}(e)}
+```
+
+| Weight | Factor | Scale |
+|--------|--------|-------|
+| $w_\text{type}$ | Event type: fix, evidence, model, procedure, review, trace repair | Defined per programme |
+| $w_\text{crit}$ | ATA criticality, safety class, export sensitivity | ATA-derived + D-pillar classification |
+| $w_{\Delta U}$ | Uncertainty reduction: KNOT residual drop, test coverage delta, trace closure delta | From KNOTS.csv: $R_\text{before} - R_\text{after}$ |
+| $w_\text{adm}$ | Admissibility classification of the target simplex | DEV = 0, COND = 0.5, FULL = 1.0 (or programme policy) |
+
+**Critical rule:** Capillary merit only accrues when the artefact is thread-anchored (TTD exists) + gate-validated (at least one gate passed deterministically). Draft noise — unlinked, ungated work — does not mint merit.
+
+**Who becomes visible:**
+
+| Invisible in GitHub | Visible in IDEALE |
+|--------------------|-------------------|
+| Someone who closes a trace loop (fixes references / applicability) | TRACE-EDGE-RESOLVED event, CMI accrues |
+| Someone who adds a BREX rule | GATE-BREX improvement, CMI accrues |
+| Someone who validates a dataset or runs an analysis that becomes evidence | EVIDENCE-PACK-ACCEPTED event, CMI accrues |
+| Someone who resolves an export-control classification | D-pillar gate closure, CMI accrues |
+| Someone who improves reproducibility (run manifest, replay harness) | TRACE-EDGE-ADDED event, CMI accrues |
+
+**`§3.1b` cross-reference:** CMI is the quantitative complement to the C1–C6 qualitative taxonomy. The taxonomy classifies *what kind* of contribution was made; CMI scores *how much impact* it had. Together they form the complete contribution profile that the E₂ pillar converts into a Contribution Asset with computable value via $V(x)$.
+
+### 29. Trace Closure Events — The Only Events That Mint Merit
+
+To make capillary merit auditable, only explicit closure events generate MeritUnits:
+
+| Event type | Definition | Merit effect |
+|-----------|-----------|-------------|
+| `TRACE-EDGE-ADDED` | New trace link created (satisfies / verifies / derivesFrom) | CMI accrues to contributor |
+| `TRACE-EDGE-RESOLVED` | Broken reference fixed | CMI accrues to contributor |
+| `KNOT-RESIDUAL-REDUCED` | Quantified uncertainty reduction recorded | CMI accrues proportional to $\Delta U$ |
+| `EVIDENCE-PACK-ACCEPTED` | Gate accepts an evidence package | CMI accrues to all contributors in contribution_map |
+| `BASELINE-PROMOTED` | Artefact transitions from COND to FULL | CMI multiplier: $w_\text{adm}$ jumps from 0.5 to 1.0 |
+
+Everything else is draft. Only closure events mint economic value.
+
+**`§STD` cross-reference:** These events map directly to gate transitions in the PATH → MTL pipeline. TRACE-EDGE-ADDED = WDG-CHECK-COMPLETENESS resolves a link. EVIDENCE-PACK-ACCEPTED = all gates pass for a KNU. BASELINE-PROMOTED = WDG-REGISTER-MODEL accepts the artefact into $K_\text{full}$.
+
+### 30. Portal Architectural Stack
+
+The IDEALE Portal is structured as a five-layer stack, each layer consuming the governance primitives defined in Parts I–V:
+
+| Layer | Function | `§STD` / `§IDEALE` mapping |
+|-------|---------|---------------------------|
+| **L1 — Asset Registry** | Typed industrial assets with metadata, lifecycle phase, TRL, compliance map, ESG footprint | OPT-IN topology + ATA chapter identity + LC01–LC14 |
+| **L2 — Governance Engine** | Gates, traceability, contribution mapping, responsibility chairs | PATH → MTL pipeline + DWGE + `§3.1b` CLL |
+| **L3 — Compliance Modules** | EU AI Act, CS-25 / FAR Part 25, DPP Regulation, EU Reg. 2021/821 (export control) | GATE-BREX + GATE-TRACE-RESOLVE + GATE-IP-CLEAR |
+| **L4 — Funding Interface** | Call database integration (Horizon Europe, Clean Aviation, EIC, EIB/EBI), readiness scoring, proposal scaffolding | Asset maturity → call matching → readiness delta → proposal skeleton |
+| **L5 — Economic Layer** | Contribution valuation ($V(x)$), CMI scoring, evidence markets, qualified model exchange | E₂ pillar objects + TEKNIA ledger + Gaia-X interoperability |
+
+**Portal positioning:** The IDEALE Portal sits between GitHub (technical infrastructure), CORDIS/Horizon dashboards (policy), EIB/EBI financing instruments (capital), and certification authorities (EASA). It does not replace them. It orchestrates visibility. GitHub tracks commits; IDEALE tracks admissibility.
+
+**Funding logic inversion:** Instead of proposals seeking calls, asset maturity auto-matches open calls. The portal generates structured proposal skeletons from existing artefacts, shows the readiness delta, and indicates missing evidence. This reduces proposal fiction and increases engineering truth.
+
+**Federated architecture:** Initial deployment as a federated index layer with structured metadata + governance overlay. Assets may be hosted in external repositories (GitHub, institutional CSDBs); the portal indexes them with IDEALE metadata, applies gate governance, and exposes them to the funding interface. You do not fight GitHub — you extend it.
+
+**What funders see (machine-readable proof via trace threads):**
+
+| Funder question | Portal answer | Source |
+|----------------|--------------|--------|
+| What exists? | Asset registry (typed, versioned) | L1 |
+| How mature? | LC phase + TRL + evidence count | L1 + TTD.evidence_refs[] |
+| What blocks it? | Open KNOTs / missing gates | LC01 KNOTS.csv + TTD.gate_results[] |
+| Who is accountable? | Responsibility chairs | TTD.responsibility_chair + §27 |
+| Why can it be trusted? | Ledger + replay harness | TTD.prev_thread_hash + `§3.1a` §10 |
+
+This turns funding selection into evidence-based filtering instead of PDF-driven persuasion.
 
 ---
 
@@ -818,11 +1013,11 @@ Dynamics:
 \dot{x} = \Pi_{\mathcal{F}}(\nabla J(x))
 ```
 
-**The standard family and IDEAL-ESG implement this:**
+**The standard family and IDEALE-ESG implement this:**
 
 | Mathematical object | Implementation |
 |--------------------|----------------|
-| $\Omega$ | IDEAL 5-pillar space × OPT-IN 5-axis topology × 79 ATA chapters |
+| $\Omega$ | IDEALE 6-pillar space × OPT-IN 5-axis topology × 79 ATA chapters |
 | $K$ | KNOT register (uncertainty partitioning) |
 | $\mathcal{F}$ | Acceptance gates + ESG constraints (deterministic boundary) |
 | $J$ | Programme objectives (range, payload, emissions, cost, fairness, sovereignty) |
@@ -831,13 +1026,18 @@ Dynamics:
 | $\dot{x}$ | Registered artefacts (constrained trajectory) |
 | Provenance of $\dot{x}$ | TEKNIA ledger (hash-chained evidence) |
 | Attribution of $\dot{x}$ | Contribution maps (`§3.1b`) |
-| Domain decomposition | IDEAL pillars (I·D·E·A·L) |
+| Domain decomposition | IDEALE pillars (I·D·E·A·L·E) |
 | Transversal constraint | ESG (E·S·G) |
+| Value exchange layer | Economy (Digital) — $V(x) = f(\Delta U, C, R, T)$: uncertainty reduction as transferable value |
 | Computational substrate | NBT gates (`§NBT`) — bridge classical outputs into quantum manifolds, tunnel invariants back |
 | Topological invariants | Betti numbers $\beta_k$ extracted via quantum phase estimation on QPU side of NBT gate |
 | Aerospace realization | GAIA-AIR / QAOS — N-axis instantiation: digital twins, QPS, TerraQueUeing |
+| Provenance threading | TraceThread (TTD) — immutable chain: intent → procedure → artefact → evidence → gate → baseline |
+| Accountability structure | ResponsibilityChairs — governance slots bound to scope, persisting across personnel |
+| Merit quantification | Capillary Merit Index (CMI) — uncertainty reduction × criticality × admissibility, gate-minted only |
+| Portal stack | IDEALE Portal — L1 Asset Registry, L2 Governance Engine, L3 Compliance, L4 Funding Interface, L5 Economic Layer |
 
-Constraints define stability. Simplices define discrete feasible regions. Voluntad defines direction. Governance defines the projection rule. ESG defines the ethical boundary. IDEAL defines the scope. NBT gates bridge it into quantum-augmented computation and tunnel results back.
+Constraints define stability. Simplices define discrete feasible regions. Voluntad defines direction. Governance defines the projection rule. ESG defines the ethical boundary. IDEALE defines the scope. Economy converts governed production into transferable value. NBT gates bridge it into quantum-augmented computation and tunnel results back.
 
 It is structural logic, not rhetoric.
 
@@ -853,7 +1053,7 @@ It is structural logic, not rhetoric.
 | Regulatory evolution | Time-index predicates $A(x,t)$; log deltas to $K_\text{full}(t)$ / $K_\text{cond}(t)$ | Ledger time-series |
 | Civil–aero coupling | Enforce $\Gamma(x,y,t)$ with S1000D/ATA + DPP as evidence functions | GATE-BREX + GATE-TRACE-RESOLVE |
 | Contribution governance | Declare before register; never erase | GATE-CONTRIB-DECLARED + GATE-IP-CLEAR |
-| Cross-pillar coupling | Enforce $\mathcal{F}_\text{IDEAL}$ intersection at every registration | Pillar-specific gates + ESG transversal |
+| Cross-pillar coupling | Enforce $\mathcal{F}_\text{IDEALE}$ intersection at every registration | Pillar-specific gates + ESG transversal |
 
 ---
 
@@ -863,8 +1063,14 @@ It is structural logic, not rhetoric.
 |----------|----------|-------------|
 | `simplex-contract.yaml` | `00-PROGRAM/PLUMA/` | Classification states, gating conditions, deterministic invariants |
 | `contributions-registry.yaml` | `00-PROGRAM/PLUMA/` | Auditable contributions classification |
-| `ideal-esg-pillars.yaml` | `00-PROGRAM/PLUMA/` | IDEAL pillar definitions + ESG constraint mappings |
+| `ideale-esg-pillars.yaml` | `00-PROGRAM/PLUMA/` | IDEALE pillar definitions + ESG constraint mappings |
+| `economy-assets.schema.json` | `00-PROGRAM/PLUMA/` | E₂ first-class objects: ContributionAsset, EvidencePackage, QualifiedModel, CertificationBundle, DPPAsset, TokenizedRecognitionUnit |
 | `nbt-gates.yaml` | `00-PROGRAM/PLUMA/` | NBT gate spec, bridge/tunnel protocols, NeuronBit schema, QSL parameters, QAOS interface |
+| `trace_thread.schema.json` | `.path_mtl/portal/schemas/` | TraceThread (TTD) schema — canonical fields, lineage rules, classification (`§PORTAL` §26) |
+| `responsibility_chair.schema.json` | `.path_mtl/portal/schemas/` | ResponsibilityChair schema — scope, authority levels, delegation, signature policy (`§PORTAL` §27) |
+| `contribution_event.schema.json` | `.path_mtl/portal/schemas/` | ContributionEvent + MeritUnit schema — event types, CMI weights (`§PORTAL` §28) |
+| `merit_minting_rules.md` | `.path_mtl/portal/` | Normative: which closure events mint merit, weight tables, admissibility multipliers (`§PORTAL` §29) |
+| `portal_queries.md` | `.path_mtl/portal/` | Reference: how to answer "who contributed what", "who approved", "what evidence supports this" (`§PORTAL` §30) |
 | `intent_spec.schema.json` | `.path_mtl/dwge/schemas/` | IntentSpec schema (`§3.1a` §5) |
 | `widget_activation.schema.json` | `.path_mtl/dwge/schemas/` | WidgetActivation schema (`§3.1a` §6) |
 | `contribution_map.schema.json` | `.path_mtl/dwge/schemas/` | ContributionMap schema (`§3.1b` §4) |
@@ -879,15 +1085,25 @@ It is structural logic, not rhetoric.
   PLUMA/
     simplex-contract.yaml         ← classification, invariants, execution model
     contributions-registry.yaml   ← auditable contributions classification
-    ideal-esg-pillars.yaml        ← IDEAL pillar definitions + ESG constraints
+    ideale-esg-pillars.yaml       ← IDEALE pillar definitions + ESG constraints
+    economy-assets.schema.json    ← E₂ first-class economic objects
     nbt-gates.yaml                ← NBT gate spec, bridge/tunnel protocols, QAOS interface
     03-CAX_PHASES/                ← toolchain provenance artefacts
+
+.path_mtl/
+  portal/
+    merit_minting_rules.md        ← normative: closure events that mint merit
+    portal_queries.md             ← reference: audit queries
+    schemas/
+      trace_thread.schema.json    ← TraceThread (TTD) canonical fields
+      responsibility_chair.schema.json ← ResponsibilityChair governance slots
+      contribution_event.schema.json   ← ContributionEvent + MeritUnit + CMI
 ```
 
 ---
 
 <p align="center">
-  <em>Last updated: 2026-02-21</em><br>
-  <em>Enterprise: IDEAL-ESG.eu — Information · Defense · Energy · Aerospace · Logistics | Environment · Social · Governance</em><br>
-  <em>Standard family: STD-PATH-MTL-001 v1.0 + §3.1a DWGE v0.1 + §3.1b CLL v0.1 + §NBT Gates v0.1</em>
+  <em>Last updated: 2026-02-22</em><br>
+  <em>Enterprise: IDEALE-ESG.eu — Information · Defense · Energy · Aerospace · Logistics · Economy (Digital) | Environment · Social · Governance</em><br>
+  <em>Standard family: STD-PATH-MTL-001 v1.0 + §3.1a DWGE v0.1 + §3.1b CLL v0.1 + §NBT Gates v0.1 + §PORTAL v0.1</em>
 </p>
