@@ -211,9 +211,11 @@ class VoluntadDynamics:
         # Mark whether the proposed state was actually applied
         if self.space.audit_log:
             self.space.audit_log[-1]["applied"] = (status == AdmissibilityStatus.FULLY_ADMISSIBLE)
-            
-        return system.state, status
+            return system.state, status
 
+        # If the proposed state is not applied, return the status of the actual system state
+        current_status, _ = self.space.evaluate_state(system.state, system.core)
+        return system.state, current_status
 # ==========================================
 # QUICK TEST (MAIN)
 # ==========================================
