@@ -1,0 +1,14 @@
+{
+  "report_generated": "2026-02-21T17:23:01.183389",
+  "total_evaluations": 3,
+  "time_span": {
+    "start": 1.0,
+    "end": 3.0
+  },
+  "status_distribution": {
+    "FULLY_ADMISSIBLE": 3
+  },
+  "compliance_rate": 1.0,
+  "critical_violations": [],
+  "evidence_gates_triggered": []
+}

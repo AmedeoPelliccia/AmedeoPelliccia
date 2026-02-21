@@ -3,9 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Generated artifacts
-audit_log.json
-evidence_gates.json
-dynamics_plot.png
-noise_compliance_plot.png
-compliance_summary.json
+# Generated artifacts (root-level only; C-Growth/CT artifacts are tracked)
+/audit_log.json
+/evidence_gates.json
+/dynamics_plot.png
+/noise_compliance_plot.png
+/compliance_summary.json
