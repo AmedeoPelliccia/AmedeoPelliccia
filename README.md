@@ -179,13 +179,13 @@ See: [STD-PATH-MTL-001 §3.1b — Contribution Governance](https://github.com/Am
 
 ### Also Active On
 
-**[Robbbo-T](https://github.com/Robbbo-T)** — alternate account for specific programme-level repositories and experimental branches.
+**[Robbbo-T](https://github.com/Robbbo-T)** — alternate account for specific programme-level repositories and experimental branches.uu
 
 ---
 
 <p align="center">
   <em>Madrid, Spain</em><br>
-  <em>IDEALE-ESG.eu Enterprise · Capgemini Engineering (Airbus Technical Publications)</em>
+  <em>IDEALE-ESG.eu  
 </p>
 
 <p align="center">
