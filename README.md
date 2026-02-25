@@ -175,6 +175,7 @@ See: [STD-PATH-MTL-001 §3.1b — Contribution Governance](https://github.com/Am
 - GAIA-AIR / QAOS ecosystem development — quantum aerospace operating system for real-time telemetry, digital twins, and predictive maintenance
 - European federal strategy integration via [Modello-federativo-europeo](https://github.com/Amedeopelliccia/Modello-federativo-europeo) and [Agenda-2028](https://github.com/Amedeopelliccia/Agenda-2028)
 - [EACST](EACST/) — European Agency for Civil Space Transportation: foundational regulatory framework for civil space-transport (operator licensing, reusable platform airworthiness, crew training, sustainability, EU operator registry) aligned with EU Space Act pillars
+- [AI-BOOST DEL-06](AI-BOOST/DEL-06-capacity-demonstration.md) — Capacity Demonstration (Quality & Efficiency → Capacity) for the Frontier AI Grand Challenge (GA 101135737, EuroHPC JU): key personnel, prior work portfolio, consortium structure, complementary compute, deployment infrastructure
 
 ---
 
@@ -1078,6 +1079,7 @@ It is structural logic, not rhetoric.
 | `procedure_registry_entry.schema.json` | `.path_mtl/procedures/` | Procedure entry schema (`§3.1a` §7) |
 | `template_registry_entry.schema.json` | `.path_mtl/templates/` | Template entry schema (`§3.1a` §7) |
 | `ledger.schema.json` | `.path_mtl/ledger/` | TEKNIA ledger entry schema (`§STD`) |
+| `capacity-demonstration.yaml` | `AI-BOOST/` | DEL-06 Capacity Demonstration — key personnel, portfolio, consortium, compute resources, quality assurance |
 
 ### File Placement (OPT-IN / PLUMA)
 
@@ -1099,12 +1101,15 @@ It is structural logic, not rhetoric.
       trace_thread.schema.json    ← TraceThread (TTD) canonical fields
       responsibility_chair.schema.json ← ResponsibilityChair governance slots
       contribution_event.schema.json   ← ContributionEvent + MeritUnit + CMI
+
+AI-BOOST/
+  capacity-demonstration.yaml  ← DEL-06 key personnel, portfolio, consortium, compute, quality assurance
 ```
 
 ---
 
 <p align="center">
-  <em>Last updated: 2026-02-22</em><br>
+  <em>Last updated: 2026-02-25</em><br>
   <em>Enterprise: IDEALE-ESG.eu — Information · Defense · Energy · Aerospace · Logistics · Economy (Digital) | Environment · Social · Governance</em><br>
   <em>Standard family: STD-PATH-MTL-001 v1.0 + §3.1a DWGE v0.1 + §3.1b CLL v0.1 + §NBT Gates v0.1 + §PORTAL v0.1</em>
 </p>
