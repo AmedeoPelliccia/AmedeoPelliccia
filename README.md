@@ -174,6 +174,7 @@ See: [STD-PATH-MTL-001 §3.1b — Contribution Governance](https://github.com/Am
 - NBT gates (Neural Network Bridging and Tunneling) — N-axis connections linking classical pipeline outputs to quantum-augmented simplicial manifolds via QSN inference
 - GAIA-AIR / QAOS ecosystem development — quantum aerospace operating system for real-time telemetry, digital twins, and predictive maintenance
 - European federal strategy integration via [Modello-federativo-europeo](https://github.com/Amedeopelliccia/Modello-federativo-europeo) and [Agenda-2028](https://github.com/Amedeopelliccia/Agenda-2028)
+- [EACST](EACST/) — European Agency for Civil Space Transportation: foundational regulatory framework for civil space-transport (operator licensing, reusable platform airworthiness, crew training, sustainability, EU operator registry) aligned with EU Space Act pillars
 
 ---
 
