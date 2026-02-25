@@ -1,0 +1,230 @@
+# data-management-plan.yaml
+# Machine-readable specification for DEL-03 Data Management Plan.
+# Programme: AI-BOOST — Frontier AI Grand Challenge (GA 101135737, EuroHPC JU)
+# Section: Excellence → Data
+# Reference: AI-BOOST/DEL-03-data-management-plan.md
+# Author: Amedeo Pelliccia
+
+schema_version: "1.0.0"
+document_type: data_management_plan
+last_updated: "2026-02-25T00:00:00Z"
+
+# ─────────────────────────────────────────────
+# 1. Deliverable Metadata
+# ─────────────────────────────────────────────
+deliverable:
+  id: DEL-03
+  title: Data Management Plan
+  section: "Excellence → Data"
+  programme:
+    name: AI-BOOST
+    grant_agreement: "GA 101135737"
+    funding_body: EuroHPC JU
+  status: draft
+  due_milestones:
+    - milestone: M6
+      scope: initial
+    - milestone: M18
+      scope: mid_term_update
+    - milestone: M36
+      scope: final
+
+# ─────────────────────────────────────────────
+# 2. Datasets
+# ─────────────────────────────────────────────
+datasets:
+  - id: DS-01
+    title: HPC benchmark telemetry
+    origin: generated
+    source: EuroHPC runs
+    formats: [HDF5, Parquet]
+    estimated_volume: "50 TB/year"
+    sensitivity: internal
+    fair:
+      findable:
+        persistent_id: DOI (Zenodo)
+        metadata_schema: DataCite 4.5
+      accessible:
+        repository: Zenodo
+        protocol: HTTPS
+      interoperable:
+        standards: [HDF5, Parquet]
+      reusable:
+        licence: CC-BY-4.0
+        provenance: hash_chained_audit_log
+
+  - id: DS-02
+    title: AI/ML model artefacts
+    origin: generated
+    source: training pipelines
+    formats: [ONNX, SafeTensors, YAML]
+    estimated_volume: "5 TB/year"
+    sensitivity: internal
+    fair:
+      findable:
+        persistent_id: DOI (Zenodo)
+        metadata_schema: DataCite 4.5
+      accessible:
+        repository: Zenodo
+        protocol: HTTPS
+      interoperable:
+        standards: [ONNX, MLCommons, Hugging Face model-card]
+      reusable:
+        licence: Apache-2.0
+        provenance: hash_chained_audit_log
+
+  - id: DS-03
+    title: Quantum simulation outputs
+    origin: generated
+    source: hybrid quantum-classical runs
+    formats: [HDF5, JSON]
+    estimated_volume: "2 TB/year"
+    sensitivity: internal
+    fair:
+      findable:
+        persistent_id: DOI (Zenodo)
+        metadata_schema: DataCite 4.5
+      accessible:
+        repository: Zenodo
+        protocol: HTTPS
+      interoperable:
+        standards: [HDF5, JSON]
+        vocabulary: quantum-manifold.yaml
+      reusable:
+        licence: CC-BY-4.0
+        provenance: hash_chained_audit_log
+
+  - id: DS-04
+    title: Reference datasets (public)
+    origin: collected
+    source: open benchmarks
+    formats: [CSV, Parquet]
+    estimated_volume: "500 GB"
+    sensitivity: public
+    fair:
+      findable:
+        persistent_id: original DOI
+        metadata_schema: DataCite 4.5
+      accessible:
+        repository: original source
+        protocol: HTTPS
+      interoperable:
+        standards: [CSV, Parquet]
+      reusable:
+        licence: original licence
+        provenance: source_reference
+
+  - id: DS-05
+    title: Certified dynamics audit logs
+    origin: generated
+    source: admissibility engine
+    formats: [JSON]
+    estimated_volume: "10 GB/year"
+    sensitivity: internal
+    fair:
+      findable:
+        persistent_id: DOI (Zenodo)
+        metadata_schema: DataCite 4.5
+      accessible:
+        repository: Zenodo
+        protocol: HTTPS
+      interoperable:
+        standards: [JSON]
+        vocabulary: simplex-contract.yaml
+      reusable:
+        licence: CC-BY-4.0
+        provenance: hash_chained_audit_log
+
+  - id: DS-06
+    title: Technical publications (S1000D modules)
+    origin: generated
+    source: documentation pipeline
+    formats: [XML, PDF]
+    estimated_volume: "1 GB/year"
+    sensitivity: restricted
+    fair:
+      findable:
+        persistent_id: DOI (institutional)
+        metadata_schema: DataCite 4.5
+      accessible:
+        repository: institutional
+        protocol: HTTPS
+        access_control: named_access
+      interoperable:
+        standards: [S1000D, ATA iSpec 2200]
+      reusable:
+        licence: restricted
+        provenance: hash_chained_audit_log
+
+  - id: DS-07
+    title: Environmental and lifecycle metrics
+    origin: generated
+    source: sustainability monitors
+    formats: [JSON, CSV]
+    estimated_volume: "5 GB/year"
+    sensitivity: public
+    fair:
+      findable:
+        persistent_id: DOI (Zenodo)
+        metadata_schema: DataCite 4.5
+      accessible:
+        repository: Zenodo
+        protocol: HTTPS
+      interoperable:
+        standards: [JSON, CSV]
+      reusable:
+        licence: CC-BY-4.0
+        provenance: hash_chained_audit_log
+
+# ─────────────────────────────────────────────
+# 3. Security Classification
+# ─────────────────────────────────────────────
+security:
+  classification_levels:
+    - level: L0
+      label: public
+      controls: open access, no restrictions
+    - level: L1
+      label: internal
+      controls: consortium access, encrypted at rest (AES-256)
+    - level: L2
+      label: restricted
+      controls: named access, encrypted at rest and in transit (AES-256 + TLS 1.3), audit logged
+    - level: L3
+      label: confidential
+      controls: dual-use / export-controlled, national regulations, not deposited openly
+  encryption:
+    at_rest: AES-256
+    in_transit: TLS 1.3
+  integrity: SHA-256
+  backup_strategy: "3-2-1 (3 copies, 2 media, 1 off-site)"
+  incident_response_window: "24 hours"
+
+# ─────────────────────────────────────────────
+# 4. Ethics and Legal
+# ─────────────────────────────────────────────
+ethics:
+  personal_data: false
+  gdpr_reference: "Regulation (EU) 2016/679"
+  export_control_reference: "EU Regulation 2021/821"
+  ip_governance: contributions-registry.yaml
+  open_access_obligation: "Horizon Europe Article 17"
+
+# ─────────────────────────────────────────────
+# 5. Preservation
+# ─────────────────────────────────────────────
+preservation:
+  default_repository: Zenodo
+  minimum_retention_years: 10
+  zenodo_retention_years: 20
+  format_policy: open standards only (HDF5, Parquet, JSON, XML, CSV, ONNX)
+  intermediate_data_deletion: "within 12 months of project end"
+
+# ─────────────────────────────────────────────
+# 6. Revision History
+# ─────────────────────────────────────────────
+revision_history:
+  - version: "0.1"
+    date: "2026-02-25"
+    milestone: M6
+    description: Initial Data Management Plan
