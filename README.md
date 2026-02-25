@@ -1078,6 +1078,7 @@ It is structural logic, not rhetoric.
 | `procedure_registry_entry.schema.json` | `.path_mtl/procedures/` | Procedure entry schema (`§3.1a` §7) |
 | `template_registry_entry.schema.json` | `.path_mtl/templates/` | Template entry schema (`§3.1a` §7) |
 | `ledger.schema.json` | `.path_mtl/ledger/` | TEKNIA ledger entry schema (`§STD`) |
+| `workplan-milestones-gantt.yaml` | `AI-BOOST/` | DEL-05 Workplan, Milestones & Gantt — work packages, resource allocation, quality management |
 
 ### File Placement (OPT-IN / PLUMA)
 
@@ -1099,12 +1100,15 @@ It is structural logic, not rhetoric.
       trace_thread.schema.json    ← TraceThread (TTD) canonical fields
       responsibility_chair.schema.json ← ResponsibilityChair governance slots
       contribution_event.schema.json   ← ContributionEvent + MeritUnit + CMI
+
+AI-BOOST/
+  workplan-milestones-gantt.yaml  ← DEL-05 work packages, milestones, Gantt, resources, quality
 ```
 
 ---
 
 <p align="center">
-  <em>Last updated: 2026-02-22</em><br>
+  <em>Last updated: 2026-02-25</em><br>
   <em>Enterprise: IDEALE-ESG.eu — Information · Defense · Energy · Aerospace · Logistics · Economy (Digital) | Environment · Social · Governance</em><br>
   <em>Standard family: STD-PATH-MTL-001 v1.0 + §3.1a DWGE v0.1 + §3.1b CLL v0.1 + §NBT Gates v0.1 + §PORTAL v0.1</em>
 </p>
