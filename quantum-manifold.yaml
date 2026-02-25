@@ -5,7 +5,47 @@
 # Reference: README.md §16
 # Placement: 00-PROGRAM/PLUMA/quantum-manifold.yaml
 
-schema_version: "1.0.0"
+schema_version: "1.1.0"
+
+# ─────────────────────────────────────────────
+# 0. Three-Layer Architecture
+# ─────────────────────────────────────────────
+# Layer 1 — Spatial Discretisation  : Ω = ⋃ V_i  (domain partition)
+# Layer 2 — State Space (Hilbert)   : L²(Ω) → ℂ^N  (induced, not identical)
+# Layer 3 — Physical Field          : tensorial (classical) or operator (quantum)
+#
+# These levels are formally distinct.  A voxelisation defines a discrete
+# spatial basis and *induces* a finite-dimensional Hilbert space, but is
+# not itself "a quantum space".  The physical field acts on the state
+# space via operators, not directly on the spatial grid.
+# ─────────────────────────────────────────────
+layers:
+  layer_1:
+    name: Spatial Discretisation
+    formal: "Ω = ⋃_{i=1}^{N} V_i"
+    description: >
+      Partition of the physical domain into N cells (voxels).
+      Each cell V_i is a subregion of the continuous domain Ω.
+      The discretisation induces, but does not replace, the
+      state space.
+
+  layer_2:
+    name: State Space (Hilbert)
+    formal: "L²(Ω) → ℂ^N  (quantum)  or  ℝ^N (classical)"
+    description: >
+      The Hilbert space is the space of states, not the physical
+      space.  Discretisation approximates L²(Ω) by ℂ^N (quantum)
+      or ℝ^N (classical).  For N local qubits:
+      H_total = ⊗_{i=1}^{N} ℂ² (dim 2^N — exponential growth).
+
+  layer_3:
+    name: Physical Field
+    formal: "Operators acting on H: H_0, H_int, H_intent"
+    description: >
+      Classical: stress tensor σ, divergence ∇·σ + f = ρa.
+      Quantum: Hamiltonian H, Lindblad superoperator.
+      In voxelised form, operators become stencils (FDM/FVM) or
+      matrix representations on the induced Hilbert space.
 
 # ─────────────────────────────────────────────
 # 1. Manifold Dimensionality
@@ -168,3 +208,45 @@ capacity:
     - memory_dimensionality
     - computational_growth
     - entropy_admission
+
+# ─────────────────────────────────────────────
+# 10. Quantum-Classical Boundary
+# ─────────────────────────────────────────────
+# The boundary is NOT a geometric surface.
+# It is an information-theoretic coherence reduction map R(ρ).
+# ─────────────────────────────────────────────
+coherence_reduction:
+  description: >
+    R(ρ) is a coherence reduction mapping, not a geometric frontier.
+    For each cell i, a local projection operator P_i : H_i → R^k
+    extracts classical observables: σ_classical = Tr(ρ T̂).
+
+  projection_operator:
+    formal: "P_i : H_i → ℝ^k"
+    description: >
+      Maps quantum state to classical observables via partial
+      trace over off-diagonal coherences.
+
+  decoherence_threshold:
+    formal: "τ_decoherence ≪ τ_dynamics"
+    description: >
+      When the decoherence timescale is much shorter than the
+      dynamical timescale, ρ → diagonal and the cell is treated
+      classically.  This defines a dynamic boundary, not a
+      fixed spatial surface.
+
+  regime_classification:
+    - regime: quantum
+      condition: "τ_decoherence ≥ τ_dynamics"
+      treatment: Full quantum evolution via Schrödinger / Lindblad
+    - regime: classical
+      condition: "τ_decoherence ≪ τ_dynamics (ratio < 0.01)"
+      treatment: Diagonal density matrix, classical observables only
+    - regime: hybrid
+      condition: "0.01 ≤ τ_decoherence / τ_dynamics < 1.0"
+      treatment: Quantum-classical coupling (QM/MM analogue)
+
+  precedents:
+    - QM/MM (computational chemistry)
+    - Multiscale quantum embedding
+    - Open quantum systems (Lindblad formalism)

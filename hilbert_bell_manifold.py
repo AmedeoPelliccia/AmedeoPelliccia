@@ -12,7 +12,17 @@ Implements the Quantum-Governed Topography described in README §16:
   • Bell-bounded (CHSH ≤ 2) correlation envelope
   • Intentional Hamiltonian evolution
 
-Reference: quantum-manifold.yaml (schema_version 1.0.0)
+Three-Layer Architecture (§16.11):
+  Layer 1 — Spatial Discretisation  : domain Ω partitioned into N cells
+  Layer 2 — State Space (Hilbert)   : ℂ^N induced by discretisation
+  Layer 3 — Physical Field          : tensorial (classical) or operator (quantum)
+
+Quantum–Classical Boundary (§16.12):
+  • Coherence Reduction Map R(ρ) — information-theoretic, not geometric
+  • Local Projection Operator  P_i : H_i → ℝ^k
+  • Decoherence Threshold  τ_decoherence ≪ τ_dynamics ⟹ classical treatment
+
+Reference: quantum-manifold.yaml (schema_version 1.1.0)
 
 Dependencies (core): none beyond the Python 3.10+ standard library.
 Dependencies (demo): PyYAML — install via ``pip install pyyaml``.
@@ -275,18 +285,193 @@ class HamiltonianEvolver:
 
 
 # ──────────────────────────────────────────────
-# 8. Full Manifold Orchestrator
+# 8. Three-Layer Architecture
+# ──────────────────────────────────────────────
+#
+# Layer 1 — Spatial Discretisation (domain partition)
+# Layer 2 — State Space (induced Hilbert space)
+# Layer 3 — Physical Field (classical tensor / quantum operator)
+#
+# These three levels are formally distinct.  The spatial
+# discretisation *induces* a finite-dimensional Hilbert space
+# but does not replace it conceptually.  The physical field
+# acts *on* the state space, not on the spatial grid directly.
+# ──────────────────────────────────────────────
+
+@dataclass
+class VoxelCell:
+    """Layer 1 — one cell V_i in the spatial partition Ω = ⋃ V_i."""
+
+    index: int
+    label: str = ""
+    regime: str = "quantum"  # "quantum" | "classical" | "hybrid"
+
+
+class SpatialDomain:
+    """Layer 1 — discrete partition of the physical domain Ω.
+
+    Ω = ⋃_{i=1}^{N} V_i
+
+    The partition induces, but is not identical to, the Hilbert space.
+    L²(Ω) → ℂ^N  (quantum) or ℝ^N (classical).
+    """
+
+    def __init__(self) -> None:
+        self._cells: list[VoxelCell] = []
+
+    def add_cell(self, index: int, label: str = "", regime: str = "quantum") -> None:
+        self._cells.append(VoxelCell(index=index, label=label, regime=regime))
+
+    @property
+    def cells(self) -> list[VoxelCell]:
+        return list(self._cells)
+
+    @property
+    def size(self) -> int:
+        return len(self._cells)
+
+    def quantum_cells(self) -> list[VoxelCell]:
+        return [c for c in self._cells if c.regime == "quantum"]
+
+    def classical_cells(self) -> list[VoxelCell]:
+        return [c for c in self._cells if c.regime == "classical"]
+
+    def hybrid_cells(self) -> list[VoxelCell]:
+        return [c for c in self._cells if c.regime == "hybrid"]
+
+
+# ──────────────────────────────────────────────
+# 9. Coherence Reduction Map  R(ρ)
+# ──────────────────────────────────────────────
+#
+# The quantum-classical boundary is NOT a geometric surface.
+# It is an information-theoretic map:
+#
+#   R(ρ) = coherence reduction mapping
+#
+# Implemented via:
+#   • Local projection  P_i : H_i → R^k   (quantum → classical observables)
+#   • Decoherence threshold  τ_decoherence ≪ τ_dynamics
+#
+# When τ_decoherence ≪ τ_dynamics for a cell, the density matrix
+# ρ → diagonal form, and the cell can be treated classically.
+# ──────────────────────────────────────────────
+
+@dataclass
+class CoherenceMetrics:
+    """Coherence diagnostics for a single cell."""
+
+    cell_index: int
+    off_diagonal_norm: float  # ‖ρ − diag(ρ)‖_F
+    tau_decoherence: float    # decoherence timescale
+    tau_dynamics: float       # dynamical timescale
+    regime: str = ""          # computed classification
+
+    @property
+    def is_classical(self) -> bool:
+        return self.tau_decoherence < self.tau_dynamics * 0.01
+
+    @property
+    def is_quantum(self) -> bool:
+        return self.tau_decoherence >= self.tau_dynamics
+
+
+class CoherenceReductionMap:
+    """R(ρ) — quantum-classical boundary as information reduction map.
+
+    For each cell i, defines:
+      P_i : H_i → R^k    (local projection operator)
+      σ_classical = Tr(ρ T̂)   (classical observable extraction)
+
+    The boundary is a dynamic threshold, not a geometric surface:
+      τ_decoherence ≪ τ_dynamics  ⟹  cell treated classically
+      τ_decoherence ≥ τ_dynamics  ⟹  cell requires quantum evolution
+    """
+
+    def __init__(self, observable_dim: int = 1) -> None:
+        self._observable_dim = observable_dim
+
+    def project_to_classical(self, probabilities: list[float], cell_index: int) -> list[float]:
+        """P_i : H_i → R^k — extract classical observables from quantum state.
+
+        σ_classical = Tr(ρ T̂) — here simplified to the diagonal
+        (probability) extraction, which is the natural classical limit.
+        """
+        if cell_index < 0 or cell_index >= len(probabilities):
+            raise IndexError(f"Cell index {cell_index} out of range.")
+        return [probabilities[cell_index]]
+
+    def classify_regime(
+        self,
+        cell_index: int,
+        off_diagonal_norm: float,
+        tau_decoherence: float,
+        tau_dynamics: float,
+    ) -> CoherenceMetrics:
+        """Classify a cell as quantum, classical, or hybrid based on
+        the decoherence threshold criterion."""
+        metrics = CoherenceMetrics(
+            cell_index=cell_index,
+            off_diagonal_norm=off_diagonal_norm,
+            tau_decoherence=tau_decoherence,
+            tau_dynamics=tau_dynamics,
+        )
+        if metrics.is_classical:
+            metrics.regime = "classical"
+        elif metrics.is_quantum:
+            metrics.regime = "quantum"
+        else:
+            metrics.regime = "hybrid"
+        return metrics
+
+    def reduce(
+        self,
+        amplitudes: list[complex],
+        tau_decoherence: float,
+        tau_dynamics: float,
+    ) -> tuple[list[float], str]:
+        """Full coherence reduction: classify regime and extract observables.
+
+        Returns (classical_observables, regime).
+        """
+        probs = [abs(a) ** 2 for a in amplitudes]
+        off_diag = sum(
+            abs(amplitudes[i] * amplitudes[j].conjugate())
+            for i in range(len(amplitudes))
+            for j in range(i + 1, len(amplitudes))
+        )
+        metrics = self.classify_regime(0, off_diag, tau_decoherence, tau_dynamics)
+        return probs, metrics.regime
+
+
+# ──────────────────────────────────────────────
+# 10. Full Manifold Orchestrator
 # ──────────────────────────────────────────────
 
 class HilbertBellManifold:
-    """Top-level orchestrator for the 12×12 Intentional Hilbert–Bell Manifold."""
+    """Top-level orchestrator for the 12×12 Intentional Hilbert–Bell Manifold.
+
+    Integrates three formally distinct layers:
+      Layer 1 — SpatialDomain        : physical domain partition Ω = ⋃ V_i
+      Layer 2 — QuantumState + basis  : induced Hilbert space ℂ^N
+      Layer 3 — HamiltonianEvolver    : physical field (operator on state space)
+
+    Plus the quantum-classical boundary:
+      CoherenceReductionMap R(ρ) — information-theoretic, not geometric.
+    """
 
     def __init__(self) -> None:
-        # -- basis -----------------------------------------------------------
+        # -- Layer 1: spatial discretisation ---------------------------------
+        self.domain = SpatialDomain()
+        # -- Layer 2: state space (Hilbert) ----------------------------------
         self.basis: list[BasisState] = []
+        self.state: QuantumState | None = None
+        # -- Layer 3: physical field (operators) -----------------------------
         self.entanglement = EntanglementMatrix(K_MAX)
         self.evolver: HamiltonianEvolver | None = None
-        self.state: QuantumState | None = None
+        # -- Quantum-classical boundary --------------------------------------
+        self.coherence_map = CoherenceReductionMap()
+        # -- audit -----------------------------------------------------------
         self._audit: list[dict] = []
 
     # -- setup ---------------------------------------------------------------
@@ -346,6 +531,35 @@ class HilbertBellManifold:
         })
         return selected
 
+    # -- coherence reduction (quantum-classical boundary) --------------------
+
+    def reduce_to_classical(
+        self,
+        tau_decoherence: float,
+        tau_dynamics: float,
+    ) -> tuple[list[float], str]:
+        """Apply coherence reduction map R(ρ) to the current state.
+
+        Returns (classical_observables, regime_classification).
+
+        The boundary is an information-theoretic threshold:
+          τ_decoherence ≪ τ_dynamics ⟹ ρ → diagonal ⟹ classical
+          τ_decoherence ≥ τ_dynamics ⟹ full quantum evolution required
+        """
+        if self.state is None:
+            raise ValueError("State must be initialised.")
+        observables, regime = self.coherence_map.reduce(
+            self.state.amplitudes, tau_decoherence, tau_dynamics,
+        )
+        self._audit.append({
+            "event": "coherence_reduction",
+            "regime": regime,
+            "tau_decoherence": tau_decoherence,
+            "tau_dynamics": tau_dynamics,
+            "timestamp": datetime.now().isoformat(),
+        })
+        return observables, regime
+
     # -- audit ---------------------------------------------------------------
 
     def audit_trail(self) -> list[dict]:
@@ -380,12 +594,17 @@ if __name__ == "__main__":
 
     manifold = HilbertBellManifold()
 
-    # Populate basis from YAML
+    # --- Layer 1: Spatial Discretisation ---
+    for s in cfg["basis_states"]:
+        idx = int(s["id"].replace("S", "")) - 1
+        manifold.domain.add_cell(idx, s["label"], regime="quantum")
+
+    # --- Layer 2: State Space (Hilbert) ---
     for s in cfg["basis_states"]:
         idx = int(s["id"].replace("S", "")) - 1
         manifold.add_basis_state(idx, s["label"], s.get("description", ""))
 
-    # Set couplings
+    # --- Layer 3: Physical Field (operators) ---
     for cp in cfg["entanglement"]["coupling_pairs"]:
         i = int(cp["pair"][0].replace("S", "")) - 1
         j = int(cp["pair"][1].replace("S", "")) - 1
@@ -401,6 +620,16 @@ if __name__ == "__main__":
     # Bell check (example correlators within classical limit)
     manifold.check_bell_bounds((0.5, 0.5, 0.5, -0.4))
 
+    # --- Coherence Reduction Map R(ρ) ---
+    # Case 1: τ_decoherence ≪ τ_dynamics  →  classical regime
+    obs_cl, regime_cl = manifold.reduce_to_classical(
+        tau_decoherence=0.001, tau_dynamics=1.0,
+    )
+    # Case 2: τ_decoherence ≈ τ_dynamics  →  quantum regime
+    obs_qu, regime_qu = manifold.reduce_to_classical(
+        tau_decoherence=1.0, tau_dynamics=1.0,
+    )
+
     # Selective data mining demo
     pool = [
         DataCandidate("d1", relevance=0.9, quality=0.8, compliance=0.95),
@@ -411,8 +640,11 @@ if __name__ == "__main__":
 
     # Report
     print("=== Hilbert–Bell Manifold Demo ===")
-    print(f"Basis dimension : {len(manifold.basis)}")
+    print(f"Layer 1 cells   : {manifold.domain.size}")
+    print(f"Layer 2 dim     : {len(manifold.basis)}")
     print(f"Final probs     : {[round(p, 4) for p in manifold.state.probabilities]}")
+    print(f"R(ρ) classical  : regime={regime_cl}")
+    print(f"R(ρ) quantum    : regime={regime_qu}")
     print(f"Mining selected : {len(selected)} / {len(pool)}")
     print(f"Audit entries   : {len(manifold.audit_trail())}")
 
