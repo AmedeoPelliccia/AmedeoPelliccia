@@ -1,0 +1,403 @@
+# eacst-regulatory-framework.yaml
+# Machine-readable specification for the European Agency for Civil Space
+# Transportation (EACST) regulatory framework.
+# Reference: EACST/README.md §1–§12
+# Author: Amedeo Pelliccia
+# Aligned with EU Space Act (2025) safety/resilience/sustainability pillars
+# and IDEALE-ESG Aerospace pillar governance.
+
+schema_version: "1.0.0"
+document_type: regulatory_framework_specification
+last_updated: "2026-02-25T00:00:00Z"
+
+# ─────────────────────────────────────────────
+# 1. Agency Identity
+# ─────────────────────────────────────────────
+agency:
+  name: European Agency for Civil Space Transportation
+  acronym: EACST
+  mission: >
+    Ensure safe, resilient, and sustainable civil space transportation
+    in Europe, with harmonised licensing and oversight for operators
+    and reusable platforms, and full integration with European airspace
+    and space-traffic-management regimes.
+  legal_basis:
+    - EU Space Act (safety, resilience, sustainability pillars)
+    - Airspace integration frameworks (Eurocontrol/SES, EASA interfaces)
+  licensing_model: performance_based   # safety objectives + AMC/GM
+
+# ─────────────────────────────────────────────
+# 2. Regulated Domain
+# ─────────────────────────────────────────────
+scope:
+  included:
+    - id: SCOPE-LRE
+      domain: Launch and re-entry operations
+      description: >
+        Operations from European territory and/or by EU-established
+        operators, including extraterritorial licensing hooks.
+
+    - id: SCOPE-RSP
+      domain: Reusable space platforms
+      description: >
+        RLVs, spaceplanes, reusable stages and their continued
+        airworthiness / maintenance systems.
+
+    - id: SCOPE-SPP
+      domain: Spaceports and ranges
+      description: >
+        Ground safety, hazardous operations, interface with
+        aviation ATM/UTM.
+
+    - id: SCOPE-SCL
+      domain: Crew licensing and training organisations
+      description: >
+        Professional crew licensing, spaceflight participant
+        safety/training, training organisation approvals.
+
+    - id: SCOPE-REG
+      domain: Operator registry and supervision
+      description: >
+        Occurrence reporting, safety management systems (SMS),
+        compliance audits.
+
+    - id: SCOPE-SUS
+      domain: Sustainability constraints
+      description: >
+        Debris prevention during ascent/re-entry, controlled
+        disposal, environmental footprint reporting.
+
+  excluded:
+    - id: EXCL-MIL
+      domain: Military space operations
+      reason: Remain under national/EU defence frameworks.
+
+    - id: EXCL-SAT
+      domain: Pure satellite service provision
+      reason: >
+        Not tied to transport; covered by EU Space Act horizontal
+        regime and other bodies.
+
+# ─────────────────────────────────────────────
+# 3. Regulatory Parts (Minimum Viable Set)
+# ─────────────────────────────────────────────
+parts:
+  - id: Part-STO
+    title: Space Transportation Operator
+    domain: Operator licensing & SMS
+    covers:
+      - Licence basis
+      - Safety management system (SMS)
+      - Safety case
+      - Financial responsibility / insurance
+      - Security baseline
+      - Occurrence reporting
+    phase: A   # introduced in Phase A
+
+  - id: Part-LRE
+    title: Launch and Re-entry Safety
+    domain: Launch/re-entry safety
+    covers:
+      - Trajectory safety
+      - Public risk criteria
+      - Flight safety system expectations
+      - Range coordination
+    phase: A
+
+  - id: Part-RSP
+    title: Reusable Space Platform
+    domain: Reusable platform approval
+    covers:
+      - Design approval basis for reuse-critical items
+      - Configuration control
+      - Life limits
+      - Refurbishment standards
+    phase: B
+
+  - id: Part-CAW-S
+    title: Continued Airworthiness — Space
+    domain: Continued airworthiness
+    covers:
+      - CAMO-equivalent for space platforms
+      - Maintenance programme approval
+      - Reliability and trend monitoring
+    phase: B
+
+  - id: Part-MRO-S
+    title: Maintenance Organisations — Space
+    domain: Maintenance organisations
+    covers:
+      - Part-145-like approvals for reuse refurbishment/overhaul
+      - Human factors
+      - Tooling standards
+      - NDT standards
+    phase: B
+
+  - id: Part-SPP
+    title: Spaceport and Range Licensing
+    domain: Spaceport/range licensing
+    covers:
+      - Hazardous operations
+      - Propellant handling
+      - Emergency planning
+      - Interface with ATM/airspace closures
+    phase: A
+
+  - id: Part-SCL
+    title: Space Crew Licensing
+    domain: Crew licensing & training organisations
+    covers:
+      - Crew categories (flight crew, participants, ground roles)
+      - Medical requirements
+      - Recurrent training
+      - Training organisation approvals
+    phase: C
+
+  - id: Part-STO-ORA
+    title: Space Training Organisation Requirements
+    domain: Training organisation approvals
+    covers:
+      - Training programme approval
+      - Instructor qualification
+      - Facility standards
+      - Record keeping
+    phase: C
+
+  - id: Part-SUST
+    title: Sustainability and Debris
+    domain: Sustainability & debris
+    covers:
+      - Debris mitigation plans
+      - Controlled disposal requirements
+      - Environmental footprint reporting
+      - EU Space Label compliance marks
+    phase: A
+
+  - id: Part-CYB-S
+    title: Cyber Resilience — Space
+    domain: Cyber resilience
+    covers:
+      - Baseline cybersecurity requirements
+      - Risk assessment methodology
+      - Alignment with EU resilience pillar
+    phase: B
+
+# ─────────────────────────────────────────────
+# 4. Operator Registry Schema
+# ─────────────────────────────────────────────
+registry:
+  name: EU Civil Space Transport Registry
+  description: >
+    Unified registry serving as the enforcement backbone for
+    authorisation, registration, and supervision of civil space
+    transport operators.
+  fields:
+    - operator_id
+    - licence_scope
+    - authorised_vehicles_platforms
+    - approved_spaceports_ranges
+    - platform_configuration_baseline
+    - controlled_changes_log
+    - occurrence_reports
+    - safety_directives
+    - stm_sst_linkage
+
+# ─────────────────────────────────────────────
+# 5. Crew Categories
+# ─────────────────────────────────────────────
+crew_categories:
+  - id: CREW-FC
+    category: Space Transport Flight Crew
+    type: professional
+    requirements:
+      - Licensing
+      - Medical certification
+      - Proficiency checks
+
+  - id: CREW-SP
+    category: Spaceflight Participants
+    type: non-professional
+    requirements:
+      - Minimum training
+      - Informed consent
+      - Emergency preparedness
+
+  - id: CREW-GS
+    category: Ground Safety Critical Roles
+    type: professional
+    roles:
+      - Range safety officer
+      - Hazardous operations supervisor
+      - Mission director
+    requirements:
+      - Competency frameworks
+      - Recurrent checks
+
+# ─────────────────────────────────────────────
+# 6. Continued Airworthiness Requirements
+# ─────────────────────────────────────────────
+continued_airworthiness:
+  description: >
+    The key regulatory innovation for reusable space platforms.
+    Without lifecycle airworthiness, reusable systems remain
+    regulated like one-off rockets.
+  requirements:
+    - Approved maintenance programme (life limits, inspection intervals, refurbishment criteria)
+    - Configuration and build standard regime (as-flown vs as-maintained reconciliation)
+    - Mandatory NDT/inspection qualification for refurbishment shops
+    - Reliability programmes (trend monitoring, anomaly classification, recurring defect control)
+    - Human factors and tool control (aviation MRO equivalent)
+
+# ─────────────────────────────────────────────
+# 7. Sustainability Requirements
+# ─────────────────────────────────────────────
+sustainability:
+  description: >
+    Transport-grade sustainability requirements converting
+    EU Space Act aspirations into enforceable rules.
+  requirements:
+    - Debris prevention during ascent/re-entry (fragmentation control, passivation, controlled disposal)
+    - Re-entry casualty-risk governance and controlled corridors (STM/ATM integration)
+    - Environmental reporting for launches (local impact + lifecycle accounting)
+    - EU Space Label compliance marks operationalised through licence privileges
+
+# ─────────────────────────────────────────────
+# 8. Organisational Directorates
+# ─────────────────────────────────────────────
+directorates:
+  - id: DIR-01
+    name: Rulemaking & Standards
+    scope: Parts + AMC/GM development
+
+  - id: DIR-02
+    name: Certification & Licensing
+    scope: Operators, platforms, spaceports
+
+  - id: DIR-03
+    name: Continued Airworthiness & Maintenance Oversight
+    scope: Reusable platform lifecycle management
+
+  - id: DIR-04
+    name: Operations Oversight & Safety Data
+    scope: Occurrence reporting, safety directives
+
+  - id: DIR-05
+    name: Training & Human Factors
+    scope: Crew licensing, training organisation approval
+
+  - id: DIR-06
+    name: Sustainability & Debris Compliance
+    scope: Debris mitigation, environmental footprint
+
+  - id: DIR-07
+    name: Registry & Digital Systems
+    scope: Operator registry, configuration ledger, STM/SST interfaces
+
+  - id: DIR-08
+    name: International & Legal
+    scope: Outer Space Treaty coordination, cross-recognition
+
+# ─────────────────────────────────────────────
+# 9. Implementation Roadmap
+# ─────────────────────────────────────────────
+roadmap:
+  - phase: A
+    timeline: "0–18 months"
+    title: Foundation
+    deliverables:
+      - Registry stand-up
+      - Part-STO Light (interim operator authorisation)
+      - Uncrewed launch/re-entry licensing
+      - Spaceport licensing (Part-SPP)
+      - Occurrence reporting framework
+      - Part-SUST baseline
+
+  - phase: B
+    timeline: "18–36 months"
+    title: Reusability Unlock
+    deliverables:
+      - Part-RSP (reusable platform approval)
+      - Part-CAW-S (continued airworthiness)
+      - Part-MRO-S (maintenance organisations)
+      - Part-CYB-S (cyber resilience)
+      - STM coordination requirements formalised
+
+  - phase: C
+    timeline: "36–60 months"
+    title: Crewed Operations
+    deliverables:
+      - Part-SCL (crew licensing)
+      - Part-STO-ORA (training organisations)
+      - Crewed suborbital/point-to-point licensing
+      - Full crew licensing regime
+
+# ─────────────────────────────────────────────
+# 10. Institutional Options
+# ─────────────────────────────────────────────
+institutional_options:
+  - id: OPT-NEW
+    name: New agency (EACST)
+    parent: DG DEFIS
+    pros:
+      - Clean mandate
+      - Purpose-built staff
+    cons:
+      - Longer stand-up time
+      - New institutional overhead
+
+  - id: OPT-EASA
+    name: EASA extension ("EASA-Space Transportation")
+    parent: EASA
+    pros:
+      - Fastest lifecycle/AMC/GM culture deployment
+      - Existing institutional infrastructure
+    cons:
+      - Mandate expansion politically heavy
+      - Risk of aviation-centric bias
+
+  - id: OPT-HYBRID
+    name: Hybrid (EASA + EACST split)
+    parent: DG DEFIS / EASA
+    split:
+      easa_handles:
+        - Crew licensing and training
+        - ATM interfaces
+      eacst_handles:
+        - Launch/re-entry licensing
+        - Continued airworthiness for reusables
+    pros:
+      - Minimises duplication
+      - Dedicated transport authority
+    cons:
+      - Coordination overhead between agencies
+    recommendation: >
+      If the EU Space Act proceeds with authorisation/registration/supervision
+      at EU level, the hybrid option often minimises duplication while still
+      creating a dedicated transport authority.
+
+# ─────────────────────────────────────────────
+# 11. Institutional Context
+# ─────────────────────────────────────────────
+institutional_context:
+  existing_bodies:
+    - name: EUSPA
+      role: EU Space Programme implementation (Galileo, Copernicus, GOVSATCOM, SST)
+      gap: Not structured as a transport safety regulator
+
+    - name: EASA
+      role: Aviation regulation; higher airspace operations discussions
+      gap: No dedicated EU-level HAO/space-transport regime in force
+
+    - name: ESA
+      role: Technology/programme development and investment
+      gap: Technical agency, not a regulator
+
+  alignment:
+    eu_space_act:
+      pillars:
+        - safety
+        - resilience_cybersecurity
+        - sustainability
+      relevance: >
+        EACST operationalises the EU Space Act's transport-related
+        obligations into enforceable implementing rules.
