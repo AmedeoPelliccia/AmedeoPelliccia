@@ -334,6 +334,7 @@ package_registry:
   # ── P080 ──────────────────────────────────────────────────────────────────
   - package_id: PKG-P080-OPS-LOGS
     phase: P080
+    description: "Operational logs — token types defined by operator per fleet/platform"
     unit_token_types: []
 
   - package_id: PKG-P080-ICA
@@ -346,6 +347,7 @@ package_registry:
 
   - package_id: PKG-P080-REUSE
     phase: P080
+    description: "Reuse cycles and life limits — token types defined per reusable platform programme"
     unit_token_types: []
     hard_rules:
       - description: >
@@ -391,6 +393,7 @@ package_registry:
 
   - package_id: PKG-P090-ATM-UTM-INTERFACE
     phase: P090
+    description: "ATM/UTM interface — token types defined by airspace integration agreements"
     unit_token_types: []
 
   - package_id: PKG-P090-RANGE-COORD
