@@ -71,7 +71,7 @@ AI-BOOST goes beyond incremental improvement. It targets structural integration 
 
 | Reference | Location |
 |-----------|----------|
-| IDEALE-ESG framework | `README.md` §1–§9 |
+| IDEALE-ESG framework | `README.md` (sections “1. Project Concept”–“4. Framework Cross-References”) |
 | Mixed-boundary simplex | `simplex-contract.yaml` |
 | Contributions taxonomy | `contributions-registry.yaml` |
 | EACST regulatory framework | `EACST/eacst-regulatory-framework.yaml` |
