@@ -15,7 +15,7 @@ last_updated: "2026-02-26T00:00:00Z"
 taxonomy:
   name: Universal Transport System Domain Taxonomy
   acronym: UTS
-  version: "1.0"
+  version: "1.1"
   purpose: >
     Defines a structured set of functional categories that serve as the
     semantic backbone for the EACST, AMPEL360 and GAIA EU frameworks.
@@ -29,38 +29,193 @@ categories:
   - code: "000"
     name: "HUMAN_CENTRIC_SAFETY_USE_EXPERIENCE"
     description: "Human-centric principles, safety-first and user experience requirements."
+    key_terms:
+      - "Functional safety"
+      - "Usability"
+      - "User experience"
+      - "Human ergonomics"
+      - "Human factors"
+    units:
+      - "Incidents per million hours"
+      - "User Experience Score"
+      - "Task completion time (s)"
+    interfaces:
+      - "Human-system interfaces"
+      - "Control panels"
+      - "Operator HUDs"
+      - "Status visualisation displays"
+    roles:
+      - "Human Factors Engineer"
+      - "Safety Assurance Lead"
+      - "UX/Interaction Designer"
 
   - code: "010"
     name: "MISSION_SYSTEMS"
     description: "Navigation, guidance, mission planning and execution support systems."
+    key_terms:
+      - "Navigation"
+      - "Guidance and control (GNC)"
+      - "Mission planning"
+      - "Real-time sensor integration"
+    units:
+      - "Position (m)"
+      - "Velocity (m/s)"
+      - "Latency (ms)"
+      - "Trajectory accuracy (m or deg)"
+    interfaces:
+      - "GNSS/INS"
+      - "Motion sensors"
+      - "Aeronautical data buses"
+    roles:
+      - "Mission Systems Engineer"
+      - "GNC Specialist"
+      - "Systems Integrator"
 
   - code: "020"
     name: "CYBER_CONNECTIVITY"
     description: "Cybersecurity, communications, resilient connectivity."
+    key_terms:
+      - "Cybersecurity"
+      - "Data communications"
+      - "Resilient networks"
+      - "Secure protocols"
+      - "Firewalls"
+    units:
+      - "Latency (ms)"
+      - "Bandwidth (Mbps/Gbps)"
+      - "Integrity/availability (% uptime)"
+    interfaces:
+      - "Secure protocols (TLS/DTLS)"
+      - "Network stacks"
+      - "Aeronautical radios and data links"
+    roles:
+      - "Cybersecurity Architect"
+      - "Network Engineer"
+      - "Connectivity Specialist"
 
   - code: "030"
     name: "INFORMATION_INTELLIGENCE"
     description: "Sensing, perception, data fusion, inference, AI/ML subsystems."
+    key_terms:
+      - "Perception"
+      - "Sensor fusion"
+      - "AI/ML inference"
+      - "Contextual intelligence"
+      - "Prediction"
+    units:
+      - "Inference accuracy (%)"
+      - "Detection rate (TPR/FPR)"
+      - "Processing latency (ms)"
+    interfaces:
+      - "Sensor APIs"
+      - "Data ingestion pipelines"
+      - "ML model endpoints"
+    roles:
+      - "Data Scientist"
+      - "AI/ML Engineer"
+      - "Sensor Integration Engineer"
 
   - code: "040"
     name: "DIGITAL_TWIN_SIMULATION"
     description: "Digital twin frameworks, advanced simulation and virtual training."
+    key_terms:
+      - "Digital twin"
+      - "Real-time synchronised model"
+      - "Simulation environments"
+      - "Virtual training"
+    units:
+      - "Prediction error (%)"
+      - "Simulation-to-real-time ratio"
+      - "Model validation metrics"
+    interfaces:
+      - "Telemetry connectors"
+      - "Simulation APIs"
+      - "Synchronised physical/virtual models"
+    roles:
+      - "Simulation Engineer"
+      - "Digital Twin Architect"
+      - "Integration Test Engineer"
 
   - code: "050"
     name: "MECHANICS_STRUCTURE"
     description: "Mechanical engineering, structural integrity and physical load frameworks."
+    key_terms:
+      - "Structural integrity"
+      - "Static and dynamic loads"
+      - "Durability"
+    units:
+      - "Force (N)"
+      - "Stress (Pa)"
+      - "Strain (%)"
+      - "Safety factor (dimensionless)"
+    interfaces:
+      - "Strain gauges / load sensors"
+      - "FEA structural models"
+    roles:
+      - "Structural Engineer"
+      - "Mechanics Specialist"
+      - "FEA Analyst"
 
   - code: "060"
     name: "ENERGY_MATERIALS"
     description: "Energy generation, storage, materials technologies, reusability."
+    key_terms:
+      - "Energy propulsion"
+      - "Energy storage"
+      - "Advanced materials"
+      - "Sustainability"
+    units:
+      - "Energy (J, kWh)"
+      - "Energy density (Wh/kg)"
+      - "Energy efficiency (%)"
+    interfaces:
+      - "Energy management systems (EMS/BMS)"
+      - "System power supply interfaces"
+    roles:
+      - "Energy Systems Engineer"
+      - "Materials Scientist"
+      - "Thermal Engineer"
 
   - code: "070"
     name: "WIRING_INTEGRATION"
     description: "Wiring harnesses, signal/data routing and system integration."
+    key_terms:
+      - "Wiring"
+      - "Signal/data routing"
+      - "Electrical integrity"
+      - "Synchronisation"
+    units:
+      - "Cable length (m)"
+      - "Impedance (Ω)"
+      - "Signal-to-noise ratio (SNR)"
+    interfaces:
+      - "Data buses"
+      - "E/E connectors"
+      - "Integration protocols (ARINC/CAN)"
+    roles:
+      - "Electrical Integration Engineer"
+      - "Harness Specialist"
+      - "E/E Architect"
 
   - code: "080"
     name: "TRANSFORMATIONS"
     description: "State conversion processes, interoperability and technological transformations."
+    key_terms:
+      - "State transformations"
+      - "Cross-domain interoperability"
+      - "Adaptive configuration"
+      - "Energy/data/physical-state conversion"
+    units:
+      - "Transformation rate (% completed)"
+      - "Transition latency (ms)"
+    interfaces:
+      - "ETL/ELT pipelines"
+      - "Interoperability services"
+      - "Data transformation APIs"
+    roles:
+      - "Process Integration Engineer"
+      - "Transformation/Data Pipeline Engineer"
+      - "Automation Engineer"
 
 # ─────────────────────────────────────────────
 # 3. Evidence & Artefact Registry

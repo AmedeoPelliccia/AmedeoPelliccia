@@ -7,7 +7,7 @@
 | Metadata         | Value                                             |
 | ---------------- | ------------------------------------------------- |
 | Document ID      | UTS-TAX-001                                       |
-| Version          | 1.0                                               |
+| Version          | 1.1                                               |
 | Status           | DRAFT                                             |
 | Author           | Amedeo Pelliccia                                  |
 | Machine-readable | [`uts-taxonomy.yaml`](uts-taxonomy.yaml)          |
@@ -120,7 +120,94 @@ The taxonomy can be extended for:
 
 ---
 
-## 7. Taxonomy Visualisation
+## 7. Operational Definitions
+
+Enriched per-category definitions with key terms, units, interfaces and responsible roles.
+
+### 000 — Human-Centric, Safety First, Use Experience
+
+| Aspect     | Detail |
+| ---------- | ------ |
+| **Key terms** | Functional safety · Usability · User experience · Human ergonomics · Human factors |
+| **Units** | Incidents per million hours · User Experience Score · Task completion time (s) |
+| **Interfaces** | Human-system interfaces · Control panels · Operator HUDs · Status visualisation displays |
+| **Roles** | Human Factors Engineer · Safety Assurance Lead · UX/Interaction Designer |
+
+### 010 — Mission Systems
+
+| Aspect     | Detail |
+| ---------- | ------ |
+| **Key terms** | Navigation · Guidance and control (GNC) · Mission planning · Real-time sensor integration |
+| **Units** | Position (m) · Velocity (m/s) · Latency (ms) · Trajectory accuracy (m or deg) |
+| **Interfaces** | GNSS/INS · Motion sensors · Aeronautical data buses |
+| **Roles** | Mission Systems Engineer · GNC Specialist · Systems Integrator |
+
+### 020 — Cyber & Connectivity
+
+| Aspect     | Detail |
+| ---------- | ------ |
+| **Key terms** | Cybersecurity · Data communications · Resilient networks · Secure protocols · Firewalls |
+| **Units** | Latency (ms) · Bandwidth (Mbps/Gbps) · Integrity/availability (% uptime) |
+| **Interfaces** | Secure protocols (TLS/DTLS) · Network stacks · Aeronautical radios and data links |
+| **Roles** | Cybersecurity Architect · Network Engineer · Connectivity Specialist |
+
+### 030 — Information & Intelligence
+
+| Aspect     | Detail |
+| ---------- | ------ |
+| **Key terms** | Perception · Sensor fusion · AI/ML inference · Contextual intelligence · Prediction |
+| **Units** | Inference accuracy (%) · Detection rate (TPR/FPR) · Processing latency (ms) |
+| **Interfaces** | Sensor APIs · Data ingestion pipelines · ML model endpoints |
+| **Roles** | Data Scientist · AI/ML Engineer · Sensor Integration Engineer |
+
+### 040 — Digital Twin & Simulation
+
+| Aspect     | Detail |
+| ---------- | ------ |
+| **Key terms** | Digital twin · Real-time synchronised model · Simulation environments · Virtual training |
+| **Units** | Prediction error (%) · Simulation-to-real-time ratio · Model validation metrics |
+| **Interfaces** | Telemetry connectors · Simulation APIs · Synchronised physical/virtual models |
+| **Roles** | Simulation Engineer · Digital Twin Architect · Integration Test Engineer |
+
+### 050 — Mechanics & Structure
+
+| Aspect     | Detail |
+| ---------- | ------ |
+| **Key terms** | Structural integrity · Static and dynamic loads · Durability |
+| **Units** | Force (N) · Stress (Pa) · Strain (%) · Safety factor (dimensionless) |
+| **Interfaces** | Strain gauges / load sensors · FEA structural models |
+| **Roles** | Structural Engineer · Mechanics Specialist · FEA Analyst |
+
+### 060 — Energy & Materials
+
+| Aspect     | Detail |
+| ---------- | ------ |
+| **Key terms** | Energy propulsion · Energy storage · Advanced materials · Sustainability |
+| **Units** | Energy (J, kWh) · Energy density (Wh/kg) · Energy efficiency (%) |
+| **Interfaces** | Energy management systems (EMS/BMS) · System power supply interfaces |
+| **Roles** | Energy Systems Engineer · Materials Scientist · Thermal Engineer |
+
+### 070 — Wiring & Integration
+
+| Aspect     | Detail |
+| ---------- | ------ |
+| **Key terms** | Wiring · Signal/data routing · Electrical integrity · Synchronisation |
+| **Units** | Cable length (m) · Impedance (Ω) · Signal-to-noise ratio (SNR) |
+| **Interfaces** | Data buses · E/E connectors · Integration protocols (ARINC/CAN) |
+| **Roles** | Electrical Integration Engineer · Harness Specialist · E/E Architect |
+
+### 080 — Transformations
+
+| Aspect     | Detail |
+| ---------- | ------ |
+| **Key terms** | State transformations · Cross-domain interoperability · Adaptive configuration · Energy/data/physical-state conversion |
+| **Units** | Transformation rate (% completed) · Transition latency (ms) |
+| **Interfaces** | ETL/ELT pipelines · Interoperability services · Data transformation APIs |
+| **Roles** | Process Integration Engineer · Transformation/Data Pipeline Engineer · Automation Engineer |
+
+---
+
+## 8. Taxonomy Visualisation
 
 ```mermaid
 graph LR
