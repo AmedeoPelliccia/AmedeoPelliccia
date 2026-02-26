@@ -160,11 +160,11 @@ method_token_architecture:
     identity: "MT := { token_id, version, implementation_hash }"
 
   - term: Method Token Library
-    acronym: MTL
+    acronym: MTLib
     section: A.5
     definition: >
       Configuration-controlled repository containing all Method Tokens
-      and associated contracts. The MTL constitutes an operational
+      and associated contracts. The MTLib constitutes an operational
       function registry.
 
   - term: Token Version
