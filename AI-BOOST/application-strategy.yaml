@@ -219,7 +219,7 @@ deliverables:
   - id: DEL-08
     title: "Open Science and Data Management"
     evaluation_criterion: EXCELLENCE
-    evaluation_subsection: Open Science
+    evaluation_subsection: Methodology
     status: stub
     description: >
       Open science practices, FAIR data management, and reproducibility.
