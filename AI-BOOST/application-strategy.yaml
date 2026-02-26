@@ -132,7 +132,7 @@ deliverables:
           alignment:
             - IDEALE pillar: Information (data sovereignty)
             - IDEALE pillar: Defence (export control)
-            - EuroHPC JU strategic autonomy objective
+            - EuroHPC JU objective: strategic autonomy
 
         - id: OBJ-05
           label: Sustainability-Aware HPC Utilisation
