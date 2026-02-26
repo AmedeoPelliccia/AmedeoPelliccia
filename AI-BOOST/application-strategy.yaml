@@ -332,9 +332,10 @@ repository_assets:
     role: Open contribution governance — Horizon Europe open science evidence
     deliverables: [DEL-03, DEL-06]
 
-  - path: certified_dynamics/
-    role: Safety gating and admissibility module — coherence-gating layer prototype
-    deliverables: [DEL-04, DEL-08]
+  # Planned future asset — directory not yet present in the repository:
+  # - path: certified_dynamics/
+  #   role: Safety gating and admissibility module — coherence-gating layer prototype
+  #   deliverables: [DEL-04, DEL-08]
 
   - path: hilbert_bell_manifold.py
     role: Quantum-augmented manifold research — novel architecture innovation evidence
