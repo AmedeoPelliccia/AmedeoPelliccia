@@ -118,7 +118,7 @@ deliverables:
           alignment:
             - IDEALE pillar: Aerospace (certification)
             - IDEALE pillar: Defence (dual-use awareness)
-            - AMPEL360 simplex classification
+            - AMPEL360 framework: simplex classification
 
         - id: OBJ-04
           label: Sovereign European AI–HPC Integration
