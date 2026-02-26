@@ -13,7 +13,7 @@
 
 ## A.1 Purpose
 
-This annex establishes the controlled vocabulary governing Meta Transformation Law (MTL), Method Token Library (MTL), Master Teknia Ledger (MTLdg), and Generated Artifact Certification.
+This annex establishes the controlled vocabulary governing Meta Transformation Law (MTL), Method Token Library (MTLib), Master Teknia Ledger (MTLdg), and Generated Artifact Certification.
 
 All terms defined herein **SHALL** be interpreted as normative when referenced by EACST-STD-MTL-001 and associated standards.
 
