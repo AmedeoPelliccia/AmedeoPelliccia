@@ -552,6 +552,7 @@ class HilbertBellManifold:
         self,
         tau_decoherence: float,
         tau_dynamics: float,
+        cell_index: int = 0,
     ) -> tuple[list[float], str]:
         """Apply coherence reduction map R(ρ) to the current state.
 
@@ -566,6 +567,7 @@ class HilbertBellManifold:
             raise ValueError("State must be initialised.")
         state_diagonal, regime = self.coherence_map.reduce(
             self.state.amplitudes, tau_decoherence, tau_dynamics,
+            cell_index=cell_index,
         )
         self._audit.append({
             "event": "coherence_reduction",
