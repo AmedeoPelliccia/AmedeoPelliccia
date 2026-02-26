@@ -50,7 +50,9 @@ class BasisState:
     description: str = ""
 
     def ket(self) -> str:
-        return f"|S_{self.index}⟩"
+        # Render ket labels as S1–S12 to match YAML/README, while keeping
+        # `index` 0-based internally (S1 ↔ index 0, S12 ↔ index 11).
+        return f"|S_{self.index + 1}⟩"
 
 
 # ──────────────────────────────────────────────
