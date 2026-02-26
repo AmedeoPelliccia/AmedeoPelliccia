@@ -3,7 +3,7 @@ hilbert_bell_manifold.py
 ========================
 12×12 Intentional Hilbert–Bell Manifold implementation.
 
-Implements the Quantum-Governed Topography described in README §16:
+Implements the Quantum-Governed Topography described in README Part VI:
   • 12-dimensional admissible Hilbert subspace
   • Deterministic correction and transition operators
   • Selective data-mining with Relevance / Quality / Compliance predicate
@@ -12,12 +12,12 @@ Implements the Quantum-Governed Topography described in README §16:
   • Bell-bounded (CHSH ≤ 2) correlation envelope
   • Intentional Hamiltonian evolution
 
-Three-Layer Architecture (§16.11):
+Three-Layer Architecture (§31):
   Layer 1 — Spatial Discretisation  : domain Ω partitioned into N cells
   Layer 2 — State Space (Hilbert)   : ℂ^N induced by discretisation
   Layer 3 — Physical Field          : tensorial (classical) or operator (quantum)
 
-Quantum–Classical Boundary (§16.12):
+Quantum–Classical Boundary (§33):
   • Coherence Reduction Map R(ρ) — information-theoretic, not geometric
   • Local Projection Operator  P_i : H_i → ℝ^k
   • Decoherence Threshold  τ_decoherence ≪ τ_dynamics ⟹ classical treatment
@@ -91,8 +91,8 @@ class QuantumState:
 
     # -- internal ------------------------------------------------------------
 
-    def _set_amplitudes(self, amplitudes: list[complex]) -> None:
-        """Replace amplitudes and re-normalise (used by HamiltonianEvolver)."""
+    def set_amplitudes(self, amplitudes: list[complex]) -> None:
+        """Replace amplitudes and re-normalise."""
         self._amplitudes = list(amplitudes)
         self._normalize()
 
@@ -246,10 +246,15 @@ class DeterministicCore:
 # ──────────────────────────────────────────────
 
 class HamiltonianEvolver:
-    """Discrete-time unitary evolution under H = H_0 + H_int + H_intent.
+    """Discrete-time approximate evolution under H = H_0 + H_int + H_intent.
+
+    Uses a first-order (Euler) update with post-step renormalisation.
+    This preserves norm but is not strictly unitary; for exact unitarity
+    use matrix exponentiation of H.  Sufficient for the bounded
+    12-dimensional admissible subspace at small dt.
 
     Each step:
-      1. Evolve amplitudes via simplified first-order update.
+      1. Evolve amplitudes via first-order update.
       2. Project back onto H_adm (re-normalise).
     """
 
@@ -269,6 +274,7 @@ class HamiltonianEvolver:
     def evolve(self, state: QuantumState) -> None:
         """One discrete step of Hamiltonian evolution + Π_adm projection."""
         dim = state.dim
+        amps = state.amplitudes  # cache once (property returns a copy)
         new_amps: list[complex] = []
         for k in range(dim):
             # H_0 contribution (diagonal phase)
@@ -278,12 +284,12 @@ class HamiltonianEvolver:
             for j in range(dim):
                 if j != k:
                     t_kj = self._entanglement.get(k, j)
-                    coupling_sum += t_kj * state.amplitudes[j]
-            phase_contribution = phase_k * state.amplitudes[k]
+                    coupling_sum += t_kj * amps[j]
+            phase_contribution = phase_k * amps[k]
             coupling_contribution = complex(0, -self._dt) * coupling_sum
-            new_amp = state.amplitudes[k] + phase_contribution + coupling_contribution
+            new_amp = amps[k] + phase_contribution + coupling_contribution
             new_amps.append(new_amp)
-        state._set_amplitudes(new_amps)  # Π_adm re-normalisation
+        state.set_amplitudes(new_amps)  # Π_adm re-normalisation
 
 
 # ──────────────────────────────────────────────
@@ -390,9 +396,6 @@ class CoherenceReductionMap:
       τ_decoherence ≥ τ_dynamics  ⟹  cell requires quantum evolution
     """
 
-    def __init__(self, observable_dim: int = 1) -> None:
-        self._observable_dim = observable_dim
-
     def project_to_classical(self, probabilities: list[float], cell_index: int) -> list[float]:
         """P_i : H_i → R^k — extract classical observables from quantum state.
 
@@ -431,23 +434,28 @@ class CoherenceReductionMap:
         amplitudes: list[complex],
         tau_decoherence: float,
         tau_dynamics: float,
+        cell_index: int = 0,
     ) -> tuple[list[float], str]:
-        """Full coherence reduction: classify regime and extract observables.
+        """Full coherence reduction: classify regime and extract state diagonal.
 
-        Returns (probabilities/state_diagonal, regime), where the probability
-        vector is the diagonal of ρ in the chosen basis.
+        Returns (state_diagonal, regime), where the state diagonal is the
+        vector of |α_k|² (diagonal of ρ in the computational basis).
         """
         state_diagonal = [abs(a) ** 2 for a in amplitudes]
-        # Compute Frobenius norm of the off-diagonal part of ρ = |ψ⟩⟨ψ|
-        # ρ_ij = a_i a_j*, so
-        # ‖ρ − diag(ρ)‖_F = sqrt(∑_{i≠j} |ρ_ij|^2) = sqrt(2 * ∑_{i<j} |a_i a_j*|^2).
-        off_diag_squared = 2.0 * sum(
-            abs(amplitudes[i] * amplitudes[j].conjugate()) ** 2
-            for i in range(len(amplitudes))
-            for j in range(i + 1, len(amplitudes))
+        n = len(amplitudes)
+        # Frobenius norm of off-diagonal part: ‖ρ − diag(ρ)‖_F
+        # For a pure state ρ = |ψ⟩⟨ψ|, off-diagonal entries are α_i α_j*.
+        # ‖off-diag‖_F = sqrt( Σ_{i≠j} |α_i α_j*|² )
+        off_diag_norm_sq = sum(
+            abs(amplitudes[i]) ** 2 * abs(amplitudes[j]) ** 2
+            for i in range(n)
+            for j in range(n)
+            if i != j
         )
-        off_diag = math.sqrt(off_diag_squared) if off_diag_squared > 0.0 else 0.0
-        metrics = self.classify_regime(0, off_diag, tau_decoherence, tau_dynamics)
+        off_diag_norm = math.sqrt(off_diag_norm_sq)
+        metrics = self.classify_regime(
+            cell_index, off_diag_norm, tau_decoherence, tau_dynamics,
+        )
         return state_diagonal, metrics.regime
 
 
@@ -547,7 +555,8 @@ class HilbertBellManifold:
     ) -> tuple[list[float], str]:
         """Apply coherence reduction map R(ρ) to the current state.
 
-        Returns (classical_observables, regime_classification).
+        Returns (state_diagonal, regime_classification), where state_diagonal
+        is the vector of |α_k|² (diagonal of ρ in the computational basis).
 
         The boundary is an information-theoretic threshold:
           τ_decoherence ≪ τ_dynamics ⟹ ρ → diagonal ⟹ classical
@@ -555,7 +564,7 @@ class HilbertBellManifold:
         """
         if self.state is None:
             raise ValueError("State must be initialised.")
-        observables, regime = self.coherence_map.reduce(
+        state_diagonal, regime = self.coherence_map.reduce(
             self.state.amplitudes, tau_decoherence, tau_dynamics,
         )
         self._audit.append({
@@ -565,7 +574,7 @@ class HilbertBellManifold:
             "tau_dynamics": tau_dynamics,
             "timestamp": datetime.now().isoformat(),
         })
-        return observables, regime
+        return state_diagonal, regime
 
     # -- audit ---------------------------------------------------------------
 
