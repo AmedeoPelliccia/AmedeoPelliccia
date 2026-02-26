@@ -2,8 +2,8 @@
 # Machine-readable specification for a 12×12 Intentional Hilbert–Bell Manifold.
 # Defines the admissible basis, entanglement topography, Bell bounds, and
 # Hamiltonian evolution parameters for the Quantum-Governed Topography.
-# Reference: README.md §16
-# Placement: 00-PROGRAM/PLUMA/quantum-manifold.yaml
+# Reference: README.md Part VI (§31–§34)
+# Placement: ./quantum-manifold.yaml (repository root)
 
 schema_version: "1.1.0"
 
