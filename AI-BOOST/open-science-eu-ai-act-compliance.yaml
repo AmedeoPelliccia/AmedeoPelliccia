@@ -1,0 +1,346 @@
+# open-science-eu-ai-act-compliance.yaml
+# Machine-readable specification for DEL-08: Open Science & EU AI Act Compliance
+# Programme: Frontier AI Grand Challenge (GA 101135737, EuroHPC JU)
+# Reference: AI-BOOST/DEL-08-open-science-eu-ai-act-compliance.md
+# Author: Amedeo Pelliccia
+
+schema_version: "1.0.0"
+document_type: open_science_eu_ai_act_compliance
+last_updated: "2026-02-25T00:00:00Z"
+
+# ─────────────────────────────────────────────
+# 1. Deliverable Metadata
+# ─────────────────────────────────────────────
+deliverable:
+  id: DEL-08
+  title: Open Science & EU AI Act Compliance
+  programme: Frontier AI Grand Challenge
+  grant_agreement: GA 101135737
+  funding_body: EuroHPC JU
+  section: Eligibility + Innovation
+  status: Required
+  version: "1.0.0"
+  author: Amedeo Pelliccia
+  date: "2026-02-25"
+
+# ─────────────────────────────────────────────
+# 2. Open Science
+# ─────────────────────────────────────────────
+open_science:
+  open_access:
+    policy: immediate_open_access
+    repository:
+      - Zenodo
+      - OpenAIRE
+    licence: CC-BY-4.0
+    metadata_standard: Dublin Core / DataCite
+    embargo: none
+    acknowledgement_required: true
+
+  fair_data:
+    findable:
+      - persistent_identifiers: DOI
+      - metadata_indexed: discipline-specific catalogues
+    accessible:
+      - repositories:
+          - Zenodo
+          - EUDAT
+      - access_protocols: documented
+    interoperable:
+      - vocabularies: standard ontologies
+      - formats:
+          - YAML
+          - JSON
+          - CSV
+          - HDF5
+    reusable:
+      - licence: CC-BY-4.0 or CC0
+      - provenance: metadata attached
+      - version_control: Git
+
+  open_source:
+    licence:
+      - Apache-2.0
+      - EUPL-1.2
+    repository: public GitHub
+    requirements:
+      - CI/CD pipelines
+      - contribution guidelines
+      - REUSE-compliant headers
+      - README and API documentation
+      - reproducibility instructions
+    exceptions:
+      scope: security-critical or dual-use-restricted modules
+      policy: controlled access with documented justification in DMP
+
+  responsible_research:
+    gender_equality: consortium-level compliance verified
+    public_engagement: planned per dissemination milestones (DEL-04)
+    ethics_review: documented in DEL-07
+
+# ─────────────────────────────────────────────
+# 3. EU AI Act Compliance
+# ─────────────────────────────────────────────
+eu_ai_act:
+  regulation: Regulation (EU) 2024/1689
+  effective_date: "2024-08-01"
+  framework: risk-based
+
+  risk_classification:
+    - component: Quantum-augmented structural analysis (QAOS)
+      category: high-risk
+      annex: III
+      section: 6
+      justification: >
+        Safety-critical aerospace application; inputs to structural
+        certification decisions.
+
+    - component: Predictive maintenance models
+      category: high-risk
+      annex: III
+      section: 6
+      justification: >
+        Operational safety dependency; maintenance scheduling
+        affects airworthiness.
+
+    - component: NeuronBit simplicial inference
+      category: limited-risk
+      justification: >
+        Research tool; no direct safety-critical deployment;
+        transparency obligations apply.
+
+    - component: Digital twin telemetry fusion
+      category: high-risk
+      annex: III
+      section: 6
+      justification: >
+        Feeds into real-time operational decisions for
+        aerospace systems.
+
+    - component: Training data curation pipelines
+      category: minimal-risk
+      justification: >
+        Data processing tools; no autonomous decision-making.
+
+  high_risk_requirements:
+    - article: 9
+      title: Risk management system
+      implementation: >
+        Continuous risk assessment integrated into C-GROWTH lifecycle
+        (CT phase); documented in risk register.
+
+    - article: 10
+      title: Data governance
+      implementation: >
+        Training/validation/test datasets governed per DMP (DEL-03);
+        bias monitoring; data quality metrics tracked.
+
+    - article: 11
+      title: Technical documentation
+      implementation: >
+        Full technical documentation maintained per Annex IV;
+        version-controlled in project repository.
+
+    - article: 12
+      title: Record-keeping
+      implementation: >
+        Automatic logging of AI system operations; audit trails
+        stored with ISO timestamps; retention per Art. 12(2).
+
+    - article: 13
+      title: Transparency
+      implementation: >
+        User-facing documentation; intended purpose, limitations,
+        and accuracy metrics disclosed.
+
+    - article: 14
+      title: Human oversight
+      implementation: >
+        Human-in-the-loop for all safety-critical decisions;
+        override mechanisms documented.
+
+    - article: 15
+      title: Accuracy, robustness, cybersecurity
+      implementation: >
+        Performance benchmarks defined; adversarial robustness
+        testing; cybersecurity measures per Part-CYB-S.
+
+  conformity_assessment:
+    steps:
+      - step: 1
+        title: Classification
+        description: Each AI component classified per Annex III risk taxonomy.
+
+      - step: 2
+        title: Documentation
+        description: Technical documentation compiled per Annex IV.
+
+      - step: 3
+        title: Quality Management System
+        description: >
+          QMS established covering design, development, testing,
+          and post-market monitoring (Art. 17).
+
+      - step: 4
+        title: Internal control
+        description: >
+          Internal conformity assessment for components not subject
+          to third-party assessment.
+
+      - step: 5
+        title: EU Declaration of Conformity
+        description: Prepared per Art. 47 for each high-risk AI system before deployment.
+
+      - step: 6
+        title: CE marking
+        description: Applied per Art. 48 upon successful conformity assessment.
+
+      - step: 7
+        title: Post-market monitoring
+        description: Monitoring plan per Art. 72; incident reporting per Art. 73.
+
+  general_purpose_ai:
+    applicable: conditional
+    obligations:
+      - title: Technical documentation
+        article: 53
+        implementation: >
+          Model cards with architecture, training data summary,
+          evaluation results, intended use, and known limitations.
+
+      - title: Copyright compliance
+        article: "53(1)(c)"
+        implementation: >
+          Training data provenance tracked; opt-out mechanisms
+          respected; EU copyright Directive compliance.
+
+      - title: Transparency
+        article: "53(1)(d)"
+        implementation: >
+          Publicly available summary of training data per template
+          in Annex XII.
+
+      - title: Systemic risk assessment
+        article: 51
+        implementation: >
+          If model meets systemic-risk thresholds: adversarial
+          testing, incident reporting to AI Office, energy
+          consumption disclosure.
+
+  governance:
+    - role: AI Compliance Officer
+      responsibility: >
+        Designated within consortium; responsible for AI Act
+        conformity across all AI components.
+
+    - role: Ethics Board
+      responsibility: >
+        Reviews AI risk classifications and monitors compliance
+        (cross-reference DEL-07).
+
+    - role: National Competent Authority
+      responsibility: >
+        Liaison established with relevant EU Member State authority
+        for market surveillance.
+
+    - role: EU AI Office
+      responsibility: >
+        Monitoring channel for general-purpose AI obligations
+        if applicable.
+
+# ─────────────────────────────────────────────
+# 4. Cross-References
+# ─────────────────────────────────────────────
+cross_references:
+  - deliverable: DEL-03
+    title: Data Management Plan
+    relationship: FAIR data governance, dataset documentation, and data quality measures
+
+  - deliverable: DEL-04
+    title: Innovation and Impact
+    relationship: Open science dissemination plan; exploitation of open-access outputs
+
+  - deliverable: DEL-05
+    title: Workplan, Milestones & Gantt
+    relationship: Compliance milestones integrated into project timeline
+
+  - deliverable: DEL-06
+    title: Capacity Demonstration
+    relationship: Infrastructure capacity for compliance monitoring and audit trail storage
+
+  - deliverable: DEL-07
+    title: Ethics and Security
+    relationship: Ethics review, security measures, and responsible AI principles
+
+# ─────────────────────────────────────────────
+# 5. Compliance Timeline
+# ─────────────────────────────────────────────
+compliance_timeline:
+  - milestone: AI risk classification complete
+    target_month: M3
+    eu_ai_act_reference: Annex III
+
+  - milestone: QMS established
+    target_month: M6
+    eu_ai_act_reference: Art. 17
+
+  - milestone: Technical documentation (v1)
+    target_month: M9
+    eu_ai_act_reference: Annex IV
+
+  - milestone: Open access repository set up
+    target_month: M3
+    reference: Horizon Europe OA mandate
+
+  - milestone: FAIR data policy operational
+    target_month: M6
+    reference: DMP (DEL-03)
+
+  - milestone: Internal conformity assessment
+    target_month: M18
+    eu_ai_act_reference: Art. 43
+
+  - milestone: Post-market monitoring plan
+    target_month: M24
+    eu_ai_act_reference: Art. 72
+
+# ─────────────────────────────────────────────
+# 6. Evidence and Traceability
+# ─────────────────────────────────────────────
+evidence:
+  version_control: Git
+  machine_readable: true
+  audit_pipeline:
+    - GATE-BREX
+    - GATE-TRACE-RESOLVE
+  lifecycle_integration: C-GROWTH CT phase
+
+# ─────────────────────────────────────────────
+# 7. References
+# ─────────────────────────────────────────────
+references:
+  - id: REF-01
+    title: Regulation (EU) 2024/1689 — Artificial Intelligence Act
+    type: regulation
+
+  - id: REF-02
+    title: Horizon Europe Programme Guide — Open Science requirements
+    type: programme_guide
+
+  - id: REF-03
+    title: "FAIR Data Principles — Wilkinson et al. (2016), Scientific Data 3:160018"
+    type: publication
+
+  - id: REF-04
+    title: Creative Commons BY 4.0
+    url: "https://creativecommons.org/licenses/by/4.0/"
+    type: licence
+
+  - id: REF-05
+    title: EUPL v1.2
+    url: "https://eupl.eu/"
+    type: licence
+
+  - id: REF-06
+    title: Regulation (EU) 2021/695 — Horizon Europe Framework Programme
+    type: regulation
