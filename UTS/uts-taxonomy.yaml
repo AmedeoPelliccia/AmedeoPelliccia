@@ -1,0 +1,155 @@
+# UTS/uts-taxonomy.yaml
+# Machine-readable domain taxonomy for the Universal Transport System.
+# Reference: UTS/README.md
+# Author: Amedeo Pelliccia
+# Aligned with EACST, AMPEL360, GAIA EU Domain Atlas and IDEALE-ESG
+# Aerospace pillar governance.
+
+schema_version: "1.0.0"
+document_type: domain_taxonomy
+last_updated: "2026-02-26T00:00:00Z"
+
+# ─────────────────────────────────────────────
+# 1. Taxonomy Identity
+# ─────────────────────────────────────────────
+taxonomy:
+  name: Universal Transport System Domain Taxonomy
+  acronym: UTS
+  version: "1.0"
+  purpose: >
+    Defines a structured set of functional categories that serve as the
+    semantic backbone for the EACST, AMPEL360 and GAIA EU frameworks.
+    Each category maps to artefacts, evidences, roles, limits of use
+    and certification processes across civil transport domains.
+
+# ─────────────────────────────────────────────
+# 2. Categories
+# ─────────────────────────────────────────────
+categories:
+  - code: "000"
+    name: "HUMAN_CENTRIC_SAFETY_USE_EXPERIENCE"
+    description: "Human-centric principles, safety-first and user experience requirements."
+
+  - code: "010"
+    name: "MISSION_SYSTEMS"
+    description: "Navigation, guidance, mission planning and execution support systems."
+
+  - code: "020"
+    name: "CYBER_CONNECTIVITY"
+    description: "Cybersecurity, communications, resilient connectivity."
+
+  - code: "030"
+    name: "INFORMATION_INTELLIGENCE"
+    description: "Sensing, perception, data fusion, inference, AI/ML subsystems."
+
+  - code: "040"
+    name: "DIGITAL_TWIN_SIMULATION"
+    description: "Digital twin frameworks, advanced simulation and virtual training."
+
+  - code: "050"
+    name: "MECHANICS_STRUCTURE"
+    description: "Mechanical engineering, structural integrity and physical load frameworks."
+
+  - code: "060"
+    name: "ENERGY_MATERIALS"
+    description: "Energy generation, storage, materials technologies, reusability."
+
+  - code: "070"
+    name: "WIRING_INTEGRATION"
+    description: "Wiring harnesses, signal/data routing and system integration."
+
+  - code: "080"
+    name: "TRANSFORMATIONS"
+    description: "State conversion processes, interoperability and technological transformations."
+
+# ─────────────────────────────────────────────
+# 3. Evidence & Artefact Registry
+# ─────────────────────────────────────────────
+evidence_artefacts:
+  - category_code: "000"
+    artefact: "Safety Impact Assessment"
+    evidence_id: "SI-000"
+
+  - category_code: "010"
+    artefact: "Mission Profile & Trace"
+    evidence_id: "MP-010"
+
+  - category_code: "020"
+    artefact: "Cybersecurity Compliance Report"
+    evidence_id: "CY-020"
+
+  - category_code: "030"
+    artefact: "Sensor Fusion Validation Report"
+    evidence_id: "IN-030"
+
+  - category_code: "040"
+    artefact: "Digital Twin Verification Pack"
+    evidence_id: "DT-040"
+
+  - category_code: "050"
+    artefact: "Structural FEA Report"
+    evidence_id: "MS-050"
+
+  - category_code: "060"
+    artefact: "Energy System Performance"
+    evidence_id: "EN-060"
+
+  - category_code: "070"
+    artefact: "Integration Test Matrix"
+    evidence_id: "WI-070"
+
+  - category_code: "080"
+    artefact: "Transformation Compliance Log"
+    evidence_id: "TR-080"
+
+# ─────────────────────────────────────────────
+# 4. Domain Atlas Cell Example (GAIA EU)
+# ─────────────────────────────────────────────
+domain_atlas_example:
+  cell_id: "CELL_030_040"
+  axes:
+    - code: "030"
+      bounds:
+        metric: "perception_accuracy"
+        min: 0.8
+        max: 1.0
+    - code: "040"
+      bounds:
+        metric: "sim_coverage"
+        min: 0.5
+        max: 0.9
+  admissibility:
+    ai_use: "AI_ASSISTED"
+    required_evidence:
+      - "EV-030-001"
+      - "EV-040-002"
+  limits_of_use:
+    - "LoU-030-005"
+  signoff: "EACST"
+
+# ─────────────────────────────────────────────
+# 5. Pipeline Integration
+# ─────────────────────────────────────────────
+pipeline_integration:
+  model_training_constraints: >
+    Define labelled training sets per category to guarantee adequate
+    domain coverage during AI/ML model development.
+  operational_limits: >
+    Each category associates with limits of use (LoU) and uncertainty
+    metrics for adversarial AI controls.
+  evidence_packaging: >
+    Evidence generated per category feeds evidence packs linked to an
+    integral product certification bundle.
+
+# ─────────────────────────────────────────────
+# 6. Extension Roadmap
+# ─────────────────────────────────────────────
+extension_roadmap:
+  - area: "Sustainability / ESG"
+    description: "Add impact metrics per category."
+  - area: "Human Factors"
+    description: "Subcategories for ergonomics and use within 000."
+  - area: "Hybrid Transport"
+    description: "Cross-category intersections for aero + space."
+  - area: "Autonomy & Assurance"
+    description: "Reliability and robustness attributes per category."
