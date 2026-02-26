@@ -6,6 +6,7 @@
 # Placement: ./quantum-manifold.yaml (repository root)
 
 schema_version: "1.1.0"
+last_updated: "2026-02-25T00:00:00Z"
 
 # ─────────────────────────────────────────────
 # 0. Three-Layer Architecture
