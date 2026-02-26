@@ -105,9 +105,7 @@ deliverables:
       - Scaling law calibration (Chinchilla-optimal)
       - Training stack (Megatron-LM / DeepSpeed on EuroHPC)
       - Evaluation benchmarks (MMLU-EU extension, regulatory NLP, aerospace tasks)
-    repository_assets:
-      - hilbert_bell_manifold.py
-      - quantum-manifold.yaml
+    repository_assets: []
 
   - id: DEL-03
     title: Data Management Plan
