@@ -189,7 +189,7 @@ GAIA-EU will be evaluated against frontier models on a comprehensive benchmark s
 |-------|------|---------------|
 | Hilbert-Bell manifold | [`hilbert_bell_manifold.py`](../hilbert_bell_manifold.py) | Quantum-augmented manifold formalism — basis for EXP-QNT expert module |
 | Quantum manifold config | [`quantum-manifold.yaml`](../quantum-manifold.yaml) | Basis sets, coupling matrices, decoherence thresholds for quantum expert |
-| Certified dynamics | [`certified_dynamics.py`](../certified_dynamics.py) | Coherence gating layer design pattern — admissibility classification |
+| Certified dynamics (planned) | Planned asset (not yet in repo) | Coherence gating layer design pattern — admissibility classification (future implementation) |
 | Simplex contract | [`simplex-contract.yaml`](../simplex-contract.yaml) | Formal safety contract methodology — gating invariants |
 
 ---
