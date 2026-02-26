@@ -12,7 +12,7 @@
 
 ### 1.1 Frontier AI Models — Global Landscape
 
-As of early 2026 the frontier of large language models is defined by a small number of proprietary, non-European systems:
+As of early 2026, the frontier of large language models is defined by a small number of proprietary, non-European systems:
 
 | Model | Organisation | Parameters | Architecture | Open Weights |
 |-------|-------------|-----------|--------------|-------------|
