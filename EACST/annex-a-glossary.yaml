@@ -1,0 +1,406 @@
+# EACST/annex-a-glossary.yaml
+# Machine-readable glossary for ANNEX-A: Meta Transformation Law &
+# Generated Artifact Certification Framework.
+# Reference: EACST/ANNEX-A-glossary.md
+# Author: Amedeo Pelliccia
+# Parent Standard: EACST-STD-MTL-001
+
+schema_version: "1.0.0"
+document_type: normative_glossary
+last_updated: "2026-02-25T00:00:00Z"
+
+# ─────────────────────────────────────────────
+# Document Metadata
+# ─────────────────────────────────────────────
+document:
+  id: ANNEX-A
+  title: Glossary of Concepts and Acronyms
+  subtitle: Meta Transformation Law & Generated Artifact Certification Framework
+  parent_standard: EACST-STD-MTL-001
+  version: "1.0.0"
+  status: NORMATIVE
+
+# ─────────────────────────────────────────────
+# A.2 General Definitions
+# ─────────────────────────────────────────────
+general_definitions:
+  - term: Artifact
+    section: A.2
+    definition: >
+      A configuration-controlled, versioned, and verifiable output
+      representing a deterministic transformation, software function,
+      procedure, or configuration element. Artifacts constitute the
+      certifiable operational units.
+
+  - term: Artifact Hash
+    section: A.2
+    definition: >
+      Cryptographic digest uniquely identifying an artifact implementation.
+    normative_requirement: >
+      The artifact hash SHALL be used to verify artifact integrity
+      prior to execution.
+
+  - term: Authority Signature
+    section: A.2
+    definition: >
+      Cryptographic or institutional signature confirming independent
+      verification and approval of an artifact or contract.
+
+  - term: Baseline
+    section: A.2
+    definition: >
+      A frozen, ledger-anchored configuration snapshot defining the
+      complete set of approved artifacts, contracts, and operational
+      functions governing a system.
+    formal_definition: "Baseline := { ledger_snapshot_id, artifact_set }"
+
+  - term: Configuration Item
+    acronym: CI
+    section: A.2
+    definition: >
+      Any artifact under configuration control with traceable lifecycle,
+      identity, and version.
+
+  - term: Configuration Control Board
+    acronym: CCB
+    section: A.2
+    definition: >
+      Institutional authority responsible for reviewing, approving, and
+      authorizing configuration changes.
+
+  - term: Contract Binding
+    section: A.2
+    definition: >
+      Formal association between an executable artifact and its governing
+      Meta Transformation Law contract.
+    normative_requirement: >
+      Contract binding SHALL be recorded in the Master Teknia Ledger.
+
+# ─────────────────────────────────────────────
+# A.3 Determinism and Execution
+# ─────────────────────────────────────────────
+determinism:
+  - term: Determinism
+    section: A.3
+    definition: >
+      Property whereby identical inputs SHALL produce identical outputs
+      under all permitted operational conditions.
+
+  - term: Determinism Class
+    section: A.3
+    classes:
+      - id: D0_PURE
+        definition: Stateless, deterministic, idempotent
+        operational_eligibility: fully_permitted
+      - id: D1_REPLAYABLE
+        definition: State reconstructable from ledger
+        operational_eligibility: restricted
+      - id: N0_NONDETERMINISTIC
+        definition: Stochastic or adaptive
+        operational_eligibility: prohibited
+
+  - term: Deterministic Operational Function
+    acronym: DOF
+    section: A.3
+    definition: >
+      Executable implementation of a Meta Transformation Law contract
+      satisfying D0_PURE determinism.
+
+  - term: Execution Boundary
+    section: A.3
+    definition: >
+      Architectural separation between deterministic operational execution
+      and generative development systems.
+    normative_requirement: >
+      Generative tools SHALL NOT operate inside the execution boundary.
+
+# ─────────────────────────────────────────────
+# A.4 Meta Transformation Law Framework
+# ─────────────────────────────────────────────
+meta_transformation_law:
+  - term: Meta Transformation Law
+    acronym: MTL
+    section: A.4
+    definition: >
+      Formal contract defining invariant transformation between input
+      state and output state.
+    general_form: "State_out = T(State_in)"
+    subject_to:
+      - defined invariants
+      - bounded execution
+      - deterministic behavior
+
+  - term: Meta Transformation Law Contract
+    section: A.4
+    definition: Formal specification governing a deterministic transformation.
+    contains:
+      - transformation law definition
+      - input/output schema
+      - determinism classification
+      - constraints and invariants
+      - verification requirements
+      - traceability references
+
+  - term: Transformation
+    section: A.4
+    definition: >
+      A contract-governed deterministic operation converting an input
+      state into an output state.
+
+# ─────────────────────────────────────────────
+# A.5 Method Token Architecture
+# ─────────────────────────────────────────────
+method_token_architecture:
+  - term: Method Token
+    acronym: MT
+    section: A.5
+    definition: >
+      Deterministic executable unit implementing a Meta Transformation
+      Law contract.
+    identity: "MT := { token_id, version, implementation_hash }"
+
+  - term: Method Token Library
+    acronym: MTLib
+    section: A.5
+    definition: >
+      Configuration-controlled repository containing all Method Tokens
+      and associated contracts. The MTLib constitutes an operational
+      function registry.
+
+  - term: Token Version
+    section: A.5
+    definition: >
+      Immutable identifier representing a specific implementation instance.
+    normative_requirement: >
+      Version changes SHALL create new token identity.
+
+# ─────────────────────────────────────────────
+# A.6 Ledger and Traceability
+# ─────────────────────────────────────────────
+ledger_and_traceability:
+  - term: Master Teknia Ledger
+    acronym: MTLdg
+    section: A.6
+    definition: Append-only authoritative registry.
+    stores:
+      - artifact identity
+      - contract binding
+      - implementation hash
+      - verification status
+      - authority signature
+      - lifecycle state
+
+  - term: Ledger Entry
+    section: A.6
+    definition: >
+      Immutable record associating artifact identity with certification state.
+
+  - term: Ledger Snapshot
+    section: A.6
+    definition: >
+      Complete configuration state at a specific point in time.
+      Ledger snapshots define operational baselines.
+
+  - term: Ledger Anchor
+    section: A.6
+    definition: >
+      Cryptographically verifiable reference linking artifact identity
+      to ledger entry.
+
+  - term: Traceability
+    section: A.6
+    definition: >
+      Ability to reconstruct complete lineage from requirement through
+      operational baseline.
+    lineage:
+      - Requirement
+      - Contract
+      - Method Token
+      - Implementation Artifact
+      - Evidence Bundle
+      - Ledger Entry
+      - Operational Baseline
+
+# ─────────────────────────────────────────────
+# A.7 Evidence and Verification
+# ─────────────────────────────────────────────
+evidence_and_verification:
+  - term: Evidence Bundle
+    section: A.7
+    definition: >
+      Collection of verification artifacts demonstrating contract
+      conformance and deterministic behavior.
+    includes:
+      - test vectors
+      - expected outputs
+      - conformance reports
+      - reproducibility instructions
+      - hash manifest
+
+  - term: Independent Verification
+    section: A.7
+    definition: >
+      Verification performed by an authority independent from artifact
+      generation.
+    normative_requirement: >
+      Independent verification SHALL be required prior to certification.
+
+  - term: Verification Authority
+    section: A.7
+    definition: >
+      Institutional entity authorized to approve and sign artifact
+      certification.
+
+# ─────────────────────────────────────────────
+# A.8 Generative Development Environment
+# ─────────────────────────────────────────────
+generative_development:
+  - term: Generative Tool
+    section: A.8
+    definition: Adaptive system capable of producing candidate artifacts.
+    examples:
+      - Large Language Models
+      - symbolic synthesis systems
+      - automated code generators
+    normative_requirement: >
+      Generative tools SHALL NOT be considered operational authorities.
+
+  - term: Generated Artifact
+    section: A.8
+    definition: >
+      Artifact produced through generative or manual development and
+      subsequently verified and certified.
+
+  - term: Generated Aircraft Configuration
+    acronym: GAC
+    section: A.8
+    definition: >
+      Aircraft configuration entirely defined by ledger-anchored generated
+      artifacts and Meta Transformation Law contracts.
+
+  - term: Generated Space Transportation Configuration
+    acronym: GSTC
+    section: A.8
+    definition: >
+      Space vehicle configuration defined exclusively by contract-bound
+      generated artifacts.
+
+# ─────────────────────────────────────────────
+# A.9 Operational Interfaces
+# ─────────────────────────────────────────────
+operational_interfaces:
+  - term: Command Line Interface
+    acronym: CLI
+    section: A.9
+    definition: Deterministic execution interface used to invoke Method Tokens.
+    normative_requirements:
+      - resolve token identity
+      - verify ledger entry
+      - verify implementation hash
+      - execute deterministic function
+
+  - term: Operational Domain
+    section: A.9
+    definition: >
+      Environment in which only certified deterministic artifacts may
+      execute.
+
+  - term: Development Domain
+    section: A.9
+    definition: >
+      Environment where generative tools may operate to produce candidate
+      artifacts.
+
+# ─────────────────────────────────────────────
+# A.10 Data Structures and Schemas
+# ─────────────────────────────────────────────
+data_structures:
+  - term: Schema
+    section: A.10
+    definition: >
+      Formal definition of structure, type, and constraints of input
+      or output data.
+
+  - term: Hash Manifest
+    section: A.10
+    definition: >
+      Collection of cryptographic hashes representing artifacts within
+      a configuration baseline.
+
+# ─────────────────────────────────────────────
+# A.11 Memory and Adaptive Systems
+# ─────────────────────────────────────────────
+memory_and_adaptive_systems:
+  - term: Stratified Memory
+    section: A.11
+    definition: >
+      Hierarchical memory organization used by generative models during
+      development.
+    normative_requirement: >
+      Stratified memory SHALL NOT influence operational execution.
+
+  - term: KV-Cache
+    section: A.11
+    definition: Temporary memory used internally by transformer architectures.
+    normative_requirement: >
+      KV-cache SHALL NOT be considered operational authority.
+
+  - term: User-Conditioned Performance Indicator
+    acronym: UCPI
+    section: A.11
+    definition: >
+      Telemetry-derived metric reflecting generative model performance
+      relative to a user or project thread.
+    normative_requirement: >
+      UCPI SHALL NOT be used in deterministic operational decision making.
+
+# ─────────────────────────────────────────────
+# A.12 Lifecycle States
+# ─────────────────────────────────────────────
+lifecycle_states:
+  states:
+    - GENERATED
+    - SUBMITTED
+    - UNDER_VERIFICATION
+    - VERIFIED
+    - CERTIFIED
+    - DEPLOYED
+    - REVOKED
+  normative_requirement: >
+    Only CERTIFIED artifacts may be used operationally.
+  transitions:
+    - from: GENERATED
+      to: SUBMITTED
+    - from: SUBMITTED
+      to: UNDER_VERIFICATION
+    - from: UNDER_VERIFICATION
+      to: VERIFIED
+    - from: VERIFIED
+      to: CERTIFIED
+    - from: CERTIFIED
+      to: DEPLOYED
+    - from: [DEPLOYED, CERTIFIED, VERIFIED]
+      to: REVOKED
+
+# ─────────────────────────────────────────────
+# A.13 Reproducibility
+# ─────────────────────────────────────────────
+reproducibility:
+  - term: Reproducibility
+    section: A.13
+    definition: >
+      Ability to reconstruct identical artifact and operational behavior
+      solely from ledger-anchored definitions.
+    normative_requirement: >
+      Reproducibility SHALL NOT require generative tools.
+
+# ─────────────────────────────────────────────
+# A.14 Core Normative Principle
+# ─────────────────────────────────────────────
+core_normative_principle:
+  operational_authority_resides_in:
+    - Meta Transformation Law contracts
+    - ledger-anchored artifacts
+    - independently verified deterministic implementations
+  normative_requirement: >
+    Generative tools SHALL be classified strictly as development tools.

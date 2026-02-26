@@ -175,6 +175,7 @@ See: [STD-PATH-MTL-001 §3.1b — Contribution Governance](https://github.com/Am
 - GAIA-AIR / QAOS ecosystem development — quantum aerospace operating system for real-time telemetry, digital twins, and predictive maintenance
 - European federal strategy integration via [Modello-federativo-europeo](https://github.com/Amedeopelliccia/Modello-federativo-europeo) and [Agenda-2028](https://github.com/Amedeopelliccia/Agenda-2028)
 - [EACST](EACST/) — European Agency for Civil Space Transportation: foundational regulatory framework for civil space-transport (operator licensing, reusable platform airworthiness, crew training, sustainability, EU operator registry) aligned with EU Space Act pillars
+- [AI-BOOST](AI-BOOST/) — Application strategy for the Frontier AI Grand Challenge (EuroHPC JU / AI-BOOST GA 101135737): GAIA-EU frontier model concept (400B+ MoE), EU aerospace/regulatory AI domain, open weights, EU AI Act compliance (deadline 13 Apr 2026)
 
 ---
 
@@ -1067,6 +1068,7 @@ It is structural logic, not rhetoric.
 | `ideale-esg-pillars.yaml` | `00-PROGRAM/PLUMA/` | IDEALE pillar definitions + ESG constraint mappings |
 | `economy-assets.schema.json` | `00-PROGRAM/PLUMA/` | E₂ first-class objects: ContributionAsset, EvidencePackage, QualifiedModel, CertificationBundle, DPPAsset, TokenizedRecognitionUnit |
 | `nbt-gates.yaml` | `00-PROGRAM/PLUMA/` | NBT gate spec, bridge/tunnel protocols, NeuronBit schema, QSL parameters, QAOS interface |
+| `quantum-manifold.yaml` | root | 12×12 Hilbert–Bell manifold: three-layer architecture, basis states, entanglement, Bell bounds, coherence reduction |
 | `trace_thread.schema.json` | `.path_mtl/portal/schemas/` | TraceThread (TTD) schema — canonical fields, lineage rules, classification (`§PORTAL` §26) |
 | `responsibility_chair.schema.json` | `.path_mtl/portal/schemas/` | ResponsibilityChair schema — scope, authority levels, delegation, signature policy (`§PORTAL` §27) |
 | `contribution_event.schema.json` | `.path_mtl/portal/schemas/` | ContributionEvent + MeritUnit schema — event types, CMI weights (`§PORTAL` §28) |
@@ -1104,6 +1106,98 @@ It is structural logic, not rhetoric.
 AI-BOOST/
   application-strategy.yaml     ← deliverable registry (DEL-01–DEL-09), Frontier AI Grand Challenge
 ```
+
+---
+
+## Part VI — 12×12 Intentional Hilbert–Bell Manifold
+
+### 31. Three-Layer Architecture
+
+Three formal levels are distinguished and must be separated with precision:
+
+| Layer | Name | Formal object | Role |
+|-------|------|---------------|------|
+| 1 | Spatial Discretisation | $\Omega = \bigcup_{i=1}^{N} V_i$ | Partition of the physical domain |
+| 2 | State Space (Hilbert) | $L^2(\Omega) \to \mathbb{C}^N$ | Induced state space (not the domain itself) |
+| 3 | Physical Field | $H, \boldsymbol{\sigma}, \nabla\cdot\boldsymbol{\sigma}$ | Operators acting on the state space |
+
+A voxelisation *induces* a finite-dimensional Hilbert space but does not replace it conceptually. The state space is the space of states of the system, not the physical space:
+
+```math
+L^2(\Omega) \;\to\; \mathbb{C}^N
+```
+
+For $N$ local subsystems with local dimension $d$, the total Hilbert space dimension grows as $\dim(\mathcal{H}_{total}) = d^N$ (exponential). The 12-basis constraint keeps this tractable by limiting the admissible subspace to exactly 12 ontological dimensions.
+
+### 32. Admissible Hilbert Subspace (12-Regime Basis)
+
+```math
+\mathcal{H}_{adm} = \text{span}\{|S_1\rangle, \dots, |S_{12}\rangle\}
+```
+
+Valid state:
+
+```math
+|\psi\rangle = \sum_{k=1}^{12} \alpha_k |S_k\rangle, \quad \Pi_{adm}|\psi\rangle = |\psi\rangle
+```
+
+Entanglement topography:
+
+```math
+H_{int} = \sum_{i < j} T_{ij}\,|S_i\rangle\langle S_j| + \text{h.c.}
+```
+
+Bell-bounded correlation envelope (CHSH):
+
+```math
+|B_{ij}| = |\langle A_1 B_1 \rangle + \langle A_1 B_2 \rangle + \langle A_2 B_1 \rangle - \langle A_2 B_2 \rangle| \le 2
+```
+
+Intentional Hamiltonian evolution:
+
+```math
+i\hbar\,\frac{d|\psi\rangle}{dt} = (H_0 + H_{int} + H_{intent})\,|\psi\rangle
+```
+
+After each evolution step the state is projected back onto $\mathcal{H}_{adm}$ via $\Pi_{adm}$.
+
+### 33. Quantum–Classical Boundary — Coherence Reduction Map
+
+The quantum–classical boundary is **not** a geometric surface. It is an information-theoretic reduction:
+
+```math
+\mathcal{R}(\rho) = \text{coherence reduction mapping}
+```
+
+**Local projection operator** — for each cell $i$:
+
+```math
+\mathcal{P}_i : \mathcal{H}_i \to \mathbb{R}^k, \qquad \sigma_{\text{classical}} = \mathrm{Tr}(\rho\,\hat{T})
+```
+
+**Decoherence threshold** — a dynamic threshold, not a fixed surface:
+
+```math
+\tau_{\text{decoherence}} \ll \tau_{\text{dynamics}} \;\Rightarrow\; \rho \to \text{diagonal}
+```
+
+| Regime | Condition | Treatment |
+|--------|-----------|-----------|
+| Quantum | $\tau_{\text{dec}} \ge \tau_{\text{dyn}}$ | Full quantum evolution (Schrödinger / Lindblad) |
+| Classical | $\tau_{\text{dec}} \ll \tau_{\text{dyn}}$ | Diagonal density matrix, classical observables only |
+| Hybrid | intermediate | Quantum–classical coupling (QM/MM analogue) |
+
+Consistent with: QM/MM (computational chemistry), multiscale quantum embedding, open quantum systems (Lindblad formalism).
+
+### 34. Machine-Readable Specification and Implementation
+
+See [`quantum-manifold.yaml`](quantum-manifold.yaml) for the full specification and [`hilbert_bell_manifold.py`](hilbert_bell_manifold.py) for the Python reference implementation including:
+
+- `SpatialDomain` — Layer 1 discrete partition $\Omega = \bigcup V_i$
+- `QuantumState` — Layer 2 normalised state vector in $\mathcal{H}_{adm}$
+- `HamiltonianEvolver` — Layer 3 physical field operators on state space
+- `CoherenceReductionMap` — $\mathcal{R}(\rho)$ with decoherence threshold classification
+- `HilbertBellManifold` — top-level orchestrator integrating all three layers
 
 ---
 

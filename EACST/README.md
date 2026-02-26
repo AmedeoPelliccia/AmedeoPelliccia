@@ -201,4 +201,6 @@ If the EU Space Act proceeds with authorisation/registration/supervision at EU l
 | File | Purpose |
 |------|---------|
 | [`eacst-regulatory-framework.yaml`](eacst-regulatory-framework.yaml) | Machine-readable EACST specification: Parts catalogue, registry schema, implementation phases, institutional options |
+| [`ANNEX-A-glossary.md`](ANNEX-A-glossary.md) | NORMATIVE — ANNEX-A: Glossary of Concepts and Acronyms (MTL, MTLdg, DOF, lifecycle states, determinism classes) |
+| [`annex-a-glossary.yaml`](annex-a-glossary.yaml) | Machine-readable ANNEX-A terms catalogue (14 sections, all normative requirements) |
 | Root [`README.md`](../README.md) | Profile-level reference to EACST under Current Focus |
