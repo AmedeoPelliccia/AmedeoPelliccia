@@ -438,11 +438,15 @@ class CoherenceReductionMap:
         vector is the diagonal of ρ in the chosen basis.
         """
         state_diagonal = [abs(a) ** 2 for a in amplitudes]
-        off_diag = sum(
-            abs(amplitudes[i] * amplitudes[j].conjugate())
+        # Compute Frobenius norm of the off-diagonal part of ρ = |ψ⟩⟨ψ|
+        # ρ_ij = a_i a_j*, so
+        # ‖ρ − diag(ρ)‖_F = sqrt(∑_{i≠j} |ρ_ij|^2) = sqrt(2 * ∑_{i<j} |a_i a_j*|^2).
+        off_diag_squared = 2.0 * sum(
+            abs(amplitudes[i] * amplitudes[j].conjugate()) ** 2
             for i in range(len(amplitudes))
             for j in range(i + 1, len(amplitudes))
         )
+        off_diag = math.sqrt(off_diag_squared) if off_diag_squared > 0.0 else 0.0
         metrics = self.classify_regime(0, off_diag, tau_decoherence, tau_dynamics)
         return state_diagonal, metrics.regime
 
