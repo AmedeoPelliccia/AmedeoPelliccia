@@ -229,5 +229,10 @@ deliverables:
     evaluation_criterion: IMPLEMENTATION
     evaluation_subsection: Financial Plan
     status: stub
+    evaluation_mapping:
+      status: unmapped_stub
+      reason: >
+        This deliverable is intentionally not yet mapped to an evaluation_criteria
+        subsection; it serves as a planning stub for the separate financial annex.
     description: >
       Budget breakdown, cost justification, and financial sustainability.
