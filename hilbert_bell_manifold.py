@@ -434,16 +434,17 @@ class CoherenceReductionMap:
     ) -> tuple[list[float], str]:
         """Full coherence reduction: classify regime and extract observables.
 
-        Returns (classical_observables, regime).
+        Returns (probabilities/state_diagonal, regime), where the probability
+        vector is the diagonal of ρ in the chosen basis.
         """
-        probs = [abs(a) ** 2 for a in amplitudes]
+        state_diagonal = [abs(a) ** 2 for a in amplitudes]
         off_diag = sum(
             abs(amplitudes[i] * amplitudes[j].conjugate())
             for i in range(len(amplitudes))
             for j in range(i + 1, len(amplitudes))
         )
         metrics = self.classify_regime(0, off_diag, tau_decoherence, tau_dynamics)
-        return probs, metrics.regime
+        return state_diagonal, metrics.regime
 
 
 # ──────────────────────────────────────────────
