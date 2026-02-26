@@ -3,7 +3,7 @@
 **Deliverable:** DEL-02  
 **Application section:** Excellence → State of the Art + Methodology  
 **Priority:** Critical  
-**Parent strategy:** [`AI-BOOST/README.md`](README.md) (PR #8)  
+**Parent strategy:** AI-BOOST strategy README (pending publication)  
 **Status:** Draft  
 
 ---
