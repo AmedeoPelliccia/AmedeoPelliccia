@@ -1080,6 +1080,7 @@ It is structural logic, not rhetoric.
 | `procedure_registry_entry.schema.json` | `.path_mtl/procedures/` | Procedure entry schema (`§3.1a` §7) |
 | `template_registry_entry.schema.json` | `.path_mtl/templates/` | Template entry schema (`§3.1a` §7) |
 | `ledger.schema.json` | `.path_mtl/ledger/` | TEKNIA ledger entry schema (`§STD`) |
+| `application-strategy.yaml` | `AI-BOOST/` | AI-BOOST deliverable registry (DEL-01–DEL-09), EuroHPC JU Frontier AI Grand Challenge |
 
 ### File Placement (OPT-IN / PLUMA)
 
@@ -1101,6 +1102,9 @@ It is structural logic, not rhetoric.
       trace_thread.schema.json    ← TraceThread (TTD) canonical fields
       responsibility_chair.schema.json ← ResponsibilityChair governance slots
       contribution_event.schema.json   ← ContributionEvent + MeritUnit + CMI
+
+AI-BOOST/
+  application-strategy.yaml     ← deliverable registry (DEL-01–DEL-09), Frontier AI Grand Challenge
 ```
 
 ---
@@ -1198,7 +1202,7 @@ See [`quantum-manifold.yaml`](quantum-manifold.yaml) for the full specification 
 ---
 
 <p align="center">
-  <em>Last updated: 2026-02-22</em><br>
+  <em>Last updated: 2026-02-25</em><br>
   <em>Enterprise: IDEALE-ESG.eu — Information · Defense · Energy · Aerospace · Logistics · Economy (Digital) | Environment · Social · Governance</em><br>
   <em>Standard family: STD-PATH-MTL-001 v1.0 + §3.1a DWGE v0.1 + §3.1b CLL v0.1 + §NBT Gates v0.1 + §PORTAL v0.1</em>
 </p>

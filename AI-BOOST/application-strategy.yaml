@@ -1,346 +1,238 @@
-# AI-BOOST/application-strategy.yaml
-# Machine-readable application strategy for the AI-BOOST Frontier AI Grand Challenge.
+# application-strategy.yaml
+# Machine-readable application strategy for the AI-BOOST project
+# under the Frontier AI Grand Challenge (EuroHPC JU).
+# Grant Agreement: GA 101135737
+# Deadline: 2026-04-13
 # Reference: AI-BOOST/README.md
-# Challenge: Frontier AI Grand Challenge (GA 101135737, EuroHPC JU)
-# Submission deadline: 2026-04-13T17:00:00+02:00 (Brussels time)
+# Author: Amedeo Pelliccia
 
 schema_version: "1.0.0"
-document_type: challenge_application_strategy
+document_type: application_strategy
 last_updated: "2026-02-25T00:00:00Z"
 
 # ─────────────────────────────────────────────
-# 1. Challenge Identity
+# 1. Programme Identity
 # ─────────────────────────────────────────────
-challenge:
-  name: Frontier AI Grand Challenge
-  programme: AI-BOOST
-  grant_agreement: "101135737"
-  call: HORIZON-CL4-2023-HUMAN-01-CNECT
-  managing_body: EuroHPC JU
-  submission_deadline: "2026-04-13T17:00:00+02:00"
-  submission_platform: F6S
-  award:
-    type: computing_allocation
-    description: >
-      Free access to EuroHPC AI-optimised supercomputing infrastructure.
-      Up to 2.5% of overall EuroHPC computing capacity for one year.
-    duration_years: 1
-    model_requirement:
-      min_parameters: 400_000_000_000
-      architecture: modular   # e.g. mixture-of-experts
-  results_published: "2026-05"
+programme:
+  name: AI-BOOST
+  full_title: >
+    AI-Based Optimisation of Operational Simulation and Testing
+  call: Frontier AI Grand Challenge
+  funding_body: EuroHPC JU
+  grant_agreement: "GA 101135737"
+  deadline: "2026-04-13"
+  framework_alignment:
+    - IDEALE-ESG (Information, Aerospace, Economy pillars)
+    - AMPEL360 certification framework
+    - OPT-IN / PLUMA governance kernel
 
 # ─────────────────────────────────────────────
-# 2. Eligibility Summary
+# 2. Evaluation Criteria Map
 # ─────────────────────────────────────────────
-eligibility:
-  entity_type: industrial_player
-  eu_established: true
-  eu_controlled: true   # not majority-owned by non-EU entities
-  coordinator_type: private_sector
-  academic_partners_allowed: true
-  complementary_hpc_required: true
-  required_evidence:
-    - CVs of key personnel (100B+ model experience, MoE architecture)
-    - Portfolio of prior frontier AI work (publications / deployed models / patents)
-    - Consortium partners bringing complementary expertise
-    - Demonstrated deployment at scale across EU / all EU languages
+evaluation_criteria:
+  - id: EXCELLENCE
+    label: Excellence
+    subsections:
+      - id: EXCELLENCE-OA
+        label: Objectives & Ambition
+        deliverable_ref: DEL-01
+      - id: EXCELLENCE-METH
+        label: Methodology
+        deliverable_ref: DEL-02
+
+  - id: IMPACT
+    label: Impact
+    subsections:
+      - id: IMPACT-PATH
+        label: Pathways towards Impact
+        deliverable_ref: DEL-03
+      - id: IMPACT-MEAS
+        label: Measures to Maximise Impact
+        deliverable_ref: DEL-04
+
+  - id: IMPLEMENTATION
+    label: Quality and Efficiency of the Implementation
+    subsections:
+      - id: IMPL-WORK
+        label: Work Plan and Resources
+        deliverable_ref: DEL-05
+      - id: IMPL-CAP
+        label: Capacity of Participants and Consortium
+        deliverable_ref: DEL-06
 
 # ─────────────────────────────────────────────
-# 3. Proposed Model: GAIA-EU
-# ─────────────────────────────────────────────
-proposed_model:
-  name: GAIA-EU
-  full_name: General Aerospace Intelligence Architecture — European Union
-  parameters_target: "400B+"
-  architecture: mixture_of_experts
-  expert_modules:
-    - id: EXP-REG
-      domain: Regulatory and legal (EACST, EASA, EUR-Lex)
-    - id: EXP-ML
-      domain: Multilingual (all 24 EU official languages + ICAO/EASA technical)
-    - id: EXP-SCI
-      domain: Scientific and engineering (aerospace, space, energy)
-    - id: EXP-SAFE
-      domain: Safety certification (EU AI Act, EACST Part-STO/Part-CAW-S, simplex gating)
-    - id: EXP-QNT
-      domain: Quantum-augmented (trajectory, optimisation — research track)
-  safety_gating: certified_dynamics_coherence_layer  # see certified_dynamics.py
-  open_weights: true
-  licence_target: Apache-2.0
-  eu_ai_act_classification: general_purpose_ai_model_gpai
-  high_risk_use_cases:
-    - Aerospace regulatory compliance (EACST framework)
-    - Space transport operator licensing
-  alignment_approach:
-    - EU-values RLHF
-    - Constitutional AI (explainability constraints)
-    - Multilingual reward modelling
-
-# ─────────────────────────────────────────────
-# 4. Application Deliverables (Sub-Issues)
+# 3. Deliverable Registry
 # ─────────────────────────────────────────────
 deliverables:
+
   - id: DEL-01
-    title: Project Concept & Objectives
-    application_section: Excellence → Objectives and Ambition
-    priority: critical
-    status: pending
-    key_points:
-      - European frontier AI sovereignty gap (no EU 400B+ open model)
-      - GAIA-EU objectives (train, benchmark, release open weights)
-      - Use cases rooted in EACST regulatory framework and aerospace AI
-    repository_assets:
-      - EACST/README.md
-      - simplex-contract.yaml
+    title: "Project Concept & Objectives"
+    evaluation_criterion: EXCELLENCE
+    evaluation_subsection: Objectives & Ambition
+    status: draft
+    description: >
+      Defines the project vision, scientific and technological objectives,
+      measurable ambition targets, and alignment with EuroHPC JU strategic
+      priorities and the IDEALE-ESG framework.
+    content:
+      vision: >
+        AI-BOOST aims to establish a European-sovereign, certification-grade
+        AI framework that couples frontier large-scale models with
+        high-performance computing infrastructure to accelerate simulation,
+        testing, and validation workflows across aerospace, energy, and
+        defence domains — under full governance, traceability, and
+        environmental accountability.
+      objectives:
+        - id: OBJ-01
+          label: Deterministic AI Governance at HPC Scale
+          description: >
+            Deliver a deterministic AI governance pipeline (PATH → MTL)
+            that operates natively on EuroHPC infrastructure, ensuring
+            every AI model, dataset, and inference result is traceable,
+            gated, and auditable — from training through deployment.
+          kpi: "100 % of AI artefacts gate-validated before operational use"
+          alignment:
+            - IDEALE pillar: Information (data sovereignty)
+            - IDEALE pillar: Governance (deterministic pipelines)
+
+        - id: OBJ-02
+          label: Frontier Simulation Acceleration
+          description: >
+            Achieve order-of-magnitude acceleration of multi-physics
+            simulation workflows (CFD, FEM, coupled aero-thermal-structural)
+            by integrating AI surrogate models trained and validated on
+            EuroHPC pre-exascale and exascale systems.
+          kpi: "≥ 10× speed-up vs. baseline full-fidelity simulation"
+          alignment:
+            - IDEALE pillar: Aerospace (certification-grade engineering)
+            - IDEALE pillar: Energy (hydrogen system simulation)
+
+        - id: OBJ-03
+          label: Certification-Grade AI for Safety-Critical Domains
+          description: >
+            Develop and demonstrate AI model qualification pathways
+            compatible with EASA CS-25 / Part 21 and emerging EU AI Act
+            requirements, producing evidence packages that satisfy
+            mixed-boundary simplex admissibility (simplex-contract.yaml).
+          kpi: "≥ 3 AI models qualified through evidence-gated pipeline"
+          alignment:
+            - IDEALE pillar: Aerospace (certification)
+            - IDEALE pillar: Defence (dual-use awareness)
+            - AMPEL360 framework: simplex classification
+
+        - id: OBJ-04
+          label: Sovereign European AI–HPC Integration
+          description: >
+            Ensure all training, inference, and data pipelines run on
+            European HPC infrastructure with no dependency on
+            extra-European cloud providers for safety-critical workloads,
+            aligned with EU data sovereignty and export-control
+            requirements.
+          kpi: "100 % of safety-critical workloads on EuroHPC nodes"
+          alignment:
+            - IDEALE pillar: Information (data sovereignty)
+            - IDEALE pillar: Defence (export control)
+            - EuroHPC JU objective: strategic autonomy
+
+        - id: OBJ-05
+          label: Sustainability-Aware HPC Utilisation
+          description: >
+            Integrate environmental footprint tracking (energy consumption,
+            carbon intensity) into every HPC job, enabling lifecycle
+            assessment of AI model training and inference aligned with
+            Digital Product Passport and ESG reporting requirements.
+          kpi: "CO₂-per-inference metric tracked for all production models"
+          alignment:
+            - ESG constraint: Environment (LC14 circularity, DPP)
+            - IDEALE pillar: Energy (renewable integration)
+
+      ambition: >
+        AI-BOOST goes beyond incremental improvement. It targets structural
+        integration of AI governance, HPC infrastructure, and certification
+        workflows into a single, auditable, European-sovereign pipeline.
+        The ambition is not merely to use HPC for AI — but to make
+        AI-on-HPC certification-grade, traceable, and environmentally
+        accountable. No existing European project combines deterministic
+        governance (PATH → MTL), mixed-boundary admissibility
+        (simplex-contract), and frontier HPC at this integration depth.
+
+      novelty:
+        - Deterministic AI governance pipeline native to EuroHPC
+        - Mixed-boundary simplex classification applied to AI model qualification
+        - Capillary Merit Index (CMI) for contributor attribution in HPC-scale projects
+        - Sustainability tracking integrated at the HPC job level
+
+      eurohpc_alignment:
+        - EuroHPC JU strategic priority: European AI sovereignty
+        - EuroHPC JU strategic priority: Industrial uptake of HPC
+        - EuroHPC JU strategic priority: Skills and talent development
+        - Frontier AI Grand Challenge scope: Large-scale AI models on pre-exascale/exascale
 
   - id: DEL-02
-    title: State of the Art & Methodology
-    application_section: Excellence → State of the Art + Methodology
-    priority: critical
-    status: pending
-    key_points:
-      - Gap vs GPT-5/Claude/Gemini (no EU equivalent at 400B+)
-      - MoE architecture justification
-      - Scaling law calibration (Chinchilla-optimal)
-      - Training stack (Megatron-LM / DeepSpeed on EuroHPC)
-      - Evaluation benchmarks (MMLU-EU extension, regulatory NLP, aerospace tasks)
-    repository_assets: []
+    title: "Methodology"
+    evaluation_criterion: EXCELLENCE
+    evaluation_subsection: Methodology
+    status: stub
+    description: >
+      Technical approach, work methodology, and risk management strategy.
 
   - id: DEL-03
-    title: Data Management Plan
-    application_section: Excellence → Data Management
-    priority: critical
-    status: pending
-    key_points:
-      - Training data sources (Common Crawl EU, OSCAR, EUR-Lex, EASA AMC/GM)
-      - FAIR data principles (data cards, bias assessment)
-      - GDPR-compliant curation; no personal data
-      - Horizon Europe open science requirements
-    repository_assets:
-      - contributions-registry.yaml
+    title: "Pathways towards Impact"
+    evaluation_criterion: IMPACT
+    evaluation_subsection: Pathways towards Impact
+    status: stub
+    description: >
+      Expected scientific, economic, and societal impact pathways.
 
   - id: DEL-04
-    title: Innovation & Impact Statement
-    application_section: Innovation and Impact
-    priority: critical
-    status: pending
-    key_points:
-      - First EU frontier model at 400B+ scale with open weights
-      - Coherence-gating layer (certified_dynamics) for verifiable safety
-      - EU AI Act compliance by design
-      - Bonus targeting (open weights +1, multilingual +2, EU dimension +2)
-    repository_assets:
-      - certified_dynamics/
-      - EACST/eacst-regulatory-framework.yaml
+    title: "Measures to Maximise Impact"
+    evaluation_criterion: IMPACT
+    evaluation_subsection: Measures to Maximise Impact
+    status: stub
+    description: >
+      Dissemination, exploitation, and communication plan.
 
   - id: DEL-05
-    title: Workplan, Milestones & Gantt Chart
-    application_section: Quality and Efficiency → Workplan and Resources
-    priority: critical
-    status: pending
-    work_packages:
-      - id: WP1
-        title: Foundation
-        months: "M1–M3"
-        activities: [Data curation, Architecture design, EuroHPC setup, Tokeniser training]
-      - id: WP2
-        title: Pre-training
-        months: "M3–M9"
-        activities: [Large-scale MoE pre-training, Scaling law validation, Checkpoint management]
-      - id: WP3
-        title: Alignment
-        months: "M7–M11"
-        activities: [Instruction tuning, RLHF, Multilingual alignment, Coherence-gating integration]
-      - id: WP4
-        title: Evaluation
-        months: "M9–M12"
-        activities: [MMLU-EU benchmarks, Regulatory NLP tasks, Red-teaming, Bias audit]
-      - id: WP5
-        title: Release
-        months: "M11–M12"
-        activities: [Open weights packaging, Model card, Technical report, Final report]
-    milestones:
-      - id: MS1
-        month: 3
-        description: Architecture frozen; EuroHPC allocation confirmed; data pipeline operational
-      - id: MS2
-        month: 6
-        description: 50% pre-training compute consumed; intermediate checkpoints validated
-      - id: MS3
-        month: 9
-        description: Pre-training complete; alignment training initiated
-      - id: MS4
-        month: 11
-        description: Alignment complete; all benchmarks exceed threshold
-      - id: MS5
-        month: 12
-        description: Open weights released; Final Report submitted
+    title: "Work Plan and Resources"
+    evaluation_criterion: IMPLEMENTATION
+    evaluation_subsection: Work Plan and Resources
+    status: stub
+    description: >
+      Work packages, deliverables schedule, milestones, and resource allocation.
 
   - id: DEL-06
-    title: Capacity Demonstration
-    application_section: Quality and Efficiency → Capacity of Applicant
-    priority: critical
-    status: pending
-    evidence_required:
-      - CVs (100B+ parameter model experience, MoE, HPC)
-      - Portfolio (publications, deployed models, patents)
-      - Prior AI/engineering models demonstrating frontier-adjacent capability
-      - Complementary national HPC resources (BSC/CINECA/equivalent)
-    repository_assets:
-      - simplex-contract.yaml
-      - contributions-registry.yaml
-      - certified_dynamics/
+    title: "Capacity of Participants"
+    evaluation_criterion: IMPLEMENTATION
+    evaluation_subsection: Capacity of Participants and Consortium
+    status: stub
+    description: >
+      Consortium composition, complementarity, and operational capacity.
 
   - id: DEL-07
-    title: HPC Resource Justification
-    application_section: Challenge-specific — GPU hours / EuroHPC fit
-    priority: critical
-    status: pending
-    compute_estimate:
-      pre_training_gpu_hours: 10_000_000
-      alignment_gpu_hours: 500_000
-      evaluation_gpu_hours: 200_000
-      total_gpu_hours: 10_700_000
-    target_systems:
-      - LUMI (AMD MI300X)
-      - Leonardo (NVIDIA A100)
-      - Jupiter (Intel/NVIDIA hybrid)
-    justification: >
-      Frontier-scale MoE training requires InfiniBand NDR/XDR interconnect and
-      HBM3 memory bandwidth not available at sub-frontier scale. The model cannot
-      be trained in fragments without quality degradation. 2.5% EuroHPC strategic
-      access over 12 months is the minimum viable allocation.
+    title: "Ethics and Security"
+    evaluation_criterion: EXCELLENCE
+    evaluation_subsection: Ethics and Security
+    status: stub
+    description: >
+      Ethical considerations, dual-use assessment, data protection, and security.
 
   - id: DEL-08
-    title: Open Science & EU AI Act Compliance
-    application_section: Eligibility + Innovation
-    priority: required
-    status: pending
-    open_science:
-      open_weights: true
-      licence: Apache-2.0
-      training_code_licence: MIT
-      dataset_cards: true
-      model_card: true
-      preprint_deadline_days: 30
-      fair_data_plan: DEL-03
-    eu_ai_act:
-      classification: GPAI + high_risk_downstream
-      transparency_report: true
-      conformity_assessment: documented_before_deployment
-      human_oversight_mechanism: coherence_gating_layer
+    title: "Open Science and Data Management"
+    evaluation_criterion: EXCELLENCE
+    evaluation_subsection: Methodology
+    status: stub
+    description: >
+      Open science practices, FAIR data management, and reproducibility.
 
   - id: DEL-09
-    title: Declaration of Honour
-    application_section: Mandatory Attachment 1
-    priority: required
-    status: pending
-    action: >
-      Download from https://aiboost-project.eu/, complete all fields,
-      sign by legal representative of coordinating entity, attach to F6S
-      application as Attachment 1.
-
-# ─────────────────────────────────────────────
-# 5. Pre-Screening Score Targets (60-point max)
-# ─────────────────────────────────────────────
-pre_screening:
-  criteria:
-    - name: European Dimension
-      max_points: 15
-      target: 15
-      strategy: EU sovereignty narrative, EACST use case, open model for EU public
-    - name: Company capacities and experience
-      max_points: 20
-      target: 17
-      strategy: Formal methodology portfolio, prior AI/engineering models, HPC experience
-    - name: Soundness of the proposal
-      max_points: 15
-      target: 14
-      strategy: Detailed architecture, scaling plan, validated methodology
-    - name: Potential of adoption and scalability
-      max_points: 10
-      target: 10
-      strategy: Regulated sector demand + open weights availability + EuroHPC AI Factory
-  total_target: 56
-
-# ─────────────────────────────────────────────
-# 6. Evaluation Criteria & Bonus Targets
-# ─────────────────────────────────────────────
-evaluation:
-  criteria:
-    - name: Excellence
-      max_score: 5
-      threshold: 3
-      target: 4.5
-    - name: Innovation and Impact
-      max_score: 5
-      threshold: 3
-      target: 4.5
-    - name: Quality and Efficiency of Implementation
-      max_score: 5
-      threshold: 3
-      target: 4.5
-  overall_threshold: 10
-  bonuses:
-    - description: Open-source approach including open weights
-      points: 1
-      targeted: true
-    - description: Multimodal models with strong multilingual capabilities across significant EU languages
-      points: 2
-      targeted: true
-    - description: European dimension
-      points: 2
-      targeted: true
-  total_bonus_targeted: 5
-
-# ─────────────────────────────────────────────
-# 7. Action Timeline
-# ─────────────────────────────────────────────
-action_timeline:
-  - date: "2026-03-10"
-    action: DEL-01, DEL-02, DEL-06 drafted and reviewed
-  - date: "2026-03-20"
-    action: DEL-03, DEL-04, DEL-07 completed
-  - date: "2026-03-31"
-    action: DEL-05 (Gantt + workplan tables) and DEL-08 completed
-  - date: "2026-04-05"
-    action: DEL-09 (Declaration of Honour) signed and ready
-  - date: "2026-04-10"
-    action: Full application assembled and reviewed on F6S (preview mode)
-  - date: "2026-04-13"
-    action: "SUBMISSION — F6S deadline 17:00 Brussels time"
-    deadline: true
-
-# ─────────────────────────────────────────────
-# 8. Repository Assets Mapping
-# ─────────────────────────────────────────────
-repository_assets:
-  - path: EACST/README.md
-    role: Primary application domain — civil space transport regulation use case
-    deliverables: [DEL-01, DEL-04]
-
-  - path: EACST/eacst-regulatory-framework.yaml
-    role: Machine-readable regulatory framework — demonstrates domain specificity
-    deliverables: [DEL-04]
-
-  - path: simplex-contract.yaml
-    role: Formal safety contract methodology — capacity evidence and EU AI Act alignment
-    deliverables: [DEL-01, DEL-06, DEL-08]
-
-  - path: contributions-registry.yaml
-    role: Open contribution governance — Horizon Europe open science evidence
-    deliverables: [DEL-03, DEL-06]
-
-  # Planned future asset — directory not yet present in the repository:
-  # - path: certified_dynamics/
-  #   role: Safety gating and admissibility module — coherence-gating layer prototype
-  #   deliverables: [DEL-04, DEL-08]
-
-  - path: hilbert_bell_manifold.py
-    role: Quantum-augmented manifold research — novel architecture innovation evidence
-    deliverables: [DEL-02]
-
-  - path: quantum-manifold.yaml
-    role: Quantum specialist expert configuration
-    deliverables: [DEL-02]
+    title: "Financial Plan"
+    evaluation_criterion: IMPLEMENTATION
+    evaluation_subsection: Financial Plan
+    status: stub
+    evaluation_mapping:
+      status: unmapped_stub
+      reason: >
+        This deliverable is intentionally not yet mapped to an evaluation_criteria
+        subsection; it serves as a planning stub for the separate financial annex.
+    description: >
+      Budget breakdown, cost justification, and financial sustainability.
