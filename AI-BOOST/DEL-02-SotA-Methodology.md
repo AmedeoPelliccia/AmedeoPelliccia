@@ -1,10 +1,18 @@
 # DEL-02 — State of the Art & Methodology
 
-**Deliverable:** DEL-02  
-**Application section:** Excellence → State of the Art + Methodology  
-**Priority:** Critical  
-**Parent strategy:** AI-BOOST strategy README (pending publication)  
-**Status:** Draft  
+| Field | Value |
+|-------|-------|
+| **Deliverable** | DEL-02 |
+| **Title** | State of the Art & Methodology |
+| **Programme** | Frontier AI Grand Challenge |
+| **Grant Agreement** | GA 101135737 (EuroHPC JU) |
+| **Section** | Excellence → State of the Art + Methodology |
+| **Priority** | Critical |
+| **Status** | Draft |
+| **Author** | Amedeo Pelliccia |
+| **Version** | 1.0.0 |
+| **Date** | 2026-02-26 |
+| **Machine-readable** | [`sota-methodology.yaml`](sota-methodology.yaml) |
 
 ---
 
@@ -176,7 +184,7 @@ GAIA-EU will be evaluated against frontier models on a comprehensive benchmark s
 |-----------|-------------|-----------------|
 | EU sovereignty | No 400 B+ EU model | First EU-sovereign frontier model trained entirely on EuroHPC |
 | Regulatory AI | Generic LLMs applied post-hoc | Domain-specialist experts (EXP-REG, EXP-SAFE) trained on structured regulatory corpora |
-| Safety gating | External guardrails | Integrated coherence gating layer (certified_dynamics pattern) with per-inference audit trail |
+| Safety gating | External guardrails | Integrated coherence gating layer (planned certified_dynamics design) with per-inference audit trail |
 | Multilingual parity | English-dominant | Balanced 24-language training with dedicated multilingual expert (EXP-ML) |
 | Quantum-augmented | Separate quantum computing tools | Research-track quantum manifold expert (EXP-QNT) for trajectory and optimisation sub-tasks |
 | EU AI Act compliance | Retrofitted documentation | Compliance by design: GPAI model card, Annex XI documentation, transparency report built into training pipeline |
