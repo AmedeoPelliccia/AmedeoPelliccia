@@ -1,7 +1,5 @@
 # AI-BOOST — Application Strategy
 
-*AI-Based Optimisation of Operational Simulation and Testing*
-
 **Call:** Frontier AI Grand Challenge · EuroHPC JU · GA 101135737
 **Deadline:** 2026-04-13
 **Machine-readable spec:** [`application-strategy.yaml`](application-strategy.yaml)
@@ -12,7 +10,7 @@
 
 AI-BOOST targets the structural integration of **frontier AI models**, **European HPC infrastructure**, and **certification-grade governance** into a single auditable pipeline — enabling simulation acceleration, AI model qualification, and sustainability tracking across aerospace, energy, and defence domains.
 
-The project is anchored in the **IDEALE-ESG** framework (Information · Defense · Energy · Aerospace · Logistics · Economy | Environment · Social · Governance) and uses the **AMPEL360** certification architecture for deterministic gating, traceability, and mixed-boundary admissibility.
+IDEALE-ESG is the applicant action submitted to the AI-BOOST call. Its objective is to establish and deliver AMPEL360, a full-lifecycle programme in which an integrated product is designed, validated, certified, manufactured, and operated as the principal asset—under a single product identity spanning air transportation and space operations, including space tourism—through an auditable framework integrating frontier AI, deterministic-by-design execution, statistical and empirical validation, European HPC, and European governance.
 
 ---
 
