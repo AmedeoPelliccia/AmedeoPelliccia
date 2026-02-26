@@ -210,7 +210,7 @@ deliverables:
 
   - id: DEL-07
     title: "Ethics and Security"
-    evaluation_criterion: ETHICS
+    evaluation_criterion: EXCELLENCE
     evaluation_subsection: Ethics and Security
     status: stub
     description: >
