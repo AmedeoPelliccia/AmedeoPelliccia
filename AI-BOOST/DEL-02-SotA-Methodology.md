@@ -45,8 +45,8 @@ Despite these advances, current MoE models share critical gaps relevant to the E
 
 Recent work in quantum-classical hybrid computation offers potential efficiency gains for specific sub-tasks:
 
-- **Hilbert-Bell manifold formalism** (this repository: [`hilbert_bell_manifold.py`](../hilbert_bell_manifold.py)): a 12×12 spatial-quantum coupling framework with three-layer architecture (SpatialDomain, QuantumState, HamiltonianEvolver) and coherence-reduction mapping R(ρ) that classifies states as quantum, classical, or hybrid based on decoherence thresholds.
-- **Quantum specialist expert configuration** ([`quantum-manifold.yaml`](../quantum-manifold.yaml)): schema 1.1.0 specification for basis sets, coupling matrices, and decoherence parameters applicable to trajectory optimisation and manifold learning in expert routing.
+- **Hilbert-Bell manifold formalism** (planned research module `hilbert_bell_manifold.py`, not yet part of this repository): a 12×12 spatial-quantum coupling framework with three-layer architecture (SpatialDomain, QuantumState, HamiltonianEvolver) and coherence-reduction mapping R(ρ) that classifies states as quantum, classical, or hybrid based on decoherence thresholds.
+- **Quantum specialist expert configuration** (planned schema file `quantum-manifold.yaml`, not yet part of this repository): schema 1.1.0 specification for basis sets, coupling matrices, and decoherence parameters applicable to trajectory optimisation and manifold learning in expert routing.
 
 These represent a novel research track — not a production dependency — for the quantum-augmented expert module (EXP-QNT) of GAIA-EU.
 
