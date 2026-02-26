@@ -79,7 +79,7 @@ These represent a novel research track — not a production dependency — for t
 │                   │                                 │
 │  ┌────────────────┴────────────────────────┐        │
 │  │   Coherence Gating Layer                │        │
-│  │   (adapted from certified_dynamics)     │        │
+│  │   (planned certified_dynamics module)  │        │
 │  └─────────────────────────────────────────┘        │
 └─────────────────────────────────────────────────────┘
 ```
