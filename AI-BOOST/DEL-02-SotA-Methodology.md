@@ -94,7 +94,7 @@ These represent a novel research track — not a production dependency — for t
 | EXP-SAFE | Safety certification (EU AI Act, EACST Parts, simplex gating) | EU AI Act text, EACST Parts catalogue, simplex-contract invariants |
 | EXP-QNT | Quantum-augmented (trajectory, optimisation — research track) | Quantum computing literature, Hilbert-Bell manifold configuration |
 
-**Coherence gating layer:** Adapted from the `certified_dynamics` module (`CertifiedAdmissibleSpace`), this layer provides per-inference safety classification. It evaluates whether each output satisfies domain-specific admissibility constraints before being returned to the user, providing the audit trail required by EU AI Act Article 53 (GPAI transparency).
+**Coherence gating layer:** Conceptually modelled on a planned `certified_dynamics` module and `CertifiedAdmissibleSpace` abstraction, this layer provides per-inference safety classification. It evaluates whether each output satisfies domain-specific admissibility constraints before being returned to the user, providing the audit trail required by EU AI Act Article 53 (GPAI transparency).
 
 ### 2.2 Training Stack
 
