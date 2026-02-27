@@ -504,6 +504,11 @@ examples:
       subpackage_id: SUBPKG-CHAIN-SC-MEASURE
       aor_id: AOR-000123
       version: "1.0.0"
+      title: "CO2e KPI for Supplier A, 2026 Q1"
+      template_id: TEMPLATE-KPI_MEASURE-DEFAULT
+      metadata_schema_id: METASCHEMA-KPI_MEASURE-DEFAULT
+      status: draft
+      children: []
       checksum: "sha3-512:..."
       bindings:
         domain: DUAL
