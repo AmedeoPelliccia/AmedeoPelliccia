@@ -51,7 +51,7 @@ Each category generates specific artefacts and minimum evidence requirements:
 | Category | Artefact                        | Minimum evidence |
 | -------- | ------------------------------- | ---------------- |
 | 000      | Safety Impact Assessment        | SI-000           |
-| 010      | Mission Profile & Trace         | MP-010           |
+| 010      | Mission Profile & Trace (EGNOS, GALILEO)        | MP-010           |
 | 020      | Cybersecurity Compliance Report | CY-020           |
 | 030      | Sensor Fusion Validation Report | IN-030           |
 | 040      | Digital Twin Verification Pack  | DT-040           |
