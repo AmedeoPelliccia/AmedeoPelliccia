@@ -423,7 +423,7 @@ EACST_PACKAGE_REGISTRY:
     unit_token_types: [TOOL_ITEM, CAL_CERT, QUAL_RECORD, TOOL_CONTROL_EVENT]
     required_links:
       TOOL_ITEM:
-        - { rel: supports, target_types: [CAL_CERT], when: "bindings.calibration_required == true" }
+        - { rel: supports, target_types: [CAL_CERT] }
 
   - package_id: PKG-P080-ICA
     phase: P080
