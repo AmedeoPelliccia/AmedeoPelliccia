@@ -33,7 +33,7 @@ Each category is a *functional space* that can be mapped to artefacts, evidences
 | Code  | Category                                     | Description                                                                                     |
 | ----- | -------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | **000** | **Human-Centric, Safety First, Use Experience** | Principles and cross-cutting requirements centred on people, safety and user experience.       |
-| **010** | **Mission Systems**                           | Navigation, guidance, planning and mission execution support.                                  |
+| **010** | **Mission Systems**                           | Navigation, guidance, planning and mission execution support. Onboarding EGNOS and Galileo                                   |
 | **020** | **Cyber & Connectivity**                      | Cybersecurity, communications, networks and resilient connectivity.                            |
 | **030** | **Information & Intelligence**                | Sensors, perception, data fusion, inference and applied AI.                                    |
 | **040** | **Digital Twin & Simulation**                 | Digital modelling, advanced simulation, virtual training and what-if analysis.                  |
@@ -51,7 +51,7 @@ Each category generates specific artefacts and minimum evidence requirements:
 | Category | Artefact                        | Minimum evidence |
 | -------- | ------------------------------- | ---------------- |
 | 000      | Safety Impact Assessment        | SI-000           |
-| 010      | Mission Profile & Trace (EGNOS, GALILEO)        | MP-010           |
+| 010      | Mission Profile & Trace         | MP-010           |
 | 020      | Cybersecurity Compliance Report | CY-020           |
 | 030      | Sensor Fusion Validation Report | IN-030           |
 | 040      | Digital Twin Verification Pack  | DT-040           |
