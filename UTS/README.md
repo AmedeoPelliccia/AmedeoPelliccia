@@ -18,7 +18,7 @@
 
 ## 1. Purpose
 
-This document defines a **Universal Transport System (UTS) domain taxonomy** — a set of nine functional categories (codes 000–080) that serve as the semantic backbone for:
+This document defines a **Universal Transport System (UTS) domain taxonomy** — a set of functional categories (codes 000–080, plus extension domain 093) that serve as the semantic backbone for:
 
 - **EACST** — regulatory framework for civil space transportation,
 - **AMPEL360** — hydrogen-electric aircraft architecture,
@@ -41,6 +41,7 @@ Each category is a *functional space* that can be mapped to artefacts, evidences
 | **060** | **Energy & Materials**                        | Propulsion, energy generation/storage, advanced materials and reusability.                      |
 | **070** | **Wiring & Integration**                      | Wiring, signal mapping, physical and logical subsystem integration.                            |
 | **080** | **Transformations**                           | State conversion processes, interoperability, reconfiguration and technology adaptations.       |
+| **093** | **Autonomy & Assurance**                      | Autonomy assurance cases — reliability, robustness, explainability, SOTIF and fail-safe design. |
 
 ---
 
@@ -59,6 +60,7 @@ Each category generates specific artefacts and minimum evidence requirements:
 | 060      | Energy System Performance       | EN-060           |
 | 070      | Integration Test Matrix         | WI-070           |
 | 080      | Transformation Compliance Log   | TR-080           |
+| 093      | Autonomy Assurance Case         | AA-093           |
 
 ---
 
@@ -116,7 +118,7 @@ The taxonomy can be extended for:
 * **Sustainability / ESG** — impact metrics per category.
 * **Human Factors** — subcategories for ergonomics and use within 000.
 * **Hybrid Transport** — cross-category intersections for aero + space.
-* **Autonomy & Assurance** — reliability and robustness attributes per category.
+* **Autonomy & Assurance** — reliability and robustness attributes per category. ✔ *Implemented as Domain 093 ([AA-093](AA-093/README.md))*.
 
 ---
 
@@ -205,6 +207,15 @@ Enriched per-category definitions with key terms, units, interfaces and responsi
 | **Interfaces** | ETL/ELT pipelines · Interoperability services · Data transformation APIs |
 | **Roles** | Process Integration Engineer · Transformation/Data Pipeline Engineer · Automation Engineer |
 
+### 093 — Autonomy & Assurance *(Extension Domain)*
+
+| Aspect     | Detail |
+| ---------- | ------ |
+| **Key terms** | Autonomy assurance · Explainability (XAI) · Operational Design Domain (ODD) · SOTIF residual risk · Fail-safe design · Goal Structuring Notation (GSN) |
+| **Units** | MTBF (hours) · Availability (%) · Explainability score (0–1) · Assurance case coverage (%) · SOTIF residual risk class (A/B/C) |
+| **Interfaces** | GSN/CAE assurance arguments · GAIA EU Admissibility Review · EACST Certification Package |
+| **Roles** | Autonomy Systems Architect · Reliability & Availability Engineer · XAI Specialist · Safety Case Author · SOTIF Lead · Independent Reviewer |
+
 ---
 
 ## 8. Taxonomy Visualisation
@@ -219,6 +230,9 @@ graph LR
   000 --> 060
   000 --> 070
   000 --> 080
+  000 --> 093
+  030 --> 093
+  040 --> 093
 ```
 
 ---
@@ -228,5 +242,7 @@ graph LR
 | File                                                      | Purpose                                              |
 | --------------------------------------------------------- | ---------------------------------------------------- |
 | [`uts-taxonomy.yaml`](uts-taxonomy.yaml)                  | Machine-readable taxonomy specification              |
+| [`AA-093/README.md`](AA-093/README.md)                    | Autonomy Assurance Case (Domain 093)                 |
+| [`AA-093/aa-093-assurance-case.yaml`](AA-093/aa-093-assurance-case.yaml) | Machine-readable GSN assurance case    |
 | [`../EACST/README.md`](../EACST/README.md)               | European Agency for Civil Space Transportation spec  |
 | [`../EACST/eacst-regulatory-framework.yaml`](../EACST/eacst-regulatory-framework.yaml) | EACST machine-readable regulatory framework |

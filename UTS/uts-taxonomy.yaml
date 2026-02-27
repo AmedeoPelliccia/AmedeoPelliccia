@@ -217,6 +217,34 @@ categories:
       - "Transformation/Data Pipeline Engineer"
       - "Automation Engineer"
 
+  - code: "093"
+    name: "AUTONOMY_ASSURANCE"
+    description: "Autonomy assurance cases — reliability, robustness, explainability, SOTIF and fail-safe design for autonomous systems."
+    key_terms:
+      - "Autonomy assurance"
+      - "Explainability (XAI)"
+      - "Operational Design Domain (ODD)"
+      - "SOTIF residual risk"
+      - "Fail-safe design"
+      - "Goal Structuring Notation (GSN)"
+    units:
+      - "MTBF (hours)"
+      - "Availability (%)"
+      - "Explainability score (0–1)"
+      - "Assurance case coverage (%)"
+      - "SOTIF residual risk class (A/B/C)"
+    interfaces:
+      - "GSN/CAE assurance arguments"
+      - "GAIA EU Admissibility Review"
+      - "EACST Certification Package"
+    roles:
+      - "Autonomy Systems Architect"
+      - "Reliability & Availability Engineer"
+      - "XAI Specialist"
+      - "Safety Case Author"
+      - "SOTIF Lead"
+      - "Independent Reviewer"
+
 # ─────────────────────────────────────────────
 # 3. Evidence & Artefact Registry
 # ─────────────────────────────────────────────
@@ -256,6 +284,10 @@ evidence_artefacts:
   - category_code: "080"
     artefact: "Transformation Compliance Log"
     evidence_id: "TR-080"
+
+  - category_code: "093"
+    artefact: "Autonomy Assurance Case"
+    evidence_id: "AA-093"
 
 # ─────────────────────────────────────────────
 # 4. Domain Atlas Cell Example (GAIA EU)
@@ -308,3 +340,4 @@ extension_roadmap:
     description: "Cross-category intersections for aero + space."
   - area: "Autonomy & Assurance"
     description: "Reliability and robustness attributes per category."
+    status: "Implemented as Domain 093 (AA-093)"
