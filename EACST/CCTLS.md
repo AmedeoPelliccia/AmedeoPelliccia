@@ -488,12 +488,17 @@ token:
 token:
   token_id: "FIG-IPL-SHOP-VALVE-EXPLODED-001"
   token_type: "FIG"
+  title: "Shop IPL exploded view — valve assembly"
   phase: "P080"
   package_id: "PKG-IPL"
   subpackage_id: "SUBPKG-IPL-ShopBreakdownFigures"
   aor_id: "AOR-000777"
   version: "1.0.0"
   checksum: "sha3-512:..."
+  template_id: "TPL-IPL-FIG-SHOP"
+  metadata_schema_id: "SCHEMA-IPL-FIG-001"
+  links: []
+  status: "DRAFT"
   bindings:
     domain: "RSP"
     operation_context: "SHOP"
