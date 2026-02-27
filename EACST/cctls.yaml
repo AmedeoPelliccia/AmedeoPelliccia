@@ -299,7 +299,7 @@ package_registry:
       TOOL_ITEM:
         - rel: supports
           target_types: [CAL_CERT]
-          when: "bindings.calibration_required == true"
+          when: "token.metadata.calibration_required == true"
 
   - package_id: PKG-P060-CE-TECH-FILE
     phase: P060
