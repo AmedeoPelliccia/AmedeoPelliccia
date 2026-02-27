@@ -532,6 +532,11 @@ examples:
       aor_id: AOR-000777
       version: "1.0.0"
       checksum: "sha3-512:..."
+      title: "Valve exploded view (IPL shop figure)"
+      template_id: TPL-FIG-IPL-SHOP
+      metadata_schema_id: MS-FIG-IPL-SHOP-001
+      links: []
+      status: draft
       bindings:
         domain: RSP
         operation_context: SHOP
