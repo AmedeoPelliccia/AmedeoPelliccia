@@ -2,6 +2,14 @@
 
 *A foundational concept to close Europe's civil space-transport regulatory gaps (training, reusable maintenance, sustainability constraints, operator registry, etc.).*
 
+> **Note — Institutional Status**
+>
+> ESSA (European Union Space Safety Agency) is a **governance artefact and institutional model** within the IDEALE-ESG / AMPEL framework, intended to formalise and unify space safety, certification, and lifecycle oversight in the conceptual model. It is **not** currently an enacted EU agency in the legal framework of the European Union.
+>
+> In the extant EU institutional ecosystem, some analogous functions are performed by the **European Union Agency for the Space Programme (EUSPA)** and associated bodies under the EU Space Programme Regulation (2021/696) and EU Space Act proposals. ESSA expands or abstracts those functions to cover additional normative spaces — notably **civil space transportation lifecycle regulation, product-specific certification, and continued airworthiness for reusable platforms** — that are not yet addressed by any existing EU body.
+>
+> See §3 for a formal mapping of ESSA functions to EUSPA's current mandate and the normative gaps ESSA is designed to fill.
+
 ---
 
 ## 1. Problem Statement: What's Missing Today
@@ -50,6 +58,25 @@ The proposal is widely framed as addressing **fragmentation across Member States
 - certifying **training organisations** and licensing **crew**;
 - operating a unified **EU civil space transport operator registry**;
 - running **oversight, audits, occurrence reporting**, and safety data analysis.
+
+### 3.1 Formal Relationship: ESSA ↔ EUSPA
+
+ESSA is conceived as a **complementary governance layer** to EUSPA, not a replacement. The table below maps each ESSA functional area to EUSPA's current mandate and identifies the normative gap ESSA is designed to fill.
+
+| ESSA Function (Proposed) | EUSPA Current Mandate | Normative Gap Filled by ESSA |
+|---|---|---|
+| Operator licensing & SMS (Part-STO) | No transport-operator licensing authority | Civil space-transport operator authorisation, SMS enforcement, occurrence reporting |
+| Launch/re-entry safety (Part-LRE) | SST front desk (tracking/conjunction); no launch/re-entry licensing | Trajectory safety criteria, public risk governance, range coordination |
+| Reusable platform approval (Part-RSP) | Not covered | Design approval for reuse-critical items, configuration control, life limits |
+| Continued airworthiness (Part-CAW-S) | Not covered | CAMO-equivalent lifecycle management for reusable platforms |
+| Maintenance organisations (Part-MRO-S) | Not covered | Refurbishment/overhaul approval (Part-145 equivalent for space) |
+| Spaceport/range licensing (Part-SPP) | Not covered | Ground safety, hazardous ops, ATM/airspace interface |
+| Crew licensing & training (Part-SCL) | Not covered | Professional crew licensing, participant safety, training org approvals |
+| Sustainability & debris (Part-SUST) | SST debris tracking; no enforceable transport-grade debris/sustainability rules | Debris mitigation plans, controlled disposal, environmental footprint reporting |
+| Cyber resilience (Part-CYB-S) | GOVSATCOM/Galileo security accreditation (programme-specific) | Baseline cybersecurity for civil transport operators and platforms |
+| Operator registry | EUSPA maintains programme-level registries (Galileo, EGNOS) | Unified EU Civil Space Transport Registry (operators, platforms, spaceports) |
+
+**Interface principle:** where EUSPA already operates a service (e.g., EU SST conjunction warnings), ESSA consumes or references that data rather than duplicating it. Conversely, ESSA's operator registry and occurrence data feed back into EU-level safety and sustainability reporting channels.
 
 ---
 

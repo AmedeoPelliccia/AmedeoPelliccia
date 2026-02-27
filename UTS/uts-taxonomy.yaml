@@ -281,6 +281,12 @@ domain_atlas_example:
   limits_of_use:
     - "LoU-030-005"
   signoff: "ESSA"
+  signoff_note: >
+    ESSA (European Union Space Safety Agency) is a governance artefact
+    within the IDEALE-ESG / AMPEL framework, not an enacted EU agency.
+    In the current EU institutional ecosystem, analogous functions are
+    performed by EUSPA and associated bodies.  See ESSA/README.md for
+    the full institutional-status disclaimer and EUSPA interface map.
 
 # ─────────────────────────────────────────────
 # 5. Pipeline Integration

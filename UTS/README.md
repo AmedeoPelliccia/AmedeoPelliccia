@@ -20,7 +20,7 @@
 
 This document defines a **Universal Transport System (UTS) domain taxonomy** — a set of nine functional categories (codes 000–080) that serve as the semantic backbone for:
 
-- **ESSA** — regulatory framework for civil space transportation,
+- **ESSA** — regulatory framework for civil space transportation *(governance artefact; see [ESSA/README.md](../ESSA/README.md) for institutional-status disclaimer)*,
 - **AMPEL360** — hydrogen-electric aircraft architecture,
 - **GAIA EU** — Domain Atlas model for AI admissibility and evidence governance.
 
