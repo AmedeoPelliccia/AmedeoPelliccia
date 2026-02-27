@@ -1,0 +1,361 @@
+# sota-methodology.yaml
+# Machine-readable specification for DEL-02: State of the Art & Methodology
+# Programme: Frontier AI Grand Challenge (GA 101135737, EuroHPC JU)
+# Reference: AI-BOOST/DEL-02-SotA-Methodology.md
+# Author: Amedeo Pelliccia
+
+schema_version: "1.0.0"
+document_type: sota_methodology
+last_updated: "2026-02-26T00:00:00Z"
+
+# ─────────────────────────────────────────────
+# 1. Deliverable Metadata
+# ─────────────────────────────────────────────
+deliverable:
+  id: DEL-02
+  title: State of the Art & Methodology
+  programme: Frontier AI Grand Challenge
+  grant_agreement: GA 101135737
+  funding_body: EuroHPC JU
+  section: Excellence → State of the Art + Methodology
+  priority: critical
+  status: draft
+  version: "1.0.0"
+  author: Amedeo Pelliccia
+  date: "2026-02-26"
+
+# ─────────────────────────────────────────────
+# 2. State of the Art — Frontier Model Landscape
+# ─────────────────────────────────────────────
+state_of_the_art:
+  frontier_models:
+    - name: GPT-5
+      organisation: OpenAI (US)
+      parameters: "undisclosed (est. >1 T)"
+      architecture: dense + MoE hybrid
+      open_weights: false
+
+    - name: Claude 3.5 Opus
+      organisation: Anthropic (US)
+      parameters: undisclosed
+      architecture: dense transformer
+      open_weights: false
+
+    - name: Gemini 2.0 Ultra
+      organisation: Google DeepMind (US)
+      parameters: "undisclosed (est. >1 T MoE)"
+      architecture: multi-modal MoE
+      open_weights: false
+
+    - name: Llama 3.1 405B
+      organisation: Meta (US)
+      parameters: 405B
+      architecture: dense transformer
+      open_weights: true
+
+    - name: DeepSeek-V3
+      organisation: DeepSeek (CN)
+      parameters: "671B total (37B active)"
+      architecture: MoE
+      open_weights: true
+
+    - name: Mixtral 8x22B
+      organisation: Mistral AI (FR/EU)
+      parameters: "176B total (39B active)"
+      architecture: sparse MoE
+      open_weights: true
+
+  eu_gaps:
+    - id: GAP-01
+      dimension: Multilingual EU coverage
+      description: >
+        No model trained with balanced representation across all 24 EU
+        official languages; most are English-dominant.
+    - id: GAP-02
+      dimension: Regulatory domain specialisation
+      description: >
+        Safety-critical sectors (aviation, space transport, energy regulation)
+        underrepresented in training corpora and evaluation benchmarks.
+    - id: GAP-03
+      dimension: Explainability in safety-critical contexts
+      description: >
+        No frontier model provides auditable inference pathways compatible
+        with EU AI Act transparency obligations for high-risk AI systems.
+    - id: GAP-04
+      dimension: EU sovereignty
+      description: >
+        All 400B+ models trained on non-EU infrastructure under non-EU legal
+        jurisdiction.
+
+  moe_advances:
+    - name: Switch Transformer
+      organisation: Google
+      year: 2022
+      contribution: >
+        Sparsely-activated expert routing scaling to trillions of parameters
+        while keeping per-token compute constant.
+    - name: Mixtral
+      organisation: Mistral AI
+      year: 2023-2024
+      contribution: >
+        Smaller MoE models matching or exceeding dense models several times
+        their active parameter count.
+    - name: DBRX
+      organisation: Databricks
+      year: 2024
+      contribution: >
+        Fine-grained expert routing with 16 experts per layer, 4 active per
+        token.
+    - name: DeepSeek-V3
+      organisation: DeepSeek
+      year: 2024-2025
+      contribution: >
+        671B total / 37B active; efficient training via multi-head latent
+        attention and auxiliary-loss-free load balancing.
+
+  quantum_augmented:
+    hilbert_bell_manifold:
+      description: >
+        12x12 spatial-quantum coupling framework with three-layer architecture
+        (SpatialDomain, QuantumState, HamiltonianEvolver) and coherence-reduction
+        mapping R(rho) classifying states as quantum/classical/hybrid.
+      status: planned_research_module
+    quantum_manifold_config:
+      description: >
+        Schema 1.1.0 specification for basis sets, coupling matrices, and
+        decoherence parameters applicable to trajectory optimisation and
+        manifold learning in expert routing.
+      status: planned_schema
+
+# ─────────────────────────────────────────────
+# 3. Methodology — GAIA-EU Architecture
+# ─────────────────────────────────────────────
+methodology:
+  model:
+    name: GAIA-EU
+    full_name: General Aerospace Intelligence Architecture — European Union
+    parameters_target: "400B+"
+    architecture: sparse_mixture_of_experts
+    expert_modules:
+      - id: EXP-REG
+        domain: Regulatory & legal (EACST, EASA, EUR-Lex)
+        data_sources:
+          - EUR-Lex corpus
+          - EASA AMC/GM library
+          - ICAO annexes
+      - id: EXP-ML
+        domain: Multilingual (all 24 EU official languages + ICAO/EASA technical)
+        data_sources:
+          - OSCAR multilingual corpus
+          - EuroParl
+          - National regulatory corpora
+      - id: EXP-SCI
+        domain: Scientific & engineering (aerospace, space, energy)
+        data_sources:
+          - arXiv
+          - PubMed
+          - Engineering standards (S1000D, ATA iSpec 2200)
+      - id: EXP-SAFE
+        domain: Safety certification (EU AI Act, EACST Parts, simplex gating)
+        data_sources:
+          - EU AI Act text
+          - EACST Parts catalogue
+          - simplex-contract invariants
+      - id: EXP-QNT
+        domain: Quantum-augmented (trajectory, optimisation — research track)
+        data_sources:
+          - Quantum computing literature
+          - Hilbert-Bell manifold configuration
+
+    coherence_gating:
+      description: >
+        Per-inference safety classification layer conceptually modelled on
+        a planned certified_dynamics module and CertifiedAdmissibleSpace
+        abstraction, providing the audit trail required by EU AI Act
+        Article 53 (GPAI transparency).
+      status: planned
+
+  training_stack:
+    parallelism_framework: Megatron-LM + DeepSpeed
+    precision: BF16 mixed precision
+    optimiser_sharding: ZeRO Stage 3
+    checkpointing: distributed async checkpointing
+    communication: InfiniBand NDR/XDR
+
+  eurohpc_systems:
+    - name: MareNostrum 5 (ACC)
+      location: BSC, Spain
+      gpu_architecture: NVIDIA H100
+      role: Primary training cluster
+    - name: LUMI-G
+      location: CSC, Finland
+      gpu_architecture: AMD MI250X / MI300X
+      role: MoE expert parallelism
+    - name: Leonardo Booster
+      location: CINECA, Italy
+      gpu_architecture: NVIDIA A100
+      role: Data preprocessing + fine-tuning
+    - name: Jupiter
+      location: JSC, Germany
+      gpu_architecture: NVIDIA GH200
+      role: Large-batch evaluation + inference
+
+  compute_estimate:
+    total_gpu_hours: 10_700_000
+    duration_months: 12
+
+  data_pipeline:
+    tokeniser: Multilingual BPE (256k vocabulary)
+    sources:
+      - name: Common Crawl EU subset
+        domain: General web (EU domains)
+        estimated_tokens: "~2 T"
+        purpose: Base language modelling
+      - name: OSCAR (EU languages)
+        domain: Cleaned multilingual web text
+        estimated_tokens: "~1.5 T"
+        purpose: Multilingual balance
+      - name: EUR-Lex
+        domain: EU legislation, case law
+        estimated_tokens: "~50 B"
+        purpose: Regulatory expert (EXP-REG)
+      - name: EASA AMC/GM + ICAO docs
+        domain: Aviation safety regulation
+        estimated_tokens: "~5 B"
+        purpose: Aviation domain (EXP-REG, EXP-SAFE)
+      - name: arXiv + PubMed
+        domain: Scientific literature
+        estimated_tokens: "~200 B"
+        purpose: Scientific expert (EXP-SCI)
+      - name: EuroParl proceedings
+        domain: Parliamentary multilingual
+        estimated_tokens: "~10 B"
+        purpose: Multilingual alignment (EXP-ML)
+      - name: National regulatory corpora
+        domain: Member state regulations
+        estimated_tokens: "~20 B"
+        purpose: Multilingual regulatory (EXP-ML, EXP-REG)
+    curation:
+      - Deduplication (MinHash + exact-match at document and paragraph level)
+      - Quality filtering (perplexity scoring, language ID, content safety)
+      - GDPR compliance (automated PII detection and removal; no personal data)
+      - Domain-specific enrichment (regulatory cross-references, citation graph)
+
+  scaling_strategy:
+    schedule: Chinchilla-optimal compute
+    stages:
+      - id: S1
+        model_size: 70B (dense seed)
+        active_params: 70B
+        training_tokens: "~1.4 T"
+        purpose: Architecture validation, hyperparameter search
+      - id: S2
+        model_size: 200B (MoE, 8 experts)
+        active_params: "~50B"
+        training_tokens: "~2.0 T"
+        purpose: Expert routing calibration, load balancing
+      - id: S3
+        model_size: "400B+ (MoE, 16+ experts)"
+        active_params: "~80B"
+        training_tokens: "~4.0 T"
+        purpose: Full frontier training, multilingual + domain experts
+
+# ─────────────────────────────────────────────
+# 4. Evaluation Framework
+# ─────────────────────────────────────────────
+evaluation:
+  benchmarks:
+    - name: MMLU-EU (extension)
+      scope: Regulatory subtasks across 24 EU languages
+      purpose: Multilingual knowledge + regulatory domain
+    - name: Regulatory NLP Suite
+      scope: EACST Parts compliance QA, EUR-Lex article retrieval, AMC/GM interpretation
+      purpose: Domain-specific safety-critical reasoning
+    - name: Aerospace Engineering Tasks
+      scope: Structural analysis, trajectory optimisation, certification document QA
+      purpose: Engineering expert capability
+    - name: TruthfulQA (EU)
+      scope: Factual accuracy on EU-specific topics
+      purpose: Truthfulness and bias detection
+    - name: BBQ Bias Benchmark (EU)
+      scope: Bias measurement adapted for EU cultural and linguistic contexts
+      purpose: Fairness across EU populations
+    - name: EU AI Act Compliance
+      scope: Annex XI documentation completeness, transparency report generation
+      purpose: Regulatory self-assessment
+    - name: Multilingual MT-Bench
+      scope: Open-ended generation quality across EU languages
+      purpose: Generation quality parity
+  target: >
+    Outperform leading open-weight models (Llama 3.1 405B, DeepSeek-V3) on all
+    EU-domain benchmarks; match or exceed proprietary models (GPT-5, Claude 3.5
+    Opus) on regulatory NLP and multilingual tasks.
+
+# ─────────────────────────────────────────────
+# 5. Novelty & Differentiation
+# ─────────────────────────────────────────────
+novelty:
+  - dimension: EU sovereignty
+    current_sota: No 400B+ EU model
+    gaia_eu_advance: First EU-sovereign frontier model trained entirely on EuroHPC
+  - dimension: Regulatory AI
+    current_sota: Generic LLMs applied post-hoc
+    gaia_eu_advance: Domain-specialist experts (EXP-REG, EXP-SAFE) trained on structured regulatory corpora
+  - dimension: Safety gating
+    current_sota: External guardrails
+    gaia_eu_advance: Integrated coherence gating layer (planned certified_dynamics design) with per-inference audit trail
+  - dimension: Multilingual parity
+    current_sota: English-dominant
+    gaia_eu_advance: Balanced 24-language training with dedicated multilingual expert (EXP-ML)
+  - dimension: Quantum-augmented
+    current_sota: Separate quantum computing tools
+    gaia_eu_advance: Research-track quantum manifold expert (EXP-QNT) for trajectory and optimisation sub-tasks
+  - dimension: EU AI Act compliance
+    current_sota: Retrofitted documentation
+    gaia_eu_advance: Compliance by design — GPAI model card, Annex XI documentation, transparency report built into training pipeline
+
+# ─────────────────────────────────────────────
+# 6. Repository Assets
+# ─────────────────────────────────────────────
+repository_assets:
+  - path: hilbert_bell_manifold.py
+    role: Quantum-augmented manifold formalism — basis for EXP-QNT expert module
+    status: planned
+  - path: quantum-manifold.yaml
+    role: Basis sets, coupling matrices, decoherence thresholds for quantum expert
+    status: planned
+  - path: certified_dynamics.py
+    role: Coherence gating layer design pattern — admissibility classification
+    status: planned
+  - path: simplex-contract.yaml
+    role: Formal safety contract methodology — gating invariants
+    status: present
+
+# ─────────────────────────────────────────────
+# 7. Key References
+# ─────────────────────────────────────────────
+references:
+  - id: REF-01
+    citation: "Fedus, W., Zoph, B., Shazeer, N. (2022). Switch Transformers. JMLR."
+  - id: REF-02
+    citation: "Jiang, A.Q. et al. (2024). Mixtral of Experts. Mistral AI Technical Report."
+  - id: REF-03
+    citation: "DeepSeek-AI. (2024). DeepSeek-V3 Technical Report."
+  - id: REF-04
+    citation: "Hoffmann, J. et al. (2022). Training Compute-Optimal Large Language Models (Chinchilla). DeepMind."
+  - id: REF-05
+    citation: "Shoeybi, M. et al. (2020). Megatron-LM. arXiv:1909.08053."
+  - id: REF-06
+    citation: "Rajbhandari, S. et al. (2020). ZeRO. SC20."
+  - id: REF-07
+    citation: "European Parliament and Council. (2024). Regulation (EU) 2024/1689 — AI Act."
+  - id: REF-08
+    citation: "EuroHPC JU. (2024). AI-BOOST Guidelines for Applicants."
+
+# ─────────────────────────────────────────────
+# 8. Revision History
+# ─────────────────────────────────────────────
+revision_history:
+  - version: "1.0.0"
+    date: "2026-02-26"
+    description: Initial machine-readable spec for DEL-02
