@@ -1081,6 +1081,7 @@ It is structural logic, not rhetoric.
 | `template_registry_entry.schema.json` | `.path_mtl/templates/` | Template entry schema (`§3.1a` §7) |
 | `ledger.schema.json` | `.path_mtl/ledger/` | TEKNIA ledger entry schema (`§STD`) |
 | `application-strategy.yaml` | `AI-BOOST/` | AI-BOOST deliverable registry (DEL-01–DEL-09), EuroHPC JU Frontier AI Grand Challenge |
+| `uts-taxonomy.yaml` | `UTS/` | Universal Transport System domain taxonomy (categories 000–080), evidence/artefact registry, Domain Atlas integration |
 
 ### File Placement (OPT-IN / PLUMA)
 
@@ -1105,6 +1106,9 @@ It is structural logic, not rhetoric.
 
 AI-BOOST/
   application-strategy.yaml     ← deliverable registry (DEL-01–DEL-09), Frontier AI Grand Challenge
+
+UTS/
+  uts-taxonomy.yaml             ← Universal Transport System domain taxonomy (000–080)
 ```
 
 ---
