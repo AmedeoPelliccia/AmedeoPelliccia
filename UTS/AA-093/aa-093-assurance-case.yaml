@@ -1,0 +1,217 @@
+# UTS/AA-093/aa-093-assurance-case.yaml
+# Machine-readable GSN assurance case for Domain 093 — Autonomy & Assurance.
+# Reference: UTS/AA-093/README.md
+# Author: Amedeo Pelliccia
+# Aligned with EACST, GAIA EU Domain Atlas and UTS-TAX-001 v1.1
+
+schema_version: "1.0.0"
+document_type: gsn_assurance_case
+last_updated: "2026-02-27T00:00:00Z"
+
+# ─────────────────────────────────────────────
+# 1. Artefact Identity
+# ─────────────────────────────────────────────
+artefact:
+  id: "AA-093"
+  title: "Autonomy Assurance Case"
+  domain: "093"
+  domain_name: "AUTONOMY_ASSURANCE"
+  parent_taxonomy: "UTS-TAX-001"
+  parent_taxonomy_version: "1.1"
+  status: "DRAFT"
+  author: "Amedeo Pelliccia"
+  frameworks:
+    - "EACST"
+    - "GAIA EU"
+  classification: "Extension Domain (UTS Extension Roadmap)"
+
+# ─────────────────────────────────────────────
+# 2. Autonomy Levels
+# ─────────────────────────────────────────────
+autonomy_levels:
+  - level: "L1"
+    name: "Assisted"
+    description: "Human-in-the-loop, AI advisory"
+    aa_093_required: false
+    aa_093_lite_required: true
+  - level: "L2"
+    name: "Supervised"
+    description: "Human-on-the-loop, AI executes"
+    aa_093_required: true
+  - level: "L3"
+    name: "Conditional"
+    description: "AI executes; human intervened on request"
+    aa_093_required: true
+  - level: "L4"
+    name: "High"
+    description: "AI executes; human intervention optional"
+    aa_093_required: true
+  - level: "L5"
+    name: "Full"
+    description: "No human intervention in operational design domain"
+    aa_093_required: true
+
+# ─────────────────────────────────────────────
+# 3. GSN Top-Level Argument
+# ─────────────────────────────────────────────
+gsn:
+  goals:
+    - id: "G1"
+      text: "The autonomous system [X] is acceptably safe to operate within ODD [Y]"
+      supported_by:
+        - "G2"
+        - "G3"
+        - "G4"
+        - "G5"
+        - "G6"
+    - id: "G2"
+      text: "The system is sufficiently reliable"
+      evidence: "EV-093-001"
+    - id: "G3"
+      text: "The system behaves robustly within and at the boundary of the ODD"
+      evidence: "EV-093-002"
+    - id: "G4"
+      text: "Autonomous decisions are explainable to required level"
+      evidence: "EV-093-003"
+    - id: "G5"
+      text: "SOTIF residual risk is within accepted threshold"
+      evidence: "EV-093-004"
+    - id: "G6"
+      text: "All identified failure modes result in a safe state"
+      evidence: "EV-093-005"
+
+# ─────────────────────────────────────────────
+# 4. Minimum Evidence Requirements
+# ─────────────────────────────────────────────
+evidence:
+  - id: "EV-093-001"
+    title: "Reliability & Availability Analysis"
+    acceptance_criterion: "MTBF >= 1e9 h for safety functions; availability >= 99.9999%"
+    owner: "Reliability & Availability Engineer"
+    path: "evidence/EV-093-001-reliability/"
+  - id: "EV-093-002"
+    title: "Robustness & ODD Validation Report"
+    acceptance_criterion: ">= 95% test pass rate within operational design domain"
+    owner: "Autonomy Systems Architect"
+    path: "evidence/EV-093-002-robustness/"
+  - id: "EV-093-003"
+    title: "Explainability Assessment"
+    acceptance_criterion: "Explainability score >= 0.7 for all L3+ decisions"
+    owner: "XAI Specialist"
+    path: "evidence/EV-093-003-xai/"
+  - id: "EV-093-004"
+    title: "SOTIF Residual Risk Register"
+    acceptance_criterion: "All Class A risks mitigated; Class B risks accepted with rationale"
+    owner: "SOTIF Lead"
+    path: "evidence/EV-093-004-sotif/"
+  - id: "EV-093-005"
+    title: "Fail-Safe Verification Record"
+    acceptance_criterion: "All single-point failure modes verified safe; no undetected dual failures"
+    owner: "Safety Case Author"
+    path: "evidence/EV-093-005-failsafe/"
+
+# ─────────────────────────────────────────────
+# 5. Limits of Use
+# ─────────────────────────────────────────────
+limits_of_use:
+  - code: "LoU-093-001"
+    limit: "Autonomous safety function MTBF >= 1e9 hours"
+    enforcement: "Verified by independent reliability analysis; re-demonstrated after major SW change"
+  - code: "LoU-093-002"
+    limit: "Explainability score >= 0.7 for all Level 3+ autonomous decisions"
+    enforcement: "Assessed per decision class; re-evaluated on model update"
+  - code: "LoU-093-003"
+    limit: "Assurance case mandatory prior to GAIA EU admissibility review"
+    enforcement: "Gating condition; no AI admissibility token issued without AA-093"
+  - code: "LoU-093-004"
+    limit: "ODD must be formally specified and bounded"
+    enforcement: "Non-compliance invalidates all associated EV-093-002 evidence"
+  - code: "LoU-093-005"
+    limit: "Any change to autonomy software >= ASIL-B impact requires AA-093 resubmission"
+    enforcement: "Enforced via CM gate in CI/CD pipeline"
+
+# ─────────────────────────────────────────────
+# 6. Roles & Responsibilities
+# ─────────────────────────────────────────────
+roles:
+  - role: "Autonomy Systems Architect"
+    responsibilities: "Authors top-level assurance argument; owns ODD specification; approves EV-093-002"
+  - role: "Reliability & Availability Engineer"
+    responsibilities: "Produces fault trees, FMEA, MTBF analysis; owns EV-093-001"
+  - role: "XAI Specialist"
+    responsibilities: "Designs explainability methodology; produces EV-093-003; selects appropriate XAI framework"
+  - role: "Safety Case Author"
+    responsibilities: "Structures GSN/CAE argument; links evidence to claims; owns overall AA-093 package"
+  - role: "SOTIF Lead"
+    responsibilities: "Manages residual risk register; conducts SOTIF analysis per ISO 21448 / EACST-SOT; owns EV-093-004"
+  - role: "Independent Reviewer"
+    responsibilities: "Conducts adversarial review of the assurance case; signs off readiness for GAIA EU submission"
+
+# ─────────────────────────────────────────────
+# 7. Interfaces
+# ─────────────────────────────────────────────
+interfaces:
+  depends_on:
+    - code: "000"
+      description: "Safety philosophy & human factors baseline"
+    - code: "030"
+      description: "AI/ML models, sensor fusion — the autonomous function itself"
+    - code: "040"
+      description: "Simulation evidence for edge-case and ODD coverage"
+    - code: "091"
+      description: "Human factors validation for L2/L3 handover interfaces"
+  feeds_into:
+    - "GAIA EU Admissibility Review"
+    - "EACST Certification Package"
+
+# ─────────────────────────────────────────────
+# 8. Domain Cell Reference
+# ─────────────────────────────────────────────
+domain_cell:
+  cell_id: "CELL_093_030"
+  axes:
+    - code: "093"
+      bounds:
+        metric: "explainability_score"
+        min: 0.7
+        max: 1.0
+    - code: "030"
+      bounds:
+        metric: "inference_accuracy"
+        min: 0.85
+        max: 1.0
+  admissibility:
+    ai_use: "AI_AUTONOMOUS"
+    required_evidence:
+      - "AA-093"
+      - "EV-093-001"
+      - "EV-093-002"
+      - "EV-093-003"
+      - "EV-093-004"
+      - "EV-093-005"
+  limits_of_use:
+    - "LoU-093-001"
+    - "LoU-093-002"
+    - "LoU-093-003"
+  signoff: "EACST + GAIA-EU"
+
+# ─────────────────────────────────────────────
+# 9. Review & Approval Gates
+# ─────────────────────────────────────────────
+review_gates:
+  - gate: "AA-093-G1"
+    name: "Internal Draft"
+    condition: "All evidence items drafted; internal peer review complete"
+    approver: "Safety Case Author"
+  - gate: "AA-093-G2"
+    name: "Independent Review"
+    condition: "Adversarial review passed; all major findings resolved"
+    approver: "Independent Reviewer"
+  - gate: "AA-093-G3"
+    name: "EACST Submission Ready"
+    condition: "LoU compliance confirmed; all evidence linked and version-controlled"
+    approver: "Autonomy Systems Architect"
+  - gate: "AA-093-G4"
+    name: "GAIA EU Admissibility Token"
+    condition: "GAIA EU review board accepted; AI admissibility class assigned"
+    approver: "GAIA EU Review Board"
