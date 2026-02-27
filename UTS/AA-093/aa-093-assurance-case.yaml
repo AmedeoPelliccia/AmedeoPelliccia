@@ -40,7 +40,7 @@ autonomy_levels:
     aa_093_required: true
   - level: "L3"
     name: "Conditional"
-    description: "AI executes; human intervened on request"
+    description: "AI executes; human intervenes on request"
     aa_093_required: true
   - level: "L4"
     name: "High"
