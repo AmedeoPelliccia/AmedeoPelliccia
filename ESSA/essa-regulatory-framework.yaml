@@ -1,7 +1,7 @@
-# eacst-regulatory-framework.yaml
-# Machine-readable specification for the European Agency for Civil Space
-# Transportation (EACST) regulatory framework.
-# Reference: EACST/README.md §1–§12
+# essa-regulatory-framework.yaml
+# Machine-readable specification for the European Union Space Safety
+# Agency (ESSA) regulatory framework.
+# Reference: ESSA/README.md §1–§12
 # Author: Amedeo Pelliccia
 # Aligned with EU Space Act (2025) safety/resilience/sustainability pillars
 # and IDEALE-ESG Aerospace pillar governance.
@@ -14,8 +14,8 @@ last_updated: "2026-02-25T00:00:00Z"
 # 1. Agency Identity
 # ─────────────────────────────────────────────
 agency:
-  name: European Agency for Civil Space Transportation
-  acronym: EACST
+  name: European Union Space Safety Agency
+  acronym: ESSA
   mission: >
     Ensure safe, resilient, and sustainable civil space transportation
     in Europe, with harmonised licensing and oversight for operators
@@ -336,7 +336,7 @@ roadmap:
 # ─────────────────────────────────────────────
 institutional_options:
   - id: OPT-NEW
-    name: New agency (EACST)
+    name: New agency (ESSA)
     parent: DG DEFIS
     pros:
       - Clean mandate
@@ -356,13 +356,13 @@ institutional_options:
       - Risk of aviation-centric bias
 
   - id: OPT-HYBRID
-    name: Hybrid (EASA + EACST split)
+    name: Hybrid (EASA + ESSA split)
     parent: DG DEFIS / EASA
     split:
       easa_handles:
         - Crew licensing and training
         - ATM interfaces
-      eacst_handles:
+      essa_handles:
         - Launch/re-entry licensing
         - Continued airworthiness for reusables
     pros:
@@ -399,5 +399,5 @@ institutional_context:
         - resilience_cybersecurity
         - sustainability
       relevance: >
-        EACST operationalises the EU Space Act's transport-related
+        ESSA operationalises the EU Space Act's transport-related
         obligations into enforceable implementing rules.

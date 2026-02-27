@@ -2,7 +2,7 @@
 # Machine-readable domain taxonomy for the Universal Transport System.
 # Reference: UTS/README.md
 # Author: Amedeo Pelliccia
-# Aligned with EACST, AMPEL360, GAIA EU Domain Atlas and IDEALE-ESG
+# Aligned with ESSA, AMPEL360, GAIA EU Domain Atlas and IDEALE-ESG
 # Aerospace pillar governance.
 
 schema_version: "1.0.0"
@@ -18,7 +18,7 @@ taxonomy:
   version: "1.1"
   purpose: >
     Defines a structured set of functional categories that serve as the
-    semantic backbone for the EACST, AMPEL360 and GAIA EU frameworks.
+    semantic backbone for the ESSA, AMPEL360 and GAIA EU frameworks.
     Each category maps to artefacts, evidences, roles, limits of use
     and certification processes across civil transport domains.
 
@@ -280,7 +280,7 @@ domain_atlas_example:
       - "EV-040-002"
   limits_of_use:
     - "LoU-030-005"
-  signoff: "EACST"
+  signoff: "ESSA"
 
 # ─────────────────────────────────────────────
 # 5. Pipeline Integration
