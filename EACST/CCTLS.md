@@ -455,12 +455,17 @@ EACST_PACKAGE_REGISTRY:
 token:
   token_id: "KPI_MEASURE-CO2e-SUP-A-2026Q1"
   token_type: "KPI_MEASURE"
+  title: "CO2e emissions measured on chain for Supplier A, 2026 Q1"
+  template_id: "TPL-KPI-MEASURE-CO2e"
+  metadata_schema_id: "SCHEMA-KPI-MEASURE-v1"
   phase: "P030"
   package_id: "PKG-P030-ESG-OVERLAY"
   subpackage_id: "SUBPKG-CHAIN-SC-MEASURE"
   aor_id: "AOR-000123"
   version: "1.0.0"
   checksum: "sha3-512:..."
+  status: "ACTIVE"
+  children: []
   bindings:
     domain: "DUAL"
     operation_context: "LINE"
