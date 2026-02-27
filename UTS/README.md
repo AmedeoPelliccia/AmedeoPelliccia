@@ -228,5 +228,7 @@ graph LR
 | File                                                      | Purpose                                              |
 | --------------------------------------------------------- | ---------------------------------------------------- |
 | [`uts-taxonomy.yaml`](uts-taxonomy.yaml)                  | Machine-readable taxonomy specification              |
+| [`GNS-010/README.md`](GNS-010/README.md)                 | GNS-010 — EGNOS & Galileo Integration Specification  |
+| [`GNS-010/gns-010-token-manifest.yaml`](GNS-010/gns-010-token-manifest.yaml) | GNS-010 machine-readable CCTLS token manifest |
 | [`../EACST/README.md`](../EACST/README.md)               | European Agency for Civil Space Transportation spec  |
 | [`../EACST/eacst-regulatory-framework.yaml`](../EACST/eacst-regulatory-framework.yaml) | EACST machine-readable regulatory framework |

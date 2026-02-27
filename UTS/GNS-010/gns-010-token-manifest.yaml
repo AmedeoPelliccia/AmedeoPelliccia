@@ -1,0 +1,260 @@
+##############################################################################
+# GNS-010 — EGNOS & Galileo Integration Specification
+# Machine-readable CCTLS token manifest
+##############################################################################
+
+document_id: GNS-010
+document_type: cctls_token_manifest
+title: "EGNOS & Galileo Integration Specification — Token Manifest"
+version: "0.1.0"
+schema_version: "1.0.0"
+status: DRAFT
+last_updated: "2026-02-27T00:00:00Z"
+author: "Amedeo Pelliccia"
+
+parent_domain:
+  code: "010"
+  name: "MISSION_SYSTEMS"
+  taxonomy_ref: "UTS-TAX-001 v1.1"
+
+parent_lifecycle:
+  document_id: "EACST-STD-CCTLS-001"
+  version: "0.3.0"
+  baseline_token: "CLB-001-TOKEN"
+
+frameworks:
+  - "ESSA"
+  - "AMPEL360"
+  - "GAIA EU"
+
+applicable_programmes:
+  - "Civil aviation (NPA/IFR)"
+  - "Urban Air Mobility (UAM)"
+  - "Reusable Space Platforms (RSP)"
+  - "Hybrid Transport (domain 092)"
+
+##############################################################################
+# Token Registry
+##############################################################################
+tokens:
+  - token_id: "MP-010-GNS-EGNOS-001"
+    token_type: "MISSION_PROFILE"
+    phase: "P010"
+    status: "DRAFT"
+    description: "Mission profile for EGNOS SoL-dependent operations"
+
+  - token_id: "METHOD-P040-GNS-RAIM-001"
+    token_type: "METHOD"
+    phase: "P040"
+    status: "DRAFT"
+    description: "RAIM/FDE analytical method specification"
+
+  - token_id: "MODEL_SPEC-P040-GNS-DUAL-001"
+    token_type: "MODEL_SPEC"
+    phase: "P040"
+    status: "DRAFT"
+    description: "Dual-constellation navigation model (GPS+Galileo+EGNOS)"
+
+  - token_id: "VALIDATION_CASE-P040-GNS-LPV200-001"
+    token_type: "VALIDATION_CASE"
+    phase: "P040"
+    status: "DRAFT"
+    description: "LPV-200 approach simulation validation case"
+
+  - token_id: "VALIDATION_CASE-P040-GNS-HAS-001"
+    token_type: "VALIDATION_CASE"
+    phase: "P040"
+    status: "DRAFT"
+    description: "Galileo HAS convergence validation case"
+
+  - token_id: "SIM_RUN-P040-GNS-RAIM-AVAIL-001"
+    token_type: "SIM_RUN"
+    phase: "P040"
+    status: "DRAFT"
+    description: "RAIM availability simulation — ECAC coverage"
+
+  - token_id: "SIM_RUN-P040-GNS-HAS-CONV-001"
+    token_type: "SIM_RUN"
+    phase: "P040"
+    status: "DRAFT"
+    description: "HAS convergence time simulation"
+
+  - token_id: "DOA_SIGN-P050-GNS-010-001"
+    token_type: "DOA_SIGN"
+    phase: "P050"
+    status: "DRAFT"
+    description: "DOA sign-off for dual-constellation GNSS integration"
+    activation_policy: >
+      EXISTS(links[rel='supports' AND target.token_id='SIM_RUN-P040-GNS-RAIM-AVAIL-001'])
+      AND EXISTS(links[rel='supports' AND target.token_id LIKE 'VALIDATION_CASE-P040-GNS-%'])
+      AND ALL(children[token_type='COMPLIANCE_ITEM'].status IN ['CONFIRMED','ACTIVATED'])
+      AND ALL(children[token_type='FINDING'].status = 'CLOSED')
+      AND EXISTS(links[rel='supports' AND target.token_id='GNS-010-EV-002'])
+      AND EXISTS(links[rel='supports' AND target.token_id='GNS-010-EV-005'])
+
+  - token_id: "COMPLIANCE_ITEM-P050-DO229F-001"
+    token_type: "COMPLIANCE_ITEM"
+    phase: "P050"
+    status: "DRAFT"
+    description: "DO-229F MOPS compliance disposition"
+
+  - token_id: "COMPLIANCE_ITEM-P050-ED259-001"
+    token_type: "COMPLIANCE_ITEM"
+    phase: "P050"
+    status: "DRAFT"
+    description: "ED-259 compliance disposition"
+
+  - token_id: "ICA_TASK-P080-GNS-ANTCAL-001"
+    token_type: "ICA_TASK"
+    phase: "P080"
+    status: "DRAFT"
+    description: "GNSS antenna calibration ICA task"
+
+  - token_id: "ICA_TASK-P080-GNS-RECVTEST-001"
+    token_type: "ICA_TASK"
+    phase: "P080"
+    status: "DRAFT"
+    description: "Receiver functional test ICA task"
+
+  - token_id: "TRAFFIC_CLEARANCE-P090-EGNOS-OPS-001"
+    token_type: "TRAFFIC_CLEARANCE"
+    phase: "P090"
+    status: "DRAFT"
+    description: "EGNOS SoL operational approval reference"
+
+  - token_id: "CYB_CONTROL-P120-OSNMA-001"
+    token_type: "CYB_CONTROL"
+    phase: "P120"
+    status: "DRAFT"
+    description: "OSNMA authentication control"
+
+  - token_id: "CYB_CONTROL-P120-GNSS-SPOOF-001"
+    token_type: "CYB_CONTROL"
+    phase: "P120"
+    status: "DRAFT"
+    description: "GNSS spoofing / jamming mitigation control"
+
+##############################################################################
+# Evidence Package
+##############################################################################
+evidence:
+  - evidence_id: "GNS-010-EV-001"
+    title: "SIS Performance Measurement Report"
+    links_to: "SIM_RUN-P040-GNS-RAIM-AVAIL-001"
+    acceptance_criterion: "All SIS bounds in §2.1 demonstrated in operational area"
+    directory: "evidence/GNS-010-EV-001-sis-performance/"
+
+  - evidence_id: "GNS-010-EV-002"
+    title: "SBAS Receiver Qualification Report (DO-229F)"
+    links_to: "COMPLIANCE_ITEM-P050-DO229F-001"
+    acceptance_criterion: "All MOPS §3.2 requirements PASS"
+    directory: "evidence/GNS-010-EV-002-do229f-qualification/"
+
+  - evidence_id: "GNS-010-EV-003"
+    title: "Antenna Qualification Record (DO-316)"
+    links_to: "DOA_SIGN-P050-GNS-010-001"
+    acceptance_criterion: "EMI/EMC PASS; gain pattern within bounds"
+    directory: "evidence/GNS-010-EV-003-antenna-qualification/"
+
+  - evidence_id: "GNS-010-EV-004"
+    title: "System Integration Test Matrix"
+    links_to: "VALIDATION_CASE-P040-GNS-LPV200-001"
+    acceptance_criterion: "All integration test cases PASS"
+    directory: "evidence/GNS-010-EV-004-integration-test/"
+
+  - evidence_id: "GNS-010-EV-005"
+    title: "GNSS FMEA / RAIM Analysis Report"
+    links_to: "HAZARD-P020-GNS-LOSS-001"
+    acceptance_criterion: "All failure modes covered; Pmd ≤ 1e-3"
+    directory: "evidence/GNS-010-EV-005-fmea-raim/"
+
+  - evidence_id: "GNS-010-EV-006"
+    title: "SoL Pre-flight Availability Procedure"
+    links_to: "ICA_TASK-P080-GNS-RECVTEST-001"
+    acceptance_criterion: "NANU check protocol documented and validated"
+    directory: "evidence/GNS-010-EV-006-sol-preflight-procedure/"
+
+  - evidence_id: "GNS-010-EV-007"
+    title: "HAS Convergence Validation Report"
+    links_to: "VALIDATION_CASE-P040-GNS-HAS-001"
+    acceptance_criterion: "Convergence ≤ 300 s; HPE ≤ 0.20 m (95%)"
+    directory: "evidence/GNS-010-EV-007-has-convergence/"
+
+  - evidence_id: "GNS-010-EV-008"
+    title: "OSNMA Integration & Cyber Test Report"
+    links_to: "CYB_CONTROL-P120-OSNMA-001"
+    acceptance_criterion: "Authentication latency ≤ 30 s; spoof rejection verified"
+    directory: "evidence/GNS-010-EV-008-osnma-cyber/"
+
+##############################################################################
+# Operational Limits of Use
+##############################################################################
+limits_of_use:
+  - code: "LoU-010-GNS-001"
+    limit: "EGNOS SoL availability must be confirmed ≥ 1 h before departure for all SoL-dependent operations"
+    enforcement: "Pre-flight check documented in GNS-010-EV-006; NANU archive retained"
+
+  - code: "LoU-010-GNS-002"
+    limit: "Dual-constellation (GPS+Galileo) mandatory for all FLIGHT and LRE contexts"
+    enforcement: "Receiver qualification to ED-115 / DO-229F Class Beta-3"
+
+  - code: "LoU-010-GNS-003"
+    limit: "OSNMA authentication must be active for all operations where domain 020 CYB_CONTROL is in force"
+    enforcement: "Receiver must support OSNMA; authentication status logged per flight"
+
+  - code: "LoU-010-GNS-004"
+    limit: "Galileo HAS may only be used as primary positioning source after confirmed convergence"
+    enforcement: "Convergence ≤ 0.20 m CEP; timeout fallback to EGNOS SoL or OS mandatory"
+
+  - code: "LoU-010-GNS-005"
+    limit: "LPV-200 and UAM precision operations require VPL ≤ 35 m continuously; operations must abort if VPL exceeds limit"
+    enforcement: "Monitored in real-time; missed approach mandatory on VPL exceedance"
+
+  - code: "LoU-010-GNS-006"
+    limit: "Non-GNSS reversionary navigation must be demonstrated for all SoL-dependent routes"
+    enforcement: "INS, DME/DME, or VOR/DME backup demonstrated per GNS-010-EV-004"
+
+  - code: "LoU-010-GNS-007"
+    limit: "Any GNSS software / firmware update triggers re-execution of GNS-010-EV-002 (MOPS re-qualification)"
+    enforcement: "Enforced via CM gate; token version increment mandatory"
+
+##############################################################################
+# Reference Standards
+##############################################################################
+reference_standards:
+  - id: "DO-229F"
+    title: "Minimum Operational Performance Standards for GPS/WAAS Airborne Equipment"
+    applicability: "EGNOS SBAS certification"
+  - id: "ED-259"
+    title: "EUROCAE equivalent of DO-229 for EGNOS/European context"
+    applicability: "European regulatory baseline"
+  - id: "DO-235C"
+    title: "Assessment of Navigation Systems"
+    applicability: "Interoperability assessment"
+  - id: "DO-316"
+    title: "MOPS for GNSS Airborne Active Antenna Equipment"
+    applicability: "Antenna qualification"
+  - id: "RTCA DO-253D"
+    title: "MOPS for GPS Local Area Augmentation System Airborne Equipment"
+    applicability: "LAAS/GRAS if applicable"
+  - id: "Galileo OS SDD"
+    title: "Galileo Open Service Signal-In-Space Interface Control Document"
+    applicability: "Signal performance definition"
+  - id: "Galileo HAS SDD"
+    title: "Galileo High Accuracy Service Signal-In-Space Interface Control Document"
+    applicability: "HAS PPP-RTK performance"
+  - id: "ICAO Annex 10 Vol I"
+    title: "Aeronautical Telecommunications — Radio Navigation Aids"
+    applicability: "Operational performance standards"
+  - id: "ICAO Doc 9849"
+    title: "Global Navigation Satellite System (GNSS) Manual"
+    applicability: "System-level requirements"
+  - id: "ED-115"
+    title: "MOPS for Galileo/GPS Airborne Receiving Equipment"
+    applicability: "Dual-constellation MOPS"
+  - id: "EASA AMC 20-28"
+    title: "Airworthiness Criteria — GNSS Based Navigation"
+    applicability: "European certification AMC"
+  - id: "ISO 17894"
+    title: "Ships and marine technology — Principles for GNSS augmentation"
+    applicability: "Applicable for maritime hybrid transport"
