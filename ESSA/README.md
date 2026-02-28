@@ -238,6 +238,35 @@ Priority ordering: **Safety > Security > Performance** — without exception.
 
 ---
 
+### 3.5 Total Cross-Chain H Pipeline
+
+**Canonical artefacts:** [`H-PIPELINE.md`](H-PIPELINE.md) · [`h-pipeline.yaml`](h-pipeline.yaml)
+
+**Document ID:** `ESSA-DOC-H-001`
+
+The **Total Cross-Chain H Pipeline** is the Human-Safety end-to-end backbone — the operational implementation of the Safety-First Doctrine across all lifecycle chains and phases.
+
+> No deliverable is activable unless it is linked to the H pipeline.
+
+The H Pipeline defines eight cross-chain scopes (Industrial · Digital · Engineering · Authority · Test · Operations · Mission · Reporting), each mapped to its canonical CCTLS phase(s), and a minimum H-token ontology:
+
+| Token | Role |
+|-------|------|
+| `H_ENVELOPE` | Non-negotiable safety bounds — must exist before any derivation |
+| `H_HAZARD` | Identified hazard linked to the envelope |
+| `H_REQ` | Safety requirement derived from envelope or hazard |
+| `H_CONSTRAINT` | Operational/architectural constraint derived from requirement |
+| `H_EVIDENCE` | Verifiable proof (test · analysis · operational) |
+| `H_EXCEPTION` | Controlled deviation — requires mitigation, rollback, and `H_SIGNOFF` |
+| `H_UPDATE` | Envelope update from operational occurrence — triggers re-validation |
+| `H_SIGNOFF` | Authority acceptance — required on every evidence before activation |
+
+The mandatory traceability topology is: `H_ENVELOPE → H_HAZARD → H_REQ → H_CONSTRAINT → H_EVIDENCE → H_SIGNOFF`, with an operational feedback loop (`occurrence → H_UPDATE → H_ENVELOPE`) and a controlled exception path.
+
+Gate invariant: any artefact that cannot produce a complete `H_ENVELOPE → … → H_SIGNOFF` chain **SHALL NOT** be activated.
+
+---
+
 ESSA enforces controlled discretisation.
 
 Continuous development is transformed into:
