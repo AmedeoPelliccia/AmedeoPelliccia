@@ -267,6 +267,27 @@ Gate invariant: any artefact that cannot produce a complete `H_ENVELOPE → … 
 
 ---
 
+### 3.6 AMPEL — Assisted Methods for Programming Evolutionary Loops
+
+**Canonical artefacts:** [`AMPEL.md`](AMPEL.md) · [`ampel.yaml`](ampel.yaml)
+
+**Document ID:** `ESSA-DOC-AMPEL-001`
+
+**AMPEL** is the evolutionary engine operating within ESSA's constitutional framework — the structural method for programming evolutionary loops under Safety-First governance.
+
+> **Formal invariant:** `Evolutionary Change ⊆ Valid(H_Envelope)`
+
+AMPEL is not a product, brand, or AI tool. It defines:
+
+- **The Evolutionary Loop (EL)**: `H_ENVELOPE → Requirements → Design → Evidence → Authority → Release → Operation → Feedback → H_UPDATE → H_ENVELOPE` — the ProgressChain with closed-loop feedback, contained by invariants
+- **Five Assisted Methods**: Generation · Analysis · Simulation · Evaluation · Impact Analysis — each tool-augmented, human-authority-confirmed, envelope-bounded
+- **Five Loop Programming Elements**: States · Transitions · Inhibitors · Feedback · Envelope Update
+- **ESSA placement**: `ESSA (Constitution) → AMPEL (Evolutionary Engine) → Sector Profiles (Aviation · Space · RSP · Autonomy)`
+
+Evolution does not seek maximum efficiency. It seeks improvement within Human Safety — an out-of-envelope candidate is non-activable by construction.
+
+---
+
 ESSA enforces controlled discretisation.
 
 Continuous development is transformed into:
