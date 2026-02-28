@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pluma-gai.ampel360.eu/schemas/evidence-registry/v0.1.0",
+  "title": "PLUMA-GAI Evidence Registry Entry",
+  "description": "Schema for a single evidence record in the PLUMA-GAI programme evidence ledger. Every entry must be hashable, traceable to a requirement, and linked to a verification or validation method.",
+  "type": "object",
+  "required": [
+    "evidence_id",
+    "pluma_id",
+    "phase",
+    "title",
+    "parent_requirement",
+    "safety_class",
+    "verification_method",
+    "ai_class",
+    "evidence_hash",
+    "node",
+    "status",
+    "created_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "evidence_id": {
+      "type": "string",
+      "pattern": "^EV-[A-Z0-9]+-[0-9]{4}$",
+      "description": "Unique evidence identifier. Pattern: EV-<DOMAIN>-NNNN (e.g. EV-LH2-0001, EV-UAS-0042)"
+    },
+    "pluma_id": {
+      "type": "string",
+      "pattern": "^PLM-AMP-GAI-[0-9]{4}$",
+      "description": "Parent PLUMA-GAI artefact identifier. Links this evidence to a governed artefact."
+    },
+    "phase": {
+      "type": "string",
+      "enum": ["P000", "P010", "P020", "P030", "P040", "P050", "P060", "P070", "P080", "P090", "P100"],
+      "description": "PLUMA-GAI lifecycle phase that produced or required this evidence."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 5,
+      "description": "Short human-readable title for the evidence item."
+    },
+    "description": {
+      "type": "string",
+      "description": "Full description of what this evidence demonstrates."
+    },
+    "parent_requirement": {
+      "type": "string",
+      "pattern": "^SYS-REQ-[0-9]+$",
+      "description": "Top-level system requirement this evidence satisfies. Pattern: SYS-REQ-NNN."
+    },
+    "safety_class": {
+      "type": "string",
+      "enum": ["DAL_A", "DAL_B", "DAL_C", "DAL_D", "DAL_E"],
+      "description": "Design Assurance Level assigned to this evidence item per DO-178C / ARP4754A."
+    },
+    "verification_method": {
+      "type": "string",
+      "enum": ["Test", "Analysis", "Inspection", "Simulation"],
+      "description": "Verification/validation method used to produce this evidence. T/A/I/S per DO-178C."
+    },
+    "ai_class": {
+      "type": "string",
+      "enum": ["A0", "A1", "A2", "A3", "N/A"],
+      "description": "AI component class per PLUMA-GAI §6. Use N/A for non-AI evidence."
+    },
+    "node": {
+      "type": "string",
+      "enum": ["AMPEL360", "GAIA", "CHANNEL", "PROGRAMME"],
+      "description": "Programme node that owns this evidence. CHANNEL for AMP-GAI-CORE evidence."
+    },
+    "evidence_hash": {
+      "type": "string",
+      "pattern": "^sha3-512:[0-9a-f]{128}$",
+      "description": "SHA3-512 hash of the evidence artefact file. Format: sha3-512:<hex>."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["Draft", "Frozen", "Certified"],
+      "description": "Lifecycle status. Only Frozen or Certified evidence may be cited in certification submissions."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601Z timestamp when this evidence record was created."
+    },
+    "frozen_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601Z timestamp when this evidence was frozen (status transitioned to Frozen)."
+    },
+    "certified_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601Z timestamp when this evidence was accepted by DOA (status Certified)."
+    },
+    "gating_condition_id": {
+      "type": "string",
+      "pattern": "^GAI-[A-Z]+-[A-Z]+-[0-9]+$",
+      "description": "Optional link to a PLUMA-GAI gating condition this evidence closes."
+    },
+    "change_record_id": {
+      "type": "string",
+      "description": "Optional change record identifier if this evidence was produced under a programme change."
+    },
+    "regulatory_event_id": {
+      "type": "string",
+      "description": "Optional regulatory event reference for evidence produced under a special condition or AMC."
+    },
+    "reuse_cycle_id": {
+      "type": "string",
+      "description": "Required for RSP domain evidence if applicable to a reuse cycle."
+    },
+    "run_manifest_ref": {
+      "type": "string",
+      "description": "Reference to the CAX run manifest in 03-CAX_PHASES/ that produced this evidence."
+    },
+    "tool": {
+      "type": "object",
+      "description": "CAX or test tool used to produce this evidence.",
+      "properties": {
+        "name": {"type": "string"},
+        "version": {"type": "string"},
+        "qualification_ref": {"type": "string"}
+      },
+      "required": ["name", "version"]
+    },
+    "links": {
+      "type": "array",
+      "description": "Traceability links to other artefacts.",
+      "items": {
+        "type": "object",
+        "required": ["rel", "target_id"],
+        "properties": {
+          "rel": {
+            "type": "string",
+            "enum": ["verifies", "supports", "derives_from", "supersedes", "measured_on"],
+            "description": "Relationship type."
+          },
+          "target_id": {
+            "type": "string",
+            "description": "Target artefact or evidence ID."
+          }
+        }
+      }
+    },
+    "approvals": {
+      "type": "array",
+      "description": "Approval signatures. At least one DOA-role approval required for Certified status.",
+      "items": {
+        "type": "object",
+        "required": ["role", "approver", "date"],
+        "properties": {
+          "role": {
+            "type": "string",
+            "enum": ["Observer", "Delineant", "DesignAuthority", "DOA", "QA", "Safety"]
+          },
+          "approver": {
+            "type": "string",
+            "description": "Approver identifier (name or ID)."
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "ISO-8601Z approval timestamp."
+          },
+          "signature": {
+            "type": "string",
+            "description": "Digital signature or reference to signed approval document."
+          }
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "evidence_id": "EV-LH2-0001",
+      "pluma_id": "PLM-AMP-GAI-0001",
+      "phase": "P020",
+      "title": "LH2 tank crash FEM analysis — baseline",
+      "description": "Finite element analysis of LH2 tank structural integrity under CS-25.963 crash loads. Validates SC-LH2 special condition requirement.",
+      "parent_requirement": "SYS-REQ-028",
+      "safety_class": "DAL_A",
+      "verification_method": "Analysis",
+      "ai_class": "N/A",
+      "node": "AMPEL360",
+      "evidence_hash": "sha3-512:0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "_evidence_hash_note": "Placeholder — replace with actual SHA3-512 of the artefact file before Frozen status.",
+      "status": "Draft",
+      "created_at": "2026-02-28T12:00:00Z",
+      "gating_condition_id": "GAI-SC-LH2-001",
+      "run_manifest_ref": "GAI-SC-LH2-001-run-manifest.yaml",
+      "tool": {
+        "name": "ABAQUS",
+        "version": "2025.1",
+        "qualification_ref": "DO-330-QUAL-ABAQUS-2025"
+      },
+      "links": [
+        {"rel": "verifies", "target_id": "SYS-REQ-028"},
+        {"rel": "supports", "target_id": "GAI-SC-LH2-001"}
+      ],
+      "approvals": []
+    }
+  ]
+}

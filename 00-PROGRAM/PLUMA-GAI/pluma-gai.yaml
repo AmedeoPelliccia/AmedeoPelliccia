@@ -6,12 +6,12 @@
 
 document_id: PLUMA-GAI-001
 document_type: lifecycle_governance_model
-title: "PLUMA-GAI — Programming Lifecycle Undertaking Model"
-subtitle: "AMPEL360 · GAIA Aerospace Integrations"
-version: "1.0.0"
+title: "PLUMA-GAI — Programme Lifecycle Unique Model Architecture"
+subtitle: "GAIA ↔ AMPEL360 Integrated"
+version: "0.2.0"
 schema_version: "1.0.0"
 status: draft
-last_updated: "2026-02-28T00:00:00Z"
+last_updated: "2026-02-28T12:00:00Z"
 
 parent_standards:
   - ESSA-STD-CCTLS-001     # ESSA Common Civil Transport Lifecycle Standard
@@ -28,12 +28,20 @@ related_artefacts:
     rel: references
   - path: ESSA/cctls.yaml
     rel: references
+  - path: 00-PROGRAM/PLUMA-GAI/AMP-GAI-ICD-v0.1.0.yaml
+    rel: interface_control_document
+  - path: 00-PROGRAM/PLUMA-GAI/EVIDENCE_REGISTRY.schema.json
+    rel: evidence_schema
+  - path: 00-PROGRAM/PLUMA-GAI/AA-093-TEMPLATE.gsn.yaml
+    rel: assurance_case_template
 
 purpose: >
-  Define a deterministic lifecycle governance model for software-intensive
-  aerospace systems under the AMPEL360 and GAIA programmes, integrating the
-  original PLUMA framework, CAX computer-aided processing phases, and
-  AI-enabled system component assurance into a single governance spine.
+  Define the programme-unique lifecycle architecture that binds AMPEL360
+  (physical execution across air + RSP) and GAIA (quantum-secure compute
+  and orchestration across sat + UAS) through a governed channel with
+  deterministic traceability, safety envelopes, and evidence-led
+  certification. Single programme clock, single evidence ledger, single
+  baseline policy — spanning air, space, and UAS.
 
 ##############################################################################
 # 1  Programme Scope
@@ -81,124 +89,172 @@ programme_scope:
         - Latency-bounded decision pathways
 
 ##############################################################################
-# 2  Lifecycle Architecture
+# 2  Two-Node System Architecture
+##############################################################################
+
+two_node_architecture:
+
+  description: >
+    PLUMA-GAI governs a two-node system where AMPEL360 is the physical
+    execution node and GAIA is the information/compute node. Their roles
+    are strictly partitioned and bound through a governed channel.
+
+  nodes:
+    - node_id: AMPEL360
+      alias: ALICE
+      role: Physical transformation node (energy / propulsion / vehicle state)
+      primary_outputs:
+        - Telemetry
+        - State vectors
+        - Execution actions
+      critical_constraints:
+        - Safety envelopes
+        - DAL allocation
+        - Human-rated gating (RSP)
+      must_remain_safe_without_gaia: true
+
+    - node_id: GAIA
+      alias: BOB
+      role: Information / compute node (validation / optimisation / security / orchestration)
+      primary_outputs:
+        - Verified state
+        - Optimisation outputs
+        - Mission policies
+      critical_constraints:
+        - Determinism
+        - Latency bounds
+        - Cyber / QKD integrity
+        - Fallback guarantees
+
+  alice_bob_binding:
+    description: >
+      AMPEL360 (ALICE) emits state (S) and intent (I).
+      GAIA (BOB) verifies integrity, computes decision proposals (Δu),
+      and returns bounded control policy.
+    flow:
+      - ALICE emits S (state) and I (intent) on AMP-GAI-CORE channel
+      - BOB verifies integrity (hash + optional QKD)
+      - BOB computes Δu (decision proposal) within certified envelope
+      - BOB returns bounded control policy to ALICE
+      - ALICE executes only within locally certified safety envelope
+
+##############################################################################
+# 3  Lifecycle Architecture
 ##############################################################################
 
 lifecycle_philosophy: >
-  PLUMA-GAI treats software as a safety-bounded adaptive layer embedded within
-  a thermodynamic energy architecture. The lifecycle is a constrained feedback
-  system, not a linear progression.
+  PLUMA-GAI is the programme-unique lifecycle architecture binding AMPEL360
+  and GAIA through a governed channel with deterministic traceability.
+  One programme clock, one evidence ledger, one baseline policy — spanning
+  air, space, and UAS. The lifecycle is a constrained feedback system.
 
 lifecycle_loop:
-  - Intent
-  - Specification
+  - Intent & ODD
+  - Requirements Baseline
+  - Safety & Assurance
   - Architecture
   - Implementation
   - Verification
   - Validation
   - Certification
   - Operations
-  - Feedback
-  - Re-baseline
+  - Monitoring & Drift
+  - Change Impact → Re-baseline
 
 ##############################################################################
-# 3  Phase Registry
+# 4  Phase Registry (Programme Canonical — P000–P100)
 ##############################################################################
 
 phase_registry:
 
   - phase: P000
-    name: "Mission & Intent Definition"
-    primary_output: "Operational Design Domain (ODD)"
+    name: "Intent & ODD"
+    primary_output: "Operational Design Domain (ODD) + Mission Objectives"
     authority: Programme
     governs:
       - Operational design domain boundaries
-      - Mission objectives
-      - Top-level constraints
+      - Mission objectives and constraints
+      - Two-node scope and node assignment
+      - Programme clock and ledger initialisation
 
   - phase: P010
-    name: "System Requirements"
-    primary_output: "SYS-REQ baseline"
+    name: "Requirements Baseline (SYS/SSA)"
+    primary_output: "SYS-REQ + SSA baseline"
     authority: Systems Engineering
     governs:
       - System-level functional requirements
-      - Interface requirements
-      - Performance envelopes
+      - System Safety Assessment (SSA) inputs
+      - Interface requirements between AMPEL360 and GAIA
+      - Performance envelopes per node
 
   - phase: P020
-    name: "Safety & FHA"
-    primary_output: "FHA / PSSA artefacts"
+    name: "Safety & Assurance (FHA/PSSA/AA-093)"
+    primary_output: "FHA / PSSA / AA-093 artefacts"
     authority: Safety
     governs:
       - Functional Hazard Assessment (FHA)
       - Preliminary System Safety Assessment (PSSA)
-      - DAL allocation
+      - DAL allocation per node and function
+      - AA-093 autonomy assurance scope
     standards: [ARP4754A, ARP4761]
 
   - phase: P030
-    name: "Software Architecture"
-    primary_output: "SW-ARCH ICD"
+    name: "Architecture (SW/HW/ICD/Channels)"
+    primary_output: "SW-ARCH + HW-ARCH + ICD + Channel specifications"
     authority: Design Authority
     governs:
-      - High-level software architecture
+      - High-level software and hardware architecture
       - Interface Control Documents (ICD)
-      - Partitioning strategy
+      - GAIA↔AMPEL channel specification (AMP-GAI-CORE)
+      - Partitioning strategy and functional allocation
     standards: [DO-178C]
 
   - phase: P040
-    name: "Detailed Design"
-    primary_output: "Low-Level Requirements (LLR)"
-    authority: SW Lead
-    governs:
-      - Low-level requirements
-      - Detailed module design
-      - Data flow and control flow
-    standards: [DO-178C]
-
-  - phase: P050
-    name: "Implementation"
-    primary_output: "Source + Trace Matrix"
-    authority: Dev
+    name: "Implementation (Code/Models/Configs)"
+    primary_output: "Source + Models + Configuration baseline"
+    authority: SW Lead / Dev
     governs:
       - Source code production
-      - Bidirectional traceability matrix (LLR ↔ source)
-      - Coding standards compliance
-    standards: [DO-178C]
+      - Model and algorithm implementation
+      - Configuration baseline
+      - Bidirectional traceability matrix
+    standards: [DO-178C, DO-331]
 
-  - phase: P060
-    name: "Numerical & Simulation Methods (DMU+PMU)"
-    primary_output: "Model validation pack"
-    authority: Analysis
-    governs:
-      - CAE / CFD / FEM numerical methods
-      - Digital Mock-Up (DMU) qualification
-      - Physical Mock-Up (PMU) validation
-      - Model qualification records
-    standards: [DO-331]
-
-  - phase: P070
-    name: "Verification"
-    primary_output: "Unit / Integration Evidence"
+  - phase: P050
+    name: "Verification (Test/Analysis/Sim)"
+    primary_output: "Verification evidence pack"
     authority: QA
     governs:
-      - Unit testing
-      - Integration testing
+      - Unit testing and integration testing
+      - Analysis (structural, thermal, dynamics)
+      - Simulation runs and result interpretation
       - Structural coverage analysis
-      - Review and inspection records
-    standards: [DO-178C]
+      - CAX toolchain provenance records
+    standards: [DO-178C, DO-331]
 
-  - phase: P080
-    name: "Validation"
-    primary_output: "HIL / SIL / Flight readiness"
+  - phase: P060
+    name: "Validation (HIL/SIL/Ops Scenarios)"
+    primary_output: "Validation evidence pack"
     authority: V&V
     governs:
       - Hardware-in-the-loop (HIL) testing
       - Software-in-the-loop (SIL) testing
-      - Flight test readiness review
-      - Validation evidence package
+      - Operational scenario simulation
+      - AA-093 autonomy validation evidence
+      - Flight and mission test readiness
     standards: [ARP4754A]
 
-  - phase: P090
+  - phase: P070
+    name: "Certification / Authority Release (DOA)"
+    primary_output: "DOA sign-off + certification basis package"
+    authority: DOA
+    governs:
+      - Certification basis compilation
+      - DOA sign-off on all evidence packages
+      - Regulatory submission artefacts
+      - Configuration freeze and type certificate binding
+
+  - phase: P080
     name: "Operations & Mission Control"
     primary_output: "Ops Control Envelope"
     authority: OCC
@@ -207,29 +263,31 @@ phase_registry:
       - Mission control procedures
       - Contingency and abort logic
       - RSP regime-switching protocols
+      - GAIA advisory integration in ops
 
-  - phase: P100
-    name: "Continuous Monitoring"
-    primary_output: "In-service data analytics"
+  - phase: P090
+    name: "Monitoring, Drift & Anomaly Control"
+    primary_output: "Monitoring dashboard + anomaly reports"
     authority: Data Governance
     governs:
       - In-service performance monitoring
-      - Fleet-level analytics
-      - Anomaly detection and reporting
-      - AI model drift monitoring
+      - AI/ML model drift detection
+      - Fleet-level anomaly fusion (GAIA)
+      - Cyber incident monitoring (P120 cross-link)
+      - SOTIF residual risk tracking
 
-  - phase: P110
-    name: "Re-Certification / Change"
-    primary_output: "Change Impact Matrix"
+  - phase: P100
+    name: "Change Impact → Re-baseline (closed loop)"
+    primary_output: "Change Impact Matrix + re-baseline record"
     authority: DOA
     governs:
-      - Change impact assessment
-      - Re-certification evidence
-      - DOA change approval process
-      - Regulatory notification
+      - Change impact assessment across both nodes
+      - Safety and evidence update triggers
+      - AA-093 re-assessment if autonomy changes
+      - Programme clock and ledger re-synchronisation
 
 ##############################################################################
-# 4  Structural Governance Model
+# 5  Structural Governance Model
 ##############################################################################
 
 governance_roles:
@@ -262,7 +320,7 @@ governance_roles:
       for certification submissions. Binds artefacts to type certificate basis.
 
 ##############################################################################
-# 5  AI Integration Policy
+# 6  AI Integration Policy
 ##############################################################################
 
 ai_classification:
@@ -317,7 +375,7 @@ ai_classification:
       note: "A2 permitted under bounded swarm governance with AA-093 assurance case."
 
 ##############################################################################
-# 6  Artefact Traceability Schema
+# 7  Artefact Traceability Schema
 ##############################################################################
 
 artefact_schema:
@@ -355,7 +413,7 @@ artefact_schema:
     - Simulation
 
 ##############################################################################
-# 7  Autonomy Assurance Binding (AA-093)
+# 8  Autonomy Assurance Binding (AA-093)
 ##############################################################################
 
 autonomy_assurance:
@@ -386,7 +444,136 @@ autonomy_assurance:
         - Assurance Argument (GSN compatible)
 
 ##############################################################################
-# 8  AMPEL360 RSP Safety Regime Transitions
+# 9  Integration Backbone: GAIA ↔ AMPEL Channel
+##############################################################################
+
+integration_channel:
+
+  channel_id: "AMP-GAI-CORE"
+  description: >
+    The integration between GAIA and AMPEL360 is not "a link"; it is a
+    governed channel with explicit contractual guarantees. Full specification
+    is in AMP-GAI-ICD-v0.1.0.yaml.
+  directionality: bidirectional
+
+  security:
+    integrity:
+      - SHA3-512
+      - signature
+    keying:
+      - classical
+      - qkd_optional   # Quantum Key Distribution provisioning path
+
+  realtime:
+    max_latency_ms: 200   # per-function envelope; override in ICD
+    jitter_ms: 50
+
+  safety:
+    fail_operational: false
+    fail_safe_mode: "AMPEL_SAFE_ENVELOPE"
+    degraded_modes:
+      - AMPEL_LOCAL_CONTROL     # AMPEL operates autonomously within certified envelope
+      - GAIA_ADVISORY_ONLY      # GAIA output accepted as advisory only, no execution binding
+    rule: >
+      AMPEL360 must remain safe if GAIA is absent or unreachable.
+      No primary flight-critical function may depend on GAIA availability.
+
+  authority:
+    change_control: DOA_SIGNED
+    role_gates:
+      - Observer
+      - Delineant
+      - DesignAuthority
+      - DOA
+
+##############################################################################
+# 10  Functional Partitioning
+##############################################################################
+
+functional_partitioning:
+
+  ampel360_must_own:
+    location: on-board / vehicle-side
+    functions:
+      - "Primary control loops (flight controls, propulsion supervisory, TPS for RSP)"
+      - "Safety monitors (LH₂ leak, cryo thermal limits, tank pressure integrity)"
+      - "Deterministic fallback logic (no dependency on external compute to stay safe)"
+      - "Crew / human-rated authority logic (RSP abort logic, mode gating)"
+    principle: >
+      AMPEL360 must never require GAIA to maintain safety. All on-board
+      functions must operate correctly with GAIA absent or degraded.
+
+  gaia_may_own:
+    location: off-board / network-side (bounded)
+    functions:
+      - "Optimisation (trajectory / energy / maintenance planning)"
+      - "Multi-asset coordination (sat constellation tasking, UAS fleet policies)"
+      - "Heavy compute (quantum-assisted optimisation outside primary flight loop)"
+      - "Secure coordination services (key management, integrity attestations, anomaly fusion)"
+    principle: >
+      GAIA can advise and compute. AMPEL executes only within certified
+      envelopes. GAIA outputs are proposals, not commands.
+
+  golden_rule: >
+    GAIA can advise and compute. AMPEL executes only within certified envelopes.
+
+##############################################################################
+# 11  Configuration & Change Control (Programme-Wide)
+##############################################################################
+
+change_control:
+
+  principle: >
+    Every artefact in AMPEL360 or GAIA is governed under a single programme
+    rule. No change without impact analysis across both nodes. No release
+    without evidence closure. No autonomy escalation without AA-093 update.
+
+  change_flow:
+    steps:
+      - step: 1
+        name: Change Request
+        description: Initiator submits change request with rationale and scope
+        actors: [Observer, Delineant]
+
+      - step: 2
+        name: Impact Assessment (AMPEL + GAIA)
+        description: >
+          Cross-node impact assessed. Both AMPEL360 and GAIA teams must
+          confirm scope of change and identify affected artefacts.
+        actors: [Delineant, DesignAuthority]
+
+      - step: 3
+        name: Safety Update
+        description: >
+          Safety implications assessed. FHA/PSSA delta analysis performed.
+          AA-093 update required if autonomy functions affected.
+        actors: [Safety]
+
+      - step: 4
+        name: Evidence Update
+        description: >
+          Required evidence artefacts updated. Verification and validation
+          evidence re-generated or confirmed as still valid.
+        actors: [QA, V&V]
+
+      - step: 5
+        name: DOA Sign-off
+        description: Design Authority and DOA review and approve evidence closure
+        actors: [DesignAuthority, DOA]
+
+      - step: 6
+        name: Release
+        description: Updated artefacts released to baseline with evidence hash records
+        actors: [DOA]
+
+  hard_rules:
+    - rule: "No change without cross-node impact analysis"
+    - rule: "No release without evidence closure"
+    - rule: "No autonomy escalation without AA-093 update and DOA sign-off"
+    - rule: "Channel contract changes require full ICD revision and DOA approval"
+
+##############################################################################
+# 12  AMPEL360 RSP Safety Regime Transitions
 ##############################################################################
 
 rsp_regime_transitions:
@@ -416,7 +603,7 @@ rsp_regime_transitions:
     - Human-rated abort logic
 
 ##############################################################################
-# 9  Gating Conditions (PLUMA-GAI specific)
+# 13  Gating Conditions (PLUMA-GAI specific)
 ##############################################################################
 
 gating_conditions:
@@ -477,7 +664,7 @@ gating_conditions:
   - id: GAI-AA-UAS-001
     type: autonomy_assurance
     description: "GAIA UAS swarm coordination bounded autonomy (AA-093 aligned)"
-    phase: P080
+    phase: P060
     constraint_layer: evidence
     evidence_required:
       - AA-093 assurance case (complete)
@@ -491,7 +678,7 @@ gating_conditions:
   - id: GAI-QC-001
     type: quantum_integration
     description: "GAIA quantum-classical bridge interface determinism verification"
-    phase: P060
+    phase: P050
     constraint_layer: evidence
     evidence_required:
       - Deterministic fall-back solver validation
@@ -503,7 +690,7 @@ gating_conditions:
     status: open
 
 ##############################################################################
-# 10  Invariants
+# 14  Invariants
 ##############################################################################
 
 invariants:
@@ -546,8 +733,19 @@ invariants:
       Human-rated phases default to highest criticality. Downgrade
       requires explicit justification and DOA sign-off.
 
+  - id: INV-GAI-005
+    rule: >
+      AMPEL360 must maintain safe operation if the GAIA channel is
+      absent, degraded, or in an integrity-fail state. No primary
+      flight-critical function may depend on GAIA availability.
+    enforcement: hard
+    description: >
+      The AMP-GAI-CORE channel fail-safe mode is AMPEL_SAFE_ENVELOPE.
+      AMPEL_LOCAL_CONTROL and GAIA_ADVISORY_ONLY are the only degraded
+      modes acceptable for continued operation without full channel integrity.
+
 ##############################################################################
-# 11  Digital Thread Continuity
+# 15  Digital Thread Continuity
 ##############################################################################
 
 digital_thread:
@@ -562,7 +760,7 @@ digital_thread:
     risk_class_required: true
 
 ##############################################################################
-# 12  Strategic Positioning
+# 16  Strategic Positioning
 ##############################################################################
 
 strategic_positioning:
@@ -587,3 +785,32 @@ strategic_positioning:
     - Quantum-integration compliance matrix
     - Human-rated autonomy assurance template
     - Cross-regime DAL reallocation model
+
+##############################################################################
+# 17  Minimal Deliverables to Instantiate PLUMA-GAI
+##############################################################################
+
+deliverables:
+  - id: DEL-01
+    title: "PLUMA-GAI Specification (normative)"
+    file: "00-PROGRAM/PLUMA-GAI/pluma-gai.yaml"
+    content: "Phases, gates, roles, acceptance criteria, invariants"
+    status: draft
+
+  - id: DEL-02
+    title: "Interface Control Document (AMP-GAI-ICD)"
+    file: "00-PROGRAM/PLUMA-GAI/AMP-GAI-ICD-v0.1.0.yaml"
+    content: "Message schemas, latency, integrity, fallback"
+    status: draft
+
+  - id: DEL-03
+    title: "Evidence Registry Schema"
+    file: "00-PROGRAM/PLUMA-GAI/EVIDENCE_REGISTRY.schema.json"
+    content: "Hashes, DAL, method (T/A/I/S), trace pointers"
+    status: draft
+
+  - id: DEL-04
+    title: "Assurance Case Template (AA-093 binding)"
+    file: "00-PROGRAM/PLUMA-GAI/AA-093-TEMPLATE.gsn.yaml"
+    content: "GSN structure + autonomy envelope format"
+    status: draft
