@@ -1,6 +1,14 @@
-# European Agency for Civil Space Transportation (EACST)
+# European Union Space Safety Agency (ESSA)
 
 *A foundational concept to close Europe's civil space-transport regulatory gaps (training, reusable maintenance, sustainability constraints, operator registry, etc.).*
+
+> **Note — Institutional Status**
+>
+> ESSA (European Union Space Safety Agency) is a **governance artefact and institutional model** within the IDEALE-ESG / AMPEL framework, intended to formalise and unify space safety, certification, and lifecycle oversight in the conceptual model. It is **not** currently an enacted EU agency in the legal framework of the European Union.
+>
+> In the extant EU institutional ecosystem, some analogous functions are performed by the **European Union Agency for the Space Programme (EUSPA)** and associated bodies under the EU Space Programme Regulation (2021/696) and EU Space Act proposals. ESSA expands or abstracts those functions to cover additional normative spaces — notably **civil space transportation lifecycle regulation, product-specific certification, and continued airworthiness for reusable platforms** — that are not yet addressed by any existing EU body.
+>
+> See §3 for a formal mapping of ESSA functions to EUSPA's current mandate and the normative gaps ESSA is designed to fill.
 
 ---
 
@@ -15,7 +23,7 @@ The proposal is widely framed as addressing **fragmentation across Member States
 
 ---
 
-## 2. Mission and Scope of EACST
+## 2. Mission and Scope of ESSA
 
 **Mission:** Ensure **safe, resilient, and sustainable** civil space transportation in Europe, with **harmonised licensing and oversight** for operators and reusable platforms, and full integration with European airspace and space-traffic-management regimes.
 
@@ -35,7 +43,7 @@ The proposal is widely framed as addressing **fragmentation across Member States
 
 ---
 
-## 3. Institutional Mapping: What Exists, What EACST Adds
+## 3. Institutional Mapping: What Exists, What ESSA Adds
 
 **EUSPA (today):** implements the EU Space Programme and associated security/exploitation roles (e.g., Galileo/EGNOS, Copernicus user uptake, GOVSATCOM/IRIS², EU SST front desk). It is not structured as a transport safety regulator.
 
@@ -43,7 +51,7 @@ The proposal is widely framed as addressing **fragmentation across Member States
 
 **ESA (today):** technology/programme development and investment (including reusability initiatives), not a regulator.
 
-**EACST adds (proposed):** the missing **competent authority for civil space transportation**, capable of:
+**ESSA adds (proposed):** the missing **competent authority for civil space transportation**, capable of:
 
 - issuing **operator licences** and **vehicle/platform approvals**;
 - enforcing **continued airworthiness** for reusable systems;
@@ -51,13 +59,32 @@ The proposal is widely framed as addressing **fragmentation across Member States
 - operating a unified **EU civil space transport operator registry**;
 - running **oversight, audits, occurrence reporting**, and safety data analysis.
 
+### 3.1 Formal Relationship: ESSA ↔ EUSPA
+
+ESSA is conceived as a **complementary governance layer** to EUSPA, not a replacement. The table below maps each ESSA functional area to EUSPA's current mandate and identifies the normative gap ESSA is designed to fill.
+
+| ESSA Function (Proposed) | EUSPA Current Mandate | Normative Gap Filled by ESSA |
+|---|---|---|
+| Operator licensing & SMS (Part-STO) | No transport-operator licensing authority | Civil space-transport operator authorisation, SMS enforcement, occurrence reporting |
+| Launch/re-entry safety (Part-LRE) | SST front desk (tracking/conjunction); no launch/re-entry licensing | Trajectory safety criteria, public risk governance, range coordination |
+| Reusable platform approval (Part-RSP) | Not covered | Design approval for reuse-critical items, configuration control, life limits |
+| Continued airworthiness (Part-CAW-S) | Not covered | CAMO-equivalent lifecycle management for reusable platforms |
+| Maintenance organisations (Part-MRO-S) | Not covered | Refurbishment/overhaul approval (Part-145 equivalent for space) |
+| Spaceport/range licensing (Part-SPP) | Not covered | Ground safety, hazardous ops, ATM/airspace interface |
+| Crew licensing & training (Part-SCL) | Not covered | Professional crew licensing, participant safety, training org approvals |
+| Sustainability & debris (Part-SUST) | SST debris tracking; no enforceable transport-grade debris/sustainability rules | Debris mitigation plans, controlled disposal, environmental footprint reporting |
+| Cyber resilience (Part-CYB-S) | GOVSATCOM/Galileo security accreditation (programme-specific) | Baseline cybersecurity for civil transport operators and platforms |
+| Operator registry | EUSPA maintains programme-level registries (Galileo, EGNOS) | Unified EU Civil Space Transport Registry (operators, platforms, spaceports) |
+
+**Interface principle:** where EUSPA already operates a service (e.g., EU SST conjunction warnings), ESSA consumes or references that data rather than duplicating it. Conversely, ESSA's operator registry and occurrence data feed back into EU-level safety and sustainability reporting channels.
+
 ---
 
 ## 4. Regulatory Architecture (Pragmatic EU Design)
 
 ### 4.1. Legal Basis
 
-- **Basic Regulation** establishing EACST as an EU Agency, with implementing powers aligned to:
+- **Basic Regulation** establishing ESSA as an EU Agency, with implementing powers aligned to:
 
   - EU Space Act obligations (safety/resilience/sustainability) for transport operators;
   - airspace integration frameworks (Eurocontrol/SES, EASA interoperability interfaces), by delegation or joint rulemaking.
@@ -69,7 +96,7 @@ For Europe, this fits well with the established **AMC/GM** model used in aviatio
 
 ---
 
-## 5. The Missing Rulebooks EACST Should Publish (Minimum Viable Set)
+## 5. The Missing Rulebooks ESSA Should Publish (Minimum Viable Set)
 
 A workable structure is to publish implementing rules as **"Parts"** (aviation-style), plus AMC/GM:
 
@@ -89,7 +116,7 @@ A workable structure is to publish implementing rules as **"Parts"** (aviation-s
 
 ## 6. Operator Registry: What "Good" Looks Like
 
-EACST should operate a unified **EU Civil Space Transport Registry** with:
+ESSA should operate a unified **EU Civil Space Transport Registry** with:
 
 - **Operator ID**, licence scope, authorised vehicles/platforms, approved spaceports/ranges;
 - **platform configuration baseline** + controlled changes (continued airworthiness concept);
@@ -104,7 +131,7 @@ This is not just a database—it is the enforcement backbone that makes "authori
 
 The single biggest "new" domain versus traditional space governance is **continued airworthiness for reusables**.
 
-EACST should require each reusable platform/operator to have:
+ESSA should require each reusable platform/operator to have:
 
 - an approved **Maintenance Programme** (life limits, inspection intervals, refurbishment criteria);
 - a **Configuration & Build Standard** regime (as-flown vs as-maintained reconciliation);
@@ -118,7 +145,7 @@ This is the "Part-M ecosystem" for space transport—without it, reusable system
 
 ## 8. Civil Training Procedures: Harmonise Before Traffic Scales
 
-EACST should define **crew categories** and training minima:
+ESSA should define **crew categories** and training minima:
 
 - **Space Transport Flight Crew** (professional): licensing, medical, proficiency checks.
 - **Spaceflight Participants**: minimum training + informed consent rules + emergency preparedness.
@@ -131,7 +158,7 @@ This aligns with the reality flagged in "higher airspace operations" roadmapping
 ## 9. Sustainability Constraints: Make It Enforceable, Not Aspirational
 
 The EU Space Act proposal foregrounds sustainability (debris mitigation and environmental aspects).
-EACST should convert that into transport-grade requirements:
+ESSA should convert that into transport-grade requirements:
 
 - debris prevention during ascent/re-entry (fragmentation control, passivation, controlled disposal);
 - re-entry casualty-risk governance and controlled corridors (with STM/ATM integration);
@@ -175,9 +202,9 @@ EACST should convert that into transport-grade requirements:
 
 ## 12. Three Viable Institutional Options (Politically Realistic)
 
-1. **New agency (EACST)** under DG DEFIS: clean mandate, purpose-built staff.
+1. **New agency (ESSA)** under DG DEFIS: clean mandate, purpose-built staff.
 2. **EASA extension ("EASA-Space Transportation")**: fastest to deploy lifecycle/AMC/GM culture, but mandate expansion is politically heavy.
-3. **Hybrid**: EASA handles crew/training/ATM interfaces; EACST handles launch/re-entry licensing + continued airworthiness for reusables.
+3. **Hybrid**: EASA handles crew/training/ATM interfaces; ESSA handles launch/re-entry licensing + continued airworthiness for reusables.
 
 If the EU Space Act proceeds with authorisation/registration/supervision at EU level, the **hybrid** often minimises duplication while still creating a dedicated transport authority.
 
@@ -200,7 +227,7 @@ If the EU Space Act proceeds with authorisation/registration/supervision at EU l
 
 | File | Purpose |
 |------|---------|
-| [`eacst-regulatory-framework.yaml`](eacst-regulatory-framework.yaml) | Machine-readable EACST specification: Parts catalogue, registry schema, implementation phases, institutional options |
+| [`essa-regulatory-framework.yaml`](essa-regulatory-framework.yaml) | Machine-readable ESSA specification: Parts catalogue, registry schema, implementation phases, institutional options |
 | [`ANNEX-A-glossary.md`](ANNEX-A-glossary.md) | NORMATIVE — ANNEX-A: Glossary of Concepts and Acronyms (MTL, MTLdg, DOF, lifecycle states, determinism classes) |
 | [`annex-a-glossary.yaml`](annex-a-glossary.yaml) | Machine-readable ANNEX-A terms catalogue (14 sections, all normative requirements) |
-| Root [`README.md`](../README.md) | Profile-level reference to EACST under Current Focus |
+| Root [`README.md`](../README.md) | Profile-level reference to ESSA under Current Focus |

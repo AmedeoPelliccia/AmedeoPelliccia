@@ -1,15 +1,15 @@
-# EACST — Common Civil Transport Lifecycle Standard (CCTLS) v0.3.0
+# ESSA — Common Civil Transport Lifecycle Standard (CCTLS) v0.3.0
 
-**Document ID:** EACST-STD-CCTLS-001
+**Document ID:** ESSA-STD-CCTLS-001
 **Version:** 0.3.0
 **Status:** Draft
-**Parent:** EACST-STD-MTL-001
+**Parent:** ESSA-STD-MTL-001
 
 ---
 
 ## 0) Purpose and Scope
 
-**Purpose:** Define a common lifecycle for "civil aviation + civil RSP" that EACST can standardise first, with **tokenisable**, **traceable** and **auditable** artefacts in a portal of the **AMPEL360-SPACE-T-PORTAL** type.
+**Purpose:** Define a common lifecycle for "civil aviation + civil RSP" that ESSA can standardise first, with **tokenisable**, **traceable** and **auditable** artefacts in a portal of the **AMPEL360-SPACE-T-PORTAL** type.
 
 **Civil scope:** operations, reusable platforms, maintenance/ICA/MRO, industrial chains, product/tool conformity, mission/traffic control, ESG reporting.
 
@@ -30,7 +30,7 @@ Every governed object follows this state machine:
 
 ---
 
-## 2) EACST Phases (Corrected Numbering)
+## 2) ESSA Phases (Corrected Numbering)
 
 | Phase    | Name                                              | What it governs                                                                 | Typical Atom                           |
 | -------- | ------------------------------------------------- | ------------------------------------------------------------------------------- | -------------------------------------- |
@@ -68,7 +68,7 @@ aor:
   domain: "DUAL"                 # AVIATION | RSP | DUAL
   owner_role: "Chain-Authority"
   audience_role: "Engineering"
-  lifecycle_deliverable_product: "EACST-CHAIN-BASELINE"
+  lifecycle_deliverable_product: "ESSA-CHAIN-BASELINE"
   bindings:
     operation_context: "LINE"    # LINE | SHOP | FLIGHT | LRE
     asset_state: "INSTALLED"     # INSTALLED | REMOVED | AS_BUILT | AS_FLOWN
@@ -367,7 +367,7 @@ Each card has an **AI Generator** with **tokenised prompt units**.
 ### 7.1 Phase Registry
 
 ```yaml
-EACST_PHASE_REGISTRY:
+ESSA_PHASE_REGISTRY:
   - phase: P000
     name: Registry & Governance
   - phase: P010
@@ -399,7 +399,7 @@ EACST_PHASE_REGISTRY:
 ### 7.2 Package Registry (Extract with Key Rules)
 
 ```yaml
-EACST_PACKAGE_REGISTRY:
+ESSA_PACKAGE_REGISTRY:
   - package_id: PKG-P030-ESG-OVERLAY
     phase: P030
     unit_token_types: [KPI_DEF, KPI_MEASURE, OBJ, AGG_RULE, EVIDENCE]

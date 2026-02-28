@@ -1,6 +1,6 @@
 # Universal Transport System — Domain Taxonomy
 
-*A structured semantic backbone for the EACST, AMPEL360 and GAIA EU frameworks, defining functional categories that map to artefacts, evidences, roles, limits of use and certification processes.*
+*A structured semantic backbone for the ESSA, AMPEL360 and GAIA EU frameworks, defining functional categories that map to artefacts, evidences, roles, limits of use and certification processes.*
 
 ---
 
@@ -12,7 +12,7 @@
 | Author           | Amedeo Pelliccia                                  |
 | Machine-readable | [`uts-taxonomy.yaml`](uts-taxonomy.yaml)          |
 | Parent framework | IDEALE-ESG Aerospace pillar                       |
-| Cross-references | EACST/README.md, GAIA EU Domain Atlas, AMPEL360   |
+| Cross-references | ESSA/README.md, GAIA EU Domain Atlas, AMPEL360   |
 
 ---
 
@@ -20,7 +20,7 @@
 
 This document defines a **Universal Transport System (UTS) domain taxonomy** — a set of nine functional categories (codes 000–080) that serve as the semantic backbone for:
 
-- **EACST** — regulatory framework for civil space transportation,
+- **ESSA** — regulatory framework for civil space transportation *(governance artefact; see [ESSA/README.md](../ESSA/README.md) for institutional-status disclaimer)*,
 - **AMPEL360** — hydrogen-electric aircraft architecture,
 - **GAIA EU** — Domain Atlas model for AI admissibility and evidence governance.
 
@@ -88,7 +88,7 @@ domain_cell:
       - "EV-040-002"
   limits_of_use:
     - "LoU-030-005"
-  signoff: "EACST"
+  signoff: "ESSA"
 ```
 
 ---
@@ -228,5 +228,5 @@ graph LR
 | File                                                      | Purpose                                              |
 | --------------------------------------------------------- | ---------------------------------------------------- |
 | [`uts-taxonomy.yaml`](uts-taxonomy.yaml)                  | Machine-readable taxonomy specification              |
-| [`../EACST/README.md`](../EACST/README.md)               | European Agency for Civil Space Transportation spec  |
-| [`../EACST/eacst-regulatory-framework.yaml`](../EACST/eacst-regulatory-framework.yaml) | EACST machine-readable regulatory framework |
+| [`../ESSA/README.md`](../ESSA/README.md)               | European Union Space Safety Agency spec  |
+| [`../ESSA/essa-regulatory-framework.yaml`](../ESSA/essa-regulatory-framework.yaml) | ESSA machine-readable regulatory framework |
