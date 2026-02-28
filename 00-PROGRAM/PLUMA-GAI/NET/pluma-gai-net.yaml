@@ -7,7 +7,7 @@
 document_id: PLUMA-GAI-NET-001
 document_type: network_architecture_extension
 title: "PLUMA-GAI NET — Performant Link Ubiquitous Map Architecture"
-subtitle: "Ground–Aerospace Infrared Networks 
+subtitle: "Ground–Aerospace Infrared Networks"
 lifecycle_stage: "System Integration Layer"
 version: "0.1.0"
 schema_version: "1.0.0"
