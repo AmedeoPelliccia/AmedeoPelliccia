@@ -1,25 +1,41 @@
 # ESSA
 
-**European Sovereign Systems Architecture**
+**European Safety and Security Agency**
+
+*A Civil Sovereign Lifecycle Governance Authority*
 
 | Metadata | Value |
 |----------|-------|
 | **Version** | v1.0-draft |
 | **Status** | Constitutional Root Document |
-| **Scope** | Civil Platforms + EU-Security Overlay |
-| **Nature** | Federated Lifecycle Governance Architecture |
+| **Scope** | Aviation · Space · Reusable Platforms · Autonomous Systems · Critical Industrial Chains |
+| **Nature** | Federated Safety-First Lifecycle Governance Architecture |
 
-> **Acronym Note — Forked Space-Based Implementation**
+> **Institutional Declaration**
 >
-> The acronym ESSA is shared with the **European Union Space Safety Agency** — a civil space transport regulatory model documented in [`essa-regulatory-framework.yaml`](essa-regulatory-framework.yaml). That model constitutes the **canonical space-based, civil-platforms implementation** of this constitutional architecture. All Parts, registry schema, and implementation phases defined therein operate under the invariants established in this document.
+> The European Safety and Security Agency (ESSA) operates under a **Safety-First Doctrine**.
+> Safety defines mission objectives and generative requirements.
+> Security ensures integrity, resilience, and accountability of all safety-critical systems.
 >
-> ESSA (European Union Space Safety Agency) is a **governance artefact and institutional model** within the IDEALE-ESG / AMPEL framework, intended to formalise and unify space safety, certification, and lifecycle oversight. It is **not** currently an enacted EU agency in the legal framework of the European Union. Some analogous functions are performed by the **European Union Agency for the Space Programme (EUSPA)** under the EU Space Programme Regulation (2021/696) and EU Space Act proposals.
+> *ESSA advances in safety. ESSA protects in security.*
+
+> **Three-Tier ESSA Architecture**
+>
+> The acronym ESSA resolves at three complementary levels:
+>
+> | Tier | Level | Full Name | Role |
+> |------|-------|-----------|------|
+> | 1 | Constitutional Architecture | **European Sovereign Systems Architecture** | The abstract constitutional framework governing lifecycle integrity, certification, and ethical invariants across all sovereign domains |
+> | 2 | Institutional Agency | **European Safety and Security Agency** | The civil institutional umbrella — safety mission + security governance — sitting between constitutional architecture and domain implementations |
+> | 3 | Domain Implementation | **European Union Space Safety Agency** | The canonical space-based, civil-platforms implementation documented in [`essa-regulatory-framework.yaml`](essa-regulatory-framework.yaml) |
+>
+> ESSA (European Safety and Security Agency) is a **governance artefact and institutional model** within the IDEALE-ESG / AMPEL framework. It is **not** currently an enacted EU agency in the legal framework of the European Union. Some analogous functions are performed by the **European Union Agency for the Space Programme (EUSPA)** under the EU Space Programme Regulation (2021/696) and EU Space Act proposals.
 
 ---
 
 ## 1. Purpose
 
-ESSA defines a constitutional digital architecture for governing aerospace and strategic industrial life cycles under European civil, sovereign, and ethical principles.
+ESSA defines the constitutional digital architecture for governing aerospace and strategic industrial life cycles under European civil, sovereign, and ethical principles.
 
 ESSA does **not** regulate products.
 ESSA governs process integrity, accountability, traceability, and resilience across the entire lifecycle continuum.
@@ -28,6 +44,43 @@ ESSA governs process integrity, accountability, traceability, and resilience acr
 All derived requirements, design artefacts, and operational transitions **MUST** demonstrate preservation of defined safety invariants prior to activation.
 Security governs the integrity of those invariants.
 Certification validates their preservation.
+
+### 1.1 Three-Layer Constitutional Hierarchy
+
+The internal structure of ESSA is constitutionally ordered:
+
+| Layer | Name | Function |
+|-------|------|----------|
+| **Mission Layer** | **Safety** | Defines envelopes, derives requirements, validates evidence, manages incidents, coordinates cross-border safety, oversees autonomous systems |
+| **Governance Layer** | **Security** | Governs artefact integrity, change control, cyber resilience, industrial supply chain protection, authority and baseline control |
+| **Execution Layer** | **Lifecycle & Operations** | CCTLS lifecycle standard, ALPC certification engine, LCOS runtime, AoR governance, MTLdg ledger |
+
+**Constitutional rule:**
+Security **never** redefines the mission.
+Security **ensures** that the mission is never corrupted.
+
+### 1.2 Civil Scope
+
+ESSA governs the safety and security of:
+
+- **Aviation** — civil and sovereign aircraft lifecycle
+- **Space** — launch, orbital, reusable platforms, end-of-life
+- **Reusable Platforms** — RSP lifecycle and refurbishment cycles
+- **Autonomous Systems** — AI-assisted operations with human override guarantees
+- **Critical Industrial Chains** — supply chain integrity and accountability
+
+### 1.3 Security Clarification
+
+Security in ESSA is **governance of system integrity**, not militarisation.
+
+The EU-SECURITY branch (MCSC) governs:
+- Artefact integrity and hash traceability
+- Change control and baseline authority
+- Cyber resilience for lifecycle-critical systems
+- Industrial supply chain assurance
+- Autonomous system oversight boundaries
+
+It is a **civil regulatory abstraction**, not a defence or intelligence mechanism.
 
 It enables:
 
@@ -77,7 +130,17 @@ Certification is **S-preservation verification** over a governed graph.
 
 ## 3. Architectural Structure
 
-ESSA is composed of two federated branches.
+ESSA is composed of two federated branches and governed by the three-layer constitutional hierarchy.
+
+### Institutional Architecture Mapping
+
+| Component | Role under ESSA |
+|-----------|----------------|
+| **CIVIL-PLATFORMS** | Operational technical arm — CCTLS lifecycle standard, AoR governance, token graph |
+| **EU-SECURITY** | Constitutional integrity layer — MCSC controls protecting safety envelope integrity |
+| **ALPC** | Certification operator — deterministic S-preservation validation |
+| **LCOS** | Executable engine — runtime validation, packaging, and lifecycle operating system |
+| **ESSA** | Institutional umbrella — safety mission + security governance + execution coordination |
 
 ---
 
@@ -255,6 +318,31 @@ It is a federated constitutional architecture.
 > Security governs the integrity of those invariants.
 > Certification validates their preservation.
 > No element of the lifecycle graph **SHALL** be activated if safety coverage is incomplete.
+
+**Institutional Declaration (ESSA Safety-First Doctrine):**
+
+> The European Safety and Security Agency (ESSA) operates under a Safety-First Doctrine.
+> Safety defines mission objectives and generative requirements.
+> Security ensures integrity, resilience, and accountability of all safety-critical systems.
+
+### Three-Layer Constitutional Hierarchy
+
+| Layer | Concept | Role |
+|-------|---------|------|
+| **Mission Layer** | **Safety** | Defines envelopes · derives requirements · validates evidence · manages incidents · coordinates cross-border safety · oversees autonomy |
+| **Governance Layer** | **Security** | Governs artefact integrity · change control · cyber resilience · industrial chain protection · baseline authority |
+| **Execution Layer** | **Lifecycle & Operations** | CCTLS · ALPC · LCOS · AoR · MTLdg |
+
+**Constitutional rule:** Security never redefines the mission. Security ensures the mission is never corrupted.
+
+### Security Clarification
+
+Security in ESSA is **governance of system integrity, not militarisation**.
+
+The EU-SECURITY (MCSC) layer is a civil regulatory abstraction:
+- It does **not** impose military command structures.
+- It does **not** activate defence or intelligence mandates.
+- It **does** protect the integrity of safety invariants from corruption, interference, or circumvention.
 
 ### Safety vs Security — Architectural Ordering
 

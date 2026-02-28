@@ -1,11 +1,12 @@
 ##############################################################################
 # ESSA — Safety-First Doctrine
+# European Safety and Security Agency
 # Machine-readable companion to ESSA/SAFETY-FIRST.md
 ##############################################################################
 
 document_id: ESSA-DOC-SF-001
 document_type: essa_safety_first_doctrine
-title: "ESSA Safety-First Doctrine — Safety as the Primary Generative Objective"
+title: "ESSA Safety-First Doctrine — European Safety and Security Agency: Safety as the Primary Generative Objective"
 version: "0.1-draft"
 schema_version: "1.0.0"
 status: normative_doctrine
@@ -178,9 +179,79 @@ agentic_ai_contract:
 # 5. Institutional Consequence
 # ─────────────────────────────────────────────
 institutional_consequence:
+  agency_name: European Safety and Security Agency
+  agency_acronym: ESSA
+  agency_type: civil_sovereign_lifecycle_governance_authority
+  institutional_declaration: >
+    The European Safety and Security Agency (ESSA) operates under a Safety-First
+    Doctrine. Safety defines mission objectives and generative requirements.
+    Security ensures integrity, resilience and accountability of all
+    safety-critical systems.
   agency_mission: >
     The generation, validation, and continuous preservation of safety envelopes
     for European space and aerospace systems.
+
+  three_layer_constitutional_hierarchy:
+    mission_layer:
+      name: Safety
+      functions:
+        - Safety envelope definition
+        - Evidence validation
+        - Incident management
+        - Cross-border safety coordination
+        - Autonomous system oversight
+    governance_layer:
+      name: Security
+      functions:
+        - Artefact integrity
+        - Change control
+        - Cyber resilience
+        - Industrial supply chain protection
+        - Authority and baseline control
+      constitutional_rule: >
+        Security never redefines the mission. Security ensures the mission is
+        never corrupted.
+    execution_layer:
+      name: Lifecycle & Operations
+      components: [CCTLS, ALPC, LCOS, AoR, MTLdg]
+
+  civil_scope:
+    domains:
+      - Aviation
+      - Space
+      - Reusable Platforms
+      - Autonomous Systems
+      - Critical Industrial Chains
+    nature: civil_not_military
+    security_clarification: >
+      Security in ESSA is governance of system integrity, not militarisation.
+      The EU-SECURITY (MCSC) layer is a civil regulatory abstraction. It does not
+      impose military command structures or activate defence or intelligence mandates.
+      It protects safety invariants from corruption, interference, or circumvention.
+
+  institutional_architecture_mapping:
+    - component: CIVIL_PLATFORMS
+      role: operational_technical_arm
+    - component: EU_SECURITY
+      role: constitutional_integrity_layer
+    - component: ALPC
+      role: certification_operator
+    - component: LCOS
+      role: executable_engine
+    - component: ESSA
+      role: institutional_umbrella
+
+  three_tier_essa_architecture:
+    - tier: 1
+      name: European Sovereign Systems Architecture
+      role: abstract_constitutional_framework
+    - tier: 2
+      name: European Safety and Security Agency
+      role: civil_institutional_umbrella_safety_mission_security_governance
+    - tier: 3
+      name: European Union Space Safety Agency
+      role: canonical_space_civil_platforms_implementation
+
   function_reframing:
     - function: Safety
       traditional: Validation step at end of design

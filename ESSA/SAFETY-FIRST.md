@@ -165,9 +165,58 @@ The AI agent operates as a **bounded synthesis engine**, not a free design oracl
 
 ## 5. Institutional Consequence
 
+### 5.1 Agency Identity and Mission
+
+The European Safety and Security Agency (ESSA) operates as a **Civil Sovereign Lifecycle Governance Authority**.
+
+Institutional declaration:
+
+> **The European Safety and Security Agency (ESSA) operates under a Safety-First Doctrine.**
+> Safety defines mission objectives and generative requirements.
+> Security ensures integrity, resilience, and accountability of all safety-critical systems.
+>
+> *ESSA advances in safety. ESSA protects in security.*
+
 If ESSA-ESSA is safety-first, the agency mission statement becomes:
 
 > **The generation, validation, and continuous preservation of safety envelopes for European space and aerospace systems.**
+
+### 5.2 Three-Layer Constitutional Hierarchy
+
+The internal structure of ESSA is constitutionally ordered across three layers:
+
+| Layer | Name | Function |
+|-------|------|----------|
+| **Mission Layer** | **Safety** | Defines envelopes · derives requirements · validates evidence · manages incidents · coordinates cross-border safety · oversees autonomous systems |
+| **Governance Layer** | **Security** | Governs artefact integrity · change control · cyber resilience · industrial chain protection · baseline authority |
+| **Execution Layer** | **Lifecycle & Operations** | CCTLS lifecycle standard · ALPC certification engine · LCOS runtime · AoR governance · MTLdg ledger |
+
+**Constitutional rule** (canonical: [README.md §1.1](README.md)):
+Security **never** redefines the mission.
+Security **ensures** that the mission is never corrupted.
+
+### 5.3 Civil Scope
+
+ESSA governs the safety and security of:
+
+- **Aviation** — civil and sovereign aircraft lifecycle
+- **Space** — launch, orbital, reusable platforms, end-of-life
+- **Reusable Platforms** — RSP lifecycle and refurbishment cycles
+- **Autonomous Systems** — AI-assisted operations with human override guarantees
+- **Critical Industrial Chains** — supply chain integrity and accountability
+
+### 5.4 Security Clarification
+
+Security in ESSA is **governance of system integrity, not militarisation**.
+
+The EU-SECURITY (MCSC) layer is a civil regulatory abstraction:
+- It does **not** impose military command structures.
+- It does **not** activate defence or intelligence mandates.
+- It **does** protect the integrity of safety invariants from corruption, interference, or circumvention.
+
+This is architecturally essential: without this explicit declaration, the word "Security" in a European institutional context tends to activate defence, intelligence, and strategic sovereignty agendas — which would subordinate the safety mission to political governance. This doctrine prevents that capture.
+
+### 5.5 Function Reframing
 
 This reframes the three core functions:
 
