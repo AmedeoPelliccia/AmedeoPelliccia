@@ -96,7 +96,7 @@
     },
     "gating_condition_id": {
       "type": "string",
-      "pattern": "^GAI-[A-Z]+-[A-Z]+-[0-9]+$",
+      "pattern": "^GAI-[A-Z0-9]+-[A-Z0-9]+-[0-9]+$",
       "description": "Optional link to a PLUMA-GAI gating condition this evidence closes."
     },
     "change_record_id": {
