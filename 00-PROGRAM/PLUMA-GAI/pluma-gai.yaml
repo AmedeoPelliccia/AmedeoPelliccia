@@ -34,6 +34,8 @@ related_artefacts:
     rel: evidence_schema
   - path: 00-PROGRAM/PLUMA-GAI/AA-093-TEMPLATE.gsn.yaml
     rel: assurance_case_template
+  - path: 00-PROGRAM/PLUMA-GAI/NET/pluma-gai-net.yaml
+    rel: network_extension    # PLUMA-GAI NET fork — IR mesh + lifecycle-governed network
 
 purpose: >
   Define the programme-unique lifecycle architecture that binds AMPEL360
@@ -813,4 +815,16 @@ deliverables:
     title: "Assurance Case Template (AA-093 binding)"
     file: "00-PROGRAM/PLUMA-GAI/AA-093-TEMPLATE.gsn.yaml"
     content: "GSN structure + autonomy envelope format"
+    status: draft
+
+  - id: NET-DEL-01
+    title: "PLUMA-GAI NET Specification (normative)"
+    file: "00-PROGRAM/PLUMA-GAI/NET/pluma-gai-net.yaml"
+    content: "IR mesh layer stack, performance model, fallback doctrine, RSP re-entry model, fork points"
+    status: draft
+
+  - id: NET-DEL-02
+    title: "Net Node Schema"
+    file: "00-PROGRAM/PLUMA-GAI/NET/NET_NODE.schema.json"
+    content: "JSON Schema for the ubiquitous map net_node data structure"
     status: draft
