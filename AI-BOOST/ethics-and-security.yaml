@@ -1,0 +1,310 @@
+# AI-BOOST/ethics-and-security.yaml
+# Machine-readable ethics and security specification for DEL-07.
+# Human-readable companion: DEL-07-ethics-and-security.md
+# Challenge: Frontier AI Grand Challenge (GA 101135737, EuroHPC JU)
+
+schema_version: "1.0.0"
+document_type: ethics_and_security
+last_updated: "2026-02-25T00:00:00Z"
+
+# ─────────────────────────────────────────────
+# 1. Deliverable Identity
+# ─────────────────────────────────────────────
+deliverable:
+  id: DEL-07
+  title: Ethics and Security
+  application_section: "Ethics → Ethics and Security"
+  programme: AI-BOOST
+  grant_agreement: "101135737"
+  managing_body: EuroHPC JU
+  status: draft
+  due: "M6 (initial), updated at M18 and M36"
+
+# ─────────────────────────────────────────────
+# 2. Ethical Framework
+# ─────────────────────────────────────────────
+ethical_framework:
+  guiding_principles:
+    - id: ETH-01
+      principle: Human Agency and Oversight
+      description: >
+        AI systems remain under meaningful human control; no fully autonomous
+        safety-critical decisions without human-in-the-loop.
+      references:
+        - "EU AI Act Art. 14"
+        - "ALTAI §1"
+
+    - id: ETH-02
+      principle: Technical Robustness and Safety
+      description: >
+        Models are validated through evidence-gated pipelines before
+        deployment in safety-critical domains.
+      references:
+        - "simplex-contract.yaml INV-001–INV-003"
+
+    - id: ETH-03
+      principle: Privacy and Data Governance
+      description: >
+        All training data complies with GDPR; personal data is minimised,
+        pseudonymised, or excluded.
+      references:
+        - "GDPR Art. 5, 25"
+
+    - id: ETH-04
+      principle: Transparency
+      description: >
+        Model architectures, training data sources, and evaluation results
+        are publicly documented.
+      references:
+        - "EU AI Act Art. 53 (GPAI transparency)"
+
+    - id: ETH-05
+      principle: Diversity, Non-Discrimination, and Fairness
+      description: >
+        Multilingual training ensures balanced performance across all
+        24 EU official languages; bias audits are conducted per work package.
+      references:
+        - "EU AI Act Recital 70"
+
+    - id: ETH-06
+      principle: Societal and Environmental Well-Being
+      description: >
+        Environmental footprint (CO₂-per-inference) is tracked and reported;
+        sustainability targets are set per HPC job.
+      references:
+        - "Green Deal Digital alignment"
+
+    - id: ETH-07
+      principle: Accountability
+      description: >
+        All AI artefacts are traceable through the PATH → MTL governance
+        pipeline with immutable audit trails.
+      references:
+        - "simplex-contract.yaml execution model"
+
+  eu_ai_act_classification:
+    - category: General-Purpose AI (GPAI)
+      applicable: true
+      justification: >
+        Training compute exceeds GPAI threshold; open-weights release
+        triggers GPAI provider obligations.
+
+    - category: High-Risk AI System
+      applicable: domain_dependent
+      justification: >
+        High-risk when deployed in aerospace certification (Annex III).
+        Simplex-contract evidence gating satisfies conformity assessment
+        requirements.
+
+    - category: Prohibited AI Practices
+      applicable: false
+      justification: >
+        No social scoring, real-time biometric identification,
+        or manipulation techniques.
+
+# ─────────────────────────────────────────────
+# 3. Dual-Use Assessment
+# ─────────────────────────────────────────────
+dual_use:
+  risk_analysis:
+    - id: DU-01
+      category: Military application of simulation acceleration
+      description: >
+        AI surrogate models could accelerate weapons system design.
+      likelihood: low
+      impact: high
+      mitigation: >
+        Export-control screening of consortium partners; restricted model
+        variants for defence-adjacent use cases.
+
+    - id: DU-02
+      category: Adversarial misuse of open-weights model
+      description: >
+        Open-weights release could enable generation of harmful content.
+      likelihood: medium
+      impact: medium
+      mitigation: >
+        Red-teaming prior to release (WP4); safety fine-tuning;
+        responsible release protocol.
+
+    - id: DU-03
+      category: Surveillance capability
+      description: >
+        Multilingual NLP could be repurposed for mass surveillance.
+      likelihood: low
+      impact: high
+      mitigation: >
+        No biometric processing capability; data processing agreements
+        prohibit surveillance use.
+
+  export_control:
+    - requirement: "EU Dual-Use Regulation (EU) 2021/821 screening"
+      status: planned
+      evidence: "All consortium partners screened; no listed entities"
+
+    - requirement: "US EAR/ITAR assessment"
+      status: planned
+      evidence: "No US-origin controlled technology used in core pipeline"
+
+    - requirement: "End-use monitoring"
+      status: planned
+      evidence: "Responsible use license terms for model distribution"
+
+# ─────────────────────────────────────────────
+# 4. Data Protection
+# ─────────────────────────────────────────────
+data_protection:
+  gdpr_compliance:
+    legal_basis: "Legitimate interest (Art. 6(1)(f)) for research; consent where required"
+    data_minimisation: >
+      Training corpora use publicly available, non-personal data;
+      personal data excluded or pseudonymised.
+    data_subject_rights: "Procedures documented in DMP (DEL-03)"
+    dpia: "Conducted before training on any dataset containing personal data"
+    dpo: "Designated within coordinator organisation"
+    cross_border_transfers: >
+      All training and inference on EU-based infrastructure (EuroHPC nodes);
+      no extra-EU data transfers for safety-critical workloads.
+
+  training_data_ethics:
+    - criterion: Copyright compliance
+      requirement: "All training data sources licensed or public domain"
+      verification: "Data provenance registry (DEL-03)"
+
+    - criterion: Consent verification
+      requirement: "Consent obtained where data includes user-generated content"
+      verification: "Consent audit trail"
+
+    - criterion: Bias assessment
+      requirement: "Training data audited for demographic, linguistic, and geographic bias"
+      verification: "Bias evaluation report per WP"
+
+    - criterion: Opt-out mechanism
+      requirement: "Content creators can request exclusion from training corpora"
+      verification: "Opt-out request process documented"
+
+# ─────────────────────────────────────────────
+# 5. Security
+# ─────────────────────────────────────────────
+security:
+  information_security:
+    - domain: Access control
+      measure: "Role-based access to HPC resources, model weights, and training data"
+      standard: "ISO 27001 Annex A.9"
+
+    - domain: Data encryption
+      measure: "At-rest (AES-256) and in-transit (TLS 1.3) for all project data"
+      standard: "ISO 27001 Annex A.10"
+
+    - domain: Audit logging
+      measure: "All access to model artefacts and training infrastructure logged with immutable audit trail"
+      standard: "ISO 27001 Annex A.12"
+
+    - domain: Incident response
+      measure: "Security incident response plan with 24-hour notification window"
+      standard: "ISO 27001 Annex A.16; NIS2 Art. 23"
+
+    - domain: Supply chain security
+      measure: "Third-party dependencies audited; software bill of materials (SBOM) maintained"
+      standard: "ISO 27001 Annex A.15"
+
+  model_security:
+    - threat: Model poisoning
+      mitigation: "Training data provenance verification; anomaly detection in training loss curves"
+      evidence: "Data provenance registry"
+
+    - threat: Model extraction
+      mitigation: "Rate limiting on inference API; watermarking of model outputs"
+      evidence: "API security policy"
+
+    - threat: Adversarial inputs
+      mitigation: "Adversarial robustness testing during WP4 evaluation phase"
+      evidence: "Red-team evaluation report"
+
+    - threat: Prompt injection
+      mitigation: "Input sanitisation layer; output filtering for safety-critical deployments"
+      evidence: "Safety filter specification"
+
+  hpc_security:
+    - aspect: EuroHPC acceptable use policy
+      requirement: "All usage compliant with EuroHPC JU security and acceptable use policies"
+      compliance: "Signed AUP per consortium partner"
+
+    - aspect: Multi-tenancy isolation
+      requirement: "Training jobs isolated from other HPC users via container and namespace boundaries"
+      compliance: "Container security policy"
+
+    - aspect: Data sovereignty
+      requirement: "All safety-critical data remains on EU-based infrastructure"
+      compliance: "Data residency verification"
+
+# ─────────────────────────────────────────────
+# 6. Responsible AI Governance
+# ─────────────────────────────────────────────
+responsible_ai:
+  ethics_review_process:
+    - stage: pre_training
+      activities:
+        - "Ethics self-assessment"
+        - "DPIA if personal data involved"
+        - "Dual-use screening"
+      responsible: "Governance & Safety Lead"
+
+    - stage: during_training
+      activities:
+        - "Continuous monitoring of training outputs for harmful content generation capability"
+      responsible: "Governance & Safety Lead + ML team"
+
+    - stage: pre_release
+      activities:
+        - "Red-teaming"
+        - "Bias audit"
+        - "Safety evaluation"
+        - "Responsible release checklist"
+      responsible: "Full consortium review"
+
+    - stage: post_release
+      activities:
+        - "Community feedback monitoring"
+        - "Incident response"
+        - "Model update protocol"
+      responsible: "Coordinator + community"
+
+  ethics_advisory:
+    - mechanism: "Internal ethics review"
+      description: "Governance & Safety Lead reviews all WP outputs for ethical compliance"
+
+    - mechanism: "External ethics advisory board"
+      description: "Independent ethics experts consulted at M6, M18, M36 milestones"
+
+    - mechanism: "National ethics committee"
+      description: "Engagement with relevant national ethics bodies where consortium partners are based"
+
+# ─────────────────────────────────────────────
+# 7. Environmental Ethics
+# ─────────────────────────────────────────────
+environmental_ethics:
+  - aspect: Carbon footprint tracking
+    commitment: "CO₂ emissions tracked per training run and per inference request"
+    metric: "kg CO₂e per 1M tokens"
+
+  - aspect: Renewable energy preference
+    commitment: "HPC allocations prioritise nodes powered by renewable energy"
+    metric: "% renewable energy in compute mix"
+
+  - aspect: Efficiency optimisation
+    commitment: "Model architecture and training pipeline optimised for compute efficiency"
+    metric: "FLOPs per quality point"
+
+  - aspect: Sustainability reporting
+    commitment: "Environmental impact included in all public reporting and model cards"
+    metric: "Sustainability section in model card"
+
+# ─────────────────────────────────────────────
+# 8. Revision History
+# ─────────────────────────────────────────────
+revision_history:
+  - version: "0.1"
+    date: "2026-02-25"
+    milestone: M6
+    description: Initial Ethics and Security stub
