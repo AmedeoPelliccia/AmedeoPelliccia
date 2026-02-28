@@ -1,0 +1,589 @@
+##############################################################################
+# PLUMA-GAI — Programming Lifecycle Undertaking Model
+# AMPEL360 · GAIA Aerospace Integrations
+# Machine-readable lifecycle governance specification
+##############################################################################
+
+document_id: PLUMA-GAI-001
+document_type: lifecycle_governance_model
+title: "PLUMA-GAI — Programming Lifecycle Undertaking Model"
+subtitle: "AMPEL360 · GAIA Aerospace Integrations"
+version: "1.0.0"
+schema_version: "1.0.0"
+status: draft
+last_updated: "2026-02-28T00:00:00Z"
+
+parent_standards:
+  - ESSA-STD-CCTLS-001     # ESSA Common Civil Transport Lifecycle Standard
+  - ARP4754A               # System development
+  - ARP4761                # Safety assessment
+  - DO-178C                # Software lifecycle
+  - DO-330                 # Tool qualification
+  - DO-331                 # Model qualification
+
+related_artefacts:
+  - path: 00-PROGRAM/PLUMA/simplex-contract.yaml
+    rel: extends
+  - path: UTS/AA-093/aa-093-assurance-case.yaml
+    rel: references
+  - path: ESSA/cctls.yaml
+    rel: references
+
+purpose: >
+  Define a deterministic lifecycle governance model for software-intensive
+  aerospace systems under the AMPEL360 and GAIA programmes, integrating the
+  original PLUMA framework, CAX computer-aided processing phases, and
+  AI-enabled system component assurance into a single governance spine.
+
+##############################################################################
+# 1  Programme Scope
+##############################################################################
+
+programme_scope:
+
+  ampel360:
+    description: >
+      Civil hydrogen aviation and Reusable Space Passengers Platform (RSP).
+    branches:
+      - id: A
+        domain: "LH2 Civil Aviation (Q100 BWB)"
+        certification_baseline: "EASA CS-25 / Part-25"
+      - id: B
+        domain: "Reusable Space Passengers Platform (RSP)"
+        certification_baseline: "Hybrid: CS-23/25 + Spaceflight Special Conditions"
+    key_domains:
+      - ATA 28 (Fuel — LH2 cryogenic)
+      - ATA 71 (Power Plant)
+      - ATA 73 (Engine Fuel and Control)
+    safety_standards:
+      - CS-25.963
+      - CS-25.981
+      - SC-LH2 (Special Conditions — Hydrogen)
+
+  gaia:
+    description: >
+      Quantum computing processing integration into EU space satellite assets
+      and autonomous unmanned aerial systems (UAS). GAIA is an integration
+      architecture layer, not a vehicle platform.
+    domains:
+      - EU satellite constellations
+      - Autonomous UAS fleets
+      - Hybrid air-space coordination frameworks
+    quantum_integration_stack:
+      layers:
+        - Classical Flight Control Layer
+        - AI Decision Layer (bounded autonomy)
+        - Quantum Processing Assistance (QPU off-board / hybrid node)
+        - Ground Control / Secure EU Network Backbone
+      constraints:
+        - No quantum processor in primary flight-critical loop
+        - Deterministic fall-back to classical solver
+        - Latency-bounded decision pathways
+
+##############################################################################
+# 2  Lifecycle Architecture
+##############################################################################
+
+lifecycle_philosophy: >
+  PLUMA-GAI treats software as a safety-bounded adaptive layer embedded within
+  a thermodynamic energy architecture. The lifecycle is a constrained feedback
+  system, not a linear progression.
+
+lifecycle_loop:
+  - Intent
+  - Specification
+  - Architecture
+  - Implementation
+  - Verification
+  - Validation
+  - Certification
+  - Operations
+  - Feedback
+  - Re-baseline
+
+##############################################################################
+# 3  Phase Registry
+##############################################################################
+
+phase_registry:
+
+  - phase: P000
+    name: "Mission & Intent Definition"
+    primary_output: "Operational Design Domain (ODD)"
+    authority: Programme
+    governs:
+      - Operational design domain boundaries
+      - Mission objectives
+      - Top-level constraints
+
+  - phase: P010
+    name: "System Requirements"
+    primary_output: "SYS-REQ baseline"
+    authority: Systems Engineering
+    governs:
+      - System-level functional requirements
+      - Interface requirements
+      - Performance envelopes
+
+  - phase: P020
+    name: "Safety & FHA"
+    primary_output: "FHA / PSSA artefacts"
+    authority: Safety
+    governs:
+      - Functional Hazard Assessment (FHA)
+      - Preliminary System Safety Assessment (PSSA)
+      - DAL allocation
+    standards: [ARP4754A, ARP4761]
+
+  - phase: P030
+    name: "Software Architecture"
+    primary_output: "SW-ARCH ICD"
+    authority: Design Authority
+    governs:
+      - High-level software architecture
+      - Interface Control Documents (ICD)
+      - Partitioning strategy
+    standards: [DO-178C]
+
+  - phase: P040
+    name: "Detailed Design"
+    primary_output: "Low-Level Requirements (LLR)"
+    authority: SW Lead
+    governs:
+      - Low-level requirements
+      - Detailed module design
+      - Data flow and control flow
+    standards: [DO-178C]
+
+  - phase: P050
+    name: "Implementation"
+    primary_output: "Source + Trace Matrix"
+    authority: Dev
+    governs:
+      - Source code production
+      - Bidirectional traceability matrix (LLR ↔ source)
+      - Coding standards compliance
+    standards: [DO-178C]
+
+  - phase: P060
+    name: "Numerical & Simulation Methods (DMU+PMU)"
+    primary_output: "Model validation pack"
+    authority: Analysis
+    governs:
+      - CAE / CFD / FEM numerical methods
+      - Digital Mock-Up (DMU) qualification
+      - Physical Mock-Up (PMU) validation
+      - Model qualification records
+    standards: [DO-331]
+
+  - phase: P070
+    name: "Verification"
+    primary_output: "Unit / Integration Evidence"
+    authority: QA
+    governs:
+      - Unit testing
+      - Integration testing
+      - Structural coverage analysis
+      - Review and inspection records
+    standards: [DO-178C]
+
+  - phase: P080
+    name: "Validation"
+    primary_output: "HIL / SIL / Flight readiness"
+    authority: V&V
+    governs:
+      - Hardware-in-the-loop (HIL) testing
+      - Software-in-the-loop (SIL) testing
+      - Flight test readiness review
+      - Validation evidence package
+    standards: [ARP4754A]
+
+  - phase: P090
+    name: "Operations & Mission Control"
+    primary_output: "Ops Control Envelope"
+    authority: OCC
+    governs:
+      - Operational control envelope
+      - Mission control procedures
+      - Contingency and abort logic
+      - RSP regime-switching protocols
+
+  - phase: P100
+    name: "Continuous Monitoring"
+    primary_output: "In-service data analytics"
+    authority: Data Governance
+    governs:
+      - In-service performance monitoring
+      - Fleet-level analytics
+      - Anomaly detection and reporting
+      - AI model drift monitoring
+
+  - phase: P110
+    name: "Re-Certification / Change"
+    primary_output: "Change Impact Matrix"
+    authority: DOA
+    governs:
+      - Change impact assessment
+      - Re-certification evidence
+      - DOA change approval process
+      - Regulatory notification
+
+##############################################################################
+# 4  Structural Governance Model
+##############################################################################
+
+governance_roles:
+  - role: Observer
+    responsibility: Analytical validation
+    mutation_rights: none
+    description: >
+      Read-only access to all artefacts. May raise findings but cannot
+      modify source artefacts. Applies to external reviewers and auditors.
+
+  - role: Delineant
+    responsibility: Structural modelling
+    mutation_rights: controlled
+    description: >
+      May propose and commit structural changes within approved boundaries.
+      All mutations require a linked change record.
+
+  - role: Design Authority
+    responsibility: Baseline approval
+    mutation_rights: formal_sign_off
+    description: >
+      Approves baseline transitions. Sign-off required before any artefact
+      moves from Draft to Frozen state.
+
+  - role: DOA
+    responsibility: Certification acceptance
+    mutation_rights: regulatory_binding
+    description: >
+      Approved Design Organisation signatory. Holds regulatory authority
+      for certification submissions. Binds artefacts to type certificate basis.
+
+##############################################################################
+# 5  AI Integration Policy
+##############################################################################
+
+ai_classification:
+
+  classes:
+    - class: A0
+      usage: Advisory only
+      certification_path: No credit
+      flight_critical: false
+
+    - class: A1
+      usage: Deterministic bounded ML
+      certification_path: "DO-178C + Model qualification (DO-331)"
+      flight_critical: true
+      conditions:
+        - Full structural coverage at DAL level
+        - Deterministic output for all inputs in operational envelope
+
+    - class: A2
+      usage: Adaptive autonomy
+      certification_path: "Special condition + Assurance Case"
+      flight_critical: false
+      conditions:
+        - Explicit performance envelope
+        - SOTIF residual risk quantification
+        - GSN assurance argument complete
+
+    - class: A3
+      usage: Mission-critical self-modifying
+      certification_path: Currently non-certifiable
+      flight_critical: false
+      note: >
+        Not acceptable in any AMPEL360 or GAIA flight-critical or
+        mission-critical path without a new regulatory basis.
+
+  programme_policies:
+    ampel360_civil:
+      max_class_flight_critical: A1
+      max_class_advisory: A2
+      note: "A0–A1 allowed in flight-critical path. A2 advisory only."
+
+    ampel360_rsp_crewed:
+      max_class_flight_critical: A1
+      max_class_advisory: A2
+      human_override_mandatory: true
+      note: "Human override mandatory in all crewed phases."
+
+    gaia_uas:
+      max_class_autonomous: A2
+      continuous_assurance_required: true
+      assurance_standard: AA-093
+      note: "A2 permitted under bounded swarm governance with AA-093 assurance case."
+
+##############################################################################
+# 6  Artefact Traceability Schema
+##############################################################################
+
+artefact_schema:
+  required_fields:
+    - pluma_id           # PLM-AMP-GAI-XXXX
+    - parent_requirement # SYS-REQ-XXX
+    - safety_class       # DAL_A | DAL_B | DAL_C | DAL_D | DAL_E
+    - verification_method # Test | Analysis | Inspection | Simulation
+    - ai_class           # A0 | A1 | A2 | A3
+    - evidence_hash      # SHA3-512
+    - status             # Draft | Frozen | Certified
+  optional_fields:
+    - change_record_id
+    - regulatory_event_id
+    - reuse_cycle_id     # required for RSP domain if reuse applies
+  id_pattern: "PLM-AMP-GAI-[0-9]{4}"
+  checksum_algorithm: sha3-512
+
+  safety_classes:
+    - DAL_A
+    - DAL_B
+    - DAL_C
+    - DAL_D
+    - DAL_E
+
+  status_values:
+    - Draft
+    - Frozen
+    - Certified
+
+  verification_methods:
+    - Test
+    - Analysis
+    - Inspection
+    - Simulation
+
+##############################################################################
+# 7  Autonomy Assurance Binding (AA-093)
+##############################################################################
+
+autonomy_assurance:
+  standard: AA-093
+  gsn_compatible: true
+
+  required_per_node:
+    - behaviour_specification
+    - training_data_governance
+    - performance_envelope
+    - failure_mode_mapping
+    - assurance_argument       # GSN-compatible
+
+  required_properties:
+    - reliability_envelope
+    - robustness_envelope
+    - explainability_mapping
+    - sotif_residual_risk_quantification
+    - fail_safe_fallback_state
+
+  node_structure:
+    Autonomy Node:
+      children:
+        - Behaviour Specification
+        - Training Data Governance
+        - Performance Envelope
+        - Failure Mode Mapping
+        - Assurance Argument (GSN compatible)
+
+##############################################################################
+# 8  AMPEL360 RSP Safety Regime Transitions
+##############################################################################
+
+rsp_regime_transitions:
+  description: >
+    PLUMA-GAI must enforce phase-dependent DAL allocation and dynamic
+    authority gating across all RSP safety regime transitions.
+  transitions:
+    - from: Atmospheric Mode
+      logic: CS-25
+      to: Boost / Ascent Mode
+    - from: Boost / Ascent Mode
+      logic: Spaceflight envelope
+      to: Orbital / Suborbital Phase
+    - from: Orbital / Suborbital Phase
+      logic: Space operations
+      to: Re-entry Mode
+    - from: Re-entry Mode
+      logic: TPS critical
+      to: Landing Mode
+    - from: Landing Mode
+      logic: CS-25 equivalent
+      to: null
+  controls:
+    - Phase-dependent DAL allocation
+    - Dynamic authority gating
+    - Explicit envelope partitioning
+    - Human-rated abort logic
+
+##############################################################################
+# 9  Gating Conditions (PLUMA-GAI specific)
+##############################################################################
+
+gating_conditions:
+
+  - id: GAI-SC-LH2-001
+    type: special_condition
+    description: "LH2 tank structural integrity under crash loads (AMPEL360 Q100)"
+    phase: P020
+    constraint_layer: hard
+    evidence_required:
+      - Full-scale crash test report
+      - FEM analysis (validated)
+    evidence_refs: []
+    approvals: []
+    run_manifest_ref: null
+    status: open
+
+  - id: GAI-SC-LH2-002
+    type: special_condition
+    description: "LH2 fuel system leak detection and isolation (AMPEL360 Q100)"
+    phase: P020
+    constraint_layer: hard
+    evidence_required:
+      - System-level FMEA
+      - Leak detection test results
+    evidence_refs: []
+    approvals: []
+    run_manifest_ref: null
+    status: open
+
+  - id: GAI-SC-RSP-001
+    type: special_condition
+    description: "RSP thermal protection system (TPS) software supervision"
+    phase: P020
+    constraint_layer: hard
+    evidence_required:
+      - TPS thermal model validation
+      - Re-entry thermal test evidence
+    evidence_refs: []
+    approvals: []
+    run_manifest_ref: null
+    status: open
+
+  - id: GAI-SC-RSP-002
+    type: special_condition
+    description: "RSP abort-to-runway / abort-to-orbit decision tree software"
+    phase: P030
+    constraint_layer: hard
+    evidence_required:
+      - Abort logic requirements review
+      - Monte Carlo trajectory analysis
+      - HIL abort scenario tests
+    evidence_refs: []
+    approvals: []
+    run_manifest_ref: null
+    status: open
+
+  - id: GAI-AA-UAS-001
+    type: autonomy_assurance
+    description: "GAIA UAS swarm coordination bounded autonomy (AA-093 aligned)"
+    phase: P080
+    constraint_layer: evidence
+    evidence_required:
+      - AA-093 assurance case (complete)
+      - Swarm stability test evidence
+      - SOTIF residual risk assessment
+    evidence_refs: []
+    approvals: []
+    run_manifest_ref: null
+    status: open
+
+  - id: GAI-QC-001
+    type: quantum_integration
+    description: "GAIA quantum-classical bridge interface determinism verification"
+    phase: P060
+    constraint_layer: evidence
+    evidence_required:
+      - Deterministic fall-back solver validation
+      - Latency-bound measurement evidence
+      - Classical solver equivalence demonstration
+    evidence_refs: []
+    approvals: []
+    run_manifest_ref: null
+    status: open
+
+##############################################################################
+# 10  Invariants
+##############################################################################
+
+invariants:
+  - id: INV-GAI-001
+    rule: >
+      No certification claim may reference any artefact outside the
+      Frozen or Certified status set.
+    enforcement: hard
+    description: >
+      Only artefacts with status == Frozen or Certified may appear in
+      any certification submission or compliance demonstration.
+
+  - id: INV-GAI-002
+    rule: >
+      Every gating condition must have evidence_refs[], approvals[],
+      and run_manifest_ref before status may be set to closed.
+    enforcement: hard
+    description: >
+      No gate may close without hashable evidence artefacts, role-based
+      approval signatures, and a CAX toolchain provenance reference.
+
+  - id: INV-GAI-003
+    rule: >
+      No generative AI output (GenAI, QAOA, reduced-order model) may be
+      accepted into a Frozen artefact without trace_anchor,
+      validation_envelope, and risk_class_assignment.
+    enforcement: hard
+    description: >
+      Deterministic digital continuity requires that every AI-generated
+      contribution is anchored, validated, and risk-classified before
+      baseline inclusion.
+
+  - id: INV-GAI-004
+    rule: >
+      RSP artefacts in re-entry and abort phases must declare DAL_A
+      safety_class unless a formal DAL downgrade with signed DOA
+      approval is recorded.
+    enforcement: hard
+    description: >
+      Human-rated phases default to highest criticality. Downgrade
+      requires explicit justification and DOA sign-off.
+
+##############################################################################
+# 11  Digital Thread Continuity
+##############################################################################
+
+digital_thread:
+  plm_to_alm: true
+  alm_to_csdb: true
+  csdb_standard: S1000D
+  evidence_traceability: true
+  configuration_management: true
+  genai_governance:
+    trace_anchor_required: true
+    validation_envelope_required: true
+    risk_class_required: true
+
+##############################################################################
+# 12  Strategic Positioning
+##############################################################################
+
+strategic_positioning:
+  programmes_governed:
+    - Atmospheric hydrogen aviation (AMPEL360 Q100 BWB)
+    - Reusable human spaceflight platforms (AMPEL360 RSP)
+    - Quantum-enabled EU space assets (GAIA satellite constellations)
+    - Autonomous unmanned aerial systems (GAIA UAS fleets)
+  domains_covered:
+    - Air
+    - Space
+    - Hybrid flight domains
+    - Distributed autonomy networks
+  regulatory_alignment:
+    - EASA CS-25 / Part-25
+    - ARP4754A / ARP4761
+    - DO-178C / DO-330 / DO-331
+    - EU AI Act (Article 6 high-risk AI systems)
+    - SOTIF (ISO 21448 adapted for aerospace)
+  extension_paths:
+    - RSP-specific lifecycle extension (PLUMA-RSP annex)
+    - Quantum-integration compliance matrix
+    - Human-rated autonomy assurance template
+    - Cross-regime DAL reallocation model
