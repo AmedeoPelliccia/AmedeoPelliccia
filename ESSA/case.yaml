@@ -1,0 +1,483 @@
+##############################################################################
+# ESSA — Case Study: European Space Safety Agency
+# Machine-readable companion to ESSA/CASE.md
+##############################################################################
+
+document_id: ESSA-CASE-001
+document_type: essa_case_study
+title: "European Space Safety Agency — Governed under the European Sovereign Systems Architecture"
+version: "0.1-draft"
+schema_version: "1.0.0"
+status: illustrative_reference
+parent: ESSA-STD-CCTLS-001
+last_updated: "2026-02-28T00:00:00Z"
+
+description: >
+  Reference case demonstrating how the European Sovereign Systems Architecture
+  (ESSA) governs the European Space Safety Agency (the canonical civil-platforms
+  fork) across CCTLS phases P000–P120, with EU-SECURITY MCSC overlay applied
+  and ALPC certification performed.
+
+# ─────────────────────────────────────────────
+# 1. Operator
+# ─────────────────────────────────────────────
+operator:
+  name: EuroSpace GmbH
+  registry_id: OP-EU-2026-001
+  established: Germany
+  scope:
+    - Uncrewed suborbital operations
+    - Uncrewed LEO operations
+    - Crewed operations (Phase C, future)
+  applicable_parts:
+    - Part-STO
+    - Part-LRE
+    - Part-RSP
+    - Part-CAW-S
+    - Part-MRO-S
+    - Part-SUST
+    - Part-CYB-S
+
+# ─────────────────────────────────────────────
+# 2. Platform
+# ─────────────────────────────────────────────
+platform:
+  name: AURORA-1
+  type: two_stage_partially_reusable_launch_vehicle
+  domain: RSP
+  reuse:
+    applicable: true
+    element: Stage-1 booster
+    target_refly_cycles: 10
+  first_flight_milestone: Phase_B
+
+# ─────────────────────────────────────────────
+# 3. Roadmap Phase Coverage
+# ─────────────────────────────────────────────
+roadmap_coverage:
+  - roadmap_phase: A
+    timeline: "0–18 months"
+    parts: [Part-STO, Part-LRE, Part-SPP, Part-SUST]
+  - roadmap_phase: B
+    timeline: "18–36 months"
+    parts: [Part-RSP, Part-CAW-S, Part-MRO-S, Part-CYB-S]
+  - roadmap_phase: C
+    timeline: "36–60 months"
+    parts: [Part-SCL, Part-STO-ORA]
+
+# ─────────────────────────────────────────────
+# 4. Token Manifest by Phase
+# ─────────────────────────────────────────────
+token_manifest:
+
+  # ── P000 ─────────────────────────────────────
+  - token_id: REG-OP-EU-2026-001
+    token_type: REG_ENTRY
+    phase: P000
+    package_id: PKG-P000-REGISTRY
+    aor_id: AOR-ESSA-OP-001
+    title: "EuroSpace GmbH — Operator Registry Entry"
+    version: "1.0.0"
+    status: CONFIRMED
+    bindings:
+      domain: RSP
+      operation_context: LRE
+    links:
+      - rel: verified_by
+        target_token_id: MCSC-ETH-01
+      - rel: verified_by
+        target_token_id: MCSC-ETH-04
+
+  # ── P010 ─────────────────────────────────────
+  - token_id: SCOPE-AURORA1-LRE-2026
+    token_type: SCOPE_NODE
+    phase: P010
+    aor_id: AOR-ESSA-SCOPE-001
+    title: "AURORA-1 Operational Scope — LRE + RSP Domain"
+    version: "1.0.0"
+    status: CONFIRMED
+    bindings:
+      domain: RSP
+      operation_context: LRE
+      asset_state: AS_BUILT
+      effectivity: [ALL]
+    links:
+      - rel: derives_from
+        target_token_id: REG-OP-EU-2026-001
+
+  # ── P020 ─────────────────────────────────────
+  - token_id: HAZARD-AURORA1-LRE-001
+    token_type: HAZARD
+    phase: P020
+    package_id: PKG-P020-SAFETY
+    aor_id: AOR-ESSA-SAF-001
+    title: "Uncontrolled re-entry — Stage 1 booster"
+    version: "1.0.0"
+    status: CONFIRMED
+    links:
+      - rel: verified_by
+        target_token_id: MCSC-ETH-03
+      - rel: verified_by
+        target_token_id: MCSC-RES-01
+
+  - token_id: SAF-OBJ-AURORA1-001
+    token_type: SAF_OBJ
+    phase: P020
+    aor_id: AOR-ESSA-SAF-001
+    title: "Individual casualty risk ≤ 1×10⁻⁶ per flight event"
+    version: "1.0.0"
+    status: CONFIRMED
+    links:
+      - rel: supports
+        target_token_id: HAZARD-AURORA1-LRE-001
+      - rel: verified_by
+        target_token_id: MCSC-ETH-03
+
+  # ── P030 ─────────────────────────────────────
+  - token_id: CHAIN-AURORA1-PROPULSION
+    token_type: CHAIN
+    phase: P030
+    package_id: PKG-P030-CHAIN-TOPOLOGY
+    aor_id: AOR-ESSA-CHAIN-001
+    title: "AURORA-1 Propulsion Supply Chain"
+    version: "1.0.0"
+    status: CONFIRMED
+    links:
+      - rel: verified_by
+        target_token_id: MCSC-ETH-04
+
+  - token_id: CHAIN-NODE-ENGTEC-DE
+    token_type: CHAIN_NODE
+    phase: P030
+    package_id: PKG-P030-SUPPLY
+    aor_id: AOR-ESSA-CHAIN-001
+    title: "EngTec GmbH — Propulsion subsystem supplier"
+    version: "1.0.0"
+    status: CONFIRMED
+    links:
+      - rel: recorded_in
+        target_token_id: CHAIN-AURORA1-PROPULSION
+      - rel: verified_by
+        target_token_id: MCSC-SCI-01
+      - rel: verified_by
+        target_token_id: MCSC-SCI-02
+
+  - token_id: KPI_MEASURE-CO2e-AURORA1-2026Q1
+    token_type: KPI_MEASURE
+    phase: P030
+    package_id: PKG-P030-ESG-OVERLAY
+    aor_id: AOR-ESSA-CHAIN-001
+    title: "CO₂e KPI — Propulsion chain Q1 2026"
+    version: "1.0.0"
+    status: CONFIRMED
+    links:
+      - rel: measured_on
+        target_token_id: CHAIN-NODE-ENGTEC-DE
+    metadata:
+      kpi_id: KPI-CO2e
+      period:
+        from: "2026-01-01"
+        to: "2026-03-31"
+      value: 48.2
+      unit: tCO2e
+
+  # ── P040 ─────────────────────────────────────
+  - token_id: DMU-AURORA1-STAGE1-v1
+    token_type: DMU_ITEM
+    phase: P040
+    package_id: PKG-P040-DMU
+    aor_id: AOR-ESSA-SIM-001
+    title: "AURORA-1 Stage-1 DMU — reuse-critical structure"
+    version: "1.0.0"
+    status: CONFIRMED
+
+  - token_id: SIM-AURORA1-REENTRY-001
+    token_type: SIM_RUN
+    phase: P040
+    package_id: PKG-P040-SIM-RUNS
+    aor_id: AOR-ESSA-SIM-001
+    title: "Stage-1 re-entry trajectory simulation — 10-cycle envelope"
+    version: "1.0.0"
+    status: CONFIRMED
+    links:
+      - rel: supports
+        target_token_id: SAF-OBJ-AURORA1-001
+      - rel: derives_from
+        target_token_id: DMU-AURORA1-STAGE1-v1
+
+  # ── P050 ─────────────────────────────────────
+  - token_id: DOA-SIGN-AURORA1-STR-001
+    token_type: DOA_SIGN
+    phase: P050
+    package_id: PKG-P050-DOA-SIGNOFF
+    aor_id: AOR-ESSA-DOA-001
+    title: "DOA sign-off — Stage-1 structural qualification"
+    version: "1.0.0"
+    status: ACTIVATED
+    links:
+      - rel: supports
+        target_token_id: SIM-AURORA1-REENTRY-001
+      - rel: verified_by
+        target_token_id: MCSC-ACC-02
+      - rel: verified_by
+        target_token_id: MCSC-ETH-01
+
+  # ── P060 ─────────────────────────────────────
+  - token_id: CE-DECL-GSE-FUELLING-001
+    token_type: CE_DECL
+    phase: P060
+    package_id: PKG-P060-CE-TECH-FILE
+    aor_id: AOR-ESSA-CONF-001
+    title: "CE Declaration — Cryogenic fuelling GSE"
+    version: "1.0.0"
+    status: CONFIRMED
+    links:
+      - rel: verified_by
+        target_token_id: MCSC-SCI-03
+
+  # ── P070 ─────────────────────────────────────
+  - token_id: TEST-CAMPAIGN-AURORA1-CERT-001
+    token_type: TEST_CAMPAIGN
+    phase: P070
+    package_id: PKG-P070-TEST-CAMPAIGNS
+    aor_id: AOR-ESSA-TEST-001
+    title: "AURORA-1 Certification Flight Campaign"
+    version: "1.0.0"
+    status: ACTIVATED
+
+  - token_id: TEST-REPORT-AURORA1-FLT-001
+    token_type: TEST_REPORT
+    phase: P070
+    package_id: PKG-P070-REPORTS
+    aor_id: AOR-ESSA-TEST-001
+    title: "AURORA-1 Flight 1 — Certification Test Report"
+    version: "1.0.0"
+    status: PUBLISHED
+    links:
+      - rel: verifies
+        target_token_id: SAF-OBJ-AURORA1-001
+      - rel: supports
+        target_token_id: DOA-SIGN-AURORA1-STR-001
+
+  # ── P080 ─────────────────────────────────────
+  - token_id: ICA-TASK-AURORA1-STG1-INSPECT-001
+    token_type: ICA_TASK
+    phase: P080
+    package_id: PKG-P080-ICA
+    aor_id: AOR-ESSA-MRO-001
+    title: "Stage-1 booster post-recovery inspection procedure"
+    version: "1.0.0"
+    status: CONFIRMED
+    bindings:
+      domain: RSP
+      operation_context: SHOP
+      asset_state: AS_FLOWN
+      reuse_cycle_id: RC-2026-01
+      effectivity: [ALL]
+
+  - token_id: MRO-JOB-AURORA1-STG1-REFURB-001
+    token_type: MRO_JOB
+    phase: P080
+    package_id: PKG-P080-MRO
+    aor_id: AOR-ESSA-MRO-001
+    title: "Stage-1 refurbishment cycle 1 — Propulsion cleaning and NDT"
+    version: "1.0.0"
+    status: ACTIVATED
+    bindings:
+      domain: RSP
+      operation_context: SHOP
+      asset_state: REMOVED
+      reuse_cycle_id: RC-2026-01
+    links:
+      - rel: derives_from
+        target_token_id: ICA-TASK-AURORA1-STG1-INSPECT-001
+      - rel: verified_by
+        target_token_id: MCSC-ACC-03
+
+  # ── P090 ─────────────────────────────────────
+  - token_id: MISSION-PLAN-AURORA1-FLT2
+    token_type: MISSION_PLAN
+    phase: P090
+    package_id: PKG-P090-MISSION-CONTROL
+    aor_id: AOR-ESSA-OPS-001
+    title: "AURORA-1 Flight 2 Mission Plan"
+    version: "1.0.0"
+    status: CONFIRMED
+    links:
+      - rel: verified_by
+        target_token_id: MCSC-HOB-03
+      - rel: verified_by
+        target_token_id: MCSC-ETH-02
+
+  - token_id: TRAFFIC-CLR-AURORA1-FLT2
+    token_type: TRAFFIC_CLEARANCE
+    phase: P090
+    package_id: PKG-P090-TRAFFIC-STM
+    aor_id: AOR-ESSA-OPS-001
+    title: "Launch window clearance — STM deconfliction T-72h"
+    version: "1.0.0"
+    status: ACTIVATED
+    links:
+      - rel: supports
+        target_token_id: MISSION-PLAN-AURORA1-FLT2
+
+  # ── P100 ─────────────────────────────────────
+  - token_id: ESG-RPT-AURORA1-2026Q1
+    token_type: ESG_REPORT
+    phase: P100
+    package_id: PKG-P100-ESG-CONSOLIDATION
+    aor_id: AOR-ESSA-ESG-001
+    title: "AURORA-1 ESG Report — 2026 Q1"
+    version: "1.0.0"
+    status: PUBLISHED
+    links:
+      - rel: supports
+        target_token_id: KPI_MEASURE-CO2e-AURORA1-2026Q1
+      - rel: supports
+        target_token_id: MRO-JOB-AURORA1-STG1-REFURB-001
+
+  - token_id: AGG-RULE-CO2e-AURORA1
+    token_type: AGG_RULE
+    phase: P100
+    package_id: PKG-P100-ESG-CONSOLIDATION
+    aor_id: AOR-ESSA-ESG-001
+    title: "CO₂e aggregation rule — chain + operations"
+    version: "1.0.0"
+    status: CONFIRMED
+    metadata:
+      method: sum
+      inputs:
+        - KPI_MEASURE-CO2e-AURORA1-2026Q1
+        - MRO-CO2e-OPS-2026Q1
+      boundary: AURORA-1 programme
+      period: "2026-Q1"
+
+  # ── P120 ─────────────────────────────────────
+  - token_id: CYB-CTRL-MCS-001
+    token_type: CYB_CONTROL
+    phase: P120
+    package_id: PKG-P120-CYBER
+    aor_id: AOR-ESSA-CYB-001
+    title: "Mission Control System — access control baseline"
+    version: "1.0.0"
+    status: CONFIRMED
+    links:
+      - rel: verified_by
+        target_token_id: MCSC-SOV-03
+
+  - token_id: BCP-LRE-AURORA1-001
+    token_type: BCP_ITEM
+    phase: P120
+    package_id: PKG-P120-RESILIENCE
+    aor_id: AOR-ESSA-RES-001
+    title: "Launch operations BCP — range abort and operator notification"
+    version: "1.0.0"
+    status: CONFIRMED
+    links:
+      - rel: verified_by
+        target_token_id: MCSC-RES-01
+      - rel: verified_by
+        target_token_id: MCSC-RES-03
+
+  - token_id: RECOVERY-TEST-BCP-001
+    token_type: RECOVERY_TEST
+    phase: P120
+    package_id: PKG-P120-RESILIENCE
+    aor_id: AOR-ESSA-RES-001
+    title: "BCP recovery test — launch abort drill 2026-02"
+    version: "1.0.0"
+    status: PUBLISHED
+    links:
+      - rel: supports
+        target_token_id: BCP-LRE-AURORA1-001
+      - rel: verified_by
+        target_token_id: MCSC-RES-02
+
+# ─────────────────────────────────────────────
+# 5. EU-SECURITY Mandatory Coverage
+# ─────────────────────────────────────────────
+eu_security_coverage:
+  - phase: P020
+    mandatory_controls: [MCSC-ETH-03, MCSC-RES-01]
+    covered_by: [HAZARD-AURORA1-LRE-001]
+    status: PASS
+  - phase: P050
+    mandatory_controls: [MCSC-ACC-02, MCSC-ETH-01]
+    covered_by: [DOA-SIGN-AURORA1-STR-001]
+    status: PASS
+  - phase: P080
+    mandatory_controls: [MCSC-ACC-03, MCSC-SCI-01]
+    covered_by: [MRO-JOB-AURORA1-STG1-REFURB-001, CHAIN-NODE-ENGTEC-DE]
+    status: PASS
+  - phase: P090
+    mandatory_controls: [MCSC-HOB-03, MCSC-ETH-02]
+    covered_by: [MISSION-PLAN-AURORA1-FLT2]
+    status: PASS
+  - phase: P120
+    mandatory_controls: [MCSC-RES-01, MCSC-RES-02, MCSC-RES-03]
+    covered_by: [BCP-LRE-AURORA1-001, RECOVERY-TEST-BCP-001]
+    status: PASS
+
+# ─────────────────────────────────────────────
+# 6. ALPC Evaluation
+# ─────────────────────────────────────────────
+alpc_evaluation:
+  criteria:
+    - id: ALP-001
+      criterion: structural_completeness
+      result: PASS
+      notes: "All 13 CCTLS phases have at least one token; P110 correctly empty (RESERVED)"
+    - id: ALP-002
+      criterion: traceability_coverage
+      result: PASS
+      notes: "SAF-OBJ → TEST_REPORT → DOA_SIGN → SIM_RUN chain verified"
+    - id: ALP-003
+      criterion: evidence_sufficiency
+      result: PASS
+      notes: "TEST-REPORT-AURORA1-FLT-001 PUBLISHED, linked to SAF-OBJ and DOA_SIGN"
+    - id: ALP-004
+      criterion: eu_security_control_coverage
+      result: PASS
+      notes: "All mandatory MCSC linkages per EU-SECURITY §4.2 present"
+    - id: ALP-005
+      criterion: phase_coherence
+      result: PASS
+      notes: "No P050 ACTIVATE without P040 supports link; no P100 ESG_REPORT without AGG_RULE"
+    - id: ALP-006
+      criterion: baseline_integrity
+      result: PASS
+      notes: "All tokens carry sha3-512 checksum; MTLdg ledger entries confirmed"
+  decision: CERTIFIED
+
+certification:
+  case_id: ESSA-CASE-001
+  operator: OP-EU-2026-001
+  platform: AURORA-1
+  scope_parts:
+    phase_a: [Part-STO, Part-LRE, Part-SPP, Part-SUST]
+    phase_b: [Part-RSP, Part-CAW-S, Part-MRO-S, Part-CYB-S]
+  decision: CERTIFIED
+  baseline_id: BL-AURORA1-2026-001
+  ledger_anchor: MTLdg-ANCHOR-AURORA1-2026-001
+
+# ─────────────────────────────────────────────
+# 7. EUSPA Interface Consumption
+# ─────────────────────────────────────────────
+euspa_interfaces_consumed:
+  - interface_id: IF-SST
+    essa_function: "Operations Oversight (DIR-04)"
+    euspa_service: "EU SST conjunction warnings"
+    direction: "EUSPA → ESSA"
+    consumed_in_phase: P090
+
+  - interface_id: IF-SUST
+    essa_function: "Sustainability (DIR-06, Part-SUST)"
+    euspa_service: "SST debris cataloguing"
+    direction: bidirectional
+    consumed_in_phase: [P080, P100]
+
+  - interface_id: IF-STM
+    essa_function: "Mission Ops (Part-LRE, Part-SPP)"
+    euspa_service: "STM coordination"
+    direction: bidirectional
+    consumed_in_phase: P090
