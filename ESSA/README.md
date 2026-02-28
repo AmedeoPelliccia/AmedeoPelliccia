@@ -413,6 +413,6 @@ Machine-verifiable condition that **SHALL** hold across lifecycle states for cer
 | [`ANNEX-A-glossary.md`](ANNEX-A-glossary.md) | NORMATIVE — ANNEX-A: Glossary of MTL/MTLdg/DOF concepts |
 | [`annex-a-glossary.yaml`](annex-a-glossary.yaml) | Machine-readable ANNEX-A terms catalogue |
 | [`EU-SECURITY/README.md`](EU-SECURITY/README.md) | EU-SECURITY branch — Minimum Common Security Constitution (MCSC) |
-| [`CASE.md`](CASE.md) | Case study — European Space Safety Agency governed under ESSA (AURORA-1 RSP operator, phases P000–P120, ALPC certification) |
-| [`case.yaml`](case.yaml) | Machine-readable companion — ESSA-CASE-001 token manifest, ALPC evaluation, EUSPA interface consumption |
+| [`CASE.md`](CASE.md) | Case study — ESSA-ESSA conceptual demonstrator: European Sovereign Systems Architecture applied to a European Union Space Safety Agency (12-section structural analysis) |
+| [`case.yaml`](case.yaml) | Machine-readable companion — ESSA-CASE-001 structural model: problem dimensions, architectural mappings, operational model, ethical constraints, and governance conclusions |
 | Root [`README.md`](../README.md) | Profile-level reference to ESSA under Current Focus |
