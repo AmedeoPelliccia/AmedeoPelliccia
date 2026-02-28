@@ -203,7 +203,40 @@ It extends CIVIL-PLATFORMS through machine-checkable control registries.
 
 ---
 
-## 4. Discretisation Principle
+### 3.3 ESSA-Agency Constitution
+
+**Canonical artefacts:** [`ESSA-AGENCY-CONSTITUTION.md`](ESSA-AGENCY-CONSTITUTION.md) · [`essa-agency-constitution.yaml`](essa-agency-constitution.yaml)
+
+**Document ID:** `ESSA-CONST-001`
+
+The ESSA-Agency Constitution is the **constitutional bridge instrument** that:
+
+- Positions ESSA-Agency between ESSA-Architecture and sector agencies (EUSSA, Aviation, RSP, Autonomy)
+- Formalises the Safety=Mission / Security=Governance separation
+- Establishes the doctrine: *Advance in Safety, Protect in Security*
+- Defines the agentic operating model (safety envelopes as first-class artefacts)
+- Specifies profile extensibility (`PROFILE-AVIATION-CS25`, `PROFILE-SPACE-SAFETY`, `PROFILE-RSP-REUSE-CYCLES`, `PROFILE-AUTONOMY-ASSURANCE`, `PROFILE-CRITICAL-INDUSTRIAL-CHAINS`)
+- Enumerates seven constitutional invariants (CI-001 through CI-007)
+- Mandates the ALPC certification operator for machine-verifiable conformance
+
+---
+
+### 3.4 Structural Integration State (SIS)
+
+**Canonical artefacts:** [`SIS.md`](SIS.md) · [`sis.yaml`](sis.yaml)
+
+**Document ID:** `ESSA-DOC-SIS-001`
+
+The **Structural Integration State** is the constitutional condition achieved when architecture, governance, safety mission, and security invariants operate coherently within a unified lifecycle graph.
+
+Seven conditions must hold simultaneously (SIS-C-001 through SIS-C-007):
+Safety Envelope Generation · Bounded Design · Integrity Governance · Invariant Certification · Operational Feedback · Traced Authority · Federated Interoperability
+
+SIS is measured by the **Structural Integration Index (SII)** across five dimensions: Ontological · Normative · Operational · Ethical · Technological.
+
+Priority ordering: **Safety > Security > Performance** — without exception.
+
+---
 
 ESSA enforces controlled discretisation.
 

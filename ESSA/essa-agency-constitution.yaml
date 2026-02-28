@@ -1,0 +1,233 @@
+##############################################################################
+# ESSA-Agency Constitution v0.1
+# European Safety and Security Agency — Constitutional Bridge Layer
+# Machine-readable companion to ESSA/ESSA-AGENCY-CONSTITUTION.md
+##############################################################################
+
+document_id: ESSA-CONST-001
+document_type: essa_agency_constitution
+title: "ESSA-Agency Constitution v0.1 — Advance in Safety, Protect in Security"
+version: "0.1-draft"
+schema_version: "1.0.0"
+status: constitutional_instrument
+parent: ESSA-STD-CCTLS-001
+last_updated: "2026-02-28T00:00:00Z"
+
+description: >
+  Constitutional bridge instrument defining the European Safety and Security
+  Agency (ESSA-Agency) as the institutional layer between the European Sovereign
+  Systems Architecture (ESSA-Architecture) and European sector safety agencies.
+  Establishes doctrine, mission-governance separation, agentic operating model,
+  profile extensibility, governance kernel, ALPC certification mandate, and
+  Structural Integration State (SIS) condition.
+
+# ─────────────────────────────────────────────
+# Minimal Charter Statement
+# ─────────────────────────────────────────────
+charter_statement: >
+  The European Safety and Security Agency (ESSA-Agency) is the institutional
+  bridge between the European Sovereign Systems Architecture and European sector
+  safety agencies. It operates under a Safety-First doctrine: advance in safety,
+  protect in security. Safety defines the agentic mission and drives requirement
+  derivation and design generation. Security provides governance invariants
+  ensuring integrity, resilience, accountability, and controlled interoperability
+  across all safety-critical lifecycle artefacts and transitions. ESSA-Agency is
+  extensible by profiles and enforced through deterministic conformance gates and
+  machine-verifiable certification.
+
+# ─────────────────────────────────────────────
+# 1. Stack Placement
+# ─────────────────────────────────────────────
+stack_placement:
+  tier_1:
+    name: European Sovereign Systems Architecture
+    acronym: ESSA-Architecture
+    role: constitutional_digital_substrate
+    provides: [standards, token_graph, lifecycle_governance]
+  tier_2:
+    name: European Safety and Security Agency
+    acronym: ESSA-Agency
+    role: institutional_mission_and_governance_layer
+    document_id: ESSA-CONST-001
+  tier_3:
+    name: Sector Agencies
+    examples:
+      - European Union Space Safety Agency (EUSSA)
+      - Aviation safety authority
+      - RSP lifecycle authority
+      - Autonomy assurance authority
+      - Critical industrial chains authority
+    role: domain_specific_safety_execution
+
+# ─────────────────────────────────────────────
+# 2. Mission–Governance Separation
+# ─────────────────────────────────────────────
+mission_governance_separation:
+  safety_mission:
+    label: "Safety = Mission (Advance)"
+    doctrine: advance_in_safety
+    functions:
+      - Define and maintain Safety Envelopes
+      - Derive requirements from safety envelopes (safety-driven generation)
+      - Validate safety evidence and operational readiness
+      - Manage incidents, occurrences, and lessons learned
+      - Coordinate cross-border safety continuity
+      - Oversee autonomous system safety boundaries
+  security_governance:
+    label: "Security = Governance (Protect)"
+    doctrine: protect_in_security
+    functions:
+      - Integrity of artefacts, baselines, and audit trails
+      - Authority binding, sign-off, non-repudiation
+      - Cyber resilience and incident response
+      - Supply-chain integrity and provenance controls
+      - Controlled disclosure and interoperable attestations
+      - Change control and baseline authority
+  non_negotiable_rule: >
+    Security mechanisms cannot override safety obligations.
+    Security exists to protect them.
+
+# ─────────────────────────────────────────────
+# 3. Doctrine
+# ─────────────────────────────────────────────
+doctrine:
+  statement: "Advance in Safety, Protect in Security"
+  operational_model:
+    - stage: Generate
+      doctrine_alignment: advance_in_safety
+      action: Derive requirements from Safety Envelope inside safety bounds
+    - stage: Design
+      doctrine_alignment: advance_in_safety
+      action: Bounded synthesis — valid design space D ⊆ Valid(S)
+    - stage: Govern
+      doctrine_alignment: protect_in_security
+      action: Security invariants protect S from corruption or circumvention
+    - stage: Certify
+      doctrine_alignment: advance_in_safety
+      action: Invariant validation over the lifecycle graph — not narrative
+
+# ─────────────────────────────────────────────
+# 4. Agentic and Extensible Operating Model
+# ─────────────────────────────────────────────
+agentic_operating_model:
+  pipeline_description: >
+    ESSA-Agency operates an agentic pipeline where Safety Envelopes are
+    first-class artefacts, requirements are derived from safety envelopes,
+    design candidates are generated only within validated safety bounds, and any
+    candidate outside the envelope is non-activable by construction.
+  pipeline_properties:
+    - safety_envelopes_are_first_class_artefacts: true
+    - requirements_derived_from_safety_envelopes: true
+    - design_bounded_by_validated_safety: true
+    - out_of_envelope_candidates_non_activable: true
+
+  profiles:
+    extensibility_rule: >
+      Profiles may tighten controls. They cannot weaken the minimum
+      constitutional baseline.
+    profile_list:
+      - id: PROFILE-AVIATION-CS25
+        domain: Civil aviation
+        scope: CS-25 large aeroplane category
+      - id: PROFILE-SPACE-SAFETY
+        domain: Space
+        scope: Launch, orbital operations, space traffic management
+      - id: PROFILE-RSP-REUSE-CYCLES
+        domain: Reusable Space Platforms
+        scope: Refurbishment lifecycle and reuse cycle governance
+      - id: PROFILE-AUTONOMY-ASSURANCE
+        domain: Autonomous Systems
+        scope: AI-assisted and autonomous operations with human override
+      - id: PROFILE-CRITICAL-INDUSTRIAL-CHAINS
+        domain: Critical Industrial Chains
+        scope: Supply-chain integrity, provenance, accountability
+
+# ─────────────────────────────────────────────
+# 5. Governance Kernel
+# ─────────────────────────────────────────────
+governance_kernel:
+  lifecycle_gates: [INTERPRET, CONFIRM, ACTIVATE, PUBLISH]
+  gate_doctrine_alignment:
+    - gate: INTERPRET
+      doctrine: advance_in_safety
+      purpose: Safety Envelope definition and requirement derivation
+    - gate: CONFIRM
+      doctrine: protect_in_security
+      purpose: Evidence validation, security control check, authority sign-off
+    - gate: ACTIVATE
+      doctrine: protect_in_security
+      purpose: Invariant validation — non-activable if S coverage incomplete
+    - gate: PUBLISH
+      doctrine: advance_in_safety
+      purpose: Immutable baseline, interoperable attestation
+  reference: ESSA-STD-CCTLS-001
+
+# ─────────────────────────────────────────────
+# 6. Conformance and Certification
+# ─────────────────────────────────────────────
+conformance_and_certification:
+  operator: ALPC
+  validation_requirements:
+    - safety_envelope_presence_and_integrity
+    - requirement_derivation_trace_completeness
+    - evidence_sufficiency_for_safety_claims
+    - security_control_coverage_minimum_common_constitution
+    - baseline_integrity_authority_signoff_audit_completeness
+  output_type: machine_verifiable_conformance
+  output_not: narrative_assertion
+
+# ─────────────────────────────────────────────
+# 7. Relationship to EUSSA and Sector Agencies
+# ─────────────────────────────────────────────
+sector_agency_relationship:
+  essa_agency_role: constitutional_layer
+  eussa_role: domain_executor
+  eussa_obligations:
+    - Apply ESSA-Agency Safety Envelopes to space operations (STM, traffic, range safety)
+    - Report occurrences and operational evidence into the ESSA lifecycle graph
+    - Adopt ESSA-Agency EU-SECURITY governance overlay as minimum common baseline
+    - Package auditable safety evidence bundles for cross-border interoperability
+  pattern_extends_to:
+    - Aviation safety authority
+    - RSP lifecycle authority
+    - Autonomy assurance authority
+    - Critical industrial chains authority
+
+# ─────────────────────────────────────────────
+# 8. Constitutional Invariants
+# ─────────────────────────────────────────────
+constitutional_invariants:
+  - id: CI-001
+    name: Safety Primacy
+    statement: >
+      Safety envelopes define the valid design space. No activation without
+      S-preservation evidence.
+  - id: CI-002
+    name: Security Non-Override
+    statement: >
+      Security mechanisms cannot override, bypass, or redefine safety obligations.
+  - id: CI-003
+    name: Deterministic Gates
+    statement: >
+      Lifecycle transitions are governed by explicit
+      INTERPRET → CONFIRM → ACTIVATE → PUBLISH gates.
+  - id: CI-004
+    name: Profile Bounds
+    statement: >
+      Profile extensions cannot weaken the constitutional baseline.
+  - id: CI-005
+    name: Machine Verifiability
+    statement: >
+      Conformance is validated computationally, not by narrative assertion.
+  - id: CI-006
+    name: Civil Nature
+    statement: >
+      ESSA-Agency is a civil sovereign authority. It is not military and not an
+      intelligence authority.
+  - id: CI-007
+    name: Structural Integration
+    statement: >
+      Achieving coherence across architecture, governance, safety mission, and
+      security invariants constitutes a Structural Integration State (SIS).
+      See ESSA-DOC-SIS-001.
+    reference: ESSA-DOC-SIS-001
