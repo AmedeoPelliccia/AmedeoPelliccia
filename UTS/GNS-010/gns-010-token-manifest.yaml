@@ -1,0 +1,110 @@
+# UTS/GNS-010/gns-010-token-manifest.yaml
+# Machine-readable CCTLS token manifest for GNS-010 (Mission Systems — GNSS/Navigation)
+# Reference: UTS/GNS-010/README.md
+# Author: Amedeo Pelliccia
+# Parent standard: EACST-STD-CCTLS-001
+
+schema_version: "1.0.0"
+document_type: cctls_token_manifest
+last_updated: "2026-02-27T00:00:00Z"
+
+# ─────────────────────────────────────────────
+# 1. Artefact Identity
+# ─────────────────────────────────────────────
+artefact:
+  id: GNS-010
+  title: "Mission Systems — GNSS / Navigation Artefact"
+  uts_domain: "010"
+  uts_domain_name: MISSION_SYSTEMS
+  version: "1.0.0"
+  status: DRAFT
+  author: Amedeo Pelliccia
+  parent_standard: EACST-STD-CCTLS-001
+
+# ─────────────────────────────────────────────
+# 2. Scope
+# ─────────────────────────────────────────────
+scope:
+  systems:
+    - GNSS receivers
+    - INS/GNSS integration units
+    - EGNOS SBAS overlay
+    - Galileo OS/CS/HAS signals
+  performance_axes:
+    - accuracy
+    - availability
+    - continuity
+    - integrity
+  lifecycle_phases:
+    - P040   # Numerical & Simulation Methods (DMU+PMU)
+    - P070   # Flight Tests (CERT)
+    - P090   # Mission Ops & Traffic / Range Control
+  regulatory_references:
+    - "ICAO Annex 10 Vol I — Radionavigation Aids"
+    - "EUROCAE ED-259 — GNSS-based Positioning Systems"
+    - "RTCA DO-229 — MOPS for GNSS Receiving Equipment"
+    - "EASA AMC 20-28 — Airborne GNSS Receivers"
+    - "EUSPA SDD OS-SIS-ICD — Galileo OS Signal-In-Space ICD"
+    - "EUSPA EGNOS SDD — EGNOS Signal-In-Space SDD"
+
+# ─────────────────────────────────────────────
+# 3. Token Registry
+# ─────────────────────────────────────────────
+tokens:
+  - token_id: GNS-010-EV-001
+    token_type: TEST_REPORT
+    phase: P070
+    package_id: PKG-P070-REPORTS
+    title: "SIS Performance Report"
+    version: "1.0.0"
+    status: DRAFT
+    evidence_file_md: "evidence/GNS-010-EV-001-sis-performance.md"
+    evidence_file_yaml: "evidence/GNS-010-EV-001-sis-performance.yaml"
+    bindings:
+      domain: AVIATION
+      operation_context: FLIGHT
+      asset_state: AS_FLOWN
+      effectivity:
+        - ALL
+      variants: []
+    links:
+      - rel: derives_from
+        target_token_id: GNS-010-MP-001
+        description: "Mission Profile & Trace (MP-010)"
+      - rel: verifies
+        target_token_id: GNS-010-REQ-001
+        description: "GNSS SIS performance requirements"
+
+# ─────────────────────────────────────────────
+# 4. Evidence Artefact Registry (UTS-010 mapping)
+# ─────────────────────────────────────────────
+evidence_artefacts:
+  - evidence_id: GNS-010-EV-001
+    artefact: "SIS Performance Report"
+    uts_category_code: "010"
+    taxonomy_evidence_id: MP-010
+    phase: P070
+    status: DRAFT
+
+# ─────────────────────────────────────────────
+# 5. Validation Rules
+# ─────────────────────────────────────────────
+validation_rules:
+  - rule_id: GNS-010-VR-01
+    description: >
+      Every SIS performance evidence token MUST declare measured accuracy,
+      availability, continuity and integrity values against the applicable
+      service specification (Galileo OS SDD or EGNOS SDD).
+    severity: error
+
+  - rule_id: GNS-010-VR-02
+    description: >
+      Integrity evidence MUST include SISA and SISMA budgets and Time To Alert
+      (TTA) compliance demonstration against ICAO Annex 10 / applicable SDD.
+    severity: error
+
+  - rule_id: GNS-010-VR-03
+    description: >
+      Mission Systems evidence MUST link to a Mission Profile & Trace token
+      (MP-010 or equivalent) via rel: derives_from.
+    severity: warning
