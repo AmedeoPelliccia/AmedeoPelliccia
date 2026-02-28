@@ -1,0 +1,294 @@
+##############################################################################
+# AA-093-TEMPLATE.gsn.yaml
+# PLUMA-GAI Assurance Case Template — AA-093 Binding
+# GSN-compatible autonomy assurance case structure
+##############################################################################
+
+document_id: AA-093-TMPL-001
+document_type: gsn_assurance_case_template
+title: "AA-093 Autonomy Assurance Case Template (PLUMA-GAI)"
+version: "0.1.0"
+schema_version: "1.0.0"
+status: draft
+parent: PLUMA-GAI-001
+last_updated: "2026-02-28T12:00:00Z"
+
+usage: >
+  Instantiate one autonomy_node record per autonomy function under PLUMA-GAI
+  governance. Replace all placeholder values (marked with XXXX or template_*)
+  with programme-specific content. Each node must be approved by DOA before
+  the relevant gating condition may be closed.
+
+##############################################################################
+# 1  Autonomy Node Schema (complete instance template)
+##############################################################################
+
+autonomy_node_template:
+
+  # ── Identity ────────────────────────────────────────────────────────────────
+  autonomy_id: "AA-093-XXX"           # e.g. AA-093-001, AA-093-002
+  pluma_id: "PLM-AMP-GAI-XXXX"        # parent PLUMA-GAI artefact
+  function: "template_function_name"  # human-readable function description
+  node: "GAIA"                        # AMPEL360 | GAIA | CHANNEL
+  ai_class: "A2"                      # A0 | A1 | A2 | A3
+  dal: "C"                            # A | B | C | D | E
+  phase_introduced: "P020"            # lifecycle phase where this node was defined
+  status: "Draft"                     # Draft | Frozen | Certified
+
+  # ── Behaviour Specification ─────────────────────────────────────────────────
+  behaviour_specification:
+    description: >
+      What this autonomy function is permitted to do.
+      (Replace with formal specification — e.g. formal method reference or
+      natural language constrained statement.)
+    permitted_actions:
+      - "template_permitted_action_1"
+      - "template_permitted_action_2"
+    prohibited_actions:
+      - "template_prohibited_action_1"
+    activation_conditions:
+      - "template_condition_triggering_activation"
+    deactivation_conditions:
+      - "template_condition_triggering_deactivation"
+
+  # ── Training Data Governance ────────────────────────────────────────────────
+  training_data_governance:
+    dataset_id: "DS-XXXX"
+    data_provenance: "template_data_source_description"
+    coverage:
+      operational_envelope_coverage: "template_percentage_or_qualitative"
+      ood_handling: "template_out_of_distribution_strategy"
+    data_hash: "sha3-512:XXXX"
+    approved_by:
+      role: "DesignAuthority"
+      approver: "template_approver_id"
+      date: "YYYY-MM-DDTHH:MM:SSZ"
+
+  # ── Performance Envelope ────────────────────────────────────────────────────
+  envelope:
+    description: "Where this function is allowed to act"
+    constraints:
+      - name: "template_constraint_1"
+        type: "operational"
+        value: "template_value"
+        unit: "template_unit"
+      - name: "template_constraint_2"
+        type: "safety"
+        value: "template_value"
+        unit: "template_unit"
+    envelope_verification_ref: "template_sim_or_test_evidence_id"
+
+  # ── Evidence ────────────────────────────────────────────────────────────────
+  evidence:
+    tests:
+      - "TST-XXXX"   # test evidence IDs from evidence registry
+    analyses:
+      - "ANL-XXXX"   # analysis evidence IDs
+    simulations:
+      - "SIM-XXXX"   # simulation run IDs
+    gsn_argument: "GSN-XXXX"
+    robustness:
+      ood_test_ref: "template_out_of_distribution_test_id"
+      perturbation_test_ref: "template_perturbation_analysis_id"
+      sotif_residual_risk_ref: "template_sotif_assessment_id"
+    explainability:
+      method: "template_xai_method"    # e.g. SHAP, LIME, attention maps
+      trace_ref: "template_xai_trace_document_id"
+
+  # ── Failure Mode Mapping ────────────────────────────────────────────────────
+  failure_mode_mapping:
+    - failure_id: "FM-XXX-001"
+      description: "template_failure_description"
+      trigger: "template_trigger_condition"
+      effect: "template_effect_on_system"
+      severity: "template_severity"   # Catastrophic | Hazardous | Major | Minor | Negligible
+      detection_method: "template_detection_mechanism"
+      mitigation: "template_mitigation_action"
+
+  # ── Fallback ────────────────────────────────────────────────────────────────
+  fallback:
+    mode: "SAFE_HOLD_OR_RTB"          # SAFE_HOLD_OR_RTB | AMPEL_LOCAL_CONTROL | DEGRADED_ADVISORY
+    trigger:
+      - "coherence_loss"
+      - "latency_violation"
+      - "integrity_fail"
+    behaviour: >
+      On fallback trigger, this autonomy function ceases to provide binding
+      outputs. AMPEL360 enters AMPEL_LOCAL_CONTROL mode. Mission safety
+      envelope is maintained.
+    recovery_condition: "template_recovery_condition"
+
+  # ── GSN Assurance Argument ──────────────────────────────────────────────────
+  gsn_argument:
+    goal:
+      id: "G-XXXX"
+      statement: >
+        The [function] is acceptably safe and reliable when operating within
+        the defined envelope under PLUMA-GAI governance.
+    strategy:
+      id: "S-XXXX"
+      statement: >
+        Argument over: behaviour specification, envelope verification,
+        robustness evidence, explainability trace, and fallback mapping.
+    sub_goals:
+      - id: "G-XXXX-01"
+        statement: "Behaviour specification is complete and formally reviewed"
+        evidence_ref: "template_behaviour_spec_review_id"
+      - id: "G-XXXX-02"
+        statement: "Performance envelope is verified by test and simulation"
+        evidence_ref: "template_envelope_evidence_id"
+      - id: "G-XXXX-03"
+        statement: "Robustness to OOD inputs and perturbations is demonstrated"
+        evidence_ref: "template_robustness_evidence_id"
+      - id: "G-XXXX-04"
+        statement: "Explainability trace is available for all active decisions"
+        evidence_ref: "template_xai_evidence_id"
+      - id: "G-XXXX-05"
+        statement: "Fail-safe fallback operates correctly under all trigger conditions"
+        evidence_ref: "template_fallback_evidence_id"
+    undischarged_assumptions:
+      - "template_any_remaining_assumptions_not_yet_evidenced"
+    defeaters:
+      - "template_known_defeater_that_could_invalidate_argument"
+
+  # ── Approvals ───────────────────────────────────────────────────────────────
+  approvals: []   # [{role, approver, date, signature}] — populated on closure
+
+##############################################################################
+# 2  Worked Example — UAS Swarm Deconfliction (AA-093 aligned)
+##############################################################################
+
+example_instance:
+
+  autonomy_id: "AA-093-001"
+  pluma_id: "PLM-AMP-GAI-0042"
+  function: "UAS_swarm_deconfliction"
+  node: "GAIA"
+  ai_class: "A2"
+  dal: "C"
+  phase_introduced: "P020"
+  status: "Draft"
+
+  behaviour_specification:
+    description: >
+      Computes deconfliction manoeuvre proposals for GAIA-managed UAS fleet.
+      Proposals are returned as ADVISORY_ONLY DecisionProposal messages.
+      No binding execution authority. Each UAS retains local safety envelope
+      override at all times.
+    permitted_actions:
+      - "Compute lateral separation proposals"
+      - "Compute altitude layer assignments"
+      - "Issue advisory route modification requests"
+    prohibited_actions:
+      - "Override local UAS safety envelope"
+      - "Disable UAS-local collision avoidance"
+    activation_conditions:
+      - "Two or more UAS in monitored airspace"
+      - "Channel integrity VERIFIED"
+    deactivation_conditions:
+      - "Channel integrity INTEGRITY_FAIL"
+      - "Single UAS remaining in monitored airspace"
+
+  training_data_governance:
+    dataset_id: "DS-UAS-DECON-001"
+    data_provenance: "Simulated UAS swarm scenarios + real-world ADS-B samples"
+    coverage:
+      operational_envelope_coverage: "Coverage matrix pending — target 95% of ODD"
+      ood_handling: "OOD detector rejects inputs outside training envelope"
+    data_hash: "sha3-512:XXXX"
+    approved_by:
+      role: "DesignAuthority"
+      approver: "template_approver_id"
+      date: "2026-02-28T00:00:00Z"
+
+  envelope:
+    description: "Where UAS swarm deconfliction is allowed to act"
+    constraints:
+      - name: geo_fence
+        type: operational
+        value: "Within designated airspace corridor"
+        unit: "polygon"
+      - name: min_sep
+        type: safety
+        value: 150
+        unit: "m"
+      - name: max_bank
+        type: safety
+        value: 30
+        unit: "deg"
+      - name: comm_loss_policy
+        type: safety
+        value: "SAFE_HOLD_OR_RTB on comms loss > 5s"
+        unit: "policy"
+    envelope_verification_ref: "SIM-UAS-DECON-ENV-001"
+
+  evidence:
+    tests:
+      - "TST-UAS-DECON-001"
+    analyses:
+      - "ANL-UAS-DECON-001"
+    simulations:
+      - "SIM-UAS-DECON-001"
+    gsn_argument: "GSN-UAS-DECON-001"
+    robustness:
+      ood_test_ref: "ANL-UAS-OOD-001"
+      perturbation_test_ref: "TST-UAS-PERTURB-001"
+      sotif_residual_risk_ref: "ANL-SOTIF-UAS-001"
+    explainability:
+      method: "SHAP values on deconfliction decision features"
+      trace_ref: "DOC-XAI-UAS-DECON-001"
+
+  failure_mode_mapping:
+    - failure_id: "FM-UAS-001"
+      description: "False-safe separation: proposals place UAS too close"
+      trigger: "Model adversarial input or distribution shift"
+      effect: "Potential mid-air proximity event (advisory, not binding)"
+      severity: "Major"
+      detection_method: "Geometric safety check on each proposal before dispatch"
+      mitigation: "Proposals failing geometric check are discarded; local TCAS retained"
+
+  fallback:
+    mode: "SAFE_HOLD_OR_RTB"
+    trigger:
+      - "coherence_loss"
+      - "latency_violation"
+      - "integrity_fail"
+    behaviour: >
+      On any trigger, deconfliction proposals cease. Each UAS reverts to
+      local collision avoidance only. GAIA logs the event and notifies OCC.
+    recovery_condition: "Manual OCC re-activation after root cause closure"
+
+  gsn_argument:
+    goal:
+      id: "G-UAS-001"
+      statement: >
+        The UAS_swarm_deconfliction function is acceptably safe when
+        operating within the designated airspace corridor under PLUMA-GAI
+        governance.
+    strategy:
+      id: "S-UAS-001"
+      statement: >
+        Argument over: ADVISORY_ONLY binding, geometric safety check,
+        envelope verification, robustness evidence, and fail-safe fallback.
+    sub_goals:
+      - id: "G-UAS-001-01"
+        statement: "All proposals are ADVISORY_ONLY; no binding execution authority"
+        evidence_ref: "DOC-ICD-BINDING-CONSTRAINT"
+      - id: "G-UAS-001-02"
+        statement: "Performance envelope is verified by simulation"
+        evidence_ref: "SIM-UAS-DECON-ENV-001"
+      - id: "G-UAS-001-03"
+        statement: "Robustness to OOD inputs is demonstrated by analysis"
+        evidence_ref: "ANL-UAS-OOD-001"
+      - id: "G-UAS-001-04"
+        statement: "SHAP explainability trace is available per decision"
+        evidence_ref: "DOC-XAI-UAS-DECON-001"
+      - id: "G-UAS-001-05"
+        statement: "Fallback to SAFE_HOLD_OR_RTB tested under all trigger conditions"
+        evidence_ref: "TST-UAS-DECON-001"
+    undischarged_assumptions:
+      - "Local UAS collision avoidance systems remain operational independently"
+    defeaters:
+      - "Systematic bias in training data not captured by OOD detector"
+
+  approvals: []

@@ -43,3 +43,4 @@ Rollbacks (require regulatory_event_id + signed_approval):
 
 - Root README.md §10–§15
 - Schema version: simplex-contract.yaml `schema_version: "2.0.0"`
+- PLUMA-GAI unified artefact: `00-PROGRAM/PLUMA-GAI/` (extends this kernel)
