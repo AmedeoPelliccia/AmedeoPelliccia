@@ -47,7 +47,8 @@ Current regulatory frameworks:
 A sovereign architecture requires:
 
 - Deterministic lifecycle traceability
-- Security abstraction layer
+- **Safety as the primary generative objective** — not a post-hoc verification step
+- Security abstraction layer — governing the integrity of safety invariants
 - Ethical enforcement gates
 - Federated interoperability
 
@@ -61,10 +62,59 @@ The agency does not merely regulate.
 
 It becomes:
 
-> **A sovereign lifecycle graph authority.**
+> **A sovereign lifecycle graph authority — driven by safety as its primary generative objective.**
 
 Under ESSA constitutional governance, the agency's function is not to issue documents.
-Its function is to **validate invariants** over a deterministic process graph.
+Its function is to **generate within safety bounds** and **validate S-preservation** across a deterministic process graph.
+
+---
+
+## 3-bis. Safety-First Architecture
+
+### The Fundamental Shift
+
+Traditional regulatory model:
+
+```
+Requirements → Design → Test → Verify Safety
+```
+
+ESSA-ESSA safety-first model:
+
+```
+Safety Envelope (S)
+→ Derived Requirements  [R = f(S)]
+→ Restricted Design Space  [D ⊆ Valid(S)]
+→ Bounded Optimisation  [Optimise(O) subject to S preserved]
+→ Invariant Validation
+```
+
+Safety is **not** a step.
+Safety is the **objective function** that defines the space within which all design, operation, and certification proceeds.
+
+### Safety vs Security — Architectural Ordering
+
+| Concept | Role in ESSA-ESSA |
+|---------|------------------|
+| **Safety** | Primary generative objective — defines the operational and design envelope |
+| **Security** | Governance of safety envelope integrity — protects S from corruption or circumvention |
+
+Security exists to preserve what safety defines.
+They are not synonymous. They are **architecturally ordered**.
+
+### CCTLS Safety-First Token Linkage
+
+| Phase | Safety Function | Token Rule |
+|-------|----------------|-----------|
+| P020 | Define S — safety invariant set | `HAZARD` + `SAF_OBJ` tokens created first |
+| P010/P020 | Derive R from S | Requirements carry `derives_from → SAF_OBJ` |
+| P040/P050 | Restrict design space to D ⊆ Valid(S) | Design tokens carry `supports → SAF_OBJ` |
+| P070 | Verify S coverage through test | `TEST_REPORT` carries `verifies → SAF_OBJ` |
+| P080 | Preserve S in operation | `ICA_TASK`/`MRO_JOB` carry `preserves → SAF_OBJ` |
+
+CONFIRM gate **SHALL** fail if the safety coverage graph is incomplete.
+
+The full formal model, token linkage rules (SF-RULE-01–06), and agentic AI contract are specified in [`SAFETY-FIRST.md`](SAFETY-FIRST.md).
 
 ---
 
@@ -270,11 +320,14 @@ The ESSA-ESSA case study demonstrates:
 
 - The **feasibility** of constitutional lifecycle governance in space
 - The **integration** of civil platforms and security abstraction without institutional duplication
+- The **primacy of safety** as a generative objective, not a validation afterthought
 - The **operationalisation** of ethics as executable gate-level constraints
 - The **deterministic certification** of complex, autonomous, and evolving systems
 
 It is **not** a theoretical construct.
 It is an **architectural possibility**.
+
+The safety-first doctrine is fully formalised in [`SAFETY-FIRST.md`](SAFETY-FIRST.md).
 
 ---
 
@@ -283,10 +336,12 @@ It is an **architectural possibility**.
 | File | Purpose |
 |------|---------|
 | [`case.yaml`](case.yaml) | Machine-readable companion — ESSA-CASE-001 structural model |
-| [`README.md`](README.md) | ESSA Constitutional Root Document |
+| [`README.md`](README.md) | ESSA Constitutional Root Document (§10 Safety-First Constitutional Clause) |
+| [`SAFETY-FIRST.md`](SAFETY-FIRST.md) | Safety-First Doctrine — formal generative model, token rules, agentic AI contract |
+| [`safety-first.yaml`](safety-first.yaml) | Machine-readable safety-first doctrine — ESSA-DOC-SF-001 |
 | [`essa-regulatory-framework.yaml`](essa-regulatory-framework.yaml) | Parts catalogue, registry schema, roadmap |
 | [`cctls.yaml`](cctls.yaml) | CCTLS lifecycle standard — phase and token definitions |
 | [`CCTLS.md`](CCTLS.md) | Human-readable CCTLS specification |
-| [`EU-SECURITY/README.md`](EU-SECURITY/README.md) | MCSC control definitions |
+| [`EU-SECURITY/README.md`](EU-SECURITY/README.md) | MCSC controls — security as integrity governance of safety envelope |
 | [`EU-SECURITY/INTEGRATIONS/README.md`](EU-SECURITY/INTEGRATIONS/README.md) | MCSC ↔ CCTLS package integration index |
 | [`ANNEX-A-glossary.md`](ANNEX-A-glossary.md) | MTL/MTLdg/DOF normative glossary |

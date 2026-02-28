@@ -41,7 +41,8 @@ problem_dimensions:
     - no_ethical_resilience_invariants_at_graph_level
   sovereign_requirements:
     - deterministic_lifecycle_traceability
-    - security_abstraction_layer
+    - safety_as_primary_generative_objective
+    - security_as_safety_envelope_integrity_governance
     - ethical_enforcement_gates
     - federated_interoperability
 
@@ -51,9 +52,41 @@ problem_dimensions:
 architectural_hypothesis:
   statement: >
     If ESSA is applied to a European Space Safety Agency, the agency does not
-    merely regulate. It becomes a sovereign lifecycle graph authority.
-  agency_function: invariant_validation_over_deterministic_process_graph
+    merely regulate. It becomes a sovereign lifecycle graph authority driven by
+    safety as its primary generative objective.
+  agency_function: safety_bounded_synthesis_and_S_preservation_validation
   not: document_issuance
+
+# ─────────────────────────────────────────────
+# 2-bis. Safety-First Model
+# ─────────────────────────────────────────────
+safety_first_model:
+  reference: ESSA-DOC-SF-001
+  safety_security_ordering:
+    safety: primary_generative_objective
+    security: governance_of_safety_envelope_integrity
+  formal_model:
+    FM_01: "R = f(S)"
+    FM_02: "D ⊆ Valid(S)"
+    FM_03: "Optimise(O) subject to S preserved"
+  cctls_token_linkage:
+    - phase: P020
+      safety_function: Define safety invariant set S
+      tokens: [HAZARD, SAF_OBJ]
+      rule: created before any design token
+    - phase: [P010, P020]
+      safety_function: Derive requirements from S
+      required_link: {rel: derives_from, target_type: SAF_OBJ}
+    - phase: [P040, P050]
+      safety_function: Restrict design space to D ⊆ Valid(S)
+      required_link: {rel: supports, target_type: SAF_OBJ}
+    - phase: P070
+      safety_function: Verify S coverage through test
+      required_link: {rel: verifies, target_type: SAF_OBJ}
+    - phase: P080
+      safety_function: Preserve S in operation
+      required_link: {rel: preserves, target_type: SAF_OBJ}
+  confirm_gate: fails_if_safety_coverage_graph_incomplete
 
 # ─────────────────────────────────────────────
 # 3. Structural Mapping — CIVIL-PLATFORMS
@@ -242,6 +275,8 @@ conclusion:
   demonstrates:
     - feasibility_of_constitutional_lifecycle_governance_in_space
     - integration_of_civil_platforms_and_security_abstraction
+    - primacy_of_safety_as_generative_objective_not_validation_step
     - operationalisation_of_ethics_as_executable_constraints
     - deterministic_certification_of_complex_autonomous_systems
   nature: architectural_possibility_not_theoretical_construct
+  safety_first_doctrine: ESSA-DOC-SF-001

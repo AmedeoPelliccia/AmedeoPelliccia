@@ -24,8 +24,14 @@ ESSA defines a constitutional digital architecture for governing aerospace and s
 ESSA does **not** regulate products.
 ESSA governs process integrity, accountability, traceability, and resilience across the entire lifecycle continuum.
 
+**Safety is the primary generative objective** under ESSA.
+All derived requirements, design artefacts, and operational transitions **MUST** demonstrate preservation of defined safety invariants prior to activation.
+Security governs the integrity of those invariants.
+Certification validates their preservation.
+
 It enables:
 
+- Safety-bounded synthesis of requirements and design
 - Deterministic certification
 - Federated interoperability
 - Ethical enforcement by design
@@ -39,8 +45,21 @@ Any aerospace or strategic system can be represented as a discretised, traceable
 
 Engineering is continuous.
 Certification requires discreteness.
+**Safety drives generation.**
 
-ESSA formalises the transformation:
+ESSA formalises two interlocked transformations.
+
+**Safety-first generative pipeline:**
+
+```
+Safety Envelope (S)
+→ Derived Requirements  [R = f(S)]
+→ Restricted Design Space  [D ⊆ Valid(S)]
+→ Bounded Optimisation  [Optimise(O) subject to S preserved]
+→ Invariant Validation
+```
+
+**Lifecycle discretisation pipeline:**
 
 ```
 Continuous Process
@@ -52,7 +71,7 @@ Continuous Process
 ```
 
 Certification is not narrative.
-Certification is invariant validation over a governed graph.
+Certification is **S-preservation verification** over a governed graph.
 
 ---
 
@@ -227,7 +246,31 @@ It is a federated constitutional architecture.
 
 ---
 
-## 10. Glossary of Terminology and Acronyms
+## 10. Safety-First Constitutional Clause
+
+> **Safety SHALL be treated as the primary generative objective in all lifecycle design processes governed under ESSA.**
+>
+> All derived requirements, design artefacts, and operational transitions **MUST** demonstrate preservation of defined safety invariants prior to activation.
+>
+> Security governs the integrity of those invariants.
+> Certification validates their preservation.
+> No element of the lifecycle graph **SHALL** be activated if safety coverage is incomplete.
+
+### Safety vs Security — Architectural Ordering
+
+| Concept | Role |
+|---------|------|
+| **Safety** | Primary generative objective — defines the envelope within which all design, operation, and certification proceeds |
+| **Security** | Governance of safety envelope integrity — protects safety invariants from corruption, interference, or circumvention |
+
+Safety precedes security in the generative order.
+Security exists to preserve what safety defines.
+
+The formal model is specified in [`SAFETY-FIRST.md`](SAFETY-FIRST.md) and [`safety-first.yaml`](safety-first.yaml).
+
+---
+
+## 11. Glossary of Terminology and Acronyms
 
 ---
 
@@ -403,6 +446,18 @@ Machine-verifiable condition that **SHALL** hold across lifecycle states for cer
 
 ---
 
+### Safety Envelope (S)
+
+The complete set of safety invariants (`HAZARD` + `SAF_OBJ` tokens at P020) that define the bounded space within which all derived requirements, design artefacts, and operational transitions must operate. No design candidate **SHALL** be evaluated if it violates any element of S. Formally specified in [`SAFETY-FIRST.md`](SAFETY-FIRST.md).
+
+---
+
+### Safety-First
+
+Architectural principle establishing safety as the **primary generative objective** under ESSA. Requirements are derived from S. Design space is restricted to D ⊆ Valid(S). Optimisation operates subject to S being preserved. Governed by SF-RULE-01 through SF-RULE-06. See the constitutional clause in §10 and [`SAFETY-FIRST.md`](SAFETY-FIRST.md).
+
+---
+
 ## Related Artefacts
 
 | File | Purpose |
@@ -413,6 +468,8 @@ Machine-verifiable condition that **SHALL** hold across lifecycle states for cer
 | [`ANNEX-A-glossary.md`](ANNEX-A-glossary.md) | NORMATIVE — ANNEX-A: Glossary of MTL/MTLdg/DOF concepts |
 | [`annex-a-glossary.yaml`](annex-a-glossary.yaml) | Machine-readable ANNEX-A terms catalogue |
 | [`EU-SECURITY/README.md`](EU-SECURITY/README.md) | EU-SECURITY branch — Minimum Common Security Constitution (MCSC) |
+| [`SAFETY-FIRST.md`](SAFETY-FIRST.md) | Safety-First Doctrine — formal generative model, CCTLS token rules, agentic AI contract, constitutional clause |
+| [`safety-first.yaml`](safety-first.yaml) | Machine-readable companion — ESSA-DOC-SF-001 safety-first formal model and normative rules |
 | [`CASE.md`](CASE.md) | Case study — ESSA-ESSA conceptual demonstrator: European Sovereign Systems Architecture applied to a European Union Space Safety Agency (12-section structural analysis) |
 | [`case.yaml`](case.yaml) | Machine-readable companion — ESSA-CASE-001 structural model: problem dimensions, architectural mappings, operational model, ethical constraints, and governance conclusions |
 | Root [`README.md`](../README.md) | Profile-level reference to ESSA under Current Focus |
