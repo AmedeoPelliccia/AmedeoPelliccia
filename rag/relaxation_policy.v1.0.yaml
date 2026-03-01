@@ -1,0 +1,249 @@
+##############################################################################
+# AMPEL360 Federated Query Relaxation Policy — Contract Spec v1.0
+# Machine-Readable
+# Ref: rag/relaxation_policy.v1.0.md
+##############################################################################
+
+document_id: ESSA-DOC-AMPEL360-FED-QRP-001
+version: "1.0"
+document_type: ampel360_federated_query_relaxation_policy
+title: "Federated Query Relaxation Policy — Contract Spec v1.0"
+status: normative_contract
+parent: ESSA-DOC-AMPEL360-FED-001
+authority_matrix_ref: federation/authority_matrix.v1.1.yaml
+last_updated: "2026-03-01T00:00:00Z"
+
+# ─────────────────────────────────────────────
+# Filter Classes
+# ─────────────────────────────────────────────
+filter_classes:
+  HARD:
+    description: >
+      Must be present and must match. Zero results → H_EXCEPTION(empty_result).
+      Scope never widened automatically.
+    tags: [oem_id, model_id, type_design_ref, tenant_scope]
+
+  SOFT:
+    description: >
+      Applied if present. On zero results, relaxation ladder applied in order.
+      Result annotated with relaxation step applied.
+    tags: [operator_id, operator_regime, effectivity, as_maintained_config]
+
+  HARD_NO_RELAX:
+    description: >
+      Hard filter in specific IA modes with no relaxation permitted even on opt-in.
+      Used for operator_id and operator_regime in Compliance/Lease mode.
+    applies_to_modes: [compliance_lease_mode]
+    tags: [operator_id, operator_regime]
+
+# ─────────────────────────────────────────────
+# Relaxation Ladder
+# ─────────────────────────────────────────────
+relaxation_ladder:
+  preconditions:
+    - oem_id matched (HARD)
+    - model_id matched (HARD)
+    - tenant_scope applied (HARD, never participates in ladder)
+    - query returned 0 results
+
+  steps:
+    - step: 1
+      name: operator_specific_baseline
+      filters:
+        operator_id: exact
+        operator_regime: exact
+        effectivity: tail_specific
+      authority_constraint: any
+      match_level: EXACT
+      on_match: RETURN
+      on_zero: proceed_to_next
+
+    - step: 2
+      name: relax_operator_id_to_oem_mro_generic
+      filters:
+        operator_id: removed
+        operator_regime: exact
+        effectivity: tail_specific
+      authority_constraint: [A0, A3]
+      rationale: A2 operator-specific docs excluded at this step
+      match_level: RELAXED_OPERATOR
+      annotation:
+        why_returned: ["operator_id relaxed to OEM/MRO generic at Step 2"]
+        applicability_risk: LOW
+      on_match: RETURN
+      on_zero: proceed_to_next
+
+    - step: 3
+      name: relax_operator_regime_to_compatible
+      compatible_sets:
+        EASA: [EASA, UKCAA]
+        FAA: [FAA, TCCA]
+      conflicting_rule: >
+        EASA-sourced docs NEVER returned for FAA-only query and vice versa.
+      filters:
+        operator_id: removed
+        operator_regime: compatible_set
+        effectivity: tail_specific
+      authority_constraint: [A0, A3]
+      match_level: RELAXED_REGIME
+      annotation:
+        why_returned: ["regime relaxed to compatible set"]
+        applicability_risk: MED
+      on_match: RETURN
+      on_zero: proceed_to_next
+
+    - step: 4
+      name: relax_effectivity_to_model_wide
+      filters:
+        operator_id: removed
+        operator_regime: compatible_set
+        effectivity: scope_in [MODEL_WIDE, MODEL_FAMILY_WIDE]
+      authority_constraint: [A0, A3]
+      match_level: RELAXED_EFFECTIVITY
+      annotation:
+        why_returned: ["effectivity widened from tail-specific to model-wide"]
+        applicability_risk: HIGH
+        applicability_banner: true
+        banner_text: >
+          Document applicability not confirmed for specific MSN.
+          Engineer review required before applying procedure.
+      on_match: RETURN
+      on_zero: proceed_to_step_5
+
+    - step: 5
+      name: no_compliant_evidence
+      action: H_EXCEPTION(no_compliant_evidence)
+      hard_stops:
+        - oem_id widening prohibited
+        - model_id widening prohibited
+        - tenant_scope crossing prohibited
+      exception_payload:
+        failing_tags: list of tags that returned zero at each step
+        steps_applied: list of relaxation steps attempted
+        suggested_remediation: string
+
+# ─────────────────────────────────────────────
+# Output Obligations
+# ─────────────────────────────────────────────
+output_obligations:
+  mandatory_fields:
+    match_level:
+      type: enum
+      values: [EXACT, RELAXED_OPERATOR, RELAXED_REGIME, RELAXED_EFFECTIVITY]
+    authority_class:
+      type: enum
+      values: [A0, A1, A2, A3]
+    why_returned:
+      type: list_of_string
+      description: Ordered list of relaxations applied
+    applicability_risk:
+      type: enum
+      values: [LOW, MED, HIGH]
+      mapping:
+        EXACT: LOW
+        RELAXED_OPERATOR: LOW
+        RELAXED_REGIME: MED
+        RELAXED_EFFECTIVITY: HIGH
+    applicability_banner:
+      type: boolean
+      required_true_when: match_level == RELAXED_EFFECTIVITY
+    tenant_scope_applied:
+      type: string
+    authority_assertions:
+      type: object
+      fields: [oem_id, model_id, operator_id, operator_regime]
+
+# ─────────────────────────────────────────────
+# Per-IA-Mode Relaxation Rules
+# ─────────────────────────────────────────────
+ia_mode_rules:
+  technical_publications_mode:
+    oem_id:          HARD
+    model_id:        HARD
+    operator_id:     SOFT
+    operator_regime: SOFT
+    effectivity:     SOFT
+    max_ladder_step: 4
+
+  compliance_lease_mode:
+    oem_id:          HARD
+    model_id:        HARD
+    operator_id:     HARD_NO_RELAX
+    operator_regime: HARD_NO_RELAX
+    effectivity:     SOFT
+    max_ladder_step: 4
+    effectivity_step4_requires_explicit_optin: true
+    effectivity_step4_always_high_risk: true
+    note: >
+      operator_id and operator_regime are hard in this mode.
+      Cross-operator or cross-regime compliance documents are structurally invalid.
+
+  fleet_management_mode:
+    oem_id:          HARD
+    model_id:        HARD
+    operator_id:     SOFT
+    operator_regime: SOFT
+    effectivity:     SOFT
+    max_ladder_step: 4
+    multi_operator:  true
+    portfolio_scope_only: true
+
+# ─────────────────────────────────────────────
+# Multi-Tenant Isolation
+# ─────────────────────────────────────────────
+tenant_isolation:
+  tenant_scope_filter: HARD (never participates in relaxation ladder)
+  applies_before: step_1
+  remains_active_through: all_steps
+  lessor_exception:
+    condition: tenant is lessor type
+    portfolio_declaration: required
+    scope: all declared portfolio members
+    mode: fleet_management_mode only
+
+# ─────────────────────────────────────────────
+# Relaxation Policy Inhibitors
+# ─────────────────────────────────────────────
+inhibitors:
+  - id: QRP-INH-001
+    condition: relaxation step attempts to cross tenant_scope boundary
+    action: FAIL — H_EXCEPTION(acl_boundary_violation)
+
+  - id: QRP-INH-002
+    condition: relaxation step attempts to widen oem_id or model_id
+    action: FAIL — hard tag relaxation never permitted
+
+  - id: QRP-INH-003
+    condition: step 3 returns operator_regime in conflicting set
+    action: FAIL — conflicting regime docs blocked
+
+  - id: QRP-INH-004
+    condition: step 4 result returned without applicability_banner=true
+    action: FAIL — banner mandatory for effectivity-relaxed results
+
+  - id: QRP-INH-005
+    condition: result payload missing match_level, authority_class, or why_returned
+    action: FAIL — incomplete result; do not surface to user
+
+  - id: QRP-INH-006
+    condition: >
+      compliance_lease_mode attempts operator_id relaxation
+      without explicit engineer opt-in
+    action: FAIL — H_EXCEPTION(no_compliant_evidence)
+
+# ─────────────────────────────────────────────
+# Regime Compatibility Table
+# ─────────────────────────────────────────────
+regime_compatibility:
+  EASA:
+    compatible: [EASA, UKCAA]
+    conflicting: [FAA, TCCA, CASA, ANAC]
+  FAA:
+    compatible: [FAA, TCCA]
+    conflicting: [EASA, UKCAA, CASA, ANAC]
+  UKCAA:
+    compatible: [UKCAA, EASA]
+    conflicting: [FAA, TCCA, CASA, ANAC]
+  TCCA:
+    compatible: [TCCA, FAA]
+    conflicting: [EASA, UKCAA, CASA, ANAC]

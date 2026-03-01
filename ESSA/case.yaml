@@ -1,0 +1,282 @@
+##############################################################################
+# ESSA — Case Study: ESSA-ESSA
+# European Sovereign Systems Architecture applied to the
+# European Union Space Safety Agency
+# Machine-readable companion to ESSA/CASE.md
+##############################################################################
+
+document_id: ESSA-CASE-001
+document_type: essa_case_study
+title: "ESSA-ESSA: European Sovereign Systems Architecture — European Union Space Safety Agency"
+version: "0.1-draft"
+schema_version: "1.0.0"
+status: conceptual_demonstrator
+parent: ESSA-STD-CCTLS-001
+last_updated: "2026-02-28T00:00:00Z"
+
+description: >
+  Conceptual demonstrator exploring how the European Sovereign Systems
+  Architecture (ESSA) could structurally underpin a European Union Space
+  Safety Agency operating under constitutional digital lifecycle governance.
+  This is not a proposal for institutional duplication. It is a demonstration
+  of architectural feasibility.
+
+nature: federated_sovereign_operational_agency_model
+scope: civil_space_safety_governance
+
+# ─────────────────────────────────────────────
+# 1. Problem Dimensions
+# ─────────────────────────────────────────────
+problem_dimensions:
+  system_characteristics:
+    - increasingly_autonomous
+    - highly_interconnected
+    - strategically_sensitive
+    - cross_border_by_nature
+    - environmentally_and_operationally_critical
+  regulatory_gaps:
+    - fragmented_institutional_layers
+    - compliance_over_lifecycle_continuity
+    - no_unified_digital_certification_topology
+    - no_ethical_resilience_invariants_at_graph_level
+  sovereign_requirements:
+    - deterministic_lifecycle_traceability
+    - safety_as_primary_generative_objective
+    - security_as_safety_envelope_integrity_governance
+    - ethical_enforcement_gates
+    - federated_interoperability
+
+# ─────────────────────────────────────────────
+# 2. Architectural Hypothesis
+# ─────────────────────────────────────────────
+architectural_hypothesis:
+  statement: >
+    If ESSA is applied to a European Space Safety Agency, the agency does not
+    merely regulate. It becomes a sovereign lifecycle graph authority driven by
+    safety as its primary generative objective.
+  agency_function: safety_bounded_synthesis_and_S_preservation_validation
+  not: document_issuance
+
+# ─────────────────────────────────────────────
+# 2-bis. Safety-First Model
+# ─────────────────────────────────────────────
+safety_first_model:
+  reference: ESSA-DOC-SF-001
+  safety_security_ordering:
+    safety: primary_generative_objective
+    security: governance_of_safety_envelope_integrity
+  formal_model:
+    FM_01: "R = f(S)"
+    FM_02: "D ⊆ Valid(S)"
+    FM_03: "Optimise(O) subject to S preserved"
+  cctls_token_linkage:
+    - phase: P020
+      safety_function: Define safety invariant set S
+      tokens: [HAZARD, SAF_OBJ]
+      rule: created before any design token
+    - phase: [P010, P020]
+      safety_function: Derive requirements from S
+      required_link: {rel: derives_from, target_type: SAF_OBJ}
+    - phase: [P040, P050]
+      safety_function: Restrict design space to D ⊆ Valid(S)
+      required_link: {rel: supports, target_type: SAF_OBJ}
+    - phase: P070
+      safety_function: Verify S coverage through test
+      required_link: {rel: verifies, target_type: SAF_OBJ}
+    - phase: P080
+      safety_function: Preserve S in operation
+      required_link: {rel: preserves, target_type: SAF_OBJ}
+  confirm_gate: fails_if_safety_coverage_graph_incomplete
+
+# ─────────────────────────────────────────────
+# 3. Structural Mapping — CIVIL-PLATFORMS
+# ─────────────────────────────────────────────
+civil_platforms_mapping:
+  standard: ESSA-STD-CCTLS-001
+  domains:
+    - name: Launch systems lifecycle
+      phases: [P010, P020, P050, P070]
+    - name: Orbital platform lifecycle
+      phases: [P010, P040, P050, P080]
+    - name: Reusable Space Platforms (RSP)
+      phases: [P040, P050, P070, P080]
+    - name: Ground segment infrastructure
+      phases: [P030, P060, P080]
+    - name: Mission control governance
+      phases: [P090]
+    - name: Refurbishment and reuse cycles
+      phases: [P080]
+    - name: End-of-life deorbit compliance
+      phases: [P080, P090, P100]
+  artefact_representation:
+    - aor_cards
+    - tokenised_artefacts
+    - deterministic_transitions
+    - mtldg_anchored_baselines
+
+# ─────────────────────────────────────────────
+# 4. EU-SECURITY Overlay
+# ─────────────────────────────────────────────
+eu_security_overlay:
+  reference: ESSA-SEC-MCSC-001
+  guarantees:
+    - cross_border_resilience            # MCSC-RES-*
+    - interoperable_incident_reporting   # MCSC-ACC-03
+    - autonomous_system_oversight        # MCSC-HOB-*
+    - cyber_resilience_controls          # MCSC-SOV-03
+    - supply_chain_integrity             # MCSC-SCI-*
+    - ethical_ai_governance              # MCSC-ETH-*
+  constraints:
+    - SHALL_NOT: militarise_space_governance
+    - SHALL: ensure_minimum_sovereign_integrity_invariants
+  nature: machine_checkable_control_registry_at_gate_level
+
+# ─────────────────────────────────────────────
+# 5. Operational Model
+# ─────────────────────────────────────────────
+operational_model:
+  functions:
+    - id: FUNC-A
+      name: Lifecycle Graph Registry
+      validates:
+        - token_integrity              # sha3-512 checksums, schema version
+        - state_coherence              # no ACTIVATE without CONFIRM
+        - certification_invariants     # all ALPC criteria
+        - eu_security_compliance       # mandatory MCSC linkages
+
+    - id: FUNC-B
+      name: Conformance Engine (ALPC)
+      validates:
+        - structural_completeness
+        - required_link_semantics
+        - evidence_sufficiency
+        - eu_security_control_coverage
+
+    - id: FUNC-C
+      name: Audit Bundling
+      produces:
+        - immutable_baseline_snapshots
+        - token_graph_exports
+        - alpc_conformance_report
+        - mtldg_audit_trail
+
+# ─────────────────────────────────────────────
+# 6. Discretisation Model
+# ─────────────────────────────────────────────
+discretisation:
+  input: continuous_space_programme_activity
+  pipeline:
+    - discrete_state_tokens
+    - controlled_transitions
+    - measurable_evidence
+    - sovereign_validation
+  enables:
+    - cross_mission_comparability
+    - federated_interoperability
+    - autonomous_system_accountability
+  balance:
+    - certifiability
+    - operational_fluidity
+    - administrative_burden
+
+# ─────────────────────────────────────────────
+# 7. Ethical Dimension
+# ─────────────────────────────────────────────
+ethical_constraints:
+  enforcement_model: executable_gate_level
+  commitments:
+    - commitment: Human override guarantees
+      mechanism: MCSC-HOB-02 + MCSC-HOB-03
+      gate: CONFIRM_to_ACTIVATE
+    - commitment: Non-maleficence constraints
+      mechanism: MCSC-ETH-03
+      gate: ACTIVATE
+    - commitment: Clear authority attribution
+      mechanism: MCSC-ETH-01
+      gate: CONFIRM
+    - commitment: Transparent incident accountability
+      mechanism: MCSC-ACC-03
+      gate: P080
+    - commitment: Autonomous decision auditability
+      mechanism: MCSC-ETH-04
+      gate: all_transitions
+
+# ─────────────────────────────────────────────
+# 8. Environmental Integration
+# ─────────────────────────────────────────────
+environmental_integration:
+  obligations:
+    - domain: Orbital debris management
+      cctls_mechanism: P090 TRAJECTORY_PROFILE + Part-SUST
+    - domain: Deorbit compliance
+      cctls_mechanism: P080 reuse cycle tokens + disposal confirmation
+    - domain: End-of-life responsibility
+      cctls_mechanism: P080 OCC_REPORT with disposal outcome
+    - domain: Sustainable orbital slot allocation
+      cctls_mechanism: P090 TRAFFIC_CLEARANCE with ESG link
+  phase_overlays:
+    - phase: P030
+      governance: Measurable supply chain impact via KPI_MEASURE + measured_on link
+    - phase: P080
+      governance: Sustainability metrics on refurbishment cycles; reuse traceability
+    - phase: P100
+      governance: ESG_REPORT consolidates chain and operational data via declared AGG_RULE
+  principle: measurable_not_aspirational
+
+# ─────────────────────────────────────────────
+# 9. Sovereign Projection
+# ─────────────────────────────────────────────
+sovereign_projection:
+  capabilities:
+    - Project safety standards globally via common digital governance topology
+    - Interoperate with international agencies via versioned interfaces (MCSC-SOV-02)
+    - Maintain ethical credibility via machine-verifiable invariant enforcement
+    - Achieve resilience without over-centralisation via federated AoR governance
+  model: governance_as_architecture_not_bureaucracy
+  exportability: >
+    Any partner agency operating under equivalent token graph standards
+    achieves federated interoperability by construction.
+
+# ─────────────────────────────────────────────
+# 10. Venture Implications
+# ─────────────────────────────────────────────
+venture_implications:
+  infrastructure_markets:
+    - name: Lifecycle Operating Systems (LCOS)
+      description: Runtime engines validating and packaging token graphs
+    - name: Certification automation platforms
+      description: ALPC-compliant conformance checkers
+    - name: Secure digital registries
+      description: Sovereignty-compliant operator and platform ledgers
+    - name: Sovereign compliance engines
+      description: Automated EU-SECURITY control coverage analysis
+    - name: Interoperable space governance tooling
+      description: Cross-agency token graph exchange formats
+  constitutional_constraint:
+    - Commercial layers MAY build upon ESSA substrate
+    - Commercial layers SHALL NOT weaken constitutional invariants
+
+# ─────────────────────────────────────────────
+# 11. Long-Term Implication
+# ─────────────────────────────────────────────
+long_term_implication:
+  roles:
+    - constitutional_substrate_for_european_space_safety
+    - replicable_governance_template
+    - model_for_ethical_sovereign_projection
+    - digital_lifecycle_integrity_authority
+  transformation: >
+    Reactive compliance → Deterministic governance
+
+# ─────────────────────────────────────────────
+# 12. Conclusion — Key Claims
+# ─────────────────────────────────────────────
+conclusion:
+  demonstrates:
+    - feasibility_of_constitutional_lifecycle_governance_in_space
+    - integration_of_civil_platforms_and_security_abstraction
+    - primacy_of_safety_as_generative_objective_not_validation_step
+    - operationalisation_of_ethics_as_executable_constraints
+    - deterministic_certification_of_complex_autonomous_systems
+  nature: architectural_possibility_not_theoretical_construct
+  safety_first_doctrine: ESSA-DOC-SF-001

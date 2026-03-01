@@ -1,0 +1,129 @@
+##############################################################################
+# AMPEL360 Federated Connector — Capabilities Declaration
+# Example connector: Airbus World OEM Portal
+# All connectors MUST provide this capabilities.yaml
+##############################################################################
+
+connector_id: "airbus-world-portal"
+connector_type: oem_portal_api
+version: "1.0"
+description: "Airbus World technical documentation portal — OEM-authoritative source for A-family aircraft."
+
+# ─────────────────────────────────────────────
+# Tag Assertion Capabilities
+# (Which Global Tags this connector can assert, and at what authority class)
+# ─────────────────────────────────────────────
+tag_assertions:
+  - tag: oem_id
+    authority_class: A0
+    namespace_prefix: "oem"
+    example: "oem:airbus"
+    confidence_typical: 1.0
+    provenance_source: "Airbus World type certificate database"
+
+  - tag: model_id
+    authority_class: A0
+    namespace_prefix: "ac_model:airbus"
+    example: "ac_model:airbus:a321neo"
+    confidence_typical: 1.0
+    provenance_source: "Airbus TCDS / type design record"
+
+  - tag: type_design_ref
+    authority_class: A0
+    namespace_prefix: "TC:EASA"
+    example: "TC:EASA.A.064"
+    confidence_typical: 1.0
+    provenance_source: "EASA type certificate reference embedded in document metadata"
+
+  - tag: as_delivered_config
+    authority_class: A0
+    namespace_prefix: "config:oem:airbus"
+    example: "config:oem:airbus:A321-STD-R01"
+    confidence_typical: 1.0
+    provenance_source: "Airbus production baseline record"
+
+  - tag: effectivity
+    authority_class: A0
+    scope_assertable: [MSN_RANGE, MODEL_WIDE, MODEL_FAMILY_WIDE]
+    confidence_typical: 1.0
+    provenance_source: "Airbus effectivity tables embedded in SB/AMM metadata"
+
+# Tags this connector CANNOT assert (do not attempt to push)
+tag_assertion_prohibited:
+  - operator_id    # A1 only
+  - operator_regime # A2 only
+  - as_maintained_config  # A3 only
+
+# ─────────────────────────────────────────────
+# Pushdown Filter Support
+# (Which tags can be pushed to the source to reduce data transfer)
+# ─────────────────────────────────────────────
+pushdown_filters:
+  - tag: model_id
+    support: full
+    api_param: "aircraft_type"
+    notes: "Native filter on Airbus World API. Pass qualified value without namespace prefix."
+
+  - tag: effectivity
+    support: partial
+    api_param: "msn"
+    notes: "MSN-based effectivity filtering available. LINE_NUMBER not natively supported."
+
+  - tag: type_design_ref
+    support: full
+    api_param: "tc_ref"
+
+  - tag: oem_id
+    support: implicit
+    notes: "All documents from this connector are oem:airbus by definition."
+
+# Tags NOT supported for pushdown (applied client-side by RAG engine)
+pushdown_not_supported:
+  - operator_id
+  - as_maintained_config
+  - config_embodied
+
+# ─────────────────────────────────────────────
+# ACL / Access Control
+# ─────────────────────────────────────────────
+access_control:
+  auth_mechanism: oauth2_client_credentials
+  scope_claim: "tenant_id"
+  tenant_isolation: per_operator_license
+  notes: >
+    Each operator tenant must hold a valid Airbus World license.
+    The connector enforces license scope at query time — cross-tenant
+    data cannot be returned regardless of relaxation policy.
+  acl_pushdown: true  # Connector enforces ACL at source; no secondary filtering needed
+
+# ─────────────────────────────────────────────
+# Document Types Served
+# ─────────────────────────────────────────────
+document_types:
+  - AMM    # Aircraft Maintenance Manual
+  - IPC    # Illustrated Parts Catalogue
+  - SRM    # Structural Repair Manual
+  - CMM    # Component Maintenance Manual
+  - SB     # Service Bulletin
+  - AOT    # All Operator Telex
+  - FCOM   # Flight Crew Operating Manual
+
+# ─────────────────────────────────────────────
+# Provenance Template
+# (Template the connector MUST inject into every returned document's metadata)
+# ─────────────────────────────────────────────
+provenance_template:
+  asserted_by:
+    authority_class: A0
+    system_id: "airbus-world-portal"
+  confidence: 1.0
+  evidence_ref_pattern: "TC:EASA.<ref> or SB-<model>-<chapter>-<subject>-<seq>"
+
+# ─────────────────────────────────────────────
+# Rate Limits and SLA
+# ─────────────────────────────────────────────
+sla:
+  max_requests_per_minute: 60
+  max_result_set_size: 100
+  index_freshness_guarantee: "24h"  # Documents updated in source reflect within 24h
+  stale_data_annotation: true       # Connector annotates results older than freshness window

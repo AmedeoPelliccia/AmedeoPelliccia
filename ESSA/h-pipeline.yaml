@@ -1,0 +1,293 @@
+##############################################################################
+# ESSA — Total Cross-Chain H Pipeline
+# Human-Safety End-to-End Backbone
+# Machine-readable companion to ESSA/H-PIPELINE.md
+##############################################################################
+
+document_id: ESSA-DOC-H-001
+document_type: essa_h_pipeline
+title: "Total Cross-Chain H Pipeline — Human-Safety End-to-End Backbone (ESSA)"
+version: "0.1-draft"
+schema_version: "1.0.0"
+status: normative_backbone
+parent: ESSA-CONST-001
+last_updated: "2026-02-28T00:00:00Z"
+
+description: >
+  The H Pipeline is the cross-chain, cross-phase, cross-domain safety backbone
+  ensuring Human Safety invariants are present, linked, verified and preserved
+  from governance through supply chain, design, verification, certification,
+  operations and feedback. H = Human Safety (mission). Security = protection
+  of H-integrity under stress. No deliverable is activable without a valid,
+  traceable H-token chain from H_ENVELOPE to H_SIGNOFF.
+
+# ─────────────────────────────────────────────
+# Constitutional Rule
+# ─────────────────────────────────────────────
+constitutional_rule: >
+  No deliverable is activable unless it is linked to the H pipeline. Every
+  activated artefact MUST carry a valid, traceable H-token chain from
+  H_ENVELOPE to H_SIGNOFF.
+
+# ─────────────────────────────────────────────
+# 1. Definition
+# ─────────────────────────────────────────────
+definition:
+  h_meaning: Human Safety (mission)
+  security_meaning: Protection of H-integrity under stress
+  backbone_properties:
+    - present: Safety invariants defined at envelope level before design begins
+    - linked: Traceable from governance through all chains and phases
+    - verified: Validated at each CCTLS gate (INTERPRET → CONFIRM → ACTIVATE → PUBLISH)
+    - preserved: Maintained through operational feedback and continuous envelope updates
+  related_instruments:
+    - ESSA-DOC-SF-001  # Safety-First Doctrine
+    - ESSA-DOC-SIS-001  # Structural Integration State
+
+# ─────────────────────────────────────────────
+# 2. Cross-Chain Scope
+# ─────────────────────────────────────────────
+cross_chain_scope:
+  - id: CHAIN-IND
+    name: Industrial Chain
+    description: Suppliers, processes, conformance, measurable ESG
+    cctls_phases: [P030]
+  - id: CHAIN-DIG
+    name: Digital Chain
+    description: Artefacts, tokens, baselines, audit
+    cctls_phases: [P000, P120]
+  - id: CHAIN-ENG
+    name: Engineering Chain
+    description: Methods, DMU/PMU, validation
+    cctls_phases: [P040]
+  - id: CHAIN-AUTH
+    name: Authority Chain
+    description: DOA, closure, design organisation approval
+    cctls_phases: [P050]
+  - id: CHAIN-TEST
+    name: Test Chain
+    description: Test campaigns, reports, evidence packages
+    cctls_phases: [P070]
+  - id: CHAIN-OPS
+    name: Operations Chain
+    description: ICA/MRO, occurrences, reuse cycles
+    cctls_phases: [P080]
+  - id: CHAIN-MISS
+    name: Mission Chain
+    description: Traffic, range safety, mission control
+    cctls_phases: [P090]
+  - id: CHAIN-REP
+    name: Reporting Chain
+    description: Consolidation, disclosure, ESG reporting
+    cctls_phases: [P100]
+
+# ─────────────────────────────────────────────
+# 3. H-Token Ontology
+# ─────────────────────────────────────────────
+h_token_ontology:
+  token_prefix: "H_"
+  tokens:
+    - id: H_ENVELOPE
+      name: Safety Envelope
+      definition: Non-negotiable bounds and conditions for the domain
+      must_rule: MUST exist before any requirement derivation begins
+    - id: H_HAZARD
+      name: Hazard Item
+      definition: Identified hazard contributing to the safety envelope
+      must_rule: MUST be linked to the H_ENVELOPE that bounds it
+    - id: H_REQ
+      name: Safety Requirement
+      definition: Safety requirement derived from the envelope
+      must_rule: MUST trace to H_ENVELOPE or H_HAZARD
+    - id: H_CONSTRAINT
+      name: Operational/Architectural Constraint
+      definition: Constraint derived from safety requirements
+      must_rule: MUST trace to H_REQ
+    - id: H_EVIDENCE
+      name: Verifiable Evidence
+      definition: Test, analysis, or operational evidence
+      must_rule: MUST link to the H_REQ or H_CONSTRAINT it satisfies
+    - id: H_EXCEPTION
+      name: Controlled Exception
+      definition: Exception when safety bounds cannot be fully met
+      must_rule: >
+        MUST carry compensating mitigation and rollback definition;
+        requires H_SIGNOFF
+    - id: H_UPDATE
+      name: Envelope Update
+      definition: Update derived from operational occurrence or incident
+      must_rule: >
+        MUST be traceable to an operational occurrence; triggers
+        re-validation
+    - id: H_SIGNOFF
+      name: Authority Sign-off
+      definition: Authority acceptance — safety accountability record
+      must_rule: MUST be present on every H_EVIDENCE submitted for activation
+  cascade_rule: >
+    Any token not linked to the H chain is non-activable by construction.
+
+# ─────────────────────────────────────────────
+# 4. Traceability Graph
+# ─────────────────────────────────────────────
+traceability_graph:
+  forward_chain:
+    description: Generation → Verification
+    sequence:
+      - from: H_ENVELOPE
+        to: H_HAZARD
+        cardinality: one_to_many
+      - from: H_HAZARD
+        to: H_REQ
+        cardinality: one_to_many
+      - from: H_REQ
+        to: H_CONSTRAINT
+        cardinality: one_to_many
+      - from: H_CONSTRAINT
+        to: H_EVIDENCE
+        cardinality: one_to_many
+      - from: H_EVIDENCE
+        to: H_SIGNOFF
+        cardinality: many_to_one
+      - gate: ACTIVATE
+        condition: H_SIGNOFF present on all evidence
+
+  feedback_chain:
+    description: Operations → Envelope Update
+    sequence:
+      - from: operational_occurrence
+        to: H_UPDATE
+      - from: H_UPDATE
+        to: H_ENVELOPE
+        note: Version increment; triggers re-derivation of H_REQ and H_CONSTRAINT
+
+  exception_path:
+    description: Controlled Deviation
+    sequence:
+      - from: H_EXCEPTION
+        to: H_SIGNOFF
+        requires: [mitigation, rollback_definition]
+      - gate: ACTIVATE
+        condition: conditional — exception scope is bounded
+
+  link_rules:
+    - link: "H_HAZARD → H_ENVELOPE"
+      obligation: MUST
+    - link: "H_REQ → H_ENVELOPE or H_REQ → H_HAZARD"
+      obligation: MUST
+    - link: "H_CONSTRAINT → H_REQ"
+      obligation: MUST
+    - link: "H_EVIDENCE → H_REQ or H_EVIDENCE → H_CONSTRAINT"
+      obligation: MUST
+    - link: "H_SIGNOFF → H_EVIDENCE"
+      obligation: MUST
+    - link: "H_UPDATE → occurrence"
+      obligation: MUST
+    - link: "H_EXCEPTION → H_SIGNOFF"
+      obligation: MUST
+
+# ─────────────────────────────────────────────
+# 5. CCTLS Gate Alignment
+# ─────────────────────────────────────────────
+cctls_gate_alignment:
+  - gate: INTERPRET
+    h_activity: Envelope definition, hazard identification, requirement derivation
+    h_tokens_active: [H_ENVELOPE, H_HAZARD, H_REQ]
+  - gate: CONFIRM
+    h_activity: Constraint derivation, evidence planning, exception review
+    h_tokens_active: [H_CONSTRAINT, H_EVIDENCE, H_EXCEPTION]
+  - gate: ACTIVATE
+    h_activity: Full evidence chain validated; H_SIGNOFF present; no orphan H-tokens
+    h_tokens_active: [H_EVIDENCE, H_SIGNOFF]
+    gate_invariant: >
+      An artefact that cannot produce a complete H_ENVELOPE → … → H_SIGNOFF
+      chain SHALL NOT be activated.
+  - gate: PUBLISH
+    h_activity: Baseline frozen; all H-links immutable; feedback loop open
+    h_tokens_active: [ALL_H_TOKENS_FROZEN, H_UPDATE]
+
+# ─────────────────────────────────────────────
+# 6. Cross-Chain Binding Rules
+# ─────────────────────────────────────────────
+cross_chain_binding_rules:
+  - chain: CHAIN-IND
+    rule: >
+      Every supplier or component SHALL demonstrate H-token coverage (at
+      minimum H_REQ and H_EVIDENCE) for any safety-relevant item.
+  - chain: CHAIN-DIG
+    rule: >
+      All tokens SHALL be stored, linked, and version-controlled in the CCTLS
+      token graph. Orphaned H-tokens are invalid.
+  - chain: CHAIN-ENG
+    rule: >
+      DMU/PMU simulation results SHALL be linked as H_EVIDENCE to the H_REQ
+      they validate.
+  - chain: CHAIN-AUTH
+    rule: >
+      Design organisation approval (DOA) closure SHALL produce H_SIGNOFF
+      records against all active H_EVIDENCE.
+  - chain: CHAIN-TEST
+    rule: >
+      Every test report SHALL be registered as H_EVIDENCE with explicit link
+      to the H_REQ under test.
+  - chain: CHAIN-OPS
+    rule: >
+      Every occurrence or MRO event SHALL be evaluated for H-pipeline impact;
+      if safety-relevant, it SHALL generate an H_UPDATE.
+  - chain: CHAIN-MISS
+    rule: >
+      Mission and traffic safety bounds SHALL be expressed as H_ENVELOPE
+      entries at P090 scope.
+  - chain: CHAIN-REP
+    rule: >
+      Disclosure and ESG reporting SHALL include H-pipeline integrity summary:
+      envelope coverage, evidence completeness, exception count, feedback
+      loop status.
+
+# ─────────────────────────────────────────────
+# 7. H-Pipeline Integrity Metrics
+# ─────────────────────────────────────────────
+integrity_metrics:
+  - metric: artefacts_with_full_h_chain
+    description: >
+      Percentage of activable artefacts with full H_ENVELOPE → H_SIGNOFF chain
+    target: "100%"
+  - metric: occurrences_evaluated_for_h_impact
+    description: >
+      Percentage of operational occurrences evaluated for H-pipeline impact
+    target: "100%"
+  - metric: supplier_items_with_h_coverage
+    description: >
+      Percentage of safety-relevant supplier items with H-token coverage
+    target: "100%"
+  - metric: open_exceptions_without_signoff
+    description: Open exceptions (H_EXCEPTION) without H_SIGNOFF
+    target: "0"
+  - metric: orphaned_h_tokens
+    description: Orphaned H-tokens with no upward link
+    target: "0"
+  note: >
+    These metrics constitute the H sub-dimension of the Structural Integration
+    Index (SII) defined in ESSA-DOC-SIS-001.
+
+# ─────────────────────────────────────────────
+# 8. Relationship to Constitutional Instruments
+# ─────────────────────────────────────────────
+constitutional_relationships:
+  - instrument: ESSA-DOC-SF-001
+    role: >
+      H Pipeline is the operational implementation of the safety-first
+      generative model
+  - instrument: ESSA-CONST-001
+    role: >
+      H Pipeline satisfies CI-001 (Safety Primacy) and CI-003
+      (Deterministic Gates)
+    satisfies: [CI-001, CI-003]
+  - instrument: ESSA-DOC-SIS-001
+    role: >
+      H-completeness is a necessary condition for SIS-C-001 (Safety Envelope
+      Generation) and SIS-C-002 (Bounded Design)
+    satisfies: [SIS-C-001, SIS-C-002]
+  - instrument: ESSA-STD-CCTLS-001
+    role: >
+      H-tokens are CCTLS-typed tokens; gate alignment is the CCTLS gate
+      sequence

@@ -1,0 +1,268 @@
+##############################################################################
+# ESSA — AMPEL360
+# Assisted Methods for Programming ESSA Lifecycles
+# Machine-readable companion to ESSA/AMPEL360.md
+##############################################################################
+
+document_id: ESSA-DOC-AMPEL360-001
+document_type: essa_ampel360_lifecycle_engine
+title: "AMPEL360 — Assisted Methods for Programming ESSA Lifecycles"
+version: "0.1-draft"
+schema_version: "1.0.0"
+status: normative_method
+parent: ESSA-DOC-AMPEL-001
+last_updated: "2026-03-01T00:00:00Z"
+
+description: >
+  AMPEL360 is the concrete lifecycle instantiation of the AMPEL method for
+  the ESSA lifecycle (P000–P120). It is the programmable execution layer for
+  ESSA lifecycle architectures. "360" denotes complete state-cycle closure:
+  full lifecycle coverage, cross-chain integration, closed feedback loop,
+  profile extensibility, and governance + mission coherence.
+
+# ─────────────────────────────────────────────
+# Constitutional Constraint (inherited from AMPEL)
+# ─────────────────────────────────────────────
+constitutional_constraint:
+  formal: "Evolutionary Change ⊆ Valid(H_Envelope)"
+  inherited_from: ESSA-DOC-AMPEL-001
+  prose: >
+    All AMPEL360 lifecycle transitions are subject to the AMPEL invariant.
+    No transition may exit the active H_ENVELOPE. An out-of-envelope
+    candidate is non-activable by construction.
+
+# ─────────────────────────────────────────────
+# Stack Position
+# ─────────────────────────────────────────────
+stack_position:
+  - tier: constitutional_substrate
+    id: EUROPEAN_SOVEREIGN_SYSTEMS_ARCHITECTURE
+    role: Tier 1 — constitutional digital substrate
+  - tier: constitutional_framework
+    id: ESSA
+    role: Tier 2 — European Safety and Security Agency
+  - tier: abstract_method
+    id: AMPEL
+    document: ESSA-DOC-AMPEL-001
+    role: Abstract evolutionary engine method
+  - tier: lifecycle_engine
+    id: AMPEL360
+    document: ESSA-DOC-AMPEL360-001
+    role: >
+      Concrete lifecycle programming engine for ESSA P000–P120 — this
+      document
+  - tier: sector_profiles
+    id: SECTOR_PROFILES
+    role: >
+      Aviation · Space · RSP · Autonomy · Critical Industrial Chains —
+      tighten AMPEL360 parameters; cannot weaken ESSA baseline
+
+# ─────────────────────────────────────────────
+# 360 Dimensions
+# ─────────────────────────────────────────────
+three_sixty_dimensions:
+  - id: FULL_LIFECYCLE_COVERAGE
+    meaning: P000 through P120 — all eleven phases
+  - id: CROSS_CHAIN_INTEGRATION
+    meaning: >
+      Industrial + Digital + Engineering + Authority + Test + Operations +
+      Mission + Reporting
+  - id: CLOSED_FEEDBACK_LOOP
+    meaning: Operations (P080) → H_UPDATE → H_ENVELOPE version increment
+  - id: PROFILE_EXTENSIBILITY
+    meaning: Sector profiles tighten, never weaken, the ESSA baseline
+  - id: GOVERNANCE_MISSION_COHERENCE
+    meaning: Safety-first doctrine enforced at every gate
+
+# ─────────────────────────────────────────────
+# Core Engine Responsibilities
+# ─────────────────────────────────────────────
+core_responsibilities:
+  - id: SAFETY_DRIVEN_ACTIVATION
+    name: Safety-Driven Activation
+    description: >
+      H_ENVELOPE activates the ProgressChain. No phase transition may begin
+      until the active envelope version is established and all prior H-tokens
+      are linked and signed off.
+  - id: DETERMINISTIC_GATES
+    name: Deterministic Gates
+    sequence: [INTERPRET, CONFIRM, ACTIVATE, PUBLISH]
+    rule: >
+      A gate is blocked if any required H-token is missing, unsigned, or
+      orphaned.
+  - id: SECURITY_OVERLAY
+    name: Security Overlay
+    mandatory_phases: [P020, P050, P080, P090, P120]
+    controls:
+      - type: INTEGRITY
+        role: Prevents unauthorised mutation of H-tokens
+      - type: AUTHORITY
+        role: Validates H_SIGNOFF provenance
+      - type: AUDIT
+        role: Generates non-repudiable transition records
+      - type: NON_REPUDIATION
+        role: Binds every ACTIVATE gate to an authority identity
+  - id: CONFORMANCE_AUTOMATION
+    name: Conformance Automation (ALPC-ready)
+    bundle_checks:
+      - All required H-tokens present and linked
+      - All mandatory EU-SECURITY controls linked per phase
+      - H_SIGNOFF present for every H_EVIDENCE record
+      - No orphaned H-token in the graph
+  - id: EVOLUTIONARY_LOOP_PROGRAMMING
+    name: Evolutionary Loop Programming
+    mechanism: >
+      Controlled updates via H_UPDATE → H_SIGNOFF → H_ENVELOPE version
+      increment. See ESSA-DOC-AMPEL-001 §4.5.
+
+# ─────────────────────────────────────────────
+# Full Lifecycle Coverage (P000–P120)
+# ─────────────────────────────────────────────
+lifecycle_coverage:
+  - phase: P000
+    name: Digital Baseline
+    ampel360_role: >
+      Establish initial H_ENVELOPE; derive H_REQ from governance inputs
+  - phase: P010
+    name: Concept
+    ampel360_role: >
+      Hazard identification (H_HAZARD); envelope validation
+  - phase: P020
+    name: Architecture and Requirements
+    ampel360_role: H_REQ tokenisation
+    mandatory_mcsc: [MCSC-ETH-03, MCSC-RES-01]
+  - phase: P030
+    name: Industrial Chain
+    ampel360_role: >
+      Supply-chain H_CONSTRAINT binding; ESG evidence
+  - phase: P040
+    name: Engineering
+    ampel360_role: >
+      Design artefacts bounded by H_CONSTRAINT; DMU/PMU as H_EVIDENCE
+  - phase: P050
+    name: Authority and Compliance
+    ampel360_role: DOA closure (H_SIGNOFF)
+    mandatory_mcsc: [MCSC-ACC-02, MCSC-ETH-01]
+  - phase: P060
+    name: Integration
+    ampel360_role: Cross-chain coherence check; all H-tokens linked
+  - phase: P070
+    name: Test
+    ampel360_role: >
+      Test campaigns registered as H_EVIDENCE; H_SIGNOFF per campaign
+  - phase: P080
+    name: Operations
+    ampel360_role: >
+      ICA/MRO/occurrences; feedback classification; H_UPDATE if
+      safety-relevant
+    mandatory_mcsc: [MCSC-ACC-03, MCSC-SCI-01]
+  - phase: P090
+    name: Mission
+    ampel360_role: >
+      Mission control; H_UPDATE if safety-relevant
+    mandatory_mcsc: [MCSC-HOB-03, MCSC-ETH-02]
+  - phase: P100
+    name: Reporting
+    ampel360_role: >
+      Consolidated evidence; SII scoring; all H_SIGNOFF confirmed
+  - phase: P120
+    name: Baseline Update
+    ampel360_role: >
+      Baseline increment; H_ENVELOPE version increment
+    mandatory_mcsc: ["MCSC-RES-*"]
+
+# ─────────────────────────────────────────────
+# Formal Definition
+# ─────────────────────────────────────────────
+formal_definition:
+  variables:
+    L: ESSA Lifecycle (P000–P120)
+    H: Human Safety Envelope (active H_ENVELOPE version)
+    S: Security Invariants (MCSC controls, active per phase)
+    T: Token Graph (all H-tokens and their links)
+  gate_invariant: >
+    Any artefact that cannot satisfy all four conditions (envelope, security,
+    completeness, authority) SHALL NOT be activated.
+  conditions_per_phase:
+    - Tokens(pᵢ) ⊆ Valid(H)        # envelope constraint
+    - MCSC(pᵢ) ⊆ S                 # security invariant
+    - Complete(T, pᵢ)              # no orphaned tokens
+    - Signed(H_SIGNOFF, pᵢ)       # authority confirmed
+  transition_rule:
+    PASS: all four conditions hold
+    BLOCKED: any condition fails
+
+# ─────────────────────────────────────────────
+# Constitutional Relationships
+# ─────────────────────────────────────────────
+constitutional_relationships:
+  - instrument: ESSA-CONST-001
+    satisfies: [CI-001, CI-002, CI-003, CI-004, CI-005]
+  - instrument: ESSA-DOC-AMPEL-001
+    role: >
+      AMPEL360 is the concrete lifecycle instantiation of the AMPEL method;
+      inherits all five loop elements and the formal invariant
+  - instrument: ESSA-DOC-H-001
+    role: >
+      AMPEL360 operates the H Pipeline across all eleven phases; every gate
+      maps to its H-token set
+  - instrument: ESSA-DOC-SIS-001
+    role: >
+      AMPEL360 is the operational engine that produces SIS; SIS is achieved
+      when AMPEL360 operates correctly across all eleven phases
+  - instrument: ESSA-DOC-SF-001
+    role: Enforces SF-RULE-01 through SF-RULE-06 at every phase boundary
+  - instrument: ESSA-STD-CCTLS-001
+    role: >
+      AMPEL360 lifecycle phases map directly to CCTLS phase registry
+      (P000–P120)
+  - instrument: EU-SECURITY
+    role: >
+      AMPEL360 applies MCSC mandatory linkages at P020, P050, P080, P090,
+      P120
+
+# ─────────────────────────────────────────────
+# Domain Profiles
+# ─────────────────────────────────────────────
+domain_profiles:
+  principle: >
+    AMPEL360 is a single kernel. Each domain profile tightens its parameters
+    for a specific regulatory domain. No profile may weaken the ESSA
+    constitutional baseline.
+  profiles:
+    - id: AMPEL360-Q100
+      document_id: ESSA-DOC-AMPEL360-Q100-001
+      domain: Civil Aviation (~100 pax)
+      authority: EASA / CS-25 / Part-21
+      artefacts:
+        markdown: ESSA/AMPEL360-Q100.md
+        yaml: ESSA/ampel360-q100.yaml
+    - id: AMPEL360-Q10
+      document_id: ESSA-DOC-AMPEL360-Q10-001
+      domain: Spacecraft / Orbital / Reusable Platforms
+      authority: ESA / ECSS / European Space Regulations
+      artefacts:
+        markdown: ESSA/AMPEL360-Q10.md
+        yaml: ESSA/ampel360-q10.yaml
+  resolver:
+    id: AMPEL360-PR
+    document_id: ESSA-DOC-AMPEL360-PR-001
+    description: >
+      DAL-adaptive governed component resolver — detects stack and DAL, derives
+      admissible language by rule, generates governed artefact material
+      (skeleton + evidence + traceability) under DO-178C within the H-pipeline.
+    artefacts:
+      markdown: ESSA/AMPEL360-PR.md
+      yaml: ESSA/ampel360-pr.yaml
+  federation:
+    id: AMPEL360-FED
+    document_id: ESSA-DOC-AMPEL360-FED-001
+    description: >
+      Federated Fleet Data Architecture — tags fleet technical records,
+      maintenance manuals, and compliance artefacts at source with three canonical
+      Global Tags (manufacturer, aircraft_model, operator) for routing by the
+      AMPEL-A7 RAG engine across Technical Publications, Compliance/Lease, and
+      Fleet Management IA modes.
+    artefacts:
+      markdown: ESSA/AMPEL360-FED.md
+      yaml: ESSA/ampel360-fed.yaml

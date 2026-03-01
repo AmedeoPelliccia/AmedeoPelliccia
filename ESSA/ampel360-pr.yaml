@@ -1,0 +1,517 @@
+##############################################################################
+# ESSA — AMPEL360 Profile Resolver
+# DO-178C / DAL-Adaptive Governed Component Generation
+# Machine-readable companion to ESSA/AMPEL360-PR.md
+##############################################################################
+
+document_id: ESSA-DOC-AMPEL360-PR-001
+document_type: essa_ampel360_resolver
+title: "AMPEL360 Profile Resolver — DO-178C / DAL-Adaptive Governed Component Generation"
+version: "0.1-draft"
+schema_version: "1.0.0"
+status: normative_method
+parent: ESSA-DOC-AMPEL360-001
+last_updated: "2026-03-01T00:00:00Z"
+
+description: >
+  The Profile Resolver is a functional component of AMPEL360 that detects the
+  active DAL level and certified stack, derives the admissible language by rule
+  (not by preference), and generates governed artefact material (interfaces,
+  skeletons, test harness, traceability tokens, DO-178C data item templates)
+  within the H-pipeline. It does not generate activable control logic.
+
+# ─────────────────────────────────────────────
+# Safety Boundary
+# ─────────────────────────────────────────────
+safety_boundary:
+  domains: [NAV, AP, FMS, FD]
+  dal_scope: [A, B, C, D, E]
+  hard_limit: >
+    The resolver SHALL NOT generate activable control logic (guidance laws,
+    command signals, fault-mode decisions). All output is governed artefact
+    material requiring human engineering review, independent verification,
+    and authority sign-off before any activation.
+  generation_precondition: H_ENVELOPE signed and present
+
+# ─────────────────────────────────────────────
+# Required Inputs
+# ─────────────────────────────────────────────
+required_inputs:
+  - name: domain
+    description: Avionics sub-domain (NAV/AP/FMS/FD/…)
+    token: context
+  - name: dal
+    description: Design Assurance Level (A–E) from approved safety assessment
+    token: H_HAZARD
+  - name: platform
+    description: CPU, RTOS, toolchain, memory/timing constraints
+    token: H_CONSTRAINT
+  - name: existing_codebase
+    description: Language, coding standards, qualified tools already in use
+    token: H_CONSTRAINT
+  - name: active_profile
+    description: AMPEL360 domain profile identifier (e.g. ESSA-DOC-AMPEL360-Q100-001)
+    token: profile_id
+  - name: h_envelope
+    description: Active signed safety envelope
+    token: H_ENVELOPE
+  - name: h_req
+    description: Safety requirements derived from FHA/PSSA/SSA
+    token: H_REQ
+
+# ─────────────────────────────────────────────
+# Language Derivation Rules
+# ─────────────────────────────────────────────
+language_derivation:
+  rule_id: PR-LANG-01
+  algorithm:
+    - condition: existing_certified_stack_present
+      action: use_existing_language
+      rationale: No change imposed on certified stack
+    - condition: "dal in [A, B] AND no_existing_stack AND spark_ada_qualified_in_toolchain"
+      action: recommend_Ada_SPARK
+      rationale: Highest analyzability and formal methods support; ECSS-E-ST-40C or DO-178C toolchain qualification
+    - condition: "dal in [A, B] AND no_existing_stack AND NOT spark_ada_qualified_in_toolchain"
+      action: recommend_C_MISRA
+      rationale: C with MISRA-C:2012 mandatory rules; compiler qualified under DO-330
+      language_subset: MISRA-C:2012_mandatory_rules_minimum
+      tool_qualification: DO-330
+    - condition: model_based_approach_available
+      action: recommend_model_based
+      rationale: SCADE or Simulink + TargetLink under DO-331 supplement; tool qualification DO-330 TQL-1 or TQL-2
+    - condition: else
+      action: flag_UNRESOLVED
+      escalation: H_EXCEPTION_with_human_decision_required
+  evidence_requirement: >
+    Language derivation path SHALL be registered as H_EVIDENCE on the
+    language selection artefact (rule PR-LANG-01).
+  signoff_requirement: >
+    No language recommendation is final without H_SIGNOFF (responsible engineer)
+    and H_CONSTRAINT confirming toolchain qualification status (rule PR-LANG-02).
+
+# ─────────────────────────────────────────────
+# Generated Output Types
+# ─────────────────────────────────────────────
+generated_outputs:
+  - type: component_interface_and_contracts
+    description: >
+      Input/output signal declarations (physical units, ranges, resolution),
+      pre/post-conditions, invariants from H_REQ, integration stubs.
+    token_link: H_REQ
+    activable: false
+
+  - type: deterministic_skeleton
+    description: >
+      Structural skeleton only — module/unit boundary, function signatures,
+      NOT_IMPLEMENTED assertions blocking compilation, coding-standard annotations.
+      No control logic, no guidance laws, no command computation.
+    token_link: H_REQ
+    activable: false
+
+  - type: test_harness
+    description: >
+      Unit test framework scaffold, boundary value cases from H_REQ/H_CONSTRAINT
+      ranges, MC/DC coverage hooks (mandatory for DAL A/B), test results template
+      aligned to DO-178C Table A-7.
+    token_link: H_EVIDENCE
+    activable: false
+
+  - type: traceability_tokens
+    description: >
+      Bidirectional trace links H_REQ ↔ design artefact ↔ code unit ↔ test case.
+      Gaps flagged as H_EXCEPTION until resolved.
+    token_link: H_REQ
+    activable: false
+
+  - type: do178c_data_item_templates
+    description: >
+      Templates for SDP (A-1), SVP (A-2), Software Requirements Standards (A-3),
+      Software Design Standards (A-4), Software Code Standards (A-5), Traceability data.
+    token_link: H_EVIDENCE
+    activable: false
+
+# ─────────────────────────────────────────────
+# DO-178C Validation Rules
+# ─────────────────────────────────────────────
+validation_rules:
+
+  # ── 5.1 Code Complexity Rules ──────────────
+  code_complexity:
+    dal_scope_mandatory: [A, B]
+    dal_scope_recommended: [C, D]
+    rules:
+      - id: PR-VAL-CC-01
+        check: cyclomatic_complexity_per_function
+        fail_threshold_dal_AB: "> 10"
+        warn_threshold_dal_AB: "8–10"
+        fail_threshold_dal_C: "> 15"
+        warn_threshold_dal_C: "12–15"
+        blocked_gate: CONFIRM
+        verification_artefact: static_analysis_report (registered as H_EVIDENCE)
+
+      - id: PR-VAL-CC-02
+        check: call_stack_depth_and_recursion
+        fail_condition: recursion_present
+        warn_condition: static_bound_not_derivable
+        dal_scope: [A, B]
+        blocked_gate: CONFIRM
+
+      - id: PR-VAL-CC-03
+        check: function_length
+        fail_threshold_dal_AB: "> 60 lines of effective code"
+        warn_threshold_dal_AB: "50–60 lines"
+        fail_threshold_dal_C: "> 80 lines"
+        dal_scope: [A, B, C]
+        blocked_gate: CONFIRM
+
+      - id: PR-VAL-CC-04
+        check: number_of_parameters_per_function
+        fail_threshold: "> 8"
+        warn_threshold: "7–8"
+        reference: MISRA-C:2012 Dir 4.6
+        dal_scope: [A, B, C]
+        blocked_gate: CONFIRM
+
+      - id: PR-VAL-CC-05
+        check: dynamic_memory_allocation_forbidden
+        fail_condition: malloc/free/realloc present in generated skeleton
+        warn_condition: dynamic allocation in DAL C skeleton
+        reference: MISRA-C:2012 Rule 21.3
+        dal_scope: [A, B]
+        blocked_gate: CONFIRM
+        violation_action: H_EXCEPTION
+
+      - id: PR-VAL-CC-06
+        check: nesting_depth_control_flow
+        fail_threshold_dal_AB: "> 4"
+        warn_threshold_dal_AB: "> 3"
+        fail_threshold_dal_C: "> 5"
+        dal_scope: [A, B, C]
+        blocked_gate: CONFIRM
+        rationale: >
+          Deep nesting makes branch coverage and inspection error-prone.
+          Nesting ≤ 4 for DAL A/B eliminates hidden MC/DC gaps before code is written.
+    deviation_policy: >
+      Any FAIL result MAY be overridden by a signed Deviation Record
+      (H_SIGNOFF + rationale + safety impact + mitigation plan).
+      Unsigned deviations block the CONFIRM gate (PR-INH-002).
+
+  # ── 5.2 Required Artefact Presence Rules ──
+  required_artefacts:
+    - id: PR-VAL-ART-00
+      artefact: Plan for Software Aspects of Certification (PSAC) — approved
+      do178c_table: A-1
+      blocked_gate_if_absent: INTERPRET
+      dal_scope: [A, B, C, D]
+      token: H_EVIDENCE
+      note: >
+        PSAC is the primary DO-178C planning document. Its absence blocks the
+        INTERPRET gate for all DAL levels. Must define software level, lifecycle,
+        and relationships to system safety process outputs.
+
+    - id: PR-VAL-ART-01
+      artefact: System Safety Analysis Report (SAR/FHA/PSSA/SSA output)
+      do178c_table: system_level_input
+      gate: INTERPRET
+      dal_scope: [A, B, C, D]
+      token: H_EVIDENCE
+      check: dal_derivation_matches_D_input
+      blocked_gate_if_absent: INTERPRET
+
+    - id: PR-VAL-ART-02
+      artefact: Software Development Plan (SDP) — approved
+      do178c_table: A-1
+      gate: INTERPRET_to_CONFIRM
+      dal_scope: [A, B, C, D]
+      token: H_EVIDENCE
+
+    - id: PR-VAL-ART-03
+      artefact: Software Verification Plan (SVP) — approved
+      do178c_table: A-2
+      gate: INTERPRET_to_CONFIRM
+      dal_scope: [A, B, C]
+      token: H_EVIDENCE
+
+    - id: PR-VAL-ART-04
+      artefact: Software Requirements Standards — issued
+      do178c_table: A-3
+      gate: CONFIRM
+      dal_scope: [A, B, C]
+      token: H_EVIDENCE
+
+    - id: PR-VAL-ART-05
+      artefact: Software Design Standards — issued
+      do178c_table: A-4
+      gate: CONFIRM
+      dal_scope: [A, B, C]
+      token: H_EVIDENCE
+
+    - id: PR-VAL-ART-06
+      artefact: Software Code Standards (language subset rules) — issued
+      do178c_table: A-5
+      gate: CONFIRM
+      dal_scope: [A, B, C]
+      token: H_EVIDENCE
+
+    - id: PR-VAL-ART-07
+      artefact: Tool Qualification Plan (TQP) for all DO-330 tools
+      do178c_table: DO-330 Table A-1
+      gate: CONFIRM
+      dal_scope: [A, B]
+      token: H_EVIDENCE
+      blocked_gate_if_absent: CONFIRM
+
+    - id: PR-VAL-ART-08
+      artefact: Static Analysis Report (complexity + MISRA scan) per unit
+      do178c_table: A-7
+      gate: ACTIVATE
+      dal_scope: [A, B, C]
+      token: H_EVIDENCE
+
+    - id: PR-VAL-ART-09
+      artefact: Unit Test Results with MC/DC coverage table
+      do178c_table: A-7
+      gate: ACTIVATE
+      dal_scope: [A, B]
+      token: H_EVIDENCE
+
+    - id: PR-VAL-ART-10
+      artefact: Software Conformity Review (SCR) record
+      do178c_table: A-8
+      gate: PUBLISH
+      dal_scope: [A, B, C]
+      token: H_SIGNOFF
+
+  # ── 5.3 MISRA-C Compliance Validation Rules ─
+  misra_c_compliance:
+    applicable_when: language_derivation_selects_C
+    dal_scope_mandatory: [A, B]
+    dal_scope_recommended: [C]
+    manifest_output: MISRA-C Compliance Manifest (registered as H_EVIDENCE on skeleton artefact)
+
+    process_artefact:
+      - id: PR-VAL-MA-01
+        artefact: MISRA_Compliance_Process document — issued
+        gate: CONFIRM
+        dal_scope: [A, B, C]
+        token: H_EVIDENCE
+        blocked_gate_if_absent: CONFIRM
+        required_content:
+          - rule_set_baseline: "MISRA C:2012 (+ amendments/corrigenda) or C:2023"
+          - deviation_procedure: signed approvals workflow
+          - static_analysis_tool: version-locked configuration
+
+    mandatory_rules:
+      - id: PR-VAL-MC-01
+        misra_rule: "1.1"
+        description: Code shall conform to selected C standard
+        resolver_action: Annotate skeleton header with C99/C11 conformance comment
+
+      - id: PR-VAL-MC-02
+        misra_rule: "2.2"
+        description: No dead code
+        resolver_action: Skeleton stubs use NOT_IMPLEMENTED assertion; dead-code scanner confirms zero dead paths post-fill
+
+      - id: PR-VAL-MC-03
+        misra_rule: "8.4"
+        description: Compatible declarations for external objects/functions
+        resolver_action: All external interfaces declared in generated header
+
+      - id: PR-VAL-MC-04
+        misra_rule: "11.3"
+        description: No cast between pointer-to-object and integer type
+        resolver_action: Skeleton type definitions use explicit fixed-width types (uint32_t etc.)
+
+      - id: PR-VAL-MC-05
+        misra_rule: "14.3"
+        description: Controlling expressions shall not be invariant
+        resolver_action: Placeholder conditionals flagged for replacement before CONFIRM
+
+      - id: PR-VAL-MC-06
+        misra_rule: "15.5"
+        description: Function returns a value at a single exit point
+        resolver_action: Skeleton functions generated with single-exit structure
+
+      - id: PR-VAL-MC-07
+        misra_rule: "17.2"
+        description: Recursion forbidden
+        resolver_action: Recursive call graphs rejected; flagged as H_EXCEPTION
+
+      - id: PR-VAL-MC-08
+        misra_rule: "21.3"
+        description: malloc/free forbidden
+        resolver_action: Skeleton contains no dynamic allocation; violation triggers H_EXCEPTION
+
+    required_directives:
+      - id: PR-VAL-MD-01
+        misra_directive: "1.1"
+        description: All code implemented in conforming C (C99/C11 subset)
+        resolver_action: Language standard set in generated coding_standards.h guard
+
+      - id: PR-VAL-MD-02
+        misra_directive: "4.1"
+        description: Arithmetic shall not rely on implementation-defined behaviour
+        resolver_action: Fixed-width types enforced in skeleton signal declarations
+
+      - id: PR-VAL-MD-03
+        misra_directive: "4.6"
+        description: All numerical values shall have explicit types
+        resolver_action: Signal declarations use typed constants only
+
+      - id: PR-VAL-MD-04
+        misra_directive: "4.7"
+        description: Return value of non-void functions shall be tested
+        resolver_action: Every call site in test harness checks return value
+
+    deviation_rule: PR-VAL-MC-DEVIATE
+    deviation_requirement: >
+      No deviation from a MISRA-C mandatory rule is permitted for DAL A/B without a
+      Deviation Record carrying H_SIGNOFF. Unsigned deviation requests block the CONFIRM gate.
+
+    skeleton_gate_rules:
+      - id: PR-VAL-MC-GATE
+        check: static_analysis_zero_mandatory_violations
+        severity: FAIL
+        dal_scope: [A, B]
+        blocked_gate: PUBLISH
+        condition: undeviated_mandatory_misra_violations >= 1
+        note: >
+          Mandatory violations may be deviated with a signed Deviation Record.
+          Undeviated mandatory violations block PUBLISH.
+
+      - id: PR-VAL-SKEL-01
+        check: no_dynamic_memory_allocation
+        misra_reference: MISRA-C:2012 Rule 21.3
+        severity: FAIL
+        dal_scope: [A, B, C]
+        blocked_gate: CONFIRM
+
+      - id: PR-VAL-SKEL-02
+        check: no_recursion_direct_or_indirect
+        misra_reference: MISRA-C:2012 Rule 17.2
+        severity: FAIL
+        dal_scope: [A, B]
+        blocked_gate: CONFIRM
+
+      - id: PR-VAL-SKEL-03
+        check: no_function_like_macros_where_inline_function_usable
+        misra_reference: MISRA-C:2012 Dir 4.9
+        severity: FAIL
+        dal_scope: [A, B]
+        blocked_gate: CONFIRM
+
+      - id: PR-VAL-SKEL-04
+        check: all_generated_files_compile_cleanly_in_CI
+        compile_flags: "-Wall -Wextra -Werror (or qualified compiler equivalent)"
+        severity: FAIL
+        dal_scope: [A, B, C, D]
+        blocked_gate: ACTIVATE
+        note: Zero compiler warnings treated as errors.
+
+      - id: PR-VAL-SKEL-05
+        check: runtime_failure_minimization_checks_enabled
+        misra_reference: MISRA-C:2012 Dir 4.1
+        categories: [overflow, divide_by_zero, out_of_bounds, null_pointer]
+        severity: FAIL
+        dal_scope: [A, B]
+        blocked_gate: ACTIVATE
+        note: >
+          Static analysis tool configuration SHALL include checks for all four
+          arithmetic and pointer failure categories. Absence of configured check
+          strategy blocks the ACTIVATE gate.
+
+# ─────────────────────────────────────────────
+# H-Pipeline Inhibitors
+# ─────────────────────────────────────────────
+inhibitors:
+  - id: PR-INH-001
+    condition: "NOT H_ENVELOPE or NOT Signed(H_ENVELOPE)"
+    blocked_operation: all_resolver_output_generation
+    rule: "¬H_ENVELOPE → GENERATION blocked"
+
+  - id: PR-INH-002
+    condition: "NOT TRACE(H_REQ → H_ENVELOPE)"
+    blocked_operation: CONFIRM_gate
+    rule: "¬TRACE(H_REQ→H_ENVELOPE) → CONFIRM blocked"
+
+  - id: PR-INH-003
+    condition: "NOT H_EVIDENCE(safety_critical)"
+    blocked_operation: ACTIVATE_gate
+    rule: "¬H_EVIDENCE(safety_critical) → ACTIVATE blocked"
+
+  - id: PR-INH-004
+    condition: "NOT H_SIGNOFF(authority)"
+    blocked_operation: PUBLISH_gate
+    rule: "¬H_SIGNOFF(authority) → PUBLISH blocked"
+
+  - id: PR-INH-005
+    condition: "generation_scope_includes_control_logic"
+    blocked_operation: generation_request
+    rule: Request rejected and logged as H_EXCEPTION; mandatory human escalation
+
+# ─────────────────────────────────────────────
+# Gate Alignment (DO-178C × CCTLS)
+# ─────────────────────────────────────────────
+gate_alignment:
+  - gate: INTERPRET
+    do178c_equivalent: Planning phase (SDP/SVP approved)
+    active_tokens: [H_ENVELOPE, H_REQ, H_CONSTRAINT]
+    resolver_output: [language_derivation, interface_contracts]
+
+  - gate: CONFIRM
+    do178c_equivalent: Requirements review complete
+    active_tokens: [H_REQ, H_HAZARD]
+    resolver_output: [skeleton, test_harness, traceability_tokens]
+
+  - gate: ACTIVATE
+    do178c_equivalent: Verification objectives met
+    active_tokens: [H_EVIDENCE, H_EXCEPTION_cleared]
+    resolver_output: [do178c_data_item_templates_finalised]
+
+  - gate: PUBLISH
+    do178c_equivalent: Stage of Involvement (SOI) review passed
+    active_tokens: [H_SIGNOFF]
+    resolver_output: [compliance_bundle_released]
+
+# ─────────────────────────────────────────────
+# Formal Definition
+# ─────────────────────────────────────────────
+formal_definition:
+  function: "PR(D, S, H, R, P)"
+  variables:
+    D: DAL level (A–E)
+    S: existing certified stack (language, toolchain, RTOS)
+    H: active H_ENVELOPE (signed safety envelope)
+    R: set of H_REQ traceable to H
+    P: active AMPEL360 domain profile
+  preconditions:
+    - "H ≠ ∅ ∧ Signed(H)"
+    - "∀ rᵢ ∈ R: Traceable(rᵢ, H)"
+  outputs:
+    - "Interfaces(R)"
+    - "Skeleton(lang, R)"
+    - "TestHarness(D, R)"
+    - "TraceTokens(R, Skeleton)"
+    - "DO178C_Templates(D, P)"
+  postconditions:
+    - "∀ output ∈ GENERATE: ¬Activable"
+    - "∀ output ∈ GENERATE: RequiresReview"
+    - "∀ output ∈ GENERATE: RequiresSignoff(H_SIGNOFF)"
+  blocked_if: any_precondition_false
+
+# ─────────────────────────────────────────────
+# Constitutional Instrument Cross-References
+# ─────────────────────────────────────────────
+constitutional_references:
+  - id: ESSA-CONST-001
+    role: Satisfies CI-003 (Deterministic Gates), CI-004 (Machine-Verifiable Conformance)
+  - id: ESSA-DOC-AMPEL360-001
+    role: Resolver is a functional sub-component of AMPEL360
+  - id: ESSA-DOC-AMPEL360-Q100-001
+    role: Q100 profile activates the resolver for EASA/DO-178C context
+  - id: ESSA-DOC-H-001
+    role: Resolver operates inside the H-pipeline; every output is H-token-linked
+  - id: ESSA-DOC-SF-001
+    role: Safety-first — resolver generation is H_ENVELOPE-gated (SF-RULE-01)
+  - id: ESSA-STD-CCTLS-001
+    role: Resolver output maps to CCTLS gate sequence INTERPRET → CONFIRM → ACTIVATE → PUBLISH

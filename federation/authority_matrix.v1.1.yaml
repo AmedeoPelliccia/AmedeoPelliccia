@@ -1,0 +1,272 @@
+##############################################################################
+# AMPEL360 Federated Contract — Global Tag Authority Matrix
+# Contract Spec v1.1 — Machine-Readable
+# Ref: federation/authority_matrix.v1.1.md
+##############################################################################
+
+document_id: ESSA-DOC-AMPEL360-FED-AUTH-001
+version: "1.1"
+document_type: ampel360_federated_contract_authority_matrix
+title: "Global Tag Authority Matrix — Contract Spec v1.1"
+status: normative_contract
+parent: ESSA-DOC-AMPEL360-FED-001
+schema_ref: schemas/global_tags.v1.schema.json
+last_updated: "2026-03-01T00:00:00Z"
+
+design_correction:
+  from_version: "0.1-draft"
+  correction: >
+    OEM and Model are type design anchors, not tail anchors.
+    Tail (MSN/registration) maps to structural tags via effectivity.
+    oem_id and model_id bind to the asset family/type certificate.
+
+# ─────────────────────────────────────────────
+# Authority Classes
+# ─────────────────────────────────────────────
+authority_classes:
+  A0:
+    name: Type Design Authority
+    scope: TC holder / OEM authoritative packet
+    examples: [Airbus World portal, Boeing Toolbox, OEM type certificate]
+
+  A1:
+    name: Regulatory Registry
+    scope: Civil registry / AOC validation
+    examples: [EASA EDOM, FAA DRS, national aircraft register]
+
+  A2:
+    name: Operator Authority
+    scope: Operator manuals, procedures, AMP deltas
+    examples: [Airline ops engineering, operator AMP, lessee docs]
+
+  A3:
+    name: Maintainer Authority
+    scope: MRO embodied config / work packages / Release to Service
+    examples: [AMOS, TRAX, OASES, maintenance work orders]
+
+# ─────────────────────────────────────────────
+# Global Tag Attribute Definitions
+# ─────────────────────────────────────────────
+attributes:
+  structural:
+    description: Type design anchors. Quasi-immutable. Bound to asset family.
+    items:
+
+    - name: oem_id
+      namespace_pattern: "oem:<name>"
+      examples: [oem:airbus, oem:boeing, oem:embraer]
+      master_authority: A0
+      validators: [A1]
+      immutable: true
+      conflict_rule: >
+        Immutable once set for asset family. Mismatch between two A0 assertions
+        or between A0 and A1 → FAIL (data integrity breach).
+
+    - name: model_id
+      namespace_pattern: "ac_model:<oem>:<type>"
+      examples: [ac_model:airbus:a321neo, ac_model:boeing:737max8, ac_model:embraer:e195e2]
+      master_authority: A0
+      validators: [A1, A2]
+      immutable: true
+      conflict_rule: >
+        A0 wins always. A2 may add model_alias but cannot redefine model_id.
+
+    - name: model_alias
+      namespace_pattern: "model_alias:<operator>:<alias>"
+      master_authority: A2
+      validators: []
+      immutable: false
+      note: Optional. Must not redefine model_id.
+
+    - name: type_design_ref
+      namespace_pattern: "TC:<authority>.<ref>"
+      examples: [TC:EASA.A.064, TC:FAA.A16WE, TCDS:EASA-TCDS-A-064]
+      master_authority: A0
+      validators: [A1]
+      immutable: true
+      mandatory_for: technical_baseline_publication
+      conflict_rule: Absence blocks CONFIRM gate (AUTH-INH-003).
+
+    - name: msn
+      description: Manufacturer Serial Number — permanent key
+      master_authority: A0
+      validators: []
+      immutable: true
+
+    - name: registration
+      description: Current tail registration — mutable on transfer
+      master_authority: A1
+      validators: []
+      immutable: false
+
+  temporal:
+    description: Time-bound to AOC/ownership windows.
+    items:
+
+    - name: operator_id
+      namespace_pattern: "operator:icao:<code> OR operator:iata:<code> OR operator:internal:<id>"
+      examples: [operator:icao:BAW, operator:iata:BA, operator:internal:LESSOR-001]
+      master_authority: A1
+      validators: [A2, LESSOR]
+      immutable: false
+      temporal: true
+      temporal_fields: [valid_from, valid_to, transfer_event_ref]
+      conflict_rule: >
+        Temporal overlay only. Valid within [valid_from, valid_to).
+        Overlapping windows → FAIL unless explicitly multi-operator with H_SIGNOFF.
+
+    - name: operator_temporal_window
+      fields:
+        valid_from: ISO8601 datetime (inclusive)
+        valid_to: ISO8601 datetime (exclusive) or null (currently active)
+        transfer_event_ref: H_UPDATE record ID or null
+      master_authority: A1
+      required_when: operator_id is asserted
+
+    - name: operator_regime
+      type: enum
+      values: [EASA, FAA, UKCAA, TCCA, CASA, ANAC, OTHER]
+      master_authority: A2
+      validators: [A1]
+      immutable: false
+      temporal: true
+      conflict_rule: >
+        Must be consistent with AOC jurisdiction.
+        Mismatch: FAIL (DAL A/B) or WARN (DAL C/D).
+
+    - name: operator_regime_window
+      fields:
+        valid_from: ISO8601 datetime
+        valid_to: ISO8601 datetime or null
+      master_authority: A1
+      required_when: operator_regime may change with operator transfer
+
+  config_realisation:
+    description: Stateful configuration. Encodes SB/EO embodiment and effectivity.
+    items:
+
+    - name: as_delivered_config
+      namespace_pattern: "config:oem:<oem>:<baseline_id>"
+      examples: [config:oem:airbus:A321-STD-R01]
+      master_authority: A0
+      validators: []
+      immutable: true
+
+    - name: as_maintained_config
+      namespace_pattern: "config:mro:<site>:<config_id>"
+      examples: [config:mro:heathrow:SB-A321-28-1234-R02, config:mro:dallas:SB-737-28-1072-R01]
+      master_authority: A3
+      validators: [A2, A0]
+      immutable: false
+      conflict_rule: >
+        A3 embodied state overrides A0 standard baseline. Requires evidence_ref
+        (EO/SB/WP). Without evidence_ref → FAIL (AUTH-INH-006).
+
+    - name: config_embodied
+      type: boolean
+      master_authority: A3
+      description: true = A3 MRO confirmed embodiment; false = pre-embodiment / EO proposed
+
+    - name: config_embodiment_date
+      type: ISO8601 date or null
+      master_authority: A3
+
+    - name: effectivity
+      master_authority: A0+A3
+      validators: [A2]
+      computed: true
+      fields:
+        msn_range: { from_msn: string or null, to_msn: string or null }
+        msn_list: list of string
+        line_number_range: { from_ln: int or null, to_ln: int or null }
+        tail_list: list of string (A2 assertion, operator scope)
+        scope:
+          type: enum
+          values: [TAIL_SPECIFIC, MSN_RANGE, MODEL_WIDE, MODEL_FAMILY_WIDE]
+      conflict_rule: >
+        A0 defines applicability rules. A3 defines current MSN state.
+        A2 can narrow (operator procedures) but NEVER widen beyond A0 bounds.
+        Widening by A2 → FAIL (AUTH-INH-007).
+
+# ─────────────────────────────────────────────
+# Mandatory Provenance Fields
+# ─────────────────────────────────────────────
+mandatory_provenance:
+  description: >
+    Every tag assertion MUST carry these fields. Absence → reject at INTERPRET gate.
+  fields:
+    asserted_by:
+      authority_class: enum [A0, A1, A2, A3]
+      system_id: string
+    asserted_at: ISO8601 datetime
+    confidence:
+      type: float
+      range: [0, 1]
+      threshold_warn: 0.7
+      below_threshold_action: H_EXCEPTION(low_confidence); human review before CONFIRM
+    evidence_ref: string (registry entry, TC ref, work order, or H_EVIDENCE ID)
+
+# ─────────────────────────────────────────────
+# Namespace Resolution
+# ─────────────────────────────────────────────
+namespace_resolution:
+  rule: Never pass unqualified tag to downstream search or index filter.
+  steps:
+    1: Check if value contains ':' (qualified)
+    2: If unqualified → look up in OEM type registry
+    3: Ambiguous match → H_EXCEPTION(ambiguous_tag); ABORT
+    4: Not found → H_EXCEPTION(unresolvable_tag); ABORT
+  isolation:
+    operator_scope: contained within authority boundary
+    cross_operator: never cross-resolved
+    lessor_scope: bounded to declared portfolio members only
+
+# ─────────────────────────────────────────────
+# Authority Matrix Inhibitors
+# ─────────────────────────────────────────────
+inhibitors:
+  - id: AUTH-INH-001
+    condition: oem_id asserted by class other than A0
+    gate: INTERPRET
+    action: FAIL — H_EXCEPTION(unauthorised_oem_assertion)
+
+  - id: AUTH-INH-002
+    condition: model_id redefinition attempted by A2
+    gate: INTERPRET
+    action: FAIL — reject; A2 may only submit model_alias
+
+  - id: AUTH-INH-003
+    condition: type_design_ref absent on technical baseline publication
+    gate: CONFIRM
+    action: FAIL — block CONFIRM gate
+
+  - id: AUTH-INH-004
+    condition: operator_id temporal windows overlap without H_SIGNOFF
+    gate: CONFIRM
+    action: FAIL — block until transfer event resolved
+
+  - id: AUTH-INH-005
+    condition: operator_regime inconsistent with AOC jurisdiction
+    gate: CONFIRM
+    action_dal_AB: FAIL
+    action_dal_CD: WARN
+
+  - id: AUTH-INH-006
+    condition: as_maintained_config asserted without evidence_ref
+    gate: ACTIVATE
+    action: FAIL — config not trusted without maintenance evidence
+
+  - id: AUTH-INH-007
+    condition: effectivity widened by A2 beyond A0 applicability bounds
+    gate: ACTIVATE
+    action: FAIL — A2 may only narrow, not widen
+
+  - id: AUTH-INH-008
+    condition: confidence < 0.7 on any tag assertion
+    gate: INTERPRET
+    action: H_EXCEPTION(low_confidence); human review required before CONFIRM
+
+  - id: AUTH-INH-009
+    condition: any tag assertion missing provenance fields
+    gate: INTERPRET
+    action: FAIL — assertion rejected entirely
