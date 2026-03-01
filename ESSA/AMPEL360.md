@@ -178,5 +178,6 @@ AMPEL360 is a single kernel with **profile-adaptive** specialisations per regula
 |---------|--------|----------|----------|
 | **AMPEL360 Q100** | Civil Aviation (~100 pax) | EASA / CS-25 / Part-21 | [`AMPEL360-Q100.md`](AMPEL360-Q100.md) · [`ampel360-q100.yaml`](ampel360-q100.yaml) |
 | **AMPEL360 Q10** | Spacecraft / Orbital / Reusable | ESA / ECSS / European Space Regulations | [`AMPEL360-Q10.md`](AMPEL360-Q10.md) · [`ampel360-q10.yaml`](ampel360-q10.yaml) |
+| **AMPEL360 PR** | DAL-adaptive (all domains) | DO-178C / DO-254 / DO-330 / DO-331 | [`AMPEL360-PR.md`](AMPEL360-PR.md) · [`ampel360-pr.yaml`](ampel360-pr.yaml) |
 
 Additional profiles (RSP, Autonomy, Critical Industrial Chains) are defined in their respective sector profile documents.

@@ -323,6 +323,25 @@ AMPEL360 is a single kernel with **profile-adaptive** specialisations per regula
 
 ---
 
+### 3.9 AMPEL360 Profile Resolver (DO-178C / DAL-Adaptive)
+
+The **Profile Resolver** (`ESSA-DOC-AMPEL360-PR-001`) is a functional component of AMPEL360 for avionics / safety-critical embedded software. It detects the active DAL level and certified stack, derives the admissible language by constitutional rule (not by preference), and generates governed artefact material within the H-pipeline.
+
+**What the resolver produces:** interfaces + contracts · deterministic skeleton · test harness (MC/DC-ready for DAL A/B) · traceability tokens · DO-178C data item templates.
+
+**What the resolver never produces:** activable control logic, guidance laws, command signals, or fault-mode decisions.
+
+**H-pipeline inhibitors:** `¬H_ENVELOPE → GENERATION blocked` · `¬TRACE(H_REQ→H) → CONFIRM blocked` · `¬H_EVIDENCE → ACTIVATE blocked` · `¬H_SIGNOFF → PUBLISH blocked`
+
+| Artefact | Description |
+|----------|-------------|
+| [`AMPEL360-PR.md`](AMPEL360-PR.md) | Profile Resolver — human-readable specification |
+| [`ampel360-pr.yaml`](ampel360-pr.yaml) | Machine-readable companion |
+
+**Document ID:** `ESSA-DOC-AMPEL360-PR-001`
+
+---
+
 ## 4. Discretisation Principle
 
 ESSA enforces controlled discretisation.

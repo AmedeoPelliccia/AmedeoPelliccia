@@ -244,3 +244,13 @@ domain_profiles:
       artefacts:
         markdown: ESSA/AMPEL360-Q10.md
         yaml: ESSA/ampel360-q10.yaml
+  resolver:
+    id: AMPEL360-PR
+    document_id: ESSA-DOC-AMPEL360-PR-001
+    description: >
+      DAL-adaptive governed component resolver — detects stack and DAL, derives
+      admissible language by rule, generates governed artefact material
+      (skeleton + evidence + traceability) under DO-178C within the H-pipeline.
+    artefacts:
+      markdown: ESSA/AMPEL360-PR.md
+      yaml: ESSA/ampel360-pr.yaml

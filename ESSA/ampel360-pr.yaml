@@ -1,0 +1,227 @@
+##############################################################################
+# ESSA — AMPEL360 Profile Resolver
+# DO-178C / DAL-Adaptive Governed Component Generation
+# Machine-readable companion to ESSA/AMPEL360-PR.md
+##############################################################################
+
+document_id: ESSA-DOC-AMPEL360-PR-001
+document_type: essa_ampel360_resolver
+title: "AMPEL360 Profile Resolver — DO-178C / DAL-Adaptive Governed Component Generation"
+version: "0.1-draft"
+schema_version: "1.0.0"
+status: normative_method
+parent: ESSA-DOC-AMPEL360-001
+last_updated: "2026-03-01T00:00:00Z"
+
+description: >
+  The Profile Resolver is a functional component of AMPEL360 that detects the
+  active DAL level and certified stack, derives the admissible language by rule
+  (not by preference), and generates governed artefact material (interfaces,
+  skeletons, test harness, traceability tokens, DO-178C data item templates)
+  within the H-pipeline. It does not generate activable control logic.
+
+# ─────────────────────────────────────────────
+# Safety Boundary
+# ─────────────────────────────────────────────
+safety_boundary:
+  domains: [NAV, AP, FMS, FD]
+  dal_scope: [A, B, C, D, E]
+  hard_limit: >
+    The resolver SHALL NOT generate activable control logic (guidance laws,
+    command signals, fault-mode decisions). All output is governed artefact
+    material requiring human engineering review, independent verification,
+    and authority sign-off before any activation.
+  generation_precondition: H_ENVELOPE signed and present
+
+# ─────────────────────────────────────────────
+# Required Inputs
+# ─────────────────────────────────────────────
+required_inputs:
+  - name: domain
+    description: Avionics sub-domain (NAV/AP/FMS/FD/…)
+    token: context
+  - name: dal
+    description: Design Assurance Level (A–E) from approved safety assessment
+    token: H_HAZARD
+  - name: platform
+    description: CPU, RTOS, toolchain, memory/timing constraints
+    token: H_CONSTRAINT
+  - name: existing_codebase
+    description: Language, coding standards, qualified tools already in use
+    token: H_CONSTRAINT
+  - name: active_profile
+    description: AMPEL360 domain profile identifier (e.g. ESSA-DOC-AMPEL360-Q100-001)
+    token: profile_id
+  - name: h_envelope
+    description: Active signed safety envelope
+    token: H_ENVELOPE
+  - name: h_req
+    description: Safety requirements derived from FHA/PSSA/SSA
+    token: H_REQ
+
+# ─────────────────────────────────────────────
+# Language Derivation Rules
+# ─────────────────────────────────────────────
+language_derivation:
+  rule_id: PR-LANG-01
+  algorithm:
+    - condition: existing_certified_stack_present
+      action: use_existing_language
+      rationale: No change imposed on certified stack
+    - condition: "dal in [A, B] AND no_existing_stack AND spark_ada_qualified_in_toolchain"
+      action: recommend_Ada_SPARK
+      rationale: Highest analyzability and formal methods support; ECSS-E-ST-40C or DO-178C toolchain qualification
+    - condition: "dal in [A, B] AND no_existing_stack AND NOT spark_ada_qualified_in_toolchain"
+      action: recommend_C_MISRA
+      rationale: C with MISRA-C:2012 mandatory rules; compiler qualified under DO-330
+      language_subset: MISRA-C:2012_mandatory_rules_minimum
+      tool_qualification: DO-330
+    - condition: model_based_approach_available
+      action: recommend_model_based
+      rationale: SCADE or Simulink + TargetLink under DO-331 supplement; tool qualification DO-330 TQL-1 or TQL-2
+    - condition: else
+      action: flag_UNRESOLVED
+      escalation: H_EXCEPTION_with_human_decision_required
+  evidence_requirement: >
+    Language derivation path SHALL be registered as H_EVIDENCE on the
+    language selection artefact (rule PR-LANG-01).
+  signoff_requirement: >
+    No language recommendation is final without H_SIGNOFF (responsible engineer)
+    and H_CONSTRAINT confirming toolchain qualification status (rule PR-LANG-02).
+
+# ─────────────────────────────────────────────
+# Generated Output Types
+# ─────────────────────────────────────────────
+generated_outputs:
+  - type: component_interface_and_contracts
+    description: >
+      Input/output signal declarations (physical units, ranges, resolution),
+      pre/post-conditions, invariants from H_REQ, integration stubs.
+    token_link: H_REQ
+    activable: false
+
+  - type: deterministic_skeleton
+    description: >
+      Structural skeleton only — module/unit boundary, function signatures,
+      NOT_IMPLEMENTED assertions blocking compilation, coding-standard annotations.
+      No control logic, no guidance laws, no command computation.
+    token_link: H_REQ
+    activable: false
+
+  - type: test_harness
+    description: >
+      Unit test framework scaffold, boundary value cases from H_REQ/H_CONSTRAINT
+      ranges, MC/DC coverage hooks (mandatory for DAL A/B), test results template
+      aligned to DO-178C Table A-7.
+    token_link: H_EVIDENCE
+    activable: false
+
+  - type: traceability_tokens
+    description: >
+      Bidirectional trace links H_REQ ↔ design artefact ↔ code unit ↔ test case.
+      Gaps flagged as H_EXCEPTION until resolved.
+    token_link: H_REQ
+    activable: false
+
+  - type: do178c_data_item_templates
+    description: >
+      Templates for SDP (A-1), SVP (A-2), Software Requirements Standards (A-3),
+      Software Design Standards (A-4), Software Code Standards (A-5), Traceability data.
+    token_link: H_EVIDENCE
+    activable: false
+
+# ─────────────────────────────────────────────
+# H-Pipeline Inhibitors
+# ─────────────────────────────────────────────
+inhibitors:
+  - id: PR-INH-001
+    condition: "NOT H_ENVELOPE or NOT Signed(H_ENVELOPE)"
+    blocked_operation: all_resolver_output_generation
+    rule: "¬H_ENVELOPE → GENERATION blocked"
+
+  - id: PR-INH-002
+    condition: "NOT TRACE(H_REQ → H_ENVELOPE)"
+    blocked_operation: CONFIRM_gate
+    rule: "¬TRACE(H_REQ→H_ENVELOPE) → CONFIRM blocked"
+
+  - id: PR-INH-003
+    condition: "NOT H_EVIDENCE(safety_critical)"
+    blocked_operation: ACTIVATE_gate
+    rule: "¬H_EVIDENCE(safety_critical) → ACTIVATE blocked"
+
+  - id: PR-INH-004
+    condition: "NOT H_SIGNOFF(authority)"
+    blocked_operation: PUBLISH_gate
+    rule: "¬H_SIGNOFF(authority) → PUBLISH blocked"
+
+  - id: PR-INH-005
+    condition: "generation_scope_includes_control_logic"
+    blocked_operation: generation_request
+    rule: Request rejected and logged as H_EXCEPTION; mandatory human escalation
+
+# ─────────────────────────────────────────────
+# Gate Alignment (DO-178C × CCTLS)
+# ─────────────────────────────────────────────
+gate_alignment:
+  - gate: INTERPRET
+    do178c_equivalent: Planning phase (SDP/SVP approved)
+    active_tokens: [H_ENVELOPE, H_REQ, H_CONSTRAINT]
+    resolver_output: [language_derivation, interface_contracts]
+
+  - gate: CONFIRM
+    do178c_equivalent: Requirements review complete
+    active_tokens: [H_REQ, H_HAZARD]
+    resolver_output: [skeleton, test_harness, traceability_tokens]
+
+  - gate: ACTIVATE
+    do178c_equivalent: Verification objectives met
+    active_tokens: [H_EVIDENCE, H_EXCEPTION_cleared]
+    resolver_output: [do178c_data_item_templates_finalised]
+
+  - gate: PUBLISH
+    do178c_equivalent: Stage of Involvement (SOI) review passed
+    active_tokens: [H_SIGNOFF]
+    resolver_output: [compliance_bundle_released]
+
+# ─────────────────────────────────────────────
+# Formal Definition
+# ─────────────────────────────────────────────
+formal_definition:
+  function: "PR(D, S, H, R, P)"
+  variables:
+    D: DAL level (A–E)
+    S: existing certified stack (language, toolchain, RTOS)
+    H: active H_ENVELOPE (signed safety envelope)
+    R: set of H_REQ traceable to H
+    P: active AMPEL360 domain profile
+  preconditions:
+    - "H ≠ ∅ ∧ Signed(H)"
+    - "∀ rᵢ ∈ R: Traceable(rᵢ, H)"
+  outputs:
+    - "Interfaces(R)"
+    - "Skeleton(lang, R)"
+    - "TestHarness(D, R)"
+    - "TraceTokens(R, Skeleton)"
+    - "DO178C_Templates(D, P)"
+  postconditions:
+    - "∀ output ∈ GENERATE: ¬Activable"
+    - "∀ output ∈ GENERATE: RequiresReview"
+    - "∀ output ∈ GENERATE: RequiresSignoff(H_SIGNOFF)"
+  blocked_if: any_precondition_false
+
+# ─────────────────────────────────────────────
+# Constitutional Instrument Cross-References
+# ─────────────────────────────────────────────
+constitutional_references:
+  - id: ESSA-CONST-001
+    role: Satisfies CI-003 (Deterministic Gates), CI-004 (Machine-Verifiable Conformance)
+  - id: ESSA-DOC-AMPEL360-001
+    role: Resolver is a functional sub-component of AMPEL360
+  - id: ESSA-DOC-AMPEL360-Q100-001
+    role: Q100 profile activates the resolver for EASA/DO-178C context
+  - id: ESSA-DOC-H-001
+    role: Resolver operates inside the H-pipeline; every output is H-token-linked
+  - id: ESSA-DOC-SF-001
+    role: Safety-first — resolver generation is H_ENVELOPE-gated (SF-RULE-01)
+  - id: ESSA-STD-CCTLS-001
+    role: Resolver output maps to CCTLS gate sequence INTERPRET → CONFIRM → ACTIVATE → PUBLISH
