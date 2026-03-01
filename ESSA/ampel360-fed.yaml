@@ -1,0 +1,322 @@
+##############################################################################
+# ESSA — AMPEL360 Federated Fleet Data Architecture
+# Manufacturer / Aircraft Model / Operator Global Tags + IA Modes
+# Machine-readable companion to ESSA/AMPEL360-FED.md
+##############################################################################
+
+document_id: ESSA-DOC-AMPEL360-FED-001
+document_type: essa_ampel360_federation_component
+title: "AMPEL360 Federated Fleet Data Architecture — Manufacturer / Aircraft Model / Operator"
+version: "0.1-draft"
+schema_version: "1.0.0"
+status: normative_method
+parent: ESSA-DOC-AMPEL360-001
+last_updated: "2026-03-01T00:00:00Z"
+
+description: >
+  Federated integration layer for AMPEL360 that tags fleet technical records,
+  maintenance manuals, and compliance artefacts at source with three canonical
+  Global Tags (manufacturer, aircraft_model, operator). The AMPEL-A7 RAG engine
+  uses these tags as pre-query filters to route Technical Publications, Compliance/
+  Lease, and Fleet Management queries to the correct fleet segment without
+  centralising or duplicating source data.
+
+# ─────────────────────────────────────────────
+# Safety Boundary
+# ─────────────────────────────────────────────
+safety_boundary:
+  hard_limit: >
+    The federated layer SHALL NOT modify source technical data.
+    It queries and routes only. Every query result must carry H_EVIDENCE
+    linkage to an authoritative source before it can be activated.
+  generation_precondition: H_ENVELOPE signed and present
+  activability: false
+
+# ─────────────────────────────────────────────
+# Unified Metadata Schema — Global Tags
+# ─────────────────────────────────────────────
+global_tags:
+  description: >
+    Three canonical Global Tags registered as H_CONSTRAINT on the active query
+    context and as H_EVIDENCE metadata on every retrieved record.
+
+  - name: manufacturer
+    description: >
+      Primary OEM entity. Controlled vocabulary — ICAO designator or
+      IATA-equivalent OEM code.
+    type: controlled_vocabulary
+    examples: [AIRBUS, BOEING, EMBRAER, BOMBARDIER, ATR]
+    cardinality: exactly_one
+    h_token: H_CONSTRAINT
+    mandatory: true
+    absence_action: blocks_rag_routing
+
+  - name: aircraft_model
+    description: >
+      Specific aircraft variant linked to the OEM. ICAO type designator or
+      OEM part-number prefix.
+    type: string
+    examples: [A321neo, 737-MAX8, E195-E2, CRJ-900, ATR-72-600]
+    cardinality: one_or_more
+    relationship: child_of_manufacturer
+    h_token: H_CONSTRAINT
+    mandatory: true
+    absence_action: blocks_technical_publications_mode
+
+  - name: operator
+    description: >
+      Entity currently managing the asset. ICAO operator designator or
+      internal fleet-management ID.
+    type: controlled_vocabulary
+    examples: [BAW, AFR, RYR, LESSOR-001]
+    cardinality: one_or_more
+    relationship: linked_to_aircraft_model_via_fleet_assignment
+    h_token: H_CONSTRAINT
+    mandatory_for: [compliance_lease_mode, fleet_management_mode]
+    optional_for: technical_publications_mode_generic
+
+# ─────────────────────────────────────────────
+# Composite Tag Validation Rules
+# ─────────────────────────────────────────────
+tag_validation_rules:
+  - id: FED-TAG-001
+    check: manufacturer_tag_present_on_every_ingested_record
+    severity: FAIL
+    blocked_gate: ACTIVATE
+
+  - id: FED-TAG-002
+    check: aircraft_model_tag_present_and_consistent_with_manufacturer
+    severity: FAIL
+    blocked_gate: ACTIVATE
+
+  - id: FED-TAG-003
+    check: operator_tag_present_for_compliance_and_fleet_management_modes
+    severity: FAIL
+    blocked_gate: ACTIVATE
+
+  - id: FED-TAG-004
+    check: no_cross_oem_aircraft_model_tag
+    description: aircraft_model must belong to declared manufacturer
+    severity: FAIL
+    blocked_gate: CONFIRM
+
+  - id: FED-TAG-005
+    check: operator_regulatory_authority_declared_and_consistent_with_H_CONSTRAINT
+    severity_dal_AB: FAIL
+    severity_dal_CD: WARN
+    blocked_gate: CONFIRM
+
+# ─────────────────────────────────────────────
+# Federated Integration Layer — Data Connectors
+# ─────────────────────────────────────────────
+data_connectors:
+  configuration_requirements:
+    - push_global_tags: >
+        Propagate manufacturer, aircraft_model, operator as metadata
+        on every indexed document.
+    - declare_source_authority: >
+        Identify authoritative source system as H_EVIDENCE metadata.
+    - version_lock_index: >
+        Record document revision and index timestamp as H_CONSTRAINT
+        to flag staleness.
+    - respect_access_controls: >
+        Each connector operates under H_SIGNOFF authority access rights.
+        No privilege elevation permitted.
+
+  connector_types:
+    - type: oem_portal_api
+      examples: [Airbus AirbusWorld, Boeing Toolbox]
+      tag_propagation: native_metadata_fields_to_global_tags
+
+    - type: mro_database
+      examples: [AMOS, TRAX, OASES]
+      tag_propagation: custom_field_mapping_via_adapter
+
+    - type: regulatory_depository
+      examples: [EASA EDOM, FAA DRS]
+      tag_propagation: document_type_and_model_selector
+
+    - type: csv_json_fleet_upload
+      examples: [operator_provided_fleet_schema]
+      tag_propagation: schema_mapping_via_field_map_config
+
+# ─────────────────────────────────────────────
+# AMPEL-A7 RAG Engine — Query Routing Logic
+# ─────────────────────────────────────────────
+rag_engine:
+  name: AMPEL-A7
+  filter_strategy: pre_query_global_tag_filter
+  query_routing:
+    preconditions:
+      - manufacturer_tag_valid: true
+      - aircraft_model_tag_valid: true
+      - operator_tag_valid_or_generic: true
+    filter_expression: >
+      record.manufacturer == manufacturer
+      AND record.aircraft_model IN aircraft_model_list
+      AND (record.operator == operator OR record.operator == GENERIC)
+    then: apply_semantic_similarity_ranking_within_filtered_set
+    return: top_k_results_with_H_EVIDENCE_metadata
+  inhibitor: >
+    If any required tag is absent or fails validation, return H_EXCEPTION
+    (empty result with exception reason) rather than unscoped search result.
+
+# ─────────────────────────────────────────────
+# IA Modes — Optimised by Global Tags
+# ─────────────────────────────────────────────
+ia_modes:
+  - id: technical_publications_mode
+    description: >
+      Narrows AMM, IPC, CMM, SRM, WDM searches to the specific aircraft_model
+      and manufacturer. Applies operator-specific revision status if available.
+    global_tags_used: [manufacturer, aircraft_model, operator_optional]
+    h_token_output:
+      query_results: H_EVIDENCE (type technical_publication)
+      gaps: H_EXCEPTION (until resolved)
+    optimisation: >
+      Eliminates cross-model chapter confusion (e.g. A320ceo vs A320neo
+      task numbering differences).
+
+  - id: compliance_lease_mode
+    description: >
+      Validates records against the specific operator's regulatory environment
+      (EASA or FAA). Scopes AD/SB applicability to the specific variant.
+    global_tags_used: [operator, aircraft_model, manufacturer]
+    h_token_output:
+      compliance_findings: H_EVIDENCE (type compliance_record)
+      linked_to: [H_REQ (airworthiness requirement), H_CONSTRAINT (regulatory_env)]
+      non_compliant: H_EXCEPTION (mandatory escalation to H_SIGNOFF)
+    optimisation: >
+      Determines regulatory authority from operator tag and resolves OEM
+      service document numbering system from manufacturer tag.
+
+  - id: fleet_management_mode
+    description: >
+      Aggregates maintenance data across different operators within a federated
+      lessor portfolio. Ensures type-compatible records are aggregated.
+    global_tags_used: [operator_multiple, aircraft_model, manufacturer]
+    h_token_output:
+      aggregate_results: H_UPDATE (fleet status update)
+      linked_to: lessor_H_ENVELOPE
+      discrepancies: H_EXCEPTION (for engineering review)
+    optimisation: >
+      Disambiguates OEM revision baselines across operators at different
+      service bulletin incorporation states.
+
+# ─────────────────────────────────────────────
+# Fleet Record Schema
+# ─────────────────────────────────────────────
+fleet_record_schema:
+  mandatory_global_tags:
+    manufacturer:           string  # ICAO OEM designator
+    aircraft_model:         string  # ICAO type designator
+    aircraft_variant:       string  # OEM sub-variant
+    operator:               string  # ICAO operator designator
+
+  asset_identifier:
+    msn:                    string  # Manufacturer Serial Number
+    registration:           string  # Aircraft registration
+    fleet_id:               string  # Operator internal fleet number
+
+  configuration_state:
+    configuration_baseline: string  # OEM mod/SB state identifier
+    regulatory_authority:   string  # "EASA" | "FAA" | "EASA+FAA"
+
+  h_token_linkage:
+    h_evidence_ref:         string  # Linked H_EVIDENCE record ID
+    h_constraint_ref:       string  # Linked H_CONSTRAINT record ID
+    h_signoff_ref:          string  # Linked H_SIGNOFF (if activated)
+
+  upload_minimum:
+    required_columns: [manufacturer, aircraft_model, operator]
+    on_upload: >
+      Integration layer maps remaining fields from source schema and
+      registers record as H_CONSTRAINT for the active session.
+
+# ─────────────────────────────────────────────
+# H-Pipeline Inhibitors
+# ─────────────────────────────────────────────
+inhibitors:
+  - id: FED-INH-001
+    condition: "NOT Global_Tags_Valid"
+    blocked_operation: all_rag_engine_federated_queries
+    rule: "¬Global_Tags_Valid → ALL QUERIES blocked"
+
+  - id: FED-INH-002
+    condition: "NOT H_EVIDENCE(source_authority)"
+    blocked_operation: ACTIVATE_gate
+    rule: "¬H_EVIDENCE(source_authority) → ACTIVATE blocked"
+
+  - id: FED-INH-003
+    condition: "NOT H_SIGNOFF(authority)"
+    blocked_operation: PUBLISH_gate
+    rule: "¬H_SIGNOFF(authority) → PUBLISH blocked"
+
+  - id: FED-INH-004
+    condition: "Cross_OEM_tag_conflict"
+    blocked_operation: all_queries
+    rule: "aircraft_model not consistent with manufacturer → ALL QUERIES blocked"
+
+# ─────────────────────────────────────────────
+# Gate Alignment (CCTLS × Fleet Federation)
+# ─────────────────────────────────────────────
+gate_alignment:
+  - gate: INTERPRET
+    fleet_action: >
+      Global Tags validated; connectors declared; fleet schema registered.
+    active_tokens: [H_CONSTRAINT, H_ENVELOPE]
+    pass_condition: >
+      All three tags present and validated; source authority declared.
+
+  - gate: CONFIRM
+    fleet_action: >
+      RAG engine filter verified against fleet record set;
+      cross-OEM conflicts resolved.
+    active_tokens: [H_REQ, H_CONSTRAINT]
+    pass_condition: >
+      FED-TAG-001 through FED-TAG-005 all PASS; no unresolved H_EXCEPTION.
+
+  - gate: ACTIVATE
+    fleet_action: >
+      Compliance findings registered; fleet status records activated.
+    active_tokens: [H_EVIDENCE, H_EXCEPTION_cleared]
+    pass_condition: >
+      All compliance records carry H_EVIDENCE; no open exceptions.
+
+  - gate: PUBLISH
+    fleet_action: >
+      Fleet status bundle released to operators / lessor.
+    active_tokens: [H_SIGNOFF]
+    pass_condition: >
+      Authority sign-off present on all activated records.
+
+# ─────────────────────────────────────────────
+# Constitutional Instrument Cross-References
+# ─────────────────────────────────────────────
+constitutional_references:
+  - id: ESSA-CONST-001
+    role: >
+      Satisfies CI-003 (Deterministic Gates) via FED-TAG validation;
+      CI-004 (Machine-Verifiable Conformance) via schema enforcement.
+  - id: ESSA-DOC-AMPEL360-001
+    role: FED is a functional integration sub-component of AMPEL360.
+  - id: ESSA-DOC-AMPEL360-Q100-001
+    role: >
+      Q100 Aviation profile is the primary consumer of FED; activates
+      Technical Publications and Compliance/Lease modes.
+  - id: ESSA-DOC-AMPEL360-PR-001
+    role: >
+      Profile Resolver generates C skeletons tagged with fleet context
+      from FED Global Tags.
+  - id: ESSA-DOC-H-001
+    role: >
+      FED query results are H-token-linked (H_EVIDENCE, H_CONSTRAINT,
+      H_EXCEPTION).
+  - id: ESSA-DOC-SF-001
+    role: >
+      Safety-first — FED queries are H_ENVELOPE-gated; no unscoped
+      cross-fleet result is activable (SF-RULE-01).
+  - id: ESSA-STD-CCTLS-001
+    role: >
+      FED gate alignment maps to CCTLS gate sequence
+      INTERPRET → CONFIRM → ACTIVATE → PUBLISH.

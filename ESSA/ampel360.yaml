@@ -254,3 +254,15 @@ domain_profiles:
     artefacts:
       markdown: ESSA/AMPEL360-PR.md
       yaml: ESSA/ampel360-pr.yaml
+  federation:
+    id: AMPEL360-FED
+    document_id: ESSA-DOC-AMPEL360-FED-001
+    description: >
+      Federated Fleet Data Architecture — tags fleet technical records,
+      maintenance manuals, and compliance artefacts at source with three canonical
+      Global Tags (manufacturer, aircraft_model, operator) for routing by the
+      AMPEL-A7 RAG engine across Technical Publications, Compliance/Lease, and
+      Fleet Management IA modes.
+    artefacts:
+      markdown: ESSA/AMPEL360-FED.md
+      yaml: ESSA/ampel360-fed.yaml
