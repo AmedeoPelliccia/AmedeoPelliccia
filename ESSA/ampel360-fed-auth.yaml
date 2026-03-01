@@ -7,9 +7,9 @@
 document_id: ESSA-DOC-AMPEL360-FED-AUTH-001
 document_type: essa_ampel360_federated_contract_authority
 title: "AMPEL360 Federated Contract — Global Tag Authority Matrix"
-version: "0.1-draft"
+version: "1.1"
 schema_version: "1.0.0"
-status: normative_method
+status: normative_contract
 parent: ESSA-DOC-AMPEL360-FED-001
 last_updated: "2026-03-01T00:00:00Z"
 

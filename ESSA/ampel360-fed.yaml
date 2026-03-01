@@ -39,41 +39,41 @@ global_tags:
   description: >
     Three canonical Global Tags registered as H_CONSTRAINT on the active query
     context and as H_EVIDENCE metadata on every retrieved record.
+  items:
+    - name: manufacturer
+      description: >
+        Primary OEM entity. Controlled vocabulary — ICAO designator or
+        IATA-equivalent OEM code.
+      type: controlled_vocabulary
+      examples: [AIRBUS, BOEING, EMBRAER, BOMBARDIER, ATR]
+      cardinality: exactly_one
+      h_token: H_CONSTRAINT
+      mandatory: true
+      absence_action: blocks_rag_routing
 
-  - name: manufacturer
-    description: >
-      Primary OEM entity. Controlled vocabulary — ICAO designator or
-      IATA-equivalent OEM code.
-    type: controlled_vocabulary
-    examples: [AIRBUS, BOEING, EMBRAER, BOMBARDIER, ATR]
-    cardinality: exactly_one
-    h_token: H_CONSTRAINT
-    mandatory: true
-    absence_action: blocks_rag_routing
+    - name: aircraft_model
+      description: >
+        Specific aircraft variant linked to the OEM. ICAO type designator or
+        OEM part-number prefix.
+      type: string
+      examples: [A321neo, 737-MAX8, E195-E2, CRJ-900, ATR-72-600]
+      cardinality: one_or_more
+      relationship: child_of_manufacturer
+      h_token: H_CONSTRAINT
+      mandatory: true
+      absence_action: blocks_technical_publications_mode
 
-  - name: aircraft_model
-    description: >
-      Specific aircraft variant linked to the OEM. ICAO type designator or
-      OEM part-number prefix.
-    type: string
-    examples: [A321neo, 737-MAX8, E195-E2, CRJ-900, ATR-72-600]
-    cardinality: one_or_more
-    relationship: child_of_manufacturer
-    h_token: H_CONSTRAINT
-    mandatory: true
-    absence_action: blocks_technical_publications_mode
-
-  - name: operator
-    description: >
-      Entity currently managing the asset. ICAO operator designator or
-      internal fleet-management ID.
-    type: controlled_vocabulary
-    examples: [BAW, AFR, RYR, LESSOR-001]
-    cardinality: one_or_more
-    relationship: linked_to_aircraft_model_via_fleet_assignment
-    h_token: H_CONSTRAINT
-    mandatory_for: [compliance_lease_mode, fleet_management_mode]
-    optional_for: technical_publications_mode_generic
+    - name: operator
+      description: >
+        Entity currently managing the asset. ICAO operator designator or
+        internal fleet-management ID.
+      type: controlled_vocabulary
+      examples: [BAW, AFR, RYR, LESSOR-001]
+      cardinality: one_or_more
+      relationship: linked_to_aircraft_model_via_fleet_assignment
+      h_token: H_CONSTRAINT
+      mandatory_for: [compliance_lease_mode, fleet_management_mode]
+      optional_for: technical_publications_mode_generic
 
 # ─────────────────────────────────────────────
 # Composite Tag Validation Rules
@@ -331,3 +331,39 @@ constitutional_references:
     role: >
       FED gate alignment maps to CCTLS gate sequence
       INTERPRET → CONFIRM → ACTIVATE → PUBLISH.
+
+# ─────────────────────────────────────────────
+# Federated Contract Stabilization Sub-Components
+# ─────────────────────────────────────────────
+contract_stabilization:
+  description: >
+    Before any data ingestion or RAG query, the federated contract must be
+    stabilized. These sub-components define the complete contract.
+  components:
+
+  - component: A
+    id: ESSA-DOC-AMPEL360-FED-AUTH-001
+    name: Global Tag Authority Matrix v1.1
+    artefacts:
+      markdown: ESSA/AMPEL360-FED-AUTH.md
+      yaml: ESSA/ampel360-fed-auth.yaml
+      contract_md: federation/authority_matrix.v1.1.md
+      contract_yaml: federation/authority_matrix.v1.1.yaml
+      schema: schemas/global_tags.v1.schema.json
+    status: normative_contract
+    gate_required: INTERPRET
+
+  - component: B
+    id: ESSA-DOC-AMPEL360-FED-QRP-001
+    name: Federated Query Relaxation Policy v1.0
+    artefacts:
+      markdown: rag/relaxation_policy.v1.0.md
+      yaml: rag/relaxation_policy.v1.0.yaml
+    status: normative_contract
+    gate_required: CONFIRM
+
+  - component: connectors
+    name: Connector Capabilities Template
+    artefacts:
+      example: connectors/example/capabilities.yaml
+    status: normative_template

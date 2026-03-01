@@ -266,3 +266,18 @@ Both files include at least one record for each of the three IA Modes:
 | **ESSA-DOC-H-001** | FED query results are H-token-linked (`H_EVIDENCE`, `H_CONSTRAINT`, `H_EXCEPTION`) |
 | **ESSA-DOC-SF-001** | Safety-first: FED queries are `H_ENVELOPE`-gated; no unscoped cross-fleet result is activable |
 | **ESSA-STD-CCTLS-001** | FED gate alignment maps to CCTLS INTERPRET → CONFIRM → ACTIVATE → PUBLISH |
+
+---
+
+## 9. Federated Contract Stabilization
+
+Before any data is ingested or any RAG query executes, the federated contract must be stabilized. Two sub-documents define the complete contract:
+
+| Component | Document | Description |
+|-----------|----------|-------------|
+| **(A) Global Tag Authority Matrix v1.1** | [`AMPEL360-FED-AUTH.md`](AMPEL360-FED-AUTH.md) · [`../federation/authority_matrix.v1.1.md`](../federation/authority_matrix.v1.1.md) · [`../federation/authority_matrix.v1.1.yaml`](../federation/authority_matrix.v1.1.yaml) | Four authority classes (A0–A3), nine global tag definitions, qualified namespace scheme, temporal binding model, mandatory provenance fields |
+| **(B) Federated Query Relaxation Policy v1.0** | [`../rag/relaxation_policy.v1.0.md`](../rag/relaxation_policy.v1.0.md) · [`../rag/relaxation_policy.v1.0.yaml`](../rag/relaxation_policy.v1.0.yaml) | Hard vs soft filter classes, deterministic 5-step relaxation ladder, per-IA-mode rules, output obligations (match_level / authority_class / why_returned / applicability_risk) |
+| **Global Tags JSON Schema** | [`../schemas/global_tags.v1.schema.json`](../schemas/global_tags.v1.schema.json) | Machine-validatable schema for all tag assertions including mandatory provenance |
+| **Connector Capabilities** | [`../connectors/example/capabilities.yaml`](../connectors/example/capabilities.yaml) | Template for declaring per-connector tag assertion authority, pushdown filter support, and ACL |
+
+**Activation rule:** No federated query may proceed until the authority matrix has resolved all tag assertions (INTERPRET gate) and the relaxation policy has been loaded for the active IA Mode (CONFIRM gate).

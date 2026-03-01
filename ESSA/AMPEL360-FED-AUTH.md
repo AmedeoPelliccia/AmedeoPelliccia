@@ -5,14 +5,29 @@
 | Metadata | Value |
 |----------|-------|
 | **Document ID** | ESSA-DOC-AMPEL360-FED-AUTH-001 |
-| **Version** | v0.1-draft |
-| **Status** | Normative Method — Federated Contract Component |
+| **Version** | v1.1 |
+| **Status** | Normative Contract — Federated Architecture |
 | **Parent** | ESSA-DOC-AMPEL360-FED-001 ([AMPEL360-FED.md](AMPEL360-FED.md)) |
 | **Companion** | [`ampel360-fed-auth.yaml`](ampel360-fed-auth.yaml) |
+| **Contract spec** | [`../federation/authority_matrix.v1.1.md`](../federation/authority_matrix.v1.1.md) · [`../federation/authority_matrix.v1.1.yaml`](../federation/authority_matrix.v1.1.yaml) |
+| **Schema** | [`../schemas/global_tags.v1.schema.json`](../schemas/global_tags.v1.schema.json) |
 | **Related** | [`AMPEL360-FED.md`](AMPEL360-FED.md) · [`H-PIPELINE.md`](H-PIPELINE.md) · [`AMPEL360-Q100.md`](AMPEL360-Q100.md) |
 | **Domain** | Civil Aviation — Federated Fleet Data Governance |
 | **Regulatory Authority** | EASA / FAA (dual-authority) |
 | **Last Updated** | 2026-03-01 |
+
+---
+
+## Design Correction from v0.1
+
+> **v0.1 error:** `oem_id` and `model_id` were described as "hard-coded to tail."
+>
+> **v1.1 correction:** OEM and Model are **type design anchors**, not tail anchors.
+> The tail (MSN / registration) binds to the structural tags via **effectivity mapping**.
+> `msn` and `registration` live in the structural block but are owned by A0 / A1 respectively.
+>
+> This distinction is critical: an OEM document applies to a *type*, not to a *tail* —
+> until effectivity resolution maps the type applicability to the specific MSN.
 
 ---
 
@@ -35,39 +50,66 @@ The federated contract stabilizes at four pillars:
 
 ## 1. Identity Authority Model
 
-Three systems assert Global Tags in a federation. Each has a different claim scope:
+Three systems assert Global Tags in a federation. Each has a different claim scope.
 
-| Source System | Claims Authority Over | Claim Type |
-|--------------|----------------------|------------|
-| **OEM Portal / Type Certificate** | `oem_id`, `model_id` | Structural — immutable, bound to MSN at manufacture |
-| **Registry (FAA / EASA)** | `oem_id`, `model_id`, `regulatory_authority` | Validation — confirms OEM claim against certificated type |
-| **AOC Holder (Operator)** | `operator_id` | Temporal — valid only within ownership/operation window |
-| **Lessor Portfolio System** | `operator_id` (group scope) | Portfolio — aggregates operator windows; never overrides OEM |
-| **MRO Maintenance System** | `config_id`, `configuration_baseline` | Embodiment state — current SB/EO incorporation against MSN |
-| **Engineering Orders (EO)** | `config_id` | Proposed state — pre-embodiment; lower precedence than MRO status |
+Four authority classes govern all assertions (A0–A3):
 
-**Key constraint:** No downstream system (Operator, Lessor, MRO) may reassert `oem_id` or `model_id`. These are structurally immutable once recorded at MSN creation.
+| Class | Name | Scope | Examples |
+|-------|------|-------|---------|
+| **A0** | Type Design Authority | TC holder / OEM authoritative packet | Airbus World portal, Boeing Toolbox, OEM type certificate |
+| **A1** | Regulatory Registry | Civil registry / AOC validation | EASA EDOM, FAA DRS, national aircraft register |
+| **A2** | Operator Authority | Operator manuals, procedures, AMP deltas | Airline ops engineering, operator AMP, lessee docs |
+| **A3** | Maintainer Authority | MRO embodied config / work packages / RTS | AMOS, TRAX, OASES, maintenance work orders |
+
+| Source System | Claims Authority Over | Claim Type | Authority Class |
+|--------------|----------------------|------------|----------------|
+| **OEM Portal / Type Certificate** | `oem_id`, `model_id`, `type_design_ref`, `msn`, `as_delivered_config`, `effectivity` (applicability rules) | Structural — type design anchor, bound to asset family | **A0** |
+| **Registry (FAA / EASA)** | `oem_id`, `model_id`, `type_design_ref`, `registration`, `regulatory_authority` | Validation — confirms A0 against certificated type | **A1** |
+| **AOC Holder (Operator)** | `operator_id`, `operator_regime`, `model_alias` | Temporal — valid only within ownership/operation window | **A1** (operator_id), **A2** (regime/alias) |
+| **Lessor Portfolio System** | `operator_id` (portfolio group scope) | Portfolio — aggregates operator windows; never overrides OEM or AOC holder | **A2** |
+| **MRO Maintenance System** | `as_maintained_config`, `config_embodied`, `effectivity` (current state) | Embodiment state — current SB/EO incorporation against MSN | **A3** |
+| **Engineering Orders (EO)** | `as_maintained_config` (proposed) | Proposed state — pre-embodiment; subordinate to A3 embodied state | **A3** (proposed) |
+
+**Key constraint:** No downstream system (Operator, Lessor, MRO) may reassert `oem_id`, `model_id`, or `type_design_ref`. These are structurally anchored to the type certificate and asset family, not to the tail.
 
 ---
 
 ## 2. Global Tag Authority Matrix
 
-The Authority Matrix defines, for each Global Tag, the primary authority, secondary validation source, and conflict resolution rule.
+The Authority Matrix defines, for each Global Tag, the primary authority, secondary validation source, and conflict resolution rule. This is the **contract-grade v1.1** table.
+
+**Structural (quasi-immutable) — type design anchors:**
 
 | Tag | Field Name | Primary Authority | Secondary Authority | Conflict Resolution |
 |-----|-----------|------------------|--------------------|--------------------|
-| **OEM** | `oem_id` | OEM Portal / Type Certificate | Registry (FAA/EASA) | **Immutable.** Hard-coded to MSN at manufacture. No downstream system may override. |
-| **Model** | `model_id` | OEM Type Certificate | Aircraft Maintenance Programme (AMP) | OEM TC designation takes precedence over operator nomenclature or AMP aliases. |
-| **Operator** | `operator_id` | AOC Holder (Registry) | Lessor Portfolio Data | **Temporal.** Validated against `valid_from` / `valid_to` window. Lessor may assert portfolio group but never override current AOC holder. |
-| **Configuration** | `config_id` | MRO Maintenance System (embodied state) | Engineering Orders (EO) | MRO embodied status overrides OEM "standard" baseline; EO pre-embodiment state is subordinate. |
+| **OEM** | `oem_id` | **A0** OEM Portal / Type Certificate | A1 Registry | **Immutable.** Once set for asset family. Mismatch → **FAIL** (data integrity breach). |
+| **Model** | `model_id` | **A0** Type Certificate | A1 Registry, A2 (alias only) | A0 wins always. A2 may add `model_alias` but **cannot redefine** `model_id`. |
+| **Type Design Ref** | `type_design_ref` | **A0** Type Certificate | A1 Registry | Mandatory for technical baseline publication. Absence blocks CONFIRM gate. |
+| **MSN** | `msn` | **A0** OEM | — | Permanent key. Never changed. |
+| **Registration** | `registration` | **A1** Registry | — | Mutable; changes with operator/jurisdiction transfer. |
+
+**Temporal overlay — time-bound to AOC / ownership windows:**
+
+| Tag | Field Name | Primary Authority | Secondary Authority | Conflict Resolution |
+|-----|-----------|------------------|--------------------|--------------------|
+| **Operator** | `operator_id` | **A1** AOC Holder (Registry) | A2, Lessor | **Temporal.** Valid within `[valid_from, valid_to)`. Overlaps → **FAIL** unless explicitly multi-operator with `H_SIGNOFF`. |
+| **Regime** | `operator_regime` | **A2** Operator | A1 Registry | Must be consistent with AOC/jurisdiction. Mismatch → **FAIL** (DAL A/B) / **WARN** (DAL C/D). |
+
+**Config-realisation (stateful):**
+
+| Tag | Field Name | Primary Authority | Secondary Authority | Conflict Resolution |
+|-----|-----------|------------------|--------------------|--------------------|
+| **As-Delivered Config** | `as_delivered_config` | **A0** OEM | — | Delivery baseline. Immutable. |
+| **As-Maintained Config** | `as_maintained_config` | **A3** MRO / Continuing Airworthiness | A2, A0 | A3 embodied state **overrides** A0 standard. Requires `evidence_ref` (EO/SB/WP). |
+| **Effectivity** | `effectivity` | **A0 + A3** (computed) | A2 (narrows only) | A0 defines applicability rules; A3 defines current MSN state; A2 can **narrow** but **never widen** beyond A0 bounds. |
 
 ### 2.1 Authority Precedence Rule
 
 ```
-Structural precedence:  oem_id  >  model_id  >  operator_id  >  config_id
+Structural precedence:  oem_id  >  model_id  >  type_design_ref  >  operator_id  >  operator_regime  >  config realisation
 
-Temporal override:      operator_id is the only tag subject to temporal override.
-                        It cannot override oem_id or model_id at any point.
+Temporal override:      operator_id and operator_regime are the only tags subject to temporal override.
+                        They cannot override oem_id, model_id, or type_design_ref at any point or scope.
 
 Conflict rule:          If two systems assert conflicting values for the same tag,
                         the system ranked higher in structural precedence wins.
@@ -325,7 +367,11 @@ STEP 6 — Semantic Similarity Ranking
 
 ## 9. Next Structural Move — (B) Federated Query Relaxation Policy
 
-This document defines the per-tag filter modes (§5) and the relaxation cascade stub (§5.3). The full **Federated Query Relaxation Policy** — covering multi-hop relaxation chains, partial-match scoring, and null-result escalation procedures — is defined in the companion document:
+This document defines the per-tag filter modes (§5) and the relaxation cascade stub (§5.3). The full **Federated Query Relaxation Policy** — covering the deterministic relaxation ladder, compatible-regime sets, per-IA-mode rules, output obligations, and hard-stop inhibitors — is defined in:
 
-> **[AMPEL360-FED-QRP.md](AMPEL360-FED-QRP.md)** · [`ampel360-fed-qrp.yaml`](ampel360-fed-qrp.yaml)
-> Document ID: ESSA-DOC-AMPEL360-FED-QRP-001 *(pending)*
+> **[`../rag/relaxation_policy.v1.0.md`](../rag/relaxation_policy.v1.0.md)** · [`../rag/relaxation_policy.v1.0.yaml`](../rag/relaxation_policy.v1.0.yaml)
+> Document ID: **ESSA-DOC-AMPEL360-FED-QRP-001 v1.0**
+
+The contract-grade authority matrix (v1.1) and the relaxation policy (v1.0) together form the complete federated query contract. Neither document is sufficient alone:
+- The authority matrix answers: *who asserts what, and what is authoritative*
+- The relaxation policy answers: *what happens when a valid query returns zero results*

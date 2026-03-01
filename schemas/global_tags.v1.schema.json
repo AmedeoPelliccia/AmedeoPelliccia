@@ -1,0 +1,298 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://essa.eu/schemas/ampel360-fed/global_tags/v1",
+  "title": "AMPEL360 Federated Fleet — Global Tags v1",
+  "description": "Contract-grade schema for all Global Tag assertions in the AMPEL360 federated fleet architecture. Every tag assertion MUST carry mandatory provenance fields. Ref: ESSA-DOC-AMPEL360-FED-AUTH-001 v1.1",
+  "type": "object",
+
+  "$defs": {
+    "provenance": {
+      "title": "Mandatory Tag Provenance",
+      "description": "Every tag assertion MUST include these provenance fields to keep federation auditable.",
+      "type": "object",
+      "properties": {
+        "asserted_by": {
+          "type": "object",
+          "description": "Authority class and system that made this assertion.",
+          "properties": {
+            "authority_class": {
+              "type": "string",
+              "enum": ["A0", "A1", "A2", "A3"],
+              "description": "A0=Type Design, A1=Regulatory Registry, A2=Operator, A3=Maintainer"
+            },
+            "system_id": {
+              "type": "string",
+              "description": "Identifier of the asserting system (e.g. 'airbus-world-portal', 'amos-mro-01')."
+            }
+          },
+          "required": ["authority_class", "system_id"]
+        },
+        "asserted_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp of assertion."
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Confidence score 0–1. 1.0 = authoritative primary source. <0.7 triggers H_EXCEPTION warning."
+        },
+        "evidence_ref": {
+          "type": "string",
+          "description": "Link to authoritative record: Registry entry, TC reference, work order, or H_EVIDENCE ID."
+        }
+      },
+      "required": ["asserted_by", "asserted_at", "confidence", "evidence_ref"]
+    },
+
+    "temporal_window": {
+      "title": "Temporal Validity Window",
+      "type": "object",
+      "properties": {
+        "valid_from": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of validity (inclusive). ISO 8601."
+        },
+        "valid_to": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "End of validity (exclusive). null = currently active."
+        },
+        "transfer_event_ref": {
+          "type": ["string", "null"],
+          "description": "H_UPDATE record ID for asset transfer event that closed this window."
+        }
+      },
+      "required": ["valid_from", "valid_to"]
+    },
+
+    "qualified_id": {
+      "title": "Qualified Namespace Identifier",
+      "type": "string",
+      "pattern": "^[a-z0-9_]+:[a-zA-Z0-9_:/-]+$",
+      "description": "All identifiers MUST be namespaced as [authority_prefix]:[value]. Examples: oem:airbus, ac_model:airbus:a321neo, operator:icao:BAW, config:mro:site01:SB-28-1234-R02"
+    }
+  },
+
+  "properties": {
+
+    "structural_tags": {
+      "title": "Structural (Quasi-Immutable) Tags",
+      "description": "Type design anchors. Bound to the aircraft family/type certificate. Tail binds to MSN/registration which maps to these via effectivity.",
+      "type": "object",
+      "properties": {
+
+        "oem_id": {
+          "title": "OEM Identifier",
+          "description": "Primary type design authority. Namespaced: oem:<name>. Immutable once set for an asset family. Master authority: A0.",
+          "allOf": [
+            { "$ref": "#/$defs/qualified_id" },
+            { "examples": ["oem:airbus", "oem:boeing", "oem:embraer"] }
+          ],
+          "x-authority": "A0",
+          "x-immutable": true,
+          "x-provenance": { "$ref": "#/$defs/provenance" }
+        },
+
+        "model_id": {
+          "title": "Aircraft Model / Type Designator",
+          "description": "OEM type certificate designator. Namespaced: ac_model:<oem>:<type>. A0 wins; A2 may only add model_alias. Immutable.",
+          "allOf": [
+            { "$ref": "#/$defs/qualified_id" },
+            { "examples": ["ac_model:airbus:a321neo", "ac_model:boeing:737max8", "ac_model:embraer:e195e2"] }
+          ],
+          "x-authority": "A0",
+          "x-immutable": true,
+          "x-provenance": { "$ref": "#/$defs/provenance" }
+        },
+
+        "model_alias": {
+          "title": "Operator Model Alias",
+          "description": "Optional operator-specific alias for the model. MUST NOT redefine model_id. Asserted by A2.",
+          "allOf": [{ "$ref": "#/$defs/qualified_id" }],
+          "x-authority": "A2",
+          "x-immutable": false
+        },
+
+        "type_design_ref": {
+          "title": "Type Certificate / Design Authority Reference",
+          "description": "TC holder reference or equivalent authority anchor. Mandatory for publication of technical baseline. Asserted by A0, validated by A1.",
+          "type": "string",
+          "examples": ["TC:EASA.A.064", "TC:FAA.A16WE", "TCDS:EASA-TCDS-A-064"],
+          "x-authority": "A0",
+          "x-immutable": true,
+          "x-provenance": { "$ref": "#/$defs/provenance" }
+        },
+
+        "msn": {
+          "title": "Manufacturer Serial Number",
+          "description": "Primary MSN — permanent key that binds tail to structural tags. Asserted by A0.",
+          "type": "string",
+          "examples": ["10001", "44101"],
+          "x-authority": "A0",
+          "x-immutable": true
+        },
+
+        "registration": {
+          "title": "Aircraft Registration",
+          "description": "Current tail registration. Mutable — changes with operator/jurisdiction transfer. Asserted by A1.",
+          "type": "string",
+          "examples": ["G-TTNE", "EI-HGA", "N8701Q"],
+          "x-authority": "A1",
+          "x-immutable": false
+        }
+
+      },
+      "required": ["oem_id", "model_id", "type_design_ref", "msn"]
+    },
+
+    "temporal_tags": {
+      "title": "Temporal Overlay Tags",
+      "description": "Operator identity and regulatory regime. Time-bound to AOC/ownership windows.",
+      "type": "object",
+      "properties": {
+
+        "operator_id": {
+          "title": "Operator Identifier",
+          "description": "AOC holder designator. Namespaced: operator:icao:<code> or operator:iata:<code> or operator:internal:<id>. MUST carry temporal_window. Master authority: A1.",
+          "allOf": [
+            { "$ref": "#/$defs/qualified_id" },
+            { "examples": ["operator:icao:BAW", "operator:iata:BA", "operator:internal:LESSOR-001"] }
+          ],
+          "x-authority": "A1",
+          "x-immutable": false,
+          "x-temporal": true,
+          "x-provenance": { "$ref": "#/$defs/provenance" }
+        },
+
+        "operator_temporal_window": {
+          "title": "Operator Validity Window",
+          "description": "REQUIRED when operator_id is asserted. Valid_to = null means currently active.",
+          "$ref": "#/$defs/temporal_window"
+        },
+
+        "operator_regime": {
+          "title": "Operator Regulatory Regime",
+          "description": "Regulatory authority under which the operator operates. Must be consistent with AOC jurisdiction. Asserted by A2, validated by A1. Time-bound if operator changes.",
+          "type": "string",
+          "enum": ["EASA", "FAA", "UKCAA", "TCCA", "CASA", "ANAC", "OTHER"],
+          "x-authority": "A2",
+          "x-immutable": false,
+          "x-temporal": true,
+          "x-provenance": { "$ref": "#/$defs/provenance" }
+        },
+
+        "operator_regime_window": {
+          "title": "Operator Regime Validity Window",
+          "description": "Required when operator_regime is asserted and could change with operator transfer.",
+          "$ref": "#/$defs/temporal_window"
+        }
+
+      },
+      "required": ["operator_id", "operator_temporal_window", "operator_regime"]
+    },
+
+    "config_tags": {
+      "title": "Configuration Realisation Tags",
+      "description": "Stateful configuration tags. Encode SB/EO embodiment state and effectivity applicability.",
+      "type": "object",
+      "properties": {
+
+        "as_delivered_config": {
+          "title": "As-Delivered Configuration",
+          "description": "Configuration baseline at delivery. Asserted by A0. Namespaced: config:oem:<oem>:<baseline_id>.",
+          "allOf": [{ "$ref": "#/$defs/qualified_id" }],
+          "x-authority": "A0",
+          "x-immutable": true,
+          "x-provenance": { "$ref": "#/$defs/provenance" }
+        },
+
+        "as_maintained_config": {
+          "title": "As-Maintained Configuration",
+          "description": "Current SB/EO embodiment state. Master authority: A3 (MRO). Overrides A0 standard for embodied state. MUST carry evidence_ref. Namespaced: config:mro:<site>:<config_id>.",
+          "allOf": [
+            { "$ref": "#/$defs/qualified_id" },
+            { "examples": ["config:mro:heathrow:SB-A321-28-1234-R02", "config:mro:dallas:SB-737-28-1072-R01"] }
+          ],
+          "x-authority": "A3",
+          "x-immutable": false,
+          "x-provenance": { "$ref": "#/$defs/provenance" }
+        },
+
+        "config_embodied": {
+          "title": "Embodiment Status",
+          "description": "True = A3 MRO confirmed embodiment. False = pre-embodiment / EO proposed state.",
+          "type": "boolean",
+          "x-authority": "A3"
+        },
+
+        "config_embodiment_date": {
+          "title": "Embodiment Date",
+          "description": "ISO 8601 date when A3 confirmed embodiment.",
+          "type": ["string", "null"],
+          "format": "date"
+        },
+
+        "effectivity": {
+          "title": "Effectivity Applicability",
+          "description": "MSN/tail/line number applicability. Computed: A0 defines applicability rules; A3 defines current state; A2 can narrow (operator procedures). Asserted jointly.",
+          "type": "object",
+          "properties": {
+            "msn_range": {
+              "type": "object",
+              "properties": {
+                "from_msn": { "type": ["string", "null"] },
+                "to_msn":   { "type": ["string", "null"] }
+              }
+            },
+            "msn_list": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Explicit MSN applicability list (use when range is non-contiguous)."
+            },
+            "line_number_range": {
+              "type": "object",
+              "properties": {
+                "from_ln": { "type": ["integer", "null"] },
+                "to_ln":   { "type": ["integer", "null"] }
+              }
+            },
+            "tail_list": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Registration-based applicability (operator scope, A2 assertion)."
+            },
+            "scope": {
+              "type": "string",
+              "enum": ["TAIL_SPECIFIC", "MSN_RANGE", "MODEL_WIDE", "MODEL_FAMILY_WIDE"],
+              "description": "Widest applicability scope. Relaxation in query policy may widen toward MODEL_WIDE."
+            }
+          },
+          "required": ["scope"],
+          "x-authority": "A0+A3",
+          "x-provenance": { "$ref": "#/$defs/provenance" }
+        }
+
+      },
+      "required": ["as_maintained_config", "config_embodied", "effectivity"]
+    },
+
+    "tag_assertion_provenance": {
+      "title": "Top-Level Assertion Provenance",
+      "description": "Provenance for the complete tag assertion packet (not individual fields). Records which system assembled and emitted this assertion bundle.",
+      "$ref": "#/$defs/provenance"
+    }
+
+  },
+
+  "required": ["structural_tags", "temporal_tags", "config_tags", "tag_assertion_provenance"],
+
+  "x-ampel360": {
+    "document_id": "ESSA-DOC-AMPEL360-FED-AUTH-001",
+    "spec_version": "v1.1",
+    "parent": "ESSA-DOC-AMPEL360-FED-001",
+    "related_policy": "rag/relaxation_policy.v1.0.yaml"
+  }
+}
