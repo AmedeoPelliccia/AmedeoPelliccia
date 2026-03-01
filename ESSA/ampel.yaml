@@ -1,0 +1,244 @@
+##############################################################################
+# ESSA — AMPEL
+# Assisted Methods for Programming Evolutionary Loops
+# Machine-readable companion to ESSA/AMPEL.md
+##############################################################################
+
+document_id: ESSA-DOC-AMPEL-001
+document_type: essa_ampel_method
+title: "AMPEL — Assisted Methods for Programming Evolutionary Loops (ESSA)"
+version: "0.1-draft"
+schema_version: "1.0.0"
+status: normative_method
+parent: ESSA-CONST-001
+last_updated: "2026-02-28T00:00:00Z"
+
+description: >
+  AMPEL is the structural method for programming evolutionary loops within
+  the ESSA Safety-First governance framework. It is not a product, brand, or
+  AI tool. It is the evolutionary engine that executes governed change inside
+  ESSA constitutional limits, with H_ENVELOPE as the non-negotiable boundary
+  for every iteration.
+
+# ─────────────────────────────────────────────
+# Constitutional Constraint
+# ─────────────────────────────────────────────
+constitutional_constraint:
+  formal: "Evolutionary Change ⊆ Valid(H_Envelope)"
+  prose: >
+    No evolutionary step produced by AMPEL may exit the valid region of the
+    active H_ENVELOPE. An out-of-envelope change candidate is non-activable
+    by construction.
+
+# ─────────────────────────────────────────────
+# 1. Nature
+# ─────────────────────────────────────────────
+nature:
+  is_not: [product, brand, ai_tool]
+  is: >
+    A structural method for programming evolutionary loops within a
+    Safety-First governance framework.
+  operating_properties:
+    - id: CONTROLLED_EVOLUTION
+      name: Controlled Evolution
+      definition: >
+        Change is initiated and bounded by safety invariants, not by
+        performance pressure.
+    - id: GOVERNED_CHANGE
+      name: Governed Change
+      definition: >
+        Every transition is authorised through the CCTLS governance kernel
+        (INTERPRET → CONFIRM → ACTIVATE → PUBLISH).
+    - id: ENVELOPE_BOUNDED_ADAPTATION
+      name: Envelope-Bounded Adaptation
+      definition: >
+        No candidate design, configuration, or process update may exit the
+        active H_ENVELOPE.
+    - id: INTEGRATED_FEEDBACK
+      name: Integrated Feedback
+      definition: >
+        Operational evidence flows back into the loop and may trigger
+        envelope updates (H_UPDATE).
+
+# ─────────────────────────────────────────────
+# 2. Evolutionary Loop (EL)
+# ─────────────────────────────────────────────
+evolutionary_loop:
+  definition: The ProgressChain with closed-loop feedback.
+  critical_distinction: >
+    The Evolutionary Loop is not free change. It is change contained by
+    invariants. Each iteration must satisfy the same constitutional
+    constraints as the first.
+  sequence:
+    - step: 1
+      token: H_ENVELOPE
+      description: Active envelope defining valid region
+    - step: 2
+      token: H_REQ
+      description: Requirements derived from envelope
+    - step: 3
+      token: H_CONSTRAINT
+      description: Design bounded by constraints
+    - step: 4
+      token: H_EVIDENCE
+      description: Evidence — test, analysis, operational
+    - step: 5
+      token: H_SIGNOFF
+      description: Authority acceptance — DOA closure
+    - step: 6
+      gate: ACTIVATE
+      description: Release — envelope validated
+    - step: 7
+      cctls_phase: P080
+      description: Operation — ICA/MRO/mission
+    - step: 8
+      description: Feedback — occurrences, performance, incidents
+    - step: 9
+      token: H_UPDATE
+      description: If safety-relevant feedback
+    - step: 10
+      token: H_ENVELOPE
+      note: Version increment; loop restarts
+
+# ─────────────────────────────────────────────
+# 3. Assisted Methods
+# ─────────────────────────────────────────────
+assisted_methods:
+  definition: Human-authority-confirmed, tool-augmented — not autonomous.
+  non_negotiable_rule: >
+    All assisted outputs operate under H_ENVELOPE as primary constraint. If
+    an assisted method proposes a candidate that violates the envelope,
+    activation is blocked — the method does not override the envelope.
+  methods:
+    - id: ASSISTED_GENERATION
+      name: Assisted Generation
+      scope: Requirements, design candidates, artefact drafts
+      constraint: Output must be within H_ENVELOPE before presentation
+    - id: ASSISTED_ANALYSIS
+      name: Assisted Analysis
+      scope: Hazard analysis, impact analysis, safety case evaluation
+      constraint: Results must be traceable as H_EVIDENCE
+    - id: ASSISTED_SIMULATION
+      name: Assisted Simulation
+      scope: DMU/PMU, mission simulation, digital twin runs
+      constraint: Outputs registered as H_EVIDENCE linked to H_REQ
+    - id: ASSISTED_EVALUATION
+      name: Assisted Evaluation
+      scope: Conformance checking, ALPC certification, SII scoring
+      constraint: Machine-verifiable; no narrative substitution
+    - id: ASSISTED_IMPACT_ANALYSIS
+      name: Assisted Impact Analysis
+      scope: Change impact across all eight H-Pipeline chains
+      constraint: Mandatory before any CONFIRM gate
+
+# ─────────────────────────────────────────────
+# 4. Loop Programming (Five Elements)
+# ─────────────────────────────────────────────
+loop_programming:
+  elements:
+    - id: STATES
+      name: States
+      definition: >
+        Discrete, tokenised lifecycle states. Each state carries an active
+        H_ENVELOPE version, a set of open H_REQ and H_CONSTRAINT tokens, and
+        a completeness status (% of H_EVIDENCE linked and signed off).
+    - id: TRANSITIONS
+      name: Transitions
+      definition: >
+        State transitions are permissible only when the CCTLS gate condition
+        is satisfied (forward direction), the candidate remains within the
+        active H_ENVELOPE (envelope check), and authority (H_SIGNOFF) is
+        present for all gate-relevant evidence. Transitions that fail either
+        condition are inhibited.
+    - id: INHIBITORS
+      name: Inhibitors
+      conditions:
+        - condition: Candidate exits H_ENVELOPE
+          effect: Transition blocked; candidate is non-activable
+        - condition: Missing H_SIGNOFF on any H_EVIDENCE
+          effect: ACTIVATE gate blocked
+        - condition: Open H_EXCEPTION without H_SIGNOFF
+          effect: CONFIRM gate blocked
+        - condition: Orphaned H-token (no upward link)
+          effect: Loop consistency violation; system halts
+    - id: FEEDBACK
+      name: Feedback
+      classification:
+        - type: non_safety_relevant
+          action: Logged; no loop restart required
+        - type: safety_relevant
+          action: >
+            Generates H_UPDATE; triggers envelope re-evaluation; may restart
+            loop from Requirements step
+    - id: ENVELOPE_UPDATE
+      name: Envelope Update
+      procedure:
+        - When H_UPDATE is accepted (H_SIGNOFF on update)
+        - H_ENVELOPE version increments
+        - All dependent H_REQ, H_CONSTRAINT, H_EVIDENCE re-evaluated
+        - Candidates valid under previous envelope re-checked against new one
+        - Invalid candidates withdrawn from activation
+
+# ─────────────────────────────────────────────
+# 5. AMPEL Within ESSA
+# ─────────────────────────────────────────────
+essa_placement:
+  hierarchy:
+    - tier: 1
+      id: EUROPEAN_SOVEREIGN_SYSTEMS_ARCHITECTURE
+      role: Constitutional Substrate
+    - tier: 2
+      id: ESSA
+      role: Constitutional Framework — defines limits, invariants, safety-first doctrine
+    - tier: 3
+      id: AMPEL
+      role: Evolutionary Engine — executes governed evolution within ESSA limits
+    - tier: 4
+      id: SECTOR_PROFILES
+      role: >
+        Aviation · Space · RSP · Autonomy · Critical Industrial Chains —
+        tighten AMPEL parameters; cannot weaken ESSA baseline
+  principle: AMPEL does not replace ESSA governance. AMPEL operates under it.
+
+# ─────────────────────────────────────────────
+# 6. Safety-First Implication
+# ─────────────────────────────────────────────
+safety_first_implication:
+  objective: Improvement within Human Safety — not maximum efficiency.
+  formal_invariant: "Evolutionary Change ⊆ Valid(H_Envelope)"
+  rules:
+    - The method learns from incidents — every H_UPDATE carries the
+      operational evidence that generated it.
+    - The method does not optimise by violating the envelope.
+    - Performance gains are a consequence of safe evolution, not its
+      objective.
+    - If an optimisation path requires exiting the envelope, the path is
+      rejected — the envelope is revised first (H_UPDATE → H_SIGNOFF →
+      envelope increment), then the optimisation is re-evaluated.
+
+# ─────────────────────────────────────────────
+# 7. Relationship to Constitutional Instruments
+# ─────────────────────────────────────────────
+constitutional_relationships:
+  - instrument: ESSA-CONST-001
+    role: >
+      AMPEL satisfies CI-001 (Safety Primacy), CI-003 (Deterministic Gates),
+      CI-005 (Feedback Integration)
+    satisfies: [CI-001, CI-003, CI-005]
+  - instrument: ESSA-DOC-SF-001
+    role: >
+      AMPEL is the operational method that enforces safety-first in the
+      generative loop
+  - instrument: ESSA-DOC-H-001
+    role: >
+      AMPEL operates the H Pipeline: each loop iteration generates,
+      validates, and updates H-tokens
+  - instrument: ESSA-DOC-SIS-001
+    role: >
+      AMPEL contributes to SIS-C-005 (Operational Feedback) and SIS-C-001
+      (Safety Envelope Generation)
+    satisfies: [SIS-C-001, SIS-C-005]
+  - instrument: ESSA-STD-CCTLS-001
+    role: >
+      AMPEL loop transitions map directly to the CCTLS gate sequence
+      (INTERPRET → CONFIRM → ACTIVATE → PUBLISH)
