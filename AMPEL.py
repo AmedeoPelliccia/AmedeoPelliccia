@@ -13,6 +13,9 @@ The selected profile dynamically configures:
   • Validation rules      (checks that must pass before gate transition)
   • Constraints           (invariants and hard limits enforced by the engine)
 
+Demo repository : https://github.com/AmedeoPelliccia/AMPEL360-AI-studio
+Live demo app   : https://ais-pre-qgodcoewjywuhs2glepnfo-324605324739.europe-west2.run.app/
+
 Coding conventions: stdlib only; dataclasses, Enum, type hints.
 Parent document: ESSA-DOC-AMPEL-001 (ESSA/ampel.yaml).
 """
@@ -718,6 +721,8 @@ if __name__ == "__main__":
     print("=" * 65)
     print("AMPEL Regulatory Profile Selector — Demo")
     print(f"Available profiles: {selector.available_profiles()}")
+    print("Demo repo : https://github.com/AmedeoPelliccia/AMPEL360-AI-studio")
+    print("Live app  : https://ais-pre-qgodcoewjywuhs2glepnfo-324605324739.europe-west2.run.app/")
     print("=" * 65)
 
     # ── EASA-Q100 ─────────────────────────────────────────────────────────────
