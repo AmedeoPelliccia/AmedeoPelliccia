@@ -232,6 +232,17 @@ fleet_record_schema:
     on_upload: >
       Integration layer maps remaining fields from source schema and
       registers record as H_CONSTRAINT for the active session.
+  sample_files:
+    - format: csv
+      path: ESSA/fleet-sample.csv
+      description: >
+        12 representative records across AIRBUS, BOEING, EMBRAER, and a lessor
+        portfolio. Ready to upload via the Integrations tab.
+    - format: json
+      path: ESSA/fleet-sample.json
+      description: >
+        Same 12 records with embedded field_map (global tag flags, H-token
+        bindings) and ia_mode_hints for each IA Mode.
 
 # ─────────────────────────────────────────────
 # H-Pipeline Inhibitors

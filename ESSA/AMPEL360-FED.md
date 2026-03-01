@@ -219,6 +219,18 @@ fleet_record:
 
 **Upload support:** Operators may upload a fleet CSV or JSON with at minimum `manufacturer`, `aircraft_model`, and `operator` columns. The AMPEL360 integration layer maps remaining fields from the source schema and registers the record as `H_CONSTRAINT` for the active session.
 
+**Sample files (ready to upload):**
+
+| Format | File | Description |
+|--------|------|-------------|
+| CSV | [`fleet-sample.csv`](fleet-sample.csv) | 12 representative records across AIRBUS, BOEING, EMBRAER, and a lessor portfolio — import directly via the Integrations tab |
+| JSON | [`fleet-sample.json`](fleet-sample.json) | Same 12 records with embedded `field_map` (global tag flags, H-token bindings) and `ia_mode_hints` for each IA Mode |
+
+Both files include at least one record for each of the three IA Modes:
+- **Technical Publications** — any record (manufacturer + aircraft_model always present)
+- **Compliance/Lease** — BAW (EASA), SWA (FAA) — illustrates dual-authority operator context
+- **Fleet Management** — LESSOR-001 records — illustrates cross-operator aggregation
+
 ---
 
 ## 6. H-Pipeline Inhibitors
