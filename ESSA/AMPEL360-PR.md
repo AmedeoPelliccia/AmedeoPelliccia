@@ -142,15 +142,20 @@ The resolver enforces validation rules before confirming or activating any gener
 
 ### 5.1 Code Complexity Rules
 
-| Rule ID | Check | Threshold | DAL Scope | Blocked Gate |
-|---------|-------|-----------|-----------|--------------|
-| **PR-VAL-CC-01** | Cyclomatic complexity per function | ≤ 10 (DAL A/B), ≤ 15 (DAL C) | A, B, C | CONFIRM |
-| **PR-VAL-CC-02** | Call-stack depth (no dynamic recursion) | Static bound derivable; recursion = `H_EXCEPTION` | A, B | CONFIRM |
-| **PR-VAL-CC-03** | Function length | ≤ 60 lines of effective code (project standard may tighten) | A, B, C | CONFIRM |
-| **PR-VAL-CC-04** | Number of parameters per function | ≤ 8 (MISRA-C:2012 Dir 4.6 guidance) | A, B, C | CONFIRM |
-| **PR-VAL-CC-05** | Dynamic memory allocation | Forbidden in generated skeleton for DAL A/B (MISRA-C:2012 Rule 21.3) | A, B | CONFIRM |
+| Rule ID | Check | FAIL Threshold | WARN Threshold | DAL Scope | Blocked Gate |
+|---------|-------|----------------|----------------|-----------|--------------|
+| **PR-VAL-CC-01** | Cyclomatic complexity per function | > 10 (DAL A/B); > 15 (DAL C) | 8–10 (DAL A/B); 12–15 (DAL C) | A, B, C | CONFIRM |
+| **PR-VAL-CC-02** | Call-stack depth (no dynamic recursion) | Recursion present | Static bound not derivable | A, B | CONFIRM |
+| **PR-VAL-CC-03** | Function length | > 60 lines effective code (DAL A/B) | 50–60 lines (DAL A/B); > 80 (DAL C) | A, B, C | CONFIRM |
+| **PR-VAL-CC-04** | Number of parameters per function | > 8 (DAL A/B/C) | 7–8 | A, B, C | CONFIRM |
+| **PR-VAL-CC-05** | Dynamic memory allocation | Any `malloc`/`free` in generated skeleton (DAL A/B) | Any allocation in DAL C | A, B | CONFIRM |
+| **PR-VAL-CC-06** | Nesting depth (control-flow levels) | > 4 (DAL A/B) | > 3 (DAL A/B); > 5 (DAL C) | A, B, C | CONFIRM |
 
-**Rule PR-VAL-CC-01 rationale:** High cyclomatic complexity makes MC/DC coverage structurally expensive and error-prone; bounding it at skeleton generation enforces good design before code exists.
+**Rule PR-VAL-CC-01 rationale:** High cyclomatic complexity makes MC/DC coverage structurally expensive and error-prone; bounding it at skeleton generation enforces good design before code exists. The WARN band enables early corrective action before a formal FAIL is triggered.
+
+**Rule PR-VAL-CC-06 rationale:** Deep nesting makes branch coverage and inspection error-prone. A nesting depth of ≤ 4 for DAL A/B is consistent with high-assurance coding standards and eliminates hidden MC/DC gaps before code is written.
+
+**Deviation handling:** Any rule that produces a FAIL result **MAY** be overridden by a signed Deviation Record (`H_SIGNOFF` + rationale + safety impact assessment + mitigation plan). Unsigned deviations block the CONFIRM gate (inhibitor PR-INH-002 applies).
 
 **Verification artefact:** static analysis report (e.g. LDRA, Polyspace, CodeSonar) with per-function complexity table, registered as `H_EVIDENCE` at the CONFIRM gate.
 
@@ -160,6 +165,7 @@ The following artefacts **SHALL** be present and linked as `H_EVIDENCE` before t
 
 | Rule ID | Required Artefact | DO-178C Table | Applicable Gate | DAL Scope |
 |---------|-------------------|---------------|-----------------|-----------|
+| **PR-VAL-ART-00** | Plan for Software Aspects of Certification (PSAC) — approved | A-1 | INTERPRET | A, B, C, D |
 | **PR-VAL-ART-01** | System Safety Analysis Report (SAR / FHA / PSSA / SSA output) | System-level input | INTERPRET | A, B, C, D |
 | **PR-VAL-ART-02** | Software Development Plan (SDP) — approved | A-1 | INTERPRET → CONFIRM | A, B, C, D |
 | **PR-VAL-ART-03** | Software Verification Plan (SVP) — approved | A-2 | INTERPRET → CONFIRM | A, B, C |
@@ -171,6 +177,8 @@ The following artefacts **SHALL** be present and linked as `H_EVIDENCE` before t
 | **PR-VAL-ART-09** | Unit Test Results with MC/DC coverage table | A-7 | ACTIVATE | A, B |
 | **PR-VAL-ART-10** | Software Conformity Review (SCR) record | A-8 | PUBLISH | A, B, C |
 
+**Rule PR-VAL-ART-00 — PSAC:** The PSAC is the primary planning document required by DO-178C before any software development activity begins. Its absence **blocks the INTERPRET gate** for all DAL levels. The PSAC **SHALL** define the software level, lifecycle, and relationships to system safety process outputs.
+
 **Rule PR-VAL-ART-01 — Safety Analysis Report:** The resolver **SHALL** verify that a signed Safety Analysis Report (`H_EVIDENCE` of type `safety_analysis_report`) is present and its DAL derivation matches the `D` input. If the SAR is absent or its DAL derivation does not match, the INTERPRET gate is **BLOCKED**.
 
 **Rule PR-VAL-ART-07 — Tool Qualification:** For DAL A/B, all tools in the build chain that produce output not independently verified **SHALL** have a DO-330 Tool Qualification Plan registered as `H_EVIDENCE`. Missing TQP blocks the CONFIRM gate.
@@ -178,6 +186,14 @@ The following artefacts **SHALL** be present and linked as `H_EVIDENCE` before t
 ### 5.3 MISRA-C Compliance Validation Rules
 
 Applicable when language derivation selects C (rule PR-LANG-01, branch MISRA-C). The resolver generates a **MISRA-C compliance manifest** alongside every skeleton.
+
+#### 5.3.0 MISRA-C Process Artefact (Prerequisite)
+
+| Rule ID | Required Artefact | Applicable Gate | DAL Scope |
+|---------|-------------------|-----------------|-----------|
+| **PR-VAL-MA-01** | MISRA-C Compliance Process document — issued | CONFIRM | A, B, C |
+
+**Rule PR-VAL-MA-01 — MISRA-C Compliance Process:** A `MISRA_Compliance_Process` document **SHALL** exist and be registered as `H_EVIDENCE` before any C skeleton proceeds through the CONFIRM gate. This document **SHALL** specify: the rule set baseline (MISRA C:2012 + amendments/corrigenda, or C:2023), the deviation procedure and approvals workflow, and the static analysis tool(s) with version-locked configuration. Absence of this document blocks the CONFIRM gate for DAL A/B/C.
 
 #### 5.3.1 Mandatory Rules (DAL A/B — non-deviatable)
 
@@ -211,6 +227,25 @@ The resolver produces a **MISRA-C Compliance Manifest** registered as `H_EVIDENC
 - Reference to the Software Code Standards artefact (PR-VAL-ART-06)
 
 **Rule PR-VAL-MC-DEVIATE:** No deviation from a MISRA-C mandatory rule is permitted for DAL A/B without a Deviation Record carrying `H_SIGNOFF`. Unsigned deviation requests block the CONFIRM gate (inhibitor PR-INH-002 applies).
+
+#### 5.3.4 Skeleton-Specific Static Analysis Gate Rules
+
+These rules apply specifically to **generated C skeletons** and are validated at the ACTIVATE gate before any skeleton artefact can be released. They are mandatory for all DAL levels where C is used.
+
+| Rule ID | Check | Severity | DAL Scope | Blocked Gate |
+|---------|-------|----------|-----------|--------------|
+| **PR-VAL-MC-GATE** | Static analysis report: zero MISRA-C mandatory-rule violations | **FAIL** (blocks publish) | A, B | PUBLISH |
+| **PR-VAL-SKEL-01** | No dynamic memory allocation (`malloc`/`free`/`realloc`) | FAIL | A, B, C | CONFIRM |
+| **PR-VAL-SKEL-02** | No recursion (direct or indirect) | FAIL | A, B | CONFIRM |
+| **PR-VAL-SKEL-03** | No function-like macros where an inline function can be used (Dir 4.9) | FAIL | A, B | CONFIRM |
+| **PR-VAL-SKEL-04** | All generated files compile cleanly in CI (zero compiler warnings treated as errors) | FAIL | A, B, C, D | ACTIVATE |
+| **PR-VAL-SKEL-05** | Runtime failure minimization checks enabled: overflow, divide-by-zero, out-of-bounds, null-pointer (MISRA-C:2012 Dir 4.1) | FAIL | A, B | ACTIVATE |
+
+**Rule PR-VAL-MC-GATE — Zero mandatory violations:** The static analysis report (`H_EVIDENCE` type `misra_scan_report`) **SHALL** show zero violations of MISRA-C mandatory rules. If violations exist, they **SHALL** be deviated (Deviation Record with `H_SIGNOFF`) before the PUBLISH gate clears. Undeviated mandatory violations **BLOCK** the PUBLISH gate.
+
+**Rule PR-VAL-SKEL-04 — Compile-clean:** CI compilation **SHALL** run with flags `-Wall -Wextra -Werror` (or equivalent for the qualified compiler). Warnings treated as errors ensure skeleton hygiene from the moment of generation.
+
+**Rule PR-VAL-SKEL-05 — Runtime failure minimization:** The static analysis tool configuration **SHALL** include checks for the arithmetic and pointer failure categories defined in MISRA-C:2012 Dir 4.1. The absence of a configured check strategy blocks the ACTIVATE gate for DAL A/B.
 
 ---
 

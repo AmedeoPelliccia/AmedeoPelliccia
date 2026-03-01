@@ -142,40 +142,73 @@ validation_rules:
     rules:
       - id: PR-VAL-CC-01
         check: cyclomatic_complexity_per_function
-        threshold_dal_AB: "≤ 10"
-        threshold_dal_C: "≤ 15"
+        fail_threshold_dal_AB: "> 10"
+        warn_threshold_dal_AB: "8–10"
+        fail_threshold_dal_C: "> 15"
+        warn_threshold_dal_C: "12–15"
         blocked_gate: CONFIRM
         verification_artefact: static_analysis_report (registered as H_EVIDENCE)
 
       - id: PR-VAL-CC-02
         check: call_stack_depth_and_recursion
-        requirement: static_bound_derivable; recursion = H_EXCEPTION
+        fail_condition: recursion_present
+        warn_condition: static_bound_not_derivable
         dal_scope: [A, B]
         blocked_gate: CONFIRM
 
       - id: PR-VAL-CC-03
         check: function_length
-        threshold: "≤ 60 lines of effective code"
+        fail_threshold_dal_AB: "> 60 lines of effective code"
+        warn_threshold_dal_AB: "50–60 lines"
+        fail_threshold_dal_C: "> 80 lines"
         dal_scope: [A, B, C]
         blocked_gate: CONFIRM
 
       - id: PR-VAL-CC-04
         check: number_of_parameters_per_function
-        threshold: "≤ 8"
+        fail_threshold: "> 8"
+        warn_threshold: "7–8"
         reference: MISRA-C:2012 Dir 4.6
         dal_scope: [A, B, C]
         blocked_gate: CONFIRM
 
       - id: PR-VAL-CC-05
         check: dynamic_memory_allocation_forbidden
-        requirement: No malloc/free in generated skeleton
+        fail_condition: malloc/free/realloc present in generated skeleton
+        warn_condition: dynamic allocation in DAL C skeleton
         reference: MISRA-C:2012 Rule 21.3
         dal_scope: [A, B]
         blocked_gate: CONFIRM
         violation_action: H_EXCEPTION
 
+      - id: PR-VAL-CC-06
+        check: nesting_depth_control_flow
+        fail_threshold_dal_AB: "> 4"
+        warn_threshold_dal_AB: "> 3"
+        fail_threshold_dal_C: "> 5"
+        dal_scope: [A, B, C]
+        blocked_gate: CONFIRM
+        rationale: >
+          Deep nesting makes branch coverage and inspection error-prone.
+          Nesting ≤ 4 for DAL A/B eliminates hidden MC/DC gaps before code is written.
+    deviation_policy: >
+      Any FAIL result MAY be overridden by a signed Deviation Record
+      (H_SIGNOFF + rationale + safety impact + mitigation plan).
+      Unsigned deviations block the CONFIRM gate (PR-INH-002).
+
   # ── 5.2 Required Artefact Presence Rules ──
   required_artefacts:
+    - id: PR-VAL-ART-00
+      artefact: Plan for Software Aspects of Certification (PSAC) — approved
+      do178c_table: A-1
+      blocked_gate_if_absent: INTERPRET
+      dal_scope: [A, B, C, D]
+      token: H_EVIDENCE
+      note: >
+        PSAC is the primary DO-178C planning document. Its absence blocks the
+        INTERPRET gate for all DAL levels. Must define software level, lifecycle,
+        and relationships to system safety process outputs.
+
     - id: PR-VAL-ART-01
       artefact: System Safety Analysis Report (SAR/FHA/PSSA/SSA output)
       do178c_table: system_level_input
@@ -255,6 +288,19 @@ validation_rules:
     dal_scope_mandatory: [A, B]
     dal_scope_recommended: [C]
     manifest_output: MISRA-C Compliance Manifest (registered as H_EVIDENCE on skeleton artefact)
+
+    process_artefact:
+      - id: PR-VAL-MA-01
+        artefact: MISRA_Compliance_Process document — issued
+        gate: CONFIRM
+        dal_scope: [A, B, C]
+        token: H_EVIDENCE
+        blocked_gate_if_absent: CONFIRM
+        required_content:
+          - rule_set_baseline: "MISRA C:2012 (+ amendments/corrigenda) or C:2023"
+          - deviation_procedure: signed approvals workflow
+          - static_analysis_tool: version-locked configuration
+
     mandatory_rules:
       - id: PR-VAL-MC-01
         misra_rule: "1.1"
@@ -321,6 +367,58 @@ validation_rules:
     deviation_requirement: >
       No deviation from a MISRA-C mandatory rule is permitted for DAL A/B without a
       Deviation Record carrying H_SIGNOFF. Unsigned deviation requests block the CONFIRM gate.
+
+    skeleton_gate_rules:
+      - id: PR-VAL-MC-GATE
+        check: static_analysis_zero_mandatory_violations
+        severity: FAIL
+        dal_scope: [A, B]
+        blocked_gate: PUBLISH
+        condition: undeviated_mandatory_misra_violations >= 1
+        note: >
+          Mandatory violations may be deviated with a signed Deviation Record.
+          Undeviated mandatory violations block PUBLISH.
+
+      - id: PR-VAL-SKEL-01
+        check: no_dynamic_memory_allocation
+        misra_reference: MISRA-C:2012 Rule 21.3
+        severity: FAIL
+        dal_scope: [A, B, C]
+        blocked_gate: CONFIRM
+
+      - id: PR-VAL-SKEL-02
+        check: no_recursion_direct_or_indirect
+        misra_reference: MISRA-C:2012 Rule 17.2
+        severity: FAIL
+        dal_scope: [A, B]
+        blocked_gate: CONFIRM
+
+      - id: PR-VAL-SKEL-03
+        check: no_function_like_macros_where_inline_function_usable
+        misra_reference: MISRA-C:2012 Dir 4.9
+        severity: FAIL
+        dal_scope: [A, B]
+        blocked_gate: CONFIRM
+
+      - id: PR-VAL-SKEL-04
+        check: all_generated_files_compile_cleanly_in_CI
+        compile_flags: "-Wall -Wextra -Werror (or qualified compiler equivalent)"
+        severity: FAIL
+        dal_scope: [A, B, C, D]
+        blocked_gate: ACTIVATE
+        note: Zero compiler warnings treated as errors.
+
+      - id: PR-VAL-SKEL-05
+        check: runtime_failure_minimization_checks_enabled
+        misra_reference: MISRA-C:2012 Dir 4.1
+        categories: [overflow, divide_by_zero, out_of_bounds, null_pointer]
+        severity: FAIL
+        dal_scope: [A, B]
+        blocked_gate: ACTIVATE
+        note: >
+          Static analysis tool configuration SHALL include checks for all four
+          arithmetic and pointer failure categories. Absence of configured check
+          strategy blocks the ACTIVATE gate.
 
 # ─────────────────────────────────────────────
 # H-Pipeline Inhibitors
