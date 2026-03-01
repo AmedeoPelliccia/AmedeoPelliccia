@@ -1,0 +1,461 @@
+##############################################################################
+# ESSA — AMPEL360 Federated Contract — Global Tag Authority Matrix
+# Identity Authority, Temporal Binding, Query Determinism
+# Machine-readable companion to ESSA/AMPEL360-FED-AUTH.md
+##############################################################################
+
+document_id: ESSA-DOC-AMPEL360-FED-AUTH-001
+document_type: essa_ampel360_federated_contract_authority
+title: "AMPEL360 Federated Contract — Global Tag Authority Matrix"
+version: "0.1-draft"
+schema_version: "1.0.0"
+status: normative_method
+parent: ESSA-DOC-AMPEL360-FED-001
+last_updated: "2026-03-01T00:00:00Z"
+
+description: >
+  Federated contract stabilization component. Defines the identity authority model,
+  authority precedence rules, qualified namespace scheme, temporal binding model,
+  and query determinism policy for the three AMPEL360 Global Tags (oem_id,
+  model_id, operator_id) and configuration tag (config_id). Must be satisfied
+  before any federated data ingestion or AMPEL-A7 RAG query can proceed.
+
+# ─────────────────────────────────────────────
+# Identity Authority Sources
+# ─────────────────────────────────────────────
+identity_authority_sources:
+  - id: OEM_PORTAL
+    name: OEM Portal / Type Certificate
+    claims: [oem_id, model_id]
+    claim_type: structural
+    immutability: true
+    description: >
+      Hard-coded to MSN at manufacture. No downstream system may override.
+
+  - id: REGISTRY
+    name: FAA / EASA Registry
+    claims: [oem_id, model_id, regulatory_authority]
+    claim_type: validation
+    immutability: true
+    description: >
+      Confirms OEM claim against certificated type. Used for conflict resolution.
+
+  - id: AOC_HOLDER
+    name: AOC Holder (Operator Registry)
+    claims: [operator_id]
+    claim_type: temporal
+    immutability: false
+    temporal_fields: [valid_from, valid_to, transfer_event]
+    description: >
+      Valid only within ownership/operation window. Current AOC registration wins
+      in multi-assertion conflicts.
+
+  - id: LESSOR_PORTFOLIO
+    name: Lessor Portfolio System
+    claims: [operator_id]
+    claim_type: portfolio
+    immutability: false
+    sub_authority_of: AOC_HOLDER
+    description: >
+      Aggregates operator windows within declared portfolio. Never overrides OEM
+      or current AOC holder.
+
+  - id: MRO_SYSTEM
+    name: MRO Maintenance System
+    claims: [config_id, configuration_baseline]
+    claim_type: embodiment_state
+    immutability: false
+    description: >
+      Current SB/EO incorporation state against MSN. Overrides OEM standard baseline.
+
+  - id: ENGINEERING_ORDERS
+    name: Engineering Orders (EO)
+    claims: [config_id]
+    claim_type: proposed_state
+    immutability: false
+    sub_authority_of: MRO_SYSTEM
+    description: >
+      Pre-embodiment proposed state. Lower precedence than MRO embodied status.
+
+# ─────────────────────────────────────────────
+# Global Tag Authority Matrix
+# ─────────────────────────────────────────────
+authority_matrix:
+  - tag: oem_id
+    field_name: oem_id
+    primary_authority: OEM_PORTAL
+    secondary_authority: REGISTRY
+    conflict_resolution: >
+      Immutable. Hard-coded to MSN at manufacture. OEM Portal assertion wins.
+      Registry used for validation. H_EXCEPTION if mismatch (AUTH-CON-001).
+    downstream_override_permitted: false
+
+  - tag: model_id
+    field_name: model_id
+    primary_authority: OEM_PORTAL
+    secondary_authority: REGISTRY
+    conflict_resolution: >
+      OEM TC designation takes precedence over operator nomenclature or AMP aliases.
+      AMP alias recorded as H_CONSTRAINT annotation only (AUTH-CON-002).
+    downstream_override_permitted: false
+
+  - tag: operator_id
+    field_name: operator_id
+    primary_authority: AOC_HOLDER
+    secondary_authority: LESSOR_PORTFOLIO
+    conflict_resolution: >
+      Temporal. Validated against valid_from/valid_to window. Current AOC holder wins.
+      Lessor may assert portfolio group but never override current AOC holder.
+      Overlapping windows require H_SIGNOFF resolution (AUTH-CON-003, AUTH-CON-005).
+    downstream_override_permitted: false
+    temporal: true
+    temporal_fields: [valid_from, valid_to, transfer_event]
+
+  - tag: config_id
+    field_name: config_id
+    primary_authority: MRO_SYSTEM
+    secondary_authority: ENGINEERING_ORDERS
+    conflict_resolution: >
+      MRO embodied status overrides OEM standard baseline and EO pre-embodiment state.
+      EO state only promoted after MRO embodiment confirmation (AUTH-CON-004).
+    downstream_override_permitted: false
+
+# ─────────────────────────────────────────────
+# Authority Precedence Rules
+# ─────────────────────────────────────────────
+authority_precedence:
+  structural_order: [oem_id, model_id, operator_id, config_id]
+  rule: >
+    In any cross-system tag conflict, the system ranked higher in structural
+    precedence wins. Higher-precedence tags cannot be overridden by lower-precedence
+    authority sources.
+  temporal_override:
+    applies_to: operator_id
+    description: >
+      operator_id is the only tag subject to temporal override.
+      It cannot override oem_id or model_id at any time or scope.
+  immutable_tags: [oem_id, model_id]
+  mutable_tags: [operator_id, config_id]
+
+# ─────────────────────────────────────────────
+# Conflict Detection Rules
+# ─────────────────────────────────────────────
+conflict_rules:
+  - id: AUTH-CON-001
+    scenario: Two systems assert different oem_id for same MSN
+    detection_gate: INTERPRET
+    resolution: OEM Portal assertion wins; Registry validates; H_EXCEPTION if mismatch
+
+  - id: AUTH-CON-002
+    scenario: model_id in AMP differs from OEM TC designation
+    detection_gate: CONFIRM
+    resolution: OEM TC designation wins; AMP alias recorded as H_CONSTRAINT annotation
+
+  - id: AUTH-CON-003
+    scenario: Multiple operator_id assertions with overlapping time windows
+    detection_gate: CONFIRM
+    resolution: Chronologically latest AOC registration wins; overlap flagged as H_EXCEPTION requiring H_SIGNOFF
+
+  - id: AUTH-CON-004
+    scenario: config_id from EO conflicts with MRO embodied state
+    detection_gate: ACTIVATE
+    resolution: MRO embodied state wins; EO recorded as pending until embodiment confirmed
+
+  - id: AUTH-CON-005
+    scenario: Lessor asserts operator_id outside valid portfolio window
+    detection_gate: CONFIRM
+    resolution: H_EXCEPTION raised; lessor claim rejected; current AOC holder applied
+
+# ─────────────────────────────────────────────
+# Qualified Namespace Scheme
+# ─────────────────────────────────────────────
+namespace_scheme:
+  format: "[AUTHORITY_ID]:[VALUE]"
+  examples:
+    oem_id:      "AIRBUS:A321"
+    model_id:    "AIRBUS:A321neo"
+    operator_id_aoc: "BAW:UK-AOC-0001"
+    operator_id_lessor: "LESSOR-001:PORT-01"
+    config_id:   "AMOS:SB-28-1234-R02"
+
+  resolution_steps:
+    1: Check if value is qualified (contains AUTHORITY_ID prefix)
+    2: If unqualified — look up in OEM registry
+    3: If ambiguous (multiple authorities match) — H_EXCEPTION(ambiguous_tag)
+    4: If not found — H_EXCEPTION(unresolvable_tag)
+    5: Never pass unqualified tag to downstream search
+
+  operator_namespace_isolation:
+    rule: >
+      Operator-internal codes are always scoped under their operator namespace.
+      They are never promoted to global scope.
+    examples:
+      global:   "AIRBUS:A321neo"
+      operator: "BAW:PROC-7701"
+      lessor:   "LESSOR-001:PORT-01"
+    cross_resolve_prohibited: true
+    description: >
+      A query in BAW context may resolve BAW:PROC-7701 but cannot cross-resolve
+      to RYR:PROC-7701 even if the internal code matches.
+
+# ─────────────────────────────────────────────
+# Temporal Binding Model
+# ─────────────────────────────────────────────
+temporal_binding:
+  structural_binding:
+    tags: [oem_id, model_id]
+    bound_to: msn
+    temporal_fields: none
+    description: Permanent. Set at manufacture and TC certification. Never changes.
+
+  operator_window:
+    tag: operator_id
+    fields:
+      valid_from: "ISO8601 timestamp — delivery or lease commencement"
+      valid_to: "ISO8601 timestamp or null (null = currently active)"
+      transfer_event: "H_UPDATE record ID (populated on aircraft transfer)"
+    query_rules:
+      current_state:
+        condition: "valid_to == null OR valid_to >= query_timestamp"
+        action: apply operator filter normally
+      historical_state:
+        condition: "valid_to < query_timestamp"
+        action: >
+          Do not apply for current-state queries.
+          Permitted for historical trend queries with H_CONSTRAINT(scope=HISTORICAL) annotation.
+      null_valid_to:
+        meaning: currently active — no transfer event recorded
+
+  configuration_binding:
+    tag: config_id
+    fields:
+      embodied: "boolean — MRO confirmed embodiment"
+      embodiment_date: "ISO8601 date"
+      pre_embodiment_state: "config_id of previous baseline"
+      h_evidence_ref: "Linked H_EVIDENCE (MRO work order)"
+    query_rules:
+      technical_publications:
+        filter: "embodied == true for post-SB content; embodied == false for pre-SB content"
+      compliance:
+        filter: "embodied == true required for AD compliance queries (HARD)"
+
+  temporal_conflict_matrix:
+    - scenario: Query asks for current operator but valid_to is set
+      detection: CONFIRM
+      action: H_EXCEPTION(stale_operator); escalate to H_SIGNOFF
+
+    - scenario: Two operator windows overlap with no valid_to on predecessor
+      detection: CONFIRM
+      action: H_EXCEPTION(operator_overlap); block until resolved via transfer event
+
+    - scenario: SB embodied == false but query assumes post-SB configuration
+      detection: ACTIVATE
+      action: H_EXCEPTION(config_not_embodied); filter to pre-SB documentation only
+
+    - scenario: MSN valid_from in future (pre-delivery)
+      detection: INTERPRET
+      action: H_CONSTRAINT(pre_delivery); operator queries blocked
+
+# ─────────────────────────────────────────────
+# Query Determinism Policy
+# ─────────────────────────────────────────────
+query_determinism:
+  filter_modes:
+    HARD:
+      description: Tag must be present and must match. Zero results returns H_EXCEPTION.
+      expansion_permitted: false
+      failure: H_EXCEPTION(empty_result)
+    SOFT:
+      description: >
+        Tag used if present. If absent or unmatched, query expands to next scope
+        level via relaxation cascade.
+      expansion_permitted: true
+      failure: H_CONSTRAINT(scope_degraded) annotation on results
+    TEMPORAL_HARD:
+      description: >
+        Hard filter plus temporal validity check. Rejects expired operator assertions.
+      expansion_permitted: false
+      failure: H_EXCEPTION(stale_tag)
+
+  ia_mode_filter_matrix:
+    technical_publications_mode:
+      oem_id:       HARD
+      model_id:     HARD
+      operator_id:  SOFT
+      config_id:    SOFT
+      temporal_validity_applied_to: [operator_id]
+
+    compliance_lease_mode:
+      oem_id:       HARD
+      model_id:     HARD
+      operator_id:  TEMPORAL_HARD
+      config_id:    HARD
+      temporal_validity_applied_to: [operator_id, config_id]
+
+    fleet_management_mode:
+      oem_id:       HARD
+      model_id:     HARD
+      operator_id:  SOFT
+      config_id:    SOFT
+      multi_operator: true
+      temporal_validity_applied_to: [operator_id]
+      historical_permitted: true
+
+  relaxation_cascade:
+    applies_to: SOFT operator_id filter
+    steps:
+      1:
+        scope: operator_specific
+        example: "BAW:A321neo operator procedures"
+        on_match: RETURN with operator scope annotation
+      2:
+        scope: oem_generic
+        example: "AIRBUS:A321neo base AMM"
+        on_match: RETURN with H_CONSTRAINT(scope=OEM_GENERIC) annotation
+      3:
+        scope: null_result
+        action: H_EXCEPTION(no_matching_record)
+        cross_operator_expansion: false
+        description: Never return cross-operator results even on null
+
+  cross_operator_visibility:
+    technical_publications: not_permitted
+    compliance_lease: strictly_prohibited
+    fleet_management_lessor: permitted_within_declared_portfolio
+    fleet_management_mro: permitted_within_contracted_scope
+
+# ─────────────────────────────────────────────
+# RAG Engine Authority Resolution Sequence
+# ─────────────────────────────────────────────
+rag_authority_resolution:
+  steps:
+    1:
+      name: tag_qualification
+      action: Resolve unqualified tags via namespace registry
+      failure: H_EXCEPTION(unresolvable_tag); ABORT
+
+    2:
+      name: authority_validation
+      actions:
+        - Validate oem_id against OEM Portal / Registry
+        - Validate model_id consistency with oem_id
+        - Validate operator_id temporal window
+        - Validate config_id embodiment state (if present)
+      failure: H_EXCEPTION per AUTH-CON rules; ABORT
+
+    3:
+      name: authority_precedence_application
+      action: Apply structural precedence; higher authority wins in conflicts
+      failure: H_EXCEPTION logged; higher precedence applied
+
+    4:
+      name: filter_mode_application
+      action: Apply HARD / SOFT / TEMPORAL_HARD per tag per IA Mode (§5.2)
+      soft_fallback: relaxation_cascade
+      hard_failure: H_EXCEPTION(empty_result); ABORT
+
+    5:
+      name: qualified_namespace_filter
+      action: >
+        Filter index to records matching oem_id (HARD), model_id (HARD),
+        operator_id per filter mode, config_id per filter mode.
+
+    6:
+      name: semantic_ranking
+      action: Apply semantic similarity ranking within filtered set
+      return:
+        results: top_k with H_EVIDENCE metadata (source, authority_id, revision, index_ts)
+        annotations: H_CONSTRAINT (scope applied)
+        exceptions: H_EXCEPTION records from steps 1–5
+
+# ─────────────────────────────────────────────
+# Authority-Specific H-Pipeline Inhibitors
+# ─────────────────────────────────────────────
+inhibitors:
+  - id: AUTH-INH-001
+    condition: "NOT oem_id_validated"
+    blocked_operation: all_queries
+    rule: "oem_id not confirmed by OEM Portal or Registry → ALL QUERIES blocked"
+
+  - id: AUTH-INH-002
+    condition: "model_id_oem_mismatch"
+    blocked_operation: CONFIRM_gate
+    rule: "model_id not consistent with declared oem_id authority chain → CONFIRM blocked"
+
+  - id: AUTH-INH-003
+    condition: "operator_id_temporal_expired"
+    blocked_operation: all_current_state_queries
+    rule: "operator_id valid_to < query_timestamp → current-state queries blocked"
+
+  - id: AUTH-INH-004
+    condition: "operator_window_overlap"
+    blocked_operation: CONFIRM_gate
+    rule: >
+      Two active operator assertions for same MSN without resolved transfer event
+      → CONFIRM blocked; requires H_SIGNOFF to resolve
+
+  - id: AUTH-INH-005
+    condition: "config_id_not_embodied"
+    blocked_operation: ACTIVATE_gate_compliance
+    rule: >
+      config_id required for compliance query but MRO status = not embodied
+      → ACTIVATE blocked for compliance records
+
+  - id: AUTH-INH-006
+    condition: "unqualified_namespace"
+    blocked_operation: INTERPRET_gate
+    rule: >
+      Tag value not resolvable to [AUTHORITY_ID]:[VALUE] format after qualification
+      → INTERPRET blocked
+
+  - id: AUTH-INH-007
+    condition: "cross_operator_visibility_prohibited"
+    blocked_operation: all_queries
+    rule: >
+      Query attempts to access another operator's records outside declared portfolio
+      or MRO scope → ALL QUERIES blocked (hard isolation boundary)
+
+# ─────────────────────────────────────────────
+# Constitutional Instrument Cross-References
+# ─────────────────────────────────────────────
+constitutional_references:
+  - id: ESSA-CONST-001
+    role: >
+      Satisfies CI-003 (Deterministic Gates) via hard filter rules and authority
+      conflict resolution; CI-004 (Machine-Verifiable Conformance) via qualified
+      namespace enforcement.
+  - id: ESSA-DOC-AMPEL360-FED-001
+    role: >
+      AUTH is the contract stabilization sub-component of FED. FED Global Tags
+      are governed by the authority matrix defined here.
+  - id: ESSA-DOC-AMPEL360-Q100-001
+    role: >
+      Q100 aviation domain profile. AUTH temporal binding rules apply directly to
+      Q100 CS-25 compliance traceability.
+  - id: ESSA-DOC-H-001
+    role: >
+      Authority conflicts generate H_EXCEPTION; resolved conflicts generate
+      H_CONSTRAINT; temporal transfers generate H_UPDATE.
+  - id: ESSA-DOC-SF-001
+    role: >
+      AUTH-INH-001 and AUTH-INH-007 enforce that no unvalidated or cross-contaminated
+      data enters the active H_ENVELOPE (SF-RULE-01).
+  - id: ESSA-STD-CCTLS-001
+    role: >
+      Authority resolution maps to CCTLS gates:
+      INTERPRET (qualification) → CONFIRM (validation) → ACTIVATE (embodiment) → PUBLISH (sign-off).
+
+# ─────────────────────────────────────────────
+# Next Structural Move Declaration
+# ─────────────────────────────────────────────
+next_structural_move:
+  id: B
+  name: Federated Query Relaxation Policy
+  document_id: ESSA-DOC-AMPEL360-FED-QRP-001
+  status: pending
+  description: >
+    Full multi-hop relaxation chains, partial-match scoring, and null-result
+    escalation procedures. Stub relaxation cascade defined in §5.3 of this document.
+  artefacts:
+    markdown: ESSA/AMPEL360-FED-QRP.md
+    yaml: ESSA/ampel360-fed-qrp.yaml
