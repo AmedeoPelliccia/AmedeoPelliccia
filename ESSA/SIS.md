@@ -7,7 +7,7 @@
 | **Document ID** | ESSA-DOC-SIS-001 |
 | **Version** | v0.1-draft |
 | **Status** | Constitutional Concept |
-| **Parent** | ESSA Constitutional Root Document ([README.md](README.md)) |
+| **Parent** | ESSA Constitutional Root Document (`ESSA-CONST-001`) |
 | **Companion** | [`sis.yaml`](sis.yaml) |
 | **Related** | [`ESSA-AGENCY-CONSTITUTION.md`](ESSA-AGENCY-CONSTITUTION.md) · [`SAFETY-FIRST.md`](SAFETY-FIRST.md) |
 | **Last Updated** | 2026-02-28 |

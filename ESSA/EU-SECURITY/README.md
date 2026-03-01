@@ -33,11 +33,11 @@ Controls defined herein are referenced by token links of the form:
 ```yaml
 links:
   - rel: verified_by
-    target_token_id: MCSC-CTRL-<id>
+    target_token_id: MCSC-ETH-01
 ```
 
 Any token in any phase **MAY** link to EU-SECURITY controls.
-Tokens in phases P020, P050, and P090 **SHALL** include at least one EU-SECURITY control link where applicable.
+Tokens in the lifecycle phases designated as **EU-SECURITY mandatory** by §4.2 (currently P020, P050, P080, P090, and P120) **SHALL** include at least one EU-SECURITY control link where applicable.
 
 ---
 

@@ -282,7 +282,7 @@ strategic_differentiation:
 # 7. Constitutional Clause
 # ─────────────────────────────────────────────
 constitutional_clause:
-  insert_into: ESSA/README.md §10-bis
+  insert_into: ESSA/README.md §10
   text: >
     Safety SHALL be treated as the primary generative objective in all lifecycle
     design processes governed under ESSA.

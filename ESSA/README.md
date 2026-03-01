@@ -211,7 +211,7 @@ It extends CIVIL-PLATFORMS through machine-checkable control registries.
 
 The ESSA-Agency Constitution is the **constitutional bridge instrument** that:
 
-- Positions ESSA-Agency between ESSA-Architecture and sector agencies (EUSSA, Aviation, RSP, Autonomy)
+- Positions ESSA-Agency between ESSA-Architecture and sector agencies (EUSSA – the ESSA space-domain implementation, Aviation, RSP, Autonomy)
 - Formalises the Safety=Mission / Security=Governance separation
 - Establishes the doctrine: *Advance in Safety, Protect in Security*
 - Defines the agentic operating model (safety envelopes as first-class artefacts)
@@ -287,6 +287,32 @@ AMPEL is not a product, brand, or AI tool. It defines:
 Evolution does not seek maximum efficiency. It seeks improvement within Human Safety — an out-of-envelope candidate is non-activable by construction.
 
 ---
+
+### 3.7 AMPEL360 — Assisted Methods for Programming ESSA Lifecycles
+
+**Canonical artefacts:** [`AMPEL360.md`](AMPEL360.md) · [`ampel360.yaml`](ampel360.yaml)
+
+**Document ID:** `ESSA-DOC-AMPEL360-001`
+
+**AMPEL360** is the concrete lifecycle instantiation of AMPEL — the **programmable execution layer** for ESSA lifecycle architectures. It is not abstract: it governs the ESSA lifecycle (P000–P120) end-to-end.
+
+> **"360" = complete state-cycle closure** — full lifecycle coverage (P000–P120), cross-chain integration, closed feedback loop, profile extensibility, and governance + mission coherence.
+
+AMPEL360 implements five core responsibilities:
+
+- **Safety-Driven Activation** — `H_ENVELOPE` activates the ProgressChain; no phase begins without an established envelope
+- **Deterministic Gates** — `INTERPRET → CONFIRM → ACTIVATE → PUBLISH`; any gate is blocked when required H-tokens are missing, unsigned, or orphaned
+- **Security Overlay** — MCSC controls mandatory at P020, P050, P080, P090, P120 (integrity · authority · audit · non-repudiation)
+- **Conformance Automation** — machine-verifiable ALPC-ready compliance bundles at each gate
+- **Evolutionary Loop Programming** — `H_UPDATE → H_SIGNOFF → H_ENVELOPE` version increment
+
+**Formal gate invariant:** any artefact that cannot satisfy envelope constraint ∧ security invariant ∧ token completeness ∧ authority confirmation **SHALL NOT** be activated.
+
+AMPEL360 is the operational engine that produces the Structural Integration State (SIS): when AMPEL360 operates correctly across all eleven phases, SIS is achieved.
+
+---
+
+## 4. Discretisation Principle
 
 ESSA enforces controlled discretisation.
 
@@ -509,9 +535,13 @@ Measured sustainability overlay integrated into lifecycle tokens and chain nodes
 
 ### ESSA
 
-**European Sovereign Systems Architecture** (this document)
+**ESSA** is used in this document as a three-tier acronym:
 
-Federated constitutional governance architecture for aerospace and strategic systems. The acronym is shared with the **European Union Space Safety Agency** — the canonical space-based civil-platforms fork documented in [`essa-regulatory-framework.yaml`](essa-regulatory-framework.yaml).
+- **Tier 1 — European Sovereign Systems Architecture** (this document layer — constitutional digital substrate)
+- **Tier 2 — European Safety and Security Agency** (institutional mission and governance layer)
+- **Tier 3 — European Union Space Safety Agency** (space-domain execution fork; also referenced as EUSSA to disambiguate from the tier-2 acronym)
+
+The canonical space-based civil-platforms fork is documented in [`essa-regulatory-framework.yaml`](essa-regulatory-framework.yaml).
 
 ---
 

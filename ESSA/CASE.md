@@ -9,7 +9,7 @@
 | **Status** | Conceptual Demonstrator |
 | **Scope** | Civil Space Safety Governance under ESSA Framework |
 | **Nature** | Federated Sovereign Operational Agency Model |
-| **Parent** | ESSA Constitutional Root Document ([README.md](README.md)) |
+| **Parent** | ESSA-STD-CCTLS-001 — ESSA Constitutional Root Document ([README.md](README.md)) |
 | **Last Updated** | 2026-02-28 |
 
 ---

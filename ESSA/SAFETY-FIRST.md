@@ -7,7 +7,7 @@
 | **Document ID** | ESSA-DOC-SF-001 |
 | **Version** | v0.1-draft |
 | **Status** | Normative Doctrine |
-| **Parent** | ESSA Constitutional Root Document ([README.md](README.md)) |
+| **Parent** | ESSA-STD-CCTLS-001 |
 | **Companion** | [`safety-first.yaml`](safety-first.yaml) |
 | **Last Updated** | 2026-02-28 |
 
@@ -251,7 +251,7 @@ This differentiation is **philosophically distinct** and aligns with:
 
 ## 7. Constitutional Clause
 
-The following clause is hereby inserted into the ESSA Constitutional Root Document (README.md §10-bis):
+The following clause is hereby inserted into the ESSA Constitutional Root Document (README.md §10):
 
 > **Safety SHALL be treated as the primary generative objective in all lifecycle design processes governed under ESSA.**
 >

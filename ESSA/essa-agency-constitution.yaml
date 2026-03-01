@@ -52,7 +52,7 @@ stack_placement:
   tier_3:
     name: Sector Agencies
     examples:
-      - European Union Space Safety Agency (EUSSA)
+      - European Union Space Safety Agency (ESSA / EUSSA alias for tier-3 disambiguation)
       - Aviation safety authority
       - RSP lifecycle authority
       - Autonomy assurance authority

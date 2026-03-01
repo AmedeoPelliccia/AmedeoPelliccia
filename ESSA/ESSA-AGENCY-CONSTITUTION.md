@@ -10,7 +10,7 @@
 | **Nature** | Institutional Bridge — Sovereign Safety Mission Authority + Security Governance Overlay |
 | **Doctrine** | Advance in Safety, Protect in Security |
 | **Operating Mode** | Agentic · Extensible · Federated by Profiles |
-| **Parent** | ESSA Constitutional Root Document ([README.md](README.md)) |
+| **Parent** | ESSA-STD-CCTLS-001 — ESSA Constitutional Root Standard |
 | **Companion** | [`essa-agency-constitution.yaml`](essa-agency-constitution.yaml) |
 | **Last Updated** | 2026-02-28 |
 
@@ -35,7 +35,7 @@ European Sovereign Systems Architecture (ESSA-Architecture)
     EUROPEAN SAFETY AND SECURITY AGENCY (ESSA-Agency)
                     │
                     ▼
-European Union Space Safety Agency (EUSSA) + other sector agencies
+European Union Space Safety Agency (EUSSA — disambiguating alias for the ESSA space-domain implementation) + other sector agencies
        (Aviation · Space · RSP · Autonomy · Critical Chains)
 ```
 
