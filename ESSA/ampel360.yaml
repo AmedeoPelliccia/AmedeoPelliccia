@@ -220,3 +220,27 @@ constitutional_relationships:
     role: >
       AMPEL360 applies MCSC mandatory linkages at P020, P050, P080, P090,
       P120
+
+# ─────────────────────────────────────────────
+# Domain Profiles
+# ─────────────────────────────────────────────
+domain_profiles:
+  principle: >
+    AMPEL360 is a single kernel. Each domain profile tightens its parameters
+    for a specific regulatory domain. No profile may weaken the ESSA
+    constitutional baseline.
+  profiles:
+    - id: AMPEL360-Q100
+      document_id: ESSA-DOC-AMPEL360-Q100-001
+      domain: Civil Aviation (~100 pax)
+      authority: EASA / CS-25 / Part-21
+      artefacts:
+        markdown: ESSA/AMPEL360-Q100.md
+        yaml: ESSA/ampel360-q100.yaml
+    - id: AMPEL360-Q10
+      document_id: ESSA-DOC-AMPEL360-Q10-001
+      domain: Spacecraft / Orbital / Reusable Platforms
+      authority: ESA / ECSS / European Space Regulations
+      artefacts:
+        markdown: ESSA/AMPEL360-Q10.md
+        yaml: ESSA/ampel360-q10.yaml

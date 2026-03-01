@@ -156,6 +156,19 @@ AMPEL360(L) = {
 
 ---
 
+## 7. Domain Profiles
+
+AMPEL360 is a single kernel with **profile-adaptive** specialisations per regulatory domain. Each profile **tightens** the AMPEL360 parameters for its domain; no profile may weaken the ESSA constitutional baseline.
+
+| Profile | Domain | Standard | Document |
+|---------|--------|----------|----------|
+| **AMPEL360 Q100** | Civil Aviation (~100 pax) | EASA / CS-25 / Part-21 | [`AMPEL360-Q100.md`](AMPEL360-Q100.md) · [`ampel360-q100.yaml`](ampel360-q100.yaml) |
+| **AMPEL360 Q10** | Spacecraft / Orbital / Reusable | ESA / ECSS / European Space Regulations | [`AMPEL360-Q10.md`](AMPEL360-Q10.md) · [`ampel360-q10.yaml`](ampel360-q10.yaml) |
+
+Additional profiles (RSP, Autonomy, Critical Industrial Chains) are defined in their respective sector profile documents.
+
+---
+
 ## 6. Relationship to Constitutional Instruments
 
 | Instrument | AMPEL360 Role |

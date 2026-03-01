@@ -310,6 +310,17 @@ AMPEL360 implements five core responsibilities:
 
 AMPEL360 is the operational engine that produces the Structural Integration State (SIS): when AMPEL360 operates correctly across all eleven phases, SIS is achieved.
 
+### 3.8 AMPEL360 Domain Profiles
+
+AMPEL360 is a single kernel with **profile-adaptive** specialisations per regulatory domain. Each profile tightens AMPEL360 parameters; no profile weakens the ESSA baseline.
+
+| Profile | Domain | Authority | Canonical Artefacts |
+|---------|--------|-----------|---------------------|
+| **AMPEL360 Q100** | Civil Aviation (~100 pax) | EASA / CS-25 / Part-21 | [`AMPEL360-Q100.md`](AMPEL360-Q100.md) · [`ampel360-q100.yaml`](ampel360-q100.yaml) |
+| **AMPEL360 Q10** | Spacecraft / Orbital / Reusable | ESA / ECSS / EU Space Reg | [`AMPEL360-Q10.md`](AMPEL360-Q10.md) · [`ampel360-q10.yaml`](ampel360-q10.yaml) |
+
+**Document IDs:** `ESSA-DOC-AMPEL360-Q100-001` · `ESSA-DOC-AMPEL360-Q10-001`
+
 ---
 
 ## 4. Discretisation Principle
