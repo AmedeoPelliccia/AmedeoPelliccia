@@ -156,19 +156,6 @@ AMPEL360(L) = {
 
 ---
 
-## 7. Domain Profiles
-
-AMPEL360 is a single kernel with **profile-adaptive** specialisations per regulatory domain. Each profile **tightens** the AMPEL360 parameters for its domain; no profile may weaken the ESSA constitutional baseline.
-
-| Profile | Domain | Standard | Document |
-|---------|--------|----------|----------|
-| **AMPEL360 Q100** | Civil Aviation (~100 pax) | EASA / CS-25 / Part-21 | [`AMPEL360-Q100.md`](AMPEL360-Q100.md) · [`ampel360-q100.yaml`](ampel360-q100.yaml) |
-| **AMPEL360 Q10** | Spacecraft / Orbital / Reusable | ESA / ECSS / European Space Regulations | [`AMPEL360-Q10.md`](AMPEL360-Q10.md) · [`ampel360-q10.yaml`](ampel360-q10.yaml) |
-
-Additional profiles (RSP, Autonomy, Critical Industrial Chains) are defined in their respective sector profile documents.
-
----
-
 ## 6. Relationship to Constitutional Instruments
 
 | Instrument | AMPEL360 Role |
@@ -180,3 +167,16 @@ Additional profiles (RSP, Autonomy, Critical Industrial Chains) are defined in t
 | **ESSA-DOC-SF-001** (Safety-First Doctrine) | AMPEL360 enforces SF-RULE-01 through SF-RULE-06 at every phase boundary |
 | **ESSA-STD-CCTLS-001** (CCTLS) | AMPEL360 lifecycle phases map directly to CCTLS phase registry (P000–P120) |
 | **EU-SECURITY** (MCSC) | AMPEL360 applies MCSC mandatory linkages at P020, P050, P080, P090, P120 |
+
+---
+
+## 7. Domain Profiles
+
+AMPEL360 is a single kernel with **profile-adaptive** specialisations per regulatory domain. Each profile **tightens** the AMPEL360 parameters for its domain; no profile may weaken the ESSA constitutional baseline.
+
+| Profile | Domain | Standard | Document |
+|---------|--------|----------|----------|
+| **AMPEL360 Q100** | Civil Aviation (~100 pax) | EASA / CS-25 / Part-21 | [`AMPEL360-Q100.md`](AMPEL360-Q100.md) · [`ampel360-q100.yaml`](ampel360-q100.yaml) |
+| **AMPEL360 Q10** | Spacecraft / Orbital / Reusable | ESA / ECSS / European Space Regulations | [`AMPEL360-Q10.md`](AMPEL360-Q10.md) · [`ampel360-q10.yaml`](ampel360-q10.yaml) |
+
+Additional profiles (RSP, Autonomy, Critical Industrial Chains) are defined in their respective sector profile documents.
