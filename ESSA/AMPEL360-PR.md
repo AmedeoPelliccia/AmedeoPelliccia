@@ -136,7 +136,85 @@ Templates for the following DO-178C data items (populated with project-specific 
 
 ---
 
-## 5. H-Pipeline Inhibitors
+## 5. DO-178C Validation Rules
+
+The resolver enforces validation rules before confirming or activating any generated artefact. These rules are **mandatory** for DAL A/B and strongly recommended for DAL C/D. Each failing rule produces an `H_EXCEPTION` record that blocks the corresponding gate.
+
+### 5.1 Code Complexity Rules
+
+| Rule ID | Check | Threshold | DAL Scope | Blocked Gate |
+|---------|-------|-----------|-----------|--------------|
+| **PR-VAL-CC-01** | Cyclomatic complexity per function | ≤ 10 (DAL A/B), ≤ 15 (DAL C) | A, B, C | CONFIRM |
+| **PR-VAL-CC-02** | Call-stack depth (no dynamic recursion) | Static bound derivable; recursion = `H_EXCEPTION` | A, B | CONFIRM |
+| **PR-VAL-CC-03** | Function length | ≤ 60 lines of effective code (project standard may tighten) | A, B, C | CONFIRM |
+| **PR-VAL-CC-04** | Number of parameters per function | ≤ 8 (MISRA-C:2012 Dir 4.6 guidance) | A, B, C | CONFIRM |
+| **PR-VAL-CC-05** | Dynamic memory allocation | Forbidden in generated skeleton for DAL A/B (MISRA-C:2012 Rule 21.3) | A, B | CONFIRM |
+
+**Rule PR-VAL-CC-01 rationale:** High cyclomatic complexity makes MC/DC coverage structurally expensive and error-prone; bounding it at skeleton generation enforces good design before code exists.
+
+**Verification artefact:** static analysis report (e.g. LDRA, Polyspace, CodeSonar) with per-function complexity table, registered as `H_EVIDENCE` at the CONFIRM gate.
+
+### 5.2 Required Artefact Presence Rules
+
+The following artefacts **SHALL** be present and linked as `H_EVIDENCE` before the resolver advances any gate:
+
+| Rule ID | Required Artefact | DO-178C Table | Applicable Gate | DAL Scope |
+|---------|-------------------|---------------|-----------------|-----------|
+| **PR-VAL-ART-01** | System Safety Analysis Report (SAR / FHA / PSSA / SSA output) | System-level input | INTERPRET | A, B, C, D |
+| **PR-VAL-ART-02** | Software Development Plan (SDP) — approved | A-1 | INTERPRET → CONFIRM | A, B, C, D |
+| **PR-VAL-ART-03** | Software Verification Plan (SVP) — approved | A-2 | INTERPRET → CONFIRM | A, B, C |
+| **PR-VAL-ART-04** | Software Requirements Standards — issued | A-3 | CONFIRM | A, B, C |
+| **PR-VAL-ART-05** | Software Design Standards — issued | A-4 | CONFIRM | A, B, C |
+| **PR-VAL-ART-06** | Software Code Standards (including language-subset rules) — issued | A-5 | CONFIRM | A, B, C |
+| **PR-VAL-ART-07** | Tool Qualification Plan (TQP) for all DO-330 tools | DO-330 Table A-1 | CONFIRM | A, B |
+| **PR-VAL-ART-08** | Static Analysis Report (complexity + MISRA scan) per unit | A-7 | ACTIVATE | A, B, C |
+| **PR-VAL-ART-09** | Unit Test Results with MC/DC coverage table | A-7 | ACTIVATE | A, B |
+| **PR-VAL-ART-10** | Software Conformity Review (SCR) record | A-8 | PUBLISH | A, B, C |
+
+**Rule PR-VAL-ART-01 — Safety Analysis Report:** The resolver **SHALL** verify that a signed Safety Analysis Report (`H_EVIDENCE` of type `safety_analysis_report`) is present and its DAL derivation matches the `D` input. If the SAR is absent or its DAL derivation does not match, the INTERPRET gate is **BLOCKED**.
+
+**Rule PR-VAL-ART-07 — Tool Qualification:** For DAL A/B, all tools in the build chain that produce output not independently verified **SHALL** have a DO-330 Tool Qualification Plan registered as `H_EVIDENCE`. Missing TQP blocks the CONFIRM gate.
+
+### 5.3 MISRA-C Compliance Validation Rules
+
+Applicable when language derivation selects C (rule PR-LANG-01, branch MISRA-C). The resolver generates a **MISRA-C compliance manifest** alongside every skeleton.
+
+#### 5.3.1 Mandatory Rules (DAL A/B — non-deviatable)
+
+| Rule ID | MISRA-C:2012 Rule | Description | Resolver Action |
+|---------|-------------------|-------------|-----------------|
+| **PR-VAL-MC-01** | Rule 1.1 | Code shall conform to the selected C standard | Annotate skeleton header with `/* C99/C11 conformance required */` |
+| **PR-VAL-MC-02** | Rule 2.2 | No dead code | Skeleton stubs flagged with NOT_IMPLEMENTED assertion — dead-code scanner must confirm zero dead paths post-fill |
+| **PR-VAL-MC-03** | Rule 8.4 | Compatible declarations for external objects/functions | All external interfaces declared in generated header |
+| **PR-VAL-MC-04** | Rule 11.3 | No cast between pointer-to-object and integer type | Skeleton type definitions use explicit sized types (`uint32_t`, etc.) |
+| **PR-VAL-MC-05** | Rule 14.3 | Controlling expressions shall not be invariant | Placeholder conditionals must be replaced before CONFIRM |
+| **PR-VAL-MC-06** | Rule 15.5 | Function returns a value at a single exit point | Skeleton functions generated with single exit point structure |
+| **PR-VAL-MC-07** | Rule 17.2 | Recursion forbidden | Resolver rejects recursive call graphs; flags as `H_EXCEPTION` |
+| **PR-VAL-MC-08** | Rule 21.3 | `malloc`/`free` forbidden | Skeleton contains no dynamic allocation; use of stdlib allocator triggers `H_EXCEPTION` |
+
+#### 5.3.2 Required Directives (DAL A/B/C)
+
+| Rule ID | MISRA-C:2012 Directive | Description | Resolver Action |
+|---------|------------------------|-------------|-----------------|
+| **PR-VAL-MD-01** | Dir 1.1 | All code shall be implemented in C (conforming to C99 or C11 with project-defined subset) | Language standard set in generated `coding_standards.h` guard |
+| **PR-VAL-MD-02** | Dir 4.1 | Arithmetic shall not rely on implementation-defined behaviour | Fixed-width types enforced in skeleton signals |
+| **PR-VAL-MD-03** | Dir 4.6 | All numerical values shall have explicit types | Signal declarations use typed constants only |
+| **PR-VAL-MD-04** | Dir 4.7 | Return value of non-void functions shall be tested | Every call site in test harness checks return value |
+
+#### 5.3.3 Compliance Manifest
+
+The resolver produces a **MISRA-C Compliance Manifest** registered as `H_EVIDENCE` on the skeleton artefact. The manifest contains:
+
+- Confirmation of mandatory/required rules applied at generation time
+- List of any deviations requested (each deviation requires a **Deviation Record** with rationale, signed by responsible engineer = `H_SIGNOFF`)
+- Placeholders for static analysis tool results (to be populated at CONFIRM gate)
+- Reference to the Software Code Standards artefact (PR-VAL-ART-06)
+
+**Rule PR-VAL-MC-DEVIATE:** No deviation from a MISRA-C mandatory rule is permitted for DAL A/B without a Deviation Record carrying `H_SIGNOFF`. Unsigned deviation requests block the CONFIRM gate (inhibitor PR-INH-002 applies).
+
+---
+
+## 6. H-Pipeline Inhibitors
 
 The resolver enforces four constitutional inhibitors. If any condition is not met, the corresponding operation is **blocked by construction**.
 
@@ -151,7 +229,7 @@ The resolver enforces four constitutional inhibitors. If any condition is not me
 
 ---
 
-## 6. Gate Alignment (DO-178C × CCTLS)
+## 7. Gate Alignment (DO-178C × CCTLS)
 
 | CCTLS Gate | DO-178C Equivalent | Active H-tokens | Resolver Output Produced |
 |------------|-------------------|-----------------|--------------------------|
@@ -164,7 +242,7 @@ The resolver enforces four constitutional inhibitors. If any condition is not me
 
 ---
 
-## 7. What the Profile Resolver Is Not
+## 8. What the Profile Resolver Is Not
 
 | Not | Is |
 |-----|-----|
@@ -176,7 +254,7 @@ The resolver enforces four constitutional inhibitors. If any condition is not me
 
 ---
 
-## 8. Formal Definition
+## 9. Formal Definition
 
 Let:
 - `D` = DAL level (A–E)
@@ -214,7 +292,7 @@ PR(D, S, H, R, P) = {
 
 ---
 
-## 9. Relationship to Constitutional Instruments
+## 10. Relationship to Constitutional Instruments
 
 | Instrument | Profile Resolver Role |
 |------------|----------------------|

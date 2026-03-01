@@ -131,6 +131,198 @@ generated_outputs:
     activable: false
 
 # ─────────────────────────────────────────────
+# DO-178C Validation Rules
+# ─────────────────────────────────────────────
+validation_rules:
+
+  # ── 5.1 Code Complexity Rules ──────────────
+  code_complexity:
+    dal_scope_mandatory: [A, B]
+    dal_scope_recommended: [C, D]
+    rules:
+      - id: PR-VAL-CC-01
+        check: cyclomatic_complexity_per_function
+        threshold_dal_AB: "≤ 10"
+        threshold_dal_C: "≤ 15"
+        blocked_gate: CONFIRM
+        verification_artefact: static_analysis_report (registered as H_EVIDENCE)
+
+      - id: PR-VAL-CC-02
+        check: call_stack_depth_and_recursion
+        requirement: static_bound_derivable; recursion = H_EXCEPTION
+        dal_scope: [A, B]
+        blocked_gate: CONFIRM
+
+      - id: PR-VAL-CC-03
+        check: function_length
+        threshold: "≤ 60 lines of effective code"
+        dal_scope: [A, B, C]
+        blocked_gate: CONFIRM
+
+      - id: PR-VAL-CC-04
+        check: number_of_parameters_per_function
+        threshold: "≤ 8"
+        reference: MISRA-C:2012 Dir 4.6
+        dal_scope: [A, B, C]
+        blocked_gate: CONFIRM
+
+      - id: PR-VAL-CC-05
+        check: dynamic_memory_allocation_forbidden
+        requirement: No malloc/free in generated skeleton
+        reference: MISRA-C:2012 Rule 21.3
+        dal_scope: [A, B]
+        blocked_gate: CONFIRM
+        violation_action: H_EXCEPTION
+
+  # ── 5.2 Required Artefact Presence Rules ──
+  required_artefacts:
+    - id: PR-VAL-ART-01
+      artefact: System Safety Analysis Report (SAR/FHA/PSSA/SSA output)
+      do178c_table: system_level_input
+      gate: INTERPRET
+      dal_scope: [A, B, C, D]
+      token: H_EVIDENCE
+      check: dal_derivation_matches_D_input
+      blocked_gate_if_absent: INTERPRET
+
+    - id: PR-VAL-ART-02
+      artefact: Software Development Plan (SDP) — approved
+      do178c_table: A-1
+      gate: INTERPRET_to_CONFIRM
+      dal_scope: [A, B, C, D]
+      token: H_EVIDENCE
+
+    - id: PR-VAL-ART-03
+      artefact: Software Verification Plan (SVP) — approved
+      do178c_table: A-2
+      gate: INTERPRET_to_CONFIRM
+      dal_scope: [A, B, C]
+      token: H_EVIDENCE
+
+    - id: PR-VAL-ART-04
+      artefact: Software Requirements Standards — issued
+      do178c_table: A-3
+      gate: CONFIRM
+      dal_scope: [A, B, C]
+      token: H_EVIDENCE
+
+    - id: PR-VAL-ART-05
+      artefact: Software Design Standards — issued
+      do178c_table: A-4
+      gate: CONFIRM
+      dal_scope: [A, B, C]
+      token: H_EVIDENCE
+
+    - id: PR-VAL-ART-06
+      artefact: Software Code Standards (language subset rules) — issued
+      do178c_table: A-5
+      gate: CONFIRM
+      dal_scope: [A, B, C]
+      token: H_EVIDENCE
+
+    - id: PR-VAL-ART-07
+      artefact: Tool Qualification Plan (TQP) for all DO-330 tools
+      do178c_table: DO-330 Table A-1
+      gate: CONFIRM
+      dal_scope: [A, B]
+      token: H_EVIDENCE
+      blocked_gate_if_absent: CONFIRM
+
+    - id: PR-VAL-ART-08
+      artefact: Static Analysis Report (complexity + MISRA scan) per unit
+      do178c_table: A-7
+      gate: ACTIVATE
+      dal_scope: [A, B, C]
+      token: H_EVIDENCE
+
+    - id: PR-VAL-ART-09
+      artefact: Unit Test Results with MC/DC coverage table
+      do178c_table: A-7
+      gate: ACTIVATE
+      dal_scope: [A, B]
+      token: H_EVIDENCE
+
+    - id: PR-VAL-ART-10
+      artefact: Software Conformity Review (SCR) record
+      do178c_table: A-8
+      gate: PUBLISH
+      dal_scope: [A, B, C]
+      token: H_SIGNOFF
+
+  # ── 5.3 MISRA-C Compliance Validation Rules ─
+  misra_c_compliance:
+    applicable_when: language_derivation_selects_C
+    dal_scope_mandatory: [A, B]
+    dal_scope_recommended: [C]
+    manifest_output: MISRA-C Compliance Manifest (registered as H_EVIDENCE on skeleton artefact)
+    mandatory_rules:
+      - id: PR-VAL-MC-01
+        misra_rule: "1.1"
+        description: Code shall conform to selected C standard
+        resolver_action: Annotate skeleton header with C99/C11 conformance comment
+
+      - id: PR-VAL-MC-02
+        misra_rule: "2.2"
+        description: No dead code
+        resolver_action: Skeleton stubs use NOT_IMPLEMENTED assertion; dead-code scanner confirms zero dead paths post-fill
+
+      - id: PR-VAL-MC-03
+        misra_rule: "8.4"
+        description: Compatible declarations for external objects/functions
+        resolver_action: All external interfaces declared in generated header
+
+      - id: PR-VAL-MC-04
+        misra_rule: "11.3"
+        description: No cast between pointer-to-object and integer type
+        resolver_action: Skeleton type definitions use explicit fixed-width types (uint32_t etc.)
+
+      - id: PR-VAL-MC-05
+        misra_rule: "14.3"
+        description: Controlling expressions shall not be invariant
+        resolver_action: Placeholder conditionals flagged for replacement before CONFIRM
+
+      - id: PR-VAL-MC-06
+        misra_rule: "15.5"
+        description: Function returns a value at a single exit point
+        resolver_action: Skeleton functions generated with single-exit structure
+
+      - id: PR-VAL-MC-07
+        misra_rule: "17.2"
+        description: Recursion forbidden
+        resolver_action: Recursive call graphs rejected; flagged as H_EXCEPTION
+
+      - id: PR-VAL-MC-08
+        misra_rule: "21.3"
+        description: malloc/free forbidden
+        resolver_action: Skeleton contains no dynamic allocation; violation triggers H_EXCEPTION
+
+    required_directives:
+      - id: PR-VAL-MD-01
+        misra_directive: "1.1"
+        description: All code implemented in conforming C (C99/C11 subset)
+        resolver_action: Language standard set in generated coding_standards.h guard
+
+      - id: PR-VAL-MD-02
+        misra_directive: "4.1"
+        description: Arithmetic shall not rely on implementation-defined behaviour
+        resolver_action: Fixed-width types enforced in skeleton signal declarations
+
+      - id: PR-VAL-MD-03
+        misra_directive: "4.6"
+        description: All numerical values shall have explicit types
+        resolver_action: Signal declarations use typed constants only
+
+      - id: PR-VAL-MD-04
+        misra_directive: "4.7"
+        description: Return value of non-void functions shall be tested
+        resolver_action: Every call site in test harness checks return value
+
+    deviation_rule: PR-VAL-MC-DEVIATE
+    deviation_requirement: >
+      No deviation from a MISRA-C mandatory rule is permitted for DAL A/B without a
+      Deviation Record carrying H_SIGNOFF. Unsigned deviation requests block the CONFIRM gate.
+
+# ─────────────────────────────────────────────
 # H-Pipeline Inhibitors
 # ─────────────────────────────────────────────
 inhibitors:
