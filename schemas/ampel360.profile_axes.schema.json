@@ -35,7 +35,7 @@
     "human_presence": {
       "type": "string",
       "enum": ["HUMAN_ON_BOARD", "NO_HUMAN_ON_BOARD"],
-      "description": "Derived from Axis B: PAX_TRANSPORT → HOB, CARGO_ONLY → NHOB"
+      "description": "Derived from Axis B: PAX_TRANSPORT → HUMAN_ON_BOARD (HOB), CARGO_ONLY → NO_HUMAN_ON_BOARD (NHOB)"
     },
     "operational_context": {
       "type": "string",
