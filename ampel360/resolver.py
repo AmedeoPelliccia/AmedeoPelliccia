@@ -274,7 +274,12 @@ def _apply_defense_extension(profile: AMPEL360Profile) -> None:
     }
 
 
-def _apply_regulatory_overlay(profile: AMPEL360Profile, overlay: str) -> None:
+def _apply_regulatory_overlay(
+    profile: AMPEL360Profile,
+    overlay: str,
+    *,
+    _defense_applied: bool = False,
+) -> None:
     """Apply a named regulatory overlay (§9.5 step 3)."""
     overlay_upper = overlay.upper()
 
@@ -297,7 +302,7 @@ def _apply_regulatory_overlay(profile: AMPEL360Profile, overlay: str) -> None:
     if "DO-178C" in overlay_upper or "DO_178C" in overlay_upper:
         profile.rulesets.add("DO_178C_ARTEFACT_RULESET")
 
-    if "DEF" in overlay_upper:
+    if "DEF" in overlay_upper and not _defense_applied:
         _apply_defense_extension(profile)
 
 
@@ -358,12 +363,14 @@ def resolve_profile(
 
     # Apply operational context (§8)
     profile.operational_context = context
+    _defense_applied = False
     if context == OperationalContext.DEFENSE:
         _apply_defense_extension(profile)
+        _defense_applied = True
 
     # Step 3 — Apply named regulatory overlay (most restrictive wins)
     profile.regulatory_overlay = overlay
-    _apply_regulatory_overlay(profile, overlay)
+    _apply_regulatory_overlay(profile, overlay, _defense_applied=_defense_applied)
 
     # Compute composite profile_id (§9.4)
     profile.profile_id = f"{env.value}.{func.value}.{payload.value}.{overlay}"

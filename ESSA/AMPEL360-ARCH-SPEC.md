@@ -166,7 +166,7 @@ Defence profile is implemented as a dual-layer architecture: civil safety root w
 
 ```json
 {
-  "profile_id": "AIR.PAX.CIVIL_PUBLIC.EASA-Q100",
+  "profile_id": "AIR.PAX_TRANSPORT.CIVIL_PUBLIC.EASA-Q100",
   "axes": {
     "environment": "AIR",
     "function": "PAX_TRANSPORT",
