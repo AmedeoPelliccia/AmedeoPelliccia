@@ -1,0 +1,38 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# AMPEL360 — Axis Pack: ENV = AIR
+# Atmospheric flight operations
+# Ref: AMPEL360-ARCH-SPEC-v2.0 §9.1, §9.6
+# ──────────────────────────────────────────────────────────────────────────────
+
+axis: environment
+value: AIR
+description: >
+  Atmospheric flight operations. Controls the regulatory grammar
+  (EASA/FAA), the effectivity model (tail/MSN + SB embodiment + ICA),
+  and the operational feedback sources (MRO data, occurrence reports,
+  FDM, fleet events).
+
+templates:
+  - ICA_PRESENCE_GATE
+  - EFFECTIVITY_COMPLETENESS_CHECK
+  - OPERATOR_TRANSFER_TEMPORAL_MODEL
+
+rulesets:
+  - ICA_PRESENCE_RULE
+  - MSN_TAIL_APPLICABILITY_RULE
+  - LEASING_STATE_MACHINE_RULE
+
+constraints:
+  risk_threshold: 1.0e-9
+
+regulatory_grammar:
+  authorities: [EASA, FAA, UKCAA, TCCA, CASA, ANAC]
+  effectivity_model:
+    identifiers: [tail, msn, line_number]
+    sb_embodiment: true
+    ica_required: true
+  feedback_sources:
+    - MRO_data
+    - occurrence_reports
+    - FDM
+    - fleet_events

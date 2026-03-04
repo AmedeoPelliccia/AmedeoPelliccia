@@ -1,0 +1,26 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# AMPEL360 — Axis Pack: PAYLOAD = EXPORT_CONTROLLED
+# Subject to ITAR, EAR, or equivalent
+# Ref: AMPEL360-ARCH-SPEC-v2.0 §9.3, §9.6
+# ──────────────────────────────────────────────────────────────────────────────
+
+axis: payload_classification
+value: EXPORT_CONTROLLED
+description: >
+  Subject to ITAR, EAR, or equivalent export control regimes.
+  Redacted disclosure. No query relaxation.
+
+constraints:
+  disclosure_mode: REDACTED
+  query_relaxation: false
+
+security_overlay:
+  access_control: strict
+  logging: strict
+  redaction: export_controlled_fields
+  air_gap: recommended
+
+federation_policy:
+  cross_tenant_retrieval: denied
+  query_relaxation: denied
+  disclosure_mode: REDACTED
