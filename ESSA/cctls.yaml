@@ -1,19 +1,19 @@
 ##############################################################################
-# EACST — Common Civil Transport Lifecycle Standard (CCTLS) v0.3.0
+# ESSA — Common Civil Transport Lifecycle Standard (CCTLS) v0.3.0
 # Machine-readable specification
 ##############################################################################
 
-document_id: EACST-STD-CCTLS-001
+document_id: ESSA-STD-CCTLS-001
 document_type: lifecycle_standard
 title: "Common Civil Transport Lifecycle Standard (CCTLS)"
 version: "0.3.0"
 schema_version: "1.0.0"
 status: draft
-parent: EACST-STD-MTL-001
+parent: ESSA-STD-MTL-001
 last_updated: "2026-02-25T00:00:00Z"
 
 purpose: >
-  Define a common lifecycle for civil aviation and civil RSP that EACST can
+  Define a common lifecycle for civil aviation and civil RSP that ESSA can
   standardise, with tokenisable, traceable and auditable artefacts in a portal
   of the AMPEL360-SPACE-T-PORTAL type.
 

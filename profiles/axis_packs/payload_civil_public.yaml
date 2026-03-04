@@ -1,0 +1,26 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# AMPEL360 — Axis Pack: PAYLOAD = CIVIL_PUBLIC
+# No classification restrictions
+# Ref: AMPEL360-ARCH-SPEC-v2.0 §9.3, §9.6
+# ──────────────────────────────────────────────────────────────────────────────
+
+axis: payload_classification
+value: CIVIL_PUBLIC
+description: >
+  No classification restrictions. Full disclosure permitted.
+  Query relaxation allowed.
+
+constraints:
+  disclosure_mode: FULL
+  query_relaxation: true
+
+security_overlay:
+  access_control: standard
+  logging: standard
+  redaction: none
+  air_gap: not_required
+
+federation_policy:
+  cross_tenant_retrieval: permitted
+  query_relaxation: permitted
+  disclosure_mode: FULL

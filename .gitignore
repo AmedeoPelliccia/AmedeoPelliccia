@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.pytest_cache/
 
 # Generated artifacts (root-level only; C-Growth/CT artifacts are tracked)
 /audit_log.json

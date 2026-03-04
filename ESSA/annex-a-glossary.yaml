@@ -1,9 +1,9 @@
-# EACST/annex-a-glossary.yaml
+# ESSA/annex-a-glossary.yaml
 # Machine-readable glossary for ANNEX-A: Meta Transformation Law &
 # Generated Artifact Certification Framework.
-# Reference: EACST/ANNEX-A-glossary.md
+# Reference: ESSA/ANNEX-A-glossary.md
 # Author: Amedeo Pelliccia
-# Parent Standard: EACST-STD-MTL-001
+# Parent Standard: ESSA-STD-MTL-001
 
 schema_version: "1.0.0"
 document_type: normative_glossary
@@ -16,7 +16,7 @@ document:
   id: ANNEX-A
   title: Glossary of Concepts and Acronyms
   subtitle: Meta Transformation Law & Generated Artifact Certification Framework
-  parent_standard: EACST-STD-MTL-001
+  parent_standard: ESSA-STD-MTL-001
   version: "1.0.0"
   status: NORMATIVE
 

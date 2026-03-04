@@ -5,7 +5,7 @@
 | Metadata | Value |
 |----------|-------|
 | **Document ID** | ANNEX-A |
-| **Parent Standard** | EACST-STD-MTL-001 |
+| **Parent Standard** | ESSA-STD-MTL-001 |
 | **Version** | 1.0.0 |
 | **Status** | NORMATIVE |
 
@@ -15,7 +15,7 @@
 
 This annex establishes the controlled vocabulary governing Meta Transformation Law (MTL), Method Token Library (MTLib), Master Teknia Ledger (MTLdg), and Generated Artifact Certification.
 
-All terms defined herein **SHALL** be interpreted as normative when referenced by EACST-STD-MTL-001 and associated standards.
+All terms defined herein **SHALL** be interpreted as normative when referenced by ESSA-STD-MTL-001 and associated standards.
 
 ---
 
@@ -400,5 +400,5 @@ Generative tools **SHALL** be classified strictly as development tools.
 | File | Purpose |
 |------|---------|
 | [`annex-a-glossary.yaml`](annex-a-glossary.yaml) | Machine-readable ANNEX-A terms catalogue |
-| [`eacst-regulatory-framework.yaml`](eacst-regulatory-framework.yaml) | Parent EACST regulatory framework |
-| [`README.md`](README.md) | EACST framework overview |
+| [`essa-regulatory-framework.yaml`](essa-regulatory-framework.yaml) | Parent ESSA regulatory framework |
+| [`README.md`](README.md) | ESSA framework overview |
