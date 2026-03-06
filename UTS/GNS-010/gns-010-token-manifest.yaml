@@ -164,7 +164,7 @@ evidence:
 
   - evidence_id: "GNS-010-EV-005"
     title: "GNSS FMEA / RAIM Analysis Report"
-    links_to: "HAZARD-P020-GNS-LOSS-001"
+    links_to: "HAZARD-P020-GNS-LOSS-001"  # external cross-artefact ref — safety requirements (P020) drive this evidence
     acceptance_criterion: "All failure modes covered; Pmd ≤ 1e-3"
     directory: "evidence/GNS-010-EV-005-fmea-raim/"
 
