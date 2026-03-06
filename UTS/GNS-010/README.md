@@ -229,7 +229,7 @@ The EGNOS SoL service is broadcast on L1 (1575.42 MHz) via three geostationary s
 
 | Requirement | Value | Reference |
 |---|---|---|
-| SoL receiver certification | DO-229F Class Beta-1 minimum | EASA AMC 20-28 |
+| SoL receiver certification | DO-229F Class Beta-1 minimum (regulatory; EASA AMC 20-28); AMPEL360 operations: Class Beta-3 minimum (see §3.2) | EASA AMC 20-28; GNS-010 §3.2 |
 | EGNOS SoL subscription | Not required (broadcast, free) | GSA/EUSPA |
 | SBAS GEO tracking | Minimum 1 GEO tracked for SoL | DO-229F §2.3 |
 | Service area confirmation | Confirmed via EGNOS NOTAM/NANU | EUSPA SIS portal |
@@ -305,7 +305,7 @@ This specification generates the following CCTLS tokens within the CLB-001 frame
 
 | Token ID | Token Type | Phase | Status | Description |
 |---|---|---|---|---|
-| `MP-010-GNS-EGNOS-001` | `MISSION_PROFILE` | P010 | DRAFT | Mission profile for EGNOS SoL-dependent operations |
+| `SCOPE_NODE-P010-GNS-EGNOS-001` | `SCOPE_NODE` | P010 | DRAFT | Mission profile for EGNOS SoL-dependent operations |
 | `METHOD-P040-GNS-RAIM-001` | `METHOD` | P040 | DRAFT | RAIM/FDE analytical method specification |
 | `MODEL_SPEC-P040-GNS-DUAL-001` | `MODEL_SPEC` | P040 | DRAFT | Dual-constellation navigation model (GPS+Galileo+EGNOS) |
 | `VALIDATION_CASE-P040-GNS-LPV200-001` | `VALIDATION_CASE` | P040 | DRAFT | LPV-200 approach simulation validation case |
@@ -318,6 +318,7 @@ This specification generates the following CCTLS tokens within the CLB-001 frame
 | `ICA_TASK-P080-GNS-ANTCAL-001` | `ICA_TASK` | P080 | DRAFT | GNSS antenna calibration ICA task |
 | `ICA_TASK-P080-GNS-RECVTEST-001` | `ICA_TASK` | P080 | DRAFT | Receiver functional test ICA task |
 | `TRAFFIC_CLEARANCE-P090-EGNOS-OPS-001` | `TRAFFIC_CLEARANCE` | P090 | DRAFT | EGNOS SoL operational approval reference |
+| `TEST_CAMPAIGN-P070-EGNOS-SoL-001` | `TEST_CAMPAIGN` | P070 | DRAFT | EGNOS SoL flight test campaign |
 | `CYB_CONTROL-P120-OSNMA-001` | `CYB_CONTROL` | P120 | DRAFT | OSNMA authentication control |
 | `CYB_CONTROL-P120-GNSS-SPOOF-001` | `CYB_CONTROL` | P120 | DRAFT | GNSS spoofing / jamming mitigation control |
 
@@ -415,7 +416,7 @@ ACTIVATION_POLICY:
 | Role | Responsibilities |
 |---|---|
 | **GNC Specialist** | Owns GNS-010 specification; authors VALIDATION_CASE and SIM_RUN tokens; leads RAIM/FDE analysis |
-| **Mission Systems Engineer** | Integrates GNSS PNT output into mission planning; owns MISSION_PROFILE token |
+| **Mission Systems Engineer** | Integrates GNSS PNT output into mission planning; owns SCOPE_NODE token |
 | **Systems Integrator** | Leads system integration test campaign (GNS-010-EV-004); owns Integration Test Matrix |
 | **Cybersecurity Architect** | Owns OSNMA integration (CYB_CONTROL-P120-OSNMA-001); reviews spoofing threat model |
 | **Flight Test Engineer** | Plans and executes P070 flight test campaign for MOPS and LPV-200 validation |
@@ -584,7 +585,7 @@ GNS-010/
 | File | Purpose |
 |---|---|
 | [`gns-010-token-manifest.yaml`](gns-010-token-manifest.yaml) | Machine-readable CCTLS token registry for GNS-010 |
-| [`../../UTS/README.md`](../README.md) | UTS domain taxonomy (parent) |
-| [`../../UTS/uts-taxonomy.yaml`](../uts-taxonomy.yaml) | Machine-readable taxonomy |
+| [`../README.md`](../README.md) | UTS domain taxonomy (parent) |
+| [`../uts-taxonomy.yaml`](../uts-taxonomy.yaml) | Machine-readable taxonomy |
 | [`../../EACST/CCTLS.md`](../../EACST/CCTLS.md) | Common Civil Transport Lifecycle Standard |
 | [`../../EACST/cctls.yaml`](../../EACST/cctls.yaml) | CCTLS machine-readable specification |

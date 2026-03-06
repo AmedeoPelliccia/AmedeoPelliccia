@@ -31,14 +31,14 @@ applicable_programmes:
   - "Civil aviation (NPA/IFR)"
   - "Urban Air Mobility (UAM)"
   - "Reusable Space Platforms (RSP)"
-  - "Hybrid Transport (domain 092)"
+  - "Hybrid Transport"
 
 ##############################################################################
 # Token Registry
 ##############################################################################
 tokens:
-  - token_id: "MP-010-GNS-EGNOS-001"
-    token_type: "MISSION_PROFILE"
+  - token_id: "SCOPE_NODE-P010-GNS-EGNOS-001"
+    token_type: "SCOPE_NODE"
     phase: "P010"
     status: "DRAFT"
     description: "Mission profile for EGNOS SoL-dependent operations"
@@ -121,6 +121,12 @@ tokens:
     phase: "P090"
     status: "DRAFT"
     description: "EGNOS SoL operational approval reference"
+
+  - token_id: "TEST_CAMPAIGN-P070-EGNOS-SoL-001"
+    token_type: "TEST_CAMPAIGN"
+    phase: "P070"
+    status: "DRAFT"
+    description: "EGNOS SoL flight test campaign"
 
   - token_id: "CYB_CONTROL-P120-OSNMA-001"
     token_type: "CYB_CONTROL"
