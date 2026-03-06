@@ -9,7 +9,7 @@
 > **Parent Domain:** 010 — Mission Systems (UTS-TAX-001 v1.1)
 > **Parent Lifecycle:** EACST-STD-CCTLS-001 v0.3.0 · CLB-001-TOKEN
 > **Frameworks:** ESSA · AMPEL360 · GAIA EU
-> **Applicable Programmes:** Civil aviation (NPA/IFR), Urban Air Mobility (UAM), Reusable Space Platforms (RSP), Hybrid Transport (domain 092)
+> **Applicable Programmes:** Civil aviation (NPA/IFR), Urban Air Mobility (UAM), Reusable Space Platforms (RSP), Hybrid Transport
 
 ---
 
