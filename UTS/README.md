@@ -228,5 +228,5 @@ graph LR
 | File                                                      | Purpose                                              |
 | --------------------------------------------------------- | ---------------------------------------------------- |
 | [`uts-taxonomy.yaml`](uts-taxonomy.yaml)                  | Machine-readable taxonomy specification              |
-| [`../ESSA/README.md`](../ESSA/README.md)               | European Union Space Safety Agency spec  |
+| [`../ESSA/README.md`](../ESSA/README.md)               | European Safety and Security Agency spec  |
 | [`../ESSA/essa-regulatory-framework.yaml`](../ESSA/essa-regulatory-framework.yaml) | ESSA machine-readable regulatory framework |
