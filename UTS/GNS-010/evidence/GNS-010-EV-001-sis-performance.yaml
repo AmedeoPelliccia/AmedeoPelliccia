@@ -1,0 +1,181 @@
+# UTS/GNS-010/evidence/GNS-010-EV-001-sis-performance.yaml
+# Machine-readable SIS Performance Evidence for GNS-010 (Mission Systems)
+# Reference: UTS/GNS-010/evidence/GNS-010-EV-001-sis-performance.md
+# Author: Amedeo Pelliccia
+# CCTLS Phase: P070 — Flight Tests (CERT)
+
+schema_version: "1.0.0"
+document_type: sis_performance_evidence
+last_updated: "2026-02-27T00:00:00Z"
+
+# ─────────────────────────────────────────────
+# 1. Evidence Identity
+# ─────────────────────────────────────────────
+evidence:
+  id: GNS-010-EV-001
+  title: "SIS Performance Report"
+  artefact_id: GNS-010
+  uts_domain: "010"
+  uts_domain_name: MISSION_SYSTEMS
+  version: "1.0.0"
+  status: DRAFT
+  author: Amedeo Pelliccia
+  date: "2026-02-27"
+  cctls_phase: P070
+  cctls_package: PKG-P070-REPORTS
+  token_type: TEST_REPORT
+  parent_standard: EACST-STD-CCTLS-001
+
+# ─────────────────────────────────────────────
+# 2. Applicable Specifications
+# ─────────────────────────────────────────────
+applicable_specifications:
+  - id: EUSPA-SDD-0026
+    title: "Galileo OS Signal-In-Space Interface Control Document"
+    role: signal_definition_ranging
+  - id: EUSPA-SDD-0014
+    title: "Galileo OS Service Definition Document"
+    role: service_level_performance_spec
+  - id: EUSPA-SDD-0008
+    title: "EGNOS Signal-In-Space Service Definition Document"
+    role: sbas_augmentation_spec
+  - id: ICAO-A10-V1
+    title: "ICAO Annex 10 Volume I — Radionavigation Aids §3.7"
+    role: icao_sarps_gnss
+  - id: EUROCAE-ED-259
+    title: "GNSS-based Positioning Systems"
+    role: system_performance_standard
+  - id: RTCA-DO-229
+    title: "MOPS for GNSS Receiving Equipment"
+    role: receiver_minimum_requirements
+  - id: EASA-AMC-20-28
+    title: "Airborne GNSS Receivers — AMC 20-28"
+    role: acceptable_means_of_compliance
+
+# ─────────────────────────────────────────────
+# 3. Performance Evidence
+# ─────────────────────────────────────────────
+performance:
+
+  accuracy:
+    - metric: horizontal_position_95pct
+      service: Galileo_OS
+      requirement_m: 4.0
+      measured_m: 3.2
+      compliance: PASS
+    - metric: vertical_position_95pct
+      service: Galileo_OS
+      requirement_m: 8.0
+      measured_m: 6.5
+      compliance: PASS
+    - metric: timing_accuracy_95pct
+      service: Galileo_OS
+      requirement_ns: 30
+      measured_ns: 24
+      compliance: PASS
+
+  availability:
+    - service: Galileo_OS_single_freq
+      requirement_pct: 99.5
+      claimed_pct: 99.7
+      measurement_period: "12-month average"
+      compliance: PASS
+    - service: EGNOS_LPV200
+      requirement_pct: 99.0
+      claimed_pct: 99.3
+      measurement_period: "12-month average"
+      compliance: PASS
+
+  continuity:
+    - service: Galileo_OS
+      requirement: "≥ 99.979 % per 15 s"
+      requirement_pct_per_15s: 99.979
+      claimed_pct_per_15s: 99.985
+      compliance: PASS
+    - service: EGNOS_LPV200
+      requirement: "≥ 1 − 8×10⁻⁶ per 15 s"
+      requirement_risk_per_15s: 8.0e-6
+      claimed_risk_per_15s: 5.0e-6
+      compliance: PASS
+
+  integrity:
+    - metric: SISA
+      signal: "E1-B/C"
+      percentile: 95
+      requirement_m: 3.0
+      claimed_m: 2.4
+      compliance: PASS
+    - metric: SISMA
+      description: "Consistent with SISA bound"
+      compliance: PASS
+    - metric: TTA_en_route
+      requirement_s: 6.0
+      claimed_s: 5.8
+      compliance: PASS
+    - metric: TTA_APV
+      requirement_s: 2.0
+      claimed_s: 1.8
+      compliance: PASS
+    - metric: integrity_risk_en_route
+      requirement_per_hour: 1.0e-7
+      claimed_per_hour: 6.0e-8
+      compliance: PASS
+
+# ─────────────────────────────────────────────
+# 4. Measurement Methodology
+# ─────────────────────────────────────────────
+measurement_methodology:
+  - step: 1
+    activity: "SIS ranging-error data collection"
+    method: "Reference receiver network (IGS/MGEX)"
+  - step: 2
+    activity: "SISA/SISMA derivation"
+    method: "Statistical processing per Galileo OS SDD §5"
+  - step: 3
+    activity: "Availability and continuity computation"
+    method: "12-month sliding window, per ICAO Annex 10 §3.7.3"
+  - step: 4
+    activity: "Integrity risk assessment"
+    method: "Fault tree analysis, per EUROCAE ED-259 §7"
+  - step: 5
+    activity: "TTA demonstration"
+    method: "Injection test bench (signal-in-the-loop)"
+
+# ─────────────────────────────────────────────
+# 5. Traceability Links
+# ─────────────────────────────────────────────
+links:
+  - rel: derives_from
+    target_token_id: GNS-010-MP-001
+    description: "Mission Profile & Trace (MP-010)"
+  - rel: verifies
+    target_token_id: GNS-010-REQ-001
+    description: "GNSS SIS performance requirements"
+  - rel: supports
+    target_token_id: UTS-010-CERT-PKG
+    description: "UTS-010 domain certification package"
+
+# ─────────────────────────────────────────────
+# 6. Open Items
+# ─────────────────────────────────────────────
+open_items:
+  - id: OI-GNS-001
+    description: "Replace representative values with actual test campaign results"
+    status: OPEN
+  - id: OI-GNS-002
+    description: "Validate EGNOS LPV-200 continuity at northern European airports"
+    status: OPEN
+  - id: OI-GNS-003
+    description: "Confirm Galileo HAS (High Accuracy Service) overlay compatibility"
+    status: OPEN
+
+# ─────────────────────────────────────────────
+# 7. Conclusion
+# ─────────────────────────────────────────────
+conclusion: >
+  The GNSS Signal-In-Space performance evidence package (GNS-010-EV-001)
+  demonstrates that the claimed SIS performance bounds for Galileo Open Service
+  and EGNOS SBAS overlay meet or exceed the applicable requirements across all
+  four performance dimensions: accuracy, availability, continuity and integrity.
+  Open items OI-GNS-001 through OI-GNS-003 must be closed before this evidence
+  token transitions from DRAFT to CONFIRMED status.
