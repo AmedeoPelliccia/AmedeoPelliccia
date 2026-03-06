@@ -176,7 +176,7 @@ See: [STD-PATH-MTL-001 §3.1b — Contribution Governance](https://github.com/Am
 - European federal strategy integration via [Modello-federativo-europeo](https://github.com/Amedeopelliccia/Modello-federativo-europeo) and [Agenda-2028](https://github.com/Amedeopelliccia/Agenda-2028)
 - [ESSA](ESSA/) — European Safety and Security Agency: constitutional governance stack (Safety-First doctrine, Structural Integration State, H Pipeline, CASE) with CCTLS lifecycle standard; now extended with the **AMPEL360 lifecycle engine** (P000–P120), two domain profiles (**Q100** EASA/CS-25 aviation · **Q10** ESA/ECSS spacecraft), and the **Profile Resolver** with DO-178C validation rules (cyclomatic complexity, artefact presence, MISRA-C compliance)
 - [AMPEL360-FED](ESSA/AMPEL360-FED.md) + [`federation/`](federation/) — Federated Contract Stabilization: Global Tag Authority Matrix v1.1 (four authority classes A0–A3), RAG relaxation policy, JSON schema for global tags, and connector template; wired to the **AMPEL.py** runtime regulatory profile selector (EASA-Q100 / SPACE-Q10 / DO-178C)
-  - 🚀 **Demo repo:** [AMPEL360-AI-studio](https://github.com/AmedeoPelliccia/AMPEL360-AI-studio) · **Live app:** [AIS preview](https://ais-pre-qgodcoewjywuhs2glepnfo-324605324739.europe-west2.run.app/)
+- **Live app:** [AIS preview](https://ais-pre-qgodcoewjywuhs2glepnfo-324605324739.europe-west2.run.app/)
 - [AI-BOOST](AI-BOOST/) — Application strategy for the Frontier AI Grand Challenge (EuroHPC JU / AI-BOOST GA 101135737): GAIA-EU frontier model concept (400B+ MoE), EU aerospace/regulatory AI domain, open weights, EU AI Act compliance (deadline 13 Apr 2026)
 
 ---
