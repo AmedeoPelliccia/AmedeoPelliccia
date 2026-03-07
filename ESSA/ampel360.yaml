@@ -1,24 +1,25 @@
 ##############################################################################
 # ESSA — AMPEL360
-# Assisted Methods for Programming ESSA Lifecycles
+# Aerospace Model for Product and Engineering Lifecycles
 # Machine-readable companion to ESSA/AMPEL360.md
 ##############################################################################
 
 document_id: ESSA-DOC-AMPEL360-001
 document_type: essa_ampel360_lifecycle_engine
-title: "AMPEL360 — Assisted Methods for Programming ESSA Lifecycles"
+title: "AMPEL360 — Aerospace Model for Product and Engineering Lifecycles"
 version: "0.1-draft"
 schema_version: "1.0.0"
 status: normative_method
 parent: ESSA-DOC-AMPEL-001
-last_updated: "2026-03-01T00:00:00Z"
+last_updated: "2026-03-07T00:00:00Z"
 
 description: >
-  AMPEL360 is the concrete lifecycle instantiation of the AMPEL method for
-  the ESSA lifecycle (P000–P120). It is the programmable execution layer for
-  ESSA lifecycle architectures. "360" denotes complete state-cycle closure:
-  full lifecycle coverage, cross-chain integration, closed feedback loop,
-  profile extensibility, and governance + mission coherence.
+  AMPEL360 is the end-to-end aerospace lifecycle architecture for the ESSA
+  lifecycle (P000–P120). It governs the design, engineering, certification,
+  operation, and continuous digital traceability of aircraft systems and
+  programmes. "360" denotes complete state-cycle closure: full lifecycle
+  coverage, cross-chain integration, closed feedback loop, profile
+  extensibility, and governance + mission coherence.
 
 # ─────────────────────────────────────────────
 # Constitutional Constraint (inherited from AMPEL)

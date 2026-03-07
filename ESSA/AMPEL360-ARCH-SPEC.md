@@ -1,4 +1,4 @@
-# AMPEL360 — Aerospace Methods for Programming Engineering Lifecycle (360°)
+# AMPEL360 — Aerospace Model for Product and Engineering Lifecycles (360°)
 
 | Metadata | Value |
 |----------|-------|
@@ -14,13 +14,13 @@
 
 ## 1  Definition and Scope
 
-AMPEL360 is a deterministic lifecycle programming architecture that governs aerospace systems from mission intent to end-of-life material recovery. The designation "360" denotes the complete angular span of the lifecycle: a closed loop where no phase is terminal and every state produces traceable outputs that feed forward or feed back into adjacent phases.
+AMPEL360 is an end-to-end aerospace lifecycle architecture that governs the design, engineering, certification, operation, and continuous digital traceability of aircraft systems and programmes. The designation "360" denotes the complete angular span of the lifecycle: a closed loop where no phase is terminal and every state produces traceable outputs that feed forward or feed back into adjacent phases.
 
 AMPEL360 is a lifecycle state machine, a safety-first execution engine, a compliance-aware orchestration kernel, and a value-preserving circular framework. It is none of the following: a PLM tool, a documentation repository, or a certification body. These may consume AMPEL360 outputs or operate within its governance envelope, but they do not define it.
 
 ### 1.1  Mission Statement
 
-AMPEL360 defines a safety-first, profile-adaptive lifecycle programming architecture governing aerospace systems from mission intent through certification, operation, transfer, decommissioning, and material recovery, preserving traceability, compliance, and value across the full asset continuum.
+AMPEL360 defines a safety-first, profile-adaptive aerospace lifecycle architecture governing systems from concept and requirements through certification, operation, modification, reuse, and traceable closure, preserving traceability, compliance, and value across the full asset continuum.
 
 ### 1.2  Mission-to-Material Traceability
 
@@ -248,7 +248,7 @@ See [`ampel360/resolver.py`](../../ampel360/resolver.py) for the Python implemen
 
 | Term | Definition |
 |------|------------|
-| **AMPEL360** | Aerospace Methods for Programming Engineering Lifecycle (360°) |
+| **AMPEL360** | Aerospace Model for Product and Engineering Lifecycles (360°) |
 | **DAL** | Design Assurance Level (per DO-178C / DO-254) |
 | **DPP** | Digital Product Passport |
 | **H-factor** | Human Exposure Factor — root safety variable |
