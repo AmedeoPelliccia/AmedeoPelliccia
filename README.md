@@ -1,7 +1,7 @@
 <p align="center">
   <strong>Amedeo Pelliccia</strong><br>
   Aerospace Engineer · Researcher · Framework Originator<br>
-  Founder, <a href="https://ideale.eu">IDEALE-ESG.eu</a> Enterprise
+  Founder, <a href="https://ideale.eu">IDEALE-ESG.eu</a> Framework
 </p>
 
 ---
