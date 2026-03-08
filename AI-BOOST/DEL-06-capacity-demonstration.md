@@ -66,6 +66,7 @@ The applicant has originated and maintains a portfolio of formal methodology art
 | Domain-specialist language models | 10 B–100 B+ parameters | Regulatory NLP, aerospace engineering, multilingual EU |
 | Certification-grade governance pipelines | Production | Safety-critical AI for aerospace and space transport |
 | HPC training infrastructure | Multi-node GPU clusters | EuroHPC-compatible distributed training |
+| **GAIA-EU Prototype Demo** | Demo / Prototype | Hosted on **Gemini Services** (recently remixed); interactive proof-of-concept for the GAIA-EU multilingual frontier AI architecture |
 
 ---
 
@@ -153,6 +154,7 @@ Post-training, GAIA-EU will be deployed via:
 | API gateway | EU cloud (OVHcloud / Scaleway / equivalent) | GDPR-compliant, EU-sovereign hosting |
 | Model distribution | Hugging Face Hub + Zenodo mirror | Open weights under Apache 2.0; DOI-assigned |
 | Batch inference | EuroHPC AI Factory | For research and public-sector batch workloads |
+| **Prototype demo** | **Gemini Services** | Interactive demo currently hosted on Gemini Services (recently remixed); accessible for evaluator review |
 
 ### 5.2 Scalability Demonstration
 
@@ -223,3 +225,4 @@ The following table maps capacity evidence to the pre-screening criterion **"Com
 | Version | Date | Milestone | Description |
 |---------|------|-----------|-------------|
 | 0.1 | 2026-02-25 | M6 | Initial Capacity Demonstration |
+| 0.2 | 2026-03-08 | M6 | Added Gemini Services prototype demo hosting reference (§2.3, §5.1) |
