@@ -5,7 +5,7 @@
 | **Document ID** | AMPEL360-ARCH-SPEC-v2.0 |
 | **Classification** | CIVIL_PUBLIC |
 | **Status** | Active Development |
-| **Effective Date** | 2026-03-01 |
+| **Effective Date** | 2026-03-07 |
 | **Author** | Amedeo Pelliccia — IDEALEeu Enterprise |
 | **Parent** | ESSA-DOC-AMPEL360-001 ([AMPEL360.md](AMPEL360.md)) |
 | **Companion YAML** | [`ampel360.yaml`](ampel360.yaml) |
@@ -265,6 +265,7 @@ See [`ampel360/resolver.py`](../../ampel360/resolver.py) for the Python implemen
 |---------|------|----------------|
 | 1.0 | 2026-01-11 | Initial architectural definition (multi-document) |
 | 2.0 | 2026-03-01 | Consolidated single-document specification; added profile resolver, phase-axis matrix, graph root recommendation, implementation data model, and constraint merge rules |
+| 2.0 (editorial) | 2026-03-07 | Updated AMPEL360 formal expansion and canonical lifecycle definition; aligned metadata with the 2026-03-07 branding revision without changing the v2.0 implementation baseline |
 
 ---
 
