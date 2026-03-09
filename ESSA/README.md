@@ -294,7 +294,7 @@ Evolution does not seek maximum efficiency. It seeks improvement within Human Sa
 
 **Document ID:** `ESSA-DOC-AMPEL360-001`
 
-**AMPEL360** is the concrete lifecycle instantiation of AMPEL — the **programmable execution layer** for ESSA lifecycle architectures. It is not abstract: it governs the ESSA lifecycle (P000–P120) end-to-end as an aerospace model for product and engineering lifecycles.
+**AMPEL360** is the concrete lifecycle instantiation of AMPEL — the **programmable execution layer** for ESSA lifecycle architectures. It is not abstract: it governs the ESSA lifecycle (P000–P120) end-to-end as an Aerospace Model for Product and Engineering Lifecycles.
 
 > **"360" = complete state-cycle closure** — full lifecycle coverage (P000–P120), cross-chain integration, closed feedback loop, profile extensibility, and governance + mission coherence.
 
