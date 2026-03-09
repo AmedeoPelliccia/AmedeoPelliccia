@@ -65,7 +65,7 @@ Here on GitHub I collapse the **A** pillar into two owned domains, each redirect
 
 Aviation decarbonization · Hydrogen-electric propulsion · Blended wing body airframes · Certification-grade digital baselines
 
-The **AMPEL360 Q100** lives here — the aircraft-domain instantiation of **AMPEL360 — Aerospace Model for Product and Engineering Lifecycles** for a ~100-passenger regional BWB aircraft concept with H₂ PEM fuel cells, distributed propulsion, and a full OPT-IN Framework scaffold across 79 ATA chapters.
+The **AMPEL360 Q100** lives here: an aircraft-domain instantiation of **AMPEL360 — Aerospace Model for Product and Engineering Lifecycles**. It represents a ~100-passenger regional BWB aircraft concept with H₂ PEM fuel cells, distributed propulsion, and a full OPT-IN Framework scaffold across 79 ATA chapters.
 
 This is aircraft-level truth: structures, systems, operations, circularity.
 
