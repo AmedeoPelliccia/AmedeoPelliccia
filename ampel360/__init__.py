@@ -2,7 +2,7 @@
 AMPEL360 — Aerospace Model for Product and Engineering Lifecycles (360°)
 =========================================================================
 
-End-to-end aerospace lifecycle architecture that governs the design,
+An end-to-end aerospace lifecycle architecture that governs the design,
 engineering, certification, operation, and continuous digital
 traceability of aircraft systems and programmes.
 
