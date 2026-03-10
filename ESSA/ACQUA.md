@@ -1,6 +1,6 @@
 # ACQUA
 
-**Aerospace and Computational Quantum Universal Architecture**
+**Aerospace Computational Quantum Universal Architecture**
 
 | Metadata | Value |
 |----------|-------|

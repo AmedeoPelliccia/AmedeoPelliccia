@@ -373,7 +373,7 @@ The QQQ Foundation does not replace existing physical theories; it acts as a con
 
 ---
 
-### 3.11 ACQUA — Aerospace and Computational Quantum Universal Architecture
+### 3.11 ACQUA — Aerospace Computational Quantum Universal Architecture
 
 **Canonical artefacts:** [`ACQUA.md`](ACQUA.md) · [`acqua.yaml`](acqua.yaml)
 
@@ -804,7 +804,7 @@ Architectural principle establishing safety as the **primary generative objectiv
 | [`essa-global.yaml`](essa-global.yaml) | Machine-readable companion — ESSA-GLOBAL-001: four-tier architecture, GCI invariants, global profiles, UN relationships, hybrid decision engine, doctrine stages |
 | [`QQQ.md`](QQQ.md) | QQQ Foundation — Quasi–Quanto–Quantum conceptual framework for complex system regimes |
 | [`qqq.yaml`](qqq.yaml) | Machine-readable companion — ESSA-DOC-QQQ-001: regimes, λ parameter, applications |
-| [`ACQUA.md`](ACQUA.md) | ACQUA Architecture — Aerospace and Computational Quantum Universal Architecture (5-layer) |
+| [`ACQUA.md`](ACQUA.md) | ACQUA Architecture — Aerospace Computational Quantum Universal Architecture (5-layer) |
 | [`acqua.yaml`](acqua.yaml) | Machine-readable companion — ESSA-DOC-ACQUA-001: layers, decision engine, authority matrix, traceability |
 | [`ACQUA-GLOSSARY.md`](ACQUA-GLOSSARY.md) | ACQUA Glossary and Acronyms — controlled vocabulary for ACQUA and QQQ terminology (A–V, regime parameter, authority summary) |
 | [`acqua-glossary.yaml`](acqua-glossary.yaml) | Machine-readable companion — ESSA-DOC-ACQUA-GLOSS-001: terms catalogue with symbols, formal definitions, and regime mappings |

@@ -1,12 +1,12 @@
 ##############################################################################
 # ESSA — ACQUA
-# Aerospace and Computational Quantum Universal Architecture
+# Aerospace Computational Quantum Universal Architecture
 # Machine-readable companion to ESSA/ACQUA.md
 ##############################################################################
 
 document_id: ESSA-DOC-ACQUA-001
 document_type: essa_acqua_architecture
-title: "ACQUA — Aerospace and Computational Quantum Universal Architecture"
+title: "ACQUA — Aerospace Computational Quantum Universal Architecture"
 version: "0.1-draft"
 schema_version: "1.0.0"
 status: normative_architecture
