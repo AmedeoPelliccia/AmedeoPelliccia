@@ -342,6 +342,67 @@ The **Profile Resolver** (`ESSA-DOC-AMPEL360-PR-001`) is a functional component 
 
 ---
 
+### 3.10 QQQ Foundation — Quasi–Quanto–Quantum
+
+**Canonical artefacts:** [`QQQ.md`](QQQ.md) · [`qqq.yaml`](qqq.yaml)
+
+**Document ID:** `ESSA-DOC-QQQ-001`
+
+The **QQQ Foundation** is the conceptual framework that formalizes the transition between three regimes of organization in complex systems: deterministic (Quasi), probabilistic (Quanto), and coherent (Quantum). It provides a common grammar for modeling physical, computational, and socio-technical systems that evolve from local rules toward global correlations.
+
+**Three fundamental regimes:**
+
+| Regime | Character | Formal Dynamics | Central Idea |
+|--------|-----------|-----------------|--------------|
+| **Quasi** | Deterministic · Rule-Based | `x_{t+1} = f(x_t, u_t)` | state → unique outcome |
+| **Quanto** | Stochastic · Probabilistic | `dX_t = μ dt + σ dW_t` | state → distribution of outcomes |
+| **Quantum** | Coherent · Correlated · Global | `iℏ ∂/∂t |ψ⟩ = Ĥ|ψ⟩` | state → coherent amplitudes |
+
+**Structural regime parameter:**
+```
+λ = αC + βI + γΛ - δO
+```
+where `C` = coupling, `I` = information density, `Λ` = coherence, `O` = dissipation.
+
+Regime selection: `λ < λ₁` → Quasi · `λ₁ ≤ λ < λ₂` → Quanto · `λ ≥ λ₂` → Quantum.
+
+The QQQ Foundation does not replace existing physical theories; it acts as a conceptual architecture for hybrid systems. It is the theoretical substrate for the ACQUA architecture.
+
+---
+
+### 3.11 ACQUA — Aerospace and Computational Quantum Universal Architecture
+
+**Canonical artefacts:** [`ACQUA.md`](ACQUA.md) · [`acqua.yaml`](acqua.yaml)
+
+**Document ID:** `ESSA-DOC-ACQUA-001`
+
+**ACQUA** is the formal technology architecture for hybrid systems that integrate aerospace infrastructure, classical computation, artificial intelligence, and quantum computing. It is organized as a five-layer system governed by the QQQ framework.
+
+```
+ACQUA = ⟨ Mission, System, Compute, Quantum, Governance ⟩
+```
+
+| Layer | Symbol | Dynamics | Function |
+|-------|--------|----------|----------|
+| Mission | `L_M` | — | Objectives, scenarios, KPIs, constraints |
+| System | `L_S` | — | Platforms, sensors, actuators, networks, interfaces |
+| Compute | `L_C` | Quasi + Quanto | Deterministic control · ML · Bayesian inference · Digital twins |
+| Quantum | `L_Q` | Quantum | Quantum sensing · optimization · simulation · networking |
+| Governance | `L_G` | Transversal | Policy · assurance · safety · compliance · traceability |
+
+**Hybrid decision engine:**
+```
+X_{t+1} = w_1·f_det(X_t) + w_2·f_prob(X_t) + w_3·f_quant(X_t),  w_1+w_2+w_3 = 1
+```
+
+Governance is transversal: `L_G ⊣ {L_M, L_S, L_C, L_Q}`.
+
+ACQUA operationalizes QQQ regime theory into an actionable architecture for aerospace, AI, and quantum computing integration under a unified governance model.
+
+**Document IDs:** `ESSA-DOC-QQQ-001` (parent framework) · `ESSA-DOC-ACQUA-001` (this architecture)
+
+---
+
 ## 4. Discretisation Principle
 
 ESSA enforces controlled discretisation.
@@ -693,6 +754,10 @@ Architectural principle establishing safety as the **primary generative objectiv
 
 | File | Purpose |
 |------|---------|
+| [`QQQ.md`](QQQ.md) | QQQ Foundation — Quasi–Quanto–Quantum conceptual framework for complex system regimes |
+| [`qqq.yaml`](qqq.yaml) | Machine-readable companion — ESSA-DOC-QQQ-001: regimes, λ parameter, applications |
+| [`ACQUA.md`](ACQUA.md) | ACQUA Architecture — Aerospace and Computational Quantum Universal Architecture (5-layer) |
+| [`acqua.yaml`](acqua.yaml) | Machine-readable companion — ESSA-DOC-ACQUA-001: layers, decision engine, authority matrix, traceability |
 | [`essa-regulatory-framework.yaml`](essa-regulatory-framework.yaml) | Machine-readable ESSA space-agency specification: Parts catalogue, registry schema, implementation phases, institutional options |
 | [`cctls.yaml`](cctls.yaml) | Machine-readable CCTLS v0.3.0 lifecycle standard |
 | [`CCTLS.md`](CCTLS.md) | Human-readable CCTLS specification |

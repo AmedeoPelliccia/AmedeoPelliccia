@@ -1,0 +1,426 @@
+##############################################################################
+# ESSA — ACQUA
+# Aerospace and Computational Quantum Universal Architecture
+# Machine-readable companion to ESSA/ACQUA.md
+##############################################################################
+
+document_id: ESSA-DOC-ACQUA-001
+document_type: essa_acqua_architecture
+title: "ACQUA — Aerospace and Computational Quantum Universal Architecture"
+version: "0.1-draft"
+schema_version: "1.0.0"
+status: normative_architecture
+parent: ESSA-DOC-QQQ-001
+last_updated: "2026-03-10T00:00:00Z"
+
+description: >
+  ACQUA defines a formal technology architecture for hybrid systems that
+  integrate aerospace infrastructure, classical computation, artificial
+  intelligence, and quantum computing. It is organized as a multi-layer
+  system governed by the QQQ framework (Quasi–Quanto–Quantum). The
+  architecture is structured in five layers: Mission, System, Compute,
+  Quantum, and Governance.
+
+# ─────────────────────────────────────────────
+# Architectural Principle
+# ─────────────────────────────────────────────
+architectural_principle:
+  formal: "𝒜 = ⟨ L_Quasi, L_Quanto, L_Quantum ⟩"
+  computational_domains:
+    - layer: L_Quasi
+      dynamics: deterministic
+      function: control and execution
+    - layer: L_Quanto
+      dynamics: probabilistic
+      function: adaptation and learning
+    - layer: L_Quantum
+      dynamics: coherent
+      function: optimization and global correlation
+
+# ─────────────────────────────────────────────
+# Five-Layer Stack
+# ─────────────────────────────────────────────
+five_layer_stack:
+  formal: "ACQUA = ⟨ L_M, L_S, L_C, L_Q, L_G ⟩"
+  primary_flow: "L_M → L_S → L_C → L_Q"
+  governance_constraint: "L_G ⊣ {L_M, L_S, L_C, L_Q}"
+
+  layers:
+    - id: L_M
+      name: Mission Layer
+      purpose: >
+        Define system objectives, scenarios, and success criteria
+      formal: "L_M = { G, K, Ω, Σ }"
+      symbols:
+        G: Goals
+        K: KPIs
+        Omega: Operational constraints
+        Sigma: Mission scenarios
+      primary_inputs:
+        - Mission goals
+        - Stakeholder intent
+        - Operational scenarios
+        - Constraints
+        - Strategic KPIs
+      primary_outputs:
+        - Mission requirements
+        - Mission profiles
+        - Success criteria
+        - Operational envelopes
+      governing_authority: Mission Authority / Programme Board
+      key_question: >
+        What mission must be fulfilled, and under what criteria?
+      key_metrics:
+        - mission_success_rate
+        - coverage
+        - responsiveness
+        - endurance
+        - service_continuity
+
+    - id: L_S
+      name: System Layer
+      purpose: >
+        Translate mission intent into physical and functional architecture
+      formal: "L_S = { P, S, A, N, I }"
+      symbols:
+        P: Platforms
+        S: Sensors
+        A: Actuators
+        N: Networks
+        I: Interfaces
+      hardware_set: "H = { h_1, h_2, ..., h_n }"
+      data_acquisition_model: "D(t) = Φ(H, t)"
+      components:
+        - Aerospace platforms
+        - Satellites
+        - UAV / Autonomous Vehicles
+        - Ground stations
+        - HPC and quantum hardware
+        - Sensors and actuators
+      primary_inputs:
+        - Mission requirements
+        - Operational envelopes
+        - Platform constraints
+        - Safety requirements
+      primary_outputs:
+        - System architecture
+        - Subsystem breakdown
+        - ICDs
+        - Sensor/actuator architecture
+        - Network topology
+      governing_authority: Engineering Authority / Chief Systems Engineer
+      key_question: >
+        What physical and functional subsystems are required?
+      key_metrics:
+        - mass_budget
+        - power_budget
+        - latency_budget
+        - interface_maturity
+        - integration_readiness
+
+    - id: L_C
+      name: Compute Layer
+      purpose: >
+        Process data and generate estimation, prediction, and control
+      formal: "L_C = { f_det, f_prob, X̂, Π }"
+      symbols:
+        f_det: Deterministic computation
+        f_prob: Probabilistic computation
+        X_hat: State estimation
+        Pi: Planning / policy layer
+      computational_paradigms:
+        - id: DETERMINISTIC
+          qqq_regime: QUASI
+          formula: "x_{t+1} = f(x_t, u_t)"
+          uses: [control, simulation, safety-critical systems]
+        - id: PROBABILISTIC
+          qqq_regime: QUANTO
+          formula: "P(X_{t+1} | X_t)"
+          uses: [machine learning, prediction, estimation]
+        - id: QUANTUM_ENHANCED
+          qqq_regime: QUANTUM
+          formula: "|ψ(t)⟩ = U(t)|ψ₀⟩"
+          uses: [quantum optimization, material simulation, cryptography]
+      primary_inputs:
+        - Telemetry
+        - Sensor data
+        - State variables
+        - Mission objectives
+        - System status
+      primary_outputs:
+        - State estimates
+        - Control commands
+        - Predictive models
+        - Optimized plans
+        - Digital twin updates
+      governing_authority: Software Authority / Avionics Authority
+      key_question: >
+        How do I process, estimate, predict, and control?
+      key_metrics:
+        - accuracy
+        - latency
+        - robustness
+        - explainability
+        - convergence
+        - fault_tolerance
+
+    - id: L_Q
+      name: Quantum Layer
+      purpose: >
+        Introduce coherence, sensing, and quantum computing capabilities
+      formal: "L_Q = { Q_s, Q_o, Q_c, Q_n }"
+      symbols:
+        Q_s: Quantum sensing
+        Q_o: Quantum optimization
+        Q_c: Quantum computing
+        Q_n: Quantum networking
+      capabilities:
+        - Quantum sensing
+        - Quantum optimization
+        - Quantum simulation
+        - Entanglement-enabled communication
+        - Quantum key distribution (QKD)
+        - Coherence monitoring
+        - Quantum-enhanced estimation
+      principle: >
+        This layer does not replace the classical layer — it amplifies it
+      primary_inputs:
+        - Complex optimization problems
+        - Ultra-precision sensing requirements
+        - Advanced simulation tasks
+        - Coherence constraints
+      primary_outputs:
+        - Optimized solutions
+        - Quantum sensing products
+        - Enhanced correlations
+        - Simulation products
+        - Secure quantum communications
+      governing_authority: Quantum Systems Authority / Advanced Technology Authority
+      key_question: >
+        What advantage can I obtain through sensing, optimization, or quantum
+        correlation?
+      key_metrics:
+        - coherence_time
+        - fidelity
+        - quantum_advantage_ratio
+        - sensing_precision
+        - calibration_stability
+
+    - id: L_G
+      name: Governance Layer
+      purpose: >
+        Ensure control, traceability, safety, and conformance across all layers
+      formal: "L_G = { R, A_u, C_f, T, V }"
+      symbols:
+        R: Rules / policy
+        A_u: Authority
+        C_f: Configuration control
+        T: Traceability
+        V: Verification / validation
+      scope:
+        - Policy and compliance
+        - Safety governance
+        - Cybersecurity
+        - Data sovereignty
+        - Explainability
+        - Auditability
+        - Configuration control
+      transversal_constraint: "L_G ⊣ { L_M, L_S, L_C, L_Q }"
+      primary_inputs:
+        - Policies and regulations
+        - Assurance criteria
+        - Cybersecurity rules
+        - Configuration data
+        - Open risks
+      primary_outputs:
+        - Approved baselines
+        - Compliance decisions
+        - Audit trails
+        - Risk dispositions
+        - Authority-to-operate constraints
+      governing_authority: >
+        Governance Board / Safety / Compliance / Configuration Control Board
+      key_question: >
+        How do I guarantee safety, authority, verification, and change control?
+      key_metrics:
+        - compliance_rate
+        - audit_completeness
+        - traceability_coverage
+        - action_closure
+        - configuration_integrity
+
+# ─────────────────────────────────────────────
+# Hybrid Decision Engine
+# ─────────────────────────────────────────────
+hybrid_decision_engine:
+  formula: >
+    X_{t+1} = w_1 · f_det(X_t) + w_2 · f_prob(X_t) + w_3 · f_quant(X_t)
+  constraint: "w_1 + w_2 + w_3 = 1"
+  weights:
+    - w: w_1
+      paradigm: deterministic
+      qqq_regime: QUASI
+    - w: w_2
+      paradigm: probabilistic
+      qqq_regime: QUANTO
+    - w: w_3
+      paradigm: quantum_enhanced
+      qqq_regime: QUANTUM
+
+# ─────────────────────────────────────────────
+# Structural Regime Parameter (from QQQ)
+# ─────────────────────────────────────────────
+regime_parameter:
+  inherited_from: ESSA-DOC-QQQ-001
+  formula: "λ = αC + βI + γΛ - δO"
+  variables:
+    - symbol: C
+      meaning: inter-subsystem coupling
+    - symbol: I
+      meaning: information density
+    - symbol: Lambda
+      meaning: coherence
+    - symbol: O
+      meaning: dissipation
+
+# ─────────────────────────────────────────────
+# Operational States
+# ─────────────────────────────────────────────
+operational_states:
+  - condition: "λ < λ₁"
+    regime: QUASI
+    mode: Deterministic control
+  - condition: "λ₁ ≤ λ < λ₂"
+    regime: QUANTO
+    mode: Probabilistic adaptive systems
+  - condition: "λ ≥ λ₂"
+    regime: QUANTUM
+    mode: Coherent coordination
+
+# ─────────────────────────────────────────────
+# Formal Functional Model
+# ─────────────────────────────────────────────
+functional_model:
+  formal: "ACQUA = ⟨ H, D, C_det, C_prob, C_quant, M ⟩"
+  symbols:
+    H: Physical hardware
+    D: Data and sensors
+    C_det: Deterministic computation
+    C_prob: Probabilistic computation
+    C_quant: Quantum computation
+    M: Hybrid decision engine
+
+# ─────────────────────────────────────────────
+# Authority Matrix
+# ─────────────────────────────────────────────
+authority_matrix:
+  legend:
+    A: Accountable
+    C: Consulted
+    I: Informed
+  decisions:
+    - domain: Operational objectives
+      Mission: A
+      System: C
+      Compute: C
+      Quantum: C
+      Governance: C
+    - domain: System architecture
+      Mission: C
+      System: A
+      Compute: C
+      Quantum: C
+      Governance: C
+    - domain: Algorithms and control
+      Mission: I
+      System: C
+      Compute: A
+      Quantum: C
+      Governance: C
+    - domain: Quantum function allocation
+      Mission: I
+      System: C
+      Compute: C
+      Quantum: A
+      Governance: C
+    - domain: Baseline / compliance / change approval
+      Mission: I
+      System: C
+      Compute: C
+      Quantum: C
+      Governance: A
+
+# ─────────────────────────────────────────────
+# Traceability Chain
+# ─────────────────────────────────────────────
+traceability_chain:
+  formal: "G_i → R_i → S_i → C_i → Q_i → V_i"
+  symbols:
+    G_i: Mission goal
+    R_i: Derived requirement
+    S_i: Assigned system element
+    C_i: Associated computational function
+    Q_i: Associated quantum function (if applicable)
+    V_i: Verification / validation evidence
+
+# ─────────────────────────────────────────────
+# Synchronization Principle
+# ─────────────────────────────────────────────
+synchronization_principle:
+  maximize: Lambda  # global coherence
+  minimize: O       # dissipation and noise
+
+# ─────────────────────────────────────────────
+# QQQ Mapping
+# ─────────────────────────────────────────────
+qqq_mapping:
+  - regime: QUASI
+    dominant_in:
+      - Classical control
+      - Mission rules
+      - Procedures
+      - Safety envelopes
+      - Configuration baselines
+    acqua_layer: "L_Quasi → L_C (f_det)"
+  - regime: QUANTO
+    dominant_in:
+      - Machine learning
+      - Prediction
+      - Adaptation
+      - Digital twins
+      - Probabilistic analysis
+    acqua_layer: "L_Quanto → L_C (f_prob)"
+  - regime: QUANTUM
+    dominant_in:
+      - Quantum sensing
+      - Quantum optimization
+      - Quantum networks
+      - Distributed coherence
+    acqua_layer: "L_Quantum → L_Q"
+
+# ─────────────────────────────────────────────
+# Related Documents
+# ─────────────────────────────────────────────
+related_documents:
+  - id: ESSA-DOC-QQQ-001
+    role: >
+      Parent theoretical framework — provides the Quasi/Quanto/Quantum
+      regime definitions, the λ parameter, and the regime conditions
+      that govern ACQUA layer activation
+    artefacts:
+      markdown: ESSA/QQQ.md
+      yaml: ESSA/qqq.yaml
+  - id: ESSA-DOC-AMPEL360-001
+    role: >
+      ACQUA computational and quantum layers complement AMPEL360
+      lifecycle phases; ACQUA provides the computational substrate
+      for AMPEL360 lifecycle operations
+    artefacts:
+      markdown: ESSA/AMPEL360.md
+      yaml: ESSA/ampel360.yaml
+  - id: quantum-manifold
+    role: >
+      The quantum-manifold specification governs Hilbert-space state
+      evolution relevant to ACQUA's Quantum Layer (L_Q)
+    artefacts:
+      yaml: quantum-manifold.yaml
