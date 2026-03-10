@@ -167,11 +167,11 @@ The AI agent operates as a **bounded synthesis engine**, not a free design oracl
 
 ### 5.1 Agency Identity and Mission
 
-The European Safety and Security Agency (ESSA) operates as a **Civil Sovereign Lifecycle Governance Authority**.
+The Earth Safety and Security Agency (ESSA) operates as a **Civil Sovereign Lifecycle Governance Authority**.
 
 Institutional declaration:
 
-> **The European Safety and Security Agency (ESSA) operates under a Safety-First Doctrine.**
+> **The Earth Safety and Security Agency (ESSA) operates under a Safety-First Doctrine.**
 > Safety defines mission objectives and generative requirements.
 > Security ensures integrity, resilience, and accountability of all safety-critical systems.
 >

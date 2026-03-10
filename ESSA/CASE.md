@@ -1,6 +1,6 @@
 # ESSA — Case Study: ESSA-ESSA
 
-**European Safety and Security Agency applied to the European Union Space Safety Agency**
+**Earth Safety and Security Agency applied to the European Union Space Safety Agency**
 
 | Metadata | Value |
 |----------|-------|
@@ -20,14 +20,14 @@ Europe currently operates multiple space governance structures — launch, space
 
 The case study **ESSA-ESSA** explores:
 
-> How the **European Safety and Security Agency (ESSA)** — operating under the European Sovereign Systems Architecture constitutional framework — could structurally underpin a hypothetical **European Union Space Safety Agency** as its canonical space-based domain implementation.
+> How the **Earth Safety and Security Agency (ESSA)** — operating under the European Sovereign Systems Architecture constitutional framework — could structurally underpin a hypothetical **European Union Space Safety Agency** as its canonical space-based domain implementation.
 
 The three-tier ESSA architecture is:
 
 | Tier | Name | Role |
 |------|------|------|
 | 1 | European Sovereign Systems Architecture | Constitutional framework |
-| 2 | **European Safety and Security Agency** | Institutional umbrella — safety mission + security governance |
+| 2 | **Earth Safety and Security Agency** | Institutional umbrella — safety mission + security governance |
 | 3 | European Union Space Safety Agency | Space-specific civil implementation |
 
 This is **not** a proposal for institutional duplication.

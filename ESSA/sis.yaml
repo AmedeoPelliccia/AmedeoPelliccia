@@ -48,7 +48,7 @@ definition:
 # ─────────────────────────────────────────────
 stack_position:
   tier_1: European Sovereign Systems Architecture (ESSA-Architecture)
-  tier_2: European Safety and Security Agency (ESSA-Agency)
+  tier_2: Earth Safety and Security Agency (ESSA-Agency)
   tier_3: Sector Agencies (Space, Aviation, RSP, Autonomy)
   alignment_requirements:
     - safety_as_mission: Safety envelopes are first-class generative artefacts

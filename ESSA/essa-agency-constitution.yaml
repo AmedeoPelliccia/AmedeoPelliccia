@@ -1,6 +1,6 @@
 ##############################################################################
 # ESSA-Agency Constitution v0.1
-# European Safety and Security Agency — Constitutional Bridge Layer
+# Earth Safety and Security Agency — Constitutional Bridge Layer
 # Machine-readable companion to ESSA/ESSA-AGENCY-CONSTITUTION.md
 ##############################################################################
 
@@ -25,7 +25,7 @@ description: >
 # Minimal Charter Statement
 # ─────────────────────────────────────────────
 charter_statement: >
-  The European Safety and Security Agency (ESSA-Agency) is the institutional
+  The Earth Safety and Security Agency (ESSA-Agency) is the institutional
   bridge between the European Sovereign Systems Architecture and European sector
   safety agencies. It operates under a Safety-First doctrine: advance in safety,
   protect in security. Safety defines the agentic mission and drives requirement
@@ -45,7 +45,7 @@ stack_placement:
     role: constitutional_digital_substrate
     provides: [standards, token_graph, lifecycle_governance]
   tier_2:
-    name: European Safety and Security Agency
+    name: Earth Safety and Security Agency
     acronym: ESSA-Agency
     role: institutional_mission_and_governance_layer
     document_id: ESSA-CONST-001

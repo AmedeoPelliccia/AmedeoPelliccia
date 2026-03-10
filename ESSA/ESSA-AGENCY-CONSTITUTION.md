@@ -1,6 +1,6 @@
 # ESSA-Agency Constitution v0.1
 
-**European Safety and Security Agency — Constitutional Bridge Layer**
+**Earth Safety and Security Agency — Constitutional Bridge Layer**
 
 | Metadata | Value |
 |----------|-------|
@@ -18,7 +18,7 @@
 
 ## Minimal Charter Statement
 
-> The **European Safety and Security Agency (ESSA-Agency)** is the institutional bridge between the European Sovereign Systems Architecture and European sector safety agencies.
+> The **Earth Safety and Security Agency (ESSA-Agency)** is the institutional bridge between the European Sovereign Systems Architecture and European sector safety agencies.
 > It operates under a Safety-First doctrine: **advance in safety, protect in security**.
 > Safety defines the agentic mission and drives requirement derivation and design generation.
 > Security provides governance invariants ensuring integrity, resilience, accountability, and controlled interoperability across all safety-critical lifecycle artefacts and transitions.
@@ -32,7 +32,7 @@
 European Sovereign Systems Architecture (ESSA-Architecture)
                     │
                     ▼
-    EUROPEAN SAFETY AND SECURITY AGENCY (ESSA-Agency)
+    EARTH SAFETY AND SECURITY AGENCY (ESSA-Agency)
                     │
                     ▼
 European Union Space Safety Agency (EUSSA — disambiguating alias for the ESSA space-domain implementation) + other sector agencies
@@ -42,7 +42,7 @@ European Union Space Safety Agency (EUSSA — disambiguating alias for the ESSA 
 | Tier | Layer | Name | Role |
 |------|-------|------|------|
 | 1 | Constitutional Architecture | **European Sovereign Systems Architecture** | Constitutional digital substrate — standards, token graph, lifecycle governance |
-| 2 | Institutional Agency | **European Safety and Security Agency** | Institutional mission + governance layer |
+| 2 | Institutional Agency | **Earth Safety and Security Agency** | Institutional mission + governance layer |
 | 3 | Sector Execution | **EUSSA + other sector agencies** | Domain-specific safety operations under ESSA-Agency mandates |
 
 ESSA-Architecture provides the constitutional digital substrate.

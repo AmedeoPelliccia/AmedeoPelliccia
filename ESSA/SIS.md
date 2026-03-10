@@ -42,7 +42,7 @@ When these three tiers operate under a unified safety-driven lifecycle graph wit
 ```
 European Sovereign Systems Architecture (ESSA-Architecture)
                     ↓
-    European Safety and Security Agency (ESSA-Agency)
+    Earth Safety and Security Agency (ESSA-Agency)
                     ↓
      Sector Agencies (Space · Aviation · RSP · Autonomy)
 ```

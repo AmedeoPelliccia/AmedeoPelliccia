@@ -40,7 +40,7 @@ stack_position:
     role: Tier 1 — constitutional digital substrate
   - tier: constitutional_framework
     id: ESSA
-    role: Tier 2 — European Safety and Security Agency
+    role: Tier 2 — Earth Safety and Security Agency
   - tier: abstract_method
     id: AMPEL
     document: ESSA-DOC-AMPEL-001

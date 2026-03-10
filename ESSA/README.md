@@ -1,6 +1,6 @@
 # ESSA
 
-**European Safety and Security Agency**
+**Earth Safety and Security Agency**
 
 *A Civil Sovereign Lifecycle Governance Authority*
 
@@ -13,7 +13,7 @@
 
 > **Institutional Declaration**
 >
-> The European Safety and Security Agency (ESSA) operates under a **Safety-First Doctrine**.
+> The Earth Safety and Security Agency (ESSA) operates under a **Safety-First Doctrine**.
 > Safety defines mission objectives and generative requirements.
 > Security ensures integrity, resilience, and accountability of all safety-critical systems.
 >
@@ -26,10 +26,10 @@
 > | Tier | Level | Full Name | Role |
 > |------|-------|-----------|------|
 > | 1 | Constitutional Architecture | **European Sovereign Systems Architecture** | The abstract constitutional framework governing lifecycle integrity, certification, and ethical invariants across all sovereign domains |
-> | 2 | Institutional Agency | **European Safety and Security Agency** | The civil institutional umbrella — safety mission + security governance — sitting between constitutional architecture and domain implementations |
+> | 2 | Institutional Agency | **Earth Safety and Security Agency** | The civil institutional umbrella — safety mission + security governance — sitting between constitutional architecture and domain implementations |
 > | 3 | Domain Implementation | **European Union Space Safety Agency** | The canonical space-based, civil-platforms implementation documented in [`essa-regulatory-framework.yaml`](essa-regulatory-framework.yaml) |
 >
-> ESSA (European Safety and Security Agency) is a **governance artefact and institutional model** within the IDEALE-ESG / AMPEL framework. It is **not** currently an enacted EU agency in the legal framework of the European Union. Some analogous functions are performed by the **European Union Agency for the Space Programme (EUSPA)** under the EU Space Programme Regulation (2021/696) and EU Space Act proposals.
+> ESSA (Earth Safety and Security Agency) is a **governance artefact and institutional model** within the IDEALE-ESG / AMPEL framework. It is **not** currently an enacted EU agency in the legal framework of the European Union. Some analogous functions are performed by the **European Union Agency for the Space Programme (EUSPA)** under the EU Space Programme Regulation (2021/696) and EU Space Act proposals.
 
 ---
 
@@ -460,7 +460,7 @@ It is a federated constitutional architecture.
 
 **Institutional Declaration (ESSA Safety-First Doctrine):**
 
-> The European Safety and Security Agency (ESSA) operates under a Safety-First Doctrine.
+> The Earth Safety and Security Agency (ESSA) operates under a Safety-First Doctrine.
 > Safety defines mission objectives and generative requirements.
 > Security ensures integrity, resilience, and accountability of all safety-critical systems.
 
@@ -568,7 +568,7 @@ Measured sustainability overlay integrated into lifecycle tokens and chain nodes
 **ESSA** is used in this document as a three-tier acronym:
 
 - **Tier 1 — European Sovereign Systems Architecture** (this document layer — constitutional digital substrate)
-- **Tier 2 — European Safety and Security Agency** (institutional mission and governance layer)
+- **Tier 2 — Earth Safety and Security Agency** (institutional mission and governance layer)
 - **Tier 3 — European Union Space Safety Agency** (space-domain execution fork; also referenced as EUSSA to disambiguate from the tier-2 acronym)
 
 The canonical space-based civil-platforms fork is documented in [`essa-regulatory-framework.yaml`](essa-regulatory-framework.yaml).

@@ -1,12 +1,12 @@
 ##############################################################################
 # ESSA — Safety-First Doctrine
-# European Safety and Security Agency
+# Earth Safety and Security Agency
 # Machine-readable companion to ESSA/SAFETY-FIRST.md
 ##############################################################################
 
 document_id: ESSA-DOC-SF-001
 document_type: essa_safety_first_doctrine
-title: "ESSA Safety-First Doctrine — European Safety and Security Agency: Safety as the Primary Generative Objective"
+title: "ESSA Safety-First Doctrine — Earth Safety and Security Agency: Safety as the Primary Generative Objective"
 version: "0.1-draft"
 schema_version: "1.0.0"
 status: normative_doctrine
@@ -179,11 +179,11 @@ agentic_ai_contract:
 # 5. Institutional Consequence
 # ─────────────────────────────────────────────
 institutional_consequence:
-  agency_name: European Safety and Security Agency
+  agency_name: Earth Safety and Security Agency
   agency_acronym: ESSA
   agency_type: civil_sovereign_lifecycle_governance_authority
   institutional_declaration: >
-    The European Safety and Security Agency (ESSA) operates under a Safety-First
+    The Earth Safety and Security Agency (ESSA) operates under a Safety-First
     Doctrine. Safety defines mission objectives and generative requirements.
     Security ensures integrity, resilience and accountability of all
     safety-critical systems.
@@ -246,7 +246,7 @@ institutional_consequence:
       name: European Sovereign Systems Architecture
       role: abstract_constitutional_framework
     - tier: 2
-      name: European Safety and Security Agency
+      name: Earth Safety and Security Agency
       role: civil_institutional_umbrella_safety_mission_security_governance
     - tier: 3
       name: European Union Space Safety Agency
