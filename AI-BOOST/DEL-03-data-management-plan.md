@@ -373,7 +373,43 @@ resources:
     note: "Large datasets (DS-01, DS-02, DS-03) will be deposited as sampled/curated subsets with full data available on request (L1 access)."
 
 # ─────────────────────────────────────────────
-# 7. Revision History
+# 7. Gantt Milestones (machine-readable)
+# ─────────────────────────────────────────────
+gantt:
+  project_start: "2025-08-25"
+  project_end: "2028-08-25"
+  milestones:
+    - id: M6
+      date: "2026-02-25"
+      label: "Initial DMP (v0.1)"
+      activities: [Governance setup, Dataset mapping, FAIR policies, Security classification]
+    - id: M12
+      date: "2026-08-25"
+      label: "First deposits"
+      activities: [Zenodo deposits start, DS-04 collection complete, DS-06 production starts]
+    - id: M18
+      date: "2027-02-25"
+      label: "Mid-term DMP Update (v1.0)"
+      activities: [Volume assessment, New datasets catalogued, Access statistics review]
+    - id: M24
+      date: "2027-08-25"
+      label: "Integrity audit"
+      activities: [Integrity audit, Export control review, Contingency assessment]
+    - id: M30
+      date: "2028-02-25"
+      label: "Pre-final curation"
+      activities: [Data curation, Preservation readiness check]
+    - id: M36
+      date: "2028-08-25"
+      label: "Final DMP (v2.0)"
+      activities: [Final DOI catalogue, Preservation confirmation, Lessons learned]
+    - id: M36_plus_12
+      date: "2029-08-25"
+      label: "Post-project data deletion"
+      activities: [Intermediate data deletion complete]
+
+# ─────────────────────────────────────────────
+# 8. Revision History
 # ─────────────────────────────────────────────
 revision_history:
   - version: "0.1"
@@ -417,8 +453,9 @@ revision_history:
 6. [Ethics and Legal Compliance](#6-ethics-and-legal-compliance)
 7. [Preservation and Long-Term Access](#7-preservation-and-long-term-access)
 8. [Resource Allocation](#8-resource-allocation)
-9. [Revision History](#9-revision-history)
-10. [Glossary](#10-glossary)
+9. [Milestone Gantt Chart](#9-milestone-gantt-chart)
+10. [Revision History](#10-revision-history)
+11. [Glossary](#11-glossary)
 
 ---
 
@@ -597,7 +634,60 @@ Data breaches or integrity failures are managed according to severity.
 
 ---
 
-## 9. Revision History
+## 9. Milestone Gantt Chart
+
+The following chart visualises the full project timeline, DMP milestones, data lifecycle activities, and work-package data workflows.
+
+```mermaid
+gantt
+    title AI-BOOST — Data Management Plan Timeline
+    dateFormat YYYY-MM-DD
+    axisFormat %b %Y
+
+    section Project
+    Project duration (36 months)          :active, proj, 2025-08-25, 2028-08-25
+
+    section DMP Milestones
+    M6  — Initial DMP (v0.1)              :milestone, m6,  2026-02-25, 0d
+    M18 — Mid-term DMP Update (v1.0)      :milestone, m18, 2027-02-25, 0d
+    M36 — Final DMP (v2.0)                :milestone, m36, 2028-08-25, 0d
+
+    section Data Collection & Generation
+    DS-01 HPC benchmark telemetry         :ds01, 2025-08-25, 2028-08-25
+    DS-02 AI/ML model artefacts           :ds02, 2025-08-25, 2028-08-25
+    DS-03 Quantum simulation outputs      :ds03, 2026-02-25, 2028-08-25
+    DS-04 Reference datasets (public)     :ds04, 2025-08-25, 2026-08-25
+    DS-05 Certified dynamics audit logs   :ds05, 2026-02-25, 2028-08-25
+    DS-06 Technical publications (S1000D) :ds06, 2026-08-25, 2028-08-25
+    DS-07 Environmental & lifecycle metrics:ds07, 2025-08-25, 2028-08-25
+
+    section Governance & Quality
+    Governance structure setup            :gov, 2025-08-25, 2026-02-25
+    Metadata & DOI minting (ongoing)      :meta, 2026-02-25, 2028-08-25
+    Quarterly integrity checks            :qic, 2026-02-25, 2028-08-25
+    Monthly repository health checks      :rhc, 2026-02-25, 2028-08-25
+
+    section Preservation & Closure
+    Zenodo deposits (curated subsets)     :zen, 2026-08-25, 2028-08-25
+    Final DOI catalogue                   :milestone, doi, 2028-08-25, 0d
+    Intermediate data deletion            :del, 2028-08-25, 2029-08-25
+```
+
+### 9.1 Milestone Summary
+
+| Milestone | Date | DMP Version | Key Activities |
+|:---|:---|:---|:---|
+| **M6** | 2026-02-25 | v0.1 (Initial) | Governance setup, dataset mapping, FAIR policies defined, security classification applied |
+| **M12** | 2026-08-25 | — | First Zenodo deposits, DS-04 collection complete, DS-06 production starts |
+| **M18** | 2027-02-25 | v1.0 (Mid-term) | Actual volumes assessed, new datasets catalogued, access statistics reviewed |
+| **M24** | 2027-08-25 | — | Integrity audit, export control review, contingency plan assessment |
+| **M30** | 2028-02-25 | — | Pre-final data curation, preservation readiness check |
+| **M36** | 2028-08-25 | v2.0 (Final) | Final DOI catalogue, preservation confirmation, lessons learned |
+| **M36+12** | 2029-08-25 | — | Intermediate data deletion complete |
+
+---
+
+## 10. Revision History
 
 This DMP is a living document. Updates are tracked in the YAML header and below.
 
@@ -609,7 +699,7 @@ This DMP is a living document. Updates are tracked in the YAML header and below.
 
 ---
 
-## 10. Glossary
+## 11. Glossary
 
 | Term | Definition |
 |:---|:---|
@@ -622,7 +712,7 @@ This DMP is a living document. Updates are tracked in the YAML header and below.
 
 ---
 
-## 11. Approval
+## 12. Approval
 
 **Prepared by:** Amedeo Pelliccia
 **Date:** 2026-02-25
