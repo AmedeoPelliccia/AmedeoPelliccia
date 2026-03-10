@@ -1,0 +1,213 @@
+##############################################################################
+# ESSA — Structural Integration State (SIS)
+# Machine-readable companion to ESSA/SIS.md
+##############################################################################
+
+document_id: ESSA-DOC-SIS-001
+document_type: essa_structural_integration_state
+title: "Structural Integration State (SIS) — Constitutional Concept in ESSA Governance"
+version: "0.1-draft"
+schema_version: "1.0.0"
+status: constitutional_concept
+parent: ESSA-CONST-001
+last_updated: "2026-02-28T00:00:00Z"
+
+description: >
+  Formal definition of the Structural Integration State (SIS): the condition in
+  which architecture, governance, safety mission, and security invariants are
+  coherently embedded into institutional execution under ESSA. Defines the seven
+  conditions, five components, priority ordering, and Structural Integration
+  Index (SII) measurement dimensions.
+
+# ─────────────────────────────────────────────
+# Constitutional Declaration
+# ─────────────────────────────────────────────
+constitutional_declaration: >
+  A Structural Integration State is achieved when Safety-driven mission, Security
+  governance invariants, and Lifecycle execution operate coherently within a
+  unified architectural graph under ESSA.
+
+# ─────────────────────────────────────────────
+# 1. Definition
+# ─────────────────────────────────────────────
+definition:
+  term: Structural Integration State
+  acronym: SIS
+  type: structural_condition_of_systemic_coherence
+  not: traditional_political_state
+  applies_to:
+    - constitutional_digital_substrate: ESSA-Architecture
+    - institutional_mission_and_governance: ESSA-Agency
+    - domain_execution_authorities: [EUSSA, sector_agencies]
+  achieved_when: >
+    All three tiers operate under a unified safety-driven lifecycle graph with
+    shared invariants, baselines, and evidence.
+
+# ─────────────────────────────────────────────
+# 2. Stack Position
+# ─────────────────────────────────────────────
+stack_position:
+  tier_1: European Sovereign Systems Architecture (ESSA-Architecture)
+  tier_2: European Safety and Security Agency (ESSA-Agency)
+  tier_3: Sector Agencies (Space, Aviation, RSP, Autonomy)
+  alignment_requirements:
+    - safety_as_mission: Safety envelopes are first-class generative artefacts
+    - security_as_governance: Security invariants protect the safety mission
+    - deterministic_lifecycle: INTERPRET → CONFIRM → ACTIVATE → PUBLISH gates
+    - agentic_bounded_generation: All generated candidates bounded by Safety Envelope
+
+# ─────────────────────────────────────────────
+# 3. Seven Conditions for SIS
+# ─────────────────────────────────────────────
+sis_conditions:
+  - id: SIS-C-001
+    name: Safety Envelope Generation
+    description: Safety envelopes derive requirements
+  - id: SIS-C-002
+    name: Bounded Design
+    description: Requirements constrain the design space within safety bounds
+  - id: SIS-C-003
+    name: Integrity Governance
+    description: Security protects the integrity of the safety process
+  - id: SIS-C-004
+    name: Invariant Certification
+    description: Certification validates safety invariants, not narrative conformance
+  - id: SIS-C-005
+    name: Operational Feedback
+    description: Operation retrofeeds safety evidence into the lifecycle graph
+  - id: SIS-C-006
+    name: Traced Authority
+    description: Authority is traced, bound, and auditable at every gate
+  - id: SIS-C-007
+    name: Federated Interoperability
+    description: Cross-domain interoperability is structural, not ad-hoc
+  note: SIS is transversal coherence, not vertical hierarchy
+
+# ─────────────────────────────────────────────
+# 4. Five Components of SIS
+# ─────────────────────────────────────────────
+sis_components:
+  - id: SIS-COMP-A
+    name: Ontological Integration
+    description: >
+      A single model of artefacts, states, and tokens (CCTLS token graph)
+      governs all lifecycle activity across all tiers and domains.
+    requires: ESSA-STD-CCTLS-001
+  - id: SIS-COMP-B
+    name: Normative Integration
+    description: >
+      A minimum common set of invariants (EU-SECURITY MCSC) applies uniformly
+      across all sector agencies and profiles. Profiles may tighten, not weaken.
+    requires: EU-SECURITY-MCSC
+  - id: SIS-COMP-C
+    name: Operational Integration
+    description: >
+      The CONFIRM → ACTIVATE gate sequence is applied uniformly across all
+      lifecycle transitions. No transition is activated without S-preservation
+      evidence.
+    requires: ESSA-STD-CCTLS-001
+  - id: SIS-COMP-D
+    name: Ethical Integration
+    description: >
+      Safety-First Doctrine applies without exception.
+      Priority ordering: Safety > Security > Performance.
+    requires: ESSA-DOC-SF-001
+  - id: SIS-COMP-E
+    name: Technological Integration
+    description: >
+      LCOS runtime and ALPC conformance engine are the technological enablers.
+      LCOS executes lifecycle state transitions and ledger. ALPC validates
+      conformance (S-preservation, evidence sufficiency, baseline integrity).
+    requires: [LCOS, ALPC]
+
+# ─────────────────────────────────────────────
+# 5. What SIS Is Not
+# ─────────────────────────────────────────────
+sis_exclusions:
+  - Absolute centralisation
+  - Militarisation
+  - Super-agency with political command authority
+  - Political control or sovereignty over national agencies
+sis_positive_definition: >
+  Structural coherence between mission, governance, and execution — enabling
+  safety-driven, deterministic, interoperable, and ethically bound lifecycle
+  governance.
+
+# ─────────────────────────────────────────────
+# 6. SIS vs Fragmented Model
+# ─────────────────────────────────────────────
+sis_vs_fragmented:
+  fragmented_model:
+    - Regulation: Agency A regulates in isolation
+    - Certification: Agency B certifies independently
+    - Design: Industry designs without shared bounds
+    - Security: Security layer superimposed post-hoc
+    - Sustainability: Reported in separate silos
+    - Interoperability: Ad-hoc bilateral agreements
+    - Ethics: External policy layer
+  structural_integration_state:
+    - Regulation: All operate on a shared lifecycle graph
+    - Certification: ALPC validates invariants deterministically
+    - Design: Bounded synthesis inside Safety Envelope
+    - Security: Invariants embedded in lifecycle gates
+    - Sustainability: Measurable on the shared evidence graph
+    - Interoperability: Structural — shared baselines and attestations
+    - Ethics: Executable constraints in the lifecycle graph
+
+# ─────────────────────────────────────────────
+# 7. Safety-Driven Priority Ordering
+# ─────────────────────────────────────────────
+priority_ordering:
+  rule: "Safety > Security > Performance"
+  constraints:
+    - security_cannot_override_safety: true
+    - performance_cannot_weaken_safety_envelope: true
+    - innovation_must_occur_inside_safety_envelope: true
+  constitutional_rule: >
+    Security ensures the mission is never corrupted. Security never redefines it.
+  reference: ESSA-DOC-SF-001
+
+# ─────────────────────────────────────────────
+# 8. Structural Integration Index (SII)
+# ─────────────────────────────────────────────
+structural_integration_index:
+  description: >
+    A composite indicator derived from the lifecycle graph measuring the degree
+    of structural integration achieved across five dimensions.
+  dimensions:
+    - id: SII-D1
+      name: Ontological
+      measurement: >
+        Percentage of lifecycle artefacts tokenised under the common schema
+    - id: SII-D2
+      name: Normative
+      measurement: >
+        Percentage of active invariants with MCSC coverage
+    - id: SII-D3
+      name: Operational
+      measurement: >
+        Percentage of gate transitions with complete evidence chain
+    - id: SII-D4
+      name: Ethical
+      measurement: >
+        Percentage of design candidates that are envelope-bounded
+    - id: SII-D5
+      name: Technological
+      measurement: >
+        Percentage of certification outputs that are machine-verifiable
+  full_sis_condition: >
+    All five dimensions above constitutional minimum threshold (to be defined
+    per domain profile).
+
+# ─────────────────────────────────────────────
+# 9. Strategic Implications
+# ─────────────────────────────────────────────
+strategic_implications:
+  - Regulation becomes anticipatory, not reactive
+  - Certification is deterministic, not narrative
+  - Interoperability is structural, not negotiated
+  - Ethics is verifiable by computation
+  - Sovereignty is technical, not declarative
+  assertion: >
+    A Structural Integration State is the condition under which ESSA-Agency can
+    credibly assert: we govern by structure, not by assertion.

@@ -1,0 +1,149 @@
+##############################################################################
+# ESSA — AMPEL360 Q100
+# Aviation Profile (EASA / CS-25)
+# Machine-readable companion to ESSA/AMPEL360-Q100.md
+##############################################################################
+
+document_id: ESSA-DOC-AMPEL360-Q100-001
+document_type: essa_ampel360_domain_profile
+title: "AMPEL360 Q100 — Aviation Profile (EASA / CS-25)"
+version: "0.1-draft"
+schema_version: "1.0.0"
+status: normative_method
+parent: ESSA-DOC-AMPEL360-001
+last_updated: "2026-03-01T00:00:00Z"
+
+domain:
+  name: Civil Aviation
+  platform: Civil hydrogen aircraft (~100 pax)
+  regulatory_authority: European Union Aviation Safety Agency (EASA)
+
+profile_principle: >
+  One AMPEL360 kernel. Q100 is the EASA lifecycle profile.
+  Safety-first invariant unchanged. Q100 tightens the AMPEL360 baseline;
+  cannot weaken any ESSA constitutional invariant.
+
+# ─────────────────────────────────────────────
+# H-Factor Definition
+# ─────────────────────────────────────────────
+h_factor:
+  definition: Passenger and crew safety envelope
+  primary_standard: CS 25.1309
+  safety_assessments: [FHA, PSSA, SSA]
+  security_role: Artefact integrity and DOA governance
+
+# ─────────────────────────────────────────────
+# Regulatory Framework
+# ─────────────────────────────────────────────
+regulatory_alignment:
+  - framework: CS-25/Part-25
+    role: Primary airworthiness standard — all H_REQ derived from CS-25 compliance matrix
+  - framework: Part-21
+    role: Design Organisation Approval (DOA) — H_SIGNOFF authority chain
+  - framework: CS-ETSO
+    role: Equipment standards (if applicable) — bound as H_CONSTRAINT
+  - framework: DO-178C
+    role: Software assurance — artefacts registered as H_EVIDENCE
+  - framework: DO-254
+    role: Hardware assurance — artefacts registered as H_EVIDENCE
+  - framework: EASA-AMC
+    role: Acceptable Means of Compliance — methods validated at P040
+  - framework: Part-M/Part-145
+    role: Continued Airworthiness — ICA compliance as H_UPDATE trigger
+
+# ─────────────────────────────────────────────
+# Phase Profile
+# ─────────────────────────────────────────────
+phase_profile:
+  - phase: P010
+    name: Concept
+    q100_specialisation:
+      - FHA → H_HAZARD tokenisation
+      - Safety envelope alignment with CS 25.1309
+  - phase: P020
+    name: Architecture and Requirements
+    q100_specialisation:
+      - TLAR → CS-25 compliance matrix → H_REQ tokenisation
+      - PSSA decomposition → H_CONSTRAINT
+      - SSA linkage established at P020 gate
+    mandatory_mcsc: [MCSC-ETH-03, MCSC-RES-01]
+  - phase: P030
+    name: Industrial Chain
+    q100_specialisation:
+      - Hydrogen-specific supply chain H_CONSTRAINT binding
+      - ESG evidence for novel propulsion chain
+    mandatory_mcsc: [MCSC-ETH-01]
+  - phase: P040
+    name: Engineering
+    q100_specialisation:
+      - Methods aligned to EASA AMC
+      - DO-178C/DO-254 tool qualification status as H_CONSTRAINT
+      - DMU/PMU as H_EVIDENCE (structural, fuel system)
+  - phase: P050
+    name: Authority and Compliance
+    q100_specialisation:
+      - DOA sign-off (H_SIGNOFF) per CS-25 subpart
+      - Compliance demonstration matrix: H_REQ → H_EVIDENCE → H_SIGNOFF
+    mandatory_mcsc: [MCSC-ACC-02, MCSC-ETH-01]
+  - phase: P060
+    name: Integration
+    q100_specialisation:
+      - Hydrogen integration evidence (fuel cell, structural, thermal) as H_EVIDENCE
+  - phase: P070
+    name: Test
+    q100_specialisation:
+      - Flight test campaign: each test point as H_EVIDENCE
+      - CS-25 compliance showing table mapping
+      - Special conditions as H_EXCEPTION with DOA-signed rollback
+  - phase: P080
+    name: Operations
+    q100_specialisation:
+      - ICA generation as H_EVIDENCE
+      - Part-M occurrence reports → H_UPDATE → H_ENVELOPE re-evaluation
+    mandatory_mcsc: [MCSC-ACC-03, MCSC-SCI-01]
+  - phase: P090
+    name: Mission
+    q100_specialisation:
+      - Hydrogen range / payload / weather limits in H_ENVELOPE
+      - Mission deviations → H_UPDATE
+    mandatory_mcsc: [MCSC-HOB-03, MCSC-ETH-02]
+  - phase: P100
+    name: Reporting
+    q100_specialisation:
+      - Consolidated airworthiness evidence + SII scoring
+  - phase: P120
+    name: Baseline Update
+    q100_specialisation:
+      - STC / change package — CS-25 change classification
+      - H_ENVELOPE version increment with DOA authority
+    mandatory_mcsc: ["MCSC-RES-*"]
+
+# ─────────────────────────────────────────────
+# Gate Invariant (Q100 Specialisation)
+# ─────────────────────────────────────────────
+gate_invariant:
+  conditions_per_phase:
+    - "Tokens(pᵢ) ⊆ Valid(H_CS25)          # CS-25-derived envelope"
+    - "MCSC(pᵢ) ⊆ S                         # security invariant"
+    - "Complete(T, pᵢ)                      # no orphaned tokens"
+    - "Signed(H_SIGNOFF, DOA, pᵢ)           # DOA authority confirmed"
+    - "CS25_Compliance(pᵢ) = DEMONSTRATED   # showing tables complete"
+  q100_rule: >
+    Any design artefact without a complete H_REQ → H_EVIDENCE → H_SIGNOFF
+    chain traceable to a CS-25 subpart SHALL NOT be activated.
+
+# ─────────────────────────────────────────────
+# Constitutional Relationships
+# ─────────────────────────────────────────────
+constitutional_relationships:
+  - instrument: ESSA-DOC-AMPEL360-001
+    role: Q100 inherits all five core responsibilities unchanged
+  - instrument: ESSA-CONST-001
+    satisfies: [CI-001, CI-002, CI-003, CI-004, CI-005, CI-006, CI-007]
+    context: Within the EASA regulatory domain
+  - instrument: ESSA-DOC-H-001
+    role: Q100 maps all eight H-tokens to CS-25/Part-21/Part-M artefact types
+  - instrument: ESSA-DOC-SF-001
+    role: Enforces SF-RULE-01 through SF-RULE-06 within EASA domain
+  - instrument: ESSA-STD-CCTLS-001
+    role: Phase coverage P000–P120 with EASA-specific gate conditions

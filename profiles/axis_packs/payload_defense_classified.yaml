@@ -1,0 +1,32 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# AMPEL360 — Axis Pack: PAYLOAD = DEFENSE_CLASSIFIED
+# Military classification regime
+# Ref: AMPEL360-ARCH-SPEC-v2.0 §9.3, §9.6
+# ──────────────────────────────────────────────────────────────────────────────
+
+axis: payload_classification
+value: DEFENSE_CLASSIFIED
+description: >
+  Military classification regime. Forces federated search pushdown,
+  disables query relaxation, enforces attestation-only disclosure,
+  and mandates provenance watermarking.
+
+additional_rulesets:
+  - FEDERATED_SEARCH_PUSHDOWN_RULE
+  - PROVENANCE_WATERMARKING_RULE
+
+constraints:
+  disclosure_mode: ATTESTATION_ONLY
+  query_relaxation: false
+
+security_overlay:
+  access_control: military_grade
+  logging: forensic
+  redaction: full
+  air_gap: mandatory
+
+federation_policy:
+  cross_tenant_retrieval: denied
+  query_relaxation: denied
+  disclosure_mode: ATTESTATION_ONLY
+  provenance_watermarking: mandatory

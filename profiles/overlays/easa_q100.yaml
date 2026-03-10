@@ -1,0 +1,44 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# AMPEL360 — Regulatory Overlay: EASA-Q100
+# Civil Aviation — EASA / CS-25 / DO-178C DAL A
+# Ref: AMPEL360-ARCH-SPEC-v2.0 §9.7
+# ──────────────────────────────────────────────────────────────────────────────
+
+overlay_id: EASA-Q100
+description: >
+  EASA-Q100 regulatory overlay for the Q100 civil passenger aircraft
+  programme. Applies CS-25, Part-21, DO-178C DAL A requirements.
+
+profile_example: "AIR.PAX_TRANSPORT.CIVIL_PUBLIC.EASA-Q100(+DO-178C-DAL-A)"
+
+regulatory:
+  primary: EASA
+  standards:
+    - CS-25
+    - Part-21
+    - DO-178C
+    - DO-254
+    - Part-M
+    - Part-145
+  software:
+    do178c:
+      enabled: true
+      dal: A
+
+additional_templates:
+  - EASA_CS25_COMPLIANCE_TEMPLATE
+
+additional_rulesets:
+  - DO_178C_DAL_A_RULESET
+
+constraints:
+  risk_threshold: 1.0e-9
+  dal_level: A
+  require_authority: true
+
+graph_root:
+  model: programme_centric_with_safety_constraint
+  programme_node: Q100_TYPE_CERTIFICATE
+  asset_inheritance: MSN_LEVEL
+  h_factor: HOB
+  context: CIVIL
