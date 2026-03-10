@@ -291,7 +291,7 @@ Evolution does not seek maximum efficiency. It seeks improvement within Human Sa
 
 ---
 
-### 3.7 AMPEL360 — Assisted Methods for Programming ESSA Lifecycles
+### 3.7 AMPEL360 — Assisted Methods for Programming ESSA Lifecycles - Aerospace Model for Product and Engineering Lifecycles
 
 **Canonical artefacts:** [`AMPEL360.md`](AMPEL360.md) · [`ampel360.yaml`](ampel360.yaml)
 
