@@ -1107,7 +1107,7 @@ It is structural logic, not rhetoric.
 | `procedure_registry_entry.schema.json` | `.path_mtl/procedures/` | Procedure entry schema (`§3.1a` §7) |
 | `template_registry_entry.schema.json` | `.path_mtl/templates/` | Template entry schema (`§3.1a` §7) |
 | `ledger.schema.json` | `.path_mtl/ledger/` | TEKNIA ledger entry schema (`§STD`) |
-| `data-management-plan.yaml` | `AI-BOOST/` | DEL-03 Data Management Plan: datasets, FAIR mappings, security levels, preservation (Excellence → Data) |
+| `DEL-03-data-management-plan.md` | `AI-BOOST/` | DEL-03 Data Management Plan (YAML front matter + Markdown): datasets, FAIR mappings, security levels, governance, preservation (Excellence → Data) |
 | `application-strategy.yaml` | `AI-BOOST/` | AI-BOOST deliverable registry (DEL-01–DEL-09), EuroHPC JU Frontier AI Grand Challenge |
 | `uts-taxonomy.yaml` | `UTS/` | Universal Transport System domain taxonomy (categories 000–080), evidence/artefact registry, Domain Atlas integration |
 
