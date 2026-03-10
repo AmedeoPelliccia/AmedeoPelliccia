@@ -493,12 +493,159 @@ The project will generate and collect seven primary dataset categories. Estimate
 - **Pre-trained Models:** Used under respective licences; weights are not redistributed unless explicitly permitted.
 - **Personal Data:** The project **does not** collect, process, or store personal data.
 
-### 2.3 Data Integrity Architecture
+### 2.3 Dataset Volume Distribution
+
+The following chart shows the relative estimated annual storage footprint across all datasets, illustrating that HPC benchmark telemetry (DS-01) dominates volume planning.
+
+```mermaid
+pie title Estimated Annual Data Volume
+    "DS-01 HPC telemetry (50 TB)" : 50
+    "DS-02 AI/ML artefacts (5 TB)" : 5
+    "DS-03 Quantum sim (2 TB)" : 2
+    "DS-04 Reference data (0.5 TB)" : 0.5
+    "DS-05 Audit logs (0.01 TB)" : 0.01
+    "DS-06 Tech pubs (0.001 TB)" : 0.001
+    "DS-07 Env metrics (0.005 TB)" : 0.005
+```
+
+### 2.4 Dataset–WP–Objective Traceability
+
+Each dataset is traceable to a specific Work Package and project objective. The following diagram shows this mapping.
+
+```mermaid
+graph LR
+    subgraph Objectives
+        O1["O1 — 10× benchmark"]
+        O2["O2 — Production AI models"]
+        O3["O3 — Quantum advantage"]
+        O5["O5 — Certified tech docs"]
+        O6["O6 — Sustainability"]
+    end
+
+    subgraph Work Packages
+        WP2["WP2 — HPC"]
+        WP3["WP3 — AI"]
+        WP4["WP4 — Quantum"]
+        WP5["WP5 — Documentation"]
+        WP6["WP6 — Sustainability"]
+    end
+
+    subgraph Datasets
+        DS01["DS-01 HPC telemetry"]
+        DS02["DS-02 AI/ML artefacts"]
+        DS03["DS-03 Quantum sim"]
+        DS04["DS-04 Reference data"]
+        DS05["DS-05 Audit logs"]
+        DS06["DS-06 Tech pubs"]
+        DS07["DS-07 Env metrics"]
+    end
+
+    O1 --> WP2 --> DS01
+    O1 --> WP2 --> DS04
+    O2 --> WP3 --> DS02
+    O2 --> WP3 --> DS05
+    O3 --> WP4 --> DS03
+    O5 --> WP5 --> DS06
+    O6 --> WP6 --> DS07
+```
+
+### 2.5 Data Lifecycle Flowchart
+
+The complete data lifecycle — from generation through preservation and eventual deletion — follows this process:
+
+```mermaid
+flowchart TD
+    A[Data Creation / Collection] --> B{Sensitivity Classification}
+    B -->|L0 Public| C[Open Repository — Zenodo]
+    B -->|L1 Internal| D[Consortium Access — Encrypted at Rest]
+    B -->|L2 Restricted| E[Named Access — Encrypted at Rest + Transit]
+    B -->|L3 Confidential| F[National Regulations — No Open Deposit]
+
+    C --> G[Metadata & DOI Minting]
+    D --> G
+    E --> G
+    F --> H[Export Control Screening]
+    H --> G
+
+    G --> I[FAIR Validation]
+    I --> J{Quality Gate Passed?}
+    J -->|Yes| K[Publication / Deposit]
+    J -->|No| L[Curation & Remediation]
+    L --> I
+
+    K --> M[Long-Term Preservation — 10+ years]
+    M --> N{Project End + 12 months?}
+    N -->|No| M
+    N -->|Yes| O[Intermediate Data Deletion — Logged]
+    O --> P[Preserved Subsets Remain on Zenodo]
+```
+
+### 2.6 Data Integrity Architecture
+
 To ensure immutable provenance, all generated datasets (DS-01–DS-03, DS-05–DS-06) utilize a **Merkle Log** structure. This chains individual data blocks via SHA-256 hashes, allowing any modification or corruption to be detectable instantly, ensuring audit-ready integrity.
+
+```mermaid
+flowchart LR
+    subgraph Merkle Log
+        B1["Block 1"] --> H1["Hash₁ = SHA-256(B1)"]
+        B2["Block 2"] --> H2["Hash₂ = SHA-256(B2)"]
+        H1 --> H12["Hash₁₂ = SHA-256(H₁ ‖ H₂)"]
+        H2 --> H12
+        B3["Block 3"] --> H3["Hash₃ = SHA-256(B3)"]
+        B4["Block 4"] --> H4["Hash₄ = SHA-256(B4)"]
+        H3 --> H34["Hash₃₄ = SHA-256(H₃ ‖ H₄)"]
+        H4 --> H34
+        H12 --> ROOT["Merkle Root"]
+        H34 --> ROOT
+    end
+
+    ROOT --> AUDIT["Audit Log — Immutable Timestamp"]
+```
 
 ---
 
 ## 3. FAIR Data Principles
+
+The following matrix provides a visual summary of FAIR compliance status across all datasets:
+
+```mermaid
+block-beta
+    columns 5
+    block:header:5
+        columns 5
+        h0["Dataset"] h1["F — Findable"] h2["A — Accessible"] h3["I — Interoperable"] h4["R — Reusable"]
+    end
+    block:row1:5
+        columns 5
+        r1c0["DS-01"] r1c1["DOI ✓"] r1c2["Zenodo ✓"] r1c3["HDF5/Parquet ✓"] r1c4["CC-BY-4.0 ✓"]
+    end
+    block:row2:5
+        columns 5
+        r2c0["DS-02"] r2c1["DOI ✓"] r2c2["Zenodo ✓"] r2c3["ONNX/MLCommons ✓"] r2c4["Apache-2.0 ✓"]
+    end
+    block:row3:5
+        columns 5
+        r3c0["DS-03"] r3c1["DOI ✓"] r3c2["Zenodo ✓"] r3c3["HDF5/JSON ✓"] r3c4["CC-BY-4.0 ✓"]
+    end
+    block:row4:5
+        columns 5
+        r4c0["DS-04"] r4c1["Orig. DOI ✓"] r4c2["Orig. Source ✓"] r4c3["CSV/Parquet ✓"] r4c4["Orig. Licence ✓"]
+    end
+    block:row5:5
+        columns 5
+        r5c0["DS-05"] r5c1["DOI ✓"] r5c2["Zenodo ✓"] r5c3["JSON ✓"] r5c4["CC-BY-4.0 ✓"]
+    end
+    block:row6:5
+        columns 5
+        r6c0["DS-06"] r6c1["DOI ✓"] r6c2["Institutional ✓"] r6c3["S1000D/ATA ✓"] r6c4["Restricted ⚠"]
+    end
+    block:row7:5
+        columns 5
+        r7c0["DS-07"] r7c1["DOI ✓"] r7c2["Zenodo ✓"] r7c3["JSON/CSV ✓"] r7c4["CC-BY-4.0 ✓"]
+    end
+```
+
+> **Legend:** ✓ = Fully compliant | ⚠ = Conditional (restricted licence applies due to sensitivity level)
 
 ### 3.1 Findable
 - **Persistent Identifiers:** Every published dataset receives a **DOI** via Zenodo or an institutional repository.
@@ -529,7 +676,26 @@ To ensure immutable provenance, all generated datasets (DS-01–DS-03, DS-05–D
 
 ## 4. Data Governance
 
-### 4.1 Roles and Responsibilities
+### 4.1 Governance Structure
+
+The following diagram shows the data governance hierarchy and reporting lines across the consortium.
+
+```mermaid
+graph TD
+    COORD["Coordinator<br/><em>Lead Partner</em><br/>DMP compliance, EC comms"]
+
+    COORD --> DPO["Data Protection Officer<br/><em>Legal Lead Partner</em><br/>GDPR, privacy impact"]
+    COORD --> DS["Data Steward<br/><em>Technical Coordinator</em><br/>DOI, metadata, repos"]
+    COORD --> SO["Security Officer<br/><em>Security Lead Partner</em><br/>Encryption, access, incidents"]
+
+    DS --> WP2["WP2 Data Lead<br/><em>HPC Partner</em><br/>DS-01, DS-04"]
+    DS --> WP3["WP3 Data Lead<br/><em>AI Partner</em><br/>DS-02, DS-05"]
+    DS --> WP4["WP4 Data Lead<br/><em>Quantum Partner</em><br/>DS-03"]
+    DS --> WP5["WP5 Data Lead<br/><em>Documentation Partner</em><br/>DS-06"]
+    DS --> WP6["WP6 Data Lead<br/><em>Sustainability Partner</em><br/>DS-07"]
+```
+
+### 4.2 Roles and Responsibilities
 Clear accountability is established for data management activities.
 
 | Role | Partner | Responsibilities | Contact |
@@ -540,8 +706,31 @@ Clear accountability is established for data management activities.
 | **WP Data Leads** | Each WP Lead | Dataset creation, quality assurance, documentation | WP-specific |
 | **Coordinator** | Lead Partner | Overall DMP compliance, EC communication | `coordinator@ai-boost.eu` |
 
-### 4.2 Data Access Procedure
+### 4.3 Data Access Procedure
 For **Internal (L1)** and **Restricted (L2)** datasets, the following access procedure applies:
+
+```mermaid
+sequenceDiagram
+    participant R as Requester
+    participant DS as Data Steward
+    participant WP as WP Lead + Legal
+    participant C as Coordinator
+    participant S as System
+
+    R->>DS: 1. Submit access request via portal
+    Note over DS: 5 working days
+    DS->>DS: 2. Verify identity & affiliation
+    DS->>WP: Forward verified request
+    Note over WP: 5 working days
+    WP->>WP: 3. Purpose & compliance check
+    WP->>C: Forward compliance result
+    Note over C: 2 working days
+    C->>R: 4. Grant / Deny with justification
+    C->>S: 5. Log access in audit trail
+    Note over S: Immediate
+```
+
+**Step-by-step:**
 
 1. **Request:** Access request submitted via project portal (*Requester*).
 2. **Verification:** Identity & affiliation verified within 5 working days (*Data Steward*).
@@ -554,7 +743,36 @@ For **Internal (L1)** and **Restricted (L2)** datasets, the following access pro
 ## 5. Data Security
 
 ### 5.1 Classification Levels
-All datasets are classified upon creation to ensure appropriate handling.
+All datasets are classified upon creation to ensure appropriate handling. The following diagram illustrates the tiered security model with escalating controls:
+
+```mermaid
+graph TD
+    L0["<b>L0 — Public</b><br/>Open access<br/>No restrictions<br/><em>DS-04, DS-07</em>"]
+    L1["<b>L1 — Internal</b><br/>Consortium access only<br/>AES-256 at rest<br/><em>DS-01, DS-02, DS-03, DS-05</em>"]
+    L2["<b>L2 — Restricted</b><br/>Named access only<br/>AES-256 + TLS 1.3<br/>Audit logged<br/><em>DS-06</em>"]
+    L3["<b>L3 — Confidential</b><br/>Export-controlled<br/>National regulations<br/>No open deposit<br/><em>None currently</em>"]
+
+    L0 --- L1
+    L1 --- L2
+    L2 --- L3
+
+    style L0 fill:#c8e6c9,stroke:#388e3c,color:#000
+    style L1 fill:#fff9c4,stroke:#f9a825,color:#000
+    style L2 fill:#ffccbc,stroke:#e64a19,color:#000
+    style L3 fill:#ef9a9a,stroke:#c62828,color:#000
+```
+
+### 5.2 Dataset–Security Mapping
+
+| Dataset | Classification | Encryption at Rest | Encryption in Transit | Audit Logged | Export Screening |
+|:---|:---|:---|:---|:---|:---|
+| **DS-01** | L1 Internal | AES-256 | — | — | — |
+| **DS-02** | L1 Internal | AES-256 | — | — | — |
+| **DS-03** | L1 Internal | AES-256 | — | — | — |
+| **DS-04** | L0 Public | — | — | — | — |
+| **DS-05** | L1 Internal | AES-256 | — | — | — |
+| **DS-06** | L2 Restricted | AES-256 | TLS 1.3 | ✓ | ✓ |
+| **DS-07** | L0 Public | — | — | — | — |
 
 | Level | Label | Controls |
 |:---|:---|:---|
@@ -563,12 +781,12 @@ All datasets are classified upon creation to ensure appropriate handling.
 | **L2** | Restricted | Named access only. Encrypted at rest & in transit (AES-256 + TLS 1.3). Audit logged. |
 | **L3** | Confidential | Dual-use / export-controlled. Handled per national regulations. Not deposited openly. |
 
-### 5.2 Technical Measures
+### 5.3 Technical Measures
 - **Encryption:** AES-256 at rest; TLS 1.3 in transit.
 - **Backup:** **3-2-1 Strategy** (3 copies, 2 media types, 1 off-site) for all L1+ datasets.
 - **Integrity:** SHA-256 Merkle logs ensure data has not been tampered with.
 
-### 5.3 Incident Response
+### 5.4 Incident Response
 Data breaches or integrity failures are managed according to severity.
 
 | Severity | Description | Action | Timeline |
@@ -577,7 +795,7 @@ Data breaches or integrity failures are managed according to severity.
 | **B** | L2 data exposure / minor integrity issue | Internal review | Within 72 hours |
 | **C** | L1 policy violation | Logged & addressed | Monthly consortium meeting |
 
-### 5.4 Export Control
+### 5.5 Export Control
 - **Regulation:** **Dual-Use Regulation (EU) 2021/821**.
 - **Screening:** All L2/L3 datasets undergo export control screening before publication.
 - **Non-EU Partners:** Additional approval required for L1+ data access by partners outside the EU.
