@@ -302,7 +302,7 @@ ACQUA = ⟨ H, D, C_det, C_prob, C_quant, M ⟩
 
 ## 7. Architectural Diagram
 
-```
+```mermaid
 flowchart TB
 
 subgraph Physical Infrastructure

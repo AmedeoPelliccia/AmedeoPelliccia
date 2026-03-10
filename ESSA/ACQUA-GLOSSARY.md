@@ -430,7 +430,7 @@ ACQUA = ⟨ L_M, L_S, L_C, L_Q, L_G ⟩
 | `L_M` | Mission Layer | Mission Authority / Programme Board |
 | `L_S` | System Layer | Engineering Authority / Chief Systems Engineer |
 | `L_C` | Compute Layer | Software Authority / Avionics Authority |
-| `L_Q` | Quantum Layer | Quantum Systems Authority |
+| `L_Q` | Quantum Layer | Quantum Systems Authority / Advanced Technology Authority |
 | `L_G` | Governance Layer | Governance Board / Safety / Compliance / CCB |
 
 ---

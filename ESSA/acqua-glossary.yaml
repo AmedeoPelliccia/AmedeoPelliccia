@@ -417,7 +417,7 @@ regime_parameter_summary:
     - symbol: I
       meaning: Information density
       effect: increases_lambda
-    - symbol: Lambda
+    - symbol: Λ
       meaning: Coherence
       effect: increases_lambda
     - symbol: O

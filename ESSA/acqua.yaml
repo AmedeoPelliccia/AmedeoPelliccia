@@ -278,7 +278,7 @@ regime_parameter:
       meaning: inter-subsystem coupling
     - symbol: I
       meaning: information density
-    - symbol: Lambda
+    - symbol: Λ
       meaning: coherence
     - symbol: O
       meaning: dissipation
