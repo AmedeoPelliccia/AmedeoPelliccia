@@ -7,8 +7,10 @@
 #
 # Schedule: Dec 25 at 09:00 UTC (M18 minus ~2 months)
 # Model:    Uses the most advanced model available via GitHub
-#           Models (currently gpt-4o; update model name if a
-#           newer model becomes available under your plan).
+#           Models. Default set to openai/gpt-6 (projected
+#           frontier model for Dec 2026; current best is
+#           gpt-5.4). Override via workflow_dispatch if the
+#           model name differs at runtime.
 # ─────────────────────────────────────────────────────────────
 
 name: "DEL-03 DMP Pre-Review (M18)"
@@ -22,7 +24,7 @@ on:
       model:
         description: "AI model to use for the review"
         required: false
-        default: "gpt-4o"
+        default: "openai/gpt-6"
         type: string
 
 permissions:
@@ -36,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DMP_PATH: "AI-BOOST/DEL-03-data-management-plan.md"
-      MODEL: ${{ github.event.inputs.model || 'gpt-4o' }}
+      MODEL: ${{ github.event.inputs.model || 'openai/gpt-6' }}
 
     steps:
       - name: Check year gate (scheduled runs only fire in 2026)
