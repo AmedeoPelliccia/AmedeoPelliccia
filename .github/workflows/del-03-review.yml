@@ -5,7 +5,7 @@
 # perform an automated AI review of the DMP and notify the
 # coordinator of findings before the mid-term update deadline.
 #
-# Schedule: 2026-12-25 at 09:00 UTC (M18 minus ~2 months)
+# Schedule: Dec 25 at 09:00 UTC (M18 minus ~2 months)
 # Model:    Uses the most advanced model available via GitHub
 #           Models (currently gpt-4o; update model name if a
 #           newer model becomes available under your plan).
@@ -15,7 +15,7 @@ name: "DEL-03 DMP Pre-Review (M18)"
 
 on:
   schedule:
-    # 2026-12-25 at 09:00 UTC — approximately 2 months before M18 (2027-02-25)
+    # Dec 25 at 09:00 UTC — approximately 2 months before M18 (2027-02-25)
     - cron: "0 9 25 12 *"
   workflow_dispatch:
     inputs:
@@ -34,25 +34,30 @@ jobs:
   review-del-03:
     name: "AI Review — DEL-03 Data Management Plan"
     runs-on: ubuntu-latest
-    # Only run the scheduled trigger in 2026 (cron fires every year)
-    if: >-
-      github.event_name == 'workflow_dispatch' ||
-      (github.event_name == 'schedule' && github.event.schedule == '0 9 25 12 *')
     env:
       DMP_PATH: "AI-BOOST/DEL-03-data-management-plan.md"
       MODEL: ${{ github.event.inputs.model || 'gpt-4o' }}
 
     steps:
+      - name: Check year gate (scheduled runs only fire in 2026)
+        if: github.event_name == 'schedule'
+        run: |
+          YEAR=$(date +%Y)
+          if [ "$YEAR" != "2026" ]; then
+            echo "::notice::Skipping — scheduled review is intended for 2026 only (current year: $YEAR)."
+            echo "SKIP=true" >> "$GITHUB_ENV"
+          fi
+
       - name: Checkout repository
+        if: env.SKIP != 'true'
         uses: actions/checkout@v4
 
       - name: Extract DMP content
+        if: env.SKIP != 'true'
         id: extract
         run: |
-          # Separate YAML front matter and Markdown body
           DMP_CONTENT=$(cat "$DMP_PATH")
           echo "dmp_length=$(echo "$DMP_CONTENT" | wc -l)" >> "$GITHUB_OUTPUT"
-          # Store for the next step (escape for multiline)
           {
             echo "DMP_CONTENT<<DMPEOF"
             echo "$DMP_CONTENT"
@@ -60,6 +65,7 @@ jobs:
           } >> "$GITHUB_ENV"
 
       - name: AI Review via GitHub Models
+        if: env.SKIP != 'true'
         id: ai_review
         uses: actions/github-script@v7
         env:
@@ -88,38 +94,48 @@ jobs:
             - List of required actions before M18
             - Overall readiness score (1-10)`;
 
-            // Call GitHub Models API
-            const response = await fetch("https://models.github.ai/inference/chat/completions", {
-              method: "POST",
-              headers: {
-                "Authorization": `Bearer ${process.env.GITHUB_TOKEN}`,
-                "Content-Type": "application/json"
-              },
-              body: JSON.stringify({
-                model: model,
-                messages: [
-                  { role: "system", content: systemPrompt },
-                  { role: "user", content: `Please review this Data Management Plan:\n\n${dmpContent}` }
-                ],
-                temperature: 0.3,
-                max_tokens: 4000
-              })
-            });
+            let response;
+            try {
+              response = await fetch("https://models.github.ai/inference/chat/completions", {
+                method: "POST",
+                headers: {
+                  "Authorization": `Bearer ${process.env.GITHUB_TOKEN}`,
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                  model: model,
+                  messages: [
+                    { role: "system", content: systemPrompt },
+                    { role: "user", content: `Please review this Data Management Plan:\n\n${dmpContent}` }
+                  ],
+                  temperature: 0.3,
+                  max_tokens: 4000
+                })
+              });
+            } catch (err) {
+              core.setFailed(`Network error calling GitHub Models API: ${err.message}`);
+              return;
+            }
 
             if (!response.ok) {
-              const err = await response.text();
-              core.setFailed(`GitHub Models API error (${response.status}): ${err}`);
+              const errBody = await response.text();
+              core.setFailed(`GitHub Models API error (${response.status}): ${errBody}`);
               return;
             }
 
             const result = await response.json();
-            const review = result.choices[0].message.content;
 
+            if (!result.choices || !Array.isArray(result.choices) || result.choices.length === 0) {
+              core.setFailed(`Unexpected API response: no choices returned. Body: ${JSON.stringify(result)}`);
+              return;
+            }
+
+            const review = result.choices[0].message.content;
             core.setOutput("review", review);
             core.setOutput("model_used", model);
 
       - name: Create review issue and notify
-        if: steps.ai_review.outputs.review
+        if: env.SKIP != 'true' && steps.ai_review.outputs.review
         uses: actions/github-script@v7
         env:
           REVIEW_CONTENT: ${{ steps.ai_review.outputs.review }}
