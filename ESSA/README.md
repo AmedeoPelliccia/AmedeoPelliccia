@@ -19,17 +19,20 @@
 >
 > *ESSA advances in safety. ESSA protects in security.*
 
-> **Three-Tier ESSA Architecture**
+> **Four-Tier ESSA Architecture**
 >
-> The acronym ESSA resolves at three complementary levels:
+> The acronym ESSA resolves at four complementary levels:
 >
-> | Tier | Level | Full Name | Role |
-> |------|-------|-----------|------|
-> | 1 | Constitutional Architecture | **European Sovereign Systems Architecture** | The abstract constitutional framework governing lifecycle integrity, certification, and ethical invariants across all sovereign domains |
-> | 2 | Institutional Agency | **European Safety and Security Agency** | The civil institutional umbrella — safety mission + security governance — sitting between constitutional architecture and domain implementations |
-> | 3 | Domain Implementation | **European Union Space Safety Agency** | The canonical space-based, civil-platforms implementation documented in [`essa-regulatory-framework.yaml`](essa-regulatory-framework.yaml) |
+> | Tier | Level | Full Name | Institutional Principal | Role |
+> |------|-------|-----------|------------------------|------|
+> | **0** | **Global / UN** | **Earth Safety and Security Agency** | **United Nations** | Planetary civil safety governance — cross-jurisdictional interoperability, global constitutional invariants, federated recognition across all sovereign actors |
+> | 1 | Constitutional Architecture | **European Sovereign Systems Architecture** | European Constitutional Framework | The abstract constitutional framework governing lifecycle integrity, certification, and ethical invariants across all sovereign domains |
+> | 2 | Institutional Agency | **European Safety and Security Agency** | European Union / Sovereign EU States | The civil institutional umbrella — safety mission + security governance — sitting between constitutional architecture and domain implementations |
+> | 3 | Domain Implementation | **European Union Space Safety Agency** | EU, Member States, International Bodies | The canonical space-based, civil-platforms implementation documented in [`essa-regulatory-framework.yaml`](essa-regulatory-framework.yaml) |
 >
 > ESSA (European Safety and Security Agency) is a **governance artefact and institutional model** within the IDEALE-ESG / AMPEL framework. It is **not** currently an enacted EU agency in the legal framework of the European Union. Some analogous functions are performed by the **European Union Agency for the Space Programme (EUSPA)** under the EU Space Programme Regulation (2021/696) and EU Space Act proposals.
+>
+> ESSA (Earth Safety and Security Agency — Tier 0) is a **planetary-scale constitutional model** intended to operate under United Nations authority as a civil, non-military global safety governance body. It is a conceptual extension of the European model to the global domain, and is **not** currently a recognised UN specialised agency.
 
 ---
 
@@ -403,6 +406,47 @@ ACQUA operationalizes QQQ regime theory into an actionable architecture for aero
 
 ---
 
+### 3.12 ESSA-GLOBAL — Earth Safety and Security Agency (UN Tier 0)
+
+**Canonical artefacts:** [`ESSA-GLOBAL.md`](ESSA-GLOBAL.md) · [`essa-global.yaml`](essa-global.yaml)
+
+**Document ID:** `ESSA-GLOBAL-001`
+
+**ESSA-GLOBAL** scales the ESSA constitutional lifecycle governance architecture to the **planetary level** under United Nations authority. It represents the apex tier (Tier 0) of the four-tier ESSA architecture — a global civil safety governance body operating above and in federation with regional ESSA-class agencies.
+
+The Earth Safety and Security Agency doctrine extends the European model:
+
+```
+Advance in Safety.  Protect in Security.  Sustain for Earth.
+```
+
+**Seven global constitutional invariants (GCI-001 — GCI-007):**
+
+| ID | Invariant |
+|----|-----------|
+| GCI-001 | Safety Primacy — no objective overrides global safety envelopes |
+| GCI-002 | Security as Governance — security protects safety, never overrides it |
+| GCI-003 | Traceability Universality — cross-border machine-verifiable provenance |
+| GCI-004 | Human Override Guarantee — accessible override path for all autonomous systems |
+| GCI-005 | Ethical Non-Maleficence — AI systems SHALL NOT be activated against civilian populations or protected ecosystems |
+| GCI-006 | Interoperability by Protocol — mutually recognisable certification across ESSA-affiliated agencies |
+| GCI-007 | Sustainability Accountability — ESG accountability auditable at planetary level |
+
+**Global profiles:** `GPROFILE-CIVIL-AVIATION` · `GPROFILE-SPACE-SAFETY` · `GPROFILE-AI-ASSURANCE` · `GPROFILE-QUANTUM-SAFETY` · `GPROFILE-CLIMATE-INFRASTRUCTURE` · `GPROFILE-CRITICAL-CHAINS`
+
+**UN system relationships:** UN General Assembly (institutional authority) · ITU · ICAO · UNOOSA · UNEP
+
+The four-tier ESSA architecture is now:
+
+| Tier | ESSA = | Institutional Principal |
+|------|--------|------------------------|
+| **0** | **Earth Safety and Security Agency** | **United Nations** |
+| 1 | European Sovereign Systems Architecture | European Constitutional Framework |
+| 2 | European Safety and Security Agency | European Union |
+| 3 | European Union Space Safety Agency | EU / Member States |
+
+---
+
 ## 4. Discretisation Principle
 
 ESSA enforces controlled discretisation.
@@ -503,9 +547,10 @@ ESSA seeks to:
 - Enable sovereign digital engineering
 - Provide ethical outward projection of capability
 - Establish interoperable European lifecycle governance
+- **Scale to global planetary governance under the United Nations** — as the Earth Safety and Security Agency (ESSA-GLOBAL-001), providing a constitutional overlay for all civil safety-critical systems regardless of jurisdiction
 
 ESSA is not static.
-It is a federated constitutional architecture.
+It is a federated constitutional architecture — scalable from the European domain to the planetary level.
 
 ---
 
@@ -626,8 +671,9 @@ Measured sustainability overlay integrated into lifecycle tokens and chain nodes
 
 ### ESSA
 
-**ESSA** is used in this document as a three-tier acronym:
+**ESSA** is used in this document as a four-tier acronym:
 
+- **Tier 0 — Earth Safety and Security Agency** (global / UN tier — planetary civil safety governance under the United Nations; see [`ESSA-GLOBAL.md`](ESSA-GLOBAL.md))
 - **Tier 1 — European Sovereign Systems Architecture** (this document layer — constitutional digital substrate)
 - **Tier 2 — European Safety and Security Agency** (institutional mission and governance layer)
 - **Tier 3 — European Union Space Safety Agency** (space-domain execution fork; also referenced as EUSSA to disambiguate from the tier-2 acronym)
@@ -754,6 +800,8 @@ Architectural principle establishing safety as the **primary generative objectiv
 
 | File | Purpose |
 |------|---------|
+| [`ESSA-GLOBAL.md`](ESSA-GLOBAL.md) | ESSA-GLOBAL — Earth Safety and Security Agency (Tier 0 / UN): planetary-scale constitutional instrument, four-tier architecture, seven global invariants (GCI-001–007), global profiles |
+| [`essa-global.yaml`](essa-global.yaml) | Machine-readable companion — ESSA-GLOBAL-001: four-tier architecture, GCI invariants, global profiles, UN relationships, hybrid decision engine, doctrine stages |
 | [`QQQ.md`](QQQ.md) | QQQ Foundation — Quasi–Quanto–Quantum conceptual framework for complex system regimes |
 | [`qqq.yaml`](qqq.yaml) | Machine-readable companion — ESSA-DOC-QQQ-001: regimes, λ parameter, applications |
 | [`ACQUA.md`](ACQUA.md) | ACQUA Architecture — Aerospace and Computational Quantum Universal Architecture (5-layer) |
