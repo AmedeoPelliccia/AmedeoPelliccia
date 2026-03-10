@@ -1,6 +1,6 @@
 # AMPEL360
 
-**Assisted Methods for Programming ESSA Lifecycles**
+**Aerospace Model for Product and Engineering Lifecycles**
 
 | Metadata | Value |
 |----------|-------|
@@ -10,7 +10,7 @@
 | **Parent** | ESSA-DOC-AMPEL-001 ([AMPEL.md](AMPEL.md)) |
 | **Companion** | [`ampel360.yaml`](ampel360.yaml) |
 | **Related** | [`AMPEL.md`](AMPEL.md) · [`H-PIPELINE.md`](H-PIPELINE.md) · [`ESSA-AGENCY-CONSTITUTION.md`](ESSA-AGENCY-CONSTITUTION.md) · [`cctls.yaml`](cctls.yaml) |
-| **Last Updated** | 2026-03-01 |
+| **Last Updated** | 2026-03-07 |
 
 ---
 
@@ -38,7 +38,7 @@ Sector Profiles  (Aviation · Space · RSP · Autonomy · Critical Industrial Ch
 
 **AMPEL** defines the general method for programming evolutionary loops within Safety-First governance.
 
-**AMPEL360** is its concrete instantiation for the ESSA lifecycle (P000–P120). "360" is not marketing — it denotes:
+**AMPEL360** is the end-to-end aerospace lifecycle architecture for the ESSA lifecycle (P000–P120), governing the design, engineering, certification, operation, and continuous digital traceability of aircraft systems and programmes. In programme terms, it spans concept, requirements, architecture, design, analysis, verification, validation, certification, production, operation, maintenance, modification / retrofit, reuse / refurbishment, and retirement / traceable closure. "360" is not marketing — it denotes:
 
 | "360" Dimension | Meaning |
 |----------------|---------|

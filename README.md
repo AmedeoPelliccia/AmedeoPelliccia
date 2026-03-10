@@ -65,7 +65,7 @@ Here on GitHub I collapse the **A** pillar into two owned domains, each redirect
 
 Aviation decarbonization · Hydrogen-electric propulsion · Blended wing body airframes · Certification-grade digital baselines
 
-The **AMPEL360 Q100** lives here — a ~100-passenger regional BWB aircraft concept with H₂ PEM fuel cells, distributed propulsion, and a full OPT-IN Framework scaffold across 79 ATA chapters.
+The **AMPEL360 Q100** lives here: an aircraft-domain instantiation of **AMPEL360 — Aerospace Model for Product and Engineering Lifecycles**. It represents a ~100-passenger regional BWB aircraft concept with H₂ PEM fuel cells, distributed propulsion, and a full OPT-IN Framework scaffold across 79 ATA chapters.
 
 This is aircraft-level truth: structures, systems, operations, circularity.
 
@@ -133,6 +133,29 @@ The common engineering spine across all IDEALE pillars:
 
 **NBT Gates (Neural Network Bridging and Tunneling)** — the operational definition of the N-axis. NBT gates are the connections that link classical computer interface outputs — the deterministic artefacts produced by DWGE and registered through PATH → MTL — with quantum-augmented complex manifestations: simplicial state spaces, persistent homology computations, and higher-order topological inference executed on quantum processing units. Where DWGE freezes semantic state, NBT gates freeze topological state. Where PATH → MTL projects intent onto admissible trajectories in the classical domain, NBT gates bridge that projection into quantum-accelerated manifolds and tunnel results back as geometrically structured evidence. The gate layer is realized through Quantum Simplicial Neural Networks (QSNs), persistent homology pipelines, and the GAIA-AIR / QAOS ecosystem.
 
+### AMPEL360 — Aerospace Model for Product and Engineering Lifecycles
+
+*360° end-to-end digital aerospace lifecycle governance*
+
+AMPEL360 is an end-to-end aerospace lifecycle architecture that governs the design, engineering, certification, operation, and continuous digital traceability of aircraft systems and programmes.
+
+As a formal programme identity, AMPEL360 covers the full aerospace lifecycle:
+
+- Concept
+- Requirements
+- Architecture
+- Design
+- Analysis
+- Verification
+- Validation
+- Certification
+- Production
+- Operation
+- Maintenance
+- Modification / retrofit
+- Reuse / refurbishment
+- Retirement / traceable closure
+
 These are not aerospace-specific tools. They are governance, computation, and economic primitives that work wherever artefact production must be deterministic, traceable, fair, and self-sustaining — and wherever data relationships must be captured in their full topological complexity. The aerospace pillar is where they are first instantiated — but the architecture is designed for any IDEALE pillar to adopt them.
 
 ---
@@ -174,7 +197,7 @@ See: [STD-PATH-MTL-001 §3.1b — Contribution Governance](https://github.com/Am
 - NBT gates (Neural Network Bridging and Tunneling) — N-axis connections linking classical pipeline outputs to quantum-augmented simplicial manifolds via QSN inference
 - GAIA-AIR / QAOS ecosystem development — quantum aerospace operating system for real-time telemetry, digital twins, and predictive maintenance
 - European federal strategy integration via [Modello-federativo-europeo](https://github.com/Amedeopelliccia/Modello-federativo-europeo) and [Agenda-2028](https://github.com/Amedeopelliccia/Agenda-2028)
-- [ESSA](ESSA/) — European Safety and Security Agency: constitutional governance stack (Safety-First doctrine, Structural Integration State, H Pipeline, CASE) with CCTLS lifecycle standard; now extended with the **AMPEL360 lifecycle engine** (P000–P120), two domain profiles (**Q100** EASA/CS-25 aviation · **Q10** ESA/ECSS spacecraft), and the **Profile Resolver** with DO-178C validation rules (cyclomatic complexity, artefact presence, MISRA-C compliance)
+- [ESSA](ESSA/) — European Safety and Security Agency: constitutional governance stack (Safety-First doctrine, Structural Integration State, H Pipeline, CASE) with CCTLS lifecycle standard; now extended with **AMPEL360 — Aerospace Model for Product and Engineering Lifecycles**, the lifecycle engine spanning concept through traceable closure across P000–P120, plus two domain profiles (**Q100** EASA/CS-25 aviation · **Q10** ESA/ECSS spacecraft) and the **Profile Resolver** with DO-178C validation rules (cyclomatic complexity, artefact presence, MISRA-C compliance)
 - [AMPEL360-FED](ESSA/AMPEL360-FED.md) + [`federation/`](federation/) — Federated Contract Stabilization: Global Tag Authority Matrix v1.1 (four authority classes A0–A3), RAG relaxation policy, JSON schema for global tags, and connector template; wired to the **AMPEL.py** runtime regulatory profile selector (EASA-Q100 / SPACE-Q10 / DO-178C)
 - **Live app:** [AIS preview](https://ais-pre-qgodcoewjywuhs2glepnfo-324605324739.europe-west2.run.app/)
 - [AI-BOOST](AI-BOOST/) — Application strategy for the Frontier AI Grand Challenge (EuroHPC JU / AI-BOOST GA 101135737): GAIA-EU frontier model concept (400B+ MoE), EU aerospace/regulatory AI domain, open weights, EU AI Act compliance (deadline 13 Apr 2026)

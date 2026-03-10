@@ -1,9 +1,10 @@
 """
-AMPEL360 — Aerospace Methods for Programming Engineering Lifecycle (360°)
+AMPEL360 — Aerospace Model for Product and Engineering Lifecycles (360°)
 =========================================================================
 
-Deterministic lifecycle programming architecture that governs aerospace
-systems from mission intent to end-of-life material recovery.
+An end-to-end aerospace lifecycle architecture that governs the design,
+engineering, certification, operation, and continuous digital
+traceability of aircraft systems and programmes.
 
 Document ID: AMPEL360-ARCH-SPEC-v2.0
 Parent:      ESSA-DOC-AMPEL360-001
