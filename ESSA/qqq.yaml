@@ -1,0 +1,213 @@
+##############################################################################
+# ESSA — QQQ Foundation
+# Quasi–Quanto–Quantum: Conceptual Framework for Complex System Regimes
+# Machine-readable companion to ESSA/QQQ.md
+##############################################################################
+
+document_id: ESSA-DOC-QQQ-001
+document_type: essa_qqq_foundation
+title: "QQQ Foundation — Quasi–Quanto–Quantum"
+version: "0.1-draft"
+schema_version: "1.0.0"
+status: normative_framework
+parent: ESSA-CONST-001
+last_updated: "2026-03-10T00:00:00Z"
+
+description: >
+  The QQQ Foundation is the conceptual framework that formalizes the transition
+  between three regimes of organization in complex systems: deterministic
+  (Quasi), probabilistic (Quanto), and coherent (Quantum). It provides a common
+  grammar for modeling physical, computational, and socio-technical systems
+  that evolve from local rules toward global correlations.
+
+# ─────────────────────────────────────────────
+# Central Principle
+# ─────────────────────────────────────────────
+central_principle:
+  statement: >
+    Every complex system can be described through the combination of three
+    fundamental dynamics: deterministic (Quasi), probabilistic (Quanto), and
+    coherent (Quantum).
+  transition_sequence: "R_Quasi → R_Quanto → R_Quantum"
+  note: >
+    These dynamics are not mutually exclusive. A system may contain weighted
+    mixtures of all three.
+
+# ─────────────────────────────────────────────
+# Fundamental Regimes
+# ─────────────────────────────────────────────
+regimes:
+  - id: QUASI
+    name: Quasi
+    character: Deterministic · Rule-Based
+    description: >
+      System governed by deterministic functions. State maps to a unique outcome.
+    formal:
+      discrete: "x_{t+1} = f(x_t, u_t)"
+      continuous: "ẋ = f(x, u, t)"
+      logical: "f : {0,1}^n → {0,1}"
+    central_idea: "state → unique outcome"
+    examples:
+      - Digital logic
+      - Classical control
+      - Automata
+      - Expert systems
+
+  - id: QUANTO
+    name: Quanto
+    character: Stochastic · Probabilistic
+    description: >
+      System state described by probability distributions. State maps to a
+      distribution of outcomes.
+    formal:
+      distribution: "p(x) = (1/σ√2π) · exp(-(x-μ)²/2σ²)"
+      sde: "dX_t = μ dt + σ dW_t"
+      wiener: "W_t is a Wiener process"
+    central_idea: "state → distribution of outcomes"
+    examples:
+      - Machine learning
+      - Bayesian inference
+      - Markets
+      - Digital twins
+
+  - id: QUANTUM
+    name: Quantum
+    character: Coherent · Correlated · Global
+    description: >
+      System described by state vectors in a Hilbert space. State maps to
+      coherent amplitudes.
+    formal:
+      state: "|ψ⟩"
+      schrodinger: "iℏ ∂/∂t |ψ⟩ = Ĥ |ψ⟩"
+      hamiltonian: "Ĥ is the Hamiltonian operator"
+      action: "S = ∫ L(q, q̇, t) dt"
+      path_integral: "𝒜 = ∫ e^{iS/ℏ} 𝒟[path]"
+    central_idea: "state → coherent amplitudes"
+    examples:
+      - Quantum computing
+      - Quantum sensors
+      - Quantum networks
+
+# ─────────────────────────────────────────────
+# Structural Regime Parameter
+# ─────────────────────────────────────────────
+regime_parameter:
+  symbol: λ
+  formula: "λ = αC + βI + γΛ - δO"
+  variables:
+    - symbol: C
+      meaning: coupling (interaction between elements)
+    - symbol: I
+      meaning: information density
+    - symbol: Λ
+      meaning: coherence
+    - symbol: O
+      meaning: dissipation or decoherence
+  coefficients:
+    - symbol: α
+      role: coupling weight
+    - symbol: β
+      role: information density weight
+    - symbol: γ
+      role: coherence weight
+    - symbol: δ
+      role: dissipation weight
+
+# ─────────────────────────────────────────────
+# Regime Conditions
+# ─────────────────────────────────────────────
+regime_conditions:
+  - condition: "λ < λ₁"
+    regime: QUASI
+  - condition: "λ₁ ≤ λ < λ₂"
+    regime: QUANTO
+  - condition: "λ ≥ λ₂"
+    regime: QUANTUM
+
+# ─────────────────────────────────────────────
+# Regime Interpretation
+# ─────────────────────────────────────────────
+regime_interpretation:
+  - regime: QUASI
+    dominant_property: Local rules
+  - regime: QUANTO
+    dominant_property: Probabilistic adaptation
+  - regime: QUANTUM
+    dominant_property: Global correlation
+
+# ─────────────────────────────────────────────
+# Principle of Synchronized Evolution
+# ─────────────────────────────────────────────
+synchronized_evolution:
+  increasing:
+    - interaction
+    - information_density
+    - structural_coherence
+  decreasing:
+    - dissipation
+
+# ─────────────────────────────────────────────
+# Applications
+# ─────────────────────────────────────────────
+applications:
+  - domain: Artificial Intelligence
+    mapping:
+      - regime: QUASI
+        application: Rule-based systems
+      - regime: QUANTO
+        application: Machine learning
+      - regime: QUANTUM
+        application: Quantum computing
+
+  - domain: Aerospace Systems
+    mapping:
+      - regime: QUASI
+        application: Deterministic control
+      - regime: QUANTO
+        application: Probabilistic prediction
+      - regime: QUANTUM
+        application: Quantum sensors and synchronization
+
+  - domain: Socio-Technical Systems
+    mapping:
+      - regime: QUASI
+        application: Structural governance
+      - regime: QUANTO
+        application: Adaptive dynamics
+      - regime: QUANTUM
+        application: Global coordination
+
+# ─────────────────────────────────────────────
+# Foundational Principle
+# ─────────────────────────────────────────────
+foundational_principle: >
+  Every complex system evolves through the interaction of three dynamic levels:
+  deterministic, probabilistic, and coherent. This framework does not replace
+  existing physical theories; it acts as a conceptual architecture for hybrid
+  systems.
+
+# ─────────────────────────────────────────────
+# Related Documents
+# ─────────────────────────────────────────────
+related_documents:
+  - id: ESSA-DOC-ACQUA-001
+    role: >
+      ACQUA operationalizes the three QQQ regimes as computational layers
+      (L_Quasi, L_Quanto, L_Quantum) within a five-layer aerospace-computational
+      architecture
+    artefacts:
+      markdown: ESSA/ACQUA.md
+      yaml: ESSA/acqua.yaml
+  - id: quantum-manifold
+    role: >
+      The quantum-manifold specification instantiates Quantum-regime state
+      evolution and Hilbert-space governance
+    artefacts:
+      yaml: quantum-manifold.yaml
+  - id: ESSA-DOC-AMPEL360-001
+    role: >
+      AMPEL360 lifecycle phases may be governed by QQQ regime parameters;
+      Quantum layer activation aligns with advanced computational phases
+    artefacts:
+      markdown: ESSA/AMPEL360.md
+      yaml: ESSA/ampel360.yaml
