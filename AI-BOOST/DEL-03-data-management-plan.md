@@ -502,11 +502,10 @@ pie title Estimated Annual Data Volume
     "DS-01 HPC telemetry (50 TB)" : 50
     "DS-02 AI/ML artefacts (5 TB)" : 5
     "DS-03 Quantum sim (2 TB)" : 2
-    "DS-04 Reference data (0.5 TB)" : 0.5
-    "DS-05 Audit logs (0.01 TB)" : 0.01
-    "DS-06 Tech pubs (0.001 TB)" : 0.001
-    "DS-07 Env metrics (0.005 TB)" : 0.005
+    "DS-04–07 Other (0.5 TB combined)" : 0.5
 ```
+
+> **Volume breakdown:** DS-01 accounts for ~87% of annual storage. DS-04 (0.5 TB), DS-05 (0.01 TB), DS-06 (0.001 TB), and DS-07 (0.005 TB) are grouped for readability.
 
 ### 2.4 Dataset–WP–Objective Traceability
 
@@ -587,19 +586,19 @@ To ensure immutable provenance, all generated datasets (DS-01–DS-03, DS-05–D
 ```mermaid
 flowchart LR
     subgraph Merkle Log
-        B1["Block 1"] --> H1["Hash₁ = SHA-256(B1)"]
-        B2["Block 2"] --> H2["Hash₂ = SHA-256(B2)"]
-        H1 --> H12["Hash₁₂ = SHA-256(H₁ ‖ H₂)"]
+        B1["Block 1"] --> H1["Hash1 = SHA-256(B1)"]
+        B2["Block 2"] --> H2["Hash2 = SHA-256(B2)"]
+        H1 --> H12["Hash12 = SHA-256(H1 || H2)"]
         H2 --> H12
-        B3["Block 3"] --> H3["Hash₃ = SHA-256(B3)"]
-        B4["Block 4"] --> H4["Hash₄ = SHA-256(B4)"]
-        H3 --> H34["Hash₃₄ = SHA-256(H₃ ‖ H₄)"]
+        B3["Block 3"] --> H3["Hash3 = SHA-256(B3)"]
+        B4["Block 4"] --> H4["Hash4 = SHA-256(B4)"]
+        H3 --> H34["Hash34 = SHA-256(H3 || H4)"]
         H4 --> H34
         H12 --> ROOT["Merkle Root"]
         H34 --> ROOT
     end
 
-    ROOT --> AUDIT["Audit Log — Immutable Timestamp"]
+    ROOT --> AUDIT["Audit Log -- Immutable Timestamp"]
 ```
 
 ---
@@ -645,7 +644,7 @@ block-beta
     end
 ```
 
-> **Legend:** ✓ = Fully compliant | ⚠ = Conditional (restricted licence applies due to sensitivity level)
+> **Legend:** ✓ [Compliant] = Fully FAIR-compliant | ⚠ [Conditional] = Restricted licence applies due to sensitivity level
 
 ### 3.1 Findable
 - **Persistent Identifiers:** Every published dataset receives a **DOI** via Zenodo or an institutional repository.
@@ -747,10 +746,10 @@ All datasets are classified upon creation to ensure appropriate handling. The fo
 
 ```mermaid
 graph TD
-    L0["<b>L0 — Public</b><br/>Open access<br/>No restrictions<br/><em>DS-04, DS-07</em>"]
-    L1["<b>L1 — Internal</b><br/>Consortium access only<br/>AES-256 at rest<br/><em>DS-01, DS-02, DS-03, DS-05</em>"]
-    L2["<b>L2 — Restricted</b><br/>Named access only<br/>AES-256 + TLS 1.3<br/>Audit logged<br/><em>DS-06</em>"]
-    L3["<b>L3 — Confidential</b><br/>Export-controlled<br/>National regulations<br/>No open deposit<br/><em>None currently</em>"]
+    L0["L0 PUBLIC<br/>Open access<br/>No restrictions<br/><em>DS-04, DS-07</em>"]
+    L1["L1 INTERNAL<br/>Consortium access only<br/>AES-256 at rest<br/><em>DS-01, DS-02, DS-03, DS-05</em>"]
+    L2["L2 RESTRICTED<br/>Named access only<br/>AES-256 + TLS 1.3<br/>Audit logged<br/><em>DS-06</em>"]
+    L3["L3 CONFIDENTIAL<br/>Export-controlled<br/>National regulations<br/>No open deposit<br/><em>None currently</em>"]
 
     L0 --- L1
     L1 --- L2
@@ -761,6 +760,8 @@ graph TD
     style L2 fill:#ffccbc,stroke:#e64a19,color:#000
     style L3 fill:#ef9a9a,stroke:#c62828,color:#000
 ```
+
+> **Note:** Levels are labelled L0–L3 in ascending order of restriction. Each node includes the level number and label for accessibility.
 
 ### 5.2 Dataset–Security Mapping
 
