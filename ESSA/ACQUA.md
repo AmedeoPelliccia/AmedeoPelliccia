@@ -9,7 +9,7 @@
 | **Status** | Normative Architecture |
 | **Parent** | ESSA-DOC-QQQ-001 ([QQQ.md](QQQ.md)) |
 | **Companion** | [`acqua.yaml`](acqua.yaml) |
-| **Related** | [`QQQ.md`](QQQ.md) · [`AMPEL360.md`](AMPEL360.md) · [`quantum-manifold.yaml`](../quantum-manifold.yaml) |
+| **Related** | [`QQQ.md`](QQQ.md) · [`AMPEL360.md`](AMPEL360.md) · [`quantum-manifold.yaml`](../quantum-manifold.yaml) · [`ACQUA-GLOSSARY.md`](ACQUA-GLOSSARY.md) |
 | **Last Updated** | 2026-03-10 |
 
 ---

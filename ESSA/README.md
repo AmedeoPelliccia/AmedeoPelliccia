@@ -758,6 +758,8 @@ Architectural principle establishing safety as the **primary generative objectiv
 | [`qqq.yaml`](qqq.yaml) | Machine-readable companion — ESSA-DOC-QQQ-001: regimes, λ parameter, applications |
 | [`ACQUA.md`](ACQUA.md) | ACQUA Architecture — Aerospace and Computational Quantum Universal Architecture (5-layer) |
 | [`acqua.yaml`](acqua.yaml) | Machine-readable companion — ESSA-DOC-ACQUA-001: layers, decision engine, authority matrix, traceability |
+| [`ACQUA-GLOSSARY.md`](ACQUA-GLOSSARY.md) | ACQUA Glossary and Acronyms — controlled vocabulary for ACQUA and QQQ terminology (A–V, regime parameter, authority summary) |
+| [`acqua-glossary.yaml`](acqua-glossary.yaml) | Machine-readable companion — ESSA-DOC-ACQUA-GLOSS-001: terms catalogue with symbols, formal definitions, and regime mappings |
 | [`essa-regulatory-framework.yaml`](essa-regulatory-framework.yaml) | Machine-readable ESSA space-agency specification: Parts catalogue, registry schema, implementation phases, institutional options |
 | [`cctls.yaml`](cctls.yaml) | Machine-readable CCTLS v0.3.0 lifecycle standard |
 | [`CCTLS.md`](CCTLS.md) | Human-readable CCTLS specification |

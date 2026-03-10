@@ -1,0 +1,456 @@
+##############################################################################
+# ESSA — ACQUA Glossary and Acronyms
+# Operational, Architectural, and Computational Terminology
+# Machine-readable companion to ESSA/ACQUA-GLOSSARY.md
+##############################################################################
+
+document_id: ESSA-DOC-ACQUA-GLOSS-001
+document_type: normative_glossary
+title: "ACQUA — Glossary and Acronyms"
+subtitle: "Operational, Architectural, and Computational Terminology"
+version: "0.1-draft"
+schema_version: "1.0.0"
+status: normative_glossary
+parent: ESSA-DOC-ACQUA-001
+last_updated: "2026-03-10T00:00:00Z"
+
+description: >
+  Controlled vocabulary standardizing terminology for the ACQUA
+  (Aerospace Computational Quantum Universal Architecture) framework and the
+  QQQ (Quasi–Quanto–Quantum) regime model. All terms shall be interpreted
+  consistently across mission, system, computational, quantum, and governance
+  layers of the architecture.
+
+# ─────────────────────────────────────────────
+# Terms — Section A
+# ─────────────────────────────────────────────
+terms:
+  - term: ACQUA
+    expanded: Aerospace Computational Quantum Universal Architecture
+    section: A
+    definition: >
+      Multilayer architectural framework integrating aerospace infrastructure,
+      classical computing, artificial intelligence, and quantum technologies
+      within a governed operational system.
+    formal: "ACQUA = ⟨ L_M, L_S, L_C, L_Q, L_G ⟩"
+    see_also: ESSA-DOC-ACQUA-001
+
+  - term: Actuator
+    section: A
+    definition: >
+      Device that converts computational commands into physical actions.
+    examples:
+      - Thrusters
+      - Control surfaces
+      - Reaction wheels
+      - Robotic mechanisms
+
+  - term: Algorithmic Control
+    section: A
+    definition: >
+      Deterministic or probabilistic algorithms governing system behavior.
+
+  - term: AOCS
+    expanded: Attitude and Orbit Control System
+    section: A
+    definition: >
+      Subsystem responsible for spacecraft orientation and orbit control.
+
+# ─────────────────────────────────────────────
+# Terms — Section C
+# ─────────────────────────────────────────────
+  - term: Coherence
+    symbol: "Λ"
+    section: C
+    definition: >
+      Degree of synchronization or correlated behavior across system
+      components. One of the four variables in the QQQ structural regime
+      parameter. High coherence drives the system toward the Quantum regime.
+    role_in_lambda: increases_lambda
+    qqq_regime_effect: drives_toward_QUANTUM
+
+  - term: Compute Layer
+    symbol: L_C
+    section: C
+    definition: >
+      Architectural layer responsible for data processing, state estimation,
+      prediction, and decision-making. Integrates deterministic, probabilistic,
+      and quantum-enhanced computational paradigms.
+    formal: "L_C = { f_det, f_prob, X̂, Π }"
+    paradigms:
+      - id: deterministic
+        qqq_regime: QUASI
+        formula: "x_{t+1} = f(x_t, u_t)"
+      - id: probabilistic
+        qqq_regime: QUANTO
+        formula: "P(X_{t+1} | X_t)"
+      - id: quantum_enhanced
+        qqq_regime: QUANTUM
+        formula: "|ψ(t)⟩ = U(t)|ψ₀⟩"
+
+  - term: Control Function
+    section: C
+    definition: >
+      Mathematical mapping describing deterministic system evolution.
+    formula: "x_{t+1} = f(x_t, u_t)"
+    characteristic_regime: QUASI
+
+  - term: Coupling
+    symbol: C
+    section: C
+    definition: >
+      Degree of interaction among subsystems within a complex system. One of
+      the four variables in the QQQ structural regime parameter. High coupling
+      contributes to higher λ.
+    role_in_lambda: increases_lambda
+
+  - term: CPS
+    expanded: Cyber-Physical System
+    section: C
+    definition: >
+      Integrated system combining computational elements with physical
+      processes.
+
+# ─────────────────────────────────────────────
+# Terms — Section D
+# ─────────────────────────────────────────────
+  - term: Data Acquisition
+    section: D
+    definition: >
+      Process of collecting data from sensors, telemetry streams, and
+      external systems.
+    formal: "D(t) = Φ(H, t)"
+    where: "H = { h_1, h_2, ..., h_n } is the hardware set"
+
+  - term: Deterministic Computing
+    section: D
+    definition: >
+      Computation producing reproducible results from identical inputs.
+      Characteristic of the Quasi regime.
+    characteristic_regime: QUASI
+
+  - term: Digital Twin
+    section: D
+    definition: >
+      Dynamic computational model replicating a physical system's behavior.
+      Operates primarily in the Quanto regime.
+    primary_regime: QUANTO
+
+  - term: Dissipation
+    symbol: O
+    section: D
+    definition: >
+      Loss of energy, structure, or coherence due to noise, friction, or
+      entropy. One of the four variables in the QQQ structural regime
+      parameter. High dissipation lowers λ, driving the system toward
+      the Quasi regime.
+    role_in_lambda: decreases_lambda
+    qqq_regime_effect: drives_toward_QUASI
+
+# ─────────────────────────────────────────────
+# Terms — Section F
+# ─────────────────────────────────────────────
+  - term: FDIR
+    expanded: Fault Detection, Isolation and Recovery
+    section: F
+    definition: >
+      Autonomous subsystem responsible for identifying and mitigating
+      failures.
+
+# ─────────────────────────────────────────────
+# Terms — Section G
+# ─────────────────────────────────────────────
+  - term: GNC
+    expanded: Guidance, Navigation and Control
+    section: G
+    definition: >
+      System responsible for vehicle trajectory and orientation.
+
+  - term: Governance Layer
+    symbol: L_G
+    section: G
+    definition: >
+      Architectural layer responsible for policy enforcement, safety
+      assurance, compliance, configuration control, and traceability.
+      Acts as a transversal constraint over all other layers.
+    formal: "L_G = { R, A_u, C_f, T, V }"
+    transversal_constraint: "L_G ⊣ { L_M, L_S, L_C, L_Q }"
+
+# ─────────────────────────────────────────────
+# Terms — Section H
+# ─────────────────────────────────────────────
+  - term: HPC
+    expanded: High Performance Computing
+    section: H
+    definition: >
+      Computational infrastructure used for large-scale simulation and
+      data processing.
+
+# ─────────────────────────────────────────────
+# Terms — Section I
+# ─────────────────────────────────────────────
+  - term: ICD
+    expanded: Interface Control Document
+    section: I
+    definition: >
+      Technical document specifying interfaces between subsystems.
+
+  - term: Information Density
+    symbol: I
+    section: I
+    definition: >
+      Measure of information processed or exchanged within the system.
+      One of the four variables in the QQQ structural regime parameter.
+    role_in_lambda: increases_lambda
+
+# ─────────────────────────────────────────────
+# Terms — Section L
+# ─────────────────────────────────────────────
+  - term: Layer
+    section: L
+    definition: >
+      Functional abstraction level within the ACQUA architecture.
+    acqua_layers:
+      - order: 1
+        name: Mission Layer
+        symbol: L_M
+      - order: 2
+        name: System Layer
+        symbol: L_S
+      - order: 3
+        name: Compute Layer
+        symbol: L_C
+      - order: 4
+        name: Quantum Layer
+        symbol: L_Q
+      - order: 5
+        name: Governance Layer
+        symbol: L_G
+
+# ─────────────────────────────────────────────
+# Terms — Section M
+# ─────────────────────────────────────────────
+  - term: Mission Authority
+    section: M
+    definition: >
+      Entity responsible for mission objectives and operational
+      decision-making. Holds Accountable (A) authority over operational
+      objectives in the ACQUA authority matrix.
+    authority_class: A  # Accountable
+
+  - term: Mission Layer
+    symbol: L_M
+    section: M
+    definition: >
+      Architectural layer defining operational goals, mission scenarios,
+      constraints, and success criteria.
+    formal: "L_M = { G, K, Ω, Σ }"
+    symbols:
+      G: Goals
+      K: KPIs
+      Omega: Operational constraints
+      Sigma: Mission scenarios
+
+# ─────────────────────────────────────────────
+# Terms — Section O
+# ─────────────────────────────────────────────
+  - term: Operational Envelope
+    section: O
+    definition: >
+      Range of environmental and operational conditions under which a
+      system operates safely.
+
+  - term: Optimization
+    section: O
+    definition: >
+      Process of determining the best solution within defined constraints.
+      Applied at classical level in L_C and at quantum level in L_Q.
+
+# ─────────────────────────────────────────────
+# Terms — Section Q
+# ─────────────────────────────────────────────
+  - term: QKD
+    expanded: Quantum Key Distribution
+    section: Q
+    definition: >
+      Cryptographic protocol exploiting quantum properties to distribute
+      encryption keys with information-theoretic security.
+    hosted_in: L_Q
+
+  - term: QQQ Framework
+    expanded: Quasi–Quanto–Quantum
+    section: Q
+    definition: >
+      Conceptual model describing three regimes of system organization:
+      deterministic (Quasi), probabilistic (Quanto), and coherent (Quantum).
+    see_also: ESSA-DOC-QQQ-001
+    regimes:
+      - id: QUASI
+        character: Deterministic rule-based
+        central_idea: "state → unique outcome"
+      - id: QUANTO
+        character: Probabilistic adaptive
+        central_idea: "state → distribution of outcomes"
+      - id: QUANTUM
+        character: Coherent correlated
+        central_idea: "state → coherent amplitudes"
+
+  - term: Quantum Layer
+    symbol: L_Q
+    section: Q
+    definition: >
+      Architectural layer integrating quantum technologies: sensing,
+      optimization, simulation, and communication. Amplifies rather than
+      replaces the classical Compute Layer.
+    formal: "L_Q = { Q_s, Q_o, Q_c, Q_n }"
+    symbols:
+      Q_s: Quantum sensing
+      Q_o: Quantum optimization
+      Q_c: Quantum computing
+      Q_n: Quantum networking
+
+  - term: Quantum Optimization
+    section: Q
+    definition: >
+      Application of quantum algorithms to solve complex optimization
+      problems more efficiently than classical methods.
+
+  - term: Quantum State
+    section: Q
+    definition: >
+      Mathematical representation of a quantum system state as a vector
+      in Hilbert space.
+    formal: "|ψ⟩"
+    evolution: "iℏ ∂/∂t |ψ⟩ = Ĥ|ψ⟩"
+
+# ─────────────────────────────────────────────
+# Terms — Section R
+# ─────────────────────────────────────────────
+  - term: Requirement Traceability
+    section: R
+    definition: >
+      Ability to link requirements to design, implementation, and
+      verification artefacts.
+    traceability_chain: "G_i → R_i → S_i → C_i → Q_i → V_i"
+
+# ─────────────────────────────────────────────
+# Terms — Section S
+# ─────────────────────────────────────────────
+  - term: Sensor
+    section: S
+    definition: >
+      Device measuring environmental or system variables.
+    examples:
+      - Optical sensors
+      - Radar
+      - Inertial sensors
+      - Quantum sensors
+
+  - term: State Estimation
+    symbol: X_hat
+    section: S
+    definition: >
+      Process of inferring the internal state of a system from
+      observations. Performed in the Compute Layer (L_C).
+    hosted_in: L_C
+
+  - term: System Layer
+    symbol: L_S
+    section: S
+    definition: >
+      Architectural layer defining the physical architecture of platforms,
+      sensors, actuators, and networks.
+    formal: "L_S = { P, S, A, N, I }"
+    symbols:
+      P: Platforms
+      S: Sensors
+      A: Actuators
+      N: Networks
+      I: Interfaces
+
+# ─────────────────────────────────────────────
+# Terms — Section T
+# ─────────────────────────────────────────────
+  - term: Telemetry
+    section: T
+    definition: >
+      Transmission of measurement data from remote systems to control
+      centres.
+
+  - term: Traceability
+    section: T
+    definition: >
+      Capability to track relationships among requirements, system
+      elements, and verification evidence.
+    see_also: Requirement Traceability
+
+  - term: TRL
+    expanded: Technology Readiness Level
+    section: T
+    definition: >
+      Scale (1–9) used to assess the maturity of a technology or system
+      component.
+
+# ─────────────────────────────────────────────
+# Terms — Section V
+# ─────────────────────────────────────────────
+  - term: Validation
+    section: V
+    definition: >
+      Confirmation that the system fulfils its intended operational
+      purpose. Final element V_i in the ACQUA traceability chain.
+
+  - term: Verification
+    section: V
+    definition: >
+      Confirmation that a system satisfies specified requirements.
+
+# ─────────────────────────────────────────────
+# Regime Parameter Summary
+# ─────────────────────────────────────────────
+regime_parameter_summary:
+  formula: "λ = αC + βI + γΛ - δO"
+  variables:
+    - symbol: C
+      meaning: Coupling
+      effect: increases_lambda
+    - symbol: I
+      meaning: Information density
+      effect: increases_lambda
+    - symbol: Lambda
+      meaning: Coherence
+      effect: increases_lambda
+    - symbol: O
+      meaning: Dissipation
+      effect: decreases_lambda
+  conditions:
+    - condition: "λ < λ₁"
+      regime: QUASI
+      mode: Deterministic control
+    - condition: "λ₁ ≤ λ < λ₂"
+      regime: QUANTO
+      mode: Probabilistic adaptive systems
+    - condition: "λ ≥ λ₂"
+      regime: QUANTUM
+      mode: Coherent coordination
+
+# ─────────────────────────────────────────────
+# Authority Summary
+# ─────────────────────────────────────────────
+authority_summary:
+  - layer: L_M
+    name: Mission Layer
+    governing_authority: Mission Authority / Programme Board
+  - layer: L_S
+    name: System Layer
+    governing_authority: Engineering Authority / Chief Systems Engineer
+  - layer: L_C
+    name: Compute Layer
+    governing_authority: Software Authority / Avionics Authority
+  - layer: L_Q
+    name: Quantum Layer
+    governing_authority: Quantum Systems Authority / Advanced Technology Authority
+  - layer: L_G
+    name: Governance Layer
+    governing_authority: >
+      Governance Board / Safety / Compliance / Configuration Control Board
