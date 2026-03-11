@@ -4,7 +4,7 @@
 
 This document defines the **Digital Constitution** governing the design,
 development, integration, deployment, operation, and portfolio governance of
-digital systems and published artefacts within this repository, understood as
+digital systems and published artifacts within this repository, understood as
 the **AEROSPACEMODEL genesis** repository.
 
 Its purpose is to ensure that:
