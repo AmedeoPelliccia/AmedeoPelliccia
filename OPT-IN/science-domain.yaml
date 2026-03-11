@@ -1,0 +1,353 @@
+##############################################################################
+# OPT-IN Science Domain Architecture
+# Machine-readable companion to OPT-IN/SCIENCE-DOMAIN.md
+##############################################################################
+
+document_id: STD-OPTIN-SCI-001
+document_type: optin_science_domain_architecture
+title: "OPT-IN Science Domain Architecture"
+version: "1.0.0"
+schema_version: "1.0.0"
+status: normative_draft
+standard: STD-OPTIN-001
+parent: STD-OPTIN-001
+last_updated: "2026-03-11T00:00:00Z"
+
+description: >
+  Formalises Science as a domain within the OPT-IN 5-axis topology (O–P–T–I–N)
+  and decomposes it into seven subdomains. Each subdomain instantiates the five
+  axes with domain-specific content and maps to one or more IDEALE pillars.
+  Science is the generative substrate of all IDEALE pillars: it does not sit
+  alongside them but underlies all of them.
+
+related_documents:
+  - id: STD-PATH-MTL-001
+    role: artefact production pipeline that science outputs must traverse
+  - id: ESSA-CONST-001
+    role: constitutional constraints inherited by all OPT-IN domains
+  - id: ESSA-DOC-AMPEL360-001
+    role: lifecycle engine consuming science artefacts for aerospace programmes
+  - id: EACST-STD-CCTLS-001
+    role: certification lifecycle standard governing science evidence tokens
+
+# ─────────────────────────────────────────────
+# Domain-Level OPT-IN Axis Instantiation
+# ─────────────────────────────────────────────
+optin_axes:
+  O_organizations:
+    description: >
+      Research institutions, national laboratories, EU agencies, universities,
+      industry R&D consortia, and standards bodies operating in Science domains.
+    examples:
+      - CERN
+      - ECMWF
+      - ESA
+      - DLR
+      - INRIA
+      - Fraunhofer
+      - EU Quantum Flagship consortia
+      - Joint Research Centre (JRC)
+
+  P_programs:
+    description: >
+      Research and funding programmes that instantiate Science domain activities.
+    examples:
+      - Horizon Europe
+      - EIC Accelerator
+      - ERC Grants
+      - EU Quantum Flagship
+      - Clean Aviation JU
+      - Destination Earth
+      - DEP (Digital Europe Programme)
+      - Copernicus Climate Change Service
+
+  T_technologies:
+    description: >
+      Scientific methods, tools, and technologies used across Science subdomains.
+    examples:
+      - Quantum computing (variational algorithms, error correction)
+      - AI/ML-augmented discovery and literature review
+      - Climate reanalysis models
+      - Composite and additive manufacturing
+      - Formal verification methods
+      - FAIR data tools
+      - Bioinformatics pipelines
+
+  I_infrastructures:
+    description: >
+      Physical and digital research infrastructures enabling Science domain work.
+    examples:
+      - EuroHPC JU (high-performance computing)
+      - EOSC (European Open Science Cloud)
+      - ELIXIR (life science data infrastructure)
+      - CESSDA (social science data infrastructure)
+      - Copernicus DIAS
+      - ESAC data archives
+      - EMMC materials modelling platform
+
+  N_neural_networks:
+    description: >
+      AI-augmented, quantum-enhanced, and NBT-gate-connected computational
+      layers that amplify Science domain discovery and inference.
+    examples:
+      - NBT gates bridging QSN outputs to ESSA pipeline
+      - Quantum-accelerated simulation (chemistry, materials, fluids)
+      - AI-assisted astrophysical data reduction
+      - Foundation model governance under DWGE
+      - Agent-based social simulation
+      - Biosignal processing via QSN inference
+
+# ─────────────────────────────────────────────
+# Science Subdomains
+# ─────────────────────────────────────────────
+subdomains:
+
+  - id: SCI-01
+    name: "Quantum Science & Technology"
+    tli_file: "sci-01-quantum-TLI.yaml"
+    ideale_pillars_primary:
+      - A   # Aerospace
+      - I   # Information
+      - D   # Defense
+    ideale_pillars_secondary:
+      - E   # Energy
+    optin_instantiation:
+      O: "CERN, NIST, Fraunhofer IAF, IQM, QuTech, EU Quantum Flagship consortia"
+      P: "EU Quantum Flagship, EIC Accelerator Quantum Track, AQUA-V programme"
+      T: "Variational quantum algorithms, error correction, QSN inference, quantum sensing arrays"
+      I: "EuroHPC quantum partitions, HPCQS QPU access, quantum-classical hybrid clusters"
+      N: "NBT gates bridging QSN outputs to classical ESSA pipeline; quantum-augmented manifold computation"
+    cross_pillar_impact:
+      A: "Quantum simulation of structural mechanics and propulsion fluid dynamics"
+      I: "Quantum-encrypted data sovereignty for CSDB and digital product passports"
+      D: "Quantum-secure communications for dual-use systems"
+
+  - id: SCI-02
+    name: "Climate & Earth Science"
+    tli_file: "sci-02-climate-earth-TLI.yaml"
+    ideale_pillars_primary:
+      - E   # Energy
+      - A   # Aerospace
+      - L   # Logistics
+    ideale_pillars_secondary:
+      - I   # Information
+    optin_instantiation:
+      O: "ECMWF, Copernicus programme, ESA EO, IPCC, national meteorological services"
+      P: "EU Mission on Adaptation to Climate Change, Destination Earth, Copernicus CCS"
+      T: "Climate reanalysis models, Earth observation data fusion, atmospheric emission tracking"
+      I: "Copernicus DIAS, EOSC climate data spaces, EuroHPC Destination Earth infrastructure"
+      N: "AI-augmented climate pattern recognition, NBT-enhanced atmospheric state inference"
+    cross_pillar_impact:
+      E: "Climate impact functions embedded in TLAR energy balance nodes"
+      A: "Operational envelope constraints (wind, temperature, icing) for AMPEL360 Q100"
+      L: "Climate-adjusted supply chain routing and LH2 distribution logistics"
+
+  - id: SCI-03
+    name: "Life Sciences & Biotechnology"
+    tli_file: "sci-03-life-sciences-TLI.yaml"
+    ideale_pillars_primary:
+      - E   # Energy (bio-energy)
+      - L   # Logistics (bio-supply chains)
+      - E2  # Economy (bio-innovation assets)
+    ideale_pillars_secondary:
+      - A   # Aerospace (human factors)
+    optin_instantiation:
+      O: "EMA, ECDC, EMBL, biotech consortia, aerospace human factors institutes"
+      P: "EU4Health, Innovative Health Initiative, crew health programmes, biomimetics research"
+      T: "Genomics, bioinformatics, human-systems integration (HSI) methods, biosensor arrays"
+      I: "ELIXIR research infrastructure, European Genome-phenome Archive, human factors test labs"
+      N: "AI-assisted drug discovery, biosignal processing via QSN inference, cognitive load modelling"
+    cross_pillar_impact:
+      A: "Crew health and human factors in cockpit design (ATA 25, 35) and AMPEL360 Q100 life support"
+      L: "Bio-inspired supply chain optimisation and circular economy material cycles"
+      E2: "Biotechnology contribution assets in evidence markets"
+
+  - id: SCI-04
+    name: "Materials Science & Engineering"
+    tli_file: "sci-04-materials-TLI.yaml"
+    ideale_pillars_primary:
+      - A   # Aerospace
+      - E   # Energy
+      - L   # Logistics
+    ideale_pillars_secondary:
+      - D   # Defense
+    optin_instantiation:
+      O: "DLR, ONERA, CIRA, materials research institutes, Airbus Research, Fraunhofer"
+      P: "Clean Aviation JU, Key Enabling Technologies (KETs) programme, Materials 2030"
+      T: "Composite manufacturing, additive manufacturing, materials modelling (DFT, MD), NDT"
+      I: "European Materials Modelling Council (EMMC) platform, EUDAT research data infrastructure"
+      N: "AI-driven materials discovery, ML interatomic potentials, quantum chemistry simulation"
+    cross_pillar_impact:
+      A: "Structural materials for AMPEL360 Q100 BWB airframe (ATA 51-57) and LH2 tanks"
+      E: "LH2 tank materials, insulation, and cryogenic systems (ATA 28)"
+      L: "DPP-compliant material traceability from raw material to retirement"
+
+  - id: SCI-05
+    name: "Computer Science & Informatics"
+    tli_file: "sci-05-computer-science-TLI.yaml"
+    ideale_pillars_primary:
+      - I   # Information
+      - A   # Aerospace
+      - D   # Defense
+    ideale_pillars_secondary:
+      - E2  # Economy
+    optin_instantiation:
+      O: "INRIA, CWI, Turing Institute, EU AI regulatory bodies, ENISA, EASA AI task forces"
+      P: "EU AI Act implementation, Horizon Europe Digital cluster, DEP (Digital Europe Programme)"
+      T: "Formal verification, model-based engineering, deterministic AI (DWGE), certified ML"
+      I: "EuroHPC JU, GAIA data lakes, CSDB platforms, S1000D toolchains, FAIR data infrastructure"
+      N: "Foundation model governance, QSN inference engines, NBT gate architectures"
+    cross_pillar_impact:
+      I: "Direct substrate of the Information pillar: DWGE, PATH -> MTL, deterministic AI governance"
+      A: "Avionics software (DO-178C/DO-254), flight management systems (ATA 22, 34, 46)"
+      D: "Cybersecurity for dual-use systems, formal verification of safety-critical logic"
+
+  - id: SCI-06
+    name: "Space Science & Astrophysics"
+    tli_file: "sci-06-space-science-TLI.yaml"
+    ideale_pillars_primary:
+      - A   # Aerospace
+      - D   # Defense
+      - I   # Information
+    ideale_pillars_secondary:
+      - E2  # Economy
+    optin_instantiation:
+      O: "ESA, CNES, DLR, national space agencies, ESAC, science instrument consortia"
+      P: "ESA Voyage 2050, Cosmic Vision, GAIA constellation science programme, Copernicus"
+      T: "Orbital simulation, space weather modelling, telescope optics, deep-space communications"
+      I: "ESAC data archives, ESA ground stations, GAIA constellation infrastructure, EUSOC"
+      N: "AI-assisted astrophysical data reduction, quantum-accelerated orbital optimisation"
+    cross_pillar_impact:
+      A: "QAOS (Quantum Aerospace Operating System), AQUA-V programme, orbital logistics"
+      D: "Space situational awareness, dual-use satellite technology, export control"
+      I: "Space-origin data feeds into IDEALE data sovereignty infrastructure"
+
+  - id: SCI-07
+    name: "Social & Behavioural Science"
+    tli_file: "sci-07-social-science-TLI.yaml"
+    ideale_pillars_primary:
+      - E2  # Economy
+      - L   # Logistics
+      - I   # Information
+    ideale_pillars_secondary:
+      - D   # Defense (governance science)
+    optin_instantiation:
+      O: "EUI (European University Institute), JRC (Joint Research Centre), social science networks"
+      P: "Horizon Europe Cluster 2 (Culture, Creativity, Inclusive Society), Capillary Merit research"
+      T: "Behavioural modelling, econometrics, governance simulation, contribution scoring models"
+      I: "CESSDA (Social Science Data Infrastructure), SHARE longitudinal health and retirement study"
+      N: "Agent-based simulation, AI-assisted policy analysis, merit-weighted contribution algorithms"
+    cross_pillar_impact:
+      E2: "Capillary Merit Index (CMI), Teknia Token incentive design, evidence market governance"
+      L: "Supply chain social risk modelling, ESG Social enforcement (S pillar)"
+      I: "Human factors in information architecture and governance system design"
+
+# ─────────────────────────────────────────────
+# Cross-Domain Governance
+# ─────────────────────────────────────────────
+governance:
+
+  path_to_mtl_integration:
+    description: >
+      Scientific artefacts entering a downstream IDEALE programme must traverse
+      the PATH -> MTL pipeline with full OPT-IN axis anchoring.
+    steps:
+      - step: 1
+        name: DWGE intent-lock
+        description: Semantic normalisation of scientific output into locked intent
+      - step: 2
+        name: Template assignment
+        description: Mapping to ATA chapter, lifecycle phase, or IDEALE pillar node
+      - step: 3
+        name: Artefact heading
+        description: Traceability to OPT-IN axis instantiation and Science subdomain ID
+      - step: 4
+        name: Evidence gate
+        description: INV-001 check — must cite K_full(t); INV-003 requires evidence_refs + approvals
+      - step: 5
+        name: Model update
+        description: Delta knowledge and delta uncertainty registered against subdomain
+      - step: 6
+        name: TEKNIA ledger
+        description: Contribution attributed (C1-C6), TT reward minted, hash-chained
+
+  contribution_taxonomy:
+    reference: contributions-registry.yaml
+    types:
+      - code: C1
+        label: Direct co-authorship
+        example: "Joint paper on QSN architectures"
+      - code: C2
+        label: Conceptual inspiration
+        example: "Climate model feeding TLAR node"
+      - code: C3
+        label: Licensed dataset
+        example: "EuroHPC benchmark results"
+      - code: C4
+        label: Public domain reference
+        example: "IPCC climate scenario data"
+      - code: C5
+        label: Tool / method reuse
+        example: "Open-source materials modelling code"
+      - code: C6
+        label: Review / validation
+        example: "Peer review of quantum algorithm"
+
+  esg_enforcement:
+    E_environment:
+      mechanism: >
+        Climate impact scoring for research infrastructure (HPC energy use);
+        lifecycle assessment for materials research outputs; LCA-linked DPP entries.
+    S_social:
+      mechanism: >
+        Capillary Merit Index (CMI) for researchers; fair attribution under C1-C6 taxonomy;
+        open access mandate compliance; Teknia Token reward proportional to verified impact.
+    G_governance:
+      mechanism: >
+        Deterministic governance via DWGE; hash-chained evidence in TEKNIA ledger;
+        monotonic safety invariants (INV-001, INV-002, INV-003); ESSA constitutional constraints.
+
+  invariants:
+    - id: SCI-INV-001
+      statement: >
+        Science domain artefacts entering PATH -> MTL must be anchored to at least one
+        OPT-IN axis instantiation and carry an admissibility classification (C1-C6).
+    - id: SCI-INV-002
+      statement: >
+        No science evidence may update a downstream IDEALE baseline without a closed
+        evidence gate (INV-003: evidence_refs + approvals + run_manifest_ref).
+    - id: SCI-INV-003
+      statement: >
+        Science subdomains may inform sector profiles but cannot weaken ESSA baseline
+        constraints; all sector profile tightening is monotonic and non-reversible
+        without a regulatory_event_id and signed_approval.
+
+  governance_boundary:
+    enters_ideale_through:
+      - evidence packages
+      - qualified models
+      - certified datasets
+      - contribution assets (C1-C6)
+    must_not_bypass:
+      - PATH -> MTL pipeline
+      - DWGE intent-lock layer
+      - ESSA constitutional constraints
+    governed_by:
+      - STD-OPTIN-001
+      - ESSA-CONST-001
+      - EACST-STD-CCTLS-001
+
+# ─────────────────────────────────────────────
+# Pillar Impact Matrix (machine-readable)
+# ─────────────────────────────────────────────
+pillar_impact_matrix:
+  # primary = true, secondary = false, none = absent
+  columns: [I, D, E, A, L, E2]
+  rows:
+    SCI-01: { I: primary, D: primary, E: secondary, A: primary, L: none,      E2: none    }
+    SCI-02: { I: secondary, D: none, E: primary, A: primary, L: primary,  E2: none    }
+    SCI-03: { I: none,      D: none, E: primary, A: secondary, L: primary, E2: primary }
+    SCI-04: { I: none,      D: secondary, E: primary, A: primary, L: primary, E2: none }
+    SCI-05: { I: primary,   D: primary, E: none,    A: primary, L: none,      E2: secondary }
+    SCI-06: { I: primary,   D: primary, E: none,    A: primary, L: none,      E2: secondary }
+    SCI-07: { I: primary,   D: secondary, E: none,  A: none,    L: primary,   E2: primary }
