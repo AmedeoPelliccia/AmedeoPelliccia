@@ -13,7 +13,7 @@ By day I work as an aerospace engineer specializing in aircraft technical data s
 What I am building here goes beyond aerospace. It is an integrating model — inclusive by design, European in origin, exportable by structure.
 
 This repository is the public **AmedeoPelliccia profile** presented as a
-**governed portfolio**. Its structure, published artefacts, and portfolio-level
+**governed portfolio**. Its structure, published artifacts, and portfolio-level
 governance claims are bounded by the
 [`Model_Digital_Constitution.md`](Model_Digital_Constitution.md), which serves
 as the repository's governing legal and operational frame.
