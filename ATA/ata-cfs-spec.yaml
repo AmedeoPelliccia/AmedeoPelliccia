@@ -1,0 +1,305 @@
+##############################################################################
+# SPEC-ATA-CFS-001 — ATA Constituent Framework Specification
+# Machine-readable companion to ATA/ATA-CFS-SPEC.md
+##############################################################################
+
+document_id: SPEC-ATA-CFS-001
+document_type: ata_constituent_framework_spec
+title: "ATA Constituent Framework Specification"
+version: "1.0.0"
+schema_version: "1.0.0"
+status: normative_draft
+parent: STD-OPTIN-SCI-001
+last_updated: "2026-03-11T00:00:00Z"
+
+description: >
+  Formal specification for the ATA Constituent Framework (ATA-CFS).
+  Defines the structural bridge from legacy ATA iSpec 2200 industrial chapter
+  numbering to the scientific domain architecture (STD-OPTIN-SCI-001).
+  Establishes naming rules, inheritance rules, traceability rules, and
+  CI/CD validation hooks for Constituent Chapters (CC) and Constituent
+  Chapter Articles (CCA).
+
+related_documents:
+  - id: STD-OPTIN-SCI-001
+    role: parent — OPT-IN Science Domain Architecture
+    artefacts:
+      markdown: OPT-IN/SCIENCE-DOMAIN.md
+      yaml: OPT-IN/science-domain.yaml
+  - id: AMPEL360-ATA-REG-001
+    role: ATA chapter registry — source of CC parent chapters
+    artefacts:
+      json: ATA/Full-ATA-CHAPTERS-Top-Level-Instructions-list.json
+  - id: ESSA-DOC-AMPEL360-001
+    role: lifecycle engine consuming CC/CCA artefacts
+  - id: EACST-STD-CCTLS-001
+    role: certification lifecycle standard governing CCA evidence tokens
+
+# ─────────────────────────────────────────────
+# Definitions
+# ─────────────────────────────────────────────
+definitions:
+  - term: Constituent Chapter (CC)
+    short: CC
+    definition: >
+      Root domain unit derived from a legacy ATA chapter (e.g. ATA 28 -> CC28).
+      Acts as the knowledge container and historical anchor for all derivative articles.
+  - term: Constituent Chapter Article (CCA)
+    short: CCA
+    definition: >
+      A derived unit within a CC. Represents a specific functional abstraction,
+      specialisation, or module within the domain. Classical articles (A0-A5)
+      map to existing ATA sub-chapters; extension articles (A6-A9) are reserved
+      for scientific and technology-evolution extensions.
+  - term: Article 0 (A0)
+    short: A0
+    definition: >
+      Foundational article within a CC. Reserved for base ontology of the domain:
+      general definitions, carrier properties, energy physics, or analogous
+      domain primitives. Every CC must have an A0.
+  - term: Classical Articles
+    short: A1-A5
+    definition: >
+      CCAs mapping directly to existing ATA sub-chapter divisions. Inherit the
+      full normative weight of the original ATA specification.
+  - term: Extension Articles
+    short: A6-A9
+    definition: >
+      CCAs reserved for scientific, forward-compatible, or technology-evolution
+      extensions. Not present in original ATA numbering. Extend the framework
+      while preserving backward compatibility.
+  - term: Meta-System Article
+    short: A9
+    definition: >
+      Conventionally reserved for digital twin, simulation, and system-level
+      analytics artefacts that span all other articles in the CC.
+  - term: UID
+    short: UID
+    definition: >
+      Machine-addressable token of the form AnXXSSSS identifying a specific
+      article instance. A=fixed literal; n=article ordinal (0-9);
+      XX=parent chapter (01-99); SSSS=lineage/sub-variant (default 0000).
+
+# ─────────────────────────────────────────────
+# Naming Rules
+# ─────────────────────────────────────────────
+naming_rules:
+
+  constituent_chapter:
+    input: "ATA XX (standard chapter number)"
+    output: "CCXX"
+    logic: "Direct 1:1 mapping. Leading zeros preserved. No deviation allowed."
+    examples:
+      - ata: "ATA 28"
+        cc: "CC28"
+      - ata: "ATA 34"
+        cc: "CC34"
+      - ata: "ATA 05"
+        cc: "CC05"
+
+  constituent_chapter_article:
+    input: "ATA XXn or logical equivalent"
+    output: "CCAXX-An"
+    breakdown:
+      XX: Parent chapter ID (two digits)
+      n: Article ordinal (0-9)
+    examples:
+      - ata_sub: "ATA 280"
+        cca: "CCA28-A0"
+        role: "Foundational"
+      - ata_sub: "ATA 281"
+        cca: "CCA28-A1"
+        role: "Storage Architecture"
+      - ata_sub: "(extension)"
+        cca: "CCA28-A6"
+        role: "Future Energy Carriers"
+
+  uid:
+    pattern: "AnXXSSSS"
+    breakdown:
+      A: "Fixed literal token (Article)"
+      n: "Article ordinal (0-9)"
+      XX: "Parent chapter (01-99, two digits)"
+      SSSS: "Reserved — lineage/sub-variant (default: 0000)"
+    regex: "^A[0-9][0-9]{2}[0-9]{4}$"
+    examples:
+      - cca: "CCA28-A0"
+        uid: "A0280000"
+      - cca: "CCA28-A6"
+        uid: "A6280000"
+      - cca: "CCA34-A0"
+        uid: "A0340000"
+
+# ─────────────────────────────────────────────
+# Article Ordinal Convention
+# ─────────────────────────────────────────────
+article_ordinals:
+  - ordinal: A0
+    role: "Foundational / Ontology"
+    ata_correspondence: "ATA XX0"
+    extension_type: classical
+    mandatory: true
+  - ordinal: A1
+    role: "Storage / Architecture"
+    ata_correspondence: "ATA XX1"
+    extension_type: classical
+    mandatory: false
+  - ordinal: A2
+    role: "Distribution / Flow"
+    ata_correspondence: "ATA XX2"
+    extension_type: classical
+    mandatory: false
+  - ordinal: A3
+    role: "Jettison / Emergency"
+    ata_correspondence: "ATA XX3"
+    extension_type: classical
+    mandatory: false
+  - ordinal: A4
+    role: "Indication / Sensing"
+    ata_correspondence: "ATA XX4"
+    extension_type: classical
+    mandatory: false
+  - ordinal: A5
+    role: "Interface / Servicing"
+    ata_correspondence: "ATA XX5"
+    extension_type: classical
+    mandatory: false
+  - ordinal: A6
+    role: "Future Carrier Extension"
+    ata_correspondence: reserved
+    extension_type: scientific
+    mandatory: false
+  - ordinal: A7
+    role: "Thermal Management"
+    ata_correspondence: reserved
+    extension_type: scientific
+    mandatory: false
+  - ordinal: A8
+    role: "Autonomous / Unmanned"
+    ata_correspondence: reserved
+    extension_type: scientific
+    mandatory: false
+  - ordinal: A9
+    role: "Meta-System / Digital Twin"
+    ata_correspondence: reserved
+    extension_type: scientific
+    mandatory: false
+
+# ─────────────────────────────────────────────
+# Inheritance Rules
+# ─────────────────────────────────────────────
+inheritance_rules:
+  - id: INH-001
+    name: Semantic Continuity
+    statement: >
+      Every CCA must maintain semantic traceability to its parent CC.
+      A CCA cannot define concepts outside the knowledge domain of its CC.
+  - id: INH-002
+    name: Scope Propagation
+    statement: >
+      The technical scope of the CC limits and constrains the scope of all its
+      derived CCAs. No CCA may claim a scope broader than its parent CC.
+      Extension articles (A6-A9) expand within the domain into new technology
+      spaces; they do not escape the domain.
+  - id: INH-003
+    name: Versioning Independence with Stability Inheritance
+    statement: >
+      The version of a CCA is independent of the version of its parent CC.
+      However, the CCA inherits the stability state of its CC: if the CC is
+      deprecated, all its CCAs are automatically considered
+      deprecated-pending-migration.
+  - id: INH-004
+    name: OPT-IN Axis Inheritance
+    statement: >
+      Every CC inherits the OPT-IN axis instantiation of its parent Science
+      subdomain. A CCA may specialise (narrow) the axis instantiation but
+      not override it.
+
+# ─────────────────────────────────────────────
+# Traceability Rules
+# ─────────────────────────────────────────────
+traceability_rules:
+  - origin: "ATA XX"
+    destination: "CCXX"
+    relation: Historical Anchor
+    cardinality: "1:1"
+  - origin: "ATA XXn"
+    destination: "CCAXX-An"
+    relation: Derivation
+    cardinality: "1:1"
+  - origin: "CCAXX-An"
+    destination: "AnXXSSSS"
+    relation: Instantiation
+    cardinality: "1:N"
+  - origin: "CCXX"
+    destination: "OPT-IN Science Subdomain"
+    relation: Domain Mapping
+    cardinality: "1:N"
+  - origin: "AnXXSSSS"
+    destination: "PATH -> MTL artefact"
+    relation: Evidence Chain
+    cardinality: "1:1"
+
+traceability_invariant:
+  id: TRACE-INV-001
+  statement: >
+    Every UID instance (AnXXSSSS with non-zero SSSS) must resolve to a
+    registered artefact in the PATH -> MTL pipeline before a downstream
+    certification gate (P050 or later in EACST-STD-CCTLS-001) can be closed.
+
+# ─────────────────────────────────────────────
+# OPT-IN Science Domain Mapping
+# ─────────────────────────────────────────────
+optin_science_mapping:
+  - cc_range: "CC05-CC12"
+    ata_domain: "General / Airworthiness"
+    primary_subdomain: SCI-07
+    secondary_subdomains: [SCI-05]
+  - cc_range: "CC21-CC26"
+    ata_domain: "Air Systems"
+    primary_subdomain: SCI-04
+    secondary_subdomains: [SCI-02]
+  - cc_range: "CC27-CC29"
+    ata_domain: "Fuel / Energy"
+    primary_subdomain: SCI-04
+    secondary_subdomains: [SCI-02, SCI-01]
+    note: "SCI-01 applies to A6+ extension articles (hydrogen/cryogenic)"
+  - cc_range: "CC31-CC36"
+    ata_domain: "Avionics"
+    primary_subdomain: SCI-05
+    secondary_subdomains: [SCI-01]
+  - cc_range: "CC45-CC46"
+    ata_domain: "Central Maintenance / Information"
+    primary_subdomain: SCI-05
+    secondary_subdomains: [SCI-06]
+  - cc_range: "CC51-CC57"
+    ata_domain: "Structures"
+    primary_subdomain: SCI-04
+    secondary_subdomains: [SCI-02]
+  - cc_range: "CC71-CC80"
+    ata_domain: "Powerplant"
+    primary_subdomain: SCI-04
+    secondary_subdomains: [SCI-02, SCI-01]
+
+# ─────────────────────────────────────────────
+# CI/CD Validation Rules
+# ─────────────────────────────────────────────
+validation_rules:
+  - id: CFS-VAL-001
+    check: "Every CC must have an A0 article defined"
+    severity: ERROR
+  - id: CFS-VAL-002
+    check: "UID pattern must match ^A[0-9][0-9]{2}[0-9]{4}$"
+    severity: ERROR
+  - id: CFS-VAL-003
+    check: "CCA scope must not reference concepts outside parent CC domain"
+    severity: WARNING
+  - id: CFS-VAL-004
+    check: "Extension articles (A6-A9) must declare extension_type field"
+    severity: ERROR
+  - id: CFS-VAL-005
+    check: "Every UID with SSSS != 0000 must resolve to a PATH->MTL artefact"
+    severity: ERROR
+  - id: CFS-VAL-006
+    check: "CC must declare at least one OPT-IN Science subdomain mapping"
+    severity: WARNING

@@ -1,0 +1,284 @@
+##############################################################################
+# CC28 — Constituent Chapter 28: Fuel / Energy Storage & Distribution
+# Machine-readable companion to ATA/CC28/CC28.md
+##############################################################################
+
+document_id: CC28-SPEC-001
+document_type: ata_constituent_chapter
+title: "CC28 — Constituent Chapter 28: Fuel / Energy Storage & Distribution"
+version: "1.0.0"
+schema_version: "1.0.0"
+status: normative_draft
+cc_code: CC28
+ata_source: "ATA 28"
+ata_title: "Fuel"
+framework: SPEC-ATA-CFS-001
+parent: SPEC-ATA-CFS-001
+last_updated: "2026-03-11T00:00:00Z"
+
+domain: "Fuel / Energy Storage & Distribution"
+domain_scope: >
+  All energy carrier media, containment, distribution, quantification,
+  servicing interfaces, and lifecycle digital representations for aerospace
+  vehicles governed under AMPEL360 profiles. Includes classical Jet-A/A-1
+  fuel architectures and forward-compatible LH2/GH2 hydrogen systems.
+
+ampel360_section: Systems
+ampel360_tli_ref: ATA-28-TLI.yaml
+
+optin_science_mapping:
+  primary:
+    - subdomain: SCI-04
+      name: "Materials Science & Engineering"
+      articles: [A0, A1, A2, A3, A6, A7]
+      rationale: "Tank materials, cryogenic materials, thermal interface materials, fluid seals"
+    - subdomain: SCI-02
+      name: "Climate & Earth Science"
+      articles: [A0, A2, A3]
+      rationale: "Emission factors, cold-soak thermal analysis, jettison environmental impact"
+  secondary:
+    - subdomain: SCI-01
+      name: "Quantum Science & Technology"
+      articles: [A6, A7, A9]
+      rationale: "Cryogenic/quantum effects in LH2; QSN-accelerated simulation in digital twin"
+    - subdomain: SCI-05
+      name: "Computer Science & Informatics"
+      articles: [A4, A8, A9]
+      rationale: "FQIS data architecture; autonomous control; digital twin software"
+    - subdomain: SCI-07
+      name: "Social & Behavioural Science"
+      articles: [A5, A8]
+      rationale: "Ground crew human factors; workforce impact of autonomous logistics"
+
+related_documents:
+  - id: SPEC-ATA-CFS-001
+    role: parent framework specification
+    artefacts:
+      markdown: ATA/ATA-CFS-SPEC.md
+      yaml: ATA/ata-cfs-spec.yaml
+  - id: STD-OPTIN-SCI-001
+    role: OPT-IN Science Domain Architecture
+    artefacts:
+      markdown: OPT-IN/SCIENCE-DOMAIN.md
+      yaml: OPT-IN/science-domain.yaml
+  - id: ESSA-DOC-AMPEL360-Q100-001
+    role: AMPEL360 Q100 hydrogen-electric aircraft — primary consumer of CC28-A6
+  - id: EACST-STD-CCTLS-001
+    role: certification lifecycle standard governing CCA evidence tokens
+
+# ─────────────────────────────────────────────
+# Constituent Chapter Articles
+# ─────────────────────────────────────────────
+articles:
+
+  - cca: CCA28-A0
+    uid: A0280000
+    ordinal: A0
+    title: "Prime Consumable – Energy Carrier"
+    ata_reference: "ATA 280"
+    extension_type: classical
+    scope: >
+      General definitions, fuel chemistry, energy carrier properties,
+      thermodynamic characterisation, carrier classification matrix,
+      cross-domain energy type registry.
+    optin_subdomains: [SCI-04, SCI-02]
+    mandatory: true
+    ampel360_lifecycle:
+      phase: P010
+      token_type: SCOPE_NODE
+      gate: CONFIRM
+    status: normative_draft
+
+  - cca: CCA28-A1
+    uid: A1280000
+    ordinal: A1
+    title: "Storage Architecture"
+    ata_reference: "ATA 281"
+    extension_type: classical
+    scope: >
+      Tank geometry and structural integration, volumetric constraints,
+      containment logic, material compatibility, structural interfaces
+      with airframe (ATA 51-57 cross-reference), venting and
+      pressurisation schemes.
+    optin_subdomains: [SCI-04]
+    mandatory: false
+    ampel360_lifecycle:
+      phase: P030
+      token_type: METHOD
+      gate: ACTIVATE
+    status: normative_draft
+
+  - cca: CCA28-A2
+    uid: A2280000
+    ordinal: A2
+    title: "Distribution & Flow Dynamics"
+    ata_reference: "ATA 282"
+    extension_type: classical
+    scope: >
+      Pumps, valves, pipelines, fluid dynamics modelling, pressure
+      regulation, crossfeed logic, boost pump logic, flow balancing,
+      thermal management of distribution lines.
+    optin_subdomains: [SCI-04, SCI-02]
+    mandatory: false
+    ampel360_lifecycle:
+      phase: P040
+      token_type: SIM_RUN
+      gate: ACTIVATE
+    status: normative_draft
+
+  - cca: CCA28-A3
+    uid: A3280000
+    ordinal: A3
+    title: "Jettison & Emergency Dump"
+    ata_reference: "ATA 283"
+    extension_type: classical
+    scope: >
+      Mass-shedding logic, emergency fuel dump protocols, safety
+      redundancy architecture, regulatory compliance (CS-25 963-993),
+      environmental impact of jettison events.
+    optin_subdomains: [SCI-02]
+    mandatory: false
+    ampel360_lifecycle:
+      phase: P040
+      token_type: METHOD
+      gate: ACTIVATE
+    status: normative_draft
+
+  - cca: CCA28-A4
+    uid: A4280000
+    ordinal: A4
+    title: "Indication & Quantification"
+    ata_reference: "ATA 284"
+    extension_type: classical
+    scope: >
+      Capacitance probes, ultrasonic sensors, mass-based quantity indication,
+      fuel quantity indication system (FQIS) architecture, data bus interfaces
+      (ARINC 429/664), sensor fault management.
+    optin_subdomains: [SCI-05]
+    mandatory: false
+    ampel360_lifecycle:
+      phase: P040
+      token_type: SIM_RUN
+      gate: ACTIVATE
+    status: normative_draft
+
+  - cca: CCA28-A5
+    uid: A5280000
+    ordinal: A5
+    title: "Refueling & Offloading Interfaces"
+    ata_reference: "ATA 285"
+    extension_type: classical
+    scope: >
+      Pressure refueling receptacles, overwing gravity fill, defueling logic,
+      ground ops safety, GSE interface specifications, data recording during
+      fueling operations.
+    optin_subdomains: [SCI-07]
+    mandatory: false
+    ampel360_lifecycle:
+      phase: P030
+      token_type: METHOD
+      gate: ACTIVATE
+    status: normative_draft
+
+  - cca: CCA28-A6
+    uid: A6280000
+    ordinal: A6
+    title: "Future Energy Carriers (H2/He)"
+    ata_reference: reserved
+    extension_type: scientific
+    scope: >
+      Liquid Hydrogen (LH2) systems, gaseous hydrogen (GH2), helium purge
+      systems, cryogenic tank design, boil-off management, ortho-para
+      conversion, hydrogen embrittlement mitigation, regulatory gap analysis
+      vs. CS-25 Amendment 27.
+    optin_subdomains: [SCI-01, SCI-04]
+    mandatory: false
+    ampel360_link:
+      programme: "AMPEL360 Q100 LH2 propulsion"
+      ata_cross_reference: ["ATA 28", "ATA 73"]
+    ampel360_lifecycle:
+      phase: P020
+      token_type: H_REQ
+      gate: CONFIRM
+    status: normative_draft
+    notes: >
+      Directly linked to AMPEL360 Q100 hydrogen-electric propulsion architecture.
+      Cryogenic specifics require LH2-qualified materials (INH-001 scope: CC28 energy domain).
+
+  - cca: CCA28-A7
+    uid: A7280000
+    ordinal: A7
+    title: "Thermal Management Integration"
+    ata_reference: reserved
+    extension_type: scientific
+    scope: >
+      Fuel as heat sink for avionics/electric motors, thermal coupling with
+      airframe thermal map, cryocooler integration, LH2 pre-cooling loops,
+      thermal gradient monitoring, predictive thermal modelling.
+    optin_subdomains: [SCI-04, SCI-01]
+    mandatory: false
+    ampel360_lifecycle:
+      phase: P040
+      token_type: SIM_RUN
+      gate: ACTIVATE
+    status: normative_draft
+
+  - cca: CCA28-A8
+    uid: A8280000
+    ordinal: A8
+    title: "Unmanned / Autonomous Logistics"
+    ata_reference: reserved
+    extension_type: scientific
+    scope: >
+      Automated refueling architectures, drone-specific fuel distribution,
+      robotic GSE interfaces, autonomous fuel management logic, cybersecurity
+      for fuel management networks (ATA 46 cross-reference).
+    optin_subdomains: [SCI-05, SCI-07]
+    mandatory: false
+    ampel360_lifecycle:
+      phase: P010
+      token_type: SCOPE_NODE
+      gate: CONFIRM
+    status: normative_draft
+
+  - cca: CCA28-A9
+    uid: A9280000
+    ordinal: A9
+    title: "Energy System Digital Twin"
+    ata_reference: reserved
+    extension_type: scientific
+    meta_system: true
+    scope: >
+      Simulation models of entire CC28 domain, physics-based state estimation,
+      predictive analytics for fuel quantity and system health, ML-augmented
+      anomaly detection, integration with AMPEL360 GAIA-AIR digital twin
+      infrastructure (NBT gate — N-axis), real-time coupling with operational
+      data via TEKNIA ledger.
+    optin_subdomains: [SCI-01, SCI-05]
+    optin_n_axis:
+      nbt_gate: true
+      description: >
+        NBT gate bridges QSN-accelerated CC28 simulation outputs to the
+        classical ESSA pipeline. Physics-based state estimation runs on
+        quantum-augmented manifold; results tunnel back as geometrically
+        structured evidence tokens.
+    mandatory: false
+    ampel360_lifecycle:
+      phase: P040
+      token_type: SIM_RUN
+      gate: ACTIVATE
+    status: normative_draft
+    notes: >
+      A9 spans all A0-A8 articles. Digital twin state must reference current
+      UID instances of all instantiated CCA28-An articles.
+
+# ─────────────────────────────────────────────
+# CFS Validation State
+# ─────────────────────────────────────────────
+cfs_validation:
+  CFS-VAL-001: PASS   # A0 article defined
+  CFS-VAL-002: PASS   # All UIDs match ^A[0-9][0-9]{2}[0-9]{4}$
+  CFS-VAL-003: PASS   # All CCAs within Fuel/Energy domain
+  CFS-VAL-004: PASS   # All A6-A9 declare extension_type: scientific
+  CFS-VAL-005: N/A    # No non-default SSSS instances yet (all 0000)
+  CFS-VAL-006: PASS   # CC28 declares SCI-04 + SCI-02 + SCI-01 subdomains
