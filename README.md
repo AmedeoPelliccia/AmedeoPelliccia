@@ -1110,6 +1110,7 @@ It is structural logic, not rhetoric.
 | `DEL-03-data-management-plan.md` | `AI-BOOST/` | DEL-03 Data Management Plan (YAML front matter + Markdown): datasets, FAIR mappings, security levels, governance, preservation (Excellence → Data) |
 | `application-strategy.yaml` | `AI-BOOST/` | AI-BOOST deliverable registry (DEL-01–DEL-09), EuroHPC JU Frontier AI Grand Challenge |
 | `uts-taxonomy.yaml` | `UTS/` | Universal Transport System domain taxonomy (categories 000–080), evidence/artefact registry, Domain Atlas integration |
+| `ipsn.yaml` | `ESSA/` | IPSN — Unified WBS/PBS numbering formula: 5-level project (W1–W5) and product (P1–P5) hierarchies, cross-reference rules, CCTLS phase mapping, unified vocabulary |
 
 ### File Placement (OPT-IN / PLUMA)
 
