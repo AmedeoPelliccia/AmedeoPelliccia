@@ -220,7 +220,7 @@ deliverables:
     title: "Open Science and Data Management"
     evaluation_criterion: EXCELLENCE
     evaluation_subsection: Methodology
-    status: stub
+    status: draft
     description: >
       Open science practices, FAIR data management, and reproducibility.
 

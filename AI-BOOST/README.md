@@ -25,7 +25,7 @@ IDEALE-ESG is the applicant action submitted to the AI-BOOST call. Its objective
 | DEL-05 | Work Plan and Resources | Implementation → Work Plan and Resources | stub |
 | DEL-06 | Capacity of Participants | Implementation → Capacity of Participants | stub |
 | DEL-07 | Ethics and Security | Ethics → Ethics and Security | stub |
-| DEL-08 | Open Science and Data Management | Excellence → Open Science | stub |
+| **DEL-08** | Open Science and Data Management | Excellence → Open Science | draft |
 | DEL-09 | Financial Plan | Implementation → Financial Plan | stub |
 
 ---

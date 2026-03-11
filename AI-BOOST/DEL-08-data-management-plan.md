@@ -1,13 +1,13 @@
 ---
 # ─────────────────────────────────────────────
-# DEL-03: Data Management Plan (Machine-Readable Header)
+# DEL-08: Data Management Plan (Machine-Readable Header)
 # ─────────────────────────────────────────────
 # This YAML header serves as the machine-readable layer of the deliverable.
 # It can be extracted by CI pipelines for automated validation using the $schema reference.
 $schema: "https://ai-boost.eu/schemas/deliverable-schema-v1.0.json"
 
 deliverable:
-  id: DEL-03
+  id: DEL-08
   title: Data Management Plan
   section: "Excellence → Data"
   programme:
@@ -29,7 +29,7 @@ deliverable:
       due_date: "2027-02-25"
     - milestone: M36
       scope: final
-      due_date: "2029-02-25"
+      due_date: "2028-08-25"
 
 # ─────────────────────────────────────────────
 # 1. Governance & Roles
@@ -423,15 +423,15 @@ revision_history:
     description: "Mid-term update"
     changes: ["Actual volumes", "New datasets", "Access statistics"]
   - version: "2.0"
-    date: "2029-02-25"
+    date: "2028-08-25"
     milestone: M36
     description: "Final DMP"
     changes: ["Preservation confirmation", "DOI catalogue", "Lessons learned"]
 ---
 
-# DEL-03 — Data Management Plan
+# DEL-08 — Data Management Plan
 
-**Deliverable ID:** DEL-03
+**Deliverable ID:** DEL-08
 **Title:** Data Management Plan
 **Section:** Excellence → Data
 **Programme:** AI-BOOST — Frontier AI Grand Challenge
@@ -483,7 +483,7 @@ The project will generate and collect seven primary dataset categories. Estimate
 | **DS-01** | HPC benchmark telemetry | Generated | HDF5, Parquet | 50 TB/year | Internal | Merkle Log (SHA-256) |
 | **DS-02** | AI/ML model artefacts | Generated | ONNX, SafeTensors | 5 TB/year | Internal | Merkle Log (SHA-256) |
 | **DS-03** | Quantum simulation outputs | Generated | HDF5, JSON | 2 TB/year | Internal | Merkle Log (SHA-256) |
-| **DS-04** | Reference datasets (public) | Collected | CSV, Parquet | 500 GB | Public | Source Reference |
+| **DS-04** | Reference datasets (public) | Collected | CSV, Parquet | 500 GB | Public | Simple Hash (SHA-256) |
 | **DS-05** | Certified dynamics audit logs | Generated | JSON | 10 GB/year | Internal | Merkle Log (SHA-256) |
 | **DS-06** | Technical publications (S1000D) | Generated | XML, PDF | 1 GB/year | Restricted | Merkle Log (SHA-256) |
 | **DS-07** | Environmental & lifecycle metrics | Generated | JSON, CSV | 5 GB/year | Public | Simple Hash (SHA-256) |
@@ -498,14 +498,14 @@ The project will generate and collect seven primary dataset categories. Estimate
 The following chart shows the relative estimated annual storage footprint across all datasets, illustrating that HPC benchmark telemetry (DS-01) dominates volume planning.
 
 ```mermaid
-pie title Estimated Annual Data Volume
-    "DS-01 HPC telemetry (50 TB)" : 50
-    "DS-02 AI/ML artefacts (5 TB)" : 5
-    "DS-03 Quantum sim (2 TB)" : 2
-    "DS-04–07 Other (0.5 TB combined)" : 0.5
+pie title Estimated Annual Data Volume (recurring datasets)
+    "DS-01 HPC telemetry (50 TB/yr)" : 50
+    "DS-02 AI/ML artefacts (5 TB/yr)" : 5
+    "DS-03 Quantum sim (2 TB/yr)" : 2
+    "DS-05–07 Other (0.016 TB/yr combined)" : 0.016
 ```
 
-> **Volume breakdown:** DS-01 accounts for ~87% of annual storage. DS-04 (0.5 TB), DS-05 (0.01 TB), DS-06 (0.001 TB), and DS-07 (0.005 TB) are grouped for readability.
+> **Volume breakdown:** DS-01 accounts for ~87% of annual recurring storage. DS-05 (0.01 TB/yr), DS-06 (0.001 TB/yr), and DS-07 (0.005 TB/yr) are grouped for readability. DS-04 (500 GB total) is excluded from this chart as it is a **one-time collection**, not an annual volume.
 
 ### 2.4 Dataset–WP–Objective Traceability
 
@@ -581,7 +581,7 @@ flowchart TD
 
 ### 2.6 Data Integrity Architecture
 
-To ensure immutable provenance, all generated datasets (DS-01–DS-03, DS-05–DS-06) utilize a **Merkle Log** structure. This chains individual data blocks via SHA-256 hashes, allowing any modification or corruption to be detectable instantly, ensuring audit-ready integrity.
+To ensure immutable provenance, most generated datasets (DS-01–DS-03, DS-05–DS-06) utilize a **Merkle Log** structure; DS-07, while also generated, instead uses a simpler `simple_hash`-based integrity mechanism. This chains individual data blocks via SHA-256 hashes, allowing any modification or corruption to be detectable instantly, ensuring audit-ready integrity.
 
 ```mermaid
 flowchart LR
@@ -914,7 +914,7 @@ This DMP is a living document. Updates are tracked in the YAML header and below.
 |:---|:---|:---|:---|:---|
 | **0.1** | 2026-02-25 | M6 | Initial DMP | Initial draft, dataset mapping, governance defined |
 | **1.0** | 2027-02-25 | M18 | Mid-term Update | Actual volumes, new datasets, access statistics |
-| **2.0** | 2029-02-25 | M36 | Final DMP | Preservation confirmation, DOI catalogue, lessons learned |
+| **2.0** | 2028-08-25 | M36 | Final DMP | Preservation confirmation, DOI catalogue, lessons learned |
 
 ---
 

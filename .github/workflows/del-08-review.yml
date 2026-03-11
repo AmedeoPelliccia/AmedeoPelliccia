@@ -1,5 +1,5 @@
 # ─────────────────────────────────────────────────────────────
-# DEL-03 Data Management Plan — Scheduled Pre-Review Workflow
+# DEL-08 Data Management Plan — Scheduled Pre-Review Workflow
 # ─────────────────────────────────────────────────────────────
 # Triggers ~2 months before the M18 milestone (2027-02-25) to
 # perform an automated AI review of the DMP and notify the
@@ -11,9 +11,13 @@
 #           frontier model for Dec 2026; current best is
 #           gpt-5.4). Override via workflow_dispatch if the
 #           model name differs at runtime.
+# IMPORTANT: Verify the default model name is valid on the
+#            GitHub Models marketplace BEFORE Dec 2026. If
+#            the model does not exist, the API call will fail.
+#            Use workflow_dispatch to test with a known model.
 # ─────────────────────────────────────────────────────────────
 
-name: "DEL-03 DMP Pre-Review (M18)"
+name: "DEL-08 DMP Pre-Review (M18)"
 
 on:
   schedule:
@@ -30,14 +34,13 @@ on:
 permissions:
   contents: read
   issues: write
-  models: read
 
 jobs:
   review-del-03:
-    name: "AI Review — DEL-03 Data Management Plan"
+    name: "AI Review — DEL-08 Data Management Plan"
     runs-on: ubuntu-latest
     env:
-      DMP_PATH: "AI-BOOST/DEL-03-data-management-plan.md"
+      DMP_PATH: "AI-BOOST/DEL-08-data-management-plan.md"
       MODEL: ${{ github.event.inputs.model || 'openai/gpt-6' }}
 
     steps:
@@ -60,10 +63,11 @@ jobs:
         run: |
           DMP_CONTENT=$(cat "$DMP_PATH")
           echo "dmp_length=$(echo "$DMP_CONTENT" | wc -l)" >> "$GITHUB_OUTPUT"
+          DMP_DELIM=$(uuidgen)
           {
-            echo "DMP_CONTENT<<DMPEOF"
+            echo "DMP_CONTENT<<$DMP_DELIM"
             echo "$DMP_CONTENT"
-            echo "DMPEOF"
+            echo "$DMP_DELIM"
           } >> "$GITHUB_ENV"
 
       - name: AI Review via GitHub Models
@@ -78,7 +82,7 @@ jobs:
             const model = process.env.MODEL;
 
             const systemPrompt = `You are an expert reviewer for Horizon Europe / EuroHPC JU deliverables.
-            You are reviewing DEL-03 (Data Management Plan) for the AI-BOOST project (GA 101135737).
+            You are reviewing DEL-08 (Data Management Plan) for the AI-BOOST project (GA 101135737).
             The M18 mid-term update is due 2027-02-25.
 
             Review the document for:
@@ -148,29 +152,30 @@ jobs:
             const model = process.env.MODEL_USED;
             const today = new Date().toISOString().split('T')[0];
 
-            const issueBody = `## DEL-03 Data Management Plan — Automated Pre-Review
-
-            **Review date:** ${today}
-            **Target milestone:** M18 (2027-02-25)
-            **Model used:** \`${model}\`
-            **Document:** \`AI-BOOST/DEL-03-data-management-plan.md\`
-
-            ---
-
-            ${review}
-
-            ---
-
-            > ℹ️ This review was generated automatically by the \`del-03-review\` workflow,
-            > scheduled ~2 months before the M18 mid-term update deadline.
-            > Review the findings and update the DMP accordingly before 2027-02-25.`;
+            const issueBody =
+              "## DEL-08 Data Management Plan — Automated Pre-Review\n" +
+              "\n" +
+              `**Review date:** ${today}\n` +
+              "**Target milestone:** M18 (2027-02-25)\n" +
+              `**Model used:** \`${model}\`\n` +
+              "**Document:** `AI-BOOST/DEL-08-data-management-plan.md`\n" +
+              "\n" +
+              "---\n" +
+              "\n" +
+              `${review}\n` +
+              "\n" +
+              "---\n" +
+              "\n" +
+              "> ℹ️ This review was generated automatically by the `del-03-review` workflow,\n" +
+              "> scheduled ~2 months before the M18 mid-term update deadline.\n" +
+              "> Review the findings and update the DMP accordingly before 2027-02-25.";
 
             const issue = await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              title: `[DEL-03] Automated Pre-Review for M18 — ${today}`,
+              title: `[DEL-08] Automated Pre-Review for M18 — ${today}`,
               body: issueBody,
-              labels: ["DEL-03", "review", "automated"],
+              labels: ["DEL-08", "review", "automated"],
               assignees: ["AmedeoPelliccia"]
             });
 
