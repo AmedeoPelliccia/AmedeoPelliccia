@@ -36,7 +36,7 @@ permissions:
   issues: write
 
 jobs:
-  review-del-03:
+  review-del-08:
     name: "AI Review — DEL-08 Data Management Plan"
     runs-on: ubuntu-latest
     env:
@@ -166,7 +166,7 @@ jobs:
               "\n" +
               "---\n" +
               "\n" +
-              "> ℹ️ This review was generated automatically by the `del-03-review` workflow,\n" +
+              "> ℹ️ This review was generated automatically by the `del-08-review` workflow,\n" +
               "> scheduled ~2 months before the M18 mid-term update deadline.\n" +
               "> Review the findings and update the DMP accordingly before 2027-02-25.";
 
