@@ -238,7 +238,82 @@ vocabulary:
     cctls_token_type: phase_P000_P120
 
 ##############################################################################
-# 5  Cross-Reference Relations
+# 5  Mock-Up Taxonomy (DMU / PMU / TMU)
+##############################################################################
+
+mockup_taxonomy:
+  description: >
+    Three-tier product representation taxonomy. Each PBS item (P2–P5) carries
+    an implicit mock-up tier governing how data is created, stored, and consumed.
+    The critical differentiator is the time dimension.
+
+  tiers:
+    - id: DMU
+      full_name: "Digital Mock-Up"
+      time_dimension: static
+      data_content: "CAD geometry — the shape of the part"
+      formalism: "geometry(part) → shape"
+      temporal_operations: []
+
+    - id: PMU
+      full_name: "Physical Mock-Up"
+      time_dimension: past_only
+      data_content: >
+        Heritage test database — wind tunnel data, bird strike results,
+        structural fatigue tests. Irreplaceable empirical evidence used
+        for certification and regression baselines.
+      formalism: "test(part, campaign) → result"
+      temporal_operations: []
+
+    - id: TMU
+      full_name: "Twin Model Unreal (Engine) Understanding"
+      time_dimension: past_present_future
+      data_content: >
+        Time-aware living digital twin model built on a game-engine-grade
+        real-time platform. Fuses DMU geometry and PMU heritage data.
+      formalism: "state(part, t) → condition(t)"
+      temporal_operations:
+        - operation: replay
+          direction: past
+          source: "PMU heritage data + flight recorder data"
+        - operation: monitor
+          direction: present
+          source: "Live sensor feeds, IoT telemetry"
+        - operation: predict
+          direction: future
+          source: "Degradation models, remaining useful life (RUL)"
+
+  data_flow:
+    - from: DMU
+      to: TMU
+      relation: "provides geometry"
+    - from: PMU
+      to: TMU
+      relation: "provides empirical truth"
+    - from: sensors
+      to: TMU
+      relation: "provides live telemetry"
+
+  pbs_mapping:
+    - level: P2
+      dmu_artefact: "3D CAD model"
+      pmu_artefact: "Wind tunnel campaign data"
+      tmu_artefact: "Fleet-level digital twin"
+    - level: P3
+      dmu_artefact: "Section geometry"
+      pmu_artefact: "Fatigue test results"
+      tmu_artefact: "Sub-system condition model"
+    - level: P4
+      dmu_artefact: "Part CAD file"
+      pmu_artefact: "Bird strike / impact tests"
+      tmu_artefact: "Component RUL predictor"
+    - level: P5
+      dmu_artefact: "2D drawing"
+      pmu_artefact: "Material coupon test data"
+      tmu_artefact: "Sensor-tracked part state"
+
+##############################################################################
+# 6  Cross-Reference Relations
 ##############################################################################
 
 cross_reference:
@@ -274,7 +349,7 @@ cross_reference:
     coherence: "∀ (w, p) ∈ IPSN : phase(w) = phase(p)"
 
 ##############################################################################
-# 6  Token Integration
+# 7  Token Integration
 ##############################################################################
 
 token_schema:
@@ -300,7 +375,7 @@ token_schema:
         description: "Programme code"
 
 ##############################################################################
-# 7  Validation Rules
+# 8  Validation Rules
 ##############################################################################
 
 validation_rules:
@@ -347,7 +422,7 @@ validation_rules:
       enforcement: state_machine
 
 ##############################################################################
-# 8  Revision History
+# 9  Revision History
 ##############################################################################
 
 revision_history:

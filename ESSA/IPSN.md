@@ -176,7 +176,7 @@ AIBOOST-P1.001                System: GAIA-AIR Digital Twin
 ```mermaid
 graph LR
     P1["P1: System"] -->|P010| SCOPE["Scope & Context"]
-    P2["P2: Assembly"] -->|P040| DMU["DMU/PMU Methods"]
+    P2["P2: Assembly"] -->|P040| DMU["DMU/PMU/TMU Methods"]
     P3["P3: Sub-Assembly"] -->|P050| DOA["DOA Sign-off"]
     P4["P4: Component"] -->|P060| CE["Quality & Conformity"]
     P5["P5: Part"] -->|P080| MRO["In-Service & MRO"]
@@ -184,7 +184,76 @@ graph LR
 
 ---
 
-## 5. Unified Vocabulary
+## 5. Mock-Up Taxonomy (DMU / PMU / TMU)
+
+Product representation in aerospace engineering operates across three distinct tiers, each with a different relationship to **time**. IPSN identifiers at PBS levels P2–P4 carry an implicit mock-up tier that governs how the item's data is created, stored, and consumed.
+
+### 5.1 Three-Tier Overview
+
+| Tier | Full Name | Time Dimension | Data Content |
+|------|-----------|----------------|--------------|
+| **DMU** | Digital Mock-Up | ❌ Static snapshot | CAD geometry — the shape of the part |
+| **PMU** | Physical Mock-Up | ⏪ Past only | Heritage test database — wind tunnel, bird strike, fatigue test results |
+| **TMU** | Twin Model Unreal (Engine) Understanding | ⏪⏸⏩ Past + Present + Future | Time-aware living digital twin model |
+
+- **DMU** captures the *geometry* of a product item — a static, time-independent 3D representation.
+- **PMU** captures the *empirical truth* — the historical record of physical test campaigns. This is irreplaceable certification evidence used for regression baselines.
+- **TMU** fuses DMU geometry and PMU heritage data into a **time-aware digital twin** built on a game-engine-grade real-time platform. TMU models can replay past states, monitor present state via live sensor feeds, and predict future states (degradation, remaining useful life).
+
+### 5.2 Time-Awareness Formalism
+
+The critical differentiator is that **TMU models are time-aware**:
+
+```
+DMU:  geometry(part)            → shape              # static, no time dimension
+PMU:  test(part, campaign)      → result             # historical, past only
+TMU:  state(part, t)            → condition(t)       # function of time t
+```
+
+TMU enables three temporal operations:
+
+| Operation | Time Direction | Source |
+|-----------|---------------|--------|
+| **Replay** | ⏪ Past | PMU heritage data + flight recorder data |
+| **Monitor** | ⏸ Present | Live sensor feeds, IoT telemetry |
+| **Predict** | ⏩ Future | Degradation models, remaining useful life (RUL) |
+
+### 5.3 Data Flow
+
+DMU provides the shape. PMU provides the empirical truth. TMU fuses both into a living, temporal model.
+
+```mermaid
+graph LR
+    DMU["DMU<br/>Digital Mock-Up<br/>(geometry)"] --> TMU["TMU<br/>Twin Model Unreal<br/>(time-aware digital twin)"]
+    PMU["PMU<br/>Physical Mock-Up<br/>(heritage data)"] --> TMU
+    SENSORS["Live Sensors<br/>(IoT / telemetry)"] --> TMU
+    TMU --> REPLAY["⏪ Replay<br/>Past states"]
+    TMU --> MONITOR["⏸ Monitor<br/>Present condition"]
+    TMU --> PREDICT["⏩ Predict<br/>Future degradation"]
+
+    style DMU fill:#42A5F5,color:#fff
+    style PMU fill:#FFA726,color:#fff
+    style TMU fill:#AB47BC,color:#fff
+    style SENSORS fill:#66BB6A,color:#fff
+    style REPLAY fill:#78909C,color:#fff
+    style MONITOR fill:#78909C,color:#fff
+    style PREDICT fill:#78909C,color:#fff
+```
+
+### 5.4 IPSN Integration
+
+Each PBS item (P2–P5) can carry a mock-up tier attribute in its IPSN token:
+
+| PBS Level | Typical DMU Artefact | Typical PMU Artefact | Typical TMU Artefact |
+|-----------|---------------------|---------------------|---------------------|
+| **P2** (Assembly) | 3D CAD model | Wind tunnel campaign data | Fleet-level digital twin |
+| **P3** (Sub-Assembly) | Section geometry | Fatigue test results | Sub-system condition model |
+| **P4** (Component) | Part CAD file | Bird strike / impact tests | Component RUL predictor |
+| **P5** (Part) | 2D drawing | Material coupon test data | Sensor-tracked part state |
+
+---
+
+## 6. Unified Vocabulary
 
 A controlled term set bridging WBS and PBS domains. Each term has a single canonical definition used in both contexts.
 
@@ -203,7 +272,7 @@ A controlled term set bridging WBS and PBS domains. Each term has a single canon
 | **Effectivity** | WBS scope (which tails/MSNs) | PBS scope (which tails/MSNs) | `effectivity` binding |
 | **Phase** | Lifecycle gate governing the work | Lifecycle gate governing the product | `phase` (P000–P120) |
 
-### 5.1 Cross-Domain Link Types
+### 6.1 Cross-Domain Link Types
 
 When linking WBS and PBS nodes, use the following CCTLS relation types:
 
@@ -218,9 +287,9 @@ When linking WBS and PBS nodes, use the following CCTLS relation types:
 
 ---
 
-## 6. Cross-Reference Matrix
+## 7. Cross-Reference Matrix
 
-### 6.1 WBS × PBS Traceability
+### 7.1 WBS × PBS Traceability
 
 Every programme must maintain a cross-reference matrix ensuring completeness and traceability:
 
@@ -243,7 +312,7 @@ Every programme must maintain a cross-reference matrix ensuring completeness and
 └─────────────┴────────────┴────────────┴────────────┘
 ```
 
-### 6.2 Mermaid Visualisation
+### 7.2 Mermaid Visualisation
 
 ```mermaid
 graph TB
@@ -289,11 +358,11 @@ graph TB
 
 ---
 
-## 7. Token Integration
+## 8. Token Integration
 
 Every IPSN node is tokenisable under the CCTLS token model. The token carries both WBS and PBS coordinates.
 
-### 7.1 Extended Token Schema
+### 8.1 Extended Token Schema
 
 ```yaml
 token:
@@ -324,7 +393,7 @@ token:
       target_token_id: "TOK-WBS-W3.001"
 ```
 
-### 7.2 CCTLS State Machine Compliance
+### 8.2 CCTLS State Machine Compliance
 
 IPSN tokens follow the same state machine as all CCTLS tokens:
 
@@ -340,9 +409,9 @@ DRAFT → CONFIRMED → ACTIVATED → PUBLISHED → OBSOLETE
 
 ---
 
-## 8. Validation Rules
+## 9. Validation Rules
 
-### 8.1 Structural Rules
+### 9.1 Structural Rules
 
 | Rule ID | Rule | Enforcement |
 |---------|------|-------------|
@@ -354,7 +423,7 @@ DRAFT → CONFIRMED → ACTIVATED → PUBLISHED → OBSOLETE
 | IPSN-R-006 | Programme code (`PRG`) must be consistent across all WBS and PBS nodes | INTERPRET gate |
 | IPSN-R-007 | Sequence numbers must be unique within their parent scope | INTERPRET gate |
 
-### 8.2 Lifecycle Rules
+### 9.2 Lifecycle Rules
 
 | Rule ID | Rule | Enforcement |
 |---------|------|-------------|
@@ -364,7 +433,7 @@ DRAFT → CONFIRMED → ACTIVATED → PUBLISHED → OBSOLETE
 
 ---
 
-## 9. Glossary
+## 10. Glossary
 
 | Term | Definition |
 |------|------------|
@@ -375,13 +444,14 @@ DRAFT → CONFIRMED → ACTIVATED → PUBLISHED → OBSOLETE
 | **SRU** | Shop Replaceable Unit — a component replaceable only in a shop/depot environment |
 | **ATA** | Air Transport Association — chapter numbering system for aircraft systems (e.g., ATA 72 = Engine) |
 | **S1000D** | International specification for technical publications using XML data modules |
-| **DMU** | Digital Mock-Up — 3D digital representation of product geometry |
-| **PMU** | Process Mock-Up — simulation of manufacturing/maintenance processes |
+| **DMU** | Digital Mock-Up — static 3D digital representation of product geometry (no time dimension) |
+| **PMU** | Physical Mock-Up — the heritage database of physical test campaigns (wind tunnel, bird strike, structural fatigue). Irreplaceable empirical evidence for certification and regression baselines |
+| **TMU** | Twin Model Unreal (Engine) Understanding — a time-aware digital twin layer built on a game-engine-grade real-time platform. Fuses DMU geometry + PMU heritage data into a living temporal model that can replay past states, monitor present condition, and predict future degradation |
 | **DOA** | Design Organisation Approval — authority to approve designs (Part-21 Subpart J) |
 
 ---
 
-## 10. Revision History
+## 11. Revision History
 
 | Version | Date | Description |
 |---------|------|-------------|
