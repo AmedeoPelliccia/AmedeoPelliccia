@@ -4,7 +4,8 @@
 
 This document defines the **Digital Constitution** governing the design,
 development, integration, deployment, and operation of digital systems
-within the **AEROSPACEMODEL** repository.
+within this repository, understood as the **AEROSPACEMODEL genesis**
+repository.
 
 Its purpose is to ensure that:
 - technology remains accountable to human beings,
@@ -17,8 +18,9 @@ This is a **technical and ethical governance document**, not a manifesto.
 
 ## Scope and Intent
 
-This Digital Constitution applies **exclusively** to systems contained in,
-derived from, or explicitly referencing the **AEROSPACEMODEL** repository.
+This Digital Constitution applies **exclusively** to this repository as the
+**AEROSPACEMODEL genesis**, and to systems contained in, derived from, or
+explicitly referencing it.
 
 It does not claim universal validity.
 It does not impose obligations on external systems.
@@ -234,7 +236,8 @@ regardless of its technical or financial merit.
 
 ## Foundational Intent and Evolution
 
-This constitution defines **foundational intentions** for the AEROSPACEMODEL.
+This constitution defines **foundational intentions** for this repository as
+the AEROSPACEMODEL genesis, and for systems derived from it within scope.
 
 These intentions are:
 - explicit,
