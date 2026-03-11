@@ -6,15 +6,9 @@
 # coordinator of findings before the mid-term update deadline.
 #
 # Schedule: Dec 25 at 09:00 UTC (M18 minus ~2 months)
-# Model:    Uses the most advanced model available via GitHub
-#           Models. Default set to openai/gpt-6 (projected
-#           frontier model for Dec 2026; current best is
-#           gpt-5.4). Override via workflow_dispatch if the
-#           model name differs at runtime.
-# IMPORTANT: Verify the default model name is valid on the
-#            GitHub Models marketplace BEFORE Dec 2026. If
-#            the model does not exist, the API call will fail.
-#            Use workflow_dispatch to test with a known model.
+# Model:    Uses GitHub Copilot's own capabilities by default.
+#           Override via workflow_dispatch to use a specific
+#           model from the GitHub Models marketplace.
 # ─────────────────────────────────────────────────────────────
 
 name: "DEL-03 DMP Pre-Review (M18)"
@@ -28,7 +22,7 @@ on:
       model:
         description: "AI model to use for the review"
         required: false
-        default: "openai/gpt-6"
+        default: "copilot"
         type: string
 
 permissions:
@@ -41,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DMP_PATH: "AI-BOOST/DEL-03-data-management-plan.md"
-      MODEL: ${{ github.event.inputs.model || 'openai/gpt-6' }}
+      MODEL: ${{ github.event.inputs.model || 'copilot' }}
 
     steps:
       - name: Check year gate (scheduled runs only fire in 2026)
