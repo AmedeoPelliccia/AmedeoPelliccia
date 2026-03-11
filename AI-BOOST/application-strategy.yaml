@@ -39,13 +39,16 @@ evaluation_criteria:
       - id: EXCELLENCE-METH
         label: Methodology
         deliverable_ref: DEL-02
+      - id: EXCELLENCE-DATA
+        label: Data
+        deliverable_ref: DEL-03
 
   - id: IMPACT
     label: Impact
     subsections:
       - id: IMPACT-PATH
         label: Pathways towards Impact
-        deliverable_ref: DEL-03
+        deliverable_ref: DEL-08
       - id: IMPACT-MEAS
         label: Measures to Maximise Impact
         deliverable_ref: DEL-04
@@ -177,12 +180,13 @@ deliverables:
       Technical approach, work methodology, and risk management strategy.
 
   - id: DEL-03
-    title: "Pathways towards Impact"
-    evaluation_criterion: IMPACT
-    evaluation_subsection: Pathways towards Impact
-    status: stub
+    title: "Data Management Plan"
+    evaluation_criterion: EXCELLENCE
+    evaluation_subsection: Data
+    status: draft
     description: >
-      Expected scientific, economic, and societal impact pathways.
+      Open science practices, FAIR data management, security classification,
+      governance, and long-term preservation strategy.
 
   - id: DEL-04
     title: "Measures to Maximise Impact"
@@ -217,12 +221,12 @@ deliverables:
       Ethical considerations, dual-use assessment, data protection, and security.
 
   - id: DEL-08
-    title: "Open Science and Data Management"
-    evaluation_criterion: EXCELLENCE
-    evaluation_subsection: Methodology
-    status: draft
+    title: "Pathways towards Impact"
+    evaluation_criterion: IMPACT
+    evaluation_subsection: Pathways towards Impact
+    status: stub
     description: >
-      Open science practices, FAIR data management, and reproducibility.
+      Expected scientific, economic, and societal impact pathways.
 
   - id: DEL-09
     title: "Financial Plan"

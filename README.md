@@ -198,7 +198,7 @@ See: [STD-PATH-MTL-001 §3.1b — Contribution Governance](https://github.com/Am
 - GAIA-AIR / QAOS ecosystem development — quantum aerospace operating system for real-time telemetry, digital twins, and predictive maintenance
 - European federal strategy integration via [Modello-federativo-europeo](https://github.com/Amedeopelliccia/Modello-federativo-europeo) and [Agenda-2028](https://github.com/Amedeopelliccia/Agenda-2028)
 - [EACST](EACST/) — European Agency for Civil Space Transportation: foundational regulatory framework for civil space-transport (operator licensing, reusable platform airworthiness, crew training, sustainability, EU operator registry) aligned with EU Space Act pillars
-- [AI-BOOST DEL-08](AI-BOOST/DEL-08-data-management-plan.md) — Data Management Plan (Excellence → Data) for the Frontier AI Grand Challenge (GA 101135737, EuroHPC JU): FAIR data lifecycle, security classification, open-access strategy, long-term preservation
+- [AI-BOOST DEL-03](AI-BOOST/DEL-03-data-management-plan.md) — Data Management Plan (Excellence → Data) for the Frontier AI Grand Challenge (GA 101135737, EuroHPC JU): FAIR data lifecycle, security classification, open-access strategy, long-term preservation
 - [ESSA](ESSA/) — European Safety and Security Agency: constitutional governance stack (Safety-First doctrine, Structural Integration State, H Pipeline, CASE) with CCTLS lifecycle standard; now extended with **AMPEL360 — Aerospace Model for Product and Engineering Lifecycles**, the lifecycle engine spanning concept through traceable closure across P000–P120, plus two domain profiles (**Q100** EASA/CS-25 aviation · **Q10** ESA/ECSS spacecraft) and the **Profile Resolver** with DO-178C validation rules (cyclomatic complexity, artefact presence, MISRA-C compliance)
 - [AMPEL360-FED](ESSA/AMPEL360-FED.md) + [`federation/`](federation/) — Federated Contract Stabilization: Global Tag Authority Matrix v1.1 (four authority classes A0–A3), RAG relaxation policy, JSON schema for global tags, and connector template; wired to the **AMPEL.py** runtime regulatory profile selector (EASA-Q100 / SPACE-Q10 / DO-178C)
 - **Live app:** [AIS preview](https://ais-pre-qgodcoewjywuhs2glepnfo-324605324739.europe-west2.run.app/)
@@ -1107,7 +1107,7 @@ It is structural logic, not rhetoric.
 | `procedure_registry_entry.schema.json` | `.path_mtl/procedures/` | Procedure entry schema (`§3.1a` §7) |
 | `template_registry_entry.schema.json` | `.path_mtl/templates/` | Template entry schema (`§3.1a` §7) |
 | `ledger.schema.json` | `.path_mtl/ledger/` | TEKNIA ledger entry schema (`§STD`) |
-| `DEL-08-data-management-plan.md` | `AI-BOOST/` | DEL-08 Data Management Plan (YAML front matter + Markdown): datasets, FAIR mappings, security levels, governance, preservation (Excellence → Data) |
+| `DEL-03-data-management-plan.md` | `AI-BOOST/` | DEL-03 Data Management Plan (YAML front matter + Markdown): datasets, FAIR mappings, security levels, governance, preservation (Excellence → Data) |
 | `application-strategy.yaml` | `AI-BOOST/` | AI-BOOST deliverable registry (DEL-01–DEL-09), EuroHPC JU Frontier AI Grand Challenge |
 | `uts-taxonomy.yaml` | `UTS/` | Universal Transport System domain taxonomy (categories 000–080), evidence/artefact registry, Domain Atlas integration |
 

@@ -1,5 +1,5 @@
 # ─────────────────────────────────────────────────────────────
-# DEL-08 Data Management Plan — Scheduled Pre-Review Workflow
+# DEL-03 Data Management Plan — Scheduled Pre-Review Workflow
 # ─────────────────────────────────────────────────────────────
 # Triggers ~2 months before the M18 milestone (2027-02-25) to
 # perform an automated AI review of the DMP and notify the
@@ -17,7 +17,7 @@
 #            Use workflow_dispatch to test with a known model.
 # ─────────────────────────────────────────────────────────────
 
-name: "DEL-08 DMP Pre-Review (M18)"
+name: "DEL-03 DMP Pre-Review (M18)"
 
 on:
   schedule:
@@ -36,11 +36,11 @@ permissions:
   issues: write
 
 jobs:
-  review-del-08:
-    name: "AI Review — DEL-08 Data Management Plan"
+  review-del-03:
+    name: "AI Review — DEL-03 Data Management Plan"
     runs-on: ubuntu-latest
     env:
-      DMP_PATH: "AI-BOOST/DEL-08-data-management-plan.md"
+      DMP_PATH: "AI-BOOST/DEL-03-data-management-plan.md"
       MODEL: ${{ github.event.inputs.model || 'openai/gpt-6' }}
 
     steps:
@@ -82,7 +82,7 @@ jobs:
             const model = process.env.MODEL;
 
             const systemPrompt = `You are an expert reviewer for Horizon Europe / EuroHPC JU deliverables.
-            You are reviewing DEL-08 (Data Management Plan) for the AI-BOOST project (GA 101135737).
+            You are reviewing DEL-03 (Data Management Plan) for the AI-BOOST project (GA 101135737).
             The M18 mid-term update is due 2027-02-25.
 
             Review the document for:
@@ -153,12 +153,12 @@ jobs:
             const today = new Date().toISOString().split('T')[0];
 
             const issueBody =
-              "## DEL-08 Data Management Plan — Automated Pre-Review\n" +
+              "## DEL-03 Data Management Plan — Automated Pre-Review\n" +
               "\n" +
               `**Review date:** ${today}\n` +
               "**Target milestone:** M18 (2027-02-25)\n" +
               `**Model used:** \`${model}\`\n` +
-              "**Document:** `AI-BOOST/DEL-08-data-management-plan.md`\n" +
+              "**Document:** `AI-BOOST/DEL-03-data-management-plan.md`\n" +
               "\n" +
               "---\n" +
               "\n" +
@@ -166,16 +166,16 @@ jobs:
               "\n" +
               "---\n" +
               "\n" +
-              "> ℹ️ This review was generated automatically by the `del-08-review` workflow,\n" +
+              "> ℹ️ This review was generated automatically by the `del-03-review` workflow,\n" +
               "> scheduled ~2 months before the M18 mid-term update deadline.\n" +
               "> Review the findings and update the DMP accordingly before 2027-02-25.";
 
             const issue = await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              title: `[DEL-08] Automated Pre-Review for M18 — ${today}`,
+              title: `[DEL-03] Automated Pre-Review for M18 — ${today}`,
               body: issueBody,
-              labels: ["DEL-08", "review", "automated"],
+              labels: ["DEL-03", "review", "automated"],
               assignees: ["AmedeoPelliccia"]
             });
 

@@ -1,13 +1,13 @@
 ---
 # ─────────────────────────────────────────────
-# DEL-08: Data Management Plan (Machine-Readable Header)
+# DEL-03: Data Management Plan (Machine-Readable Header)
 # ─────────────────────────────────────────────
 # This YAML header serves as the machine-readable layer of the deliverable.
 # It can be extracted by CI pipelines for automated validation using the $schema reference.
 $schema: "https://ai-boost.eu/schemas/deliverable-schema-v1.0.json"
 
 deliverable:
-  id: DEL-08
+  id: DEL-03
   title: Data Management Plan
   section: "Excellence → Data"
   programme:
@@ -429,9 +429,9 @@ revision_history:
     changes: ["Preservation confirmation", "DOI catalogue", "Lessons learned"]
 ---
 
-# DEL-08 — Data Management Plan
+# DEL-03 — Data Management Plan
 
-**Deliverable ID:** DEL-08
+**Deliverable ID:** DEL-03
 **Title:** Data Management Plan
 **Section:** Excellence → Data
 **Programme:** AI-BOOST — Frontier AI Grand Challenge
