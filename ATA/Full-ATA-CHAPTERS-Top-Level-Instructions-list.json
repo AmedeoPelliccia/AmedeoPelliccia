@@ -1,0 +1,80 @@
+{
+  "registry": {
+    "document_id": "AMPEL360-ATA-REG-001",
+    "name": "ATA Chapters Top-Level Instructions Registry",
+    "version": "1.0.0",
+    "standard": "ATA iSpec 2200 / S1000D",
+    "description": "Index of Top-Level Instruction (TLI) files governing each ATA chapter documentation structure.",
+    "aircraft_model": "AMPEL360",
+    "ampel360_profile": "EASA-Q100",
+    "regulatory_authority": "EASA",
+    "base_specification": "CS-25",
+    "last_updated": "2026-03-11",
+    "status": "ACTIVE",
+    "tli_base_path": "ATA/{chapter}/",
+    "governance": {
+      "parent_document": "ESSA-DOC-AMPEL360-001",
+      "cctls_lifecycle": "EACST-STD-CCTLS-001",
+      "h_token_type": "H_CONSTRAINT",
+      "ci_validation_hook": "validate_ata_tli_completeness",
+      "brex_reference": "AMPEL360-BREX-001"
+    }
+  },
+
+  "ata_chapters": [
+
+    { "chapter": "05", "title": "Time Limits / Maintenance Checks",       "tli_file": "ATA-05-TLI.yaml", "ampel360_section": "Airworthiness-Limitations" },
+    { "chapter": "06", "title": "Dimensions and Areas",                    "tli_file": "ATA-06-TLI.yaml", "ampel360_section": "General" },
+    { "chapter": "07", "title": "Lifting and Shoring",                     "tli_file": "ATA-07-TLI.yaml", "ampel360_section": "General" },
+    { "chapter": "08", "title": "Leveling and Weighing",                   "tli_file": "ATA-08-TLI.yaml", "ampel360_section": "General" },
+    { "chapter": "09", "title": "Towing and Taxiing",                      "tli_file": "ATA-09-TLI.yaml", "ampel360_section": "General" },
+    { "chapter": "10", "title": "Parking / Mooring / Storage",             "tli_file": "ATA-10-TLI.yaml", "ampel360_section": "General" },
+    { "chapter": "11", "title": "Placards and Markings",                   "tli_file": "ATA-11-TLI.yaml", "ampel360_section": "General" },
+    { "chapter": "12", "title": "Servicing",                               "tli_file": "ATA-12-TLI.yaml", "ampel360_section": "General" },
+
+    { "chapter": "20", "title": "Standard Practices – Airframe",           "tli_file": "ATA-20-TLI.yaml", "ampel360_section": "Airframe-Standards" },
+    { "chapter": "21", "title": "Air Conditioning",                        "tli_file": "ATA-21-TLI.yaml", "ampel360_section": "Systems" },
+    { "chapter": "22", "title": "Auto Flight",                             "tli_file": "ATA-22-TLI.yaml", "ampel360_section": "Avionics" },
+    { "chapter": "23", "title": "Communications",                          "tli_file": "ATA-23-TLI.yaml", "ampel360_section": "Avionics" },
+    { "chapter": "24", "title": "Electrical Power",                        "tli_file": "ATA-24-TLI.yaml", "ampel360_section": "Systems" },
+    { "chapter": "25", "title": "Equipment / Furnishings",                 "tli_file": "ATA-25-TLI.yaml", "ampel360_section": "Cabin" },
+    { "chapter": "26", "title": "Fire Protection",                         "tli_file": "ATA-26-TLI.yaml", "ampel360_section": "Safety-Systems" },
+    { "chapter": "27", "title": "Flight Controls",                         "tli_file": "ATA-27-TLI.yaml", "ampel360_section": "Flight-Systems" },
+    { "chapter": "28", "title": "Fuel",                                    "tli_file": "ATA-28-TLI.yaml", "ampel360_section": "Systems" },
+    { "chapter": "29", "title": "Hydraulic Power",                         "tli_file": "ATA-29-TLI.yaml", "ampel360_section": "Systems" },
+
+    { "chapter": "30", "title": "Ice and Rain Protection",                 "tli_file": "ATA-30-TLI.yaml", "ampel360_section": "Safety-Systems" },
+    { "chapter": "31", "title": "Indicating and Recording Systems",        "tli_file": "ATA-31-TLI.yaml", "ampel360_section": "Avionics" },
+    { "chapter": "32", "title": "Landing Gear",                            "tli_file": "ATA-32-TLI.yaml", "ampel360_section": "Structures" },
+    { "chapter": "33", "title": "Lights",                                  "tli_file": "ATA-33-TLI.yaml", "ampel360_section": "Systems" },
+    { "chapter": "34", "title": "Navigation",                              "tli_file": "ATA-34-TLI.yaml", "ampel360_section": "Avionics" },
+    { "chapter": "35", "title": "Oxygen",                                  "tli_file": "ATA-35-TLI.yaml", "ampel360_section": "Safety-Systems" },
+    { "chapter": "36", "title": "Pneumatic",                               "tli_file": "ATA-36-TLI.yaml", "ampel360_section": "Systems" },
+    { "chapter": "38", "title": "Water / Waste",                           "tli_file": "ATA-38-TLI.yaml", "ampel360_section": "Cabin" },
+
+    { "chapter": "45", "title": "Central Maintenance System",              "tli_file": "ATA-45-TLI.yaml", "ampel360_section": "Avionics" },
+    { "chapter": "46", "title": "Information Systems",                     "tli_file": "ATA-46-TLI.yaml", "ampel360_section": "Avionics" },
+    { "chapter": "47", "title": "Inert Gas System",                        "tli_file": "ATA-47-TLI.yaml", "ampel360_section": "Systems" },
+    { "chapter": "49", "title": "Airborne Auxiliary Power",                "tli_file": "ATA-49-TLI.yaml", "ampel360_section": "Systems" },
+
+    { "chapter": "51", "title": "Standard Practices / Structures",        "tli_file": "ATA-51-TLI.yaml", "ampel360_section": "Structures" },
+    { "chapter": "52", "title": "Doors",                                   "tli_file": "ATA-52-TLI.yaml", "ampel360_section": "Structures" },
+    { "chapter": "53", "title": "Fuselage",                                "tli_file": "ATA-53-TLI.yaml", "ampel360_section": "Structures" },
+    { "chapter": "54", "title": "Nacelles / Pylons",                       "tli_file": "ATA-54-TLI.yaml", "ampel360_section": "Structures" },
+    { "chapter": "55", "title": "Stabilizers",                             "tli_file": "ATA-55-TLI.yaml", "ampel360_section": "Structures" },
+    { "chapter": "56", "title": "Windows",                                 "tli_file": "ATA-56-TLI.yaml", "ampel360_section": "Structures" },
+    { "chapter": "57", "title": "Wings",                                   "tli_file": "ATA-57-TLI.yaml", "ampel360_section": "Structures" },
+
+    { "chapter": "70", "title": "Standard Practices – Engine",             "tli_file": "ATA-70-TLI.yaml", "ampel360_section": "Powerplant-Standards" },
+    { "chapter": "71", "title": "Power Plant",                             "tli_file": "ATA-71-TLI.yaml", "ampel360_section": "Powerplant" },
+    { "chapter": "72", "title": "Engine",                                  "tli_file": "ATA-72-TLI.yaml", "ampel360_section": "Powerplant" },
+    { "chapter": "73", "title": "Engine Fuel and Control",                 "tli_file": "ATA-73-TLI.yaml", "ampel360_section": "Powerplant" },
+    { "chapter": "74", "title": "Ignition",                                "tli_file": "ATA-74-TLI.yaml", "ampel360_section": "Powerplant" },
+    { "chapter": "75", "title": "Air",                                     "tli_file": "ATA-75-TLI.yaml", "ampel360_section": "Powerplant" },
+    { "chapter": "76", "title": "Engine Controls",                         "tli_file": "ATA-76-TLI.yaml", "ampel360_section": "Powerplant" },
+    { "chapter": "77", "title": "Engine Indicating",                       "tli_file": "ATA-77-TLI.yaml", "ampel360_section": "Powerplant" },
+    { "chapter": "78", "title": "Exhaust",                                 "tli_file": "ATA-78-TLI.yaml", "ampel360_section": "Powerplant" },
+    { "chapter": "79", "title": "Oil",                                     "tli_file": "ATA-79-TLI.yaml", "ampel360_section": "Powerplant" },
+    { "chapter": "80", "title": "Starting",                                "tli_file": "ATA-80-TLI.yaml", "ampel360_section": "Powerplant" }
+  ]
+}
