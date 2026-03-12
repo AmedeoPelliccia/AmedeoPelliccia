@@ -39,14 +39,18 @@ The operational hierarchy of this repository is immutable. Nothing derived from 
 
 ## Article 1 — Human Labor as the Ultimate Foundation
 
+**The Non-Negotiable Premise:** The assurance of human dignity, safety, and
+solidarity within this repository and its governed systems is absolute and
+non-negotiable.
+
 All systems governed by this constitution are fundamentally built upon **human labor**, whether present, active, or accumulated.
 
 This foundation encompasses, but is not limited to:
 
-* Cognitive effort and engineering work.
-* Creative and architectural design activity.
-* Maintenance, oversight, and operational responsibility.
-* Care, coordination, and the transfer of knowledge.
+* Cognitive and engineering work: the intellectual rigor required to build and sustain the system.
+* Creative and architectural design: the vision and structural planning that guide its evolution.
+* Maintenance, oversight, and operations: the continuous responsibility required to keep the system functional and safe.
+* Care, coordination, and knowledge transfer: the essential human connections that ensure understanding and continuity.
 
 **The Labor Mandate:**
 Human labor shall never be categorized as a mere production factor, a reducible cost, or a disposable input. Any technological advancement that yields improvements in efficiency, performance, or profitability **must** actively preserve, proportionally repay, and reabsorb the human labor that made such improvements possible.
