@@ -59,20 +59,24 @@ Human labor shall never be categorized as a mere production factor, a reducible 
 
 ## Article 2 — Capital as Instrument, Not Authority
 
-Capital exists to **finance**, not to define purpose or legitimacy.
+**The Subordination Clause:** Economic success, profitability, or financial viability shall never supersede human dignity, nor shall they dictate the architectural morality of the system.
 
-Capital may:
-- fund development and infrastructure,
-- assume economic risk,
-- enable scale and continuity.
+Capital exists within this ecosystem strictly as an instrument to **finance and sustain**, never to define purpose, extract foundational value, or establish legitimacy.
 
-Capital may not:
-- dictate exclusion of people,
-- justify human harm,
-- override the foundational axiom,
-- claim sovereignty over system intent.
+**I. Permissible Functions of Capital**
+Capital is recognized as a vital enabling tool. Within this governance framework, capital may:
 
-Economic success never supersedes human dignity.
+* Fund development, infrastructure, and operational longevity.
+* Assume economic risk to foster innovation and stability.
+* Facilitate the scale, reach, and continuity of the system.
+
+**II. Absolute Restrictions on Capital**
+Because capital serves the system rather than governing it, capital and its representatives may not, under any circumstances:
+
+* Dictate the exclusion, marginalization, or exploitation of human beings.
+* Justify technical or architectural decisions that result in human harm, compromised safety, or systemic degradation.
+* Override, bypass, or corrupt the Foundational Axiom.
+* Claim sovereignty over the system's core intent, operational ethics, or published artifacts.
 
 ---
 
