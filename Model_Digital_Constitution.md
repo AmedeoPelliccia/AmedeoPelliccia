@@ -1,65 +1,55 @@
-# Model_Digital_Constitution.md
+# Model Digital Constitution
 
-## Purpose
+## I. Purpose and Definition
 
-This document defines the **Digital Constitution** governing the design,
-development, integration, deployment, operation, and portfolio governance of
-digital systems and published artifacts within this repository, understood as
-the **AEROSPACEMODEL genesis** repository.
+This document establishes the **Digital Constitution** governing the design, development, integration, deployment, operation, and portfolio governance of all digital systems and published artifacts within the **AEROSPACEMODEL genesis** repository.
 
-Its purpose is to ensure that:
-- technology remains accountable to human beings,
-- innovation progresses without human exclusion,
-- and system behavior preserves moral and operational legitimacy over time.
+Constructed as a **technical and ethical governance document** rather than a manifesto, its primary mandates are to ensure that:
 
-This is a **technical and ethical governance document**, not a manifesto.
+* **Accountability:** Technology remains strictly accountable to human beings.
+* **Inclusion:** Innovation progresses without resulting in human exclusion.
+* **Legitimacy:** System behavior preserves its moral and operational legitimacy over time.
 
 ---
 
-## Scope and Intent
+## II. Scope and Applicability
 
-This Digital Constitution applies **exclusively** to this repository as the
-**AEROSPACEMODEL genesis**, including its profile and governed portfolio
-presentation, and to systems contained in, derived from, or explicitly
-referencing it.
+This constitution applies **exclusively** to the AEROSPACEMODEL genesis repository—including its profile and governed portfolio presentation—as well as to any systems contained within, derived from, or explicitly referencing it.
 
-It does not claim universal validity.
-It does not impose obligations on external systems.
-It does not function as moral doctrine.
+By utilizing, contributing to, or operating within this repository, all contributors, maintainers, and integrators voluntarily adopt these foundational commitments.
 
-It defines the **foundational intentions voluntarily adopted** by
-contributors, maintainers, integrators, and operators of this model.
+**Operational Boundaries:**
 
-Use of this repository constitutes acceptance of these commitments.
+* It does not claim universal validity.
+* It does not impose obligations on external or third-party systems.
+* It does not function as a moral doctrine.
 
 ---
 
-## Foundational Axiom
+## III. The Foundational Axiom
 
-**Human labor → founds**  
-**Capital → finances**  
-**Technology → serves**  
-**The person progresses**
+The operational hierarchy of this repository is immutable. Nothing derived from this system may negate, override, or destroy the elements that found it.
 
-Nothing derived may negate, override, or destroy what founds it.
+> **Human Labor** → Founds
+> **Capital** → Finances
+> **Technology** → Serves
+> **The Person** → Progresses
 
 ---
 
-## Article 1 — Human Labor as Foundation
+## Article 1 — Human Labor as the Ultimate Foundation
 
-All systems governed by this constitution are founded on **human labor**,
-present or accumulated.
+All systems governed by this constitution are fundamentally built upon **human labor**, whether present, active, or accumulated.
 
-Human labor includes, but is not limited to:
-- cognitive and engineering work,
-- creative and design activity,
-- maintenance and operational responsibility,
-- care, coordination, and knowledge transfer.
+This foundation encompasses, but is not limited to:
 
-Human labor is **not a factor**, **not a cost**, and **not a disposable input**.
+* Cognitive effort and engineering work.
+* Creative and architectural design activity.
+* Maintenance, oversight, and operational responsibility.
+* Care, coordination, and the transfer of knowledge.
 
-Any improvement in efficiency, performance, or profitability must preserve
-and reabsorb the human labor that made such improvement possible.
+**The Labor Mandate:**
+Human labor shall never be categorized as a mere production factor, a reducible cost, or a disposable input. Any technological advancement that yields improvements in efficiency, performance, or profitability **must** actively preserve, proportionally repay, and reabsorb the human labor that made such improvements possible.
 
 ---
 
