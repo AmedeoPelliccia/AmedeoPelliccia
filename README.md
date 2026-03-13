@@ -155,6 +155,11 @@ The common engineering spine across all IDEALE pillars:
 
 AMPEL360 is an end-to-end aerospace lifecycle architecture that governs the design, engineering, certification, operation, and continuous digital traceability of aircraft systems and programmes.
 
+Within this repository, AMPEL360 is also defined as the **next-generation
+market-oriented manifestation of the Ontogenesis group**: the applied
+industrial and market-facing realization through which ontogenetic governance
+is translated into lifecycle-ready aerospace assets, programmes, and evidence.
+
 As a formal programme identity, AMPEL360 covers the full aerospace lifecycle:
 
 - Concept
