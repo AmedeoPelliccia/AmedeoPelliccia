@@ -381,7 +381,7 @@ The QQQ Foundation does not replace existing physical theories; it acts as a con
 
 **Document ID:** `ESSA-DOC-ACQUA-001`
 
-**ACQUA** is the formal technology architecture for hybrid systems that integrate aerospace infrastructure, classical computation, artificial intelligence, and quantum computing. It is organized as a five-layer system governed by the QQQ framework.
+**ACQUA** is the formal technology architecture for hybrid systems that integrate aerospace infrastructure, classical computation, artificial intelligence, and quantum computing. It is organized as a five-layer system governed by the QQQ framework. Within this repository's architectural framing, it is also the **quantum joining ecosystems companion assy**.
 
 ```
 ACQUA = ⟨ Mission, System, Compute, Quantum, Governance ⟩

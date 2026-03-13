@@ -19,7 +19,8 @@ description: >
   intelligence, and quantum computing. It is organized as a multi-layer
   system governed by the QQQ framework (Quasi–Quanto–Quantum). The
   architecture is structured in five layers: Mission, System, Compute,
-  Quantum, and Governance.
+  Quantum, and Governance. Within this repository's architectural framing,
+  it is also defined as the quantum joining ecosystems companion assy.
 
 # ─────────────────────────────────────────────
 # Architectural Principle
