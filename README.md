@@ -93,6 +93,11 @@ Space-quantum infrastructure · Manufacturing technology layers · AQUA-V progra
 
 Where the aircraft domain ends, the space and quantum domain begins. Orbital logistics, quantum-classical bridge architectures, synthetic data validation, the manufacturing pipeline that connects design to material reality, and the **GAIA-AIR** ecosystem with its Quantum Aerospace Operating System (**QAOS**) — where NBT gates bridge classical telemetry into quantum-augmented structural analysis, digital twins, and predictive maintenance.
 
+Within this repository, the **GAIA foundational objects** are defined as
+**Earth Intelligence Ontogenesis**: the Earth-scale ontogenetic frame from
+which GAIA constellation systems, GAIA-AIR, and QAOS derive their governing
+object logic.
+
 **IDEALE pillars touched:** A (primary), I (quantum-classical data, NBT substrate), D (dual-use awareness), L (manufacturing pipelines)
 
 </td>
@@ -670,6 +675,10 @@ Both variants use **Variational Quantum Circuits (VQCs)** — parameterized quan
 ### 17. GAIA-AIR and QAOS — N-Axis Aerospace Realization
 
 The most concrete implementation of NBT gates is **GAIA-AIR** and its **Quantum Aerospace Operating System (QAOS)** — a full N-axis instantiation where classical aerospace telemetry crosses into quantum-augmented structural analysis and tunnels back as operational evidence:
+
+At the foundational-object level, **GAIA** is treated here as **Earth
+Intelligence Ontogenesis**, making GAIA-AIR the aerospace realization of that
+Earth-oriented ontogenetic frame.
 
 | GAIA-AIR module | NBT gate function | Operational function |
 |----------------|-----------------|---------------------|
