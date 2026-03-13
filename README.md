@@ -25,7 +25,7 @@ organizations and models are formed, governed, and evolved.
 
 ---
 
-### IDEALE-ESG.eu — European Intelligence Foundation
+### IDEALE-ESG.eu — European Intelligence Ontogenesis
 
 **IDEALE** is both an acronym and a commitment. It names the six pillars of an integrated framework for sovereign European capability:
 
