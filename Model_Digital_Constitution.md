@@ -4,6 +4,11 @@
 
 This document establishes the **Digital Constitution** governing the design, development, integration, deployment, operation, and portfolio governance of all digital systems and published artifacts within the **AEROSPACEMODEL genesis** repository.
 
+It further recognizes this repository as the originating frame of an ontology
+in which the **model is the primary product**, **aerospace determinism** is the
+operational boundary, and **Ontogenesis** is the explicit lifecycle governing
+the formation and evolution of organizations and models.
+
 Constructed as a **technical and ethical governance document** rather than a manifesto, its primary mandates are to ensure that:
 
 * **Accountability:** Technology remains strictly accountable to human beings.

@@ -18,6 +18,11 @@ governance claims are bounded by the
 [`Model_Digital_Constitution.md`](Model_Digital_Constitution.md), which serves
 as the repository's governing legal and operational frame.
 
+Within that frame, I am the **originator** of a framework whose ontology treats
+the **model as the primary product**, **aerospace determinism** as the
+governing boundary, and **Ontogenesis** as the explicit lifecycle through which
+organizations and models are formed, governed, and evolved.
+
 ---
 
 ### IDEALE-ESG.eu — European Intelligence Foundation
