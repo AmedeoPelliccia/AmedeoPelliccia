@@ -4,9 +4,9 @@
 # Reference: AI-BOOST/DEL-02-SotA-Methodology.md
 # Author: Amedeo Pelliccia
 
-schema_version: "1.0.0"
+schema_version: "2.1.0"
 document_type: sota_methodology
-last_updated: "2026-03-10T00:00:00Z"
+last_updated: "2026-03-11T00:00:00Z"
 
 # ─────────────────────────────────────────────
 # 1. Deliverable Metadata
@@ -20,9 +20,9 @@ deliverable:
   section: Excellence → State of the Art + Methodology
   priority: critical
   status: draft
-  version: "1.0.0"
+  version: "2.1.0"
   author: Amedeo Pelliccia
-  date: "2026-03-10"
+  date: "2026-03-11"
 
 # ─────────────────────────────────────────────
 # 2. State of the Art — Frontier Model Landscape
@@ -474,3 +474,9 @@ revision_history:
       European, Middle East sovereign). Added hub_city to EuroHPC systems.
       Renamed to GAIA-AIR-EU. Split references into core and
       east_asian_middle_east sections. Updated model names to March 2026.
+  - version: "2.1.0"
+    date: "2026-03-11"
+    description: >
+      Complete integrated draft with Mermaid visualisations (8 diagrams),
+      Executive Summary, restructured sections, region-grouped frontier model
+      table, and machine-readable metadata appendix.
