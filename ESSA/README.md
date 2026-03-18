@@ -297,7 +297,7 @@ Evolution does not seek maximum efficiency. It seeks improvement within Human Sa
 
 **Document ID:** `ESSA-DOC-AMPEL360-001`
 
-**AMPEL360** is the concrete lifecycle instantiation of AMPEL — the **programmable execution layer** for ESSA lifecycle architectures. It is not abstract: it governs the ESSA lifecycle (P000–P120) end-to-end as an Aerospace Model for Product and Engineering Lifecycles.
+**AMPEL360** is the concrete lifecycle instantiation of AMPEL — the **programmable execution layer** for ESSA lifecycle architectures. It is not abstract: it governs the ESSA lifecycle (P000–P120) end-to-end as an Aerospace Model for Product and Engineering Lifecycles. Within this repository's ontology framing, it is also the **next-generation market-oriented manifestation of the Ontogenesis group**.
 
 > **"360" = complete state-cycle closure** — full lifecycle coverage (P000–P120), cross-chain integration, closed feedback loop, profile extensibility, and governance + mission coherence.
 
@@ -381,7 +381,7 @@ The QQQ Foundation does not replace existing physical theories; it acts as a con
 
 **Document ID:** `ESSA-DOC-ACQUA-001`
 
-**ACQUA** is the formal technology architecture for hybrid systems that integrate aerospace infrastructure, classical computation, artificial intelligence, and quantum computing. It is organized as a five-layer system governed by the QQQ framework.
+**ACQUA** is the formal technology architecture for hybrid systems that integrate aerospace infrastructure, classical computation, artificial intelligence, and quantum computing. It is organized as a five-layer system governed by the QQQ framework. Within this repository's architectural framing, it is also the **quantum ecosystems companion assy joint**.
 
 ```
 ACQUA = ⟨ Mission, System, Compute, Quantum, Governance ⟩
