@@ -287,8 +287,8 @@ Any delay in EuroHPC allocation (T3.1) or model training (T2.3) propagates direc
 | File | Purpose |
 |------|---------|
 | [`workplan-milestones-gantt.yaml`](workplan-milestones-gantt.yaml) | Machine-readable specification: work packages, milestones, Gantt data, resource allocation, quality metrics |
-| [`DEL-04-innovation-and-impact.md`](DEL-04-innovation-and-impact.md) | Innovation and Impact — exploitation routes and TRL progression aligned with WP outputs |
-| [`DEL-03-data-management-plan.md`](DEL-03-data-management-plan.md) | Data Management Plan — dataset lifecycle aligned with WP schedule |
+| DEL-04 — Innovation and Impact (planned artefact) | Innovation and Impact — exploitation routes and TRL progression aligned with WP outputs |
+| DEL-03 — Data Management Plan (planned artefact) | Data Management Plan — dataset lifecycle aligned with WP schedule |
 | Root [`README.md`](../README.md) | Profile-level reference under Current Focus |
 | [`simplex-contract.yaml`](../simplex-contract.yaml) | Evidence-gated admissibility framework used in quality management (§6) |
 | [`contributions-registry.yaml`](../contributions-registry.yaml) | Contribution governance for resource allocation and attribution |
