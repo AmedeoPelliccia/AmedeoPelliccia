@@ -60,6 +60,13 @@ This foundation encompasses, but is not limited to:
 **The Labor Mandate:**
 Human labor shall never be categorized as a mere production factor, a reducible cost, or a disposable input. Any technological advancement that yields improvements in efficiency, performance, or profitability **must** actively preserve, proportionally repay, and reabsorb the human labor that made such improvements possible.
 
+**The Motion Clarification:**
+The objective class of this repository is not water; it is **e-Motion**:
+directed movement of purpose, responsibility, and human development through
+time. The foundation of dignity, safety, and solidarity remains absolute, but
+interim states, implementations, and operating conditions cannot be presumed
+to remain absolutely the same meanwhile.
+
 ---
 
 ## Article 2 — Capital as Instrument, Not Authority
