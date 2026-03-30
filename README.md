@@ -1,4 +1,4 @@
-to be reviewed in inclusive assumptions at every different community by human intermediary layer (CHILs)
+to be reviewed in inclusive assumptions at every different community by human intermediary layer (dCHILs)
 
 <p align="center">
   <strong>Amedeo Pelliccia</strong><br>
