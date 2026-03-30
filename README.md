@@ -1,5 +1,5 @@
-to be reviewed in inclusive assumptions at every different community by human intermediary layer (dCHILs)
-
+  rectifica en vista de intentos fallidos de sincere implication on correctness , justice and legal frameworks      
+  
 <p align="center">
   <strong>Amedeo Pelliccia</strong><br>
   Aerospace Engineer · Researcher · Framework Originator<br>
