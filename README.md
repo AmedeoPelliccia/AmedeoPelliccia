@@ -1,3 +1,5 @@
+to be reviewed in inclusive assumptions at every different community interface layer
+
 <p align="center">
   <strong>Amedeo Pelliccia</strong><br>
   Aerospace Engineer · Researcher · Framework Originator<br>
