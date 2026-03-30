@@ -74,6 +74,8 @@ This is aircraft-level truth: structures, systems, operations, circularity.
 </td>
 <td width="50%" valign="top">
 
+(to be updated by author's latest pull requests distributed internally)
+
 #### 🛰️ [aerospacemodel.com](https://aerospacemodel.com)
 
 **→** [`Amedeopelliccia/aerospacemodel`](https://github.com/Amedeopelliccia/aerospacemodel)
