@@ -12,7 +12,7 @@ I am a researcher moved by genuine desire to originate something powerful.
 
 By day I work as an aerospace engineer specializing in aircraft technical data structures and publications — S1000D, ATA iSpec 2200, CSDB architecture, the kind of documentation engineering that sits between what an aircraft *is* and what operators, maintainers and regulators *need to know about it*.
 
-What I am building here goes beyond aerospace. It is an integrating model — inclusive by design, European in origin, exportable by structure.
+expansion by structure. As Cosmos Constant Historyx
 
 ---
 
