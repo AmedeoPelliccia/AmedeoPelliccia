@@ -344,6 +344,9 @@ The following files instantiate PLUMA-GAI as a working standard:
 | DEL-02 | Interface Control Document (AMP-GAI-ICD) | `AMP-GAI-ICD-v0.1.0.yaml` | Message schemas, latency, integrity, fallback |
 | DEL-03 | Evidence Registry Schema | `EVIDENCE_REGISTRY.schema.json` | Hashes, DAL, method (T/A/I/S), trace pointers |
 | DEL-04 | Assurance Case Template (AA-093 binding) | `AA-093-TEMPLATE.gsn.yaml` | GSN structure + autonomy envelope format |
+| DEL-05 | TranshidreOHs — Carrier Layer | `TranshidreOHs.md` + `transhidreOHs.yaml` | Multi-modal H₂ transport + fibre-optic co-carry; carrier package schema |
+| DEL-06 | H.I.V. — Energy-Sense-Value Spec | `H.I.V.md` + `hiv.yaml` | Hydrogen · Infrared · Values triad; VSED packet; T_eff; interface contracts |
+| DEL-07 | VibidratAZIONE — Restoration Layer | `VibidratAZIONE.md` + `vibidratazione.yaml` | Operational restoration; Teknia Token; equity injection lifecycle |
 
 ---
 
@@ -356,13 +359,23 @@ The following files instantiate PLUMA-GAI as a working standard:
 | `AMP-GAI-ICD-v0.1.0.yaml` | Interface Control Document — GAIA ↔ AMPEL360 channel contract |
 | `EVIDENCE_REGISTRY.schema.json` | JSON Schema for PLUMA-GAI evidence registry entries |
 | `AA-093-TEMPLATE.gsn.yaml` | AA-093 autonomy assurance case template (GSN-compatible) |
+| `TranshidreOHs.md` | Multi-modal H₂ transport layer — human-readable specification |
+| `transhidreOHs.yaml` | Multi-modal H₂ transport layer — machine-readable companion |
+| `H.I.V.md` | H.I.V. (Hydrogen · Infrared · Values) — human-readable specification |
+| `hiv.yaml` | H.I.V. — machine-readable companion |
+| `VibidratAZIONE.md` | Operational restoration layer — human-readable specification |
+| `vibidratazione.yaml` | Operational restoration layer — machine-readable companion |
 | `03-CAX_PHASES/` | CAX phase artefacts referenced by `run_manifest_ref` in gating conditions |
+| `NET/` | PLUMA-GAI NET — ground–aerospace infrared network extension |
 
 ---
 
 ## 16. References
 
 - ESSA CCTLS: `ESSA/cctls.yaml` (ESSA-STD-CCTLS-001)
+- ESSA H Pipeline: `ESSA/H-PIPELINE.md` (ESSA-DOC-H-001)
 - PLUMA governance kernel: `00-PROGRAM/PLUMA/`
 - Autonomy assurance: `UTS/AA-093/`
 - AI-BOOST strategy: `AI-BOOST/application-strategy.yaml`
+- H.I.V. canonical stack: `H.I.V.md` (PLUMA-GAI-HIV-001)
+- UN Universal Declaration of Human Rights (1948)
