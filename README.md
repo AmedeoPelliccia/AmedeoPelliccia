@@ -1,4 +1,4 @@
-atributos (altra n rectifica en vista de intentos fallidos de sincere implication on correctness , justice and legal so true ESG frameworks      
+to be reviewed
   
 <p align="center">
   <strong>Amedeo Pelliccia</strong><br>
