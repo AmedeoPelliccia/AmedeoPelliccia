@@ -163,6 +163,50 @@ H.I.V. defines two canonical interface contracts within the PLUMA-GAI thread.
 | **Result** | Signal rehydration + systemic re-integration of the node |
 | **Metric** | Node `T_eff` restored above threshold |
 
+### 4.3 Superconductor Vector Channel (Event-Boundary Mode)
+
+When TranshidreOHs is operated in its **event-boundary abstraction** (see
+`TranshidreOHs.md` §6), the HIV-IFC-001 channel transitions from a physical
+transport handshake to a **superconductor vector channel**.
+
+| Property | Standard Mode | Event-Boundary Mode |
+|----------|--------------|---------------------|
+| Channel resistance | Finite | **Zero** |
+| Carrier latency contribution | Non-zero | **Zero** |
+| Signal loss | Possible | **Zero** (state is hash-locked) |
+| T_eff at channel | Finite | **→ ∞** (by construction) |
+| Input fields | `hydrogen_flow_rate_kg_s`, `fiber_optic_throughput_gbps` | `energy_state_hash`, `data_state_hash` |
+
+**Superconductor vector** is the precise term:
+- *Superconducting* — zero resistance; the channel conveys the carrier state to
+  H.I.V. without any loss
+- *Vectorial* — the channel is directed (TranshidreOHs → H.I.V.) and carries
+  a compressed state, not a flow
+
+In event-boundary mode the VSED packet gains two additional header fields:
+
+```yaml
+vsed_packet:
+  header:
+    # … standard fields …
+    boundary_mode: true
+    carrier_state_hash: "sha3-512:hex"   # replaces individual energy fields
+```
+
+The T_eff formula in event-boundary mode collapses to:
+
+```
+T_eff_boundary = verified_packets / total_packets  × lim(latency→0) = ∞
+```
+
+This is the architectural realisation of the design target T_eff → ∞: it is
+achieved *by construction* when the carrier is compressed to its event boundary,
+not just asymptotically approached.
+
+**New invariant (INV-HIV-SV):** When `boundary_mode = true`, the channel MUST
+carry a `carrier_state_hash` and MUST NOT carry individual flow fields; the
+hash is the superconductor vector's only resistance-free payload.
+
 ---
 
 ## 5. Structural Summary — Astigmatic Resolution
@@ -193,6 +237,9 @@ The following invariants are non-negotiable within the H.I.V. layer:
    VSED packet is activable without a valid V-token.
 4. **T_eff-invariant:** The system MUST drive T_eff upward; any change that
    reduces Traceability Efficiency requires a safety impact assessment.
+5. **INV-HIV-SV — Superconductor vector:** when `boundary_mode = true`, the
+   HIV-IFC-001 channel MUST carry `carrier_state_hash` and MUST NOT carry
+   individual flow fields; T_eff → ∞ is achieved by construction.
 
 ---
 

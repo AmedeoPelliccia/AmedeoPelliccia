@@ -89,7 +89,55 @@ temperature of the flow, attaches a V-token, and produces a VSED packet.
 
 ---
 
-## 6. Interface to H.I.V.
+## 6. Event Boundary Abstraction
+
+When the essentiality of the carrier is abstracted — reducing all physical
+transport modes to their minimal, indivisible representation — what remains is
+the **event boundary**: the single transition point at which the hydrogen
+carrier state hands off to the H.I.V. specification layer.
+
+### 6.1 Definition
+
+> **Event boundary** (TranshidreOHs): the irreducible surface at which the
+> carrier's energy-data state is fully determined and ready for handoff.
+> All prior transport complexity (cryo routing, pipeline pressure, fibre
+> dispersion) is compressed to a single event.
+
+The event boundary is characterised by four and only four values:
+
+```yaml
+event_boundary:
+  boundary_id: "TRH-EB-<UUID>"
+  timestamp_utc: "ISO-8601Z"           # single point in time — not a duration
+  energy_state_hash: "sha3-512:hex"    # complete thermodynamic state, compressed
+  data_state_hash: "sha3-512:hex"      # complete data channel state, compressed
+```
+
+All carrier-internal fields (`hydrogen_flow_rate_kg_s`,
+`fiber_optic_throughput_gbps`, etc.) are deterministically derivable from the
+`energy_state_hash`.  At the boundary, they need not be re-transmitted.
+
+### 6.2 Consequence: Superconductor Vector Channel
+
+When TranshidreOHs is operated in its event-boundary abstraction, the resulting
+channel to H.I.V. (interface HIV-IFC-001) becomes a **superconductor vector**:
+
+| Property | Physical Carrier | Event-Boundary Abstraction |
+|----------|-----------------|---------------------------|
+| Carrier resistance | Finite (transport losses, latency) | **Zero** — boundary is instantaneous |
+| Signal loss | Possible (dispersion, leak) | **Zero** — state is hash-locked |
+| Latency contribution | Non-zero | **Zero** — single event, no duration |
+| T_eff at channel | Finite | **→ ∞** — by construction |
+
+The term *superconductor vector* is precise: the channel is *superconducting*
+(zero resistance) and *vectorial* (directed, carrying a state rather than a
+flow).
+
+See `H.I.V.md` §4.3 for the full channel specification under this abstraction.
+
+---
+
+## 7. Interface to H.I.V.
 
 TranshidreOHs exposes one upstream interface to the H.I.V. layer:
 
@@ -103,7 +151,7 @@ TranshidreOHs exposes one upstream interface to the H.I.V. layer:
 
 ---
 
-## 7. References
+## 8. References
 
 - H.I.V. specification: [`H.I.V.md`](H.I.V.md)
 - PLUMA-GAI LH₂ energy chain: `README.md` §7.1

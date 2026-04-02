@@ -155,3 +155,56 @@ upstream_interface:
   handshake_action: >
     H.I.V. hashes both inputs with energy-data metadata, measures infrared
     temperature (T_eff), attaches a V-token, and produces a VSED packet.
+
+##############################################################################
+# 6  Event Boundary Abstraction
+##############################################################################
+
+event_boundary_abstraction:
+  description: >
+    When the essentiality of the carrier is abstracted — reducing all physical
+    transport modes to their minimal, indivisible representation — what remains
+    is the event boundary: the single transition point at which the carrier's
+    energy-data state is fully determined and ready for handoff to H.I.V.
+  definition: >
+    The irreducible surface at which the carrier's energy-data state is
+    completely determined. All transport complexity is compressed to a single
+    event characterised by four fields only.
+  boundary_schema:
+    fields:
+      - name: boundary_id
+        type: string
+        format: "TRH-EB-<UUID>"
+        required: true
+      - name: timestamp_utc
+        type: string
+        format: "ISO-8601Z"
+        description: "Single point in time — not a duration"
+        required: true
+      - name: energy_state_hash
+        type: string
+        format: "sha3-512:hex"
+        description: "Complete thermodynamic state, compressed"
+        required: true
+      - name: data_state_hash
+        type: string
+        format: "sha3-512:hex"
+        description: "Complete data channel state, compressed"
+        required: true
+  derivability_property: >
+    All carrier-internal fields (hydrogen_flow_rate_kg_s,
+    fiber_optic_throughput_gbps, etc.) are deterministically derivable from
+    energy_state_hash. At the boundary they need not be re-transmitted.
+  resulting_channel:
+    name: Superconductor Vector Channel
+    properties:
+      channel_resistance: zero
+      signal_loss: zero
+      latency_contribution: zero
+      t_eff_at_channel: "→ ∞ (by construction)"
+    definition: >
+      When TranshidreOHs operates in event-boundary mode, the resulting
+      channel to H.I.V. (HIV-IFC-001) is a superconductor vector: zero
+      resistance (instantaneous boundary transition), zero signal loss
+      (state is hash-locked), and T_eff → ∞ by construction.
+    reference: PLUMA-GAI-HIV-001 §4.3

@@ -198,16 +198,41 @@ interfaces:
     inputs:
       - name: hydrogen_flow_rate_kg_s
         source: TranshidreOHs
-        description: "Hydrogen mass flow rate from carrier"
+        description: "Hydrogen mass flow rate from carrier (standard mode)"
       - name: fiber_optic_throughput_gbps
         source: TranshidreOHs
-        description: "Fibre-optic channel throughput"
+        description: "Fibre-optic channel throughput (standard mode)"
     transformation: >
       Hash the energy-data metadata and attach a V-token to create a
       Value-Stamped Energy-Data (VSED) packet.
     output: VSED_packet
     primary_metric: T_eff
     integrity_algorithm: SHA3-512
+    event_boundary_mode:
+      description: >
+        When TranshidreOHs is operated in event-boundary abstraction, the
+        HIV-IFC-001 channel becomes a superconductor vector channel.
+      inputs_replaced_by:
+        - name: energy_state_hash
+          format: "sha3-512:hex"
+          description: "Compressed carrier thermodynamic state"
+        - name: data_state_hash
+          format: "sha3-512:hex"
+          description: "Compressed carrier data channel state"
+      vsed_additional_fields:
+        - name: boundary_mode
+          type: boolean
+          value: true
+        - name: carrier_state_hash
+          format: "sha3-512:hex"
+          description: "Replaces individual energy/data fields"
+      channel_properties:
+        resistance: zero
+        signal_loss: zero
+        latency_contribution: zero
+        t_eff: "→ ∞ (by construction)"
+      t_eff_boundary_formula: >
+        T_eff_boundary = verified_packets / total_packets × lim(latency→0) = ∞
 
   - interface_id: HIV-IFC-002
     name: "Operational Trigger"
@@ -273,3 +298,9 @@ invariants:
     statement: >
       The system MUST drive T_eff upward. Any change that reduces
       Traceability Efficiency requires a safety impact assessment.
+  - id: INV-HIV-SV
+    name: Superconductor vector
+    statement: >
+      When boundary_mode = true on HIV-IFC-001, the channel MUST carry
+      carrier_state_hash and MUST NOT carry individual flow fields.
+      T_eff → ∞ is achieved by construction at the event boundary.
