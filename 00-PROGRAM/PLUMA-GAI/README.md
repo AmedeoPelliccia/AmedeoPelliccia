@@ -347,6 +347,8 @@ The following files instantiate PLUMA-GAI as a working standard:
 | DEL-05 | TranshidreOHs — Carrier Layer | `TranshidreOHs.md` + `transhidreOHs.yaml` | Multi-modal H₂ transport + fibre-optic co-carry; carrier package schema |
 | DEL-06 | H.I.V. — Energy-Sense-Value Spec | `H.I.V.md` + `hiv.yaml` | Hydrogen · Infrared · Values triad; VSED packet; T_eff; interface contracts |
 | DEL-07 | VibidratAZIONE — Restoration Layer | `VibidratAZIONE.md` + `vibidratazione.yaml` | Operational restoration; Teknia Token; equity injection lifecycle |
+| DEL-08 | NET Stack Diagrams & Topological Network Graphics | `NET/STACK-DIAGRAMS.md` | Mermaid: canonical stack · NET layers · node topology · superconductor vector · degradation FSM · integration map |
+| DEL-09 | NET Development Plan | `NET/DEV-PLAN.md` | Phased milestones (P010–P070) · deliverables · fork-point schedule · dependency graph · risk register |
 
 ---
 
@@ -367,6 +369,8 @@ The following files instantiate PLUMA-GAI as a working standard:
 | `vibidratazione.yaml` | Operational restoration layer — machine-readable companion |
 | `03-CAX_PHASES/` | CAX phase artefacts referenced by `run_manifest_ref` in gating conditions |
 | `NET/` | PLUMA-GAI NET — ground–aerospace infrared network extension |
+| `NET/STACK-DIAGRAMS.md` | NET stack diagrams, topological network graphics, degradation FSM, integration map |
+| `NET/DEV-PLAN.md` | NET development planning: phased milestones, fork-point schedule, dependency graph, risk register |
 
 ---
 
