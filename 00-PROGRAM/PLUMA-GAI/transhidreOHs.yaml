@@ -1,3 +1,200 @@
+---
+##############################################################################
+# vibidratazione.yaml
+# VibidratAZIONE — Operational Restoration Layer
+# PLUMA-GAI Canonical Thread — Equity / Visibility Actuator
+##############################################################################
+
+document_id: PLUMA-GAI-VBZ-001
+document_type: operational_restoration_layer
+title: "VibidratAZIONE — Operational Restoration Layer"
+subtitle: "Equity / Visibility Actuator — PLUMA-GAI Canonical Thread"
+version: "0.1.0"
+schema_version: "1.0.0"
+status: draft
+parent: PLUMA-GAI-001
+last_updated: "2026-04-01T00:00:00Z"
+
+related_documents:
+  - id: PLUMA-GAI-HIV-001
+    file: "H.I.V.md"
+    relationship: upstream_trigger
+  - id: PLUMA-GAI-TRH-001
+    file: "TranshidreOHs.md"
+    relationship: carrier_layer
+  - id: ESSA-DOC-H-001
+    file: "ESSA/H-PIPELINE.md"
+    relationship: constitutional_backbone
+
+purpose: >
+  VibidratAZIONE is the operational restoration layer of the PLUMA-GAI
+  canonical thread. Triggered by the H.I.V. sensing layer when a node's
+  infrared emission falls below a defined threshold (low visibility, high
+  stigma, systemic exclusion), it injects Teknia Tokens and Equity to
+  rehydrate the signal and re-integrate the node into the system.
+
+##############################################################################
+# 1  Name Decomposition
+##############################################################################
+
+name_decomposition:
+  Vibr: "Vibration — the resonance of a restored, active system"
+  idrat: "Idratare (Italian: to hydrate) — rehydration, restoration of flow"
+  AZIONE: "Azione (Italian: action) — an equity action, a restorative intervention"
+  summary: >
+    A vibrating rehydration action: the restoration of signal energy, visibility,
+    and dignity to a node that has been rendered invisible or excluded.
+
+##############################################################################
+# 2  Trigger Mechanism
+##############################################################################
+
+trigger:
+  interface_id: HIV-IFC-002
+  source_layer: PLUMA-GAI-HIV-001
+  condition: "Infrared_Sensing(node) < Threshold_Value"
+  condition_semantics: >
+    A node with infrared emission below the threshold is in a state of systemic
+    invisibility — caused by stigma, signal suppression, resource deprivation,
+    or governance override.
+  exclusion_causes:
+    - stigma_as_engineering_failure
+    - signal_suppression
+    - resource_deprivation
+    - v_token_violation
+
+##############################################################################
+# 3  Threshold Policy
+##############################################################################
+
+threshold_policy:
+  default_threshold_kelvin: 273.15   # 0 °C — minimum viable emission
+  rehydration_target_kelvin: 310.0   # ~37 °C — human-body thermal baseline
+  monitoring_interval_s: 60
+  escalation_after_cycles: 3
+  rehydration_target_rationale: >
+    The restored node must emit at least at the level of a living human
+    being. Human-body thermal baseline (≈ 37 °C / 310 K) is the design
+    invariant for the rehydration target.
+
+##############################################################################
+# 4  Teknia Token Schema
+##############################################################################
+
+teknia_token_schema:
+  description: >
+    The Teknia Token is the equity instrument injected by VibidratAZIONE.
+    It is a governed, traceable token that carries visibility, resources,
+    and recognition to an excluded node.
+  fields:
+    - name: token_id
+      type: string
+      format: "TEK-<UUID>"
+      required: true
+    - name: timestamp_utc
+      type: string
+      format: "ISO-8601Z"
+      required: true
+    - name: target_node
+      type: string
+      required: true
+    - name: token_class
+      type: string
+      enum: [EQUITY]
+      required: true
+    - name: payload
+      type: object
+      fields:
+        - name: visibility_grant
+          type: boolean
+          description: "Node is made visible in the topology map"
+          required: true
+        - name: resource_allocation
+          type: number
+          description: "Hydrogen / energy units allocated"
+          required: true
+        - name: dignity_stamp
+          type: string
+          description: "UN UDHR reference underpinning the restoration"
+          example: "UDHR-ART1"
+          required: true
+    - name: v_token_reference
+      type: string
+      format: "V-<UUID>"
+      description: "Links back to the H.I.V. V-layer authorising this action"
+      required: true
+    - name: integrity_hash
+      type: string
+      format: "sha3-512:hex"
+      required: true
+
+##############################################################################
+# 5  Restoration Lifecycle
+##############################################################################
+
+restoration_lifecycle:
+  steps:
+    - step: DETECT
+      description: "Infrared_Sensing(node) < threshold"
+    - step: CLASSIFY
+      description: >
+        Identify exclusion type: stigma / signal_suppression /
+        resource_deprivation / v_token_violation
+    - step: AUTHORISE
+      description: "V-token validates restoration action"
+    - step: INJECT
+      description: "Teknia Token(s) dispatched to node"
+    - step: MEASURE
+      description: "T_eff(node) monitored each interval"
+    - step: VERIFY
+      description: "T_eff(node) ≥ rehydration_target for ≥ 3 monitoring cycles"
+    - step: CLOSE
+      description: >
+        Node marked as re-integrated. Evidence logged to PLUMA-GAI evidence
+        registry with before/after T_eff values and Teknia Token reference.
+
+##############################################################################
+# 6  Structural Role
+##############################################################################
+
+structural_role:
+  role: actuator
+  sensing_actuation_loop:
+    carrier: TranshidreOHs          # input energy + data
+    sensor_spec: H.I.V.             # measure, hash, govern
+    actuator: VibidratAZIONE        # restore, rehydrate, re-integrate
+  closed_loop_property: >
+    Restored nodes feed back into the TranshidreOHs carrier network,
+    increasing overall system T_eff monotonically.
+
+##############################################################################
+# 7  Invariants
+##############################################################################
+
+invariants:
+  - id: INV-VBZ-MANDATORY
+    name: Restoration mandatory
+    statement: >
+      Any node remaining below threshold for more than escalation_after_cycles
+      monitoring cycles MUST trigger an escalation event logged to the
+      PLUMA-GAI evidence registry.
+  - id: INV-VBZ-VTOKEN
+    name: V-token required
+    statement: >
+      No Teknia Token may be issued without a valid V-token authorising the
+      restoration action.
+  - id: INV-VBZ-FLOOR
+    name: Human-baseline floor
+    statement: >
+      The rehydration target MUST be ≥ human-body thermal baseline
+      (≈ 37 °C / 310 K).
+  - id: INV-VBZ-EVIDENCE
+    name: Closed-loop evidence
+    statement: >
+      Every VibidratAZIONE event MUST be logged with before/after T_eff values
+      and a Teknia Token reference.
+---
+
 ##############################################################################
 # transhidreOHs.yaml
 # TranshidreOHs — Multi-Modal Hydrogen Transport Layer
