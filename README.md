@@ -14,9 +14,20 @@ By day I work as an aerospace engineer specializing in aircraft technical data s
 
 expansion by structure. As Cosmos Cycle Historical Issue.
 
+This repository is the public **AmedeoPelliccia profile** presented as a
+**governed portfolio**. Its structure, published artifacts, and portfolio-level
+governance claims are bounded by the
+[`Model_Digital_Constitution.md`](Model_Digital_Constitution.md), which serves
+as the repository's governing legal and operational frame.
+
+Within that frame, I am the **originator** of a framework whose ontology treats
+the **model as the primary product**, **aerospace determinism** as the
+governing boundary, and **Ontogenesis** as the explicit lifecycle through which
+organizations and models are formed, governed, and evolved.
+
 ---
 
-### IDEALE-ESG.eu — European Intelligence Foundation
+### IDEALE-ESG.eu — European Intelligence Ontogenesis
 
 **IDEALE** is both an acronym and a commitment. It names the six pillars of an integrated framework for sovereign European capability:
 
@@ -86,6 +97,11 @@ Space-quantum infrastructure · Manufacturing technology layers · AQUA-V progra
 
 Where the aircraft domain ends, the space and quantum domain begins. Orbital logistics, quantum-classical bridge architectures, synthetic data validation, the manufacturing pipeline that connects design to material reality, and the **GAIA-AIR** ecosystem with its Quantum Aerospace Operating System (**QAOS**) — where NBT gates bridge classical telemetry into quantum-augmented structural analysis, digital twins, and predictive maintenance.
 
+Within this repository, the **GAIA foundational objects** are defined as
+**Earth Intelligence Ontogenesis**: the Earth-scale ontogenetic frame from
+which GAIA constellation systems, GAIA-AIR, and QAOS derive their governing
+object logic.
+
 **IDEALE pillars touched:** A (primary), I (quantum-classical data, NBT substrate), D (dual-use awareness), L (manufacturing pipelines)
 
 </td>
@@ -142,6 +158,11 @@ The common engineering spine across all IDEALE pillars:
 *360° end-to-end digital aerospace lifecycle governance*
 
 AMPEL360 is an end-to-end aerospace lifecycle architecture that governs the design, engineering, certification, operation, and continuous digital traceability of aircraft systems and programmes.
+
+Within this repository, AMPEL360 is also defined as the **next-generation
+market-oriented manifestation of the Ontogenesis group**: the applied
+industrial and market-facing realization through which ontogenetic governance
+is translated into lifecycle-ready aerospace assets, programmes, and evidence.
 
 As a formal programme identity, AMPEL360 covers the full aerospace lifecycle:
 
@@ -665,6 +686,10 @@ Both variants use **Variational Quantum Circuits (VQCs)** — parameterized quan
 ### 17. GAIA-AIR and QAOS — N-Axis Aerospace Realization
 
 The most concrete implementation of NBT gates is **GAIA-AIR** and its **Quantum Aerospace Operating System (QAOS)** — a full N-axis instantiation where classical aerospace telemetry crosses into quantum-augmented structural analysis and tunnels back as operational evidence:
+
+At the foundational-object level, **GAIA** is treated here as **Earth
+Intelligence Ontogenesis**, making GAIA-AIR the aerospace realization of that
+Earth-oriented ontogenetic frame.
 
 | GAIA-AIR module | NBT gate function | Operational function |
 |----------------|-----------------|---------------------|
