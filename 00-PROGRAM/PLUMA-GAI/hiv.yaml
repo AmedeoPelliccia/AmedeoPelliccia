@@ -114,12 +114,14 @@ vsed_packet_schema:
     energy_metadata:
       - name: hydrogen_flow_rate_kg_s
         type: number
-        description: "H-layer input: hydrogen mass flow rate"
+        description: "H-layer input: hydrogen mass flow rate (standard mode only; omitted when boundary_mode=true)"
         required: true
+        condition: "boundary_mode = false (standard mode)"
       - name: fiber_optic_throughput_gbps
         type: number
-        description: "Data throughput on the fibre-optic carrier channel"
+        description: "Data throughput on the fibre-optic carrier channel (standard mode only; omitted when boundary_mode=true)"
         required: true
+        condition: "boundary_mode = false (standard mode)"
       - name: t_eff_kelvin
         type: number
         description: "I-layer: effective infrared temperature of source node"
@@ -211,21 +213,27 @@ interfaces:
     event_boundary_mode:
       description: >
         When TranshidreOHs is operated in event-boundary abstraction, the
-        HIV-IFC-001 channel becomes a superconductor vector channel.
+        HIV-IFC-001 channel becomes a superconductor vector channel. In this
+        mode, the on-wire boundary payload carries only `carrier_state_hash`,
+        defined as the canonical SHA3-512 digest of the concatenated
+        `energy_state_hash || data_state_hash` boundary-state hashes.
       inputs_replaced_by:
-        - name: energy_state_hash
+        - name: carrier_state_hash
           format: "sha3-512:hex"
-          description: "Compressed carrier thermodynamic state"
-        - name: data_state_hash
-          format: "sha3-512:hex"
-          description: "Compressed carrier data channel state"
+          description: >
+            Canonical boundary payload field; SHA3-512 of
+            energy_state_hash || data_state_hash. Replaces the individual
+            energy and data flow fields on the channel.
+          derivation: "SHA3-512(energy_state_hash || data_state_hash)"
       vsed_additional_fields:
         - name: boundary_mode
           type: boolean
           value: true
         - name: carrier_state_hash
           format: "sha3-512:hex"
-          description: "Replaces individual energy/data fields"
+          description: >
+            Canonical boundary payload field; SHA3-512 of
+            energy_state_hash || data_state_hash.
       channel_properties:
         resistance: zero
         signal_loss: zero
@@ -302,5 +310,6 @@ invariants:
     name: Superconductor vector
     statement: >
       When boundary_mode = true on HIV-IFC-001, the channel MUST carry
-      carrier_state_hash and MUST NOT carry individual flow fields.
+      carrier_state_hash (defined as SHA3-512(energy_state_hash ||
+      data_state_hash)) and MUST NOT carry individual flow fields.
       T_eff → ∞ is achieved by construction at the event boundary.

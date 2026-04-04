@@ -1,19 +1,19 @@
 ---
 ##############################################################################
-# pluma-gai-net.yaml
-# PLUMA-GAI NET — Performant Link Ubiquitous Map Architecture
-# Ground–Aerospace Infrared Networks Integration Layer
+# pluma-gai-net-devplan.yaml
+# PLUMA-GAI NET Development Plan
+# Ground–Aerospace Infrared Networks
 ##############################################################################
 
-document_id: PLUMA-GAI-NET-001
-document_type: network_architecture_extension
-title: "PLUMA-GAI NET — Performant Link Ubiquitous Map Architecture"
+document_id: PLUMA-GAI-NET-DEVPLAN-001
+document_type: development_plan
+title: "PLUMA-GAI NET Development Plan"
 subtitle: "Ground–Aerospace Infrared Networks"
-lifecycle_stage: "System Integration Layer"
+lifecycle_stage: "Development Planning"
 version: "0.1.0"
 schema_version: "1.0.0"
 status: draft
-parent: PLUMA-GAI-001
+parent: PLUMA-GAI-NET-001
 last_updated: "2026-02-28T12:00:00Z"
 
 purpose: >

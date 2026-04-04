@@ -326,9 +326,11 @@ event_boundary:
   data_state_hash: "sha3-512:hex"      # complete data channel state, compressed
 ```
 
-All carrier-internal fields (`hydrogen_flow_rate_kg_s`,
-`fiber_optic_throughput_gbps`, etc.) are deterministically derivable from the
-`energy_state_hash`.  At the boundary, they need not be re-transmitted.
+All carrier-internal fields are deterministically derivable from the boundary
+state hashes: thermodynamic fields (`hydrogen_flow_rate_kg_s`, cryo
+temperatures, etc.) from `energy_state_hash`, and data-channel fields
+(`fiber_optic_throughput_gbps`, etc.) from `data_state_hash`.  At the
+boundary, they need not be re-transmitted.
 
 ### 6.2 Consequence: Superconductor Vector Channel
 

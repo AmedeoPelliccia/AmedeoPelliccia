@@ -526,13 +526,13 @@ Each vector is expressed as `(𝔸, ℍ, 𝕆, 𝔽, 𝔾, ℙ)`.
 | # | Name (IT) | Name (EN) | ε vector | ‖ε‖ | Dominant | Geometric signature |
 |---|-----------|-----------|---------|-----|----------|-------------------|
 | 1 | **Gioia** | Joy | (85, 60, 90, 45, 70, 80) | 180 | Optic | Broad irregular hexagon; visual and auditory peaks, all senses engaged |
-| 2 | **Serenità** | Serenity | (50, 45, 55, 40, 38, 48) | 118 | Optic | Small balanced pentagon; low activation, uniform across senses |
-| 3 | **Malinconia** | Melancholy | (30, 20, 55, 25, 15, 30) | 80 | Optic | Thin blue triangle; optic dominates, body and chemical senses collapse |
-| 4 | **Terrore** | Terror | (90, 95, 70, 5, 5, 92) | 178 | Haptic | Near-hexagon with chemical void; body electrifies, slow senses disappear |
-| 5 | **Meraviglia** | Wonder | (55, 35, 78, 25, 20, 68) | 137 | Optic | Asymmetric — optic and proprioceptive extend, chemical senses recede |
-| 6 | **Tenerezza** | Tenderness | (40, 85, 40, 32, 30, 60) | 131 | Haptic | Haptic spike; soft voice, forward lean, mild chemical warmth |
-| 7 | **Estasi** | Ecstasy | (80, 82, 85, 75, 78, 80) | 186 | Optic | Approaching full hexagon; all channels near maximum; minimum steganographic capacity |
-| 8 | **Nostalgia** | Nostalgia | (40, 30, 40, 80, 60, 20) | 117 | Olfactory | Olfactory/gustatory triangle; vision blurs, body stills, aroma triggers memory |
+| 2 | **Serenità** | Serenity | (50, 45, 55, 40, 38, 48) | 114 | Optic | Small balanced pentagon; low activation, uniform across senses |
+| 3 | **Malinconia** | Melancholy | (30, 20, 55, 25, 15, 30) | 78 | Optic | Thin blue triangle; optic dominates, body and chemical senses collapse |
+| 4 | **Terrore** | Terror | (90, 95, 70, 5, 5, 92) | 175 | Haptic | Near-hexagon with chemical void; body electrifies, slow senses disappear |
+| 5 | **Meraviglia** | Wonder | (55, 35, 78, 25, 20, 68) | 126 | Optic | Asymmetric — optic and proprioceptive extend, chemical senses recede |
+| 6 | **Tenerezza** | Tenderness | (40, 85, 40, 32, 30, 60) | 126 | Haptic | Haptic spike; soft voice, forward lean, mild chemical warmth |
+| 7 | **Estasi** | Ecstasy | (80, 82, 85, 75, 78, 80) | 196 | Optic | Approaching full hexagon; all channels near maximum; minimum steganographic capacity |
+| 8 | **Nostalgia** | Nostalgia | (40, 30, 40, 80, 60, 20) | 120 | Olfactory | Olfactory/gustatory triangle; vision blurs, body stills, aroma triggers memory |
 
 ### 3.1 Detailed Profiles
 
@@ -542,44 +542,44 @@ Bright, expansive, rhythmic. High visual and auditory intensity, moderate warmth
 across all senses. The body moves. All senses present.
 
 **Serenità** — Serenity  
-`ε = (50, 45, 55, 40, 38, 48)` · `‖ε‖ ≈ 118` · dominant: Optic  
+`ε = (50, 45, 55, 40, 38, 48)` · `‖ε‖ ≈ 114` · dominant: Optic  
 Still and open. Low total activation; no channel dominates strongly. The body
 is present but unhurried. The world is visible but not overwhelming.
 
 **Malinconia** — Melancholy  
-`ε = (30, 20, 55, 25, 15, 30)` · `‖ε‖ ≈ 80` · dominant: Optic  
+`ε = (30, 20, 55, 25, 15, 30)` · `‖ε‖ ≈ 78` · dominant: Optic  
 A thin blue shape. Vision remains — the world is seen — but haptic and gustatory
 signals fade. The body is quiet; taste is absent. The eyes hold what touch
 cannot reach.
 
 **Terrore** — Terror  
-`ε = (90, 95, 70, 5, 5, 92)` · `‖ε‖ ≈ 178` · dominant: Haptic  
+`ε = (90, 95, 70, 5, 5, 92)` · `‖ε‖ ≈ 175` · dominant: Haptic  
 Near a full hexagon, but the olfactory and gustatory vertices collapse to almost
 zero. The body electrifies (haptic 95, proprioceptive 92, auditory 90). The
 "slow" chemical senses disappear. High arousal, high steganographic capacity
 collapse on fast channels, maximum headroom on chemical channels.
 
 **Meraviglia** — Wonder  
-`ε = (55, 35, 78, 25, 20, 68)` · `‖ε‖ ≈ 137` · dominant: Optic  
+`ε = (55, 35, 78, 25, 20, 68)` · `‖ε‖ ≈ 126` · dominant: Optic  
 Asymmetric. Vision expands (78); the body orients (proprioceptive 68); sound
 is present but not dominant. Chemical senses recede. The world becomes visual
 and spatial — wonder is the posture of seeing something new.
 
 **Tenerezza** — Tenderness  
-`ε = (40, 85, 40, 32, 30, 60)` · `‖ε‖ ≈ 131` · dominant: Haptic  
+`ε = (40, 85, 40, 32, 30, 60)` · `‖ε‖ ≈ 126` · dominant: Haptic  
 Touch dominates. The voice softens (auditory 40). The body leans forward
 (proprioceptive 60). Chemical senses are present, warm. Tenerezza is a state
 of proximity — haptic is the lead sense because closeness is its essence.
 
 **Estasi** — Ecstasy  
-`ε = (80, 82, 85, 75, 78, 80)` · `‖ε‖ ≈ 186` · dominant: Optic  
+`ε = (80, 82, 85, 75, 78, 80)` · `‖ε‖ ≈ 196` · dominant: Optic  
 The limit case. All channels near maximum. The sensorium is flooded. This is
 the state of minimum steganographic capacity — when everything is at maximum,
 there is no intensity gradient left to hide data in. It is the brightest point
 in SENSORIUM space and the most cryptographically exposed state.
 
 **Nostalgia** — Nostalgia  
-`ε = (40, 30, 40, 80, 60, 20)` · `‖ε‖ ≈ 117` · dominant: Olfactory  
+`ε = (40, 30, 40, 80, 60, 20)` · `‖ε‖ ≈ 120` · dominant: Olfactory  
 A triangle pointing toward olfactory (80) and gustatory (60). The chemical
 senses dominate — the aroma triggers the memory. Vision becomes unfocused (40).
 The body does not move (proprioceptive 20). Nostalgia is the state where
@@ -684,11 +684,13 @@ principle: every physical node emits infrared in proportion to its thermal
 state. Intensity is the ground truth. Nothing is hideable in the IR dimension
 — the payload IS the physical reality.
 
-The **rehydration floor of 310 K** in VibidratAZIONE is the minimum infrared
-intensity required to register a node in the SENSORIUM: below 310 K, the
-proprioceptive channel (ℙ) collapses and the node is no longer perceptible
-as an active body. VibidratAZIONE restores `κ_ℙ` to a level above the
-detection threshold.
+The **rehydration floor of 310 K** in VibidratAZIONE is the restoration target
+for a thermally coherent node state, not the minimum infrared intensity
+required to register a node in the SENSORIUM. Registration begins at a lower
+infrared detection threshold; below that threshold, the proprioceptive channel
+(ℙ) collapses and the node is no longer perceptible as an active body.
+VibidratAZIONE first restores `κ_ℙ` above the detection threshold and then
+drives it toward or above the 310 K rehydration target.
 
 ---
 

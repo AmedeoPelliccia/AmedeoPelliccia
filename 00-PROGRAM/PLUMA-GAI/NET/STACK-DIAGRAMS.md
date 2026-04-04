@@ -139,8 +139,8 @@ flowchart LR
         direction TB
         TRH_E["TranshidreOHs\n@ event boundary\nboundary_id · timestamp_utc\nenergy_state_hash · data_state_hash"]
         IFC_E["HIV-IFC-001\nboundary_mode = true\nR = 0 · loss = 0 · latency = 0"]
-        HIV_E["H.I.V. input\ncarrier_state_hash → VSED\nT_eff → ∞  (by construction)"]
-        TRH_E -->|"carrier_state_hash\n(replaces all flow fields)"| IFC_E
+        HIV_E["H.I.V. input\nenergy_state_hash · data_state_hash → VSED\nT_eff → ∞  (by construction)"]
+        TRH_E -->|"energy_state_hash\ndata_state_hash\n(replaces all flow fields)"| IFC_E
         IFC_E --> HIV_E
     end
 
@@ -155,7 +155,8 @@ Boundary:   T_eff = (verified / total) × lim(latency → 0) = ∞
 ```
 
 INV-HIV-SV enforces: when `boundary_mode = true`, channel MUST carry
-`carrier_state_hash` and MUST NOT carry individual flow fields.
+`carrier_state_hash` (= SHA3-512(`energy_state_hash` ‖ `data_state_hash`)) and
+MUST NOT carry individual flow fields.
 
 ---
 

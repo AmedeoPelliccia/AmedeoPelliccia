@@ -484,7 +484,7 @@ transport handshake to a **superconductor vector channel**.
 | Carrier latency contribution | Non-zero | **Zero** |
 | Signal loss | Possible | **Zero** (state is hash-locked) |
 | T_eff at channel | Finite | **→ ∞** (by construction) |
-| Input fields | `hydrogen_flow_rate_kg_s`, `fiber_optic_throughput_gbps` | `energy_state_hash`, `data_state_hash` |
+| Input fields | `hydrogen_flow_rate_kg_s`, `fiber_optic_throughput_gbps` | `carrier_state_hash` = SHA3-512(`energy_state_hash` ‖ `data_state_hash`) |
 
 **Superconductor vector** is the precise term:
 - *Superconducting* — zero resistance; the channel conveys the carrier state to
@@ -499,8 +499,22 @@ vsed_packet:
   header:
     # … standard fields …
     boundary_mode: true
-    carrier_state_hash: "sha3-512:hex"   # replaces individual energy fields
+    carrier_state_hash: "sha3-512:hex"   # SHA3-512(energy_state_hash || data_state_hash)
+    # individual flow fields (hydrogen_flow_rate_kg_s, fiber_optic_throughput_gbps) OMITTED
 ```
+
+`carrier_state_hash` is defined as the canonical SHA3-512 digest of the
+concatenated boundary-state hashes from TranshidreOHs:
+
+```
+carrier_state_hash = SHA3-512(energy_state_hash || data_state_hash)
+```
+
+This is the single on-wire field that replaces all individual flow fields.
+`energy_state_hash` covers all thermodynamic fields (H₂ flow rate, cryo
+temperature, etc.); `data_state_hash` covers all data-channel fields (fibre
+throughput, etc.). Both are compressed into `carrier_state_hash` before
+transmission.
 
 The T_eff formula in event-boundary mode collapses to:
 
@@ -547,7 +561,8 @@ The following invariants are non-negotiable within the H.I.V. layer:
 4. **T_eff-invariant:** The system MUST drive T_eff upward; any change that
    reduces Traceability Efficiency requires a safety impact assessment.
 5. **INV-HIV-SV — Superconductor vector:** when `boundary_mode = true`, the
-   HIV-IFC-001 channel MUST carry `carrier_state_hash` and MUST NOT carry
+   HIV-IFC-001 channel MUST carry `carrier_state_hash` (defined as
+   SHA3-512(`energy_state_hash` ‖ `data_state_hash`)) and MUST NOT carry
    individual flow fields; T_eff → ∞ is achieved by construction.
 
 ---

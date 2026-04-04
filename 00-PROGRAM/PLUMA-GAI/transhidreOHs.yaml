@@ -193,9 +193,11 @@ event_boundary_abstraction:
         description: "Complete data channel state, compressed"
         required: true
   derivability_property: >
-    All carrier-internal fields (hydrogen_flow_rate_kg_s,
-    fiber_optic_throughput_gbps, etc.) are deterministically derivable from
-    energy_state_hash. At the boundary they need not be re-transmitted.
+    All carrier-internal fields are deterministically derivable from the
+    boundary state hashes: thermodynamic fields (e.g. hydrogen_flow_rate_kg_s,
+    cryo_temperature_k) from energy_state_hash, and data-channel fields
+    (e.g. fiber_optic_throughput_gbps) from data_state_hash. At the boundary
+    they need not be re-transmitted.
   resulting_channel:
     name: Superconductor Vector Channel
     properties:
