@@ -1,0 +1,338 @@
+##############################################################################
+# AmedeoPelliccia — Profile README
+# Machine-readable companion to README.md
+##############################################################################
+
+document_id: PROFILE-README-001
+document_type: profile_readme
+title: "Amedeo Pelliccia — Aerospace Engineer · Researcher · Framework Originator"
+version: "1.0-draft"
+schema_version: "1.0.0"
+status: active
+last_updated: "2026-04-04T00:00:00Z"
+
+description: >
+  Machine-readable companion to the root README.md of the AmedeoPelliccia
+  GitHub profile repository. Captures the structured metadata for the
+  IDEALE-ESG framework, pillar architecture, two-domain aerospace model,
+  engineering spine, contribution philosophy, and the formal mathematical
+  backbone (Parts I–VI).
+
+# ─────────────────────────────────────────────
+# Author
+# ─────────────────────────────────────────────
+author:
+  name: Amedeo Pelliccia
+  roles:
+    - Aerospace Engineer
+    - Researcher
+    - Framework Originator
+  affiliation: "IDEALE-ESG.eu"
+  location: "Madrid, Spain"
+  accounts:
+    primary: AmedeoPelliccia
+    alternate: Robbbo-T
+
+# ─────────────────────────────────────────────
+# IDEALE-ESG Framework
+# ─────────────────────────────────────────────
+ideale_framework:
+  full_name: "IDEALE-ESG.eu — European Intelligence Foundation"
+  website: "https://ideale.eu"
+  pillars:
+    - letter: I
+      name: Information
+      scope: >
+        Data sovereignty, deterministic AI governance, digital product
+        passports, traceability infrastructure
+    - letter: D
+      name: Defense
+      scope: >
+        Dual-use awareness, export control, secure-by-design documentation,
+        sovereign supply chains
+    - letter: E
+      name: Energy
+      scope: >
+        Hydrogen production and distribution, LH₂ infrastructure,
+        renewable integration, energy system coupling
+    - letter: A
+      name: Aerospace
+      scope: >
+        Aviation decarbonization, space-quantum systems,
+        certification-grade engineering, technical publications
+    - letter: L
+      name: Logistics
+      scope: >
+        Supply chain traceability, manufacturing pipelines,
+        circular economy, end-of-life management
+    - letter: E
+      name: "Economy (Digital)"
+      scope: >
+        Governed digital economy: evidence markets, qualified model exchange,
+        contribution assets, tokenized recognition, uncertainty reduction
+        as transferable value
+
+  esg:
+    - letter: E
+      name: Environment
+      enforcement: >
+        LC14 circularity, Digital Product Passports, climate impact functions,
+        zero-emission propulsion, lifecycle traceability
+    - letter: S
+      name: Social responsibility
+      enforcement: >
+        Fair attribution (C1–C6 taxonomy), governed recognition of third
+        parties, open publication, Teknia Token incentives proportional
+        to contribution
+    - letter: G
+      name: Governance
+      enforcement: >
+        Deterministic pipelines (PATH → MTL), intent-lock layers (DWGE),
+        acceptance gates, hash-chained ledgers, monotonic safety property,
+        sovereign design authority
+
+# ─────────────────────────────────────────────
+# Two Domains — The Aerospace Pillar
+# ─────────────────────────────────────────────
+domains:
+  - id: aircraftmodel
+    domain: "aircraftmodel.eu"
+    url: "https://aircraftmodel.eu"
+    repository: "https://github.com/Amedeopelliccia/aircraftmodel"
+    focus: >
+      Aviation decarbonization · Hydrogen-electric propulsion ·
+      Blended wing body airframes · Certification-grade digital baselines
+    key_programme: "AMPEL360 Q100"
+    ideale_pillars_touched:
+      - A
+      - E
+      - L
+      - I
+
+  - id: aerospacemodel
+    domain: "aerospacemodel.com"
+    url: "https://aerospacemodel.com"
+    repository: "https://github.com/Amedeopelliccia/aerospacemodel"
+    focus: >
+      Space-quantum infrastructure · Manufacturing technology layers ·
+      AQUA-V programme · GAIA constellation systems · GAIA-AIR / QAOS
+    ideale_pillars_touched:
+      - A
+      - I
+      - D
+      - L
+
+# ─────────────────────────────────────────────
+# Engineering Spine — Core Frameworks
+# ─────────────────────────────────────────────
+engineering_spine:
+  - id: OPT-IN
+    full_name: "OPT-IN Framework"
+    description: >
+      5-axis topology (Organizations, Programs, Technologies,
+      Infrastructures, Neural Networks) that organizes every artefact,
+      uncertainty, and incentive into a single navigable structure.
+    standard_ref: "STD-OPTIN-001 v1.1"
+
+  - id: PATH-MTL
+    full_name: "PATH → MTL Pipeline"
+    description: >
+      Traceable pipeline (Prompting → Approved → Template → Heading →
+      To Model → TEKNIA Ledger) governing artefact production, acceptance,
+      registration, and reward.
+    standard_ref: "STD-PATH-MTL-001 v1.0"
+
+  - id: DWGE
+    full_name: "Deterministic Widget Generator Engine"
+    description: >
+      Intent-lock layer normalizing raw prompts into locked intents before
+      any procedure executes. The LLM proposes; the deterministic kernel
+      disposes.
+    standard_ref: "STD-PATH-MTL-001 §3.1a"
+    widgets: 10
+    gates: 8
+
+  - id: TT
+    full_name: "Teknia Tokens"
+    version: "v3.14"
+    description: >
+      Native incentive instrument of the Economy pillar. Contributors are
+      rewarded for reducing uncertainty: effort + impact, weighted and
+      hash-chained.
+
+  - id: NBT
+    full_name: "NBT Gates (Neural Network Bridging and Tunneling)"
+    description: >
+      N-axis connections linking classical pipeline outputs to
+      quantum-augmented simplicial manifolds via QSN inference.
+
+  - id: AMPEL360
+    full_name: "AMPEL360 — Aerospace Model for Product and Engineering Lifecycles"
+    tagline: "360° end-to-end digital aerospace lifecycle governance"
+    description: >
+      End-to-end aerospace lifecycle architecture governing design,
+      engineering, certification, operation, and continuous digital
+      traceability of aircraft systems and programmes.
+    lifecycle_phases:
+      - Concept
+      - Requirements
+      - Architecture
+      - Design
+      - Analysis
+      - Verification
+      - Validation
+      - Certification
+      - Production
+      - Operation
+      - Maintenance
+      - "Modification / retrofit"
+      - "Reuse / refurbishment"
+      - "Retirement / traceable closure"
+
+# ─────────────────────────────────────────────
+# Backend — Formal Mathematical Backbone
+# ─────────────────────────────────────────────
+formal_backbone:
+  standard_alignment:
+    - symbol: "§STD"
+      reference: "STD-PATH-MTL-001 — PATH → MTL Pipeline Standard v1.0"
+    - symbol: "§3.1a"
+      reference: "STD-PATH-MTL-001 §3.1a — DWGE (Deterministic Widget Generator Engine)"
+    - symbol: "§3.1b"
+      reference: "STD-PATH-MTL-001 §3.1b — CLL (Contribution Ledger Layer)"
+    - symbol: "§OPT-IN"
+      reference: "STD-OPTIN-001 — OPT-IN Framework Standard v1.1"
+    - symbol: "§LC01"
+      reference: "LC01_PROBLEM_STATEMENT — Uncertainty Orchestration & Tokenomics"
+    - symbol: "§IDEALE"
+      reference: "IDEALE-ESG Pillar Architecture — I·D·E·A·L·E + E·S·G"
+    - symbol: "§NBT"
+      reference: "NBT Gates — Neural Network Bridging and Tunneling"
+    - symbol: "§PORTAL"
+      reference: "IDEALE Portal Architecture — Trace Threads, Responsibility Chairs, Capillary Merit, 5-Layer Stack"
+
+  parts:
+    - id: I
+      title: "Foundational Primitives"
+      sections:
+        - "1. Minimum Common Denominator (Open Aggregator)"
+        - "2. Programme Outline as MCD System"
+        - "3. Simplicial Partitioning of Possibility Space"
+        - "4. Voluntad as Directional Operator"
+
+    - id: II
+      title: "Constrained Evolution (PATH → MTL as Projected Dynamics)"
+      sections:
+        - "5. The Pipeline as Projection"
+        - "6. Monotonic Safety Property (MSP)"
+        - "7. Qualification Target"
+
+    - id: III
+      title: "Certification State Space"
+      sections:
+        - "8. Simplex Classification"
+        - "9. Resolution Policies"
+        - "10. Three-Set Partition (Implementation)"
+        - "11. Evidence-Gated State Machine"
+        - "12. Time-Dependent Constraint Dynamics"
+
+    - id: IIIb
+      title: "NBT Gates (Neural Network Bridging and Tunneling)"
+      sections:
+        - "13. NBT Gates — N-Axis Operational Definition"
+        - "14. Bridging and Tunneling Mechanics"
+        - "15. Information Threads and Persistent Homology"
+        - "16. Quantum Simplicial Neural Networks (QSNs)"
+        - "17. GAIA-AIR and QAOS — N-Axis Aerospace Realization"
+
+    - id: IV
+      title: "Civil-Aerospace Embedding and IDEALE Pillar Coupling"
+      sections:
+        - "18. Civil System"
+        - "19. Civil Aerospace as Submanifold"
+        - "20. IDEALE Pillar Coupling"
+        - "20b. Economy (Digital) — Value Function and First-Class Objects"
+        - "21. ESG as Transversal Constraint"
+        - "22. Documentation as Evidence Functions"
+
+    - id: V
+      title: "Contribution Governance & Contributions Registry"
+      sections:
+        - "23. Contribution Taxonomy"
+        - "24. Programme-Level Declarations"
+        - "25. Contributions Registry — Backend-Auditable Classification"
+
+    - id: Vb
+      title: "Portal Architecture (Trace Threads, Responsibility Chairs, Capillary Merit)"
+      sections:
+        - "26. TraceThread (TTD) — First-Class Trace Object"
+        - "27. ResponsibilityChair — Auditable Accountability"
+        - "28. Capillary Merit Index (CMI)"
+        - "29. Trace Closure Events"
+        - "30. Portal Architectural Stack"
+
+    - id: VI
+      title: "12×12 Intentional Hilbert–Bell Manifold"
+      sections:
+        - "31. Three-Layer Architecture"
+        - "32. Admissible Hilbert Subspace (12-Regime Basis)"
+        - "33. Quantum–Classical Boundary — Coherence Reduction Map"
+        - "34. Machine-Readable Specification and Implementation"
+
+# ─────────────────────────────────────────────
+# Contribution Philosophy
+# ─────────────────────────────────────────────
+contribution_philosophy:
+  framework: governed_recognition
+  taxonomy: "C1–C6"
+  principles:
+    - "Recognition without dilution"
+    - "Sovereignty without exclusion"
+    - "Collaboration without loss of structural authorship"
+  reference: "STD-PATH-MTL-001 §3.1b — Contribution Governance"
+
+# ─────────────────────────────────────────────
+# Key Machine-Readable Contracts
+# ─────────────────────────────────────────────
+machine_readable_contracts:
+  - file: simplex-contract.yaml
+    location: "00-PROGRAM/PLUMA/"
+    description: "Classification states, gating conditions, deterministic invariants"
+  - file: contributions-registry.yaml
+    location: "00-PROGRAM/PLUMA/"
+    description: "Auditable contributions classification"
+  - file: quantum-manifold.yaml
+    location: root
+    description: "12×12 Hilbert–Bell manifold specification"
+  - file: application-strategy.yaml
+    location: "AI-BOOST/"
+    description: "AI-BOOST deliverable registry (DEL-01–DEL-09)"
+  - file: uts-taxonomy.yaml
+    location: "UTS/"
+    description: "Universal Transport System domain taxonomy (000–080)"
+  - file: ipsn.yaml
+    location: "ESSA/"
+    description: "IPSN — Unified WBS/PBS numbering formula"
+
+# ─────────────────────────────────────────────
+# Related Documents
+# ─────────────────────────────────────────────
+related_documents:
+  - id: ESSA-CONST-001
+    title: "ESSA — European Safety and Security Agency"
+    path: "ESSA/"
+  - id: AI-BOOST
+    title: "AI-BOOST — Frontier AI Grand Challenge"
+    path: "AI-BOOST/"
+  - id: UTS
+    title: "UTS — Universal Transport System"
+    path: "UTS/"
+  - id: AEROSPACEMODEL-MCC
+    title: "AEROSPACEMODEL MCC Series"
+    path: "AEROSPACEMODEL/MCC/"
+  - id: CERTIFIED-DYNAMICS
+    title: "Certified Dynamics — C-Growth"
+    path: "certified_dynamics/"
+  - id: FEDERATION
+    title: "Federated Contract Stabilization"
+    path: "federation/"
