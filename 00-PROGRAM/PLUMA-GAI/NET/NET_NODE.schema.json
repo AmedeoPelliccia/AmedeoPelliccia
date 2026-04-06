@@ -1,0 +1,277 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pluma-gai.ampel360.eu/schemas/net-node/v0.1.0",
+  "title": "PLUMA-GAI NET Node",
+  "description": "Schema for a single node in the PLUMA-GAI NET ubiquitous topological map. Every node must be identified, geolocated (4D), envelope-bounded, and performance-characterised. This is the live topological map entry for trust, capacity, and coherence.",
+  "type": "object",
+  "required": [
+    "node_id",
+    "domain",
+    "position_4d",
+    "link_capabilities",
+    "performance_envelope",
+    "trust_score",
+    "lifecycle_status",
+    "last_updated"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "node_id": {
+      "type": "string",
+      "pattern": "^AMP-GAI-NET-[A-Z0-9]{4}$",
+      "description": "Unique node identifier. Pattern: AMP-GAI-NET-XXXX (e.g. AMP-GAI-NET-G001 for GAIA sat, AMP-GAI-NET-A001 for AMPEL360 aircraft)."
+    },
+    "domain": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": ["ground", "air", "space"]
+      },
+      "description": "Programme tier(s) this node belongs to. A node may span tiers (e.g. an airborne relay that also serves ground)."
+    },
+    "node_type": {
+      "type": "string",
+      "enum": [
+        "AMPEL360_AIRCRAFT",
+        "AMPEL360_RSP",
+        "GAIA_SAT",
+        "GAIA_UAS",
+        "GROUND_CONTROL",
+        "GROUND_SENSOR",
+        "OPTICAL_RELAY"
+      ],
+      "description": "Functional classification of the node."
+    },
+    "position_4d": {
+      "type": "object",
+      "required": ["lat", "lon", "alt_km", "epoch"],
+      "additionalProperties": false,
+      "description": "4D geolocation: space + time. For mobile nodes this is the last-known or predicted position.",
+      "properties": {
+        "lat": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90,
+          "description": "Geodetic latitude in decimal degrees."
+        },
+        "lon": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180,
+          "description": "Geodetic longitude in decimal degrees."
+        },
+        "alt_km": {
+          "type": "number",
+          "minimum": -0.5,
+          "description": "Altitude above WGS84 ellipsoid in kilometres. Negative allowed for underground/subsurface nodes."
+        },
+        "epoch": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO-8601Z timestamp for this position fix."
+        },
+        "position_uncertainty_m": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Optional 1-sigma position uncertainty in metres."
+        }
+      }
+    },
+    "link_capabilities": {
+      "type": "object",
+      "required": ["infrared_comm", "infrared_sensing", "classical_rf"],
+      "additionalProperties": false,
+      "description": "Communication and sensing modality capabilities of this node.",
+      "properties": {
+        "infrared_comm": {
+          "type": "boolean",
+          "description": "Node can communicate via infrared optical link."
+        },
+        "infrared_sensing": {
+          "type": "boolean",
+          "description": "Node carries infrared sensing capability (thermal imaging, leak detection, etc.)."
+        },
+        "ir_bands": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["NIR", "SWIR", "MWIR", "LWIR"]
+          },
+          "description": "Active IR bands supported. See ir_strategy in pluma-gai-net.yaml."
+        },
+        "classical_rf": {
+          "type": "boolean",
+          "description": "Node supports classical RF communications."
+        },
+        "qkd_capable": {
+          "type": "string",
+          "enum": ["yes", "no", "optional"],
+          "description": "Quantum Key Distribution capability status."
+        },
+        "optical_terminal": {
+          "type": "object",
+          "description": "Optical terminal parameters (if infrared_comm is true).",
+          "properties": {
+            "pointing_accuracy_urad": {
+              "type": "number",
+              "description": "Pointing accuracy in microradians (1-sigma). See FP-NET-003."
+            },
+            "aperture_cm": {
+              "type": "number",
+              "description": "Telescope aperture in centimetres."
+            },
+            "fov_mrad": {
+              "type": "number",
+              "description": "Field of view in milliradians."
+            }
+          }
+        }
+      }
+    },
+    "performance_envelope": {
+      "type": "object",
+      "required": ["latency_ms_max", "bandwidth_mbps", "jitter_ms_max"],
+      "additionalProperties": false,
+      "description": "Certified performance bounds for this node. All values are hard maximums/minimums for the nominal degradation state.",
+      "properties": {
+        "latency_ms_max": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Maximum certified one-way link latency in milliseconds."
+        },
+        "bandwidth_mbps": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Allocated / certified bandwidth in Mbps."
+        },
+        "jitter_ms_max": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Maximum certified jitter in milliseconds."
+        },
+        "packet_loss_threshold_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Packet loss percentage that triggers degradation mode transition."
+        },
+        "thermal_noise_compensation": {
+          "type": "string",
+          "description": "Reference to the IR-calibrated thermal noise compensation model for this node."
+        }
+      }
+    },
+    "flight_regime": {
+      "type": "string",
+      "enum": [
+        "subsonic_civil",
+        "high_altitude_cruise",
+        "ascent_boost",
+        "re_entry_plasma",
+        "leo_crosslink",
+        "ground_ops",
+        "N/A"
+      ],
+      "description": "Current or predicted flight regime governing performance profile. N/A for fixed ground nodes."
+    },
+    "degradation_state": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3,
+      "description": "Current PLUMA-GAI NET degradation state (0=FULL_NOMINAL, 1=IR_DEGRADED, 2=LOCAL_AMPEL_AUTONOMY, 3=SAFE_ENVELOPE_HOLD)."
+    },
+    "trust_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Normalised trust score [0.0, 1.0] for this node. Used by the Layer 3 deterministic routing map for path selection. 1.0 = fully trusted certified node."
+    },
+    "lifecycle_status": {
+      "type": "string",
+      "enum": ["draft", "certified", "degraded", "decommissioned"],
+      "description": "PLUMA-GAI lifecycle status of this node. Only 'certified' nodes may participate in flight-advisory routing."
+    },
+    "pluma_phase": {
+      "type": "string",
+      "enum": ["P000", "P010", "P020", "P030", "P040", "P050", "P060", "P070", "P080", "P090", "P100"],
+      "description": "PLUMA-GAI lifecycle phase under which this node is currently governed."
+    },
+    "evidence_ref": {
+      "type": "string",
+      "description": "Reference to the PLUMA-GAI evidence registry entry that certifies this node's performance envelope."
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601Z timestamp of the last map update for this node."
+    },
+    "blackout_prediction": {
+      "type": "object",
+      "description": "RSP re-entry blackout prediction (only relevant for AMPEL360_RSP nodes).",
+      "properties": {
+        "next_blackout_start_utc": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "blackout_duration_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "recovery_utc": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "autonomy_package_loaded": {
+          "type": "boolean",
+          "description": "Whether a pre-certified autonomy decision package has been uploaded before the blackout window."
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "node_id": "AMP-GAI-NET-A001",
+      "domain": ["air"],
+      "node_type": "AMPEL360_AIRCRAFT",
+      "position_4d": {
+        "lat": 48.856,
+        "lon": 2.352,
+        "alt_km": 12.5,
+        "epoch": "2026-02-28T12:00:00Z",
+        "position_uncertainty_m": 10
+      },
+      "link_capabilities": {
+        "infrared_comm": true,
+        "infrared_sensing": true,
+        "ir_bands": ["MWIR", "SWIR"],
+        "classical_rf": true,
+        "qkd_capable": "optional",
+        "optical_terminal": {
+          "pointing_accuracy_urad": 5,
+          "aperture_cm": 15,
+          "fov_mrad": 2
+        }
+      },
+      "performance_envelope": {
+        "latency_ms_max": 150,
+        "bandwidth_mbps": 200,
+        "jitter_ms_max": 30,
+        "packet_loss_threshold_pct": 0.1,
+        "thermal_noise_compensation": "IR-CALIB-MWIR-ATM-001"
+      },
+      "flight_regime": "high_altitude_cruise",
+      "degradation_state": 0,
+      "trust_score": 0.99,
+      "lifecycle_status": "certified",
+      "pluma_phase": "P080",
+      "evidence_ref": "EV-NET-0001",
+      "last_updated": "2026-02-28T12:00:00Z"
+    }
+  ]
+}

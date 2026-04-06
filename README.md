@@ -242,7 +242,7 @@ value_matrix:
 <p align="center">
   <strong>Amedeo Pelliccia</strong><br>
   Aerospace Engineer · Researcher · Framework Originator<br>
-  Founder, <a href="https://ideale.eu">IDEALE-ESG.eu</a> Enterprise
+  Founder, <a href="https://ideale.eu">IDEALE-ESG.eu</a> Framework
 </p>
 
 ---
@@ -251,7 +251,7 @@ I am a researcher moved by genuine desire to originate something powerful.
 
 By day I work as an aerospace engineer specializing in aircraft technical data structures and publications — S1000D, ATA iSpec 2200, CSDB architecture, the kind of documentation engineering that sits between what an aircraft *is* and what operators, maintainers and regulators *need to know about it*.
 
-What I am building here goes beyond aerospace. It is an integrating model — inclusive by design, European in origin, exportable by structure.
+expansion by structure. As Cosmos Cycle Historical Issue.
 
 ---
 
@@ -306,7 +306,7 @@ Here on GitHub I collapse the **A** pillar into two owned domains, each redirect
 
 Aviation decarbonization · Hydrogen-electric propulsion · Blended wing body airframes · Certification-grade digital baselines
 
-The **AMPEL360 Q100** lives here — a ~100-passenger regional BWB aircraft concept with H₂ PEM fuel cells, distributed propulsion, and a full OPT-IN Framework scaffold across 79 ATA chapters.
+The **AMPEL360 Q100** lives here: an aircraft-domain instantiation of **AMPEL360 — Aerospace Model for Product and Engineering Lifecycles**. It represents a ~100-passenger regional BWB aircraft concept with H₂ PEM fuel cells, distributed propulsion, and a full OPT-IN Framework scaffold across 79 ATA chapters.
 
 This is aircraft-level truth: structures, systems, operations, circularity.
 
@@ -314,6 +314,8 @@ This is aircraft-level truth: structures, systems, operations, circularity.
 
 </td>
 <td width="50%" valign="top">
+
+(to be updated by author's latest pull requests distributed internally)
 
 #### 🛰️ [aerospacemodel.com](https://aerospacemodel.com)
 
@@ -374,6 +376,29 @@ The common engineering spine across all IDEALE pillars:
 
 **NBT Gates (Neural Network Bridging and Tunneling)** — the operational definition of the N-axis. NBT gates are the connections that link classical computer interface outputs — the deterministic artefacts produced by DWGE and registered through PATH → MTL — with quantum-augmented complex manifestations: simplicial state spaces, persistent homology computations, and higher-order topological inference executed on quantum processing units. Where DWGE freezes semantic state, NBT gates freeze topological state. Where PATH → MTL projects intent onto admissible trajectories in the classical domain, NBT gates bridge that projection into quantum-accelerated manifolds and tunnel results back as geometrically structured evidence. The gate layer is realized through Quantum Simplicial Neural Networks (QSNs), persistent homology pipelines, and the GAIA-AIR / QAOS ecosystem.
 
+### AMPEL360 — Aerospace Model for Product and Engineering Lifecycles
+
+*360° end-to-end digital aerospace lifecycle governance*
+
+AMPEL360 is an end-to-end aerospace lifecycle architecture that governs the design, engineering, certification, operation, and continuous digital traceability of aircraft systems and programmes.
+
+As a formal programme identity, AMPEL360 covers the full aerospace lifecycle:
+
+- Concept
+- Requirements
+- Architecture
+- Design
+- Analysis
+- Verification
+- Validation
+- Certification
+- Production
+- Operation
+- Maintenance
+- Modification / retrofit
+- Reuse / refurbishment
+- Retirement / traceable closure
+
 These are not aerospace-specific tools. They are governance, computation, and economic primitives that work wherever artefact production must be deterministic, traceable, fair, and self-sustaining — and wherever data relationships must be captured in their full topological complexity. The aerospace pillar is where they are first instantiated — but the architecture is designed for any IDEALE pillar to adopt them.
 
 ---
@@ -416,6 +441,11 @@ See: [STD-PATH-MTL-001 §3.1b — Contribution Governance](https://github.com/Am
 - GAIA-AIR / QAOS ecosystem development — quantum aerospace operating system for real-time telemetry, digital twins, and predictive maintenance
 - European federal strategy integration via [Modello-federativo-europeo](https://github.com/Amedeopelliccia/Modello-federativo-europeo) and [Agenda-2028](https://github.com/Amedeopelliccia/Agenda-2028)
 - [EACST](EACST/) — European Agency for Civil Space Transportation: foundational regulatory framework for civil space-transport (operator licensing, reusable platform airworthiness, crew training, sustainability, EU operator registry) aligned with EU Space Act pillars
+- [AI-BOOST DEL-03](AI-BOOST/DEL-03-data-management-plan.md) — Data Management Plan (Excellence → Data) for the Frontier AI Grand Challenge (GA 101135737, EuroHPC JU): FAIR data lifecycle, security classification, open-access strategy, long-term preservation
+- [ESSA](ESSA/) — European Safety and Security Agency: constitutional governance stack (Safety-First doctrine, Structural Integration State, H Pipeline, CASE) with CCTLS lifecycle standard; now extended with **AMPEL360 — Aerospace Model for Product and Engineering Lifecycles**, the lifecycle engine spanning concept through traceable closure across P000–P120, plus two domain profiles (**Q100** EASA/CS-25 aviation · **Q10** ESA/ECSS spacecraft) and the **Profile Resolver** with DO-178C validation rules (cyclomatic complexity, artefact presence, MISRA-C compliance)
+- [AMPEL360-FED](ESSA/AMPEL360-FED.md) + [`federation/`](federation/) — Federated Contract Stabilization: Global Tag Authority Matrix v1.1 (four authority classes A0–A3), RAG relaxation policy, JSON schema for global tags, and connector template; wired to the **AMPEL.py** runtime regulatory profile selector (EASA-Q100 / SPACE-Q10 / DO-178C)
+- **Live app:** [AIS preview](https://ais-pre-qgodcoewjywuhs2glepnfo-324605324739.europe-west2.run.app/)
+- [AI-BOOST](AI-BOOST/) — Application strategy for the Frontier AI Grand Challenge (EuroHPC JU / AI-BOOST GA 101135737): GAIA-EU frontier model concept (400B+ MoE), EU aerospace/regulatory AI domain, open weights, EU AI Act compliance (deadline 13 Apr 2026)
 
 ---
 
@@ -1308,6 +1338,7 @@ It is structural logic, not rhetoric.
 | `ideale-esg-pillars.yaml` | `00-PROGRAM/PLUMA/` | IDEALE pillar definitions + ESG constraint mappings |
 | `economy-assets.schema.json` | `00-PROGRAM/PLUMA/` | E₂ first-class objects: ContributionAsset, EvidencePackage, QualifiedModel, CertificationBundle, DPPAsset, TokenizedRecognitionUnit |
 | `nbt-gates.yaml` | `00-PROGRAM/PLUMA/` | NBT gate spec, bridge/tunnel protocols, NeuronBit schema, QSL parameters, QAOS interface |
+| `quantum-manifold.yaml` | root | 12×12 Hilbert–Bell manifold: three-layer architecture, basis states, entanglement, Bell bounds, coherence reduction |
 | `trace_thread.schema.json` | `.path_mtl/portal/schemas/` | TraceThread (TTD) schema — canonical fields, lineage rules, classification (`§PORTAL` §26) |
 | `responsibility_chair.schema.json` | `.path_mtl/portal/schemas/` | ResponsibilityChair schema — scope, authority levels, delegation, signature policy (`§PORTAL` §27) |
 | `contribution_event.schema.json` | `.path_mtl/portal/schemas/` | ContributionEvent + MeritUnit schema — event types, CMI weights (`§PORTAL` §28) |
@@ -1345,6 +1376,52 @@ It is structural logic, not rhetoric.
 AI-BOOST/
   workplan-milestones-gantt.yaml  ← DEL-05 work packages, milestones, Gantt, resources, quality
 ```
+
+Intentional Hamiltonian evolution:
+
+```math
+i\hbar\,\frac{d|\psi\rangle}{dt} = (H_0 + H_{int} + H_{intent})\,|\psi\rangle
+```
+
+After each evolution step the state is projected back onto $\mathcal{H}_{adm}$ via $\Pi_{adm}$.
+
+### 33. Quantum–Classical Boundary — Coherence Reduction Map
+
+The quantum–classical boundary is **not** a geometric surface. It is an information-theoretic reduction:
+
+```math
+\mathcal{R}(\rho) = \text{coherence reduction mapping}
+```
+
+**Local projection operator** — for each cell $i$:
+
+```math
+\mathcal{P}_i : \mathcal{H}_i \to \mathbb{R}^k, \qquad \sigma_{\text{classical}} = \mathrm{Tr}(\rho\,\hat{T})
+```
+
+**Decoherence threshold** — a dynamic threshold, not a fixed surface:
+
+```math
+\tau_{\text{decoherence}} \ll \tau_{\text{dynamics}} \;\Rightarrow\; \rho \to \text{diagonal}
+```
+
+| Regime | Condition | Treatment |
+|--------|-----------|-----------|
+| Quantum | $\tau_{\text{dec}} \ge \tau_{\text{dyn}}$ | Full quantum evolution (Schrödinger / Lindblad) |
+| Classical | $\tau_{\text{dec}} \ll \tau_{\text{dyn}}$ | Diagonal density matrix, classical observables only |
+| Hybrid | intermediate | Quantum–classical coupling (QM/MM analogue) |
+
+Consistent with: QM/MM (computational chemistry), multiscale quantum embedding, open quantum systems (Lindblad formalism).
+
+### 34. Machine-Readable Specification and Implementation
+
+See [`quantum-manifold.yaml`](quantum-manifold.yaml) for the full specification and [`hilbert_bell_manifold.py`](hilbert_bell_manifold.py) for the Python reference implementation including:
+
+- `SpatialDomain` — Layer 1 discrete partition $\Omega = \bigcup V_i$
+- `QuantumState` — Layer 2 normalised state vector in $\mathcal{H}_{adm}$
+- `HamiltonianEvolver` — Layer 3 physical field operators on state space
+- `CoherenceReductionMap` — $\mathcal{R}(\rho)$ with decoherence threshold classification
+- `HilbertBellManifold` — top-level orchestrator integrating all three layers
 
 ---
 

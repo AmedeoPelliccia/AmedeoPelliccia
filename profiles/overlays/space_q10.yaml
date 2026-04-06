@@ -1,0 +1,42 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# AMPEL360 — Regulatory Overlay: SPACE-Q10
+# Spacecraft — ESA / ECSS / European Space Regulations
+# Ref: AMPEL360-ARCH-SPEC-v2.0 §9.7
+# ──────────────────────────────────────────────────────────────────────────────
+
+overlay_id: SPACE-Q10
+description: >
+  SPACE-Q10 regulatory overlay for the Q10 uncrewed spacecraft
+  programme. Applies ECSS, ESA, and European space regulation
+  requirements.
+
+profile_example: "SPACE.CARGO_ONLY.COMMERCIAL_SENSITIVE.SPACE-Q10"
+
+regulatory:
+  primary: ESA
+  standards:
+    - ECSS-E-ST-10-04C
+    - ECSS-Q-ST-40C
+    - EU-2021-696
+    - ESA-Space-Debris-Mitigation
+    - COSPAR
+    - ITU-Radio-Regulations
+  software:
+    ecss:
+      enabled: true
+
+additional_templates:
+  - ECSS_COMPLIANCE_TEMPLATE
+
+additional_rulesets:
+  - ECSS_Q_ST_40C_RULESET
+
+constraints:
+  risk_threshold: 1.0e-4
+
+graph_root:
+  model: programme_centric_with_safety_constraint
+  programme_node: Q10_MISSION
+  asset_inheritance: MISSION_LEVEL
+  h_factor: NHOB
+  context: CIVIL

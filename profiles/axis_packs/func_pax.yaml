@@ -1,0 +1,36 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# AMPEL360 — Axis Pack: FUNC = PAX_TRANSPORT
+# Passenger-carrying operations
+# Ref: AMPEL360-ARCH-SPEC-v2.0 §9.2, §9.6
+# ──────────────────────────────────────────────────────────────────────────────
+
+axis: function
+value: PAX_TRANSPORT
+description: >
+  Passenger-carrying operations. Human survivability is the dominant
+  safety objective, with tighter risk tolerances, cabin/evacuation
+  requirements, and human factors compliance.
+
+human_presence: HUMAN_ON_BOARD
+
+templates:
+  - SURVIVABILITY_REQUIREMENT
+  - HUMAN_OVERRIDE_REQUIREMENT
+  - CABIN_SAFETY_TEMPLATE
+
+rulesets:
+  - PUBLISH_GATE_SAFETY_REPORT_REQUIRED
+  - EVACUATION_COMPLIANCE_RULE
+  - HUMAN_FACTORS_RULE
+
+constraints:
+  human_override: true
+  dal_level: A
+
+h_factor_derivation:
+  objective: human_survivability
+  catastrophic_probability: "<1e-9 per flight hour"
+  override_authority: deterministic
+  architecture: fail_operational
+  evacuation: required
+  cabin_human_factors: required

@@ -1,0 +1,11 @@
+{
+    "0": {
+        "gate_id": "G-NOISE-01",
+        "description": "Acoustic Mitigation Report",
+        "standard_ref": "AMC-20",
+        "required_trl": 6,
+        "is_fulfilled": true,
+        "evidence_uri": "uri://dpp/reports/acoustics_v1.pdf",
+        "timestamp": "2026-02-21T17:22:59.327557"
+    }
+}
