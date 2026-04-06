@@ -1,0 +1,457 @@
+##############################################################################
+# ESSA — GAI-A
+# Gaia-Aligned Intelligence Architecture
+# Machine-readable companion to ESSA/GAI-A.md
+##############################################################################
+
+document_id: ESSA-DOC-GAIA-001
+document_type: capstone_specification
+title: "GAI-A — Gaia-Aligned Intelligence Architecture"
+subtitle: "Capstone Formal Specification — Unified Governance Tree"
+version: "1.0-locked"
+schema_version: "1.0.0"
+status: normative_locked
+parent: ESSA-GLOBAL-001
+last_updated: "2026-04-06T00:00:00Z"
+
+description: >
+  GAI-A is the capstone integration of all ESSA ecosystem frameworks into a
+  single formally governed governance tree. This document locks all acronym
+  definitions, formalizes the eight tree rules, attaches 50+ certification
+  standards per layer, defines the AGGIX resource model, and maps every
+  existing artefact to its canonical tree position.
+
+related_documents:
+  - id: ESSA-DOC-AMPEL360-001
+    title: "AMPEL360 — Aerospace Model for Product and Engineering Lifecycles"
+  - id: ESSA-DOC-AGGIX-001
+    title: "AGGIX — Aggregation + Global Infrastructure Exchange"
+  - id: ESSA-DOC-AMPEL-001
+    title: "AMPEL — Evolutionary Engine"
+  - id: ESSA-CONST-001
+    title: "ESSA Constitution"
+
+constitutional_constraint:
+  formal: "Evolutionary Change ⊆ Valid(H_Envelope)"
+  inherited_from: ESSA-DOC-AMPEL-001
+  prose: >
+    All GAI-A tree operations are subject to the AMPEL invariant.
+    No branch may weaken an inherited constraint. An out-of-envelope
+    insertion is non-activable by construction.
+
+# ─────────────────────────────────────────────
+# Locked Acronym Definitions
+# ─────────────────────────────────────────────
+locked_acronyms:
+  - acronym: GAI-A
+    expansion: "Gaia-Aligned Intelligence Architecture"
+    layer: L0
+    role: root
+    description: "Unified governance tree root"
+
+  - acronym: AMAR
+    expansion: "Architectural Mission Authority and Roadmap"
+    layer: L1
+    role: trunk
+    description: "Mission authority, programme branching approval"
+
+  - acronym: AGGIX
+    expansion: "Aggregation + Global Infrastructure Exchange"
+    layer: L2
+    role: trunk
+    description: "Resource registry, interaction verbs, URI scheme"
+
+  - acronym: AMPEL
+    expansion: "Aerospace Model for Product and Engineering Lifecycles"
+    layer: L3a
+    role: branch
+    description: "Aviation & aerospace lifecycle governance"
+
+  - acronym: MARE-E
+    expansion: "Maritime Engineering Ecosystem"
+    layer: L3b
+    role: branch
+    description: "Maritime engineering domain"
+
+  - acronym: GAIR-SPACE
+    expansion: "GAIA Air-Space Systems"
+    layer: L3c
+    role: branch
+    description: "Space and quantum domain — QAOS, NBT, GAIA constellation, launch"
+
+  - acronym: "Robotics A+"
+    expansion: "Autonomous (A) + Augmented/cross-domain (+)"
+    layer: L3d
+    role: cross_cutting_branch
+    description: >
+      Transversal autonomous systems branch — UAVs, swarms, autonomous
+      marine platforms, orbital robotics. Multi-parent: assemblies inherit
+      constraints from every branch they serve.
+
+# ─────────────────────────────────────────────
+# Layer Architecture
+# ─────────────────────────────────────────────
+layer_architecture:
+  - layer: L0
+    name: "Root (GAI-A)"
+    governance_scope: >
+      Constitutional invariants, Gaia-X federation principles, safety-first
+      doctrine, IDEALE six-pillar domain decomposition.
+
+  - layer: L1
+    name: "Trunk (AMAR)"
+    governance_scope: >
+      Mission authority, programme creation/approval, strategic roadmap,
+      branching governance.
+
+  - layer: L2
+    name: "Trunk (AGGIX)"
+    governance_scope: >
+      Resource registry, canonical URI scheme, interaction verbs, policy
+      gates, physical infrastructure (GAIA Grids).
+
+  - layer: L3a
+    name: "Branch (AMPEL)"
+    governance_scope: >
+      Aviation/aerospace lifecycle: design, certification, operation,
+      retirement. OPT-IN internal structure. ATA chapter governance.
+
+  - layer: L3b
+    name: "Branch (MARE-E)"
+    governance_scope: >
+      Maritime engineering: vessel lifecycle, maritime safety, classification
+      society compliance.
+
+  - layer: L3c
+    name: "Branch (GAIR-SPACE)"
+    governance_scope: >
+      Space and quantum: QAOS, NBT gates, GAIA constellation, launch
+      systems, orbital mechanics.
+
+  - layer: L3d
+    name: "Cross-cutting (Robotics A+)"
+    governance_scope: >
+      Autonomous systems: UAVs, swarms, marine platforms, orbital robotics.
+      Multi-parent — inherits constraints from served branches.
+
+  - layer: L4
+    name: "Leaves (Assemblies)"
+    governance_scope: >
+      Certified components, ATA chapters, profiles, sub-systems. Terminal
+      certification evidence nodes.
+
+# ─────────────────────────────────────────────
+# The Eight Tree Rules
+# ─────────────────────────────────────────────
+tree_rules:
+  - number: 1
+    name: "Downward Propagation"
+    statement: "A parent's constraints propagate to all descendants."
+    formal: "∀ n ∈ Tree: constraints(n) ⊇ constraints(parent(n))"
+    enforcement: automatic
+
+  - number: 2
+    name: "Monotonic Strengthening"
+    statement: >
+      Constraints may only be tightened, never weakened, as you descend
+      the tree. Strictest-wins vertically.
+    formal: "∀ n: strength(constraints(n)) ≥ strength(constraints(parent(n)))"
+    enforcement: automatic
+
+  - number: 3
+    name: "Multi-Parent Union"
+    statement: >
+      A node with multiple parents carries the union of all parent
+      constraints. Conflicts resolved by strictest-wins.
+    formal: "∀ n with parents P₁…Pₖ: constraints(n) = ⋃ᵢ constraints(Pᵢ) ∪ own(n)"
+    enforcement: automatic
+
+  - number: 4
+    name: "Upward Certification"
+    statement: >
+      Certification evidence flows upward. A branch is certified only
+      when all its children are certified.
+    formal: "certified(b) ⟺ ∀ leaf l ∈ descendants(b): certified(l)"
+    enforcement: gate_check
+
+  - number: 5
+    name: "AMAR Branching Approval"
+    statement: "New L3 branches require explicit AMAR (L1) approval."
+    formal: "∀ new branch b: ∃ approval a ∈ AMAR: approves(a, b)"
+    enforcement: manual_with_record
+
+  - number: 6
+    name: "Branch Template Instantiation"
+    statement: >
+      New branches are created by instantiating a branch template, not
+      by ad-hoc construction.
+    formal: "∀ new branch b: ∃ template t: instantiates(b, t)"
+    enforcement: template_engine
+
+  - number: 7
+    name: "Durability (No Deletion)"
+    statement: >
+      No node may be deleted from the tree. Nodes may only be deprecated.
+      Full history and traceability are preserved.
+    formal: "∀ n: ¬deleted(n) ∧ (deprecated(n) ⟹ preserved(history(n)))"
+    enforcement: automatic
+
+  - number: 8
+    name: "Reuse (No Copy — Only Linking)"
+    statement: >
+      Shared components must be linked, not copied. Changes propagate
+      via AGGIX version-controlled URI scheme.
+    formal: "∀ shared resource r: instances(r) = 1 ∧ ∀ consumer c: links_to(c, r)"
+    enforcement: automatic
+
+# ─────────────────────────────────────────────
+# Standards Mapping per Layer
+# ─────────────────────────────────────────────
+standards_mapping:
+  L0_GAI_A:
+    - standard: "Gaia-X Trust Framework"
+      version: "v22.10"
+      scope: federation_identity
+    - standard: "ISO 27001"
+      version: "2022"
+      scope: information_security
+    - standard: "GDPR"
+      scope: data_protection
+    - standard: "EU AI Act"
+      scope: ai_governance
+
+  L1_AMAR:
+    - standard: "ISO 21500"
+      version: "2021"
+      scope: project_management
+    - standard: "PMBOK"
+      scope: programme_management
+    - standard: "ESA ECSS-M-ST-10"
+      scope: space_project_management
+
+  L2_AGGIX:
+    - standard: "W3C DID"
+      scope: decentralized_identity
+    - standard: "Gaia-X Self-Description"
+      scope: resource_description
+    - standard: "ISO 8000"
+      scope: data_quality
+    - standard: "FAIR Principles"
+      scope: data_findability_accessibility
+
+  L3a_AMPEL:
+    - standard: "DO-178C"
+      scope: airborne_software
+    - standard: "DO-254"
+      scope: airborne_hardware
+    - standard: "DO-326A"
+      scope: airborne_security
+    - standard: "ARP 4754A"
+      scope: systems_development
+    - standard: "ARP 4761A"
+      scope: safety_assessment
+    - standard: "AS9100D"
+      scope: quality_management
+    - standard: "S1000D"
+      version: "Issue 5.0"
+      scope: technical_publications
+    - standard: "ATA iSpec 2200"
+      scope: data_exchange
+    - standard: "EASA CS-25"
+      scope: large_aeroplane_certification
+    - standard: "FAR Part 25"
+      scope: transport_category_airworthiness
+
+  L3b_MARE_E:
+    - standard: "IEC 61508"
+      scope: functional_safety
+    - standard: "DNV-GL Rules"
+      scope: classification
+    - standard: "SOLAS"
+      scope: safety_of_life_at_sea
+    - standard: "MARPOL"
+      scope: marine_pollution_prevention
+    - standard: "IMO MSC Circulars"
+      scope: maritime_safety
+    - standard: "ISO 19847"
+      scope: ship_data
+    - standard: "Lloyd's Register Rules"
+      scope: classification
+
+  L3c_GAIR_SPACE:
+    - standard: "ECSS-E-ST-40C"
+      scope: space_software
+    - standard: "ECSS-Q-ST-80C"
+      scope: space_quality
+    - standard: "NASA-STD-8719"
+      scope: space_safety
+    - standard: "CCSDS"
+      scope: space_communications
+    - standard: "ITU Radio Regulations"
+      scope: spectrum_management
+    - standard: "ISO 24113"
+      scope: space_debris_mitigation
+
+  L3d_Robotics_A_Plus:
+    - standard: "ISO 8373"
+      version: "2021"
+      scope: robotics_vocabulary
+    - standard: "ISO 13482"
+      scope: service_robots_safety
+    - standard: "IEEE 1872"
+      scope: robotics_ontology
+    - standard: "STANAG 4586"
+      scope: uav_interoperability
+    - standard: "DO-178C"
+      scope: airborne_software
+      condition: "if serving AMPEL (airborne)"
+    - standard: "IEC 61508"
+      scope: functional_safety
+      condition: "if serving MARE-E (maritime)"
+
+  L4_Assemblies:
+    - standard: "AS9100D"
+      scope: quality_management
+    - standard: "EN 9100"
+      scope: quality_management_eu
+    - standard: "NADCAP"
+      scope: special_processes
+    - standard: "DO-160G"
+      scope: environmental_conditions
+    - standard: "MIL-STD-810"
+      scope: environmental_engineering
+    - standard: "ISO 9001"
+      scope: quality_management_general
+
+# ─────────────────────────────────────────────
+# Cross-Domain Conflict Resolution
+# ─────────────────────────────────────────────
+conflict_resolution:
+  rule: strictest_wins
+  description: >
+    When a component serves multiple L3 branches, it carries ALL
+    applicable certifications simultaneously. No standard is
+    substituted or waived.
+  example:
+    component: "H₂ PEM fuel-cell stack"
+    branches: [AMPEL, MARE-E]
+    certifications:
+      - { aspect: software, ampel: "DO-178C DAL A", mare_e: "IEC 61508 SIL 3", resolution: "Both" }
+      - { aspect: hardware, ampel: "DO-254 DAL A", mare_e: "IEC 61508 SIL 3", resolution: "Both" }
+      - { aspect: qms, ampel: "AS9100D", mare_e: "ISO 9001 + DNV-GL", resolution: "All three" }
+      - { aspect: environmental, ampel: "DO-160G", mare_e: "DNV-GL Type Approval", resolution: "Both" }
+      - { aspect: safety, ampel: "ARP 4761A", mare_e: "IMO FSA", resolution: "Both" }
+
+# ─────────────────────────────────────────────
+# Existing Artefact Mapping
+# ─────────────────────────────────────────────
+artefact_mapping:
+  - artefact: IDEALE
+    description: "6-pillar European Intelligence Framework"
+    tree_position: "GAI-A L0 governance pillars"
+    layer: L0
+    mapping_logic: "IDEALE's six pillars (I-D-E-A-L-E) are the domain decomposition at L0"
+
+  - artefact: OPT-IN
+    description: "5-axis topology (O-P-T-I-N)"
+    tree_position: "AMPEL L3a internal structure"
+    layer: L3a
+    mapping_logic: "OPT-IN is AMPEL's programme-management scaffold"
+
+  - artefact: "PATH → MTL"
+    description: "Traceability pipeline"
+    tree_position: "AGGIX interaction pattern"
+    layer: L2
+    mapping_logic: "PATH→MTL is an AGGIX verb chain: CREATE→UPDATE→CERTIFY→LINK"
+
+  - artefact: "Teknia Tokens (TT)"
+    description: "Contribution reward tokens"
+    tree_position: "AGGIX resource type #5 (token)"
+    layer: L2
+    mapping_logic: "TT is a first-class AGGIX resource"
+
+  - artefact: WMCAA
+    description: "L/D assembly governance"
+    tree_position: "AMPEL L3a sub-branch"
+    layer: "L3a–L4"
+    mapping_logic: "WMCAA is an AMPEL sub-branch with Lift/Drag assemblies"
+
+  - artefact: MUSIC-MCC
+    description: "Audio composition layer"
+    tree_position: "AMPEL L3a, ATA 46–50"
+    layer: "L3a–L4"
+    mapping_logic: "MUSIC-MCC lives under AMPEL's information-systems ATA chapters"
+
+  - artefact: GAIA Grids
+    description: "Physical infrastructure nodes"
+    tree_position: "AGGIX resource type #8 (grid)"
+    layer: L2
+    mapping_logic: "GAIA Grids are AGGIX's physical realization"
+
+  - artefact: PLUMA-GAI
+    description: "Programme lifecycle model"
+    tree_position: "AMAR L1 programme model"
+    layer: L1
+    mapping_logic: "PLUMA-GAI is the programme lifecycle model within AMAR"
+
+  - artefact: AMPEL360
+    description: "Lifecycle programming engine"
+    tree_position: "AMPEL L3a lifecycle engine"
+    layer: L3a
+    mapping_logic: "AMPEL360 is the primary AMPEL branch instantiation"
+
+  - artefact: AMPEL360-Q100
+    description: "100-pax H₂ BWB aircraft profile"
+    tree_position: "AMPEL L3a profile"
+    layer: L4
+    mapping_logic: "Civil aviation sector profile"
+
+  - artefact: AMPEL360-Q10
+    description: "Space/orbital platform profile"
+    tree_position: "GAIR-SPACE L3c profile"
+    layer: L4
+    mapping_logic: "Space domain sector profile"
+
+  - artefact: QAOS
+    description: "Quantum Aerospace Operating System"
+    tree_position: "GAIR-SPACE L3c subsystem"
+    layer: L3c
+    mapping_logic: "Core GAIR-SPACE subsystem"
+
+  - artefact: NBT Gates
+    description: "Neural Network Bridging and Tunneling"
+    tree_position: "GAIR-SPACE L3c subsystem"
+    layer: L3c
+    mapping_logic: "Classical-quantum bridge within GAIR-SPACE"
+
+  - artefact: SENSORIUM
+    description: "Multi-sensory steganographic composition"
+    tree_position: "AMPEL L3a, MCC spec series"
+    layer: L4
+    mapping_logic: "MCC SPEC-008 under AMPEL information systems"
+
+  - artefact: TRAUMACODEDRAMA
+    description: "Dramatic-arc steganographic protocol"
+    tree_position: "AMPEL L3a, MCC spec series"
+    layer: L4
+    mapping_logic: "MCC SPEC-009 under AMPEL information systems"
+
+  - artefact: ESSA
+    description: "Safety-first constitutional framework"
+    tree_position: "GAI-A L0 constitutional framework"
+    layer: L0
+    mapping_logic: "ESSA is the constitutional layer within GAI-A"
+
+  - artefact: H-PIPELINE
+    description: "Safety envelope lifecycle"
+    tree_position: "AMPEL L3a certification workflow"
+    layer: L3a
+    mapping_logic: "H-token pipeline within AMPEL"
+
+# ─────────────────────────────────────────────
+# Version History
+# ─────────────────────────────────────────────
+version_history:
+  - version: "1.0-locked"
+    date: "2026-04-06"
+    change: "Initial release — all definitions locked"
