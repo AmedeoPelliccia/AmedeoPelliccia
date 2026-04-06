@@ -1,0 +1,334 @@
+##############################################################################
+# ESSA — AGGIX
+# Aggregation + Global Infrastructure Exchange
+# Machine-readable companion to ESSA/AGGIX.md
+##############################################################################
+
+document_id: ESSA-DOC-AGGIX-001
+document_type: resource_model_specification
+title: "AGGIX — Aggregation + Global Infrastructure Exchange"
+subtitle: "Resource Model & Interaction Protocol Specification"
+version: "1.0-locked"
+schema_version: "1.0.0"
+status: normative_locked
+parent: ESSA-DOC-GAIA-001
+last_updated: "2026-04-06T00:00:00Z"
+
+description: >
+  AGGIX is the L2 trunk of the GAI-A governance tree. It provides a
+  canonical resource registry with 10 typed resources, a globally unique
+  URI scheme, 7 interaction verbs with policy gates, and GAIA Grids as
+  the physical infrastructure substrate.
+
+related_documents:
+  - id: ESSA-DOC-GAIA-001
+    title: "GAI-A — Gaia-Aligned Intelligence Architecture"
+  - id: ESSA-DOC-AMPEL360-001
+    title: "AMPEL360 — Aerospace Model for Product and Engineering Lifecycles"
+  - id: ESSA-DOC-IPSN-001
+    title: "IPSN — Integrity / Provenance / Security / Non-repudiation"
+
+constitutional_constraint:
+  formal: "Evolutionary Change ⊆ Valid(H_Envelope)"
+  inherited_from: ESSA-DOC-GAIA-001
+  prose: >
+    All AGGIX operations inherit this invariant from GAI-A L0. No resource
+    may be created, updated, or linked in a manner that violates the
+    safety envelope.
+
+# ─────────────────────────────────────────────
+# Tree Position
+# ─────────────────────────────────────────────
+tree_position:
+  layer: L2
+  name: "Trunk (AGGIX)"
+  parent_layer: L1
+  parent_name: "AMAR"
+  child_layers: [L3a, L3b, L3c, L3d]
+  child_names: ["AMPEL", "MARE-E", "GAIR-SPACE", "Robotics A+"]
+
+# ─────────────────────────────────────────────
+# Resource Types (10)
+# ─────────────────────────────────────────────
+resource_types:
+  - number: 1
+    code: DT
+    name: "Digital Twin"
+    description: "Real-time state model, simulation mirror"
+    lifecycle_owner: programme
+
+  - number: 2
+    code: AI
+    name: "AI Model"
+    description: "ML/DL model, inference pipeline, training artefact"
+    lifecycle_owner: programme_and_ethics_board
+
+  - number: 3
+    code: DS
+    name: "Dataset"
+    description: "Structured data collection (telemetry, fleet, test)"
+    lifecycle_owner: programme
+
+  - number: 4
+    code: DPP
+    name: "Digital Product Passport"
+    description: "Per EU Ecodesign — lifecycle record"
+    lifecycle_owner: regulatory
+
+  - number: 5
+    code: ASM
+    name: "Assembly"
+    description: "Certified hardware/software component"
+    lifecycle_owner: configuration_board
+
+  - number: 6
+    code: FMU
+    name: "FMU/FMI Unit"
+    description: "Co-simulation functional mock-up unit"
+    lifecycle_owner: systems_engineering
+
+  - number: 7
+    code: EV
+    name: "Evidence"
+    description: "Certification evidence (test report, analysis, review)"
+    lifecycle_owner: certification_authority
+
+  - number: 8
+    code: PUB
+    name: "Publication"
+    description: "Technical publication (S1000D CSDB module)"
+    lifecycle_owner: publications_authority
+
+  - number: 9
+    code: CFG
+    name: "Configuration"
+    description: "Configuration item, baseline snapshot, software load"
+    lifecycle_owner: configuration_board
+
+  - number: 10
+    code: TKN
+    name: "Token"
+    description: "Teknia Token — contribution record, uncertainty reward"
+    lifecycle_owner: aggix_ledger
+
+# ─────────────────────────────────────────────
+# Mandatory Resource Fields
+# ─────────────────────────────────────────────
+resource_schema:
+  mandatory_fields:
+    - { name: uri, type: "aggix://…", description: "Canonical URI" }
+    - { name: type, type: "3-letter code", description: "Resource type code" }
+    - { name: version, type: semver, description: "Semantic version" }
+    - { name: status, type: enum, values: [draft, confirmed, activated, published, deprecated] }
+    - { name: branch, type: string, description: "Owning L3 branch or 'global'" }
+    - { name: programme, type: string, description: "Programme instance" }
+    - { name: checksum, type: sha3-512, description: "Content integrity hash" }
+    - { name: created_at, type: iso8601, description: "Creation timestamp" }
+    - { name: updated_at, type: iso8601, description: "Last modification timestamp" }
+    - { name: parent_uri, type: "aggix://…", description: "Parent resource URI" }
+    - { name: certifications, type: list, description: "Certification evidence URIs" }
+    - { name: constraints, type: list, description: "Inherited + own constraint set" }
+
+# ─────────────────────────────────────────────
+# Canonical URI Scheme
+# ─────────────────────────────────────────────
+uri_scheme:
+  template: "aggix://{domain}/{branch}/{programme}/{type}/{id}@{version}"
+  components:
+    - name: domain
+      description: "Top-level domain"
+      fixed: "gai-a.ampel"
+    - name: branch
+      description: "L3 branch or 'aggix' for global"
+      allowed: [ampel, mare-e, gair-space, robotics-a-plus, aggix]
+    - name: programme
+      description: "Programme instance"
+      pattern: "[a-z0-9-]+"
+    - name: type
+      description: "Resource type code"
+      allowed: [DT, AI, DS, DPP, ASM, FMU, EV, PUB, CFG, TKN]
+    - name: id
+      description: "Resource identifier"
+      pattern: "[a-z0-9-]+"
+    - name: version
+      description: "Semantic version"
+      pattern: "\\d+\\.\\d+\\.\\d+"
+
+  resolution_rules:
+    - rule: immutability
+      description: "A versioned URI always resolves to the same content"
+    - rule: cross_branch_linking
+      description: "Shared resources have ONE canonical URI; branches link, never copy"
+    - rule: deprecation_resolution
+      description: "Deprecated URIs still resolve with status:deprecated and successor_uri"
+
+  examples:
+    - uri: "aggix://gai-a.ampel/ampel/q100/ASM/h2-pem-stack-001@1.2.0"
+      description: "Aviation H₂ PEM assembly"
+    - uri: "aggix://gai-a.ampel/ampel/q100/DT/thermal-model-wing@3.0.1"
+      description: "Wing thermal digital twin"
+    - uri: "aggix://gai-a.ampel/ampel/q100/AI/predictive-maint-nn@2.1.0"
+      description: "Predictive maintenance AI model"
+    - uri: "aggix://gai-a.ampel/ampel/q100/PUB/amm-ata28-fuel@5.0.0"
+      description: "Aircraft Maintenance Manual — ATA 28 Fuel"
+    - uri: "aggix://gai-a.ampel/mare-e/survey-platform/ASM/h2-pem-stack-001@1.2.0"
+      description: "Same PEM stack linked from maritime branch"
+    - uri: "aggix://gai-a.ampel/gair-space/constellation-alpha/DT/orbit-propagator@3.1.0"
+      description: "Orbital propagation digital twin"
+    - uri: "aggix://gai-a.ampel/robotics-a-plus/swarm-inspector/ASM/quadrotor-frame@1.0.0"
+      description: "Quadrotor frame (multi-parent)"
+    - uri: "aggix://gai-a.ampel/aggix/global/TKN/tt-contrib-001@1.0.0"
+      description: "Global Teknia Token"
+    - uri: "aggix://gai-a.ampel/aggix/global/CFG/dc-munich-01@1.0.0"
+      description: "GAIA Grid data center Munich"
+    - uri: "aggix://gai-a.ampel/ampel/q100/DPP/battery-passport-001@1.0.0"
+      description: "Digital Product Passport — battery"
+    - uri: "aggix://gai-a.ampel/ampel/q100/EV/do178c-test-report-028@2.0.0"
+      description: "DO-178C certification evidence"
+
+# ─────────────────────────────────────────────
+# Interaction Verbs (7)
+# ─────────────────────────────────────────────
+interaction_verbs:
+  - number: 1
+    verb: CREATE
+    description: "Register a new resource"
+    policy_gate: "Branch template compliance"
+    tree_rules_enforced: [1, 6]
+    signature: "CREATE(uri, type, payload, branch, programme, constraints[])"
+
+  - number: 2
+    verb: READ
+    description: "Retrieve resource metadata + payload"
+    policy_gate: "Access-control (Gaia-X Self-Description)"
+    tree_rules_enforced: []
+    signature: "READ(uri, requester_identity)"
+
+  - number: 3
+    verb: UPDATE
+    description: "Modify resource (creates new version)"
+    policy_gate: "Monotonic strengthening"
+    tree_rules_enforced: [2, 7]
+    signature: "UPDATE(uri, delta, justification)"
+
+  - number: 4
+    verb: SUBSCRIBE
+    description: "Establish live notification link"
+    policy_gate: "Access-control + rate-limit"
+    tree_rules_enforced: [8]
+    signature: "SUBSCRIBE(uri, subscriber_identity, callback_uri)"
+
+  - number: 5
+    verb: DELEGATE
+    description: "Transfer governance authority"
+    policy_gate: "AMAR approval + delegation chain"
+    tree_rules_enforced: [5]
+    signature: "DELEGATE(uri, from_authority, to_authority, scope)"
+
+  - number: 6
+    verb: CERTIFY
+    description: "Attach certification evidence"
+    policy_gate: "Upward certification check"
+    tree_rules_enforced: [4]
+    signature: "CERTIFY(uri, evidence_uri, standard, authority)"
+
+  - number: 7
+    verb: DEPRECATE
+    description: "Mark resource as deprecated (no deletion)"
+    policy_gate: "Durability enforcement"
+    tree_rules_enforced: [7]
+    signature: "DEPRECATE(uri, successor_uri, justification)"
+
+# ─────────────────────────────────────────────
+# PATH → MTL Mapping
+# ─────────────────────────────────────────────
+path_mtl_mapping:
+  - stage: "P — Prompting"
+    verb: CREATE
+    resource_type: DS
+  - stage: "A — Approved"
+    verb: CERTIFY
+    resource_type: EV
+  - stage: "T — Template"
+    verb: CREATE
+    resource_type: CFG
+  - stage: "H — Heading"
+    verb: UPDATE
+    resource_type: PUB
+  - stage: "M — Model"
+    verb: CREATE
+    resource_type: "DT / AI"
+  - stage: "T — TEKNIA"
+    verb: CERTIFY
+    resource_type: TKN
+  - stage: "L — Ledger"
+    verb: SUBSCRIBE
+    resource_type: TKN
+
+# ─────────────────────────────────────────────
+# GAIA Grids
+# ─────────────────────────────────────────────
+gaia_grids:
+  description: >
+    GAIA Grids are the physical realization of AGGIX — sovereign compute,
+    storage, and quantum communication infrastructure registered as CFG
+    resources at the global level.
+  grid_types:
+    - type: data_center
+      uri_pattern: "aggix://gai-a.ampel/aggix/global/CFG/dc-{location}@{ver}"
+    - type: edge_node
+      uri_pattern: "aggix://gai-a.ampel/aggix/global/CFG/edge-{location}@{ver}"
+    - type: qkd_link
+      uri_pattern: "aggix://gai-a.ampel/aggix/global/CFG/qkd-{link-id}@{ver}"
+    - type: hpc_node
+      uri_pattern: "aggix://gai-a.ampel/aggix/global/CFG/hpc-{site}@{ver}"
+
+# ─────────────────────────────────────────────
+# Governance Primitives
+# ─────────────────────────────────────────────
+governance_primitives:
+  capillary_merit:
+    description: >
+      Merit-based contribution tracking flowing through the tree. Each
+      contribution generates a TKN resource recording actor, action,
+      and uncertainty reduction.
+
+  trace_threads:
+    description: >
+      Traceability threads connecting resources across the tree. An ordered
+      sequence of AGGIX URIs representing a requirement-to-evidence chain.
+      Immutable once published. Primary audit artefact for certification.
+
+# ─────────────────────────────────────────────
+# Cross-Branch Sharing Protocol
+# ─────────────────────────────────────────────
+cross_branch_sharing:
+  steps:
+    - step: 1
+      action: "CREATE resource under primary branch"
+    - step: 2
+      action: "Secondary branches SUBSCRIBE to canonical URI"
+    - step: 3
+      action: "Constraint set = union of all subscribing branches' constraints (Rule 3)"
+    - step: 4
+      action: "CERTIFY for each applicable standard — no substitution, no waiver"
+    - step: 5
+      action: "UPDATE automatically notifies all subscribers"
+    - step: 6
+      action: "Resource never copied — only linked (Rule 8)"
+
+  multi_certification_example:
+    resource: "aggix://gai-a.ampel/ampel/q100/ASM/h2-pem-stack-001@1.2.0"
+    subscribers: ["ampel/q100", "mare-e/survey-platform"]
+    certifications:
+      ampel: ["DO-178C DAL A", "DO-254 DAL A", "AS9100D", "DO-160G", "ARP 4761A"]
+      mare_e: ["IEC 61508 SIL 3", "DNV-GL Type Approval", "ISO 9001", "IMO FSA"]
+    resolution: "ALL certifications carried simultaneously (strictest-wins)"
+
+# ─────────────────────────────────────────────
+# Version History
+# ─────────────────────────────────────────────
+version_history:
+  - version: "1.0-locked"
+    date: "2026-04-06"
+    change: "Initial release — resource model, URI scheme, interaction verbs locked"

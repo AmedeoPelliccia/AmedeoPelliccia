@@ -178,14 +178,15 @@ If an assembly serves multiple branches, it exists once in AGGIX and is linked f
 
 | Layer | Node | Standards | Governance Body |
 |-------|------|-----------|-----------------|
-| **L0** | GAI-A | Gaia-X Trust Framework, ISO 27001, GDPR, EU AI Act | EU / UN |
-| **L1** | AMAR | ISO 21500 (Project Management), PMBOK, ESA ECSS-M-ST-10 | AMAR Board |
-| **L2** | AGGIX | W3C DID, Gaia-X Self-Description, ISO 8000 (Data Quality), FAIR Principles | AGGIX Registry |
-| **L3a** | AMPEL | DO-178C (Software), DO-254 (Hardware), DO-326A (Security), ARP 4754A (Systems), ARP 4761A (Safety), AS9100D (QMS), S1000D (Publications), ATA iSpec 2200, EASA CS-25, FAR Part 25 | EASA / FAA |
-| **L3b** | MARE-E | IEC 61508 (Functional Safety), DNV-GL Rules, SOLAS, MARPOL, IMO MSC Circulars, ISO 19847 (Ship Data), Lloyd's Register Rules | IMO / Classification Societies |
-| **L3c** | GAIR-SPACE | ECSS-E-ST-40C (Software), ECSS-Q-ST-80C (Quality), NASA-STD-8719 (Safety), CCSDS (Comms), ITU Radio Regulations, ISO 24113 (Space Debris) | ESA / NASA / ITU |
-| **L3d** | Robotics A+ | ISO 8373 (Robotics), ISO 13482 (Service Robots), IEEE 1872 (Ontology), STANAG 4586 (UAV Interop), DO-178C (if airborne), IEC 61508 (if maritime) | Multi-authority |
-| **L4** | Assemblies | AS9100D (QMS), EN 9100, NADCAP, DO-160G (Environmental), MIL-STD-810 (Environmental), ISO 9001 | Domain-specific |
+| **L0** | GAI-A | Gaia-X Trust Framework, EU Data Act, EU AI Act, GDPR, ISO 27001, ISO 14001, ISO 26000 | EU / UN |
+| **L1** | AMAR | ISO 21500 (Project Mgmt), ISO 16290 (TRL), ISO 31000 (Risk), PMBOK, ESA ECSS-M-ST-10, IDEALE-ESG Charter | AMAR Board |
+| **L2** | AGGIX | IDS RAM 4.0, OPC UA, W3C DID/VC, Gaia-X Self-Description, ISO 8000 (Data Quality), ISO 23247 (Digital Twin), ATA 96, FAIR Principles | AGGIX Registry |
+| **L3a** | AMPEL | DO-178C, DO-254, DO-326A, DO-160G, ARP 4754A, ARP 4761A, AS9100D, S1000D Issue 5.0, ATA iSpec 2200, EASA CS-25, FAR Part 25 | EASA / FAA |
+| **L3b** | MARE-E | SOLAS, MARPOL, IACS UR, DNV-GL Rules, IEC 61508, ISO 19847, Lloyd's Register Rules, IMO MSC Circulars | IMO / Classification Societies |
+| **L3c** | GAIR-SPACE | ECSS-E-ST-40C, ECSS-Q-ST-80C, ECSS-M-ST-10, NASA-STD-5009, NASA-STD-8719, ISO 24113, CCSDS, ITU Radio Regulations | ESA / NASA / ITU |
+| **L3d** | Robotics A+ | STANAG 4671, JARUS SORA, ISO 22166, ISO 8373, ISO 13482, IEEE 1872, ROS 2/DDS, DO-178C (if airborne), IEC 61508 (if maritime) | Multi-authority |
+| **L4** | Assemblies | AS9100D, EN 9100, NADCAP, DO-160G, MIL-STD-810, ISO 9001, EU Ecodesign, WMCAA bay interface spec | Domain-specific |
+| **L5** | Profiles | Inherited full chain + programme-specific certification profile | Programme authority |
 
 ### 5.2 Cross-Domain Conflict Resolution
 
@@ -213,16 +214,18 @@ The cross-domain component's certification dossier contains evidence for **every
 
 | # | Resource Type | Description | Example |
 |---|---------------|-------------|---------|
-| 1 | **Assembly** | Certified hardware/software component | H₂ PEM stack, flight computer |
-| 2 | **Document** | Specification, standard, report | DO-178C plan, type certificate |
-| 3 | **Model** | Digital twin, simulation, ML model | CFD mesh, predictive-maintenance NN |
-| 4 | **Dataset** | Structured data collection | Flight-test telemetry, fleet CSV |
-| 5 | **Token** | Teknia Token (TT) — contribution record | Uncertainty-reduction reward |
-| 6 | **Profile** | Operational profile / overlay | AMPEL360-Q100, AMPEL360-Q10 |
-| 7 | **Gate** | Certification / approval gate | H_PIPELINE gate, AMAR branch gate |
-| 8 | **Grid** | Physical infrastructure node (GAIA Grid) | Data center, edge node, QKD link |
-| 9 | **Programme** | Programme instance (OPT-IN topology) | AMPEL360-Q100 programme |
-| 10 | **Evidence** | Certification evidence artefact | Test report, analysis, review record |
+| # | Code | Resource Type | Description | Example |
+|---|------|---------------|-------------|---------|
+| 1 | **DT** | Digital Twin | Simulation, state model, real-time mirror | CFD mesh, fleet digital twin |
+| 2 | **AI** | AI Model | ML/DL model, inference pipeline | Predictive-maintenance NN, GAIA-EU |
+| 3 | **DS** | Dataset | Structured data collection | Flight-test telemetry, fleet CSV |
+| 4 | **DPP** | Digital Product Passport | Lifecycle record per EU Ecodesign | Battery DPP, airframe DPP |
+| 5 | **ASM** | Assembly | Certified hardware/software component | H₂ PEM stack, flight computer |
+| 6 | **FMU** | FMU/FMI Unit | Co-simulation model unit | Thermal FMU, aero FMU |
+| 7 | **EV** | Evidence | Certification evidence artefact | Test report, analysis record |
+| 8 | **PUB** | Publication | Technical publication (S1000D CSDB) | AMM, IPC, FCOM module |
+| 9 | **CFG** | Configuration | Configuration item, baseline snapshot | Software load, HW baseline |
+| 10 | **TKN** | Token | Teknia Token (TT) — contribution record | Uncertainty-reduction reward |
 
 ### 6.2 Canonical URI Scheme
 
@@ -258,9 +261,9 @@ aggix://gai-a.ampel/aggix/global/grid/dc-munich-01@1.0.0
 | 1 | **CREATE** | Register a new resource | Branch template compliance check |
 | 2 | **READ** | Retrieve resource metadata + payload | Access-control policy (Gaia-X Self-Description) |
 | 3 | **UPDATE** | Modify resource (creates new version) | Monotonic strengthening check (Rule 2) |
-| 4 | **LINK** | Establish cross-branch reference | Multi-parent union validation (Rule 3) |
-| 5 | **CERTIFY** | Attach certification evidence | Upward certification check (Rule 4) |
-| 6 | **TRANSFER** | Move resource ownership | AMAR approval required |
+| 4 | **SUBSCRIBE** | Establish live notification link to a resource | Access-control + rate-limit policy |
+| 5 | **DELEGATE** | Transfer governance authority to another actor | AMAR approval + delegation chain validation |
+| 6 | **CERTIFY** | Attach certification evidence | Upward certification check (Rule 4) |
 | 7 | **DEPRECATE** | Mark resource as deprecated (no deletion) | Durability rule enforcement (Rule 7) |
 
 Each verb passes through its **policy gate** before execution. The policy gate enforces the applicable tree rules and standards for the target node.
@@ -277,19 +280,26 @@ Everything that exists in the repository maps into the GAI-A tree:
 |-------------------|---------------|-------|---------------|
 | **IDEALE** (6-pillar framework) | GAI-A L0 governance pillars | L0 | IDEALE's six pillars (I-D-E-A-L-E) are the domain decomposition at L0 |
 | **OPT-IN** (5-axis topology) | AMPEL L3a internal structure | L3a | OPT-IN (O-P-T-I-N) is AMPEL's programme-management scaffold |
-| **PATH → MTL** (traceability pipeline) | AGGIX interaction pattern | L2 | PATH→MTL is an AGGIX verb chain: CREATE→UPDATE→CERTIFY→LINK |
-| **Teknia Tokens (TT)** | AGGIX resource type #5 | L2 | TT is a first-class AGGIX resource (type: `token`) |
+| **PATH → MTL** (traceability pipeline) | AGGIX interaction pattern | L2 | PATH→MTL is an AGGIX verb chain: CREATE→UPDATE→CERTIFY |
+| **DWGE** (intent-lock engine) | AGGIX intent-lock service | L2 | DWGE is the deterministic widget generator within AGGIX |
+| **Teknia Tokens (TT)** | AGGIX resource type TKN | L2 | TT is a first-class AGGIX resource (type: `token`) |
+| **KNOT/KNU** (uncertainty nodes) | Domain-specific uncertainty | L3+ | Uncertainty quantification within each branch |
 | **WMCAA** (L/D assemblies) | AMPEL L3a sub-branch | L3a–L4 | WMCAA is an AMPEL sub-branch with Lift/Drag assembly governance |
 | **MUSIC-MCC** | AMPEL L3a, ATA 46–50 | L3a–L4 | MUSIC-MCC lives under AMPEL's information-systems ATA chapters |
-| **GAIA Grids** | AGGIX resource type #8 | L2 | GAIA Grids are AGGIX's physical infrastructure realization (type: `grid`) |
+| **SENSORIUM** | AMPEL L3a, MCC spec series | L4 | Multi-sensory steganographic composition (MCC SPEC-008) |
+| **TRAUMACODEDRAMA** | AMPEL L3a, MCC spec series | L4 | Dramatic-arc steganographic protocol (MCC SPEC-009) |
+| **CAOS** | AMPEL operational sustainment | L3a | Continuous Aerospace Operating Sustainment |
+| **EACST** | GAIR-SPACE regulatory | L3c | Space regulatory framework |
+| **PR-O-RO** | Robotics A+ framework | L3d | Autonomous platform governance |
+| **GAIA Grids** | AGGIX physical infrastructure | L2 | GAIA Grids are AGGIX's physical realization (type: `grid`) |
+| **Capillary Merit** | AGGIX governance primitive | L2 | Merit-based contribution tracking |
+| **TraceThreads** | AGGIX governance primitive | L2 | Traceability thread infrastructure |
+| **NBT Gates** | GAIR-SPACE + AGGIX subsystem | L3c/L2 | Neural Network Bridging and Tunneling |
 | **PLUMA-GAI** | AMAR L1 programme model | L1 | PLUMA-GAI is the programme lifecycle model within AMAR |
 | **AMPEL360** | AMPEL L3a lifecycle engine | L3a | AMPEL360 is the primary AMPEL branch instantiation |
 | **AMPEL360-Q100** | AMPEL L3a profile | L4 | 100-pax H₂ BWB aircraft profile |
 | **AMPEL360-Q10** | GAIR-SPACE L3c profile | L4 | Space/orbital platform profile |
 | **QAOS** | GAIR-SPACE L3c subsystem | L3c | Quantum Aerospace Operating System |
-| **NBT Gates** | GAIR-SPACE L3c subsystem | L3c | Neural Network Bridging and Tunneling |
-| **SENSORIUM** | AMPEL L3a, MCC spec series | L4 | Multi-sensory steganographic composition |
-| **TRAUMACODEDRAMA** | AMPEL L3a, MCC spec series | L4 | Dramatic-arc steganographic protocol |
 | **ESSA** | GAI-A L0 constitutional framework | L0 | ESSA is the safety-first constitutional layer within GAI-A |
 | **H-PIPELINE** | AMPEL L3a certification workflow | L3a | Safety envelope lifecycle within AMPEL |
 
@@ -298,19 +308,19 @@ Everything that exists in the repository maps into the GAI-A tree:
 ```
 IDEALE pillars ─────────────────────── L0 (domain decomposition)
   │
-  ├─ I (Information) ────────────────── OPT-IN axis N, DWGE, S1000D
-  ├─ D (Defense) ────────────────────── Export control, dual-use
+  ├─ I (Information) ────────────────── OPT-IN axis N, DWGE, S1000D, MUSIC-MCC
+  ├─ D (Defense) ────────────────────── Export control, dual-use, EACST
   ├─ E (Energy) ─────────────────────── H₂ infrastructure (cross-domain)
-  ├─ A (Aerospace) ──────────────────── AMPEL (L3a), GAIR-SPACE (L3c)
-  ├─ L (Logistics) ──────────────────── AGGIX (L2), supply chain
-  └─ E (Economy) ────────────────────── TT (AGGIX resource), GAIA Grids
+  ├─ A (Aerospace) ──────────────────── AMPEL (L3a), GAIR-SPACE (L3c), Robotics A+ (L3d)
+  ├─ L (Logistics) ──────────────────── AGGIX (L2), supply chain, TraceThreads
+  └─ E (Economy) ────────────────────── TT / TKN (AGGIX), GAIA Grids, Capillary Merit
 
 OPT-IN (O-P-T-I-N) ─── AMPEL L3a programme scaffold
   ├─ O (Organizations) ──────────────── AMAR stakeholder registry
   ├─ P (Programs) ───────────────────── AMAR programme instances
-  ├─ T (Technologies) ───────────────── AGGIX assemblies + models
-  ├─ I (Infrastructures) ───────────── AGGIX grids
-  └─ N (Neural Networks) ───────────── GAIR-SPACE NBT gates
+  ├─ T (Technologies) ───────────────── AGGIX assemblies + models (DT, AI, ASM)
+  ├─ I (Infrastructures) ───────────── AGGIX grids, GAIA Grids
+  └─ N (Neural Networks) ───────────── GAIR-SPACE NBT gates, KNOT/KNU
 ```
 
 ---

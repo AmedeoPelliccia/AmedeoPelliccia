@@ -802,6 +802,12 @@ Architectural principle establishing safety as the **primary generative objectiv
 
 | File | Purpose |
 |------|---------|
+| [`GAI-A.md`](GAI-A.md) | GAI-A — Gaia-Aligned Intelligence Architecture: capstone specification, locked acronym definitions, 8 tree rules, standards mapping (50+), AGGIX resource model, existing artefact mapping |
+| [`gai-a.yaml`](gai-a.yaml) | Machine-readable companion — ESSA-DOC-GAIA-001: layer architecture, tree rules, standards per layer, artefact mapping |
+| [`AGGIX.md`](AGGIX.md) | AGGIX — Aggregation + Global Infrastructure Exchange: 10 resource types (DT/AI/DS/DPP/ASM/FMU/EV/PUB/CFG/TKN), canonical URI scheme, 7 interaction verbs, GAIA Grids, cross-branch sharing protocol |
+| [`aggix.yaml`](aggix.yaml) | Machine-readable companion — ESSA-DOC-AGGIX-001: resource types, URI scheme, interaction verbs, PATH→MTL mapping, governance primitives |
+| [`SPRINT-2026-04.md`](SPRINT-2026-04.md) | Sprint 2026-04 recap — from MUSIC-MCC to GAI-A governance tree: MonKBit, SENSORIUM, emotive vectors, traumacodedrama, WMCAA, GAI-A-AMAR-AGGIX |
+| [`sprint-2026-04.yaml`](sprint-2026-04.yaml) | Machine-readable companion — ESSA-SPRINT-2026-04-001: full sprint arc, theoretical results, KNOT status, open items |
 | [`ESSA-GLOBAL.md`](ESSA-GLOBAL.md) | ESSA-GLOBAL — Earth Safety and Security Agency (Tier 0 / UN): planetary-scale constitutional instrument, four-tier architecture, seven global invariants (GCI-001–007), global profiles |
 | [`essa-global.yaml`](essa-global.yaml) | Machine-readable companion — ESSA-GLOBAL-001: four-tier architecture, GCI invariants, global profiles, UN relationships, hybrid decision engine, doctrine stages |
 | [`QQQ.md`](QQQ.md) | QQQ Foundation — Quasi–Quanto–Quantum conceptual framework for complex system regimes |

@@ -212,30 +212,50 @@ standards_mapping:
     - standard: "Gaia-X Trust Framework"
       version: "v22.10"
       scope: federation_identity
+    - standard: "EU Data Act"
+      scope: data_sovereignty
+    - standard: "EU AI Act"
+      scope: ai_governance
+    - standard: "GDPR"
+      scope: data_protection
     - standard: "ISO 27001"
       version: "2022"
       scope: information_security
-    - standard: "GDPR"
-      scope: data_protection
-    - standard: "EU AI Act"
-      scope: ai_governance
+    - standard: "ISO 14001"
+      scope: environmental_management
+    - standard: "ISO 26000"
+      scope: social_responsibility
 
   L1_AMAR:
     - standard: "ISO 21500"
       version: "2021"
       scope: project_management
+    - standard: "ISO 16290"
+      scope: technology_readiness_levels
+    - standard: "ISO 31000"
+      scope: risk_management
     - standard: "PMBOK"
       scope: programme_management
     - standard: "ESA ECSS-M-ST-10"
       scope: space_project_management
+    - standard: "IDEALE-ESG Charter"
+      scope: esg_governance
 
   L2_AGGIX:
-    - standard: "W3C DID"
-      scope: decentralized_identity
+    - standard: "IDS RAM 4.0"
+      scope: international_data_spaces
+    - standard: "OPC UA"
+      scope: industrial_interoperability
+    - standard: "W3C DID/VC"
+      scope: decentralized_identity_credentials
     - standard: "Gaia-X Self-Description"
       scope: resource_description
     - standard: "ISO 8000"
       scope: data_quality
+    - standard: "ISO 23247"
+      scope: digital_twin_framework
+    - standard: "ATA 96"
+      scope: information_exchange
     - standard: "FAIR Principles"
       scope: data_findability_accessibility
 
@@ -246,6 +266,8 @@ standards_mapping:
       scope: airborne_hardware
     - standard: "DO-326A"
       scope: airborne_security
+    - standard: "DO-160G"
+      scope: environmental_conditions
     - standard: "ARP 4754A"
       scope: systems_development
     - standard: "ARP 4761A"
@@ -263,36 +285,48 @@ standards_mapping:
       scope: transport_category_airworthiness
 
   L3b_MARE_E:
-    - standard: "IEC 61508"
-      scope: functional_safety
-    - standard: "DNV-GL Rules"
-      scope: classification
     - standard: "SOLAS"
       scope: safety_of_life_at_sea
     - standard: "MARPOL"
       scope: marine_pollution_prevention
-    - standard: "IMO MSC Circulars"
-      scope: maritime_safety
+    - standard: "IACS UR"
+      scope: unified_requirements
+    - standard: "DNV-GL Rules"
+      scope: classification
+    - standard: "IEC 61508"
+      scope: functional_safety
     - standard: "ISO 19847"
       scope: ship_data
     - standard: "Lloyd's Register Rules"
       scope: classification
+    - standard: "IMO MSC Circulars"
+      scope: maritime_safety
 
   L3c_GAIR_SPACE:
     - standard: "ECSS-E-ST-40C"
       scope: space_software
     - standard: "ECSS-Q-ST-80C"
       scope: space_quality
+    - standard: "ECSS-M-ST-10"
+      scope: space_project_management
+    - standard: "NASA-STD-5009"
+      scope: nondestructive_evaluation
     - standard: "NASA-STD-8719"
       scope: space_safety
+    - standard: "ISO 24113"
+      scope: space_debris_mitigation
     - standard: "CCSDS"
       scope: space_communications
     - standard: "ITU Radio Regulations"
       scope: spectrum_management
-    - standard: "ISO 24113"
-      scope: space_debris_mitigation
 
   L3d_Robotics_A_Plus:
+    - standard: "STANAG 4671"
+      scope: uav_airworthiness
+    - standard: "JARUS SORA"
+      scope: specific_operations_risk_assessment
+    - standard: "ISO 22166"
+      scope: robotics_modularity
     - standard: "ISO 8373"
       version: "2021"
       scope: robotics_vocabulary
@@ -300,8 +334,8 @@ standards_mapping:
       scope: service_robots_safety
     - standard: "IEEE 1872"
       scope: robotics_ontology
-    - standard: "STANAG 4586"
-      scope: uav_interoperability
+    - standard: "ROS 2 / DDS"
+      scope: robot_middleware
     - standard: "DO-178C"
       scope: airborne_software
       condition: "if serving AMPEL (airborne)"
@@ -322,6 +356,16 @@ standards_mapping:
       scope: environmental_engineering
     - standard: "ISO 9001"
       scope: quality_management_general
+    - standard: "EU Ecodesign"
+      scope: sustainable_product_design
+    - standard: "WMCAA Bay Interface Spec"
+      scope: cabin_module_interface
+
+  L5_Profiles:
+    - standard: "Inherited full chain"
+      scope: all_ancestor_standards
+    - standard: "Programme-specific certification profile"
+      scope: programme_authority
 
 # ─────────────────────────────────────────────
 # Cross-Domain Conflict Resolution
@@ -362,31 +406,91 @@ artefact_mapping:
     description: "Traceability pipeline"
     tree_position: "AGGIX interaction pattern"
     layer: L2
-    mapping_logic: "PATH→MTL is an AGGIX verb chain: CREATE→UPDATE→CERTIFY→LINK"
+    mapping_logic: "PATH→MTL is an AGGIX verb chain: CREATE→UPDATE→CERTIFY"
+
+  - artefact: DWGE
+    description: "Deterministic Widget Generator Engine"
+    tree_position: "AGGIX intent-lock service"
+    layer: L2
+    mapping_logic: "DWGE is the intent-lock execution engine within AGGIX"
 
   - artefact: "Teknia Tokens (TT)"
     description: "Contribution reward tokens"
-    tree_position: "AGGIX resource type #5 (token)"
+    tree_position: "AGGIX resource type TKN"
     layer: L2
-    mapping_logic: "TT is a first-class AGGIX resource"
+    mapping_logic: "TT is a first-class AGGIX resource (type: token)"
+
+  - artefact: "KNOT/KNU"
+    description: "Uncertainty quantification nodes"
+    tree_position: "Domain-specific uncertainty"
+    layer: "L3+"
+    mapping_logic: "Uncertainty tracking within each branch"
 
   - artefact: WMCAA
-    description: "L/D assembly governance"
+    description: "Wide Multi Composable Aero Architecture"
     tree_position: "AMPEL L3a sub-branch"
     layer: "L3a–L4"
     mapping_logic: "WMCAA is an AMPEL sub-branch with Lift/Drag assemblies"
 
   - artefact: MUSIC-MCC
-    description: "Audio composition layer"
+    description: "Musical Cryptographic Communication"
     tree_position: "AMPEL L3a, ATA 46–50"
     layer: "L3a–L4"
     mapping_logic: "MUSIC-MCC lives under AMPEL's information-systems ATA chapters"
 
-  - artefact: GAIA Grids
+  - artefact: SENSORIUM
+    description: "Multi-sensory steganographic composition"
+    tree_position: "AMPEL L3a, MCC spec series"
+    layer: L4
+    mapping_logic: "MCC SPEC-008 under AMPEL information systems"
+
+  - artefact: TRAUMACODEDRAMA
+    description: "Dramatic-arc steganographic protocol"
+    tree_position: "AMPEL L3a, MCC spec series"
+    layer: L4
+    mapping_logic: "MCC SPEC-009 under AMPEL information systems"
+
+  - artefact: CAOS
+    description: "Continuous Aerospace Operating Sustainment"
+    tree_position: "AMPEL operational sustainment"
+    layer: L3a
+    mapping_logic: "Operational sustainment within AMPEL"
+
+  - artefact: EACST
+    description: "Space regulatory framework"
+    tree_position: "GAIR-SPACE regulatory"
+    layer: L3c
+    mapping_logic: "Space regulatory governance within GAIR-SPACE"
+
+  - artefact: "PR-O-RO"
+    description: "Autonomous platform governance"
+    tree_position: "Robotics A+ framework"
+    layer: L3d
+    mapping_logic: "Autonomous platform governance within Robotics A+"
+
+  - artefact: "GAIA Grids"
     description: "Physical infrastructure nodes"
-    tree_position: "AGGIX resource type #8 (grid)"
+    tree_position: "AGGIX physical infrastructure"
     layer: L2
     mapping_logic: "GAIA Grids are AGGIX's physical realization"
+
+  - artefact: "Capillary Merit"
+    description: "Merit-based contribution tracking"
+    tree_position: "AGGIX governance primitive"
+    layer: L2
+    mapping_logic: "Contribution merit tracking within AGGIX"
+
+  - artefact: TraceThreads
+    description: "Traceability thread infrastructure"
+    tree_position: "AGGIX governance primitive"
+    layer: L2
+    mapping_logic: "Traceability infrastructure within AGGIX"
+
+  - artefact: "NBT Gates"
+    description: "Neural Network Bridging and Tunneling"
+    tree_position: "GAIR-SPACE + AGGIX subsystem"
+    layer: "L3c/L2"
+    mapping_logic: "Classical-quantum bridge spanning GAIR-SPACE and AGGIX"
 
   - artefact: PLUMA-GAI
     description: "Programme lifecycle model"
@@ -417,24 +521,6 @@ artefact_mapping:
     tree_position: "GAIR-SPACE L3c subsystem"
     layer: L3c
     mapping_logic: "Core GAIR-SPACE subsystem"
-
-  - artefact: NBT Gates
-    description: "Neural Network Bridging and Tunneling"
-    tree_position: "GAIR-SPACE L3c subsystem"
-    layer: L3c
-    mapping_logic: "Classical-quantum bridge within GAIR-SPACE"
-
-  - artefact: SENSORIUM
-    description: "Multi-sensory steganographic composition"
-    tree_position: "AMPEL L3a, MCC spec series"
-    layer: L4
-    mapping_logic: "MCC SPEC-008 under AMPEL information systems"
-
-  - artefact: TRAUMACODEDRAMA
-    description: "Dramatic-arc steganographic protocol"
-    tree_position: "AMPEL L3a, MCC spec series"
-    layer: L4
-    mapping_logic: "MCC SPEC-009 under AMPEL information systems"
 
   - artefact: ESSA
     description: "Safety-first constitutional framework"
