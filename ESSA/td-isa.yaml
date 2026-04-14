@@ -8,7 +8,7 @@
 document_id: ESSA-DOC-TDISA-001
 document_type: entity_proposal
 title: "TD-ISA — Technical Data Integrity, Standardization, and Automation"
-version: "0.1.0"
+version: "0.2.0"
 schema_version: "1.0.0"
 status: draft
 parent: ESSA-CONST-001
@@ -73,7 +73,96 @@ pillars:
       - workflow_integration
 
 ##############################################################################
-# 2  Workstreams
+# 2a Economic Argument
+##############################################################################
+
+economic_argument:
+
+  thesis: >
+    The industry is not only paying to train for the aircraft.
+    It is also paying to train for the documentary differences around the aircraft.
+
+  conclusion: >
+    Standardised technical representation would not eliminate technical training.
+    It would eliminate unnecessary retraining on how different organisations
+    choose to represent the same maintenance intent.
+
+  formula:
+    total_training_cost: "Technical Training (necessary) + Documentary Retraining (reducible)"
+    td_isa_target: "Minimise Documentary Retraining → 0 by maximising representational commonality."
+
+  cost_levels:
+
+    - id: ECO-C1
+      name: "Cost of Formation (Initial Training)"
+      description: >
+        Training hours consumed not only by the technical system but also by
+        documentary logic, coding systems, colour schemes, symbology,
+        navigation philosophy, procedural voice, and variant-specific
+        documentary differences.
+      drivers:
+        - documentary_logic
+        - coding_conventions
+        - colour_and_symbology
+        - navigation_philosophy
+        - procedural_voice
+        - variant_documentary_differences
+
+    - id: ECO-C2
+      name: "Cost of Transition (Cross-Platform Adaptation)"
+      description: >
+        Each transition between aircraft model, variant, OEM, operator,
+        MRO organisation, or documentary platform introduces an adaptation
+        curve that consumes time and reduces initial efficiency even when
+        the underlying technical competence already exists.
+      transition_boundaries:
+        - aircraft_model_or_variant
+        - oem_or_constructor
+        - operator_or_mro
+        - documentary_platform_or_legacy_system
+
+    - id: ECO-C3
+      name: "Cost of Operational Friction (In-Service Impact)"
+      description: >
+        Mental translation between different documentary frameworks during
+        operations produces longer reading times, more refresher actions,
+        higher dependence on specific prior experience, increased probability
+        of doubt or misinterpretation, and reduced ability to reuse
+        competences across fleets.
+      friction_effects:
+        - longer_reading_interpretation_time
+        - more_frequent_refresher_actions
+        - higher_dependence_on_specific_experience
+        - increased_doubt_or_misinterpretation
+        - reduced_competence_reuse_across_fleets
+
+  multipliers:
+    - id: MUL-01
+      factor: "Mixed fleets"
+      effect: "Each fleet type may carry a different documentary philosophy."
+
+    - id: MUL-02
+      factor: "Variants within type"
+      effect: "Sub-variant documentary differences compound the problem."
+
+    - id: MUL-03
+      factor: "Multi-OEM MROs"
+      effect: "MRO organisations serving multiple constructors pay the cost for each."
+
+    - id: MUL-04
+      factor: "Personnel rotation"
+      effect: "Every technician transition restarts the adaptation curve."
+
+    - id: MUL-05
+      factor: "Recurrent training"
+      effect: "Documentary differences must be refreshed alongside technical content."
+
+    - id: MUL-06
+      factor: "Digital expansion"
+      effect: "New IETP platforms introduce additional interaction-logic differences."
+
+##############################################################################
+# 3  Workstreams
 ##############################################################################
 
 workstreams:
@@ -224,7 +313,7 @@ workstreams:
       status: "Scope defined; deliverables pending."
 
 ##############################################################################
-# 3  Maturity Model
+# 4  Maturity Model
 ##############################################################################
 
 maturity_model:
@@ -250,7 +339,7 @@ maturity_model:
       criteria: "Deliverables incorporated into formal industry standards."
 
 ##############################################################################
-# 4  Institutional Positioning Options
+# 5  Institutional Positioning Options
 ##############################################################################
 
 institutional_positioning:
@@ -279,7 +368,7 @@ institutional_positioning:
   institutionalisation_pathway: "Council or Foundation once workstream deliverables reach M3."
 
 ##############################################################################
-# 5  Benefits
+# 6  Benefits
 ##############################################################################
 
 benefits:
@@ -320,7 +409,7 @@ benefits:
     impact_area: "Machine-readable, validated, structured data for digital workflows."
 
 ##############################################################################
-# 6  Integration
+# 7  Integration
 ##############################################################################
 
 integration:
@@ -369,10 +458,14 @@ integration:
       relationship: "WS-4 AI-assisted systems profile references software/tool qualification."
 
 ##############################################################################
-# 7  Revision History
+# 8  Revision History
 ##############################################################################
 
 revision_history:
   - version: "0.1.0"
     date: "2026-04-14"
     change: "Initial entity proposal."
+
+  - version: "0.2.0"
+    date: "2026-04-14"
+    change: "Added economic_argument section: documentary retraining cost model with three cost levels, six multipliers, and formula."

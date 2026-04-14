@@ -5,7 +5,7 @@
 | Metadata | Value |
 |----------|-------|
 | **Document ID** | ESSA-DOC-TDISA-001 |
-| **Version** | v0.1-draft |
+| **Version** | v0.2-draft |
 | **Status** | Entity Proposal |
 | **Parent** | ESSA-CONST-001 ([ESSA-AGENCY-CONSTITUTION.md](ESSA-AGENCY-CONSTITUTION.md)) |
 | **Companion** | [`td-isa.yaml`](td-isa.yaml) |
@@ -126,7 +126,106 @@ A stronger common framework would:
 
 ---
 
-## 5. Workstreams
+## 5. Economic Argument: The Documentary Retraining Problem
+
+The strongest economic justification for TD-ISA lies in a distinction that is
+rarely made explicit:
+
+> **The industry is not only paying to train for the aircraft.
+> It is also paying to train for the documentary differences around the aircraft.**
+
+Today, training a maintenance technician, author, or SME involves not only
+the technical system itself, but also the specific way each manufacturer,
+variant, or platform **represents** that system in its publications. This
+creates cost at three levels.
+
+### 5.1 Cost of Formation (Initial Training)
+
+Training hours are consumed not only by the technical system, but also by:
+
+- documentary logic and navigation philosophy,
+- coding systems and numbering conventions,
+- colour schemes and visual symbology,
+- procedural voice and structure,
+- variant-specific documentary differences.
+
+Every organisation that publishes differently adds formation overhead that has
+**nothing to do with the aircraft itself**.
+
+### 5.2 Cost of Transition (Cross-Platform Adaptation)
+
+Each transition between:
+
+- aircraft model or variant,
+- OEM or constructor,
+- operator or MRO organisation,
+- documentary platform or legacy system,
+
+introduces an **adaptation curve** that consumes time and reduces initial
+efficiency — even when the underlying technical competence already exists.
+
+### 5.3 Cost of Operational Friction (In-Service Impact)
+
+When technicians, instructors, authors, or SMEs must mentally translate
+between different documentary frameworks during operations, the result is:
+
+- longer reading and interpretation times,
+- more frequent need for refresher actions,
+- higher dependence on specific prior experience,
+- increased probability of doubt or misinterpretation,
+- reduced ability to reuse competences across fleets.
+
+### 5.4 The Core Insight
+
+If the **representation** were significantly more standardised, training
+could concentrate on what genuinely matters:
+
+- the technology,
+- the architecture of the system,
+- the real operational risks,
+- the safe execution of the task.
+
+And **not** on relearning, each time, a new documentary grammar.
+
+> **Standardised technical representation would not eliminate technical
+> training. It would eliminate unnecessary retraining on how different
+> organisations choose to represent the same maintenance intent.**
+
+### 5.5 Scale of Impact
+
+This cost is not marginal. It is **multiplicative** across:
+
+| Multiplier | Effect |
+|------------|--------|
+| Mixed fleets | Each fleet type may carry a different documentary philosophy |
+| Variants within type | Sub-variant documentary differences compound the problem |
+| Multi-OEM MROs | MRO organisations serving multiple constructors pay the cost for each |
+| Personnel rotation | Every technician transition restarts the adaptation curve |
+| Recurrent training | Documentary differences must be refreshed alongside technical content |
+| Digital expansion | New IETP platforms introduce additional interaction-logic differences |
+
+A common representation framework would **dramatically reduce training
+overhead, accelerate cross-platform readiness, and improve operational
+efficiency** across the entire aviation ecosystem.
+
+### 5.6 Formula
+
+```
+Total Training Cost = Technical Training (necessary)
+                    + Documentary Retraining (reducible)
+
+TD-ISA Target: minimise Documentary Retraining → 0
+               by maximising representational commonality.
+```
+
+The savings potential is proportional to the number of **documentary
+boundaries** a workforce must cross. For large operators, multi-type MROs,
+and global supply chains, this represents a **structural cost reduction
+opportunity**.
+
+---
+
+## 6. Workstreams
 
 TD-ISA operates through five main workstreams:
 
@@ -216,7 +315,7 @@ interoperability rules that support digital workflows and automation.
 
 ---
 
-## 6. Placement in the ESSA Stack
+## 7. Placement in the ESSA Stack
 
 TD-ISA operates as a **cross-cutting entity** within ESSA governance:
 
@@ -250,7 +349,7 @@ that UFATO's rules require for effective adoption.
 
 ---
 
-## 7. Institutional Positioning
+## 8. Institutional Positioning
 
 TD-ISA may be framed as one of the following, depending on its intended
 level of authority, governance, and participation:
@@ -269,9 +368,9 @@ governance, with a pathway to institutionalisation as a **Council** or
 
 ---
 
-## 8. Integration Points
+## 9. Integration Points
 
-### 8.1 With ESSA Governance
+### 9.1 With ESSA Governance
 
 | ESSA Artefact | TD-ISA Binding |
 |---------------|----------------|
@@ -283,7 +382,7 @@ governance, with a pathway to institutionalisation as a **Council** or
 | SPEC-PELS-014 lifecycle | Publication artefact states align with PELS engineering/product states |
 | Safety-First Doctrine | WS-2 safety semantics are derived from SAFETY-FIRST invariants |
 
-### 8.2 With External Standards and Bodies
+### 9.2 With External Standards and Bodies
 
 | Standard / Body | Relationship |
 |-----------------|-------------|
@@ -297,9 +396,9 @@ governance, with a pathway to institutionalisation as a **Council** or
 
 ---
 
-## 9. Conformance and Governance
+## 10. Conformance and Governance
 
-### 9.1 Workstream Maturity Levels
+### 10.1 Workstream Maturity Levels
 
 Each workstream progresses through defined maturity levels:
 
@@ -311,7 +410,7 @@ Each workstream progresses through defined maturity levels:
 | **M3** | Adopted | Deliverables in operational use by at least one external organisation |
 | **M4** | Institutionalised | Deliverables incorporated into formal industry standards |
 
-### 9.2 Current Maturity Assessment
+### 10.2 Current Maturity Assessment
 
 | Workstream | Level | Status |
 |------------|-------|--------|
@@ -323,7 +422,7 @@ Each workstream progresses through defined maturity levels:
 
 ---
 
-## 10. What TD-ISA Is Not
+## 11. What TD-ISA Is Not
 
 1. **Not a replacement for S1000D, ATA iSpec 2200, or any existing standard.**
    TD-ISA coordinates and extends; it does not supplant.
@@ -338,7 +437,7 @@ Each workstream progresses through defined maturity levels:
 
 ---
 
-## 11. Closing Statement
+## 12. Closing Statement
 
 Technical data should not remain fragmented where common understanding is
 essential.
@@ -350,8 +449,9 @@ execution.
 
 ---
 
-## 12. Revision History
+## 13. Revision History
 
 | Version | Date | Change |
 |---------|------|--------|
 | v0.1-draft | 2026-04-14 | Initial entity proposal. |
+| v0.2-draft | 2026-04-14 | Added §5 Economic Argument: The Documentary Retraining Problem. |
