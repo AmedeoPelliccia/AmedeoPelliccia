@@ -379,6 +379,39 @@ security_properties:
       Each Ephemeron uses a unique seed σ. Replaying a previous seed without
       the payload produces a different interface surface. Freshness is
       verified through a nonce embedded in σ.
+
+##############################################################################
+# 8  Continuity Conditions
+##############################################################################
+
+continuity_conditions:
+
+  - id: CC-001
+    name: Rule Stability
+    statement: >
+      Cognitive continuity is preserved if and only if the regeneration
+      rule set ℛ remains invariant across reconstruction cycles. Drift
+      in ℛ produces a different assembly lineage and breaks continuity.
+    formal: "Continuity ⟺ ℛₜ = ℛₜ₊₁ for all t"
+    relation_to_E1: "Direct formalisation of axiom E1."
+
+  - id: CC-002
+    name: Kernel Sufficiency
+    statement: >
+      A persistence kernel 𝒦 is sufficient if ℛ(σ, 𝒦) reproduces a
+      functionally equivalent assembly for every valid stimulus σ.
+    formal: "∀σ ∈ Σ_valid : ℛ(σ, 𝒦) ≅ A₀"
+    relation_to_E2: "Direct formalisation of axiom E2."
+
+  - id: CC-003
+    name: Cooperative Reactivation
+    statement: >
+      A reactivation event succeeds when the cooperative sum of normalised
+      channel stimuli reaches or exceeds unity, even if no single channel
+      exceeds its individual threshold.
+    formal: "Reactivation ⟺ Σⱼ (σⱼ / τⱼ) ≥ 1"
+    relation_to_E3: "Direct formalisation of axiom E3."
+
 ---
 
 # EGI — Ephemeral Generative Interface
@@ -769,7 +802,44 @@ verifies freshness through a nonce embedded in the seed.
 
 ---
 
-## 8. References
+## 8. Continuity Conditions
+
+The following conditions formalise the axioms that govern cognitive continuity
+within the EGI framework — how an assembly persists across reconstruction
+cycles despite the ephemeral nature of its interfaces.
+
+### CC-001 — Rule Stability
+
+> Cognitive continuity is preserved if and only if the regeneration rule set
+> **ℛ** remains invariant across reconstruction cycles. Drift in ℛ produces a
+> different assembly lineage and breaks continuity.
+
+**Formal:** `Continuity ⟺ ℛₜ = ℛₜ₊₁ for all t`
+
+*Direct formalisation of axiom E1.*
+
+### CC-002 — Kernel Sufficiency
+
+> A persistence kernel **𝒦** is sufficient if `ℛ(σ, 𝒦)` reproduces a
+> functionally equivalent assembly for every valid stimulus σ.
+
+**Formal:** `∀σ ∈ Σ_valid : ℛ(σ, 𝒦) ≅ A₀`
+
+*Direct formalisation of axiom E2.*
+
+### CC-003 — Cooperative Reactivation
+
+> A reactivation event succeeds when the cooperative sum of normalised channel
+> stimuli reaches or exceeds unity, even if no single channel exceeds its
+> individual threshold.
+
+**Formal:** `Reactivation ⟺ Σⱼ (σⱼ / τⱼ) ≥ 1`
+
+*Direct formalisation of axiom E3.*
+
+---
+
+## 9. References
 
 - AEROSPACEMODEL-MCC-SPEC-008 (SENSORIUM): parent specification
 - AEROSPACEMODEL-MCC-SPEC-009 (TRAUMACODEDRAMA): sibling specification
