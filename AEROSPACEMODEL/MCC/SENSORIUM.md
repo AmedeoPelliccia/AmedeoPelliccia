@@ -340,7 +340,38 @@ composition_rules:
     severity: SHOULD
 
 ##############################################################################
-# 5  Axis Ordering Convention
+# 5  Reactivation Geometries
+##############################################################################
+
+reactivation_geometries:
+  - channel: Olfactory
+    geometry: Point
+    reactivates: "context + valence"
+  - channel: Auditory
+    geometry: Path
+    reactivates: "temporal trajectory"
+  - channel: "Face / social-visual"
+    geometry: Star
+    reactivates: "relational network"
+  - channel: Tactile
+    geometry: Chain
+    reactivates: "procedural sequence"
+  - channel: Proprioceptive
+    geometry: Manifold
+    reactivates: "bodily/spatial configuration"
+  - channel: Gustatory
+    geometry: "Point + affect"
+    reactivates: "chemical state + valence"
+
+residual_trace_types:
+  - r_point
+  - r_path
+  - r_star
+  - r_chain
+  - r_manifold
+
+##############################################################################
+# 6  Axis Ordering Convention
 ##############################################################################
 
 axis_ordering:
@@ -368,7 +399,7 @@ axis_ordering:
       symbol: "𝔽"
 
 ##############################################################################
-# 6  Integration — PLUMA-GAI H.I.V. Correspondence
+# 7  Integration — PLUMA-GAI H.I.V. Correspondence
 ##############################################################################
 
 pluma_gai_hiv_correspondence:
@@ -665,7 +696,38 @@ chemical channel capacity — making it a viable carrier despite high magnitude.
 
 ---
 
-## 6. Integration with PLUMA-GAI H.I.V.
+## 6. Reactivation Geometries
+
+Each sensory channel reactivates memory through a characteristic geometric
+pattern. The geometry describes the **shape of the residual trace** — how the
+channel's information is stored and recalled.
+
+| Channel | Geometry | Reactivates |
+|---------|----------|-------------|
+| Olfactory | Point | Context + valence |
+| Auditory | Path | Temporal trajectory |
+| Face / social-visual | Star | Relational network |
+| Tactile | Chain | Procedural sequence |
+| Proprioceptive | Manifold | Bodily/spatial configuration |
+| Gustatory | Point + affect | Chemical state + valence |
+
+### 6.1 Residual Trace Types
+
+When a reactivation geometry fires, it leaves a **residual trace** — a
+persistent structural imprint in the memory encoding. The five canonical
+trace types are:
+
+| Trace type | Geometry origin | Description |
+|------------|----------------|-------------|
+| `r_point` | Point (Olfactory / Gustatory) | A discrete locus — context or chemical state snapshot |
+| `r_path` | Path (Auditory) | A directed temporal sequence — melody, speech, rhythm |
+| `r_star` | Star (Face / social-visual) | A hub-and-spoke relational graph — social connections |
+| `r_chain` | Chain (Tactile) | An ordered procedural sequence — motor memory, skill |
+| `r_manifold` | Manifold (Proprioceptive) | A continuous spatial/bodily configuration — posture, orientation |
+
+---
+
+## 7. Integration with PLUMA-GAI H.I.V.
 
 The SENSORIUM model has a direct correspondence with the H.I.V. canonical
 thread:
@@ -694,7 +756,7 @@ drives it toward or above the 310 K rehydration target.
 
 ---
 
-## 7. References
+## 8. References
 
 - AEROSPACEMODEL-MCC-SPEC-001 through SPEC-007: parent specifications (MCC series)
 - [`sensorium.yaml`](sensorium.yaml): machine-readable companion (AEROSPACEMODEL-MCC-SPEC-008)

@@ -339,7 +339,38 @@ composition_rules:
     severity: SHOULD
 
 ##############################################################################
-# 5  Axis Ordering Convention
+# 5  Reactivation Geometries
+##############################################################################
+
+reactivation_geometries:
+  - channel: Olfactory
+    geometry: Point
+    reactivates: "context + valence"
+  - channel: Auditory
+    geometry: Path
+    reactivates: "temporal trajectory"
+  - channel: "Face / social-visual"
+    geometry: Star
+    reactivates: "relational network"
+  - channel: Tactile
+    geometry: Chain
+    reactivates: "procedural sequence"
+  - channel: Proprioceptive
+    geometry: Manifold
+    reactivates: "bodily/spatial configuration"
+  - channel: Gustatory
+    geometry: "Point + affect"
+    reactivates: "chemical state + valence"
+
+residual_trace_types:
+  - r_point
+  - r_path
+  - r_star
+  - r_chain
+  - r_manifold
+
+##############################################################################
+# 6  Axis Ordering Convention
 ##############################################################################
 
 axis_ordering:
@@ -367,7 +398,7 @@ axis_ordering:
       symbol: "𝔽"
 
 ##############################################################################
-# 6  Integration — PLUMA-GAI H.I.V. Correspondence
+# 7  Integration — PLUMA-GAI H.I.V. Correspondence
 ##############################################################################
 
 pluma_gai_hiv_correspondence:
