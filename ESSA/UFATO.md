@@ -56,7 +56,7 @@ ESSA, including but not limited to:
 | Conventional Aircraft | ATA 100 / iSpec 2200 chapters, AMM, IPC, WDM |
 | Hydrogen Systems (LH₂) | Cryogenic storage, venting, refuelling procedures |
 | PEM / SOFC Fuel Cells | Stack maintenance, MEA replacement, coolant loops |
-| High-Voltage Architecttic | HV bus isolation, arc-flash safety, battery management |
+| High-Voltage Architecture | HV bus isolation, arc-flash safety, battery management |
 | Advanced Sensing & Avionics | LiDAR calibration, sensor fusion validation |
 | AI-Assisted Systems | Model cards, decision-boundary documentation, XAI audit records |
 | Autonomous / UAS | Remote-pilot procedures, detect-and-avoid calibration |
