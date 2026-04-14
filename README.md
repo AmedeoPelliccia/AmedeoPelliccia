@@ -457,8 +457,8 @@ See: [STD-PATH-MTL-001 §3.1b — Contribution Governance](https://github.com/Am
 ---
 
 <p align="center">
-  <em>Madrid, Spain</em><br>
-  <em>IDEALE-ESG.eu  
+  <em>Naples, Italy</em><br>
+  <em>IDEALE-ESG.eu</em>
 </p>
 
 <p align="center">
