@@ -562,7 +562,7 @@ revision_history:
 |----------|-------|
 | **Document ID** | ESSA-DOC-TDISA-001 |
 | **Version** | v0.5-draft |
-| **Status** | ![Status: Draft](https://img.shields.io/badge/Status-Draft-yellow?style=flat-square) Entity Proposal |
+| **Status** | ![Status: Draft](https://img.shields.io/badge/Status-Draft-yellow?style=flat-square) — Entity Proposal |
 | **Parent** | ESSA-CONST-001 ([ESSA-AGENCY-CONSTITUTION.md](ESSA-AGENCY-CONSTITUTION.md)) |
 | **Companion** | [`td-isa.yaml`](td-isa.yaml) |
 | **Related** | [`UFATO.md`](UFATO.md) · [`SAFETY-FIRST.md`](SAFETY-FIRST.md) · [`CCTLS.md`](CCTLS.md) · [`IPSN.md`](IPSN.md) |
@@ -1045,12 +1045,13 @@ illustration semantics, and safety cue presentation.
 <summary>🎨 Safety severity hierarchy (click to expand)</summary>
 
 ```mermaid
-block-beta
-    columns 1
-    D["🔴 DANGER — Immediate risk of death or serious injury"]:1
-    W["🟠 WARNING — Potential risk of death or serious injury"]:1
-    C["🟡 CAUTION — Potential risk of minor injury or equipment damage"]:1
-    N["🔵 NOTE — Important operational information"]:1
+graph TD
+    D["🔴 <b>DANGER</b> — Immediate risk of death or serious injury"]
+    W["🟠 <b>WARNING</b> — Potential risk of death or serious injury"]
+    C["🟡 <b>CAUTION</b> — Potential risk of minor injury or equipment damage"]
+    N["🔵 <b>NOTE</b> — Important operational information"]
+
+    D --> W --> C --> N
 
     style D fill:#b71c1c,color:#ffffff,stroke:#d32f2f,stroke-width:3px
     style W fill:#e65100,color:#ffffff,stroke:#ef6c00,stroke-width:2px
@@ -1301,25 +1302,20 @@ graph LR
 ### 11.2 Current Maturity Assessment
 
 ```mermaid
-gantt
-    title TD-ISA Workstream Maturity Status
-    dateFormat X
-    axisFormat %s
+graph LR
+    subgraph STATUS ["Current Workstream Maturity"]
+        WS1_S["📝 WS-1<br/>Authoring Integrity<br/><b>M1</b>"]
+        WS2_S["🎨 WS-2<br/>Representation Stds<br/><b>M1</b>"]
+        WS3_S["📱 WS-3<br/>Digital Readability<br/><b>M1</b>"]
+        WS4_S["🔧 WS-4<br/>Technology Profiles<br/><b>M1</b>"]
+        WS5_S["🤖 WS-5<br/>Automation Enablement<br/><b>M0</b>"]
+    end
 
-    section WS-1 Authoring Integrity
-    M1 — In Development :active, ws1, 0, 2
-
-    section WS-2 Representation Standards
-    M1 — In Development :active, ws2, 0, 2
-
-    section WS-3 Digital Readability
-    M1 — In Development :active, ws3, 0, 2
-
-    section WS-4 Technology-Specific Profiles
-    M1 — In Development :active, ws4, 0, 2
-
-    section WS-5 Automation Enablement
-    M0 — Proposed :ws5, 0, 1
+    style WS1_S fill:#fff9c4,stroke:#f9a825,color:#f57f17,stroke-width:2px
+    style WS2_S fill:#fff9c4,stroke:#f9a825,color:#f57f17,stroke-width:2px
+    style WS3_S fill:#fff9c4,stroke:#f9a825,color:#f57f17,stroke-width:2px
+    style WS4_S fill:#fff9c4,stroke:#f9a825,color:#f57f17,stroke-width:2px
+    style WS5_S fill:#eceff1,stroke:#90a4ae,color:#37474f,stroke-width:2px
 ```
 
 | Workstream | Level | Status |
