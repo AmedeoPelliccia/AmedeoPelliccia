@@ -1,15 +1,29 @@
 ---
-# ─────────────────────────────────────────────
-# Dual-Use Risk Analysis, Export Control & Data Protection
-# ─────────────────────────────────────────────
-# Machine-readable companion: dual-use-risk-analysis.yaml
+# ═══════════════════════════════════════════════
+# Front Matter 1 — Dual-Use Risk Analysis & Export Control
+# ═══════════════════════════════════════════════
+# Machine-readable companion: dual-use-risk-analysis.yaml (Document 1)
 # Programme: AI-BOOST — GA 101135737 (EuroHPC JU)
 # IDEALE Pillar: D — Defense (dual-use awareness & export control)
 # Author: Amedeo Pelliccia
-# Related: DEL-03 §5.5, §6.1; README.md IDEALE-D pillar
+# Related: DEL-03 §5.5; README.md IDEALE-D pillar
 
 schema_version: "1.0.0"
 document_type: dual_use_risk_analysis
+last_updated: "2026-04-14T00:00:00Z"
+---
+
+---
+# ═══════════════════════════════════════════════
+# Front Matter 2 — Data Protection / GDPR Compliance
+# ═══════════════════════════════════════════════
+# Machine-readable companion: dual-use-risk-analysis.yaml (Document 2)
+# Programme: AI-BOOST — GA 101135737 (EuroHPC JU)
+# Author: Amedeo Pelliccia
+# Related: DEL-03 §6.1; README.md IDEALE-D pillar
+
+schema_version: "1.0.0"
+document_type: data_protection
 last_updated: "2026-04-14T00:00:00Z"
 ---
 
@@ -17,7 +31,7 @@ last_updated: "2026-04-14T00:00:00Z"
 
 > **Programme:** AI-BOOST — GA 101135737 (EuroHPC JU)
 > **IDEALE Pillar:** D — Defense (dual-use awareness & export control)
-> **Machine-readable companion:** [`dual-use-risk-analysis.yaml`](dual-use-risk-analysis.yaml)
+> **Machine-readable companion:** [`dual-use-risk-analysis.yaml`](dual-use-risk-analysis.yaml) (two YAML documents)
 > **Related deliverables:** [DEL-03 Data Management Plan](DEL-03-data-management-plan.md) §5.5 Export Control, §6.1 Personal Data (GDPR)
 
 ---
@@ -25,6 +39,10 @@ last_updated: "2026-04-14T00:00:00Z"
 ## 1. Purpose
 
 This document provides the AI-BOOST project's assessment of dual-use risks, export control obligations, and data protection compliance. It complements the Data Management Plan (DEL-03) and aligns with the **IDEALE-D** pillar's requirement for dual-use awareness, export control screening, and secure-by-design documentation.
+
+Each concern area carries its own front matter and a corresponding YAML document:
+- **Front Matter 1 / YAML Document 1:** `dual_use_risk_analysis` — risk register (§2) and export control (§3)
+- **Front Matter 2 / YAML Document 2:** `data_protection` — GDPR compliance (§4)
 
 **Regulatory basis:**
 - EU Dual-Use Regulation (EU) 2021/821
