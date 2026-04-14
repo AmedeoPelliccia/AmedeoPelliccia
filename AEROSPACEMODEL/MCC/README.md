@@ -30,6 +30,7 @@ dimensions. Intensity is the universal steganographic channel.
 | AEROSPACEMODEL-MCC-SPEC-007 | MUSIC-MCC — Audio Composition Layer | *planned* | planned |
 | **AEROSPACEMODEL-MCC-SPEC-008** | **SENSORIUM — Multi-Sensory Composition** | [`SENSORIUM.md`](SENSORIUM.md) · [`sensorium.yaml`](sensorium.yaml) | **draft** |
 | **AEROSPACEMODEL-MCC-SPEC-009** | **TRAUMACODEDRAMA — Dramatic-Arc Steganographic Protocol** | [`TRAUMACODEDRAMA.md`](TRAUMACODEDRAMA.md) · [`traumacodedrama.yaml`](traumacodedrama.yaml) | **draft** |
+| **AEROSPACEMODEL-MCC-SPEC-010** | **Ephemeral Generative Interface — Transient Cognitive Structures** | [`ephemeral-interface.yaml`](ephemeral-interface.yaml) | **draft** |
 
 ---
 
