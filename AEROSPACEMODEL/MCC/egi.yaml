@@ -1,0 +1,439 @@
+##############################################################################
+# egi.yaml
+# EGI — Ephemeral Generative Interface
+# AEROSPACEMODEL MCC Specification Series — SPEC-010
+##############################################################################
+
+document_id: AEROSPACEMODEL-MCC-SPEC-010
+document_type: ephemeral_generative_interface_specification
+title: "EGI — Ephemeral Generative Interface"
+version: "0.1.0"
+schema_version: "1.0.0"
+status: draft
+parent: AEROSPACEMODEL-MCC-SPEC-008
+related_documents:
+  - id: AEROSPACEMODEL-MCC-SPEC-008
+    file: "AEROSPACEMODEL/MCC/SENSORIUM.md"
+    relationship: parent_sensory_layer
+  - id: AEROSPACEMODEL-MCC-SPEC-009
+    file: "AEROSPACEMODEL/MCC/TRAUMACODEDRAMA.md"
+    relationship: sibling_specialisation
+last_updated: "2026-04-14T00:00:00Z"
+
+##############################################################################
+# 0  Core Principle
+##############################################################################
+
+core_principle:
+  statement: "𝒢 ∩ 𝒫 = ∅  ∧  ∂𝒢/∂t → 0 as t → t_expire"
+  description: >
+    Generative surface and persistent trace occupy disjoint domains.
+    An ephemeral generative interface produces emotive vectors ε that
+    exist only during the rendering window and leave no recoverable
+    artefact after expiry. The generative process is forward-only:
+    past sessions cannot be reconstructed from present state.
+  axiom: >
+    "What is generated is experienced.
+    What has expired is forgotten.
+    What is forgotten cannot be extracted."
+
+##############################################################################
+# 1  Definitions
+##############################################################################
+
+definitions:
+
+  - definition: 38
+    name: Ephemeral Session
+    symbol: "𝒮_eph"
+    formula: "𝒮_eph = (sid, k_eph, ε₀, t_start, t_expire, Γ)"
+    components:
+      sid: "Session identifier — unique, non-reusable"
+      k_eph: "Ephemeral key — derived per-session, destroyed at t_expire"
+      epsilon_0: "Initial emotive vector (seed state from SENSORIUM)"
+      t_start: "Session start timestamp"
+      t_expire: "Session expiry timestamp; t_expire − t_start = TTL"
+      gamma: "Γ — generative function producing the emotive sequence"
+    description: >
+      A bounded rendering context that generates a sequence of emotive
+      vectors from an initial state and an ephemeral key. All session
+      state is destroyed at t_expire.
+
+  - definition: 39
+    name: Generative Function
+    symbol: "Γ"
+    formula: "εᵢ = Γ(k_eph, εᵢ₋₁, i)"
+    description: >
+      A deterministic function that produces the next emotive vector in
+      the session sequence given the ephemeral key, the previous state,
+      and the step index. Γ is parameterised by k_eph such that
+      different keys yield perceptually distinct but structurally valid
+      emotive sequences. Γ MUST preserve SENSORIUM domain constraints
+      (κⱼ ∈ {0, …, 99} for all channels).
+    properties:
+      deterministic: true
+      domain_preserving: true
+      key_sensitive: true
+
+  - definition: 40
+    name: Rendering Window
+    symbol: "W"
+    formula: "W = [t_start, t_expire)"
+    description: >
+      The half-open time interval during which the ephemeral session is
+      active and emotive vectors may be generated and consumed. Outside
+      W, the session state is undefined (destroyed).
+
+  - definition: 41
+    name: Ephemeral Key
+    symbol: "k_eph"
+    derivation: "k_eph = KDF(k_master, sid, context)"
+    kdf: "HKDF-SHA3-256"
+    description: >
+      A session-scoped key derived from the master key, the session ID,
+      and optional context (e.g. channel selection, TTL). k_eph is held
+      only in volatile memory and is zeroised at t_expire.
+    security_properties:
+      forward_secrecy: >
+        Compromise of k_master after session expiry does NOT reveal
+        past k_eph values if sid is not retained (and sid retention is
+        prohibited by Rule E-003).
+      key_isolation: >
+        Each session's k_eph is independent; compromise of one session
+        does not affect any other session.
+
+##############################################################################
+# 2  Session Lifecycle
+##############################################################################
+
+session_lifecycle:
+
+  phases:
+    - phase: 1
+      name: Initiation
+      description: >
+        Derive k_eph from k_master and a fresh sid. Select ε₀ from the
+        SENSORIUM canonical catalogue or from a TRAUMACODEDRAMA Protasis
+        state. Set TTL. Instantiate Γ with k_eph.
+      inputs:
+        - k_master
+        - sid (fresh)
+        - epsilon_0 (from SENSORIUM)
+        - ttl (time-to-live)
+      outputs:
+        - session: "𝒮_eph"
+
+    - phase: 2
+      name: Generation
+      description: >
+        Iteratively produce emotive vectors εᵢ = Γ(k_eph, εᵢ₋₁, i)
+        for each rendering step i within the window W. Each εᵢ is
+        delivered to the consuming interface and is NOT buffered beyond
+        a single-step look-back (εᵢ₋₁) required for the next
+        generation step.
+      constraints:
+        - "Only εᵢ₋₁ is held in memory; no full-sequence buffering"
+        - "Each εᵢ MUST satisfy SENSORIUM domain constraints"
+        - "If a TRAUMACODEDRAMA arc is active, Δεᵢ magnitudes MUST comply with act constraints"
+
+    - phase: 3
+      name: Expiry
+      description: >
+        At t_expire (or on explicit close), the session terminates:
+        k_eph is zeroised, εᵢ₋₁ is cleared, Γ state is destroyed,
+        and sid is discarded. No session artefact persists.
+      actions:
+        - "Zeroise k_eph (overwrite with zeros)"
+        - "Clear εᵢ₋₁ from volatile memory"
+        - "Destroy Γ internal state"
+        - "Discard sid (MUST NOT be logged or retained)"
+        - "Emit session_closed signal to consuming interface"
+
+  ttl_constraints:
+    min_ttl_seconds: 1
+    max_ttl_seconds: 86400
+    default_ttl_seconds: 300
+    description: >
+      Sessions MUST have a finite TTL. The default is 300 seconds
+      (5 minutes). The maximum permitted TTL is 86400 seconds (24 hours).
+      TTL = 0 is invalid; TTL = ∞ is prohibited.
+
+##############################################################################
+# 3  Generative Rendering Protocol
+##############################################################################
+
+generative_rendering:
+
+  description: >
+    The rendering protocol defines how an EGI session produces and
+    delivers emotive vectors to a consuming interface (display, haptic
+    device, audio renderer, olfactory diffuser, etc.).
+
+  steps:
+    - step: 1
+      name: Seed
+      description: >
+        Consumer requests a session with desired ε₀ and TTL.
+        The EGI layer derives k_eph and instantiates Γ.
+
+    - step: 2
+      name: Stream
+      description: >
+        At each rendering tick (frame, sample, pulse), the EGI layer
+        computes εᵢ = Γ(k_eph, εᵢ₋₁, i) and emits it to the
+        consumer. The consumer renders the emotive vector on its
+        output channels.
+      tick_rate:
+        description: >
+          The rendering tick rate depends on the dominant output channel.
+          Fast channels (auditory, haptic, optic) may tick at 30–120 Hz.
+          Slow channels (olfactory, gustatory) tick at 0.1–1 Hz.
+        examples:
+          - channel: Auditory
+            tick_hz: 60
+          - channel: Haptic
+            tick_hz: 60
+          - channel: Optic
+            tick_hz: 60
+          - channel: Olfactory
+            tick_hz: 0.5
+          - channel: Gustatory
+            tick_hz: 0.5
+          - channel: Proprioceptive
+            tick_hz: 30
+
+    - step: 3
+      name: Dissolve
+      description: >
+        When t reaches t_expire, the EGI layer generates a final
+        dissolution vector ε_dissolve that smoothly decays all channels
+        toward zero over a configurable fade window (default: 10% of
+        TTL, maximum 30 seconds). This prevents abrupt perceptual
+        discontinuity at session end.
+      fade_formula: "ε_dissolve(t) = εᵢ × max(0, (t_expire − t) / fade_duration)"
+      fade_duration_default_percent: 10
+      fade_duration_max_seconds: 30
+
+    - step: 4
+      name: Destroy
+      description: >
+        After fade completes, session state is destroyed per the
+        Expiry phase (§2, Phase 3). The consuming interface receives
+        a session_closed signal and MUST NOT attempt further reads.
+
+##############################################################################
+# 4  Interface Contract
+##############################################################################
+
+interface_contract:
+
+  description: >
+    The EGI interface contract defines the API surface between the
+    generative layer (EGI) and consuming systems.
+
+  operations:
+    - operation: open_session
+      inputs:
+        - name: epsilon_0
+          type: "EmotiveVector"
+          description: "Initial emotive vector from SENSORIUM catalogue"
+        - name: ttl
+          type: "Duration"
+          description: "Session time-to-live"
+        - name: channels
+          type: "Set<Channel>"
+          description: "Active SENSORIUM channels for this session"
+          default: "{𝔸, ℍ, 𝕆, 𝔽, 𝔾, ℙ}"
+        - name: context
+          type: "bytes"
+          optional: true
+          description: "Optional context for key derivation"
+      outputs:
+        - name: session_handle
+          type: "SessionHandle"
+          description: "Opaque handle for the active session"
+      errors:
+        - "INVALID_TTL: TTL out of range"
+        - "INVALID_VECTOR: ε₀ violates SENSORIUM domain constraints"
+        - "KEY_DERIVATION_FAILURE: KDF failed"
+
+    - operation: next_vector
+      inputs:
+        - name: session_handle
+          type: "SessionHandle"
+      outputs:
+        - name: epsilon_i
+          type: "EmotiveVector"
+          description: "The next emotive vector in the session sequence"
+        - name: step
+          type: "uint64"
+          description: "Current step index i"
+        - name: remaining_ttl
+          type: "Duration"
+          description: "Time remaining before session expiry"
+      errors:
+        - "SESSION_EXPIRED: Session has reached t_expire"
+        - "SESSION_CLOSED: Session was explicitly closed"
+
+    - operation: close_session
+      inputs:
+        - name: session_handle
+          type: "SessionHandle"
+        - name: immediate
+          type: "bool"
+          default: false
+          description: "If true, skip fade and destroy immediately"
+      outputs:
+        - name: acknowledged
+          type: "bool"
+      errors:
+        - "SESSION_NOT_FOUND: Handle does not reference an active session"
+
+##############################################################################
+# 5  Encoding Rules
+##############################################################################
+
+encoding_rules:
+
+  - id: E-001
+    name: Ephemeral Isolation
+    statement: >
+      Each EGI session MUST use a unique ephemeral key k_eph derived
+      from a fresh session identifier sid. Reuse of sid or k_eph
+      across sessions is a protocol violation.
+    severity: MUST
+
+  - id: E-002
+    name: Forward Destruction
+    statement: >
+      At session expiry (t_expire) or explicit close, ALL session
+      state (k_eph, εᵢ₋₁, Γ internal state) MUST be destroyed.
+      Destruction means overwriting with zeros, not merely freeing
+      memory. No session artefact may persist beyond t_expire.
+    severity: MUST
+
+  - id: E-003
+    name: Session ID Non-Retention
+    statement: >
+      The session identifier sid MUST NOT be logged, stored, or
+      transmitted after session creation. sid exists only to derive
+      k_eph and is discarded immediately after derivation.
+    severity: MUST
+
+  - id: E-004
+    name: Single-Step Look-Back
+    statement: >
+      During the Generation phase, only the immediately preceding
+      emotive vector εᵢ₋₁ MAY be held in volatile memory. Full-
+      sequence buffering is prohibited. This ensures that at any
+      point during the session, only two vectors (εᵢ₋₁ and εᵢ)
+      are simultaneously recoverable.
+    severity: MUST
+
+  - id: E-005
+    name: Domain Preservation
+    statement: >
+      Every emotive vector εᵢ produced by Γ MUST satisfy SENSORIUM
+      domain constraints: κⱼ ∈ {0, …, 99} for all channels j.
+      The generative function MUST clamp or reject out-of-domain
+      outputs before delivery.
+    severity: MUST
+
+  - id: E-006
+    name: Fade Continuity
+    statement: >
+      The dissolution fade (§3, Step 3) MUST produce a perceptually
+      continuous decay. The maximum per-tick change during fade MUST
+      NOT exceed the SENSORIUM magnitude tolerance (±3% of ‖ε‖ per
+      tick). Abrupt channel zeroing is prohibited.
+    severity: MUST
+
+  - id: E-007
+    name: TTL Finitude
+    statement: >
+      Every EGI session MUST have a finite, non-zero TTL. Infinite
+      sessions are prohibited. The maximum TTL is 86400 seconds
+      (24 hours). Implementations SHOULD default to 300 seconds.
+    severity: MUST
+
+##############################################################################
+# 6  Security Properties
+##############################################################################
+
+security_properties:
+
+  forward_secrecy:
+    description: >
+      Compromise of k_master after a session has expired and sid has
+      been discarded does NOT reveal the session's k_eph or any
+      emotive vectors generated during the session.
+    mechanism: >
+      k_eph = HKDF(k_master, sid, context). Without sid (which is
+      destroyed at session creation per E-003), k_eph cannot be
+      re-derived even with k_master.
+
+  ephemeral_integrity:
+    description: >
+      During an active session, the emotive sequence is deterministic
+      and verifiable: a second instance with the same (k_eph, ε₀, i)
+      produces the identical εᵢ. After expiry, this verification is
+      no longer possible (k_eph is destroyed).
+    implication: >
+      Integrity is ephemeral by design. Post-session verification
+      requires a witness commitment (hash of the sequence) captured
+      during the session by an external observer.
+
+  anti_replay:
+    description: >
+      Session IDs are unique and non-reusable. Replaying a sid to
+      re-derive k_eph is detectable because sid is discarded at
+      derivation time (E-003) — any attempt to re-present a sid
+      implies an illegitimate copy.
+    mechanism: "sid uniqueness + immediate destruction"
+
+  no_persistence_guarantee:
+    description: >
+      EGI provides a best-effort guarantee that session state does
+      not persist beyond t_expire. Implementations MUST use secure
+      memory erasure. The specification does NOT guarantee protection
+      against hardware-level memory forensics (cold-boot attacks,
+      DRAM remanence) — these are out of scope.
+
+##############################################################################
+# 7  Integration with SENSORIUM and TRAUMACODEDRAMA
+##############################################################################
+
+sensorium_integration:
+  description: >
+    EGI consumes SENSORIUM emotive vectors as its atomic unit.
+    Every εᵢ generated by an EGI session is a valid SENSORIUM vector
+    (Definition 35) and may be used as input to any SENSORIUM-aware
+    system.
+  relationship: >
+    SENSORIUM defines the vector space. EGI defines the ephemeral
+    generative traversal of that space.
+  layers:
+    - layer: SENSORIUM (SPEC-008)
+      role: "Defines emotive vector space and domain constraints"
+    - layer: EGI (SPEC-010)
+      role: "Generates ephemeral traversals through the emotive vector space"
+
+traumacodedrama_integration:
+  description: >
+    An EGI session MAY generate emotive sequences that conform to a
+    TRAUMACODEDRAMA dramatic arc. When a TRAUMACODEDRAMA arc is
+    active within an EGI session, the generative function Γ MUST
+    respect the act-level transition constraints (Protasis: ‖Δε‖ ≤ 30;
+    Epitasis: unconstrained; Katharsis: convergent).
+  combined_mode:
+    name: "Ephemeral Dramatic Arc"
+    description: >
+      A three-layer composition:
+      - Layer 1 (SENSORIUM): payload in channel intensities within each state
+      - Layer 2 (TRAUMACODEDRAMA): payload in transition magnitudes across states
+      - Layer 3 (EGI): ephemeral session key ensures forward secrecy — the
+        entire dramatic arc is non-reconstructible after expiry
+    layers:
+      - SENSORIUM: "Intra-state payload"
+      - TRAUMACODEDRAMA: "Inter-state payload"
+      - EGI: "Ephemeral session envelope — forward secrecy wrapper"

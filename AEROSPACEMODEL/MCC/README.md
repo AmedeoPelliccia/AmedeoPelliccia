@@ -30,6 +30,7 @@ dimensions. Intensity is the universal steganographic channel.
 | AEROSPACEMODEL-MCC-SPEC-007 | MUSIC-MCC — Audio Composition Layer | *planned* | planned |
 | **AEROSPACEMODEL-MCC-SPEC-008** | **SENSORIUM — Multi-Sensory Composition** | [`SENSORIUM.md`](SENSORIUM.md) · [`sensorium.yaml`](sensorium.yaml) | **draft** |
 | **AEROSPACEMODEL-MCC-SPEC-009** | **TRAUMACODEDRAMA — Dramatic-Arc Steganographic Protocol** | [`TRAUMACODEDRAMA.md`](TRAUMACODEDRAMA.md) · [`traumacodedrama.yaml`](traumacodedrama.yaml) | **draft** |
+| **AEROSPACEMODEL-MCC-SPEC-010** | **EGI — Ephemeral Generative Interface** | [`EGI.md`](EGI.md) · [`egi.yaml`](egi.yaml) | **draft** |
 
 ---
 
@@ -97,3 +98,25 @@ Three canonical arcs: **Perdita** (Loss), **Rinascita** (Rebirth), **Metamorfosi
 TRAUMACODEDRAMA and SENSORIUM are orthogonal: a dramatic arc can embed
 intra-state SENSORIUM payloads inside each `εᵢ` simultaneously, achieving
 fully independent two-layer encoding.
+
+---
+
+## EGI — Ephemeral Generative Interface (SPEC-010)
+
+EGI adds a temporal dimension: emotive vectors are generated **ephemerally** —
+they exist only during the rendering window and leave no recoverable artefact
+after expiry.
+
+**Definition 38 (Ephemeral Session):** `𝒮_eph = (sid, k_eph, ε₀, t_start, t_expire, Γ)` —
+a bounded rendering context where `k_eph` is an ephemeral key destroyed at
+session expiry.
+
+**Definition 39 (Generative Function):** `εᵢ = Γ(k_eph, εᵢ₋₁, i)` — deterministic,
+key-sensitive, domain-preserving generation of emotive vectors.
+
+Session lifecycle: **Initiation** (derive `k_eph`) → **Generation** (stream `εᵢ`)
+→ **Expiry** (zeroise all state).
+
+When combined with SENSORIUM and TRAUMACODEDRAMA, EGI enables three-layer
+composition: intra-state payload (SENSORIUM), inter-state payload
+(TRAUMACODEDRAMA), and ephemeral session envelope (EGI — forward secrecy).
