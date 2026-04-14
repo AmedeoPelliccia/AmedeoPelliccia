@@ -18,56 +18,61 @@ programme:
   grant_agreement: "GA 101135737"
   funding_body: EuroHPC JU
   ideale_pillar: "D — Defense (dual-use awareness & export control)"
+  reference: "dual-use-risk-analysis.md#1-purpose"
 
 # ─────────────────────────────────────────────
-# Risk Register
+# Risk Register  →  dual-use-risk-analysis.md §2
 # ─────────────────────────────────────────────
 risk_analysis:
-  - id: DU-01
-    category: Military application of simulation acceleration
-    description: >
-      AI surrogate models could accelerate weapons system design.
-    likelihood: low
-    impact: high
-    mitigation: >
-      Export-control screening of consortium partners; restricted model
-      variants for defense-adjacent use cases.
+  _reference: "dual-use-risk-analysis.md#2-dual-use-risk-register"
+  items:
+    - id: DU-01
+      category: Military application of simulation acceleration
+      description: >
+        AI surrogate models could accelerate weapons system design.
+      likelihood: low
+      impact: high
+      mitigation: >
+        Export-control screening of consortium partners; restricted model
+        variants for defense-adjacent use cases.
 
-  - id: DU-02
-    category: Adversarial misuse of open-weights model
-    description: >
-      Open-weights release could enable generation of harmful content.
-    likelihood: medium
-    impact: medium
-    mitigation: >
-      Red-teaming prior to release (WP4); safety fine-tuning;
-      responsible release protocol.
+    - id: DU-02
+      category: Adversarial misuse of open-weights model
+      description: >
+        Open-weights release could enable generation of harmful content.
+      likelihood: medium
+      impact: medium
+      mitigation: >
+        Red-teaming prior to release (WP4); safety fine-tuning;
+        responsible release protocol.
 
-  - id: DU-03
-    category: Surveillance capability
-    description: >
-      Multilingual NLP could be repurposed for mass surveillance.
-    likelihood: low
-    impact: high
-    mitigation: >
-      No biometric processing capability; data processing agreements
-      prohibit surveillance use.
+    - id: DU-03
+      category: Surveillance capability
+      description: >
+        Multilingual NLP could be repurposed for mass surveillance.
+      likelihood: low
+      impact: high
+      mitigation: >
+        No biometric processing capability; data processing agreements
+        prohibit surveillance use.
 
 # ─────────────────────────────────────────────
-# Export Control Requirements
+# Export Control Requirements  →  dual-use-risk-analysis.md §3
 # ─────────────────────────────────────────────
 export_control:
-  - requirement: "EU Dual-Use Regulation (EU) 2021/821 screening"
-    status: planned
-    evidence: "Screen consortium partners against EU dual-use lists and document screening results"
+  _reference: "dual-use-risk-analysis.md#3-export-control-requirements"
+  items:
+    - requirement: "EU Dual-Use Regulation (EU) 2021/821 screening"
+      status: planned
+      evidence: "Screen consortium partners against EU dual-use lists and document screening results"
 
-  - requirement: "US EAR/ITAR assessment"
-    status: planned
-    evidence: "Assess whether any US-origin controlled technology is used in the core pipeline and record the determination"
+    - requirement: "US EAR/ITAR assessment"
+      status: planned
+      evidence: "Assess whether any US-origin controlled technology is used in the core pipeline and record the determination"
 
-  - requirement: "End-use monitoring"
-    status: planned
-    evidence: "Define responsible-use license terms and end-use monitoring controls for model distribution"
+    - requirement: "End-use monitoring"
+      status: planned
+      evidence: "Define responsible-use license terms and end-use monitoring controls for model distribution"
 
 # ═══════════════════════════════════════════════
 # Document 2 — Data Protection / GDPR Compliance
@@ -86,6 +91,7 @@ programme:
   grant_agreement: "GA 101135737"
 
 gdpr_compliance:
+  _reference: "dual-use-risk-analysis.md#4-data-protection--gdpr-compliance"
   personal_data_processed: false
   regulation_reference: "Regulation (EU) 2016/679"
   data_protection_officer:
@@ -106,30 +112,32 @@ gdpr_compliance:
       (EuroHPC sites); no third-country transfers.
 
 # ─────────────────────────────────────────────
-# Endpoints
+# Endpoints  →  dual-use-risk-analysis.md §4.3
 # ─────────────────────────────────────────────
   endpoints:
-    - id: EP-01
-      type: data_processing
-      name: "EuroHPC Primary Processing Node"
-      url: "https://eurohpc.ai-boost.eu/processing"
-      location: "EU-sovereign EuroHPC site"
-      data_classification: "Non-personal / synthetic simulation data"
-      access_control: "Role-based; consortium partners only"
+    _reference: "dual-use-risk-analysis.md#43-endpoints"
+    items:
+      - id: EP-01
+        type: data_processing
+        name: "EuroHPC Primary Processing Node"
+        url: "https://eurohpc.ai-boost.eu/processing"
+        location: "EU-sovereign EuroHPC site"
+        data_classification: "Non-personal / synthetic simulation data"
+        access_control: "Role-based; consortium partners only"
 
-    - id: EP-02
-      type: data_subject_rights
-      name: "Data Subject Access Request (DSAR) Portal"
-      url: "https://ai-boost.eu/dsar"
-      description: >
-        Endpoint for data subjects to exercise rights under
-        GDPR Articles 15–22 (access, rectification, erasure, portability).
-      sla: "Response within 30 days per GDPR Article 12(3)"
+      - id: EP-02
+        type: data_subject_rights
+        name: "Data Subject Access Request (DSAR) Portal"
+        url: "https://ai-boost.eu/dsar"
+        description: >
+          Endpoint for data subjects to exercise rights under
+          GDPR Articles 15–22 (access, rectification, erasure, portability).
+        sla: "Response within 30 days per GDPR Article 12(3)"
 
-    - id: EP-03
-      type: dpo_contact
-      name: "Data Protection Officer Contact"
-      url: "mailto:dpo@partner.eu"
-      description: >
-        Primary contact point for data protection inquiries,
-        breach notifications, and DPIA consultations.
+      - id: EP-03
+        type: dpo_contact
+        name: "Data Protection Officer Contact"
+        url: "mailto:dpo@partner.eu"
+        description: >
+          Primary contact point for data protection inquiries,
+          breach notifications, and DPIA consultations.

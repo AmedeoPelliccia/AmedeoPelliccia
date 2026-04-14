@@ -28,6 +28,24 @@ concern_areas:
 
 ---
 
+## Table of Contents
+
+- [1. Purpose](#1-purpose)
+- [2. Dual-Use Risk Register](#2-dual-use-risk-register)
+  - [2.1 Risk Matrix](#21-risk-matrix)
+  - [2.2 Residual Risk Assessment](#22-residual-risk-assessment)
+- [3. Export Control Requirements](#3-export-control-requirements)
+  - [3.1 Screening Process](#31-screening-process)
+  - [3.2 Compliance Gates](#32-compliance-gates)
+- [4. Data Protection — GDPR Compliance](#4-data-protection--gdpr-compliance)
+  - [4.1 Contingency](#41-contingency)
+  - [4.2 Data Sovereignty](#42-data-sovereignty)
+  - [4.3 Endpoints](#43-endpoints)
+- [5. Review Schedule](#5-review-schedule)
+- [6. References](#6-references)
+
+---
+
 ## 1. Purpose
 
 This document provides the AI-BOOST project's assessment of dual-use risks, export control obligations, and data protection compliance. It complements the Data Management Plan (DEL-03) and aligns with the **IDEALE-D** pillar's requirement for dual-use awareness, export control screening, and secure-by-design documentation.
