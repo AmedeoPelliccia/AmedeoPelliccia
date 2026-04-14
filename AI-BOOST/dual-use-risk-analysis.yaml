@@ -58,7 +58,7 @@ risk_analysis:
 # ─────────────────────────────────────────────
 export_control:
   - requirement: "EU Dual-Use Regulation (EU) 2021/821 screening"
-    status: completed
+    status: planned
     evidence: "All consortium partners screened; no listed entities"
 
   - requirement: "US EAR/ITAR assessment"
