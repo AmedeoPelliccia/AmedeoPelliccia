@@ -248,7 +248,7 @@ value_matrix:
 <p align="center">
   <strong>PELDEM</strong><br>
   <em>Pelliccia De Martino</em><br>
-  <em>Peace and Love in Democracy</em>
+  <em>Peace and Love in Democracy (P&L in DeM)</em>
 </p>
 
 <p align="center">
