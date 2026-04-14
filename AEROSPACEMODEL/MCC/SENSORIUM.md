@@ -288,7 +288,52 @@ canonical_emotions:
     steganographic_note: "Maximum capacity on fast channels (ℍ, ℙ, 𝔸); chemical channels occupied"
 
 ##############################################################################
-# 4  Steganographic Composition Rules
+# 4  Multimodal Stimulus
+##############################################################################
+
+stimulus_vector:
+  formula: "s = (s_V, s_A, s_O, s_T, s_G, s_P)"
+  description: >
+    A multimodal stimulus is a six-dimensional input vector whose components
+    represent the instantaneous intensity presented to each sensory channel.
+    The stimulus vector s is the environmental input; the emotive vector ε
+    (§2) is the perceptual response. Together they define the complete
+    stimulus→emotion mapping in SENSORIUM space.
+  channels:
+    - symbol: V
+      name: Visual
+      sensorium_channel: "𝕆 Optic"
+      description: "Luminance, contrast, and spatial structure arriving at the retina"
+    - symbol: A
+      name: Auditory
+      sensorium_channel: "𝔸 Auditory"
+      description: "Acoustic energy — amplitude, frequency content, and temporal envelope"
+    - symbol: O
+      name: Olfactory
+      sensorium_channel: "𝔽 Olfactory"
+      description: "Volatile molecular concentration reaching the olfactory epithelium"
+    - symbol: T
+      name: Tactile
+      sensorium_channel: "ℍ Haptic"
+      description: "Mechanical pressure, vibration, and thermal flux at mechanoreceptors"
+    - symbol: G
+      name: Gustatory
+      sensorium_channel: "𝔾 Gustatory"
+      description: "Chemical concentration at taste receptors (sweet, salt, sour, bitter, umami)"
+    - symbol: P
+      name: Proprioceptive
+      sensorium_channel: "ℙ Proprioceptive"
+      description: "Muscle-spindle and vestibular signals encoding body pose and acceleration"
+  domain: "s_X ∈ ℝ≥0  (non-negative real; physical intensity)"
+  note: >
+    Unlike the emotive vector ε (κᵢ ∈ {0,…,99}), stimulus components are
+    continuous and unbounded — they represent raw physical magnitudes before
+    perceptual quantisation. The mapping s → ε is a perceptual transfer
+    function that includes adaptation, thresholding, and cross-modal
+    interaction.
+
+##############################################################################
+# 5  Steganographic Composition Rules
 ##############################################################################
 
 composition_rules:
@@ -340,7 +385,7 @@ composition_rules:
     severity: SHOULD
 
 ##############################################################################
-# 5  Axis Ordering Convention
+# 6  Axis Ordering Convention
 ##############################################################################
 
 axis_ordering:
@@ -368,7 +413,7 @@ axis_ordering:
       symbol: "𝔽"
 
 ##############################################################################
-# 6  Integration — PLUMA-GAI H.I.V. Correspondence
+# 7  Integration — PLUMA-GAI H.I.V. Correspondence
 ##############################################################################
 
 pluma_gai_hiv_correspondence:
@@ -587,9 +632,40 @@ smell and taste reconstruct what the eyes can no longer see.
 
 ---
 
-## 4. Geometric Properties
+## 4. Multimodal Stimulus
 
-### 4.1 The SENSORIUM Polygon
+### Definition (Stimulus Vector)
+
+A multimodal stimulus is a six-dimensional input vector whose components
+represent the instantaneous intensity presented to each sensory channel:
+
+```
+s = (s_V, s_A, s_O, s_T, s_G, s_P)    s_X ∈ ℝ≥0
+```
+
+| Symbol | Channel | SENSORIUM axis | Description |
+|--------|---------|---------------|-------------|
+| V | Visual | 𝕆 Optic | Luminance, contrast, and spatial structure arriving at the retina |
+| A | Auditory | 𝔸 Auditory | Acoustic energy — amplitude, frequency content, and temporal envelope |
+| O | Olfactory | 𝔽 Olfactory | Volatile molecular concentration reaching the olfactory epithelium |
+| T | Tactile | ℍ Haptic | Mechanical pressure, vibration, and thermal flux at mechanoreceptors |
+| G | Gustatory | 𝔾 Gustatory | Chemical concentration at taste receptors (sweet, salt, sour, bitter, umami) |
+| P | Proprioceptive | ℙ Proprioceptive | Muscle-spindle and vestibular signals encoding body pose and acceleration |
+
+The stimulus vector **s** is the environmental input; the emotive vector **ε**
+(§2) is the perceptual response. Together they define the complete
+**stimulus → emotion** mapping in SENSORIUM space.
+
+Unlike the emotive vector `ε` (`κᵢ ∈ {0, …, 99}`), stimulus components are
+**continuous and unbounded** — they represent raw physical magnitudes before
+perceptual quantisation. The mapping `s → ε` is a perceptual transfer function
+that includes adaptation, thresholding, and cross-modal interaction.
+
+---
+
+## 5. Geometric Properties
+
+### 5.1 The SENSORIUM Polygon
 
 The radar chart of `ε = (κ_𝔸, κ_ℍ, κ_𝕆, κ_𝔽, κ_𝔾, κ_ℙ)` traces a hexagonal
 polygon in a unit space where each axis spans 0–99. The **shape** — not just
@@ -604,7 +680,7 @@ Terrore:  (90, 95, 70, 5,  5,  92)  ‖ε‖ ≈ 178   near-hexagon with chemica
 
 Same magnitude. Opposite shapes. Different emotions. The polygon IS the signature.
 
-### 4.2 Emotion Distance
+### 5.2 Emotion Distance
 
 The distance between two emotional states is the L2 norm in ℝ⁶:
 
@@ -616,7 +692,7 @@ Emotional transitions trace paths in SENSORIUM space. Smooth transitions
 (grief → melancholy → serenity) trace short geodesics. Discontinuous transitions
 (serenity → terror) cross large distances.
 
-### 4.3 Axis Ordering Convention
+### 5.3 Axis Ordering Convention
 
 The six axes are arranged symmetrically at 60° intervals:
 ```
@@ -634,7 +710,7 @@ axes (𝔸, ℍ), with optic and proprioceptive at the vertical poles.
 
 ---
 
-## 5. Steganographic Composition Rules
+## 6. Steganographic Composition Rules
 
 ### Rule S-001 — Payload Orthogonality
 The payload MUST be encoded in the intensity dimension of each channel.
@@ -665,7 +741,7 @@ chemical channel capacity — making it a viable carrier despite high magnitude.
 
 ---
 
-## 6. Integration with PLUMA-GAI H.I.V.
+## 7. Integration with PLUMA-GAI H.I.V.
 
 The SENSORIUM model has a direct correspondence with the H.I.V. canonical
 thread:
@@ -694,7 +770,7 @@ drives it toward or above the 310 K rehydration target.
 
 ---
 
-## 7. References
+## 8. References
 
 - AEROSPACEMODEL-MCC-SPEC-001 through SPEC-007: parent specifications (MCC series)
 - [`sensorium.yaml`](sensorium.yaml): machine-readable companion (AEROSPACEMODEL-MCC-SPEC-008)

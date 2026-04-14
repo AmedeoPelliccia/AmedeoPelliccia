@@ -287,7 +287,52 @@ canonical_emotions:
     steganographic_note: "Maximum capacity on fast channels (ℍ, ℙ, 𝔸); chemical channels occupied"
 
 ##############################################################################
-# 4  Steganographic Composition Rules
+# 4  Multimodal Stimulus
+##############################################################################
+
+stimulus_vector:
+  formula: "s = (s_V, s_A, s_O, s_T, s_G, s_P)"
+  description: >
+    A multimodal stimulus is a six-dimensional input vector whose components
+    represent the instantaneous intensity presented to each sensory channel.
+    The stimulus vector s is the environmental input; the emotive vector ε
+    (§2) is the perceptual response. Together they define the complete
+    stimulus→emotion mapping in SENSORIUM space.
+  channels:
+    - symbol: V
+      name: Visual
+      sensorium_channel: "𝕆 Optic"
+      description: "Luminance, contrast, and spatial structure arriving at the retina"
+    - symbol: A
+      name: Auditory
+      sensorium_channel: "𝔸 Auditory"
+      description: "Acoustic energy — amplitude, frequency content, and temporal envelope"
+    - symbol: O
+      name: Olfactory
+      sensorium_channel: "𝔽 Olfactory"
+      description: "Volatile molecular concentration reaching the olfactory epithelium"
+    - symbol: T
+      name: Tactile
+      sensorium_channel: "ℍ Haptic"
+      description: "Mechanical pressure, vibration, and thermal flux at mechanoreceptors"
+    - symbol: G
+      name: Gustatory
+      sensorium_channel: "𝔾 Gustatory"
+      description: "Chemical concentration at taste receptors (sweet, salt, sour, bitter, umami)"
+    - symbol: P
+      name: Proprioceptive
+      sensorium_channel: "ℙ Proprioceptive"
+      description: "Muscle-spindle and vestibular signals encoding body pose and acceleration"
+  domain: "s_X ∈ ℝ≥0  (non-negative real; physical intensity)"
+  note: >
+    Unlike the emotive vector ε (κᵢ ∈ {0,…,99}), stimulus components are
+    continuous and unbounded — they represent raw physical magnitudes before
+    perceptual quantisation. The mapping s → ε is a perceptual transfer
+    function that includes adaptation, thresholding, and cross-modal
+    interaction.
+
+##############################################################################
+# 5  Steganographic Composition Rules
 ##############################################################################
 
 composition_rules:
@@ -339,7 +384,7 @@ composition_rules:
     severity: SHOULD
 
 ##############################################################################
-# 5  Axis Ordering Convention
+# 6  Axis Ordering Convention
 ##############################################################################
 
 axis_ordering:
@@ -367,7 +412,7 @@ axis_ordering:
       symbol: "𝔽"
 
 ##############################################################################
-# 6  Integration — PLUMA-GAI H.I.V. Correspondence
+# 7  Integration — PLUMA-GAI H.I.V. Correspondence
 ##############################################################################
 
 pluma_gai_hiv_correspondence:
