@@ -104,3 +104,32 @@ gdpr_compliance:
     note: >
       All data processed within EU-sovereign infrastructure
       (EuroHPC sites); no third-country transfers.
+
+# ─────────────────────────────────────────────
+# Endpoints
+# ─────────────────────────────────────────────
+  endpoints:
+    - id: EP-01
+      type: data_processing
+      name: "EuroHPC Primary Processing Node"
+      url: "https://eurohpc.ai-boost.eu/processing"
+      location: "EU-sovereign EuroHPC site"
+      data_classification: "Non-personal / synthetic simulation data"
+      access_control: "Role-based; consortium partners only"
+
+    - id: EP-02
+      type: data_subject_rights
+      name: "Data Subject Access Request (DSAR) Portal"
+      url: "https://ai-boost.eu/dsar"
+      description: >
+        Endpoint for data subjects to exercise rights under
+        GDPR Articles 15–22 (access, rectification, erasure, portability).
+      sla: "Response within 30 days per GDPR Article 12(3)"
+
+    - id: EP-03
+      type: dpo_contact
+      name: "Data Protection Officer Contact"
+      url: "mailto:dpo@partner.eu"
+      description: >
+        Primary contact point for data protection inquiries,
+        breach notifications, and DPIA consultations.

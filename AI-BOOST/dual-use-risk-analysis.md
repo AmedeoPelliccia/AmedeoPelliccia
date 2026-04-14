@@ -118,6 +118,14 @@ If personally identifiable information (PII) is inadvertently discovered in any 
 
 All training data consists of anonymised or synthetic simulation outputs processed exclusively on EU-sovereign EuroHPC sites. No third-country transfers are performed, eliminating the need for Standard Contractual Clauses (SCCs) or adequacy decisions.
 
+### 4.3 Endpoints
+
+| ID | Type | Name | URL | Notes |
+|----|------|------|-----|-------|
+| **EP-01** | Data Processing | EuroHPC Primary Processing Node | `https://eurohpc.ai-boost.eu/processing` | EU-sovereign; role-based access; consortium partners only |
+| **EP-02** | Data Subject Rights | DSAR Portal | `https://ai-boost.eu/dsar` | GDPR Articles 15–22; response within 30 days |
+| **EP-03** | DPO Contact | Data Protection Officer | `mailto:dpo@partner.eu` | Inquiries, breach notifications, DPIA consultations |
+
 ---
 
 ## 5. Review Schedule
