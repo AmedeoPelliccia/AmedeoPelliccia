@@ -9,7 +9,7 @@
 document_id: ESSA-DOC-TDISA-001
 document_type: entity_proposal
 title: "TD-ISA — Technical Data Integrity, Standardization, and Automation"
-version: "0.4.0-draft"
+version: "0.5.0-draft"
 schema_version: "1.0.0"
 status: draft
 parent: ESSA-CONST-001
@@ -548,6 +548,10 @@ revision_history:
   - version: "0.4.0-draft"
     date: "2026-04-14"
     change: "Upgraded to Quintuple Win: added VP-4 'Very Necessary' dimension; reordered safety-first; added Spanish summary."
+
+  - version: "0.5.0-draft"
+    date: "2026-04-14"
+    change: "Enhanced graphic elements: replaced ASCII art with Mermaid diagrams; added new diagrams for pillars, cost model, maturity progression, and integration map."
 ---
 
 # ESSA — TD-ISA: Technical Data Integrity, Standardization, and Automation
@@ -557,8 +561,8 @@ revision_history:
 | Metadata | Value |
 |----------|-------|
 | **Document ID** | ESSA-DOC-TDISA-001 |
-| **Version** | v0.4-draft |
-| **Status** | Entity Proposal |
+| **Version** | v0.5-draft |
+| **Status** | ![Status: Draft](https://img.shields.io/badge/Status-Draft-yellow?style=flat-square) Entity Proposal |
 | **Parent** | ESSA-CONST-001 ([ESSA-AGENCY-CONSTITUTION.md](ESSA-AGENCY-CONSTITUTION.md)) |
 | **Companion** | [`td-isa.yaml`](td-isa.yaml) |
 | **Related** | [`UFATO.md`](UFATO.md) · [`SAFETY-FIRST.md`](SAFETY-FIRST.md) · [`CCTLS.md`](CCTLS.md) · [`IPSN.md`](IPSN.md) |
@@ -599,6 +603,54 @@ technical data.
 ## 2. Core Mission: Three Pillars
 
 TD-ISA is organised around three interdependent pillars:
+
+```mermaid
+graph TB
+    TDISA["🏛️ <b>TD-ISA</b><br/>Technical Data Governance"]
+    
+    PIL1["🔒 <b>PIL-1</b><br/>Technical Data Integrity"]
+    PIL2["📐 <b>PIL-2</b><br/>Standardisation"]
+    PIL3["⚙️ <b>PIL-3</b><br/>Automation"]
+
+    TDISA --> PIL1
+    TDISA --> PIL2
+    TDISA --> PIL3
+
+    PIL1 --- C1A["Consistency"]
+    PIL1 --- C1B["Traceability"]
+    PIL1 --- C1C["Accuracy"]
+    PIL1 --- C1D["Governance"]
+
+    PIL2 --- C2A["Authoring Rules"]
+    PIL2 --- C2B["Visual Conventions"]
+    PIL2 --- C2C["Safety Semantics"]
+    PIL2 --- C2D["Presentation Principles"]
+
+    PIL3 --- C3A["Machine Readability"]
+    PIL3 --- C3B["Validation Logic"]
+    PIL3 --- C3C["Content Reuse"]
+    PIL3 --- C3D["Workflow Integration"]
+
+    style TDISA fill:#1a237e,stroke:#0d47a1,color:#ffffff,stroke-width:3px
+    style PIL1 fill:#1b5e20,stroke:#2e7d32,color:#ffffff,stroke-width:2px
+    style PIL2 fill:#e65100,stroke:#ef6c00,color:#ffffff,stroke-width:2px
+    style PIL3 fill:#4a148c,stroke:#6a1b9a,color:#ffffff,stroke-width:2px
+
+    style C1A fill:#e8f5e9,stroke:#4caf50,color:#1b5e20
+    style C1B fill:#e8f5e9,stroke:#4caf50,color:#1b5e20
+    style C1C fill:#e8f5e9,stroke:#4caf50,color:#1b5e20
+    style C1D fill:#e8f5e9,stroke:#4caf50,color:#1b5e20
+
+    style C2A fill:#fff3e0,stroke:#ff9800,color:#e65100
+    style C2B fill:#fff3e0,stroke:#ff9800,color:#e65100
+    style C2C fill:#fff3e0,stroke:#ff9800,color:#e65100
+    style C2D fill:#fff3e0,stroke:#ff9800,color:#e65100
+
+    style C3A fill:#f3e5f5,stroke:#9c27b0,color:#4a148c
+    style C3B fill:#f3e5f5,stroke:#9c27b0,color:#4a148c
+    style C3C fill:#f3e5f5,stroke:#9c27b0,color:#4a148c
+    style C3D fill:#f3e5f5,stroke:#9c27b0,color:#4a148c
+```
 
 ### 2.1 Technical Data Integrity
 
@@ -711,31 +763,50 @@ TD-ISA goes further:
 
 These five dimensions are not trade-offs. They reinforce each other:
 
+```mermaid
+graph TD
+    SAFER["🛡️ <b>SAFER</b><br/>Uniform safety semantics,<br/>reduced ambiguity"]
+    ECONOMIC["💰 <b>MORE ECONOMIC</b><br/>Eliminates redundant<br/>documentary retraining"]
+    NECESSARY["🔑 <b>VERY NECESSARY</b><br/>New tech demands<br/>structured data from day 1"]
+    PRODUCTIVE["⚡ <b>MORE PRODUCTIVE</b><br/>Focus on real content,<br/>not documentary grammar"]
+    EVERYONE["🌍 <b>EVERYONE BENEFITS</b><br/>Positive-sum ecosystem<br/>for the entire value chain"]
+
+    SAFER <--> ECONOMIC
+    SAFER <--> NECESSARY
+    SAFER --> PRODUCTIVE
+    ECONOMIC --> PRODUCTIVE
+    NECESSARY --> PRODUCTIVE
+    PRODUCTIVE --> EVERYONE
+
+    style SAFER fill:#c62828,stroke:#b71c1c,color:#ffffff,stroke-width:3px
+    style ECONOMIC fill:#1565c0,stroke:#0d47a1,color:#ffffff,stroke-width:2px
+    style NECESSARY fill:#f57f17,stroke:#e65100,color:#ffffff,stroke-width:2px
+    style PRODUCTIVE fill:#2e7d32,stroke:#1b5e20,color:#ffffff,stroke-width:2px
+    style EVERYONE fill:#6a1b9a,stroke:#4a148c,color:#ffffff,stroke-width:3px
 ```
-┌──────────────────────────────────────────────────────────┐
-│               THE QUINTUPLE WIN                           │
-│                                                           │
-│                    ┌─────────┐                            │
-│                    │  SAFER  │                            │
-│                    │outcomes │                            │
-│                    └────┬────┘                            │
-│                  ╱      │      ╲                          │
-│         ┌───────┴──┐    │    ┌──┴────────┐               │
-│         │  MORE    │    │    │   VERY    │               │
-│         │ECONOMIC  │◄───┼───►│NECESSARY  │               │
-│         └────┬─────┘    │    └─────┬─────┘               │
-│              │          │          │                      │
-│              │    ┌─────▼─────┐   │                      │
-│              └───►│   MORE    │◄──┘                      │
-│                   │PRODUCTIVE │                           │
-│                   └─────┬─────┘                           │
-│                         │                                 │
-│                   ┌─────▼─────┐                           │
-│                   │ EVERYONE  │                           │
-│                   │ BENEFITS  │                           │
-│                   └───────────┘                           │
-└──────────────────────────────────────────────────────────┘
+
+<details>
+<summary>📊 Quintuple Win — reinforcement logic (click to expand)</summary>
+
+```mermaid
+graph LR
+    subgraph REINFORCEMENT ["🔄 Mutual Reinforcement Loop"]
+        direction LR
+        S["Safety ↑"] --> E["Economy ↑"]
+        E --> P["Productivity ↑"]
+        P --> N["Necessity met"]
+        N --> B["Benefits all"]
+        B --> S
+    end
+
+    style S fill:#ef5350,color:#fff,stroke:#c62828
+    style E fill:#42a5f5,color:#fff,stroke:#1565c0
+    style P fill:#66bb6a,color:#fff,stroke:#2e7d32
+    style N fill:#ffa726,color:#fff,stroke:#e65100
+    style B fill:#ab47bc,color:#fff,stroke:#6a1b9a
 ```
+
+</details>
 
 > **Standardised representation does not reduce technical depth.
 > It amplifies the value of every training hour, every maintenance action,
@@ -828,13 +899,64 @@ efficiency** across the entire aviation ecosystem.
 
 ### 6.6 Formula
 
-```
-Total Training Cost = Technical Training (necessary)
-                    + Documentary Retraining (reducible)
+```mermaid
+graph LR
+    TOTAL["💲 <b>Total Training Cost</b>"]
+    TECH["✅ Technical Training<br/><i>(necessary)</i>"]
+    DOC["❌ Documentary Retraining<br/><i>(reducible)</i>"]
+    TARGET["🎯 <b>TD-ISA Target</b><br/>Documentary Retraining → 0"]
 
-TD-ISA Target: minimise Documentary Retraining → 0
-               by maximising representational commonality.
+    TOTAL --- TECH
+    TOTAL --- DOC
+    DOC -.->|minimise via<br/>representational commonality| TARGET
+
+    style TOTAL fill:#37474f,stroke:#455a64,color:#ffffff,stroke-width:2px
+    style TECH fill:#2e7d32,stroke:#388e3c,color:#ffffff
+    style DOC fill:#c62828,stroke:#d32f2f,color:#ffffff
+    style TARGET fill:#1565c0,stroke:#1976d2,color:#ffffff,stroke-width:2px
 ```
+
+<details>
+<summary>📐 Cost amplification model (click to expand)</summary>
+
+```mermaid
+graph TD
+    subgraph COSTS ["Three Cost Levels"]
+        C1["🎓 <b>ECO-C1</b><br/>Cost of Formation<br/><i>Initial Training</i>"]
+        C2["🔀 <b>ECO-C2</b><br/>Cost of Transition<br/><i>Cross-Platform Adaptation</i>"]
+        C3["⚡ <b>ECO-C3</b><br/>Cost of Operational Friction<br/><i>In-Service Impact</i>"]
+    end
+
+    subgraph MULTIPLIERS ["Six Multipliers"]
+        M1["Mixed fleets"]
+        M2["Variants within type"]
+        M3["Multi-OEM MROs"]
+        M4["Personnel rotation"]
+        M5["Recurrent training"]
+        M6["Digital expansion"]
+    end
+
+    C1 --> C2 --> C3
+
+    M1 -->|amplifies| COSTS
+    M2 -->|amplifies| COSTS
+    M3 -->|amplifies| COSTS
+    M4 -->|amplifies| COSTS
+    M5 -->|amplifies| COSTS
+    M6 -->|amplifies| COSTS
+
+    style C1 fill:#e65100,stroke:#ef6c00,color:#ffffff
+    style C2 fill:#f57f17,stroke:#f9a825,color:#ffffff
+    style C3 fill:#c62828,stroke:#d32f2f,color:#ffffff
+    style M1 fill:#eceff1,stroke:#90a4ae,color:#37474f
+    style M2 fill:#eceff1,stroke:#90a4ae,color:#37474f
+    style M3 fill:#eceff1,stroke:#90a4ae,color:#37474f
+    style M4 fill:#eceff1,stroke:#90a4ae,color:#37474f
+    style M5 fill:#eceff1,stroke:#90a4ae,color:#37474f
+    style M6 fill:#eceff1,stroke:#90a4ae,color:#37474f
+```
+
+</details>
 
 The savings potential is proportional to the number of **documentary
 boundaries** a workforce must cross. For large operators, multi-type MROs,
@@ -847,25 +969,52 @@ opportunity**.
 
 TD-ISA operates through five main workstreams:
 
-```
-┌──────────────────────────────────────────────────────────────────────────┐
-│                          TD-ISA WORKSTREAMS                              │
-│                                                                          │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐                    │
-│  │ WS-1         │  │ WS-2         │  │ WS-3         │                    │
-│  │ Authoring    │  │ Represent-   │  │ Digital      │                    │
-│  │ Integrity    │  │ ation Stds   │  │ Readability  │                    │
-│  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘                    │
-│         │                 │                 │                             │
-│         └────────┬────────┴────────┬────────┘                            │
-│                  │                 │                                      │
-│  ┌──────────────┐│  ┌──────────────┐│                                    │
-│  │ WS-4         ││  │ WS-5         ││                                    │
-│  │ Technology-  ││  │ Automation   ││                                    │
-│  │ Specific     ││  │ Enablement   ││                                    │
-│  │ Profiles     ││  │              ││                                    │
-│  └──────────────┘│  └──────────────┘│                                    │
-└──────────────────────────────────────────────────────────────────────────┘
+```mermaid
+graph TB
+    TDISA["🏛️ <b>TD-ISA</b>"]
+
+    subgraph LAYER1 ["Layer 1 — Representation & Integrity"]
+        WS1["📝 <b>WS-1</b><br/>Authoring<br/>Integrity"]
+        WS2["🎨 <b>WS-2</b><br/>Representation<br/>Standards"]
+        WS3["📱 <b>WS-3</b><br/>Digital<br/>Readability"]
+    end
+
+    subgraph LAYER2 ["Layer 2 — Specialisation & Enablement"]
+        WS4["🔧 <b>WS-4</b><br/>Technology-Specific<br/>Profiles"]
+        WS5["🤖 <b>WS-5</b><br/>Automation<br/>Enablement"]
+    end
+
+    TDISA --> WS1
+    TDISA --> WS2
+    TDISA --> WS3
+    TDISA --> WS4
+    TDISA --> WS5
+
+    WS1 ---|feeds| WS4
+    WS2 ---|feeds| WS4
+    WS3 ---|feeds| WS5
+    WS1 ---|validates| WS5
+    WS2 ---|renders| WS5
+
+    PIL1["🔒 PIL-1<br/>Integrity"]
+    PIL2["📐 PIL-2<br/>Standardisation"]
+    PIL3["⚙️ PIL-3<br/>Automation"]
+
+    WS1 -.-> PIL1
+    WS2 -.-> PIL2
+    WS3 -.-> PIL2
+    WS4 -.-> PIL2
+    WS5 -.-> PIL3
+
+    style TDISA fill:#1a237e,stroke:#0d47a1,color:#ffffff,stroke-width:3px
+    style WS1 fill:#1b5e20,stroke:#2e7d32,color:#ffffff
+    style WS2 fill:#e65100,stroke:#ef6c00,color:#ffffff
+    style WS3 fill:#01579b,stroke:#0277bd,color:#ffffff
+    style WS4 fill:#4e342e,stroke:#5d4037,color:#ffffff
+    style WS5 fill:#4a148c,stroke:#6a1b9a,color:#ffffff
+    style PIL1 fill:#e8f5e9,stroke:#4caf50,color:#1b5e20
+    style PIL2 fill:#fff3e0,stroke:#ff9800,color:#e65100
+    style PIL3 fill:#f3e5f5,stroke:#9c27b0,color:#4a148c
 ```
 
 ### 7.1 WS-1 — Authoring Integrity
@@ -891,6 +1040,25 @@ illustration semantics, and safety cue presentation.
 | Visual hierarchy specification | Heading mapping, step numbering, table captioning | UF-VH-01 through UF-VH-06 |
 | Illustration standard | Line weights, callout conventions, greyscale legibility | UF-IC-01 through UF-IC-04 |
 | Colour scheme annex | Day-mode and night-mode palettes with WCAG AA compliance | UF-VH-05, UF-VH-06 |
+
+<details>
+<summary>🎨 Safety severity hierarchy (click to expand)</summary>
+
+```mermaid
+block-beta
+    columns 1
+    D["🔴 DANGER — Immediate risk of death or serious injury"]:1
+    W["🟠 WARNING — Potential risk of death or serious injury"]:1
+    C["🟡 CAUTION — Potential risk of minor injury or equipment damage"]:1
+    N["🔵 NOTE — Important operational information"]:1
+
+    style D fill:#b71c1c,color:#ffffff,stroke:#d32f2f,stroke-width:3px
+    style W fill:#e65100,color:#ffffff,stroke:#ef6c00,stroke-width:2px
+    style C fill:#f9a825,color:#000000,stroke:#fbc02d,stroke-width:2px
+    style N fill:#1565c0,color:#ffffff,stroke:#1976d2,stroke-width:2px
+```
+
+</details>
 
 ### 7.3 WS-3 — Digital Readability and Interaction
 
@@ -937,27 +1105,52 @@ interoperability rules that support digital workflows and automation.
 
 TD-ISA operates as a **cross-cutting entity** within ESSA governance:
 
-```
-ESSA-CONST-001 (Constitutional Root)
-         │
-         ├── ESSA-Agency (Institutional Mission)
-         │        │
-         │        ├── Sector Execution Authorities (EUSSA, etc.)
-         │        │
-         │        └── TD-ISA (Technical Data Governance Entity)
-         │                │
-         │                ├── WS-1 Authoring Integrity
-         │                ├── WS-2 Representation Standards
-         │                ├── WS-3 Digital Readability
-         │                ├── WS-4 Technology-Specific Profiles
-         │                └── WS-5 Automation Enablement
-         │
-         ├── CCTLS (Lifecycle Standard)
-         │
-         ├── UFATO (Publication Governance Standard)
-         │       ↑ governed by TD-ISA
-         │
-         └── SAFETY-FIRST (Doctrine)
+```mermaid
+graph TD
+    ROOT["📜 <b>ESSA-CONST-001</b><br/>Constitutional Root"]
+
+    AGENCY["🏢 <b>ESSA-Agency</b><br/>Institutional Mission"]
+    SECTOR["🌐 Sector Execution<br/>Authorities<br/><i>(EUSSA, etc.)</i>"]
+    TDISA["🏛️ <b>TD-ISA</b><br/>Technical Data<br/>Governance Entity"]
+
+    CCTLS["🔄 <b>CCTLS</b><br/>Lifecycle Standard"]
+    UFATO["📄 <b>UFATO</b><br/>Publication Governance<br/>Standard"]
+    SAFETY["🛡️ <b>SAFETY-FIRST</b><br/>Doctrine"]
+
+    WS1["WS-1 Authoring Integrity"]
+    WS2["WS-2 Representation Standards"]
+    WS3["WS-3 Digital Readability"]
+    WS4["WS-4 Technology-Specific Profiles"]
+    WS5["WS-5 Automation Enablement"]
+
+    ROOT --> AGENCY
+    ROOT --> CCTLS
+    ROOT --> UFATO
+    ROOT --> SAFETY
+
+    AGENCY --> SECTOR
+    AGENCY --> TDISA
+
+    TDISA --> WS1
+    TDISA --> WS2
+    TDISA --> WS3
+    TDISA --> WS4
+    TDISA --> WS5
+
+    TDISA -.->|governs| UFATO
+
+    style ROOT fill:#0d47a1,stroke:#1565c0,color:#ffffff,stroke-width:3px
+    style AGENCY fill:#1565c0,stroke:#1976d2,color:#ffffff,stroke-width:2px
+    style TDISA fill:#1a237e,stroke:#283593,color:#ffffff,stroke-width:3px
+    style SECTOR fill:#42a5f5,stroke:#1e88e5,color:#ffffff
+    style CCTLS fill:#00695c,stroke:#00897b,color:#ffffff
+    style UFATO fill:#e65100,stroke:#ef6c00,color:#ffffff,stroke-width:2px
+    style SAFETY fill:#b71c1c,stroke:#c62828,color:#ffffff
+    style WS1 fill:#e3f2fd,stroke:#64b5f6,color:#0d47a1
+    style WS2 fill:#e3f2fd,stroke:#64b5f6,color:#0d47a1
+    style WS3 fill:#e3f2fd,stroke:#64b5f6,color:#0d47a1
+    style WS4 fill:#e3f2fd,stroke:#64b5f6,color:#0d47a1
+    style WS5 fill:#e3f2fd,stroke:#64b5f6,color:#0d47a1
 ```
 
 **Key relationship:** UFATO (ESSA-STD-UFATO-001) is the **primary technical
@@ -987,6 +1180,63 @@ governance, with a pathway to institutionalisation as a **Council** or
 ---
 
 ## 10. Integration Points
+
+```mermaid
+graph TB
+    TDISA["🏛️ <b>TD-ISA</b>"]
+
+    subgraph ESSA_INT ["ESSA Governance Artefacts"]
+        CONST["📜 ESSA-Agency<br/>Constitution"]
+        CCTLS_I["🔄 CCTLS<br/>Gate Sequence"]
+        HPIPE["🔗 H-Pipeline<br/>H_ENVELOPE"]
+        AGGIX_I["📦 AGGIX<br/>Registry"]
+        UFATO_I["📄 UFATO<br/>ESSA-STD-UFATO-001"]
+        PELS["📋 SPEC-PELS-014<br/>Lifecycle"]
+        SAFE["🛡️ Safety-First<br/>Doctrine"]
+    end
+
+    subgraph EXT ["External Standards"]
+        S1000D["S1000D Steering<br/>Committee"]
+        ATA["ATA e-Business<br/>Group"]
+        SAE["SAE International<br/>ARP4754A / ARP4761"]
+        EASA["EASA / FAA"]
+        ISO["ISO TC20/SC1"]
+        W3C["W3C WCAG"]
+        RTCA["DO-178C / DO-330<br/>RTCA"]
+    end
+
+    TDISA --- CONST
+    TDISA --- CCTLS_I
+    TDISA --- HPIPE
+    TDISA --- AGGIX_I
+    TDISA ---|governs| UFATO_I
+    TDISA --- PELS
+    TDISA --- SAFE
+
+    TDISA -.- S1000D
+    TDISA -.- ATA
+    TDISA -.- SAE
+    TDISA -.- EASA
+    TDISA -.- ISO
+    TDISA -.- W3C
+    TDISA -.- RTCA
+
+    style TDISA fill:#1a237e,stroke:#283593,color:#ffffff,stroke-width:3px
+    style CONST fill:#e3f2fd,stroke:#64b5f6,color:#0d47a1
+    style CCTLS_I fill:#e3f2fd,stroke:#64b5f6,color:#0d47a1
+    style HPIPE fill:#e3f2fd,stroke:#64b5f6,color:#0d47a1
+    style AGGIX_I fill:#e3f2fd,stroke:#64b5f6,color:#0d47a1
+    style UFATO_I fill:#fff3e0,stroke:#ff9800,color:#e65100,stroke-width:2px
+    style PELS fill:#e3f2fd,stroke:#64b5f6,color:#0d47a1
+    style SAFE fill:#ffebee,stroke:#ef5350,color:#b71c1c
+    style S1000D fill:#f5f5f5,stroke:#9e9e9e,color:#424242
+    style ATA fill:#f5f5f5,stroke:#9e9e9e,color:#424242
+    style SAE fill:#f5f5f5,stroke:#9e9e9e,color:#424242
+    style EASA fill:#f5f5f5,stroke:#9e9e9e,color:#424242
+    style ISO fill:#f5f5f5,stroke:#9e9e9e,color:#424242
+    style W3C fill:#f5f5f5,stroke:#9e9e9e,color:#424242
+    style RTCA fill:#f5f5f5,stroke:#9e9e9e,color:#424242
+```
 
 ### 10.1 With ESSA Governance
 
@@ -1020,6 +1270,26 @@ governance, with a pathway to institutionalisation as a **Council** or
 
 Each workstream progresses through defined maturity levels:
 
+```mermaid
+graph LR
+    M0["<b>M0</b><br/>Proposed"]
+    M1["<b>M1</b><br/>In Development"]
+    M2["<b>M2</b><br/>Published"]
+    M3["<b>M3</b><br/>Adopted"]
+    M4["<b>M4</b><br/>Institutionalised"]
+
+    M0 -->|"scope defined"| M1
+    M1 -->|"INTERPRET / CONFIRM"| M2
+    M2 -->|"ACTIVATE / PUBLISH"| M3
+    M3 -->|"external adoption"| M4
+
+    style M0 fill:#eceff1,stroke:#90a4ae,color:#37474f,stroke-width:2px
+    style M1 fill:#fff9c4,stroke:#f9a825,color:#f57f17,stroke-width:2px
+    style M2 fill:#c8e6c9,stroke:#66bb6a,color:#2e7d32,stroke-width:2px
+    style M3 fill:#bbdefb,stroke:#42a5f5,color:#1565c0,stroke-width:2px
+    style M4 fill:#1a237e,stroke:#283593,color:#ffffff,stroke-width:3px
+```
+
 | Level | Label | Criteria |
 |-------|-------|----------|
 | **M0** | Proposed | Workstream scope and deliverables defined |
@@ -1029,6 +1299,28 @@ Each workstream progresses through defined maturity levels:
 | **M4** | Institutionalised | Deliverables incorporated into formal industry standards |
 
 ### 11.2 Current Maturity Assessment
+
+```mermaid
+gantt
+    title TD-ISA Workstream Maturity Status
+    dateFormat X
+    axisFormat %s
+
+    section WS-1 Authoring Integrity
+    M1 — In Development :active, ws1, 0, 2
+
+    section WS-2 Representation Standards
+    M1 — In Development :active, ws2, 0, 2
+
+    section WS-3 Digital Readability
+    M1 — In Development :active, ws3, 0, 2
+
+    section WS-4 Technology-Specific Profiles
+    M1 — In Development :active, ws4, 0, 2
+
+    section WS-5 Automation Enablement
+    M0 — Proposed :ws5, 0, 1
+```
 
 | Workstream | Level | Status |
 |------------|-------|--------|
@@ -1075,3 +1367,4 @@ execution.
 | v0.2-draft | 2026-04-14 | Added §6 Economic Argument: The Documentary Retraining Problem. |
 | v0.3-draft | 2026-04-14 | Added §5 Value Proposition: The Quadruple Win. |
 | v0.4-draft | 2026-04-14 | Upgraded to Quintuple Win: added 5th dimension "Very Necessary"; reordered safety-first; added Spanish summary. |
+| v0.5-draft | 2026-04-14 | Enhanced graphic elements: replaced ASCII art with Mermaid diagrams; added new diagrams for three pillars, cost model, maturity progression, and integration map; added SVG status badge. |
