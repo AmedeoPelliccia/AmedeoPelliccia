@@ -1,0 +1,207 @@
+##############################################################################
+# post-sextin-principle.yaml
+# The Post-Sextin Principle — Payload / Expression Disjointness Axiom
+# AEROSPACEMODEL MCC Specification Series — SPEC-000
+##############################################################################
+
+document_id: AEROSPACEMODEL-MCC-SPEC-000
+document_type: foundational_axiom
+title: "The Post-Sextin Principle — Payload / Expression Disjointness"
+version: "0.1.0"
+schema_version: "1.0.0"
+status: draft
+related_documents:
+  - id: AEROSPACEMODEL-MCC-SPEC-001
+    title: "MCC Foundations"
+    relationship: child_specification
+  - id: AEROSPACEMODEL-MCC-SPEC-007
+    title: "MUSIC-MCC — Audio Composition Layer"
+    relationship: single_sense_instance
+  - id: AEROSPACEMODEL-MCC-SPEC-008
+    file: "AEROSPACEMODEL/MCC/SENSORIUM.md"
+    relationship: multi_sense_generalisation
+  - id: AEROSPACEMODEL-MCC-SPEC-009
+    file: "AEROSPACEMODEL/MCC/TRAUMACODEDRAMA.md"
+    relationship: derivative_extension
+  - id: AEROSPACEMODEL-MCC-SPEC-010
+    file: "AEROSPACEMODEL/MCC/EGI.md"
+    relationship: lifecycle_extension
+last_updated: "2026-04-14T00:00:00Z"
+
+##############################################################################
+# 0  The Axiom
+##############################################################################
+
+axiom:
+  statement: "𝒫 ∩ ℰ = ∅"
+  name: "Post-Sextin Principle"
+  prose: >
+    Payload and expression occupy disjoint dimensions. In any perceptual
+    channel where humans distinguish intensity from identity, intensity is
+    the steganographic degree of freedom and identity is the experiential
+    surface. Altering intensity does not alter identity; altering identity
+    does not alter intensity. The two sets share no element.
+  sense_agnosticism: >
+    The principle does not name a sense. It names a structural separation
+    that recurs in every modality: amplitude vs. pitch in audio, luminance
+    vs. hue in vision, pressure vs. texture in touch, concentration vs.
+    molecular identity in olfaction. Wherever this separation exists,
+    steganographic embedding is possible.
+
+##############################################################################
+# 1  Formal Definitions
+##############################################################################
+
+definitions:
+
+  - definition: 0
+    name: "Perceptual Channel"
+    symbol: "𝕊"
+    description: >
+      A perceptual channel is a sensory modality that admits a decomposition
+      into an intensity dimension and an identity dimension.
+    notation: "𝕊 = (I_𝕊, X_𝕊)"
+    components:
+      intensity: "I_𝕊 — the scalar magnitude axis (amplitude, luminance, pressure, …)"
+      identity: "X_𝕊 — the qualitative feature space (pitch, hue, texture, …)"
+
+  - definition: 1
+    name: "Payload Space"
+    symbol: "𝒫"
+    description: >
+      The set of all bit-strings embeddable as intensity modulations within
+      a composition without altering the identity dimension.
+    notation: "𝒫 ⊂ I_𝕊"
+
+  - definition: 2
+    name: "Expression Space"
+    symbol: "ℰ"
+    description: >
+      The set of perceptual qualities that constitute the experiential
+      surface of a composition. Expression lives in the identity dimension.
+    notation: "ℰ ⊂ X_𝕊"
+
+  - definition: 3
+    name: "Disjointness Axiom"
+    formula: "𝒫 ∩ ℰ = ∅"
+    description: >
+      No element belongs to both the payload space and the expression space.
+      This is the formal statement of the Post-Sextin Principle.
+
+  - definition: 4
+    name: "Steganographic Capacity"
+    formula: "C(𝕊) = |I_𝕊| − I_used"
+    description: >
+      The residual intensity headroom in channel 𝕊 after the expressive
+      surface has been composed. This is the maximum payload bandwidth
+      without perceptual disruption.
+
+##############################################################################
+# 2  Sense-Specific Instantiations
+##############################################################################
+
+instantiations:
+
+  - channel: Auditory
+    symbol: "𝔸"
+    intensity: "Velocity / amplitude"
+    identity: "Pitch, melody, harmony, rhythm, timbre"
+    origin: "MUSIC-MCC (SPEC-007) — the original single-sense case"
+
+  - channel: Haptic
+    symbol: "ℍ"
+    intensity: "Pressure / vibration magnitude"
+    identity: "Texture, location, gesture"
+
+  - channel: Optic
+    symbol: "𝕆"
+    intensity: "Luminance / contrast"
+    identity: "Hue, saturation, shape, motion"
+
+  - channel: Olfactory
+    symbol: "𝔽"
+    intensity: "Concentration"
+    identity: "Molecular identity (scent profile)"
+
+  - channel: Gustatory
+    symbol: "𝔾"
+    intensity: "Intensity"
+    identity: "Taste identity (flavour profile)"
+
+  - channel: Proprioceptive
+    symbol: "ℙ"
+    intensity: "Effort / acceleration"
+    identity: "Posture, direction, coordination"
+
+##############################################################################
+# 3  Generalisation Hierarchy
+##############################################################################
+
+generalisation_hierarchy:
+  description: >
+    Each MCC specification restates the Post-Sextin Principle at a higher
+    level of abstraction. The axiom is invariant; only the embedding domain
+    changes.
+
+  layers:
+    - spec: AEROSPACEMODEL-MCC-SPEC-007
+      name: "MUSIC-MCC"
+      domain: "Single sense (auditory)"
+      disjointness: "𝒫 ∩ ℰ = ∅  (velocity vs. melody)"
+      note: "Original case. Velocity carries data; melody carries emotion."
+
+    - spec: AEROSPACEMODEL-MCC-SPEC-008
+      name: "SENSORIUM"
+      domain: "Six senses (𝔸, ℍ, 𝕆, 𝔽, 𝔾, ℙ)"
+      disjointness: "𝒫 ∩ ℰ = ∅  (intensity vector vs. identity vector)"
+      note: "Generalises MUSIC-MCC to all six perceptual channels."
+
+    - spec: AEROSPACEMODEL-MCC-SPEC-009
+      name: "TRAUMACODEDRAMA"
+      domain: "Transition magnitudes across state sequences"
+      disjointness: "𝒟 ∩ 𝒯 = ∅  (transition magnitude vs. dramaturgical intent)"
+      note: "One derivative higher: data in Δε magnitude, drama in Δε direction."
+
+    - spec: AEROSPACEMODEL-MCC-SPEC-010
+      name: "EGI"
+      domain: "Lifecycle dynamics of ephemeral interfaces"
+      disjointness: "ℰ ∩ 𝒜 = ∅  (ephemeral experience vs. archival artifact)"
+      note: "Two derivatives higher: data in existence/dissolution dynamics."
+
+##############################################################################
+# 4  Consequences
+##############################################################################
+
+consequences:
+
+  - id: C-001
+    name: "Orthogonal Layering"
+    statement: >
+      Because each layer operates in a disjoint dimension, the three MCC
+      layers — SENSORIUM (intensity), TRAUMACODEDRAMA (transitions),
+      EGI (lifecycle) — can carry independent payloads simultaneously
+      without mutual interference.
+
+  - id: C-002
+    name: "Undetectability Bound"
+    statement: >
+      A composition that satisfies 𝒫 ∩ ℰ = ∅ and stays within the
+      magnitude tolerance (±3 %, Rule S-004) is indistinguishable from
+      a composition without payload to any observer whose perception
+      operates on the identity dimension only.
+
+  - id: C-003
+    name: "Carrier State as Security Parameter"
+    statement: >
+      Steganographic capacity C_total(ε) = 594 − Σ κᵢ. The choice of
+      carrier emotional state determines the available payload bandwidth.
+      Estasi (maximum arousal) minimises capacity; Malinconia (low arousal)
+      maximises it. Carrier state selection is a security parameter of
+      the composition, not an aesthetic choice.
+
+  - id: C-004
+    name: "Sense Agnosticism"
+    statement: >
+      The principle names no specific sense. Any future perceptual channel
+      that admits an intensity/identity decomposition inherits the axiom
+      and all its consequences without modification.

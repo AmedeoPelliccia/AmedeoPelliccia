@@ -21,6 +21,7 @@ dimensions. Intensity is the universal steganographic channel.
 
 | ID | Title | File | Status |
 |----|-------|------|--------|
+| **AEROSPACEMODEL-MCC-SPEC-000** | **The Post-Sextin Principle — Payload / Expression Disjointness** | [`POST-SEXTIN-PRINCIPLE.md`](POST-SEXTIN-PRINCIPLE.md) · [`post-sextin-principle.yaml`](post-sextin-principle.yaml) | **draft** |
 | AEROSPACEMODEL-MCC-SPEC-001 | MCC Foundations | *planned* | planned |
 | AEROSPACEMODEL-MCC-SPEC-002 | Auditory Channel — Single-Sense Baseline | *planned* | planned |
 | AEROSPACEMODEL-MCC-SPEC-003 | Payload Encoding Protocol | *planned* | planned |
