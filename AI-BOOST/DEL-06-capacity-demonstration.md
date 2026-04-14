@@ -6,7 +6,7 @@
 
 schema_version: "1.0.0"
 document_type: capacity_demonstration
-last_updated: "2026-03-08T00:00:00Z"
+last_updated: "2026-04-14T00:00:00Z"
 
 # ─────────────────────────────────────────────
 # 1. Deliverable Identity
@@ -355,6 +355,10 @@ revision_history:
     date: "2026-03-08"
     milestone: M6
     description: Added Gemini Services prototype demo hosting reference (deployed_systems, deployment.inference)
+  - version: "0.3"
+    date: "2026-04-14"
+    milestone: M6
+    description: Added Mermaid diagrams (consortium, allocation Gantt, deployment architecture, governance pipeline, capacity score)
 ---
 
 # DEL-06 — Capacity Demonstration
@@ -433,27 +437,21 @@ The applicant has originated and maintains a portfolio of formal methodology art
 
 ### 3.1 Consortium Composition
 
-```
-┌───────────────────────────────────────────────────────────────────┐
-│                    GAIA-EU Consortium                              │
-│                                                                   │
-│  ┌─────────────────────┐                                         │
-│  │   COORDINATOR        │  Private-sector EU entity               │
-│  │   (IDEALE-ESG.eu)    │  Legal seat in EU; EU-controlled        │
-│  └─────────┬───────────┘                                         │
-│            │                                                      │
-│  ┌─────────┴───────────────────────────────────────────────┐     │
-│  │                                                         │     │
-│  ▼                    ▼                    ▼                │     │
-│  ┌──────────┐  ┌──────────────┐  ┌─────────────────┐     │     │
-│  │ Academic  │  │   HPC        │  │  Domain         │     │     │
-│  │ Partner(s)│  │   Partner(s) │  │  Partner(s)     │     │     │
-│  └──────────┘  └──────────────┘  └─────────────────┘     │     │
-│  Multilingual   EuroHPC node      Aerospace, energy,      │     │
-│  NLP, AI        operations,       regulatory sector       │     │
-│  research       distributed       expertise               │     │
-│                 training                                   │     │
-└───────────────────────────────────────────────────────────────────┘
+```mermaid
+graph TD
+    COORD["🏢 COORDINATOR<br/>(IDEALE-ESG.eu)<br/><em>Private-sector EU entity · EU-controlled</em>"]
+    ACAD["🎓 Academic Partner(s)<br/>Multilingual NLP · AI Research<br/>Benchmark design · Alignment"]
+    HPC["⚙️ HPC Partner(s)<br/>EuroHPC Node Operations<br/>Distributed Training · Performance"]
+    DOM["🏭 Domain Partner(s)<br/>Aerospace · Energy<br/>Regulatory Sector Expertise"]
+
+    COORD -->|"governance & architecture"| ACAD
+    COORD -->|"HPC allocation & ops"| HPC
+    COORD -->|"domain use-case validation"| DOM
+
+    style COORD fill:#003366,color:#fff,stroke:#4488cc,stroke-width:2px
+    style ACAD  fill:#1a5c38,color:#fff,stroke:#52b788,stroke-width:2px
+    style HPC   fill:#4b1e8a,color:#fff,stroke:#9b59b6,stroke-width:2px
+    style DOM   fill:#7b3300,color:#fff,stroke:#e67e22,stroke-width:2px
 ```
 
 ### 3.2 Role Distribution
@@ -499,6 +497,29 @@ In addition to the EuroHPC strategic access allocation requested, the consortium
 | WP4 Evaluation (M9–M12) | National HPC | — | Benchmark evaluation, red-teaming, bias audit |
 | WP5 Release (M11–M12) | National HPC | — | Model packaging, inference testing, documentation |
 
+```mermaid
+gantt
+    title Compute Resource Allocation Timeline (M1 = 2026-01)
+    dateFormat  YYYY-MM-DD
+    axisFormat  M%m
+
+    section WP1 · Foundation
+    National HPC — prototyping       :done,   wp1,  2026-01-01, 89d
+
+    section WP2 · Pre-training
+    EuroHPC — strategic access       :active, wp2a, 2026-03-01, 183d
+    National HPC — checkpoint valid. :        wp2b, 2026-03-01, 183d
+
+    section WP3 · Alignment
+    EuroHPC + National — RLHF        :        wp3,  2026-07-01, 122d
+
+    section WP4 · Evaluation
+    National HPC — benchmarks        :        wp4,  2026-09-01, 91d
+
+    section WP5 · Release
+    National HPC — packaging         :        wp5,  2026-11-01, 61d
+```
+
 ---
 
 ## 5. Infrastructure for Deployment
@@ -514,6 +535,43 @@ Post-training, GAIA-EU will be deployed via:
 | Model distribution | Hugging Face Hub + Zenodo mirror | Open weights under Apache 2.0; DOI-assigned |
 | Batch inference | EuroHPC AI Factory | For research and public-sector batch workloads |
 | **Prototype demo** | **Gemini Services** | Interactive demo currently hosted on Gemini Services (recently remixed); accessible for evaluator review |
+
+```mermaid
+graph LR
+    subgraph TRAIN["⚡ Training Layer"]
+        EURO["EuroHPC\nStrategic Access"]
+        NAT["National HPC\nLUMI · Leonardo · MareNostrum"]
+    end
+
+    subgraph SERVE["🖥️ Serving Layer"]
+        GPU["EU GPU Clusters\nH100 / MI300X"]
+        API["EU API Gateway\nOVHcloud / Scaleway"]
+        DEMO["Prototype Demo\n✅ Gemini Services"]
+    end
+
+    subgraph DIST["📦 Distribution Layer"]
+        HF["Hugging Face Hub\nApache 2.0"]
+        ZEN["Zenodo Mirror\nDOI-assigned"]
+        BATCH["EuroHPC AI Factory\nBatch workloads"]
+    end
+
+    EURO --> GPU
+    NAT  --> GPU
+    GPU  --> API
+    GPU  --> DEMO
+    API  --> HF
+    API  --> ZEN
+    API  --> BATCH
+
+    style DEMO  fill:#0055aa,color:#fff,stroke:#003388,stroke-width:2px
+    style EURO  fill:#1a3a5c,color:#fff,stroke:#4488cc
+    style NAT   fill:#1a3a5c,color:#fff,stroke:#4488cc
+    style GPU   fill:#1a5238,color:#fff,stroke:#52b788
+    style API   fill:#1a5238,color:#fff,stroke:#52b788
+    style HF    fill:#6b3200,color:#fff,stroke:#e67e22
+    style ZEN   fill:#6b3200,color:#fff,stroke:#e67e22
+    style BATCH fill:#6b3200,color:#fff,stroke:#e67e22
+```
 
 ### 5.2 Scalability Demonstration
 
@@ -540,6 +598,27 @@ The applicant's governance capacity is demonstrated through the existing formal 
 | Contributions Registry | [`contributions-registry.yaml`](../contributions-registry.yaml) | Fair attribution, value assessment matrix, open contribution governance |
 | EACST Regulatory Framework | [`EACST/eacst-regulatory-framework.yaml`](../EACST/eacst-regulatory-framework.yaml) | Regulatory domain expertise: operator licensing, airworthiness, safety |
 
+```mermaid
+flowchart TD
+    SC["📋 Simplex-Contract\nIntent specification &\nboundary classification"]
+    PATH["🔀 PATH Pipeline\nGovernance orchestration\n& milestone gating MS1–MS5"]
+    CGR["🔄 C-GROWTH Lifecycle\nContinuous testing,\naudit logs & evidence gates"]
+    MTL["📒 MTL Ledger\nImmutable evidence\ncommitment"]
+    AUDIT["🔍 Audit & Compliance\nSummary report +\nopen-science artefacts"]
+
+    SC    -->|"formal model"| PATH
+    PATH  -->|"MS1–MS5 gates"| CGR
+    CGR   -->|"evidence gates ✅"| MTL
+    MTL   --> AUDIT
+    AUDIT -.->|"feedback loop"| PATH
+
+    style SC    fill:#1a3a5c,color:#fff,stroke:#4488cc,stroke-width:2px
+    style PATH  fill:#1a4a2e,color:#fff,stroke:#52b788,stroke-width:2px
+    style CGR   fill:#3d1a5c,color:#fff,stroke:#9b59b6,stroke-width:2px
+    style MTL   fill:#5c3a1a,color:#fff,stroke:#e67e22,stroke-width:2px
+    style AUDIT fill:#1a4040,color:#fff,stroke:#1abc9c,stroke-width:2px
+```
+
 ### 6.2 Risk Management Capacity
 
 | Capability | Evidence |
@@ -564,6 +643,15 @@ The following table maps capacity evidence to the pre-screening criterion **"Com
 | Deployment infrastructure | EU-sovereign inference, model distribution, scalability | 2–3 / 20 |
 | **Total target** | | **16–18 / 20** |
 
+```mermaid
+pie title Capacity Score Distribution — Target 16–18 / 20
+    "Key Personnel (5.5)" : 5.5
+    "Prior Frontier AI Work (4.5)" : 4.5
+    "Consortium Strength (3.5)" : 3.5
+    "Complementary Compute (2.5)" : 2.5
+    "Deployment Infrastructure (2.5)" : 2.5
+```
+
 ---
 
 ## 8. Repository Assets Referenced
@@ -585,3 +673,4 @@ The following table maps capacity evidence to the pre-screening criterion **"Com
 |---------|------|-----------|-------------|
 | 0.1 | 2026-02-25 | M6 | Initial Capacity Demonstration |
 | 0.2 | 2026-03-08 | M6 | Added Gemini Services prototype demo hosting reference (§2.3, §5.1) |
+| 0.3 | 2026-04-14 | M6 | Added Mermaid diagrams: consortium graph, allocation Gantt, deployment architecture, governance flowchart, capacity score pie chart |
