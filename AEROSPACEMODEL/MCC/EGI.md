@@ -379,6 +379,50 @@ security_properties:
       Each Ephemeron uses a unique seed σ. Replaying a previous seed without
       the payload produces a different interface surface. Freshness is
       verified through a nonce embedded in σ.
+
+##############################################################################
+# 8  Shared Database Schema — Example Instance
+##############################################################################
+
+example_instance:
+  id: "EGI-001"
+  title: "Ephemeral Generative Interface"
+  status: "proposed"
+  stimulus:
+    trigger_patterns:
+      - "music phrase"
+      - "face recognition"
+      - "olfactory signature"
+      - "touch sequence"
+    activation_threshold: 0.40
+  reconstruction:
+    seed_reference: "latent_seed://egi/001"
+    assembly_rules:
+      - "instantiate temporary nodes"
+      - "construct higher-order relations"
+      - "project to operational layer"
+  simplicial_signature:
+    max_dimension: 4
+    betti_numbers: [1, 0, 0]
+    euler_characteristic: 1
+    mode: "path"
+  persistence:
+    store_full_interface: false
+    residual_trace: true
+    decay_policy: "time_or_task_completion"
+  reactivation:
+    channel_affinity:
+      visual: 0.30
+      auditory: 0.80
+      olfactory: 0.60
+      tactile: 0.20
+      gustatory: 0.00
+      proprioceptive: 0.10
+    cross_channel_boost: true
+  provenance:
+    generating_model: "model_id"
+    generation_timestamp: "2026-02-25T00:00:00Z"
+    validation_status: "self_validated"
 ---
 
 # EGI — Ephemeral Generative Interface
@@ -769,7 +813,73 @@ verifies freshness through a nonce embedded in the seed.
 
 ---
 
-## 8. References
+## 8. Shared Database Schema — Example Instance
+
+The following record (`EGI-001`) is a canonical example of an EGI entry in the
+shared database schema. It demonstrates how an Ephemeral Generative Interface
+instance is stored with stimulus triggers, reconstruction rules, simplicial
+topology, persistence policy, reactivation channel affinities, and provenance
+metadata.
+
+```yaml
+example_instance:
+  id: "EGI-001"
+  title: "Ephemeral Generative Interface"
+  status: "proposed"
+  stimulus:
+    trigger_patterns:
+      - "music phrase"
+      - "face recognition"
+      - "olfactory signature"
+      - "touch sequence"
+    activation_threshold: 0.40
+  reconstruction:
+    seed_reference: "latent_seed://egi/001"
+    assembly_rules:
+      - "instantiate temporary nodes"
+      - "construct higher-order relations"
+      - "project to operational layer"
+  simplicial_signature:
+    max_dimension: 4
+    betti_numbers: [1, 0, 0]
+    euler_characteristic: 1
+    mode: "path"
+  persistence:
+    store_full_interface: false
+    residual_trace: true
+    decay_policy: "time_or_task_completion"
+  reactivation:
+    channel_affinity:
+      visual: 0.30
+      auditory: 0.80
+      olfactory: 0.60
+      tactile: 0.20
+      gustatory: 0.00
+      proprioceptive: 0.10
+    cross_channel_boost: true
+  provenance:
+    generating_model: "model_id"
+    generation_timestamp: "2026-02-25T00:00:00Z"
+    validation_status: "self_validated"
+```
+
+| Field | Description |
+|---|---|
+| `id` | Unique identifier for the EGI instance |
+| `status` | Lifecycle status: `proposed`, `active`, `dissolved` |
+| `stimulus.trigger_patterns` | Sensory patterns that can reactivate the interface |
+| `stimulus.activation_threshold` | Minimum combined trigger score to begin reconstruction |
+| `reconstruction.seed_reference` | URI pointing to the latent seed for `𝒢` |
+| `reconstruction.assembly_rules` | Ordered steps to rebuild the ephemeral surface |
+| `simplicial_signature` | Topological fingerprint (Betti numbers, Euler characteristic) |
+| `persistence.store_full_interface` | `false` — EGI rule E-001 (Ephemerality Guarantee) |
+| `persistence.decay_policy` | When to discard residual traces |
+| `reactivation.channel_affinity` | Per-channel reactivation strength (0.0–1.0) |
+| `provenance` | Model ID, timestamp, and validation status |
+
+---
+
+## 9. References
 
 - AEROSPACEMODEL-MCC-SPEC-008 (SENSORIUM): parent specification
 - AEROSPACEMODEL-MCC-SPEC-009 (TRAUMACODEDRAMA): sibling specification
