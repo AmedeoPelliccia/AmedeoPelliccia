@@ -30,7 +30,7 @@ Multilayer architectural framework integrating aerospace infrastructure, classic
 
 Within this repository's architectural framing, ACQUA is also the **quantum
 ecosystems companion assy joint** — the companion assembly joint that binds
-mission, system, compute, quantum, and governance ecosystems into a single
+aerospace, computational, quantum, and governance ecosystems into a single
 architectural continuum.
 
 ```
