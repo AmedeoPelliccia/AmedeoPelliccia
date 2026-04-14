@@ -567,12 +567,43 @@ The following invariants are non-negotiable within the H.I.V. layer:
 
 ---
 
-## 7. References
+## 7. Integration — SENSORIUM Multi-Sensory Correspondence
+
+The SENSORIUM model (AEROSPACEMODEL-MCC-SPEC-008) maps onto the H.I.V.
+canonical thread, extending the energy-sense-value triad with a six-channel
+multi-sensory interpretation.
+
+| H.I.V. element | SENSORIUM channel | PLUMA-GAI layer |
+|----------------|-------------------|-----------------|
+| H — Hydrogen flow rate signal | 𝔸 Auditory — signal propagation | TranshidreOHs carrier |
+| I — Infrared emission (every node emits) | ℍ Haptic — physical contact/proximity | H.I.V. sensing layer |
+| I — T_eff traceability visibility | 𝕆 Optic — visibility, luminance | H.I.V. KPI |
+| I — Ambient IR ground-truth | 𝔽 Olfactory — ambient trace | H.I.V. sensing layer |
+| V — V-token constitutional signature | 𝔾 Gustatory — chemical identity | H.I.V. Values kernel |
+| Node operational state | ℙ Proprioceptive — body state / posture | VibidratAZIONE restoration target |
+
+The **Infrared channel (I)** is the embodiment of the SENSORIUM haptic
+principle: every physical node emits infrared in proportion to its thermal
+state. Intensity is the ground truth. Nothing is hideable in the IR dimension
+— the payload IS the physical reality.
+
+The **rehydration floor of 310 K** in VibidratAZIONE is the restoration target
+for a thermally coherent node state, not the minimum infrared intensity
+required to register a node in the SENSORIUM. Registration begins at a lower
+infrared detection threshold; below that threshold, the proprioceptive channel
+(ℙ) collapses and the node is no longer perceptible as an active body.
+VibidratAZIONE first restores `κ_ℙ` above the detection threshold and then
+drives it toward or above the 310 K rehydration target.
+
+---
+
+## 8. References
 
 - PLUMA-GAI specification: [`pluma-gai.yaml`](pluma-gai.yaml)
 - Transport layer: [`TranshidreOHs.md`](TranshidreOHs.md)
 - Restoration layer: [`VibidratAZIONE.md`](VibidratAZIONE.md)
 - Network IR strategy: [`NET/README.md`](NET/README.md) §5
+- SENSORIUM specification: [`../../AEROSPACEMODEL/MCC/SENSORIUM.md`](../../AEROSPACEMODEL/MCC/SENSORIUM.md) (AEROSPACEMODEL-MCC-SPEC-008)
 - H Pipeline (ESSA): `ESSA/H-PIPELINE.md`
 - ESSA Constitutional framework: `ESSA/ESSA-AGENCY-CONSTITUTION.md`
 - UN Universal Declaration of Human Rights (1948)
