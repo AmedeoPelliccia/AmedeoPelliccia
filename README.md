@@ -251,6 +251,10 @@ value_matrix:
   <em>Peace and Love in Democracy</em>
 </p>
 
+<p align="center">
+  <strong>In dedication to my parents, from whom this name, this path, and this foundation begin.</strong>
+</p>
+
 <h2 align="center">IDEALE ESG Europe</h2>
 
 ---
