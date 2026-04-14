@@ -241,8 +241,12 @@ encoding_rules:
     statement: >
       The decay envelope 𝒟(t) MUST encode a valid CRC of the Bloom payload.
       The decoder extracts the CRC by measuring decay curvature deviation from
-      a reference profile. Deviation is quantised to resolution steps (default:
-      5 units per channel).
+      a reference profile. Curvature deviation per channel SHALL be computed as
+      the absolute difference in the normalised second derivative of channel
+      intensity with respect to normalised time, κ_norm(t) ∈ [0,1]. Deviation
+      is quantised by rounding κ_norm(t) to the nearest multiple of the
+      resolution step; “units per channel” SHALL denote linear steps of size
+      1/resolution_default in κ_norm (default: 5 units per channel).
     resolution_default: 5
     severity: MUST
 
