@@ -407,3 +407,38 @@ pluma_gai_hiv_correspondence:
         detection threshold the proprioceptive channel (ℙ) collapses.
         VibidratAZIONE first restores κ_ℙ above the detection threshold,
         then drives it toward the 310 K rehydration target.
+
+##############################################################################
+# 7  Robotic SENSORIUM Transducers
+##############################################################################
+
+robotic_sensorium:
+  vision:
+    - "RGB camera"
+    - "LiDAR / ToF"
+    - "thermal IR"
+    - "event camera"
+  hearing:
+    - "MEMS microphones"
+    - "accelerometers"
+    - "acoustic emission sensors"
+    - "ultrasound"
+  smell:
+    - "electronic nose"
+    - "PID"
+    - "electrochemical sensors"
+    - "spectrometry"
+  touch:
+    - "capacitive skin"
+    - "force-torque sensors"
+    - "piezoelectric sensors"
+    - "thermistors"
+  taste:
+    - "ion-selective probes"
+    - "conductivity sensors"
+    - "voltammetric sensors"
+  proprioception:
+    - "encoders"
+    - "IMU"
+    - "motor current sensors"
+    - "strain sensors"

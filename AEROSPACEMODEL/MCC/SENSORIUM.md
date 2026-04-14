@@ -406,6 +406,41 @@ pluma_gai_hiv_correspondence:
         Rehydration floor 310 K = minimum IR intensity for node registration.
         Below 310 K the proprioceptive channel (ℙ) collapses.
         VibidratAZIONE restores κ_ℙ above detection threshold.
+
+##############################################################################
+# 7  Robotic SENSORIUM Transducers
+##############################################################################
+
+robotic_sensorium:
+  vision:
+    - "RGB camera"
+    - "LiDAR / ToF"
+    - "thermal IR"
+    - "event camera"
+  hearing:
+    - "MEMS microphones"
+    - "accelerometers"
+    - "acoustic emission sensors"
+    - "ultrasound"
+  smell:
+    - "electronic nose"
+    - "PID"
+    - "electrochemical sensors"
+    - "spectrometry"
+  touch:
+    - "capacitive skin"
+    - "force-torque sensors"
+    - "piezoelectric sensors"
+    - "thermistors"
+  taste:
+    - "ion-selective probes"
+    - "conductivity sensors"
+    - "voltammetric sensors"
+  proprioception:
+    - "encoders"
+    - "IMU"
+    - "motor current sensors"
+    - "strain sensors"
 ---
 
 # SENSORIUM — Multi-Sensory Cryptographic Composition
@@ -694,7 +729,28 @@ drives it toward or above the 310 K rehydration target.
 
 ---
 
-## 7. References
+## 7. Robotic SENSORIUM Transducers
+
+The abstract SENSORIUM channels map to concrete robotic transducers.
+Each sense is realised by a family of sensor technologies that provide
+the intensity signal (κᵢ) required by the emotive vector.
+
+| SENSORIUM channel | Robotic sense | Transducers |
+|-------------------|---------------|-------------|
+| 𝕆 Optic | Vision | RGB camera · LiDAR / ToF · thermal IR · event camera |
+| 𝔸 Auditory | Hearing | MEMS microphones · accelerometers · acoustic emission sensors · ultrasound |
+| 𝔽 Olfactory | Smell | electronic nose · PID · electrochemical sensors · spectrometry |
+| ℍ Haptic | Touch | capacitive skin · force-torque sensors · piezoelectric sensors · thermistors |
+| 𝔾 Gustatory | Taste | ion-selective probes · conductivity sensors · voltammetric sensors |
+| ℙ Proprioceptive | Proprioception | encoders · IMU · motor current sensors · strain sensors |
+
+> **Note:** The transducer list is non-exhaustive. Each entry represents
+> the most common sensor class for a given channel and may be extended
+> as robotic sensing technology evolves.
+
+---
+
+## 8. References
 
 - AEROSPACEMODEL-MCC-SPEC-001 through SPEC-007: parent specifications (MCC series)
 - [`sensorium.yaml`](sensorium.yaml): machine-readable companion (AEROSPACEMODEL-MCC-SPEC-008)
