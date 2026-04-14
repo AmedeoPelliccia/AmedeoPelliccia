@@ -250,7 +250,7 @@ encoding_rules:
   - id: E-005
     name: Cross-Layer Compatibility
     statement: >
-      EGI Ephemerona MUST be composable with SENSORIUM (SPEC-008) and
+      EGI Ephemera MUST be composable with SENSORIUM (SPEC-008) and
       TRAUMACODEDRAMA (SPEC-009). ε(t) at each instant MUST be a valid
       SENSORIUM state. Bloom transitions MUST comply with TRAUMACODEDRAMA
       rules. The three layers are orthogonal — intensity, transition magnitude,
