@@ -255,7 +255,7 @@ value_matrix:
   <strong>In dedication to my parents, from whom this name, this path, and this foundation begin.</strong>
 </p>
 
-<h2 align="center">IDEALE ESG Europe</h2>
+<h1 align="center">IDEALE ESG Europe</h1>
 
 ---
 
