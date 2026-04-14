@@ -1,0 +1,96 @@
+# dual-use-risk-analysis.yaml
+# Machine-readable dual-use risk analysis, export control, and data protection
+# assessment for the AI-BOOST programme.
+# Grant Agreement: GA 101135737
+# Reference: AI-BOOST/dual-use-risk-analysis.md
+# Author: Amedeo Pelliccia
+
+schema_version: "1.0.0"
+document_type: dual_use_risk_analysis
+last_updated: "2026-04-14T00:00:00Z"
+
+# ─────────────────────────────────────────────
+# 1. Programme Reference
+# ─────────────────────────────────────────────
+programme:
+  name: AI-BOOST
+  full_title: >
+    AI-Based Optimisation of Operational Simulation and Testing
+  grant_agreement: "GA 101135737"
+  funding_body: EuroHPC JU
+  ideale_pillar: "D — Defense (dual-use awareness & export control)"
+
+# ─────────────────────────────────────────────
+# 2. Dual-Use Risk Register
+# ─────────────────────────────────────────────
+dual_use:
+  risk_analysis:
+    - id: DU-01
+      category: Military application of simulation acceleration
+      description: >
+        AI surrogate models could accelerate weapons system design.
+      likelihood: low
+      impact: high
+      mitigation: >
+        Export-control screening of consortium partners; restricted model
+        variants for defence-adjacent use cases.
+
+    - id: DU-02
+      category: Adversarial misuse of open-weights model
+      description: >
+        Open-weights release could enable generation of harmful content.
+      likelihood: medium
+      impact: medium
+      mitigation: >
+        Red-teaming prior to release (WP4); safety fine-tuning;
+        responsible release protocol.
+
+    - id: DU-03
+      category: Surveillance capability
+      description: >
+        Multilingual NLP could be repurposed for mass surveillance.
+      likelihood: low
+      impact: high
+      mitigation: >
+        No biometric processing capability; data processing agreements
+        prohibit surveillance use.
+
+# ─────────────────────────────────────────────
+# 3. Export Control Requirements
+# ─────────────────────────────────────────────
+  export_control:
+    - requirement: "EU Dual-Use Regulation (EU) 2021/821 screening"
+      status: planned
+      evidence: "All consortium partners screened; no listed entities"
+
+    - requirement: "US EAR/ITAR assessment"
+      status: planned
+      evidence: "No US-origin controlled technology used in core pipeline"
+
+    - requirement: "End-use monitoring"
+      status: planned
+      evidence: "Responsible use license terms for model distribution"
+
+# ─────────────────────────────────────────────
+# 4. Data Protection / GDPR Compliance
+# ─────────────────────────────────────────────
+data_protection:
+  gdpr_compliance:
+    personal_data_processed: false
+    regulation_reference: "Regulation (EU) 2016/679"
+    data_protection_officer:
+      partner: "Legal Lead Partner"
+      contact: "dpo@partner.eu"
+    contingency: >
+      If PII is inadvertently found, data will be quarantined,
+      anonymised, or deleted immediately per GDPR Article 17.
+    privacy_impact_assessment:
+      required: false
+      rationale: >
+        No personal data is processed; all training data consists of
+        anonymised or synthetic simulation outputs.
+    cross_border_transfers:
+      applicable: false
+      note: >
+        All data processed within EU-sovereign infrastructure
+        (EuroHPC sites); no third-country transfers.
