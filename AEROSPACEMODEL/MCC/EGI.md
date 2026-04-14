@@ -355,7 +355,48 @@ three_layer_stack:
     intensity, transition magnitude, and lifecycle dynamics.
 
 ##############################################################################
-# 7  Security Properties
+# 7  Shared Database Schema — Minimal Fields
+##############################################################################
+
+database_schema:
+  description: >
+    Canonical field set for any Ephemeral Generative Interface (EGI) record.
+    Every conforming implementation MUST persist at least these fields.
+    A JSON Schema companion is provided at schemas/egi.shared_database.v1.schema.json.
+
+  minimal_fields:
+    - name: interface_id
+      type: string
+      description: "Unique Ephemeron identifier (EGI-<MODE>-<SEQUENCE>)."
+    - name: trigger_patterns
+      type: array
+      description: "Ordered channel-activation pattern encoding σ during Nucleation."
+    - name: seed_reference
+      type: string
+      description: "Reference to the 256-bit seed σ."
+    - name: simplicial_signature
+      type: object
+      description: "Topological fingerprint — simplex dimension, active channels, Betti numbers."
+    - name: assembly_rules
+      type: object
+      description: "Lifecycle constraints: bloom fraction, nucleation ceiling, CRC resolution, duration range."
+    - name: decay_policy
+      type: object
+      description: "Dissolution-phase parameters: envelope type, half-life, terminal vector."
+    - name: reactivation_conditions
+      type: object
+      description: "Re-nucleation criteria: allowed flag, trigger, max count, cooldown."
+    - name: cross_model_compatibility
+      type: object
+      description: "Cross-layer compatibility flags (SENSORIUM, TRAUMACODEDRAMA) and compatible modes."
+    - name: provenance
+      type: object
+      description: "Audit metadata: creator, timestamp, spec version, source document."
+
+  json_schema_ref: "schemas/egi.shared_database.v1.schema.json"
+
+##############################################################################
+# 8  Security Properties
 ##############################################################################
 
 security_properties:
@@ -738,9 +779,65 @@ transition magnitude, and lifecycle dynamics.
 
 ---
 
-## 7. Security Properties
+## 7. Shared Database Schema — Minimal Fields
 
-### 7.1 Ephemerality as Defence
+Every conforming EGI implementation **MUST** persist at least the nine fields
+listed below for each Ephemeron record. A machine-readable JSON Schema is
+provided at [`schemas/egi.shared_database.v1.schema.json`](../../schemas/egi.shared_database.v1.schema.json).
+
+| # | Field | Type | Description |
+|---|-------|------|-------------|
+| 1 | `interface_id` | `string` | Unique Ephemeron identifier. Format: `EGI-<MODE>-<SEQUENCE>`. |
+| 2 | `trigger_patterns` | `array` | Ordered channel-activation pattern encoding σ during Nucleation. |
+| 3 | `seed_reference` | `string` | Reference to the 256-bit seed σ (opaque token, vault URI, or hex). |
+| 4 | `simplicial_signature` | `object` | Topological fingerprint — simplex dimension, active channels, Betti numbers. |
+| 5 | `assembly_rules` | `object` | Lifecycle constraints: bloom fraction, nucleation ceiling, CRC resolution, duration range. |
+| 6 | `decay_policy` | `object` | Dissolution-phase parameters: envelope type, half-life, terminal vector. |
+| 7 | `reactivation_conditions` | `object` | Re-nucleation criteria: allowed flag, trigger, max count, cooldown. |
+| 8 | `cross_model_compatibility` | `object` | Cross-layer compatibility flags (SENSORIUM, TRAUMACODEDRAMA) and compatible modes. |
+| 9 | `provenance` | `object` | Audit metadata: creator, timestamp, spec version, source document. |
+
+### 7.1 Field Details
+
+**`interface_id`** — Must match the pattern `^EGI-[A-Z0-9]+-[0-9]+$`
+(e.g. `EGI-OPTIC-001`, `EGI-HAPTIC-042`, `EGI-FULL-007`).
+
+**`trigger_patterns`** — Each element carries `channel` (one of the six
+SENSORIUM channels), `onset_order` (ordinal position), and `onset_delay_ms`
+(milliseconds from nucleation start).
+
+**`seed_reference`** — Opaque by design; the actual seed bits MUST NOT appear
+in the database when a vault-backed store is used.
+
+**`simplicial_signature`** — `simplex_dimension` ranges from 0 (single channel)
+to 5 (all six channels). `active_channels` lists participating SENSORIUM
+channels. Optional `betti_numbers` array characterises channel-coupling topology.
+
+**`assembly_rules`** — `bloom_fraction_min` defaults to 0.6 (Rule E-003);
+`nucleation_ceiling` defaults to 30 (Rule E-006); `crc_resolution` defaults
+to 5 (Rule E-004). `lifecycle_range_ms` is a two-element `[min, max]` array.
+
+**`decay_policy`** — `envelope_type` is one of `exponential`, `linear`,
+`sigmoid`, or `custom`. `terminal_vector` MUST be `[0,0,0,0,0,0]` per
+Rule E-007. `half_life_ms` is nullable for custom envelopes.
+
+**`reactivation_conditions`** — `allowed` (boolean) is the only required
+sub-field. Optional: `trigger` event name, `max_reactivations` count (null =
+unlimited), and `cooldown_ms` interval.
+
+**`cross_model_compatibility`** — Boolean flags `sensorium` and
+`traumacodedrama` declare whether the record's ε(t) satisfies the respective
+layer rules (Rule E-005). `compatible_modes` lists EGI mode identifiers
+(e.g. `EGI-MODE-001`).
+
+**`provenance`** — `created_by`, `created_at` (ISO 8601), and `spec_version`
+are required. Optional `source_document` references the originating spec.
+
+---
+
+## 8. Security Properties
+
+### 8.1 Ephemerality as Defence
 
 The primary security property of EGI is **non-persistence**. An adversary
 must observe the Ephemeron in real time to capture the emotive vector. Post-hoc
@@ -748,7 +845,7 @@ analysis is impossible because no recording exists. This is a fundamentally
 different security model from SENSORIUM (where the carrier state persists) and
 TRAUMACODEDRAMA (where the dramatic arc has a fixed sequence).
 
-### 7.2 Observer Ambiguity
+### 8.2 Observer Ambiguity
 
 Even a real-time observer cannot distinguish a payload-carrying Ephemeron from
 a non-carrying one, because:
@@ -757,7 +854,7 @@ a non-carrying one, because:
 - The decay profile is indistinguishable from standard exponential fade-out
   within the `resolution` tolerance
 
-### 7.3 Replay Resistance
+### 8.3 Replay Resistance
 
 Each Ephemeron is deterministically generated as `𝒢(σ, π, t)`, where the
 interface surface is a function of the full `(σ, π)` pair rather than of `σ`
@@ -769,11 +866,12 @@ verifies freshness through a nonce embedded in the seed.
 
 ---
 
-## 8. References
+## 9. References
 
 - AEROSPACEMODEL-MCC-SPEC-008 (SENSORIUM): parent specification
 - AEROSPACEMODEL-MCC-SPEC-009 (TRAUMACODEDRAMA): sibling specification
 - [`egi.yaml`](egi.yaml): machine-readable companion (AEROSPACEMODEL-MCC-SPEC-010)
+- [`egi.shared_database.v1.schema.json`](../../schemas/egi.shared_database.v1.schema.json): JSON Schema for minimal EGI database fields
 - [`SENSORIUM.md`](SENSORIUM.md): base emotive vector definitions
 - [`TRAUMACODEDRAMA.md`](TRAUMACODEDRAMA.md): dramatic-arc steganographic protocol
 

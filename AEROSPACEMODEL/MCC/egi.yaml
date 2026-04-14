@@ -358,7 +358,79 @@ three_layer_stack:
     intensity, transition magnitude, and lifecycle dynamics.
 
 ##############################################################################
-# 7  Security Properties
+# 7  Shared Database Schema — Minimal Fields
+##############################################################################
+
+database_schema:
+  description: >
+    Canonical field set for any Ephemeral Generative Interface (EGI) record.
+    Every conforming implementation MUST persist at least these fields.
+    A JSON Schema companion is provided at schemas/egi.shared_database.v1.schema.json.
+
+  minimal_fields:
+    - name: interface_id
+      type: string
+      pattern: "^EGI-[A-Z0-9]+-[0-9]+$"
+      description: >
+        Unique identifier for the Ephemeron record.
+        Format: EGI-<MODE>-<SEQUENCE>.
+
+    - name: trigger_patterns
+      type: array
+      description: >
+        Ordered channel activation pattern that encodes σ during the
+        Nucleation phase. Each entry specifies a SENSORIUM channel, its
+        onset order, and onset delay in milliseconds.
+
+    - name: seed_reference
+      type: string
+      description: >
+        Reference to the 256-bit seed σ that determines the generation
+        function 𝒢. May be an opaque token, a vault URI, or a hex-encoded
+        value.
+
+    - name: simplicial_signature
+      type: object
+      description: >
+        Topological fingerprint of the Ephemeron's multi-channel coupling
+        structure: simplex dimension, active channels, and Betti numbers.
+
+    - name: assembly_rules
+      type: object
+      description: >
+        Structural constraints governing how the Ephemeron is assembled
+        from lifecycle phases — bloom fraction, nucleation ceiling, CRC
+        resolution, and permitted lifecycle duration range.
+
+    - name: decay_policy
+      type: object
+      description: >
+        Describes how the Ephemeron fades during the Dissolution phase:
+        envelope type, half-life, and terminal condition.
+
+    - name: reactivation_conditions
+      type: object
+      description: >
+        Criteria under which a dissolved Ephemeron may be re-nucleated
+        with a new lifecycle — allowed flag, trigger event, maximum
+        reactivation count, and cooldown interval.
+
+    - name: cross_model_compatibility
+      type: object
+      description: >
+        Declares cross-layer and cross-mode compatibility per the
+        three-layer encoding stack (SENSORIUM, TRAUMACODEDRAMA, EGI).
+
+    - name: provenance
+      type: object
+      description: >
+        Origin and audit metadata — creator, creation timestamp, spec
+        version, and source document reference.
+
+  json_schema_ref: "schemas/egi.shared_database.v1.schema.json"
+
+##############################################################################
+# 8  Security Properties
 ##############################################################################
 
 security_properties:
