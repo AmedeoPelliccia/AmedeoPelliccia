@@ -358,7 +358,89 @@ three_layer_stack:
     intensity, transition magnitude, and lifecycle dynamics.
 
 ##############################################################################
-# 7  Security Properties
+# 7  Shared Database Schema — Minimal Fields
+##############################################################################
+
+database_schema:
+  description: >
+    Canonical field set for any Ephemeral Generative Interface (EGI) record.
+    Every conforming implementation MUST persist at least these fields.
+    A JSON Schema companion is provided at schemas/egi.shared_database.v1.schema.json.
+
+  minimal_fields:
+    - name: interface_id
+      type: string
+      required: true
+      description: >
+        Globally unique identifier for the EGI record, namespaced with the
+        'egi:' prefix (e.g. egi:optic-demo-001).
+
+    - name: trigger_patterns
+      type: array
+      required: true
+      description: >
+        One or more patterns whose satisfaction triggers Ephemeron nucleation.
+        Each entry carries a pattern_id, a condition expression, and an
+        optional channel_onset_order.
+
+    - name: seed_reference
+      type: string
+      required: true
+      description: >
+        Reference to the 256-bit seed σ that determines the generation
+        function 𝒢. May be a literal hex string, a vault URI, or an
+        external key reference.
+
+    - name: simplicial_signature
+      type: object
+      required: true
+      description: >
+        Topological signature anchoring this record in the MCC simplicial
+        complex. Contains complex_id, optional simplex_dimension and
+        face_ids, and an integrity hash.
+
+    - name: assembly_rules
+      type: object
+      required: true
+      description: >
+        Rules governing Ephemeron assembly: canonical mode selection,
+        dominant channel, bloom fraction minimum, nucleation ceiling,
+        and lifecycle timing range.
+
+    - name: decay_policy
+      type: object
+      required: true
+      description: >
+        Governs the dissolution behaviour after Bloom ends. Specifies the
+        Decay Envelope type (linear / exponential / sigmoid), optional
+        half-life, the terminal zero-vector, and CRC resolution.
+
+    - name: reactivation_conditions
+      type: object
+      required: true
+      description: >
+        Conditions under which a dissolved Ephemeron may be re-nucleated.
+        Includes allowed flag, max reactivations, cooldown interval, and
+        seed rotation policy.
+
+    - name: cross_model_compatibility
+      type: object
+      required: true
+      description: >
+        Flags and references declaring compatibility with other MCC-stack
+        specifications (SENSORIUM SPEC-008, TRAUMACODEDRAMA SPEC-009).
+
+    - name: provenance
+      type: object
+      required: true
+      description: >
+        Origin and audit trail: created_by, created_at, source_spec,
+        source_spec_version, and optional parent_record_id.
+
+  json_schema_ref: "schemas/egi.shared_database.v1.schema.json"
+
+##############################################################################
+# 8  Security Properties
 ##############################################################################
 
 security_properties:

@@ -355,7 +355,30 @@ three_layer_stack:
     intensity, transition magnitude, and lifecycle dynamics.
 
 ##############################################################################
-# 7  Security Properties
+# 7  Shared Database Schema — Minimal Fields
+##############################################################################
+
+database_schema:
+  description: >
+    Canonical field set for any Ephemeral Generative Interface (EGI) record.
+    Every conforming implementation MUST persist at least these fields.
+    A JSON Schema companion is provided at schemas/egi.shared_database.v1.schema.json.
+
+  minimal_fields:
+    - interface_id
+    - trigger_patterns
+    - seed_reference
+    - simplicial_signature
+    - assembly_rules
+    - decay_policy
+    - reactivation_conditions
+    - cross_model_compatibility
+    - provenance
+
+  json_schema_ref: "schemas/egi.shared_database.v1.schema.json"
+
+##############################################################################
+# 8  Security Properties
 ##############################################################################
 
 security_properties:
@@ -738,9 +761,33 @@ transition magnitude, and lifecycle dynamics.
 
 ---
 
-## 7. Security Properties
+## 7. Shared Database Schema — Minimal Fields
 
-### 7.1 Ephemerality as Defence
+Every conforming EGI implementation **MUST** persist at least the nine fields
+listed below. A machine-readable JSON Schema companion is provided at
+[`schemas/egi.shared_database.v1.schema.json`](../../schemas/egi.shared_database.v1.schema.json).
+
+| # | Field | Type | Description |
+|---|-------|------|-------------|
+| 1 | `interface_id` | `string` | Globally unique record identifier, namespaced with the `egi:` prefix. |
+| 2 | `trigger_patterns` | `array` | One or more patterns whose satisfaction triggers Ephemeron nucleation. Each entry carries a `pattern_id`, a `condition`, and an optional `channel_onset_order`. |
+| 3 | `seed_reference` | `string` | Reference to the 256-bit seed `σ` that determines the generation function `𝒢`. May be a literal hex string, a vault URI, or an external key reference. |
+| 4 | `simplicial_signature` | `object` | Topological signature anchoring the record in the MCC simplicial complex (`complex_id`, optional `simplex_dimension`/`face_ids`, integrity `hash`). |
+| 5 | `assembly_rules` | `object` | Rules governing Ephemeron assembly: canonical mode, dominant channel, bloom-fraction minimum (≥ 0.6), nucleation ceiling (≤ 30), and lifecycle timing range. |
+| 6 | `decay_policy` | `object` | Dissolution behaviour: Decay Envelope type (`linear` / `exponential` / `sigmoid`), optional `half_life_ms`, terminal zero-vector, and CRC `resolution` (default 5). |
+| 7 | `reactivation_conditions` | `object` | Whether a dissolved Ephemeron may be re-nucleated, with `max_reactivations`, `cooldown_ms`, and `seed_rotation` policy. |
+| 8 | `cross_model_compatibility` | `object` | Boolean flags for SENSORIUM (SPEC-008) and TRAUMACODEDRAMA (SPEC-009) compliance, plus a list of `supported_specs`. |
+| 9 | `provenance` | `object` | Origin and audit trail: `created_by`, `created_at`, `source_spec`, `source_spec_version`, and optional `parent_record_id`. |
+
+All nine fields are **required**. Implementations MAY add additional fields
+(`additionalProperties: true` in the JSON Schema) but MUST NOT omit any of the
+nine.
+
+---
+
+## 8. Security Properties
+
+### 8.1 Ephemerality as Defence
 
 The primary security property of EGI is **non-persistence**. An adversary
 must observe the Ephemeron in real time to capture the emotive vector. Post-hoc
@@ -748,7 +795,7 @@ analysis is impossible because no recording exists. This is a fundamentally
 different security model from SENSORIUM (where the carrier state persists) and
 TRAUMACODEDRAMA (where the dramatic arc has a fixed sequence).
 
-### 7.2 Observer Ambiguity
+### 8.2 Observer Ambiguity
 
 Even a real-time observer cannot distinguish a payload-carrying Ephemeron from
 a non-carrying one, because:
@@ -757,7 +804,7 @@ a non-carrying one, because:
 - The decay profile is indistinguishable from standard exponential fade-out
   within the `resolution` tolerance
 
-### 7.3 Replay Resistance
+### 8.3 Replay Resistance
 
 Each Ephemeron is deterministically generated as `𝒢(σ, π, t)`, where the
 interface surface is a function of the full `(σ, π)` pair rather than of `σ`
@@ -769,13 +816,14 @@ verifies freshness through a nonce embedded in the seed.
 
 ---
 
-## 8. References
+## 9. References
 
 - AEROSPACEMODEL-MCC-SPEC-008 (SENSORIUM): parent specification
 - AEROSPACEMODEL-MCC-SPEC-009 (TRAUMACODEDRAMA): sibling specification
 - [`egi.yaml`](egi.yaml): machine-readable companion (AEROSPACEMODEL-MCC-SPEC-010)
 - [`SENSORIUM.md`](SENSORIUM.md): base emotive vector definitions
 - [`TRAUMACODEDRAMA.md`](TRAUMACODEDRAMA.md): dramatic-arc steganographic protocol
+- [`egi.shared_database.v1.schema.json`](../../schemas/egi.shared_database.v1.schema.json): JSON Schema for minimal EGI database fields
 
 ---
 

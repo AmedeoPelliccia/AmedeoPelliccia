@@ -1,0 +1,257 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://essa.eu/schemas/egi/shared_database/v1",
+  "title": "EGI Shared Database Schema — Minimal Fields v1",
+  "description": "Canonical field set for any Ephemeral Generative Interface (EGI) record. Every conforming implementation MUST persist at least these fields. Ref: AEROSPACEMODEL-MCC-SPEC-010 §7",
+  "type": "object",
+
+  "$defs": {
+    "decay_policy": {
+      "title": "Decay Policy",
+      "description": "Governs the dissolution behaviour of the Ephemeron after Bloom ends.",
+      "type": "object",
+      "properties": {
+        "envelope_type": {
+          "type": "string",
+          "enum": ["linear", "exponential", "sigmoid"],
+          "description": "Shape of the Decay Envelope 𝒟(t)."
+        },
+        "half_life_ms": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Time in milliseconds for intensity to halve. Applies when envelope_type is exponential."
+        },
+        "terminal_vector": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 0, "maximum": 99 },
+          "minItems": 6,
+          "maxItems": 6,
+          "description": "Required terminal emotive vector at t_dissolution. MUST be [0,0,0,0,0,0] per rule E-007."
+        },
+        "crc_resolution": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 5,
+          "description": "Curvature deviation quantisation steps per channel (default 5, per rule E-004)."
+        }
+      },
+      "required": ["envelope_type", "terminal_vector"]
+    },
+
+    "provenance": {
+      "title": "EGI Record Provenance",
+      "description": "Origin and audit trail for the EGI record.",
+      "type": "object",
+      "properties": {
+        "created_by": {
+          "type": "string",
+          "description": "Identifier of the system or agent that created this record."
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp of record creation."
+        },
+        "source_spec": {
+          "type": "string",
+          "description": "Reference to the governing specification (e.g. AEROSPACEMODEL-MCC-SPEC-010)."
+        },
+        "source_spec_version": {
+          "type": "string",
+          "description": "Version of the governing specification."
+        },
+        "parent_record_id": {
+          "type": ["string", "null"],
+          "description": "If this record was derived from another, the parent record's interface_id."
+        }
+      },
+      "required": ["created_by", "created_at", "source_spec"]
+    }
+  },
+
+  "properties": {
+
+    "interface_id": {
+      "type": "string",
+      "pattern": "^egi:[a-zA-Z0-9_-]+$",
+      "description": "Globally unique identifier for this EGI record. Namespaced with the 'egi:' prefix."
+    },
+
+    "trigger_patterns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "pattern_id": {
+            "type": "string",
+            "description": "Identifier for this trigger pattern."
+          },
+          "condition": {
+            "type": "string",
+            "description": "Human-readable or machine-evaluable condition that initiates Nucleation."
+          },
+          "channel_onset_order": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["Auditory", "Haptic", "Optic", "Olfactory", "Gustatory", "Proprioceptive"]
+            },
+            "description": "Ordered list of SENSORIUM channels activated during Nucleation."
+          }
+        },
+        "required": ["pattern_id", "condition"]
+      },
+      "minItems": 1,
+      "description": "One or more patterns whose satisfaction triggers Ephemeron nucleation."
+    },
+
+    "seed_reference": {
+      "type": "string",
+      "description": "Reference to the 256-bit seed σ that determines the generation function 𝒢. May be a literal hex string, a vault URI, or an external key reference."
+    },
+
+    "simplicial_signature": {
+      "type": "object",
+      "properties": {
+        "complex_id": {
+          "type": "string",
+          "description": "Identifier of the simplicial complex this Ephemeron belongs to."
+        },
+        "simplex_dimension": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Dimension of the simplex within the complex."
+        },
+        "face_ids": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Identifiers of the boundary faces in the simplicial complex."
+        },
+        "hash": {
+          "type": "string",
+          "description": "Integrity hash of the simplicial structure."
+        }
+      },
+      "required": ["complex_id", "hash"],
+      "description": "Topological signature anchoring this record in the MCC simplicial complex."
+    },
+
+    "assembly_rules": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "description": "Canonical Ephemeron mode identifier (e.g. EGI-MODE-001)."
+        },
+        "dominant_channel": {
+          "type": ["string", "array", "null"],
+          "description": "Primary SENSORIUM channel(s) for the cover signal. Null for Full-Spectrum."
+        },
+        "bloom_fraction_min": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.6,
+          "description": "Minimum fraction of lifecycle that MUST be Bloom phase (rule E-003)."
+        },
+        "nucleation_ceiling": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 99,
+          "default": 30,
+          "description": "Maximum κᵢ during Nucleation (rule E-006)."
+        },
+        "lifecycle_range_ms": {
+          "type": "array",
+          "items": { "type": "number", "minimum": 0 },
+          "minItems": 2,
+          "maxItems": 2,
+          "description": "Allowed [min, max] total lifecycle duration in milliseconds."
+        }
+      },
+      "required": ["mode", "bloom_fraction_min"],
+      "description": "Rules governing Ephemeron assembly: mode selection, phase constraints, and timing."
+    },
+
+    "decay_policy": {
+      "$ref": "#/$defs/decay_policy"
+    },
+
+    "reactivation_conditions": {
+      "type": "object",
+      "properties": {
+        "allowed": {
+          "type": "boolean",
+          "description": "Whether this Ephemeron may be re-nucleated after dissolution."
+        },
+        "max_reactivations": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "description": "Maximum number of permitted reactivations. Null means unlimited (when allowed is true)."
+        },
+        "cooldown_ms": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "description": "Minimum interval in milliseconds between dissolution and re-nucleation."
+        },
+        "seed_rotation": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether a fresh seed σ MUST be generated on each reactivation (recommended for replay resistance)."
+        }
+      },
+      "required": ["allowed"],
+      "description": "Conditions under which a dissolved Ephemeron may be re-nucleated."
+    },
+
+    "cross_model_compatibility": {
+      "type": "object",
+      "properties": {
+        "sensorium": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether ε(t) at each instant is a valid SENSORIUM state (rule E-005)."
+        },
+        "traumacodedrama": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether Bloom transitions comply with TRAUMACODEDRAMA rules (rule E-005)."
+        },
+        "supported_specs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "Specification document ID (e.g. AEROSPACEMODEL-MCC-SPEC-008)."
+          },
+          "description": "List of sibling/parent specification IDs this record is compatible with."
+        }
+      },
+      "required": ["sensorium", "traumacodedrama"],
+      "description": "Flags and references declaring compatibility with other MCC-stack specifications."
+    },
+
+    "provenance": {
+      "$ref": "#/$defs/provenance"
+    }
+  },
+
+  "required": [
+    "interface_id",
+    "trigger_patterns",
+    "seed_reference",
+    "simplicial_signature",
+    "assembly_rules",
+    "decay_policy",
+    "reactivation_conditions",
+    "cross_model_compatibility",
+    "provenance"
+  ],
+
+  "additionalProperties": true,
+
+  "x-egi": {
+    "document_id": "AEROSPACEMODEL-MCC-SPEC-010",
+    "spec_section": "§7 Shared Database Schema — Minimal Fields",
+    "schema_version": "1.0.0"
+  }
+}
