@@ -1,0 +1,320 @@
+##############################################################################
+# ephemeralassembly.yaml
+# EPHEMERALASSEMBLY — Ephemeral Cognitive Assembly Protocol
+# AEROSPACEMODEL MCC Specification Series — SPEC-011
+##############################################################################
+
+document_id: AEROSPACEMODEL-MCC-SPEC-011
+document_type: ephemeral_cognitive_assembly_specification
+title: "EPHEMERALASSEMBLY — Ephemeral Cognitive Assembly Protocol"
+version: "0.1.0"
+schema_version: "1.0.0"
+status: draft
+parent: AEROSPACEMODEL-MCC-SPEC-008
+related_documents:
+  - id: AEROSPACEMODEL-MCC-SPEC-008
+    file: "AEROSPACEMODEL/MCC/SENSORIUM.md"
+    relationship: parent_sensory_layer
+  - id: AEROSPACEMODEL-MCC-SPEC-009
+    file: "AEROSPACEMODEL/MCC/TRAUMACODEDRAMA.md"
+    relationship: sibling_transition_layer
+  - id: AEROSPACEMODEL-MCC-SPEC-010
+    file: "AEROSPACEMODEL/MCC/EGI.md"
+    relationship: sibling_lifecycle_layer
+last_updated: "2026-04-14T00:00:00Z"
+
+##############################################################################
+# 0  Core Principle
+##############################################################################
+
+core_principle:
+  assembly_function: "ℛ(𝒦, σ) → 𝒜(t)"
+  disjointness: "𝒜_latent ∩ 𝒜_active = ∅"
+  description: >
+    Data is hidden in the regeneration rules that allow a cognitive assembly
+    to be reconstructed from reactivation stimuli. The persistence kernel 𝒦
+    encodes the minimal set of instructions needed to reconstitute a full
+    cognitive assembly 𝒜(t) when triggered by cooperative stimuli σ. The
+    latent assembly and the active assembly occupy disjoint domains — what
+    is stored is not the assembly; what is experienced is regenerated on
+    demand.
+  generalisation: >
+    EPHEMERALASSEMBLY extends the MCC stack by one layer of abstraction:
+    from lifecycle dynamics (EGI) to regeneration rules. Where EGI encodes
+    data in the existence and dissolution of an interface, EPHEMERALASSEMBLY
+    encodes the instructions for reconstructing that interface from dormant
+    components.
+  axiom: >
+    "The assembly is not stored — it is regenerated.
+    The kernel is not the assembly — it is the recipe."
+
+##############################################################################
+# 1  Definitions
+##############################################################################
+
+definitions:
+
+  - definition: 41
+    name: Cognitive Assembly
+    formula: "𝒜 = {ε₁, ε₂, …, εₙ | binding(εᵢ, εⱼ) ∀ i,j ∈ active}"
+    components:
+      neurons: "Set of emotive vectors (SENSORIUM states) participating in the assembly"
+      bindings: "Pairwise binding strengths between active vectors"
+      activation: "Time-varying activation level of each vector"
+    description: >
+      A transient coalition of co-active emotive vectors that collectively
+      represent a coherent cognitive unit. The assembly exists only while
+      its constituent vectors maintain mutual binding above threshold.
+      Disassembly is the default state — persistence requires active
+      maintenance or regeneration.
+
+  - definition: 42
+    name: Persistence Kernel
+    formula: "𝒦 = (ℬ, Θ, ℛ)"
+    components:
+      B: "Binding template ℬ — the connectivity graph of the assembly"
+      Theta: "Threshold vector Θ = (τ₁, τ₂, …, τ₆) — per-channel reactivation thresholds"
+      R: "Regeneration function ℛ — maps stimuli to reconstructed assembly"
+    description: >
+      The minimal representation that allows a dissolved cognitive assembly
+      to be fully reconstructed. The kernel is compact, persistent, and
+      inert — it carries no payload by itself, only the instructions for
+      regeneration. 𝒦 may itself be embedded as a TRAUMACODEDRAMA payload.
+
+  - definition: 43
+    name: Reactivation Stimulus
+    formula: "σ = (σ_𝔸, σ_ℍ, σ_𝕆, σ_𝔽, σ_𝔾, σ_ℙ)"
+    domain: "σⱼ ∈ {0, …, 99} for each channel j"
+    description: >
+      A vector in the SENSORIUM six-channel emotive space that serves as
+      the trigger for assembly regeneration. Each σⱼ maps 1:1 onto the
+      corresponding SENSORIUM κⱼ channel.
+
+##############################################################################
+# 2  Axioms
+##############################################################################
+
+axioms:
+
+  - id: E1
+    name: Kernel Sufficiency
+    statement: >
+      The persistence kernel 𝒦 MUST be sufficient to regenerate the full
+      cognitive assembly 𝒜 given appropriate reactivation stimuli σ. No
+      external state beyond 𝒦 and σ is required for reconstruction.
+    severity: MUST
+
+  - id: E2
+    name: Latent Inertness
+    statement: >
+      A persistence kernel 𝒦 in its latent state MUST carry no active
+      payload. The kernel is inert data — it becomes meaningful only when
+      triggered by reactivation stimuli that satisfy the cooperative
+      threshold.
+    severity: MUST
+
+  - id: E3
+    name: Cooperative Reactivation
+    statement: >
+      Assembly regeneration is triggered when the cooperative sum across
+      channels meets or exceeds unity: Σⱼ(σⱼ / τⱼ) ≥ 1, where τⱼ is the
+      per-channel threshold from the kernel's threshold vector Θ. No single
+      channel is required to reach its individual threshold — channels
+      cooperate to trigger reactivation.
+    formula: "Σⱼ(σⱼ / τⱼ) ≥ 1"
+    description: >
+      This is the cognitive analogue of SENSORIUM's multi-channel intensity
+      encoding. The cooperative sum ensures that weak stimuli across many
+      channels can trigger an assembly that no single channel could
+      activate alone.
+    severity: MUST
+
+  - id: E4
+    name: Dissolution Default
+    statement: >
+      In the absence of sustained reactivation stimuli, a cognitive assembly
+      MUST dissolve. Persistence is the exception, not the rule. The default
+      state of any assembly is non-existence.
+    severity: MUST
+
+  - id: E5
+    name: Kernel Immutability
+    statement: >
+      Once created, a persistence kernel 𝒦 MUST NOT be modified. A new
+      assembly configuration requires a new kernel. This ensures that the
+      regeneration contract is deterministic and verifiable.
+    severity: MUST
+
+##############################################################################
+# 3  Encoding Rules
+##############################################################################
+
+encoding_rules:
+
+  - id: EA-001
+    name: Kernel Compactness
+    statement: >
+      The persistence kernel 𝒦 MUST be representable within the capacity
+      of a single TRAUMACODEDRAMA payload. The binding template ℬ, threshold
+      vector Θ, and regeneration function identifier ℛ MUST fit within the
+      transition-magnitude encoding space of a standard dramatic arc.
+    severity: MUST
+
+  - id: EA-002
+    name: Threshold Positivity
+    statement: >
+      All per-channel thresholds τⱼ in the threshold vector Θ MUST be
+      strictly positive: τⱼ > 0 for all j ∈ {𝔸, ℍ, 𝕆, 𝔽, 𝔾, ℙ}. A zero
+      threshold would allow spontaneous reactivation without stimulus.
+    severity: MUST
+
+  - id: EA-003
+    name: SENSORIUM Compliance
+    statement: >
+      All reactivation stimuli σ and all regenerated emotive vectors ε
+      MUST be valid SENSORIUM states. Each component σⱼ and κⱼ MUST lie
+      in {0, …, 99}. All SENSORIUM rules (S-001 through S-005) apply.
+    severity: MUST
+
+  - id: EA-004
+    name: Regeneration Determinism
+    statement: >
+      Given the same persistence kernel 𝒦 and the same reactivation
+      stimulus σ, the regeneration function ℛ MUST produce the same
+      cognitive assembly 𝒜. Non-deterministic regeneration is a
+      protocol violation.
+    severity: MUST
+
+  - id: EA-005
+    name: Cross-Layer Independence
+    statement: >
+      The EPHEMERALASSEMBLY layer is orthogonal to SENSORIUM (intensity),
+      TRAUMACODEDRAMA (transition magnitude), and EGI (lifecycle dynamics).
+      A persistence kernel embedded in a TRAUMACODEDRAMA payload does not
+      interfere with the SENSORIUM or EGI payloads that may coexist in the
+      same carrier.
+    severity: MUST
+
+##############################################################################
+# 4  Integration with SENSORIUM and TRAUMACODEDRAMA
+##############################################################################
+
+integration:
+
+  sensorium_link:
+    description: >
+      EPHEMERALASSEMBLY reuses the six-channel emotive vector space defined
+      by SENSORIUM (SPEC-008). Reactivation stimuli σ are vectors in the
+      same (𝔸, ℍ, 𝕆, 𝔽, 𝔾, ℙ) space. Cooperative reactivation (axiom E3)
+      is the cognitive analogue of SENSORIUM's multi-channel intensity
+      encoding.
+    channel_mapping: >
+      Each σⱼ maps 1:1 onto the corresponding SENSORIUM κⱼ channel.
+      Threshold τⱼ is a per-channel parameter; the cooperative sum
+      Σ(σⱼ / τⱼ) ≥ 1 defines the reactivation boundary.
+
+  traumacodedrama_link:
+    description: >
+      EPHEMERALASSEMBLY extends TRAUMACODEDRAMA (SPEC-009) by one layer of
+      abstraction: where TRAUMACODEDRAMA encodes data in transition
+      magnitudes (‖Δεᵢ‖), EPHEMERALASSEMBLY encodes the regeneration rules
+      that allow a cognitive assembly to be reconstructed from those
+      transitions. The persistence kernel 𝒦 may itself be embedded as a
+      TRAUMACODEDRAMA payload.
+
+  egi_link:
+    description: >
+      EPHEMERALASSEMBLY complements EGI (SPEC-010): EGI governs the lifecycle
+      of a single ephemeral interface, while EPHEMERALASSEMBLY governs the
+      regeneration of entire cognitive assemblies from persistence kernels.
+      An EGI Ephemeron may serve as the delivery vehicle for a reactivation
+      stimulus σ that triggers assembly regeneration.
+
+  layer_stack:
+    - layer: SENSORIUM (SPEC-008)
+      unit: "State ε"
+      encodes: "Steganographic payload in channel intensities"
+    - layer: TRAUMACODEDRAMA (SPEC-009)
+      unit: "Transition Δε"
+      encodes: "Steganographic payload in transition magnitudes"
+    - layer: EGI (SPEC-010)
+      unit: "Ephemeron Φ"
+      encodes: "Payload in lifecycle dynamics of the generative interface"
+    - layer: EPHEMERALASSEMBLY (SPEC-011)
+      unit: "Persistence kernel 𝒦"
+      encodes: "Regeneration rules for cognitive assembly reconstruction"
+
+##############################################################################
+# 5  Decoder Protocol
+##############################################################################
+
+decoder_protocol:
+  steps:
+    - step: 1
+      name: Extract Kernel
+      description: >
+        Extract the persistence kernel 𝒦 from the TRAUMACODEDRAMA payload.
+        Decode the binding template ℬ, threshold vector Θ, and regeneration
+        function identifier ℛ from the transition magnitudes.
+
+    - step: 2
+      name: Validate Thresholds
+      description: >
+        Verify that all τⱼ > 0 (Rule EA-002). Reject kernels with zero or
+        negative thresholds.
+
+    - step: 3
+      name: Receive Reactivation Stimulus
+      description: >
+        Observe the reactivation stimulus σ = (σ_𝔸, σ_ℍ, σ_𝕆, σ_𝔽, σ_𝔾, σ_ℙ).
+        Verify SENSORIUM compliance (each σⱼ ∈ {0, …, 99}).
+
+    - step: 4
+      name: Evaluate Cooperative Sum
+      description: >
+        Compute Σⱼ(σⱼ / τⱼ). If the sum ≥ 1, proceed to regeneration.
+        Otherwise, the stimulus is insufficient — assembly remains latent.
+
+    - step: 5
+      name: Regenerate Assembly
+      description: >
+        Apply the regeneration function ℛ(𝒦, σ) → 𝒜(t). Reconstruct the
+        full cognitive assembly from the kernel and stimulus.
+
+    - step: 6
+      name: Verify Assembly Integrity
+      description: >
+        Confirm that all regenerated emotive vectors are valid SENSORIUM
+        states and that binding strengths match the template ℬ.
+
+##############################################################################
+# 6  Security Properties
+##############################################################################
+
+security_properties:
+
+  - property: Latent Inertness Defence
+    description: >
+      A persistence kernel in isolation reveals no information about the
+      assembly it can regenerate. Without the correct reactivation stimulus
+      (or a stimulus whose cooperative sum meets threshold), the kernel is
+      inert data indistinguishable from noise.
+
+  - property: Cooperative Threshold Security
+    description: >
+      The cooperative reactivation threshold Σⱼ(σⱼ / τⱼ) ≥ 1 ensures that
+      partial knowledge of the stimulus is insufficient. An adversary who
+      knows fewer than all channel components cannot guarantee reactivation
+      unless the known components alone satisfy the cooperative sum.
+
+  - property: Kernel Immutability Guarantee
+    description: >
+      Once created, a kernel cannot be modified (axiom E5). Any tampering
+      produces a different kernel that either fails to regenerate or
+      regenerates an incorrect assembly detectable via integrity checks.
+
+  - property: Layer Orthogonality
+    description: >
+      The EPHEMERALASSEMBLY payload is orthogonal to SENSORIUM, TRAUMACODEDRAMA,
+      and EGI payloads. Extracting or modifying the kernel does not affect
+      the other three layers, and vice versa.

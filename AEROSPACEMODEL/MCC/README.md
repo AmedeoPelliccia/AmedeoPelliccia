@@ -31,6 +31,7 @@ dimensions. Intensity is the universal steganographic channel.
 | **AEROSPACEMODEL-MCC-SPEC-008** | **SENSORIUM — Multi-Sensory Composition** | [`SENSORIUM.md`](SENSORIUM.md) · [`sensorium.yaml`](sensorium.yaml) | **draft** |
 | **AEROSPACEMODEL-MCC-SPEC-009** | **TRAUMACODEDRAMA — Dramatic-Arc Steganographic Protocol** | [`TRAUMACODEDRAMA.md`](TRAUMACODEDRAMA.md) · [`traumacodedrama.yaml`](traumacodedrama.yaml) | **draft** |
 | **AEROSPACEMODEL-MCC-SPEC-010** | **EGI — Ephemeral Generative Interface** | [`EGI.md`](EGI.md) · [`egi.yaml`](egi.yaml) | **draft** |
+| **AEROSPACEMODEL-MCC-SPEC-011** | **EPHEMERALASSEMBLY — Ephemeral Cognitive Assembly Protocol** | [`EPHEMERALASSEMBLY.md`](EPHEMERALASSEMBLY.md) · [`ephemeralassembly.yaml`](ephemeralassembly.yaml) | **draft** |
 
 ---
 
@@ -129,3 +130,29 @@ Chemosensory (`Φ_𝔽𝔾`), Proprioceptive (`Φ_ℙ`), Full-Spectrum (`Φ_★`
 The three MCC layers — SENSORIUM (intensity), TRAUMACODEDRAMA (transitions),
 EGI (lifecycle) — are orthogonal. A single Ephemeron with internal transitions
 carries **three independent payloads** simultaneously.
+
+---
+
+## EPHEMERALASSEMBLY — Ephemeral Cognitive Assembly Protocol (SPEC-011)
+
+EPHEMERALASSEMBLY extends the MCC stack by one further layer of abstraction:
+data is hidden in the **regeneration rules** that allow a cognitive assembly
+to be reconstructed from dormant components and reactivation stimuli.
+
+```
+ℛ(𝒦, σ) → 𝒜(t)
+```
+
+The regeneration function `ℛ` takes a persistence kernel `𝒦` and a
+reactivation stimulus `σ` to produce a cognitive assembly `𝒜(t)`. The kernel
+encodes the minimal instructions (binding template, thresholds, regeneration
+function) needed to reconstitute the full assembly on demand.
+
+**Cooperative reactivation** (Axiom E3): assembly regeneration is triggered
+when `Σⱼ(σⱼ / τⱼ) ≥ 1` — channels cooperate across the SENSORIUM vector
+space to reach the reactivation boundary.
+
+The four MCC layers — SENSORIUM (intensity), TRAUMACODEDRAMA (transitions),
+EGI (lifecycle), EPHEMERALASSEMBLY (regeneration) — are orthogonal and
+independently decodable. The persistence kernel `𝒦` may itself be embedded
+as a TRAUMACODEDRAMA payload.
