@@ -367,7 +367,42 @@ axis_ordering:
       symbol: "𝔽"
 
 ##############################################################################
-# 6  Integration — PLUMA-GAI H.I.V. Correspondence
+# 6  SCI — Sensorium Compression Index
+##############################################################################
+
+sci:
+  formula: "SCI = (V, A, O, T, G, P | Σ)"
+  description: >
+    The Sensorium Compression Index compresses a full emotive vector ε into a
+    compact, channel-typed digest by applying the best-fit codec to each
+    sensory channel. The resulting tuple (V, A, O, T, G, P | Σ) is a
+    lossy-but-faithful fingerprint of the multi-sensory state, optimised for
+    storage, comparison, and cross-modal alignment.
+  codecs:
+    - channel: Vision
+      data_nature: "spatial / relational"
+      codec: ["embedding", "graph_hash", "point_cloud_hash"]
+    - channel: Hearing
+      data_nature: "temporal / sequential"
+      codec: ["melodic_contour", "spectral_envelope"]
+    - channel: Smell
+      data_nature: "chemical / categorical"
+      codec: ["molecular_fingerprint"]
+    - channel: Touch
+      data_nature: "procedural / ordered"
+      codec: ["action_grammar", "pressure_map_hash"]
+    - channel: Taste
+      data_nature: "chemical / valence"
+      codec: ["chemical_snapshot", "valence_intensity"]
+    - channel: Proprioception
+      data_nature: "spatial / continuous"
+      codec: ["pose_skeleton", "motion_trajectory"]
+    - channel: Topology
+      data_nature: "higher-order relational"
+      codec: ["betti_numbers", "euler_characteristic"]
+
+##############################################################################
+# 7  Integration — PLUMA-GAI H.I.V. Correspondence
 ##############################################################################
 
 pluma_gai_hiv_correspondence:

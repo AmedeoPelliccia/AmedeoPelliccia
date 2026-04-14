@@ -368,7 +368,42 @@ axis_ordering:
       symbol: "𝔽"
 
 ##############################################################################
-# 6  Integration — PLUMA-GAI H.I.V. Correspondence
+# 6  SCI — Sensorium Compression Index
+##############################################################################
+
+sci:
+  formula: "SCI = (V, A, O, T, G, P | Σ)"
+  description: >
+    The Sensorium Compression Index compresses a full emotive vector ε into a
+    compact, channel-typed digest by applying the best-fit codec to each
+    sensory channel. The resulting tuple (V, A, O, T, G, P | Σ) is a
+    lossy-but-faithful fingerprint of the multi-sensory state, optimised for
+    storage, comparison, and cross-modal alignment.
+  codecs:
+    - channel: Vision
+      data_nature: "spatial / relational"
+      codec: ["embedding", "graph_hash", "point_cloud_hash"]
+    - channel: Hearing
+      data_nature: "temporal / sequential"
+      codec: ["melodic_contour", "spectral_envelope"]
+    - channel: Smell
+      data_nature: "chemical / categorical"
+      codec: ["molecular_fingerprint"]
+    - channel: Touch
+      data_nature: "procedural / ordered"
+      codec: ["action_grammar", "pressure_map_hash"]
+    - channel: Taste
+      data_nature: "chemical / valence"
+      codec: ["chemical_snapshot", "valence_intensity"]
+    - channel: Proprioception
+      data_nature: "spatial / continuous"
+      codec: ["pose_skeleton", "motion_trajectory"]
+    - channel: Topology
+      data_nature: "higher-order relational"
+      codec: ["betti_numbers", "euler_characteristic"]
+
+##############################################################################
+# 7  Integration — PLUMA-GAI H.I.V. Correspondence
 ##############################################################################
 
 pluma_gai_hiv_correspondence:
@@ -665,7 +700,34 @@ chemical channel capacity — making it a viable carrier despite high magnitude.
 
 ---
 
-## 6. Integration with PLUMA-GAI H.I.V.
+## 6. SCI — Sensorium Compression Index
+
+The **Sensorium Compression Index** compresses a full emotive vector **ε** into
+a compact, channel-typed digest by applying the best-fit codec to each sensory
+channel. The resulting tuple is a lossy-but-faithful fingerprint of the
+multi-sensory state, optimised for storage, comparison, and cross-modal
+alignment.
+
+**Formula:**  `SCI = (V, A, O, T, G, P | Σ)`
+
+| Channel | Data Nature | Codec(s) |
+|---------|------------|----------|
+| Vision | spatial / relational | `embedding`, `graph_hash`, `point_cloud_hash` |
+| Hearing | temporal / sequential | `melodic_contour`, `spectral_envelope` |
+| Smell | chemical / categorical | `molecular_fingerprint` |
+| Touch | procedural / ordered | `action_grammar`, `pressure_map_hash` |
+| Taste | chemical / valence | `chemical_snapshot`, `valence_intensity` |
+| Proprioception | spatial / continuous | `pose_skeleton`, `motion_trajectory` |
+| Topology | higher-order relational | `betti_numbers`, `euler_characteristic` |
+
+The **Topology** channel extends the original six-sense model with a
+higher-order relational dimension, capturing topological invariants
+(`betti_numbers`, `euler_characteristic`) that describe the structural
+connectivity of the sensory experience beyond individual channel intensities.
+
+---
+
+## 7. Integration with PLUMA-GAI H.I.V.
 
 The SENSORIUM model has a direct correspondence with the H.I.V. canonical
 thread:
@@ -694,7 +756,7 @@ drives it toward or above the 310 K rehydration target.
 
 ---
 
-## 7. References
+## 8. References
 
 - AEROSPACEMODEL-MCC-SPEC-001 through SPEC-007: parent specifications (MCC series)
 - [`sensorium.yaml`](sensorium.yaml): machine-readable companion (AEROSPACEMODEL-MCC-SPEC-008)
