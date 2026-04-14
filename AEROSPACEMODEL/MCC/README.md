@@ -30,7 +30,8 @@ dimensions. Intensity is the universal steganographic channel.
 | AEROSPACEMODEL-MCC-SPEC-007 | MUSIC-MCC — Audio Composition Layer | *planned* | planned |
 | **AEROSPACEMODEL-MCC-SPEC-008** | **SENSORIUM — Multi-Sensory Composition** | [`SENSORIUM.md`](SENSORIUM.md) · [`sensorium.yaml`](sensorium.yaml) | **draft** |
 | **AEROSPACEMODEL-MCC-SPEC-009** | **TRAUMACODEDRAMA — Dramatic-Arc Steganographic Protocol** | [`TRAUMACODEDRAMA.md`](TRAUMACODEDRAMA.md) · [`traumacodedrama.yaml`](traumacodedrama.yaml) | **draft** |
-| **AEROSPACEMODEL-MCC-SPEC-010** | **EGI — Ephemeral Generative Interface** | [`EGI.md`](EGI.md) · [`egi.yaml`](egi.yaml) | **draft** |
+| **AEROSPACEMODEL-MCC-SPEC-010** | **EPHEMERALASSEMBLY — Ephemeral Cognitive Assembly Protocol** | [`EPHEMERALASSEMBLY.md`](EPHEMERALASSEMBLY.md) · [`ephemeralassembly.yaml`](ephemeralassembly.yaml) | **draft** |
+| **AEROSPACEMODEL-MCC-SPEC-011** | **EGI — Ephemeral Generative Interface** | [`EGI.md`](EGI.md) · [`egi.yaml`](egi.yaml) | **draft** |
 
 ---
 
@@ -101,9 +102,44 @@ fully independent two-layer encoding.
 
 ---
 
-## EGI — Ephemeral Generative Interface (SPEC-010)
+## EPHEMERALASSEMBLY — Ephemeral Cognitive Assembly Protocol (SPEC-010)
 
-EGI completes the three-layer MCC encoding stack by adding a **lifecycle**
+EPHEMERALASSEMBLY extends TRAUMACODEDRAMA by one level of composition: data is
+hidden in the **assembly structure** — how multiple dramatic arcs are composed
+into higher-order cognitive units.
+
+```
+𝒜 ∩ 𝒞 = ∅
+```
+
+Assembly structure and cognitive content occupy disjoint dimensions. The
+topology of arc relationships carries the steganographic payload.
+
+Three assembly modes:
+
+| Mode | Name | Topology |
+|------|------|----------|
+| **Sequenza** | Sequential | Chain: arcs follow in strict sequence |
+| **Intreccio** | Interleaving | Bipartite: arcs woven through shared junction states |
+| **Confluenza** | Convergence | Tree: multiple arcs converge to a shared resolution |
+
+**Definition 38 (Cognitive Assembly):** `Ξ = (𝒜₁, …, 𝒜ₙ, G, β)` — a
+structured composition of N TRAUMACODEDRAMA arcs with assembly graph `G` and
+binding vector `β`. Data is hidden in bridge transition magnitudes
+`‖Δε_bridge‖` and in the topology of the assembly graph.
+
+Three canonical assemblies: **Polifonia** (Polyphony), **Sintesi** (Synthesis),
+**Ciclo** (Cycle).
+
+EPHEMERALASSEMBLY, TRAUMACODEDRAMA, and SENSORIUM are orthogonal: an assembly
+can embed intra-arc transition payloads and intra-state intensity payloads
+simultaneously, achieving fully independent three-layer encoding.
+
+---
+
+## EGI — Ephemeral Generative Interface (SPEC-011)
+
+EGI completes the four-layer MCC encoding stack by adding a **lifecycle**
 dimension: data is hidden in the existence and dissolution of dynamically
 generated sensory surfaces.
 
@@ -126,6 +162,7 @@ Three lifecycle phases:
 Six canonical modes: Optic (`Φ_𝕆`), Acoustic (`Φ_𝔸`), Haptic (`Φ_ℍ`),
 Chemosensory (`Φ_𝔽𝔾`), Proprioceptive (`Φ_ℙ`), Full-Spectrum (`Φ_★`).
 
-The three MCC layers — SENSORIUM (intensity), TRAUMACODEDRAMA (transitions),
-EGI (lifecycle) — are orthogonal. A single Ephemeron with internal transitions
-carries **three independent payloads** simultaneously.
+The four MCC layers — SENSORIUM (intensity), TRAUMACODEDRAMA (transitions),
+EPHEMERALASSEMBLY (assembly topology), EGI (lifecycle) — are orthogonal. A
+single Ephemeron with internal assemblies carries **four independent payloads**
+simultaneously.

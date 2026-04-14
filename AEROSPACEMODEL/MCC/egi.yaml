@@ -1,10 +1,10 @@
 ##############################################################################
 # egi.yaml
 # EGI — Ephemeral Generative Interface
-# AEROSPACEMODEL MCC Specification Series — SPEC-010
+# AEROSPACEMODEL MCC Specification Series — SPEC-011
 ##############################################################################
 
-document_id: AEROSPACEMODEL-MCC-SPEC-010
+document_id: AEROSPACEMODEL-MCC-SPEC-011
 document_type: ephemeral_generative_interface_specification
 title: "EGI — Ephemeral Generative Interface"
 version: "0.1.0"
@@ -18,6 +18,9 @@ related_documents:
   - id: AEROSPACEMODEL-MCC-SPEC-009
     file: "AEROSPACEMODEL/MCC/TRAUMACODEDRAMA.md"
     relationship: sibling_specialisation
+  - id: AEROSPACEMODEL-MCC-SPEC-010
+    file: "AEROSPACEMODEL/MCC/EPHEMERALASSEMBLY.md"
+    relationship: assembly_composition_layer
 last_updated: "2026-04-14T00:00:00Z"
 
 ##############################################################################
@@ -48,7 +51,7 @@ core_principle:
 
 definitions:
 
-  - definition: 38
+  - definition: 41
     name: Ephemeron
     formula: "Φ = (σ, π, T, ε(t))"
     components:
@@ -61,7 +64,7 @@ definitions:
       representation — once t > t_dissolution, the interface surface is gone.
       The decoder must observe in real time or not at all.
 
-  - definition: 39
+  - definition: 42
     name: Generation Function
     formula: "𝒢 : (σ, π, t) → ε(t)"
     output: "(κ_𝔸(t), κ_ℍ(t), κ_𝕆(t), κ_𝔽(t), κ_𝔾(t), κ_ℙ(t))"
@@ -73,7 +76,7 @@ definitions:
       Maps seed, payload, and time to a SENSORIUM emotive vector. Determinism
       allows the decoder to reconstruct the expected ε(t) and extract π.
 
-  - definition: 40
+  - definition: 43
     name: Decay Envelope
     formula: "𝒟(t) : [t_bloom_end, t_dissolution] → [0, 1]"
     boundary_conditions:
@@ -332,12 +335,12 @@ decoder_protocol:
         retains non-zero intensity.
 
 ##############################################################################
-# 6  Three-Layer Encoding Stack
+# 6  Four-Layer Encoding Stack
 ##############################################################################
 
-three_layer_stack:
+four_layer_stack:
   description: >
-    EGI completes the MCC encoding stack. The three layers are orthogonal
+    EGI completes the MCC encoding stack. The four layers are orthogonal
     and independently decodable.
   layers:
     - layer: SENSORIUM (SPEC-008)
@@ -348,14 +351,19 @@ three_layer_stack:
       unit: "Transition Δε"
       encodes: "Payload in transition magnitudes across state sequences"
       dimension: Temporal
-    - layer: EGI (SPEC-010)
+    - layer: EPHEMERALASSEMBLY (SPEC-010)
+      unit: "Assembly Ξ"
+      encodes: "Payload in assembly topology and bridge magnitudes"
+      dimension: Compositional
+    - layer: EGI (SPEC-011)
       unit: "Ephemeron Φ"
       encodes: "Payload in lifecycle dynamics of the generative interface"
       dimension: Existential
-  simultaneous_payloads: 3
+  simultaneous_payloads: 4
   independence_principle: >
-    The three payloads are fully independent by the orthogonality of
-    intensity, transition magnitude, and lifecycle dynamics.
+    The four payloads are fully independent by the orthogonality of
+    intensity, transition magnitude, assembly topology, and lifecycle
+    dynamics.
 
 ##############################################################################
 # 7  Security Properties

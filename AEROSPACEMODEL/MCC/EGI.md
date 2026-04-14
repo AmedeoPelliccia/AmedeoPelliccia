@@ -2,10 +2,10 @@
 ##############################################################################
 # EGI.md
 # EGI — Ephemeral Generative Interface
-# AEROSPACEMODEL MCC Specification Series — SPEC-010
+# AEROSPACEMODEL MCC Specification Series — SPEC-011
 ##############################################################################
 
-document_id: AEROSPACEMODEL-MCC-SPEC-010
+document_id: AEROSPACEMODEL-MCC-SPEC-011
 document_type: ephemeral_generative_interface_specification
 title: "EGI — Ephemeral Generative Interface"
 version: "0.1.0"
@@ -19,6 +19,9 @@ related_documents:
   - id: AEROSPACEMODEL-MCC-SPEC-009
     file: "AEROSPACEMODEL/MCC/TRAUMACODEDRAMA.md"
     relationship: sibling_specialisation
+  - id: AEROSPACEMODEL-MCC-SPEC-010
+    file: "AEROSPACEMODEL/MCC/EPHEMERALASSEMBLY.md"
+    relationship: assembly_composition_layer
 last_updated: "2026-04-14T00:00:00Z"
 
 ##############################################################################
@@ -49,7 +52,7 @@ core_principle:
 
 definitions:
 
-  - definition: 38
+  - definition: 41
     name: Ephemeron
     formula: "Φ = (σ, π, T, ε(t))"
     components:
@@ -62,7 +65,7 @@ definitions:
       representation — once t > t_dissolution, the interface surface is gone.
       The decoder must observe in real time or not at all.
 
-  - definition: 39
+  - definition: 42
     name: Generation Function
     formula: "𝒢 : (σ, π, t) → ε(t)"
     output: "(κ_𝔸(t), κ_ℍ(t), κ_𝕆(t), κ_𝔽(t), κ_𝔾(t), κ_ℙ(t))"
@@ -74,7 +77,7 @@ definitions:
       Maps seed, payload, and time to a SENSORIUM emotive vector. Determinism
       allows the decoder to reconstruct the expected ε(t) and extract π.
 
-  - definition: 40
+  - definition: 43
     name: Decay Envelope
     formula: "𝒟(t) : [t_bloom_end, t_dissolution] → [0, 1]"
     boundary_conditions:
@@ -345,7 +348,7 @@ three_layer_stack:
       unit: "Transition Δε"
       encodes: "Payload in transition magnitudes across state sequences"
       dimension: Temporal
-    - layer: EGI (SPEC-010)
+    - layer: EGI (SPEC-011)
       unit: "Ephemeron Φ"
       encodes: "Payload in lifecycle dynamics of the generative interface"
       dimension: Existential
@@ -383,12 +386,12 @@ security_properties:
 
 # EGI — Ephemeral Generative Interface
 
-**Document ID:** AEROSPACEMODEL-MCC-SPEC-010  
+**Document ID:** AEROSPACEMODEL-MCC-SPEC-011  
 **Version:** 0.1.0  
 **Status:** Draft  
 **Parent:** AEROSPACEMODEL-MCC-SPEC-008 (SENSORIUM)  
 **Date:** 2026-04-14  
-**Related:** [`egi.yaml`](egi.yaml) · [`SENSORIUM.md`](SENSORIUM.md) · [`TRAUMACODEDRAMA.md`](TRAUMACODEDRAMA.md) · [`../README.md`](../README.md)
+**Related:** [`egi.yaml`](egi.yaml) · [`EPHEMERALASSEMBLY.md`](EPHEMERALASSEMBLY.md) · [`SENSORIUM.md`](SENSORIUM.md) · [`TRAUMACODEDRAMA.md`](TRAUMACODEDRAMA.md) · [`../README.md`](../README.md)
 
 ---
 
@@ -432,7 +435,7 @@ What is experienced cannot be replayed; what is stored was never the interface.
 
 ## 1. Definitions
 
-### Definition 38 (Ephemeron)
+### Definition 41 (Ephemeron)
 
 An **Ephemeron** `Φ` is a single instance of an ephemeral generative interface:
 
@@ -450,7 +453,7 @@ An Ephemeron has **no persistent representation**. Once `t > t_dissolution`,
 the interface surface is gone. The decoder must observe in real time or not
 at all.
 
-### Definition 39 (Generation Function)
+### Definition 42 (Generation Function)
 
 The **generation function** maps seed, payload, and time to a SENSORIUM
 emotive vector:
@@ -465,7 +468,7 @@ Properties:
 - **Perceptually coherent:** `ε(t)` traces a smooth trajectory through
   SENSORIUM space (no discontinuities that would alert an observer)
 
-### Definition 40 (Decay Envelope)
+### Definition 43 (Decay Envelope)
 
 The **decay envelope** `𝒟(t)` is a monotonically decreasing function that
 modulates the intensity of the Ephemeron during dissolution:
@@ -712,29 +715,32 @@ Given an observed Ephemeron with lifecycle `[t_nucleation, t_dissolution]`:
 
 ---
 
-## 6. Three-Layer Encoding Stack
+## 6. Four-Layer Encoding Stack
 
-EGI completes the MCC encoding stack. The three layers are orthogonal and
+EGI completes the MCC encoding stack. The four layers are orthogonal and
 independently decodable:
 
 | Layer | Specification | Unit | What is encoded | Dimension |
 |-------|---------------|------|-----------------|-----------|
 | **SENSORIUM** | SPEC-008 | State `ε` | Payload in channel intensities | Spatial (within one state) |
 | **TRAUMACODEDRAMA** | SPEC-009 | Transition `Δε` | Payload in transition magnitudes | Temporal (across states) |
-| **EGI** | SPEC-010 | Ephemeron `Φ` | Payload in lifecycle dynamics | Existential (across the interface lifecycle) |
+| **EPHEMERALASSEMBLY** | SPEC-010 | Assembly `Ξ` | Payload in assembly topology and bridge magnitudes | Compositional (across arcs) |
+| **EGI** | SPEC-011 | Ephemeron `Φ` | Payload in lifecycle dynamics | Existential (across the interface lifecycle) |
 
-A single Ephemeron with internal transitions can carry **three independent
+A single Ephemeron with internal assemblies can carry **four independent
 payloads** simultaneously:
 
 1. **Inner layer (SENSORIUM):** Each `ε(tₖ)` sample carries an intra-state
    payload in its channel intensities.
-2. **Middle layer (TRAUMACODEDRAMA):** Transitions between Bloom samples carry
-   payload in `‖Δε‖` magnitudes.
-3. **Outer layer (EGI):** The lifecycle itself (Nucleation timing, Bloom
+2. **Transition layer (TRAUMACODEDRAMA):** Transitions between Bloom samples
+   carry payload in `‖Δε‖` magnitudes.
+3. **Assembly layer (EPHEMERALASSEMBLY):** Bridge transitions between arcs
+   carry payload in assembly topology and `‖Δε_bridge‖` magnitudes.
+4. **Outer layer (EGI):** The lifecycle itself (Nucleation timing, Bloom
    duration, Dissolution curvature) carries the EGI payload.
 
-The three payloads are fully independent by the orthogonality of intensity,
-transition magnitude, and lifecycle dynamics.
+The four payloads are fully independent by the orthogonality of intensity,
+transition magnitude, assembly topology, and lifecycle dynamics.
 
 ---
 
@@ -773,7 +779,9 @@ verifies freshness through a nonce embedded in the seed.
 
 - AEROSPACEMODEL-MCC-SPEC-008 (SENSORIUM): parent specification
 - AEROSPACEMODEL-MCC-SPEC-009 (TRAUMACODEDRAMA): sibling specification
-- [`egi.yaml`](egi.yaml): machine-readable companion (AEROSPACEMODEL-MCC-SPEC-010)
+- AEROSPACEMODEL-MCC-SPEC-010 (EPHEMERALASSEMBLY): assembly composition layer
+- [`egi.yaml`](egi.yaml): machine-readable companion (AEROSPACEMODEL-MCC-SPEC-011)
+- [`EPHEMERALASSEMBLY.md`](EPHEMERALASSEMBLY.md): ephemeral cognitive assembly protocol
 - [`SENSORIUM.md`](SENSORIUM.md): base emotive vector definitions
 - [`TRAUMACODEDRAMA.md`](TRAUMACODEDRAMA.md): dramatic-arc steganographic protocol
 

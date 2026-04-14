@@ -1,0 +1,683 @@
+---
+##############################################################################
+# EPHEMERALASSEMBLY.md
+# EPHEMERALASSEMBLY — Ephemeral Cognitive Assembly Protocol
+# AEROSPACEMODEL MCC Specification Series — SPEC-010
+##############################################################################
+
+document_id: AEROSPACEMODEL-MCC-SPEC-010
+document_type: ephemeral_cognitive_assembly_protocol
+title: "EPHEMERALASSEMBLY — Ephemeral Cognitive Assembly Protocol"
+version: "0.1.0"
+schema_version: "1.0.0"
+status: draft
+parent: AEROSPACEMODEL-MCC-SPEC-009
+related_documents:
+  - id: AEROSPACEMODEL-MCC-SPEC-008
+    file: "AEROSPACEMODEL/MCC/SENSORIUM.md"
+    relationship: sensory_channel_definitions
+  - id: AEROSPACEMODEL-MCC-SPEC-009
+    file: "AEROSPACEMODEL/MCC/TRAUMACODEDRAMA.md"
+    relationship: transition_encoding_base
+last_updated: "2026-04-14T00:00:00Z"
+
+##############################################################################
+# 0  Core Principle
+##############################################################################
+
+core_principle:
+  statement: "𝒜 ∩ 𝒞 = ∅"
+  description: >
+    Assembly structure and cognitive content occupy disjoint perceptual
+    dimensions. Data is hidden in how dramatic arcs are composed into
+    higher-order cognitive units, NOT in the arcs themselves. The assembly
+    topology IS the encoding protocol.
+  generalisation: >
+    EPHEMERALASSEMBLY extends TRAUMACODEDRAMA by one level of composition:
+    from transition magnitude within a single arc to the structural
+    relationships between multiple arcs. The cognitive assembly IS the
+    channel.
+  axiom: >
+    "The assembly is not the container of the data.
+    The assembly IS the encoding protocol."
+
+##############################################################################
+# 1  Definitions
+##############################################################################
+
+definitions:
+
+  - definition: 38
+    name: Cognitive Assembly
+    formula: "Ξ = (𝒜₁, …, 𝒜ₙ, G, β)"
+    components:
+      arcs: "𝒜₁, …, 𝒜ₙ — N dramatic arcs (TRAUMACODEDRAMA instances)"
+      G: "Assembly graph — directed graph over arc junction states"
+      beta: "Binding vector — inter-arc coupling parameters"
+    description: >
+      A structured composition of N TRAUMACODEDRAMA arcs into a unified
+      cognitive experience. The assembly has emergent properties (topology,
+      binding pattern) that do not exist in any individual arc. Data is
+      hidden in these emergent structural properties.
+
+  - definition: 39
+    name: Binding Operator
+    formula: "𝒜ᵢ ⊗ 𝒜ⱼ = (ε_junction, Δε_bridge, coupling_mode)"
+    components:
+      epsilon_junction: "Shared emotional state at the arc junction"
+      delta_bridge: "Bridge transition vector connecting the arcs"
+      coupling_mode: "Sequential | Interleaved | Convergent"
+    description: >
+      The operator that joins two dramatic arcs at a junction point. The
+      junction state ε_junction must be reachable from both arcs. The bridge
+      transition Δε_bridge carries inter-arc payload in its magnitude.
+      The coupling mode determines the assembly topology at this junction.
+
+  - definition: 40
+    name: Assembly Topology
+    formula: "𝒯(Ξ) = (V, E, w)"
+    components:
+      V: "Vertices — junction states between arcs"
+      E: "Edges — bridge transitions (binding operators)"
+      w: "Weight function w(e) = ‖Δε_bridge(e)‖ for each edge"
+    description: >
+      The directed graph describing how arcs are connected. The topology
+      encodes the assembly-level payload: vertex count, edge weights,
+      branching degree, and cycle structure each carry independent data
+      words. The topology is the compositional analogue of the dramatic
+      arc — it is the architecture of meaning above narrative.
+
+##############################################################################
+# 2  Assembly Modes
+##############################################################################
+
+assembly_modes:
+
+  - mode: I
+    name: Sequenza
+    name_en: Sequential
+    description: >
+      Arcs follow one another in strict sequence. Each arc's ε_final
+      becomes the next arc's ε₀ via a bridge transition. The assembly
+      graph is a simple chain: V₁ → V₂ → … → Vₙ₋₁.
+    topology: chain
+    junction_count: "N − 1 (for N arcs)"
+    payload_location: "Bridge transition magnitudes ‖Δε_bridge‖"
+    capacity: "N − 1 bridge words"
+
+  - mode: II
+    name: Intreccio
+    name_en: Interleaving
+    description: >
+      Arcs are woven together, alternating transitions from different
+      arcs at shared temporal positions. The assembly graph is bipartite:
+      arcs alternate through shared junction states.
+    topology: bipartite
+    junction_count: "≥ N (shared states may be reused)"
+    payload_location: "Interleaving pattern and bridge magnitudes"
+    capacity: "Higher than Sequenza — interleaving pattern adds structural payload"
+
+  - mode: III
+    name: Confluenza
+    name_en: Convergence
+    description: >
+      Multiple arcs begin from different initial states and converge to
+      a shared resolution state ε_confluence. The assembly graph is a
+      directed tree converging to a single root.
+    topology: convergent_tree
+    junction_count: "1 (the confluence point) + internal junctions"
+    payload_location: "Convergence order, approach angles, bridge magnitudes"
+    capacity: "Convergence angle between arcs adds angular payload dimension"
+
+##############################################################################
+# 3  Canonical Assemblies
+##############################################################################
+
+canonical_assemblies:
+
+  - id: ASM-001
+    name_it: Polifonia
+    name_en: Polyphony
+    mode: Intreccio
+    arcs_used:
+      - DRAMA-001 (Perdita)
+      - DRAMA-002 (Rinascita)
+    junction_states:
+      - state: Serenità
+        role: "Shared departure — both arcs pass through serenity"
+      - state: Tenerezza
+        role: "Emotional crossing — loss and rebirth meet in tenderness"
+    assembly_graph:
+      vertices: [Serenità, Tenerezza]
+      edges:
+        - from: Serenità
+          to: Tenerezza
+          arc: Perdita
+          bridge_magnitude: 60
+        - from: Serenità
+          to: Tenerezza
+          arc: Rinascita
+          bridge_magnitude: 30
+    steganographic_note: >
+      The interleaving of Loss and Rebirth creates a cognitive polyphony
+      where the observer experiences two emotional threads simultaneously.
+      The payload is in the interleaving pattern itself — which arc leads
+      at each junction — and in the differential bridge magnitudes.
+
+  - id: ASM-002
+    name_it: Sintesi
+    name_en: Synthesis
+    mode: Confluenza
+    arcs_used:
+      - DRAMA-001 (Perdita)
+      - DRAMA-003 (Metamorfosi)
+    junction_states:
+      - state: Malinconia
+        role: "Shared nadir — both arcs pass through melancholy"
+      - state: Serenità
+        role: "Confluence point — both arcs resolve to serenity"
+    assembly_graph:
+      vertices: [Malinconia, Serenità]
+      edges:
+        - from: Malinconia
+          to: Serenità
+          arc: Perdita
+          bridge_magnitude: 55
+        - from: Malinconia
+          to: Serenità
+          arc: Metamorfosi
+          bridge_magnitude: 90
+    steganographic_note: >
+      Loss and Transformation converge at serenity from different
+      emotional approaches. The convergence angle (differential bridge
+      magnitudes: 90 − 55 = 35) encodes the assembly-level MSW.
+
+  - id: ASM-003
+    name_it: Ciclo
+    name_en: Cycle
+    mode: Sequenza
+    arcs_used:
+      - DRAMA-001 (Perdita)
+      - DRAMA-002 (Rinascita)
+      - DRAMA-003 (Metamorfosi)
+    junction_states:
+      - state: Serenità
+        role: "Perdita → Rinascita bridge (loss resolves into rebirth)"
+      - state: Serenità
+        role: "Rinascita → Metamorfosi bridge (rebirth initiates transformation)"
+    assembly_graph:
+      vertices: [Serenità_1, Serenità_2]
+      edges:
+        - from: Serenità_1
+          to: Serenità_2
+          bridge: "Perdita.ε_final → Rinascita.ε₀"
+          bridge_magnitude: 36
+        - from: Serenità_2
+          to: Terrore
+          bridge: "Rinascita.ε_final → Metamorfosi.ε₀"
+          bridge_magnitude: 155
+    steganographic_note: >
+      The full cycle through all three canonical dramaturgies creates
+      a complete cognitive journey: loss → rebirth → transformation.
+      Bridge transitions between arcs carry the assembly payload.
+      The high bridge magnitude at the Rinascita → Metamorfosi junction
+      (serenity → terror, ‖Δε‖ ≈ 155) is the assembly MSW.
+
+##############################################################################
+# 4  Encoding Rules
+##############################################################################
+
+encoding_rules:
+
+  - id: A-001
+    name: Assembly Primacy
+    statement: >
+      Assembly-level payload MUST be encoded in the structural properties
+      of the assembly (topology, bridge magnitudes, junction count,
+      coupling modes), NOT in the individual arc payloads. Individual
+      arc payloads remain governed by TRAUMACODEDRAMA rules (D-001..D-006).
+    severity: MUST
+
+  - id: A-002
+    name: Junction Binding
+    statement: >
+      Two arcs joined by a binding operator MUST share a reachable
+      emotional state at the junction. The junction state ε_junction
+      MUST be within arc_closure_threshold of both arcs' boundary
+      states at the junction point.
+    severity: MUST
+
+  - id: A-003
+    name: Bridge Payload
+    statement: >
+      The bridge transition Δε_bridge connecting two arcs at a junction
+      carries an inter-arc payload word encoded in its magnitude:
+      κ_bridge = f(‖Δε_bridge‖). Bridge payloads are independent of
+      intra-arc TRAUMACODEDRAMA payloads.
+    severity: MUST
+
+  - id: A-004
+    name: Coherence Invariant
+    statement: >
+      The complete assembly MUST be cognitively coherent — the sequence
+      of emotional states across all arcs and bridges MUST form a
+      perceptually plausible narrative when experienced as a unified
+      whole. Coherence is verified by the constraint that no bridge
+      transition introduces a direction reversal within the same act
+      of the receiving arc.
+    severity: MUST
+
+  - id: A-005
+    name: Assembly CRC
+    statement: >
+      The final bridge transition of the assembly MUST carry a CRC of
+      all assembly-level payload words (bridge magnitudes and topology
+      parameters). This is independent of intra-arc Katharsis CRCs.
+    severity: MUST
+
+  - id: A-006
+    name: Ephemeral Decay
+    statement: >
+      An assembly MUST NOT be permanently stored as a unified structure.
+      After observation, the assembly decomposes into its constituent
+      arcs. The assembly-level payload is recoverable only during the
+      unified cognitive experience. Post-hoc reconstruction from
+      individual arcs requires knowledge of the binding parameters β.
+    severity: MUST
+
+##############################################################################
+# 5  Decoder Protocol
+##############################################################################
+
+decoder_protocol:
+  steps:
+    - step: 1
+      name: Identify Assembly Boundaries
+      description: >
+        Detect bridge transitions between arcs. A bridge transition is
+        identified by a state sequence where an arc's Katharsis closure
+        is immediately followed by a new Protasis that shares the
+        junction state.
+
+    - step: 2
+      name: Reconstruct Assembly Graph
+      description: >
+        Build the directed graph 𝒯(Ξ) from detected junctions. Record
+        junction states (vertices) and bridge transitions (edges).
+
+    - step: 3
+      name: Decode Bridge Payloads
+      description: >
+        For each bridge transition: κ_bridge = f(‖Δε_bridge‖). These
+        are the assembly-level payload words.
+
+    - step: 4
+      name: Extract Topology Payload
+      description: >
+        Decode structural properties — vertex count, edge weights,
+        branching degree, coupling modes — as additional payload bits
+        according to the assembly mode's topology encoding scheme.
+
+    - step: 5
+      name: Verify Assembly CRC
+      description: >
+        Extract CRC from the final bridge transition and compare with
+        CRC(κ_bridge₁, …, κ_bridge_M, topology_words).
+
+    - step: 6
+      name: Decode Individual Arcs
+      description: >
+        Apply TRAUMACODEDRAMA decoder (SPEC-009) to each constituent arc
+        independently. Assembly-level and arc-level payloads are orthogonal.
+
+##############################################################################
+# 6  Integration — Four-Layer Stack
+##############################################################################
+
+four_layer_stack:
+  description: >
+    EPHEMERALASSEMBLY adds a compositional layer to the MCC encoding stack.
+    The four layers are orthogonal and independently decodable.
+  layers:
+    - layer: SENSORIUM (SPEC-008)
+      unit: "State ε"
+      encodes: "Payload in channel intensities within one state"
+      dimension: Spatial
+    - layer: TRAUMACODEDRAMA (SPEC-009)
+      unit: "Transition Δε"
+      encodes: "Payload in transition magnitudes across state sequences"
+      dimension: Temporal
+    - layer: EPHEMERALASSEMBLY (SPEC-010)
+      unit: "Assembly Ξ"
+      encodes: "Payload in assembly topology and bridge magnitudes"
+      dimension: Compositional
+    - layer: EGI (SPEC-011)
+      unit: "Ephemeron Φ"
+      encodes: "Payload in lifecycle dynamics of the generative interface"
+      dimension: Existential
+  simultaneous_payloads: 4
+  independence_principle: >
+    The four payloads are fully independent by the orthogonality of
+    intensity, transition magnitude, assembly topology, and lifecycle
+    dynamics.
+---
+
+# EPHEMERALASSEMBLY — Ephemeral Cognitive Assembly Protocol
+
+**Document ID:** AEROSPACEMODEL-MCC-SPEC-010  
+**Version:** 0.1.0  
+**Status:** Draft  
+**Parent:** AEROSPACEMODEL-MCC-SPEC-009 (TRAUMACODEDRAMA)  
+**Date:** 2026-04-14  
+**Related:** [`ephemeralassembly.yaml`](ephemeralassembly.yaml) · [`TRAUMACODEDRAMA.md`](TRAUMACODEDRAMA.md) · [`SENSORIUM.md`](SENSORIUM.md) · [`../README.md`](../README.md)
+
+---
+
+## 0. Principle
+
+SENSORIUM (SPEC-008) hides data in the **intensity** of sensory channels —
+the spatial dimension of the emotive vector.
+
+TRAUMACODEDRAMA (SPEC-009) hides data in the **transition magnitude** between
+consecutive emotional states — the temporal derivative within a single
+dramatic arc.
+
+EPHEMERALASSEMBLY advances the stack by one level of composition:
+
+> **Data is not hidden in the arc.  
+> Data is hidden in the assembly of arcs — the cognitive architecture that
+> binds multiple dramatic sequences into a unified experience.**
+
+The cover is the cognitive coherence of multi-arc experiences. When an observer
+encounters a sequence of dramatic arcs — loss followed by rebirth, or parallel
+threads of terror and wonder — the *structure* of the composition reads as
+artistic intent. The assembly topology is the steganographic advantage: the
+relationships between arcs are expected and narratively motivated, yet they
+carry an independent data layer.
+
+```
+𝒜 ∩ 𝒞 = ∅
+```
+
+Assembly structure and cognitive content occupy disjoint perceptual dimensions.
+The topology of arcs is not the meaning of the experience — it is the
+architecture that binds meaning into form. This architecture is the channel.
+
+---
+
+## 1. Definitions
+
+### Definition 38 (Cognitive Assembly)
+
+A cognitive assembly is a structured composition of `N` TRAUMACODEDRAMA arcs:
+
+```
+Ξ = (𝒜₁, …, 𝒜ₙ, G, β)
+```
+
+where:
+- `𝒜₁, …, 𝒜ₙ` are `N` dramatic arcs (TRAUMACODEDRAMA instances)
+- `G` is the assembly graph — a directed graph over arc junction states
+- `β` is the binding vector — inter-arc coupling parameters
+
+The assembly has emergent properties (topology, binding pattern) that do not
+exist in any individual arc. Data is hidden in these emergent structural
+properties.
+
+### Definition 39 (Binding Operator)
+
+The binding operator joins two dramatic arcs at a junction point:
+
+```
+𝒜ᵢ ⊗ 𝒜ⱼ = (ε_junction, Δε_bridge, coupling_mode)
+```
+
+where:
+- `ε_junction` is the shared emotional state at the arc junction
+- `Δε_bridge` is the bridge transition vector connecting the arcs
+- `coupling_mode ∈ {Sequential, Interleaved, Convergent}`
+
+The junction state `ε_junction` must be reachable from both arcs. The bridge
+transition `Δε_bridge` carries inter-arc payload in its magnitude. The coupling
+mode determines the assembly topology at this junction.
+
+### Definition 40 (Assembly Topology)
+
+The assembly topology is the directed graph describing how arcs are connected:
+
+```
+𝒯(Ξ) = (V, E, w)
+```
+
+where:
+- `V` = vertices — junction states between arcs
+- `E` = edges — bridge transitions (binding operators)
+- `w` = weight function: `w(e) = ‖Δε_bridge(e)‖` for each edge
+
+The topology encodes the assembly-level payload: vertex count, edge weights,
+branching degree, and cycle structure each carry independent data words. The
+topology is the compositional analogue of the dramatic arc — it is the
+architecture of meaning above narrative.
+
+---
+
+## 2. Assembly Modes
+
+Three canonical assembly modes define how arcs are composed:
+
+### 2.1 Sequenza — Sequential
+
+Arcs follow one another in strict sequence. Each arc's `ε_final` becomes the
+next arc's `ε₀` via a bridge transition. The assembly graph is a simple chain:
+
+```
+V₁ → V₂ → … → Vₙ₋₁
+```
+
+- **Junction count:** `N − 1` (for `N` arcs)
+- **Payload location:** Bridge transition magnitudes `‖Δε_bridge‖`
+- **Capacity:** `N − 1` bridge words
+
+### 2.2 Intreccio — Interleaving
+
+Arcs are woven together, alternating transitions from different arcs at shared
+temporal positions. The assembly graph is bipartite: arcs alternate through
+shared junction states.
+
+- **Junction count:** `≥ N` (shared states may be reused)
+- **Payload location:** Interleaving pattern and bridge magnitudes
+- **Capacity:** Higher than Sequenza — interleaving pattern adds structural
+  payload
+
+### 2.3 Confluenza — Convergence
+
+Multiple arcs begin from different initial states and converge to a shared
+resolution state `ε_confluence`. The assembly graph is a directed tree
+converging to a single root.
+
+- **Junction count:** 1 (the confluence point) + internal junctions
+- **Payload location:** Convergence order, approach angles, bridge magnitudes
+- **Capacity:** Convergence angle between arcs adds angular payload dimension
+
+---
+
+## 3. Canonical Assemblies
+
+Three canonical assemblies illustrate the protocol. Each assembly composes
+dramatic arcs from TRAUMACODEDRAMA SPEC-009.
+
+### 3.1 Polifonia — Polyphony
+
+**Mode:** Intreccio (Interleaving)  
+**Arcs:** DRAMA-001 (Perdita) + DRAMA-002 (Rinascita)
+
+**Junction states:**
+- **Serenità** — shared departure; both arcs pass through serenity
+- **Tenerezza** — emotional crossing; loss and rebirth meet in tenderness
+
+| Junction | From Arc | `‖Δε_bridge‖` | Role |
+|----------|----------|----------------|------|
+| Serenità → Tenerezza | Perdita | ≈ 60 | Bridge word 1 |
+| Serenità → Tenerezza | Rinascita | ≈ 30 | Bridge word 2 |
+
+**Steganographic profile:** The interleaving of Loss and Rebirth creates a
+cognitive polyphony where the observer experiences two emotional threads
+simultaneously. The payload is in the interleaving pattern itself — which arc
+leads at each junction — and in the differential bridge magnitudes.
+
+### 3.2 Sintesi — Synthesis
+
+**Mode:** Confluenza (Convergence)  
+**Arcs:** DRAMA-001 (Perdita) + DRAMA-003 (Metamorfosi)
+
+**Junction states:**
+- **Malinconia** — shared nadir; both arcs pass through melancholy
+- **Serenità** — confluence point; both arcs resolve to serenity
+
+| Junction | From Arc | `‖Δε_bridge‖` | Role |
+|----------|----------|----------------|------|
+| Malinconia → Serenità | Perdita | ≈ 55 | Bridge word 1 |
+| Malinconia → Serenità | Metamorfosi | ≈ 90 | Bridge word 2 |
+
+**Steganographic profile:** Loss and Transformation converge at serenity from
+different emotional approaches. The convergence angle (differential bridge
+magnitudes: `90 − 55 = 35`) encodes the assembly-level MSW.
+
+### 3.3 Ciclo — Cycle
+
+**Mode:** Sequenza (Sequential)  
+**Arcs:** DRAMA-001 (Perdita) → DRAMA-002 (Rinascita) → DRAMA-003 (Metamorfosi)
+
+**Junction states:**
+- **Serenità₁** — Perdita → Rinascita bridge (loss resolves into rebirth)
+- **Serenità₂** — Rinascita → Metamorfosi bridge (rebirth initiates transformation)
+
+| Junction | Bridge | `‖Δε_bridge‖` | Role |
+|----------|--------|----------------|------|
+| Serenità₁ | Perdita.ε_final → Rinascita.ε₀ | ≈ 36 | Bridge word 1 |
+| Serenità₂ | Rinascita.ε_final → Metamorfosi.ε₀ | ≈ 155 | **Assembly MSW** |
+
+**Steganographic profile:** The full cycle through all three canonical
+dramaturgies creates a complete cognitive journey: loss → rebirth →
+transformation. Bridge transitions between arcs carry the assembly payload.
+The high bridge magnitude at the Rinascita → Metamorfosi junction (serenity →
+terror, `‖Δε‖ ≈ 155`) is the assembly MSW — the largest inter-arc transition
+carries the most significant assembly word.
+
+---
+
+## 4. Encoding Rules
+
+### Rule A-001 — Assembly Primacy
+
+Assembly-level payload MUST be encoded in the structural properties of the
+assembly (topology, bridge magnitudes, junction count, coupling modes), NOT
+in the individual arc payloads. Individual arc payloads remain governed by
+TRAUMACODEDRAMA rules (D-001 through D-006).
+
+### Rule A-002 — Junction Binding
+
+Two arcs joined by a binding operator MUST share a reachable emotional state
+at the junction. The junction state `ε_junction` MUST be within
+`arc_closure_threshold` of both arcs' boundary states at the junction point.
+
+### Rule A-003 — Bridge Payload
+
+The bridge transition `Δε_bridge` connecting two arcs at a junction carries an
+inter-arc payload word encoded in its magnitude:
+
+```
+κ_bridge = f(‖Δε_bridge‖)
+```
+
+Bridge payloads are independent of intra-arc TRAUMACODEDRAMA payloads.
+
+### Rule A-004 — Coherence Invariant
+
+The complete assembly MUST be cognitively coherent — the sequence of emotional
+states across all arcs and bridges MUST form a perceptually plausible narrative
+when experienced as a unified whole. Coherence is verified by the constraint
+that no bridge transition introduces a direction reversal within the same act
+of the receiving arc.
+
+### Rule A-005 — Assembly CRC
+
+The final bridge transition of the assembly MUST carry a CRC of all
+assembly-level payload words (bridge magnitudes and topology parameters). This
+is independent of intra-arc Katharsis CRCs.
+
+### Rule A-006 — Ephemeral Decay
+
+An assembly MUST NOT be permanently stored as a unified structure. After
+observation, the assembly decomposes into its constituent arcs. The
+assembly-level payload is recoverable only during the unified cognitive
+experience. Post-hoc reconstruction from individual arcs requires knowledge
+of the binding parameters `β`.
+
+---
+
+## 5. Decoder Protocol
+
+Given a sequence of dramatic arcs `[𝒜₁, 𝒜₂, …, 𝒜ₙ]`:
+
+1. **Identify assembly boundaries:** Detect bridge transitions between arcs.
+   A bridge transition is identified by a state sequence where an arc's
+   Katharsis closure is immediately followed by a new Protasis that shares
+   the junction state.
+
+2. **Reconstruct assembly graph:** Build the directed graph `𝒯(Ξ)` from
+   detected junctions. Record junction states (vertices) and bridge
+   transitions (edges).
+
+3. **Decode bridge payloads:** For each bridge transition:
+   `κ_bridge = f(‖Δε_bridge‖)`. These are the assembly-level payload words.
+
+4. **Extract topology payload:** Decode structural properties — vertex count,
+   edge weights, branching degree, coupling modes — as additional payload bits
+   according to the assembly mode's topology encoding scheme.
+
+5. **Verify assembly CRC:** Extract CRC from the final bridge transition and
+   compare with `CRC(κ_bridge₁, …, κ_bridge_M, topology_words)`.
+
+6. **Decode individual arcs:** Apply TRAUMACODEDRAMA decoder (SPEC-009) to
+   each constituent arc independently. Assembly-level and arc-level payloads
+   are orthogonal.
+
+---
+
+## 6. Integration with TRAUMACODEDRAMA and SENSORIUM
+
+EPHEMERALASSEMBLY extends TRAUMACODEDRAMA at the compositional level:
+
+| Layer | Unit | What is encoded |
+|-------|------|-----------------|
+| SENSORIUM | State `ε` | Steganographic payload in channel intensities (within one state) |
+| TRAUMACODEDRAMA | Transition `Δε` | Steganographic payload in transition magnitudes (within one arc) |
+| EPHEMERALASSEMBLY | Assembly `Ξ` | Steganographic payload in assembly topology and bridge magnitudes (across arcs) |
+
+The three layers are orthogonal: an assembly can embed intra-arc
+TRAUMACODEDRAMA payloads and intra-state SENSORIUM payloads simultaneously,
+achieving a **three-layer encoding** where:
+- Inner layer (SENSORIUM): payload in `κᵢ` values within each state
+- Middle layer (TRAUMACODEDRAMA): payload in `‖Δεᵢ‖` values within each arc
+- Outer layer (EPHEMERALASSEMBLY): payload in `‖Δε_bridge‖` values and
+  topology between arcs
+
+The three payloads are fully independent by the Assembly Primacy, Transition
+Primacy, and Post-Sextin principles.
+
+---
+
+## 7. References
+
+- AEROSPACEMODEL-MCC-SPEC-008 (SENSORIUM): sensory channel definitions
+- AEROSPACEMODEL-MCC-SPEC-009 (TRAUMACODEDRAMA): parent specification
+- [`ephemeralassembly.yaml`](ephemeralassembly.yaml): machine-readable companion (AEROSPACEMODEL-MCC-SPEC-010)
+- [`TRAUMACODEDRAMA.md`](TRAUMACODEDRAMA.md): transition encoding base
+- [`SENSORIUM.md`](SENSORIUM.md): base emotive vector definitions
+
+---
+
+*"The assembly is not the container of the data.  
+The assembly is the encoding protocol.  
+The cognitive architecture IS the channel."*
