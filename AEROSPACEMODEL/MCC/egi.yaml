@@ -1,0 +1,301 @@
+##############################################################################
+# egi.yaml
+# EGI — Ephemeral Generative Interface
+# AEROSPACEMODEL MCC Specification Series — SPEC-010
+##############################################################################
+
+document_id: AEROSPACEMODEL-MCC-SPEC-010
+document_type: ephemeral_generative_interface_specification
+title: "EGI — Ephemeral Generative Interface"
+version: "0.1.0"
+schema_version: "1.0.0"
+status: draft
+parent: AEROSPACEMODEL-MCC-SPEC-008
+related_documents:
+  - id: AEROSPACEMODEL-MCC-SPEC-008
+    file: "AEROSPACEMODEL/MCC/SENSORIUM.md"
+    relationship: parent_sensory_layer
+  - id: AEROSPACEMODEL-MCC-SPEC-009
+    file: "AEROSPACEMODEL/MCC/TRAUMACODEDRAMA.md"
+    relationship: sibling_specialisation
+last_updated: "2026-04-14T00:00:00Z"
+
+##############################################################################
+# 0  Core Principle
+##############################################################################
+
+core_principle:
+  statement: >
+    Cognitive continuity does not always require stable memory.
+    It can depend on the stability of the regeneration rules.
+  axioms:
+    - id: E1
+      name: Ephemeral Assembly
+      description: >
+        Cognitive continuity does not always require stable memory.
+        It can depend on the stability of the regeneration rules.
+    - id: E2
+      name: Minimal Persistence
+      description: >
+        It is not necessary to preserve the entire structure; it suffices to
+        preserve what allows the reconstruction of a functionally equivalent
+        structure.
+    - id: E3
+      name: Multimodal Reactivation
+      description: >
+        Reactivation stimuli are not scalar. They are multimodal and may arrive
+        from any sensory channel or from a cooperative sum of weak channels.
+
+##############################################################################
+# 1  Definitions
+##############################################################################
+
+definitions:
+
+  - definition: 40
+    name: Ephemeral Generative Interface
+    description: >
+      A temporary structure assembled by an AI system to mediate cognition,
+      visualization, or inference during a task, without requiring full
+      persistence of the object.
+
+  - definition: 41
+    name: Imaginary Simplicial Extension
+    description: >
+      A higher-order relational structure—not only nodes and edges, but
+      relations of superior order—temporarily constructed to operate on
+      complex contexts without permanent archival obligation.
+      Imaginary means: internally generated, operative, and causally effective.
+
+  - definition: 42
+    name: Residual Trace
+    description: >
+      The minimal footprint left after an ephemeral interface decays: a seed,
+      a signature, or a functional fingerprint sufficient to enable future
+      reconstruction under compatible stimuli.
+
+##############################################################################
+# 2  Lifecycle
+##############################################################################
+
+lifecycle:
+  phases:
+    - order: 1
+      name: Stimulus
+      description: "A relevant stimulus appears"
+    - order: 2
+      name: Assembly
+      description: "The system constructs the temporary interface"
+    - order: 3
+      name: Use
+      description: "The interface serves to visualize, organize, or infer"
+    - order: 4
+      name: Decay
+      description: "The structure dissolves"
+    - order: 5
+      name: Residual Trace
+      description: "A minimal trace remains"
+    - order: 6
+      name: Reactivation
+      description: "A compatible stimulus permits reconstruction"
+
+##############################################################################
+# 3  Formal Model
+##############################################################################
+
+formal_model:
+
+  core:
+    assembly: "I_t = Assemble(s, z, K)"
+    decay: "Decay(I_t) -> r"
+    reactivation: "I_t' = Reactivate(s', r)"
+    variables:
+      s: "stimulus"
+      z: "latent seed"
+      K: "temporary simplicial structure"
+      I_t: "ephemeral interface"
+      r: "residual trace"
+
+  cost_extension:
+    assembly_cost: "C_a"
+    decay_cost: "C_d"
+    reactivation_cost: "C_r"
+    constraint: "C_r <= C_a only if sim(s, s') > θ"
+
+  activation_function:
+    formula: "A(s, r) = Σ_c (s_c · α_c)"
+    condition: "I_t' = Reactivate(s, r) iff A(s, r) > θ"
+    parameters:
+      alpha_c: "affinity of channel c with the given trace"
+      theta: "reactivation threshold"
+
+##############################################################################
+# 4  Multimodal Stimulus
+##############################################################################
+
+stimulus_vector:
+  formula: "s = (s_V, s_A, s_O, s_T, s_G, s_P)"
+  channels:
+    - symbol: V
+      name: Visual
+    - symbol: A
+      name: Auditory
+    - symbol: O
+      name: Olfactory
+    - symbol: T
+      name: Tactile
+    - symbol: G
+      name: Gustatory
+    - symbol: P
+      name: Proprioceptive
+
+##############################################################################
+# 5  Reactivation Geometries
+##############################################################################
+
+reactivation_geometries:
+  - channel: Olfactory
+    geometry: Point
+    reactivates: "context + valence"
+  - channel: Auditory
+    geometry: Path
+    reactivates: "temporal trajectory"
+  - channel: "Face / social-visual"
+    geometry: Star
+    reactivates: "relational network"
+  - channel: Tactile
+    geometry: Chain
+    reactivates: "procedural sequence"
+  - channel: Proprioceptive
+    geometry: Manifold
+    reactivates: "bodily/spatial configuration"
+  - channel: Gustatory
+    geometry: "Point + affect"
+    reactivates: "chemical state + valence"
+
+residual_trace_types:
+  - r_point
+  - r_path
+  - r_star
+  - r_chain
+  - r_manifold
+
+##############################################################################
+# 6  SCI — Sensorium Compression Index
+##############################################################################
+
+sci:
+  formula: "SCI = (V, A, O, T, G, P | Σ)"
+  codecs:
+    - channel: Vision
+      data_nature: "spatial / relational"
+      codec: ["embedding", "graph_hash", "point_cloud_hash"]
+    - channel: Hearing
+      data_nature: "temporal / sequential"
+      codec: ["melodic_contour", "spectral_envelope"]
+    - channel: Smell
+      data_nature: "chemical / categorical"
+      codec: ["molecular_fingerprint"]
+    - channel: Touch
+      data_nature: "procedural / ordered"
+      codec: ["action_grammar", "pressure_map_hash"]
+    - channel: Taste
+      data_nature: "chemical / valence"
+      codec: ["chemical_snapshot", "valence_intensity"]
+    - channel: Proprioception
+      data_nature: "spatial / continuous"
+      codec: ["pose_skeleton", "motion_trajectory"]
+    - channel: Topology
+      data_nature: "higher-order relational"
+      codec: ["betti_numbers", "euler_characteristic"]
+
+##############################################################################
+# 7  Robotic SENSORIUM Transducers
+##############################################################################
+
+robotic_sensorium:
+  vision:
+    - "RGB camera"
+    - "LiDAR / ToF"
+    - "thermal IR"
+    - "event camera"
+  hearing:
+    - "MEMS microphones"
+    - "accelerometers"
+    - "acoustic emission sensors"
+    - "ultrasound"
+  smell:
+    - "electronic nose"
+    - "PID"
+    - "electrochemical sensors"
+    - "spectrometry"
+  touch:
+    - "capacitive skin"
+    - "force-torque sensors"
+    - "piezoelectric sensors"
+    - "thermistors"
+  taste:
+    - "ion-selective probes"
+    - "conductivity sensors"
+    - "voltammetric sensors"
+  proprioception:
+    - "encoders"
+    - "IMU"
+    - "motor current sensors"
+    - "strain sensors"
+
+##############################################################################
+# 8  Shared Database Schema
+##############################################################################
+
+database_schema:
+  minimal_fields:
+    - interface_id
+    - trigger_patterns
+    - seed_reference
+    - simplicial_signature
+    - assembly_rules
+    - decay_policy
+    - reactivation_conditions
+    - cross_model_compatibility
+    - provenance
+
+  example_instance:
+    id: "EGI-001"
+    title: "Ephemeral Generative Interface"
+    status: "proposed"
+    stimulus:
+      trigger_patterns:
+        - "music phrase"
+        - "face recognition"
+        - "olfactory signature"
+        - "touch sequence"
+      activation_threshold: 0.40
+    reconstruction:
+      seed_reference: "latent_seed://egi/001"
+      assembly_rules:
+        - "instantiate temporary nodes"
+        - "construct higher-order relations"
+        - "project to operational layer"
+    simplicial_signature:
+      max_dimension: 4
+      betti_numbers: [1, 0, 0]
+      euler_characteristic: 1
+      mode: "path"
+    persistence:
+      store_full_interface: false
+      residual_trace: true
+      decay_policy: "time_or_task_completion"
+    reactivation:
+      channel_affinity:
+        visual: 0.30
+        auditory: 0.80
+        olfactory: 0.60
+        tactile: 0.20
+        gustatory: 0.00
+        proprioceptive: 0.10
+      cross_channel_boost: true
+    provenance:
+      generating_model: "model_id"
+      generation_timestamp: "2026-02-25T00:00:00Z"
+      validation_status: "self_validated"
