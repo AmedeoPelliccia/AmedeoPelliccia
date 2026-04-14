@@ -446,6 +446,7 @@ See: [STD-PATH-MTL-001 §3.1b — Contribution Governance](https://github.com/Am
 - [AMPEL360-FED](ESSA/AMPEL360-FED.md) + [`federation/`](federation/) — Federated Contract Stabilization: Global Tag Authority Matrix v1.1 (four authority classes A0–A3), RAG relaxation policy, JSON schema for global tags, and connector template; wired to the **AMPEL.py** runtime regulatory profile selector (EASA-Q100 / SPACE-Q10 / DO-178C)
 - **Live app:** [AIS preview](https://ais-pre-qgodcoewjywuhs2glepnfo-324605324739.europe-west2.run.app/)
 - [AI-BOOST](AI-BOOST/) — Application strategy for the Frontier AI Grand Challenge (EuroHPC JU / AI-BOOST GA 101135737): GAIA-EU frontier model concept (400B+ MoE), EU aerospace/regulatory AI domain, open weights, EU AI Act compliance (deadline 13 Apr 2026)
+- [AI-BOOST DEL-06](AI-BOOST/DEL-06-capacity-demonstration.md) — Capacity Demonstration (Quality & Efficiency → Capacity) for the Frontier AI Grand Challenge (GA 101135737, EuroHPC JU): key personnel, prior work portfolio, consortium structure, complementary compute, deployment infrastructure
 
 ---
 
@@ -1351,6 +1352,7 @@ It is structural logic, not rhetoric.
 | `template_registry_entry.schema.json` | `.path_mtl/templates/` | Template entry schema (`§3.1a` §7) |
 | `ledger.schema.json` | `.path_mtl/ledger/` | TEKNIA ledger entry schema (`§STD`) |
 | `workplan-milestones-gantt.yaml` | `AI-BOOST/` | DEL-05 Workplan, Milestones & Gantt — work packages, resource allocation, quality management |
+| `capacity-demonstration.yaml` | `AI-BOOST/` | DEL-06 Capacity Demonstration — key personnel, portfolio, consortium, compute resources, quality assurance |
 
 ### File Placement (OPT-IN / PLUMA)
 
@@ -1375,6 +1377,7 @@ It is structural logic, not rhetoric.
 
 AI-BOOST/
   workplan-milestones-gantt.yaml  ← DEL-05 work packages, milestones, Gantt, resources, quality
+  capacity-demonstration.yaml  ← DEL-06 key personnel, portfolio, consortium, compute, quality assurance
 ```
 
 Intentional Hamiltonian evolution:
