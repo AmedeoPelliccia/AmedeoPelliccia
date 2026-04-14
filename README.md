@@ -632,6 +632,39 @@ The full pipeline composes as:
 \text{RAW} \xrightarrow{\text{DWGE}} \text{IntentSpec} \xrightarrow{\Pi_\mathcal{F}} \text{Artefact} \xrightarrow{\text{Gates}} \text{SSOT/PUB}
 ```
 
+```mermaid
+flowchart LR
+    RAW["🔹 RAW prompt"]
+    subgraph DWGE ["DWGE — Intent Lock"]
+        W1["#1 INTENT-PARSE"]
+        W2["#2 INTENT-CONFIRM"]
+    end
+    subgraph PATH ["PATH — Constrained Trajectory"]
+        W3["#3 PROC-MATCH"]
+        W4["#4 TPL-SELECT"]
+        W5["#5 TPL-REFORMAT"]
+        OP["Operator execution"]
+    end
+    subgraph GATES ["Acceptance Gates"]
+        W6["#6 CHECK-COMPLETENESS"]
+        W7["#7 BREX-VALIDATE"]
+        W10["#10 CONTRIBUTION-MAP"]
+    end
+    subgraph MTL ["Model → Teknia Ledger"]
+        W8["#8 REGISTER-MODEL"]
+        W9["#9 LEDGER-WRITE"]
+    end
+    SSOT["✅ SSOT / PUB"]
+
+    RAW --> W1 --> W2 --> W3 --> W4 --> W5 --> OP
+    OP --> W6 --> W7 --> W10 --> W8 --> W9 --> SSOT
+
+    style DWGE fill:#e8f4f8,stroke:#2196F3
+    style PATH fill:#fff3e0,stroke:#FF9800
+    style GATES fill:#fce4ec,stroke:#E91E63
+    style MTL fill:#e8f5e9,stroke:#4CAF50
+```
+
 | Pipeline stage | Mathematical role | `§STD` / `§3.1a` reference |
 |---------------|-------------------|---------------------------|
 | RAW prompt | Unconstrained gradient $\nabla J(x)$ | Human or automated trigger |
@@ -765,6 +798,25 @@ Rollbacks (require regulatory_event_id + signed_approval):
   CONDITIONAL ──[regulatory_rollback]──▶ MIXED
 ```
 
+```mermaid
+stateDiagram-v2
+    [*] --> MIXED
+    MIXED --> CONDITIONAL : moc_pkg submitted
+    MIXED --> INADMISSIBLE : refine → fail
+    CONDITIONAL --> FULL : evidence approved ✅
+    CONDITIONAL --> MIXED : refine (loop back)
+    CONDITIONAL --> REJECTED : evidence fail ❌
+    FULL --> CONDITIONAL : regulatory rollback 🔄
+    CONDITIONAL --> MIXED : regulatory rollback 🔄
+    FULL --> [*] : Certified ✅
+
+    note right of MIXED : KNOT OPEN\nKNU PLANNED\nResidual = 100
+    note right of CONDITIONAL : KNOT IN_PROGRESS\nEvidence gates open
+    note right of FULL : KNOT CLOSED\nAll gates PASS\nTT distribution
+    note left of REJECTED : Terminal state
+    note left of INADMISSIBLE : Terminal state
+```
+
 **`§LC01` cross-reference:** This state machine is the KNOT lifecycle:
 
 | State machine state | KNOT status | KNU status | Residual |
@@ -852,6 +904,52 @@ The NBT gate operates bidirectionally across the classical-quantum boundary:
 
 ```math
 \underbrace{\text{O-P-T-I}}_{\text{classical axes}} \xrightarrow[\text{BRIDGE}]{\text{NBT gate}} \underbrace{\text{QPU (simplicial manifold)}}_{\text{quantum-augmented}} \xrightarrow[\text{TUNNEL}]{\text{NBT gate}} \underbrace{\text{N-axis registration}}_{\text{classical evidence}}
+```
+
+```mermaid
+flowchart LR
+    subgraph CLASSICAL ["O-P-T-I Classical Axes"]
+        DWGE["DWGE\nIntent Lock"]
+        PATH["PATH → MTL\nPipeline"]
+        ART["Registered\nArtefact"]
+        DWGE --> PATH --> ART
+    end
+
+    subgraph BRIDGE ["NBT BRIDGE Gate"]
+        B1["Simplicial state\npreparation"]
+        B2["NeuronBit anchor\nencoding"]
+        B1 --> B2
+    end
+
+    subgraph QPU ["QPU — Quantum Processing"]
+        Q1["Superposition of\nk-simplices"]
+        Q2["Persistent homology\ncomputation"]
+        Q3["Topological\ninvariants"]
+        Q1 --> Q2 --> Q3
+    end
+
+    subgraph TUNNEL ["NBT TUNNEL Gate"]
+        T1["Geometric structure\nmapping"]
+        T2["Topological coherence\npreservation"]
+        T1 --> T2
+    end
+
+    subgraph NAXIS ["N-Axis Registration"]
+        REG["Gated evidence\nartefact"]
+        SSOT["SSOT / PUB\n(INV-001–003)"]
+        REG --> SSOT
+    end
+
+    ART --> B1
+    B2 --> Q1
+    Q3 --> T1
+    T2 --> REG
+
+    style CLASSICAL fill:#e3f2fd,stroke:#1565C0
+    style BRIDGE fill:#fff8e1,stroke:#F9A825
+    style QPU fill:#f3e5f5,stroke:#7B1FA2
+    style TUNNEL fill:#fff8e1,stroke:#F9A825
+    style NAXIS fill:#e8f5e9,stroke:#2E7D32
 ```
 
 **Bridge path** (classical → quantum):
