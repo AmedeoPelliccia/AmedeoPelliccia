@@ -1,3 +1,555 @@
+---
+##############################################################################
+# ESSA — TD-ISA: Technical Data Integrity, Standardization, and Automation
+# Machine-readable companion specification
+# Reference: ESSA-DOC-TDISA-001 v0.1-draft
+# Author: Amedeo Pelliccia
+##############################################################################
+
+document_id: ESSA-DOC-TDISA-001
+document_type: entity_proposal
+title: "TD-ISA — Technical Data Integrity, Standardization, and Automation"
+version: "0.4.0-draft"
+schema_version: "1.0.0"
+status: draft
+parent: ESSA-CONST-001
+last_updated: "2026-04-14T00:00:00Z"
+
+mission_statement: >
+  TD-ISA advances technical data integrity, standardisation, and automation
+  to improve safety, interoperability, efficiency, and operational reliability
+  across digital engineering and technical publication ecosystems.
+
+strategic_objective: >
+  Define a universal representation framework while preserving
+  technology-specific flexibility in content structure.
+  Universal form. Adaptive technical organisation.
+
+closing_statement: >
+  Technical data should not remain fragmented where common understanding is
+  essential. By aligning integrity, representation, and automation-readiness,
+  TD-ISA would help transform technical publications from isolated
+  documentation products into a shared operational language for safer and
+  more efficient industrial execution.
+
+##############################################################################
+# 1  Three Pillars
+##############################################################################
+
+pillars:
+
+  - id: PIL-1
+    name: "Technical Data Integrity"
+    description: >
+      Ensuring consistency, traceability, accuracy, and governance of
+      technical information across its lifecycle.
+    concerns:
+      - consistency
+      - traceability
+      - accuracy
+      - governance
+
+  - id: PIL-2
+    name: "Standardisation"
+    description: >
+      Promoting shared authoring rules, visual conventions, safety semantics,
+      and digital presentation principles.
+    concerns:
+      - authoring_rules
+      - visual_conventions
+      - safety_semantics
+      - presentation_principles
+    primary_standard: ESSA-STD-UFATO-001
+
+  - id: PIL-3
+    name: "Automation"
+    description: >
+      Enabling technical content to be more easily validated, reused,
+      processed, and integrated into automated and semi-automated
+      operational environments.
+    concerns:
+      - machine_readability
+      - validation_logic
+      - content_reuse
+      - workflow_integration
+
+##############################################################################
+# 2  Value Proposition: The Quintuple Win
+##############################################################################
+
+value_proposition:
+
+  summary: "Safer. More economic. More productive. Very necessary. Everyone benefits."
+  summary_es: "Más seguro. Más económico. Más trabajo. Muy necesario. Y todes felices."
+
+  dimensions:
+
+    - id: VP-1
+      name: "Safer"
+      description: >
+        Uniform safety semantics, consistent visual cues, and reduced
+        interpretation ambiguity lower the probability of human error.
+      beneficiaries:
+        - technicians
+        - flight_crews
+        - passengers
+        - regulators
+
+    - id: VP-2
+      name: "More Economic"
+      description: >
+        Eliminates redundant documentary retraining; reduces format conversions,
+        rework, and adaptation overhead.
+      beneficiaries:
+        - operators
+        - mro_organisations
+        - training_organisations
+        - oems
+
+    - id: VP-3
+      name: "More Productive"
+      description: >
+        Training time concentrates on real technical content — technology,
+        risks, execution — instead of documentary grammar.
+      beneficiaries:
+        - technicians
+        - authors
+        - instructors
+        - subject_matter_experts
+
+    - id: VP-4
+      name: "Very Necessary"
+      description: >
+        Emerging technologies (hydrogen, high-voltage, AI-assisted) demand
+        structured technical data from inception. Retrofitting standardisation
+        later is orders of magnitude more expensive and more dangerous.
+      beneficiaries:
+        - industry
+        - regulators
+        - future_programmes
+
+    - id: VP-5
+      name: "Everyone Benefits"
+      description: >
+        A shared representation language creates a positive-sum ecosystem:
+        OEMs author once, operators read consistently, MROs transfer
+        competences, regulators audit uniformly.
+      beneficiaries:
+        - entire_aviation_value_chain
+
+  reinforcement_principle: >
+    These five dimensions are not trade-offs. They reinforce each other.
+    Standardised representation does not reduce technical depth. It amplifies
+    the value of every training hour, every maintenance action, and every
+    safety check — by removing the noise of documentary fragmentation.
+
+##############################################################################
+# 2a Economic Argument
+##############################################################################
+
+economic_argument:
+
+  thesis: >
+    The industry is not only paying to train for the aircraft.
+    It is also paying to train for the documentary differences around the aircraft.
+
+  conclusion: >
+    Standardised technical representation would not eliminate technical training.
+    It would eliminate unnecessary retraining on how different organisations
+    choose to represent the same maintenance intent.
+
+  formula:
+    total_training_cost: "Technical Training (necessary) + Documentary Retraining (reducible)"
+    td_isa_target: "Minimise Documentary Retraining → 0 by maximising representational commonality."
+
+  cost_levels:
+
+    - id: ECO-C1
+      name: "Cost of Formation (Initial Training)"
+      description: >
+        Training hours consumed not only by the technical system but also by
+        documentary logic, coding systems, colour schemes, symbology,
+        navigation philosophy, procedural voice, and variant-specific
+        documentary differences.
+      drivers:
+        - documentary_logic
+        - coding_conventions
+        - colour_and_symbology
+        - navigation_philosophy
+        - procedural_voice
+        - variant_documentary_differences
+
+    - id: ECO-C2
+      name: "Cost of Transition (Cross-Platform Adaptation)"
+      description: >
+        Each transition between aircraft model, variant, OEM, operator,
+        MRO organisation, or documentary platform introduces an adaptation
+        curve that consumes time and reduces initial efficiency even when
+        the underlying technical competence already exists.
+      transition_boundaries:
+        - aircraft_model_or_variant
+        - oem_or_constructor
+        - operator_or_mro
+        - documentary_platform_or_legacy_system
+
+    - id: ECO-C3
+      name: "Cost of Operational Friction (In-Service Impact)"
+      description: >
+        Mental translation between different documentary frameworks during
+        operations produces longer reading times, more refresher actions,
+        higher dependence on specific prior experience, increased probability
+        of doubt or misinterpretation, and reduced ability to reuse
+        competences across fleets.
+      friction_effects:
+        - longer_reading_interpretation_time
+        - more_frequent_refresher_actions
+        - higher_dependence_on_specific_experience
+        - increased_doubt_or_misinterpretation
+        - reduced_competence_reuse_across_fleets
+
+  multipliers:
+    - id: MUL-01
+      factor: "Mixed fleets"
+      effect: "Each fleet type may carry a different documentary philosophy."
+
+    - id: MUL-02
+      factor: "Variants within type"
+      effect: "Sub-variant documentary differences compound the problem."
+
+    - id: MUL-03
+      factor: "Multi-OEM MROs"
+      effect: "MRO organisations serving multiple constructors pay the cost for each."
+
+    - id: MUL-04
+      factor: "Personnel rotation"
+      effect: "Every technician transition restarts the adaptation curve."
+
+    - id: MUL-05
+      factor: "Recurrent training"
+      effect: "Documentary differences must be refreshed alongside technical content."
+
+    - id: MUL-06
+      factor: "Digital expansion"
+      effect: "New IETP platforms introduce additional interaction-logic differences."
+
+##############################################################################
+# 3  Workstreams
+##############################################################################
+
+workstreams:
+
+  - id: WS-1
+    name: "Authoring Integrity"
+    pillar: PIL-1
+    description: >
+      Controlled terminology, procedural clarity, semantic consistency,
+      and traceable content governance.
+    deliverables:
+      - name: "Controlled vocabulary register"
+        description: "Master BREX dictionary with domain extensions."
+        ufato_binding: [UF-CT-01, UF-CT-02, UF-CT-03, UF-CT-04]
+
+      - name: "Authoring style guide"
+        description: "Sentence length, voice, mood, conditional nesting rules."
+        ufato_binding: [UF-AR-01, UF-AR-02, UF-AR-03, UF-AR-04, UF-AR-05, UF-AR-06]
+
+      - name: "Content governance model"
+        description: "Change authority, review cycles, baseline rules."
+        integration: "CCTLS gate sequence"
+
+      - name: "Traceability matrix template"
+        description: "Requirement → content → evidence chain."
+        integration: "H-Pipeline H_REQ / H_EVIDENCE"
+
+    maturity:
+      level: M1
+      status: "UFATO Layer 1 authoring rules defined."
+
+  - id: WS-2
+    name: "Representation Standards"
+    pillar: PIL-2
+    description: >
+      Harmonised rules for visual hierarchy, colour coding, line conventions,
+      illustration semantics, and safety cue presentation.
+    deliverables:
+      - name: "Safety severity scheme"
+        description: "Invariant DANGER/WARNING/CAUTION/NOTE rendering."
+        ufato_binding: "UFATO §4.3"
+
+      - name: "Visual hierarchy specification"
+        description: "Heading mapping, step numbering, table captioning."
+        ufato_binding: [UF-VH-01, UF-VH-02, UF-VH-03, UF-VH-04, UF-VH-05, UF-VH-06]
+
+      - name: "Illustration standard"
+        description: "Line weights, callout conventions, greyscale legibility."
+        ufato_binding: [UF-IC-01, UF-IC-02, UF-IC-03, UF-IC-04]
+
+      - name: "Colour scheme annex"
+        description: "Day-mode and night-mode palettes with WCAG AA compliance."
+        ufato_binding: [UF-VH-05, UF-VH-06]
+
+    maturity:
+      level: M1
+      status: "UFATO Layer 1 visual/safety semantics defined."
+
+  - id: WS-3
+    name: "Digital Readability and Interaction"
+    pillar: PIL-2
+    description: >
+      Standards for display behaviour on tablets, laptops, and
+      maintenance-oriented digital interfaces.
+    deliverables:
+      - name: "IETP interaction specification"
+        description: "Breadcrumbs, hyperlinks, effectivity filtering, undo."
+        ufato_binding: [UF-IL-01, UF-IL-02, UF-IL-03, UF-IL-04, UF-IL-05]
+
+      - name: "Responsive display guidelines"
+        description: "Minimum text sizes, contrast ratios, touch targets."
+        ufato_binding: [UF-VH-04, UF-VH-05, UF-IC-04]
+
+      - name: "Offline-mode specification"
+        description: "Baseline preservation, sync logic, conflict resolution."
+        ufato_binding: [UF-IL-05]
+
+      - name: "Accessibility conformance profile"
+        description: "WCAG 2.1 AA mapping for maintenance environments."
+        ufato_binding: [UF-VH-04, UF-VH-05]
+
+    maturity:
+      level: M1
+      status: "UFATO Layer 1 interaction logic defined."
+
+  - id: WS-4
+    name: "Technology-Specific Profiles"
+    pillar: PIL-2
+    description: >
+      Adaptable chaptering and content structuring models for conventional
+      aircraft, hydrogen systems, fuel cells, high-voltage architectures,
+      AI-assisted systems, and future aerospace configurations.
+    deliverables:
+      - name: "Chapter Scheme registry"
+        description: "Technology-domain chapter decompositions registered in AGGIX."
+        ufato_binding: [AS-GOV-01, AS-GOV-02, AS-GOV-03, AS-GOV-04, AS-GOV-05]
+
+      - name: "Hydrogen (LH₂) profile"
+        description: "Chapters 28H/28V/28R, 73H/73C/73E."
+        ufato_binding: "UFATO §5.2.2"
+
+      - name: "High-voltage profile"
+        description: "Chapters 24E/24B/24G."
+        ufato_binding: "UFATO §5.2.3"
+
+      - name: "AI-assisted systems profile"
+        description: "Chapters 45A/45X/45M."
+        ufato_binding: "UFATO §5.2.4"
+
+      - name: "Domain Glossary Extension (DGE) template"
+        description: "Structured term registration for new technology domains."
+        ufato_binding: "UFATO §5.3"
+
+    maturity:
+      level: M1
+      status: "UFATO Layer 2 reference Chapter Schemes defined."
+
+  - id: WS-5
+    name: "Automation Enablement"
+    pillar: PIL-3
+    description: >
+      Machine-readable patterns, validation logic, structured semantics,
+      and interoperability rules that support digital workflows and
+      automation.
+    deliverables:
+      - name: "BREX validation rule set"
+        description: "Schematron/XSD rules for automated authoring checks."
+        integration: "S1000D BREX + UFATO Layer 1"
+
+      - name: "Publication build pipeline specification"
+        description: "CI/CD-compatible IETP build with automated link-checking."
+        integration: "CCTLS PUBLISH gate"
+
+      - name: "Structured metadata schema"
+        description: "YAML/JSON sidecar schemas for data modules."
+        integration: "AGGIX PUB/CFG resource types"
+
+      - name: "Interoperability API specification"
+        description: "REST/GraphQL interfaces for cross-system content exchange."
+        integration: "AGGIX URI resolution"
+
+      - name: "Machine-learning data extraction patterns"
+        description: "Structured patterns for training data extraction from tech pubs."
+        integration: "ESSA AI governance"
+
+    maturity:
+      level: M0
+      status: "Scope defined; deliverables pending."
+
+##############################################################################
+# 4  Maturity Model
+##############################################################################
+
+maturity_model:
+  levels:
+    - level: M0
+      label: "Proposed"
+      criteria: "Workstream scope and deliverables defined."
+
+    - level: M1
+      label: "In Development"
+      criteria: "Deliverables in INTERPRET or CONFIRM state."
+
+    - level: M2
+      label: "Published"
+      criteria: "Deliverables in ACTIVATE or PUBLISH state."
+
+    - level: M3
+      label: "Adopted"
+      criteria: "Deliverables in operational use by at least one external organisation."
+
+    - level: M4
+      label: "Institutionalised"
+      criteria: "Deliverables incorporated into formal industry standards."
+
+##############################################################################
+# 5  Institutional Positioning Options
+##############################################################################
+
+institutional_positioning:
+  forms:
+    - form: institute
+      description: "Permanent research and standards body."
+      governance: "Board-directed, funded R&D agenda."
+
+    - form: council
+      description: "Advisory body with industry representation."
+      governance: "Rotating chair, consensus-based recommendations."
+
+    - form: foundation
+      description: "Non-profit entity with open-access mandate."
+      governance: "Membership-funded, public deliverables."
+
+    - form: standards_initiative
+      description: "Focused working group within an existing body."
+      governance: "Time-bound charter, deliverable-driven."
+
+    - form: cross_industry_working_body
+      description: "Multi-stakeholder coordination mechanism."
+      governance: "Federated participation, shared governance."
+
+  recommended_initial_form: standards_initiative
+  institutionalisation_pathway: "Council or Foundation once workstream deliverables reach M3."
+
+##############################################################################
+# 6  Benefits
+##############################################################################
+
+benefits:
+  - id: BEN-01
+    benefit: "Save time"
+    impact_area: "Authoring, translation, cross-fleet maintenance."
+
+  - id: BEN-02
+    benefit: "Reduce costs"
+    impact_area: "Fewer format conversions, less rework, smaller training burden."
+
+  - id: BEN-03
+    benefit: "Reduce interpretation errors"
+    impact_area: "Uniform safety cues, controlled vocabulary, consistent layout."
+
+  - id: BEN-04
+    benefit: "Improve training transferability"
+    impact_area: "Technicians trained on one system can read another."
+
+  - id: BEN-05
+    benefit: "Improve content reuse"
+    impact_area: "Modular data modules shareable across programmes."
+
+  - id: BEN-06
+    benefit: "Reduce aircraft-on-ground exposure"
+    impact_area: "Faster access to correct, unambiguous maintenance data."
+
+  - id: BEN-07
+    benefit: "Strengthen safety and security"
+    impact_area: "Invariant safety semantics, traceable content governance."
+
+  - id: BEN-08
+    benefit: "Improve interoperability"
+    impact_area: "OEMs, suppliers, operators, and MROs share a common data language."
+
+  - id: BEN-09
+    benefit: "Enable automation"
+    impact_area: "Machine-readable, validated, structured data for digital workflows."
+
+##############################################################################
+# 7  Integration
+##############################################################################
+
+integration:
+  essa:
+    - artefact: "ESSA-Agency Constitution"
+      binding: "TD-ISA operates under ESSA-Agency institutional authority."
+
+    - artefact: "CCTLS gate sequence"
+      binding: "Workstream deliverables follow INTERPRET → CONFIRM → ACTIVATE → PUBLISH."
+
+    - artefact: "H-Pipeline (H_ENVELOPE)"
+      binding: "WS-1 traceability extends H-token chains into publication content."
+
+    - artefact: "AGGIX registry"
+      binding: "WS-4 Chapter Schemes and WS-5 metadata schemas registered as CFG/PUB resources."
+
+    - artefact: "UFATO (ESSA-STD-UFATO-001)"
+      binding: "TD-ISA's primary technical standard — governs Layer 1 + Layer 2 rules."
+
+    - artefact: "SPEC-PELS-014 lifecycle"
+      binding: "Publication artefact states align with PELS engineering/product states."
+
+    - artefact: "Safety-First Doctrine"
+      binding: "WS-2 safety semantics are derived from SAFETY-FIRST invariants."
+
+  external_standards:
+    - standard: "S1000D Steering Committee"
+      relationship: "WS-1/WS-2 rules align with and extend S1000D BREX and presentation specs."
+
+    - standard: "ATA e-Business Group"
+      relationship: "WS-4 conventional-aircraft profile maps to ATA iSpec 2200."
+
+    - standard: "SAE International (ARP4754A, ARP4761)"
+      relationship: "WS-1 traceability compatible with system development and safety assessment."
+
+    - standard: "EASA / FAA"
+      relationship: "WS-4 technology-specific profiles support certification data packages."
+
+    - standard: "ISO TC20/SC1 (Aerospace terminology)"
+      relationship: "WS-1 controlled vocabulary harmonised with ISO aerospace terminology."
+
+    - standard: "W3C (WCAG)"
+      relationship: "WS-3 accessibility rules conform to WCAG 2.1 AA."
+
+    - standard: "DO-178C / DO-330 (RTCA)"
+      relationship: "WS-4 AI-assisted systems profile references software/tool qualification."
+
+##############################################################################
+# 8  Revision History
+##############################################################################
+
+revision_history:
+  - version: "0.1.0"
+    date: "2026-04-14"
+    change: "Initial entity proposal."
+
+  - version: "0.2.0-draft"
+    date: "2026-04-14"
+    change: "Added economic_argument section: documentary retraining cost model with three cost levels, six multipliers, and formula."
+
+  - version: "0.3.0-draft"
+    date: "2026-04-14"
+    change: "Added value_proposition section: Quadruple Win (economic, safer, more productive, everyone benefits)."
+
+  - version: "0.4.0-draft"
+    date: "2026-04-14"
+    change: "Upgraded to Quintuple Win: added VP-4 'Very Necessary' dimension; reordered safety-first; added Spanish summary."
+---
+
 # ESSA — TD-ISA: Technical Data Integrity, Standardization, and Automation
 
 **A Proposed Entity for Common Technical Data Governance**
