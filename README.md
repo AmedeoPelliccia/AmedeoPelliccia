@@ -240,12 +240,23 @@ value_matrix:
 ---
 
 <p align="center">
-  <strong>Amedeo Pelliccia</strong><br>
+  <strong>Amedeo Pelliccia De Martino</strong><br>
   Aerospace Engineer · Researcher · Framework Originator<br>
-  Founder, <a href="https://ideale.eu">P&L-in-DeM-IDEALE-ESG.eu</a> Framework
+  Founder of the <a href="https://ideale.eu"><strong>PELDEM / IDEALE ESG Europe</strong></a> Framework
 </p>
 
-# PEACE AND LOVE IN DEMOCRACY IDEALE ESG EUROPE
+<p align="center">
+  <strong>PELDEM</strong><br>
+  <em>Pelliccia De Martino</em><br>
+  <em>Peace and Love in Democracy</em>
+</p>
+
+<p align="center">
+  <strong>In dedication to my parents, from whom this name, this path, and this foundation begin.</strong>
+</p>
+
+<h1 align="center">IDEALE ESG Europe</h1>
+
 ---
 
 I am a researcher moved by genuine desire to originate something powerful.
@@ -1431,6 +1442,6 @@ See [`quantum-manifold.yaml`](quantum-manifold.yaml) for the full specification 
 
 <p align="center">
   <em>Last updated: 2026-02-25</em><br>
-  <em>Enterprise: IDEALE-ESG.eu — Information · Defense · Energy · Aerospace · Logistics · Economy (Digital) | Environment · Social · Governance</em><br>
+  <em>Enterprise: PELDEM / IDEALE-ESG.eu — Information · Defense · Energy · Aerospace · Logistics · Economy (Digital) | Environment · Social · Governance</em><br>
   <em>Standard family: STD-PATH-MTL-001 v1.0 + §3.1a DWGE v0.1 + §3.1b CLL v0.1 + §NBT Gates v0.1 + §PORTAL v0.1</em>
 </p>
