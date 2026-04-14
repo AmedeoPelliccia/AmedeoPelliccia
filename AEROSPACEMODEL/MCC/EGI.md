@@ -759,10 +759,13 @@ a non-carrying one, because:
 
 ### 7.3 Replay Resistance
 
-Each Ephemeron is generated from a unique seed `σ`. Replaying a previous seed
-produces the same interface surface, but the payload is different unless the
-full `(σ, π)` pair is reused. The decoder verifies freshness through a nonce
-embedded in the seed.
+Each Ephemeron is deterministically generated as `𝒢(σ, π, t)`, where the
+interface surface is a function of the full `(σ, π)` pair rather than of `σ`
+alone. Replaying a previous seed without the original payload does **not**
+reproduce the same interface surface; it yields a different surface because the
+payload contribution is part of the generative state. Only reuse of the full
+`(σ, π)` pair reproduces the prior surface and payload mapping. The decoder
+verifies freshness through a nonce embedded in the seed.
 
 ---
 
