@@ -1340,6 +1340,7 @@ It is structural logic, not rhetoric.
 | `economy-assets.schema.json` | `00-PROGRAM/PLUMA/` | E₂ first-class objects: ContributionAsset, EvidencePackage, QualifiedModel, CertificationBundle, DPPAsset, TokenizedRecognitionUnit |
 | `nbt-gates.yaml` | `00-PROGRAM/PLUMA/` | NBT gate spec, bridge/tunnel protocols, NeuronBit schema, QSL parameters, QAOS interface |
 | `quantum-manifold.yaml` | root | 12×12 Hilbert–Bell manifold: three-layer architecture, basis states, entanglement, Bell bounds, coherence reduction |
+| `formal-model.yaml` | root | Ephemeral Interface Formal Model: assembly / decay / reactivation lifecycle, cost extension, activation function |
 | `trace_thread.schema.json` | `.path_mtl/portal/schemas/` | TraceThread (TTD) schema — canonical fields, lineage rules, classification (`§PORTAL` §26) |
 | `responsibility_chair.schema.json` | `.path_mtl/portal/schemas/` | ResponsibilityChair schema — scope, authority levels, delegation, signature policy (`§PORTAL` §27) |
 | `contribution_event.schema.json` | `.path_mtl/portal/schemas/` | ContributionEvent + MeritUnit schema — event types, CMI weights (`§PORTAL` §28) |
@@ -1425,6 +1426,15 @@ See [`quantum-manifold.yaml`](quantum-manifold.yaml) for the full specification 
 - `HamiltonianEvolver` — Layer 3 physical field operators on state space
 - `CoherenceReductionMap` — $\mathcal{R}(\rho)$ with decoherence threshold classification
 - `HilbertBellManifold` — top-level orchestrator integrating all three layers
+
+See [`formal-model.yaml`](formal-model.yaml) for the Ephemeral Interface Formal Model specification and [`formal_model.py`](formal_model.py) for the Python reference implementation including:
+
+- `EphemeralInterface` — data structure for assembled interfaces over temporary simplicial structures
+- `ResidualTrace` — structural signature extracted during decay
+- `FormalModel` — orchestrator implementing Assemble / Decay / Reactivate with cost accounting
+- `ActivationFunction` — multi-channel affinity scoring $A(s, r) = \sum_c (s_c \cdot \alpha_c)$ with threshold gating
+
+Documentation: [`FORMAL-MODEL.md`](FORMAL-MODEL.md)
 
 ---
 

@@ -1,0 +1,208 @@
+##############################################################################
+# formal-model.yaml
+# Ephemeral Interface Formal Model — Assembly / Decay / Reactivation
+# Reference: README.md §3 (Simplicial Partitioning of Possibility Space)
+# Placement: ./formal-model.yaml (repository root)
+##############################################################################
+
+schema_version: "1.0.0"
+document_id: FORMAL-MODEL-001
+document_type: formal_model_specification
+title: "Ephemeral Interface Formal Model — Assembly / Decay / Reactivation"
+version: "0.1.0"
+status: draft
+last_updated: "2026-04-14T00:00:00Z"
+related_documents:
+  - id: simplex-contract
+    file: "simplex-contract.yaml"
+    relationship: simplicial_framework
+  - id: quantum-manifold
+    file: "quantum-manifold.yaml"
+    relationship: state_space_foundation
+  - id: certified-dynamics
+    file: "certified_dynamics.py"
+    relationship: reference_dynamics
+
+##############################################################################
+# 0  Overview
+##############################################################################
+
+overview:
+  description: >
+    This specification formalises a three-phase lifecycle for ephemeral
+    interfaces built over temporary simplicial structures.  An interface
+    is assembled from a stimulus and a latent seed, decays into a residual
+    trace, and may be reactivated when a sufficiently similar stimulus
+    arrives.  The model extends the simplicial partitioning framework
+    (README §3) with cost accounting and multi-channel activation gating.
+
+##############################################################################
+# 1  Core Model
+##############################################################################
+
+formal_model:
+
+  core:
+    assembly:
+      expression: "I_t = Assemble(s, z, K)"
+      description: >
+        An ephemeral interface I_t is assembled from a stimulus s,
+        a latent seed z, and a temporary simplicial structure K.
+
+    decay:
+      expression: "Decay(I_t) -> r"
+      description: >
+        An active interface I_t decays over time, leaving behind
+        a residual trace r that encodes its structural signature.
+
+    reactivation:
+      expression: "I_t' = Reactivate(s', r)"
+      description: >
+        A new interface I_t' may be reactivated from a new stimulus s'
+        and an existing residual trace r, provided the activation
+        threshold is exceeded.
+
+    variables:
+      - symbol: s
+        meaning: stimulus
+        domain: "ℝ^C (C-dimensional channel vector)"
+      - symbol: z
+        meaning: latent_seed
+        domain: "ℝ^d (d-dimensional latent space)"
+      - symbol: K
+        meaning: temporary_simplicial_structure
+        domain: "Simplicial complex over the domain Ω"
+      - symbol: I_t
+        meaning: ephemeral_interface
+        domain: "Active interface at time t"
+      - symbol: r
+        meaning: residual_trace
+        domain: "ℝ^d (structural signature of decayed interface)"
+
+##############################################################################
+# 2  Cost Extension
+##############################################################################
+
+  cost_extension:
+    assembly_cost:
+      symbol: C_a
+      description: >
+        Computational / energetic cost of assembling a new ephemeral
+        interface from scratch.
+      formula: "C_a = cost(Assemble(s, z, K))"
+
+    decay_cost:
+      symbol: C_d
+      description: >
+        Cost of maintaining an interface during its decay phase,
+        including trace extraction.
+      formula: "C_d = cost(Decay(I_t))"
+
+    reactivation_cost:
+      symbol: C_r
+      description: >
+        Cost of reactivating an interface from a residual trace.
+        Strictly cheaper than assembly when the new stimulus is
+        sufficiently similar to the original.
+      formula: "C_r = cost(Reactivate(s', r))"
+
+    constraint:
+      statement: "C_r <= C_a  only if  sim(s, s') > θ"
+      description: >
+        Reactivation is cost-effective (C_r ≤ C_a) only when the
+        similarity between the original stimulus s and the new
+        stimulus s' exceeds the reactivation threshold θ.
+        Otherwise full assembly is required.
+
+##############################################################################
+# 3  Activation Function
+##############################################################################
+
+  activation_function:
+    formula: "A(s, r) = Σ_c (s_c · α_c)"
+    description: >
+      The activation score is a weighted sum over all channels c.
+      Each channel contributes the product of the stimulus component
+      s_c and the channel affinity α_c of the residual trace.
+
+    condition: "I_t' = Reactivate(s, r)  iff  A(s, r) > θ"
+    description_condition: >
+      Reactivation occurs if and only if the activation score
+      exceeds the reactivation threshold θ.
+
+    parameters:
+      - symbol: alpha_c
+        meaning: "affinity of channel c with the given trace"
+        domain: "[0, 1]"
+      - symbol: theta
+        meaning: "reactivation threshold"
+        domain: "(0, +∞)"
+      - symbol: s_c
+        meaning: "stimulus intensity in channel c"
+        domain: "[0, +∞)"
+
+##############################################################################
+# 4  Lifecycle State Machine
+##############################################################################
+
+  lifecycle:
+    states:
+      - id: LATENT
+        description: "Seed z exists but no interface has been assembled."
+      - id: ACTIVE
+        description: "Interface I_t has been assembled and is operational."
+      - id: DECAYING
+        description: "Interface is undergoing decay; trace r is forming."
+      - id: RESIDUAL
+        description: "Decay complete; only residual trace r remains."
+      - id: REACTIVATED
+        description: "A new interface I_t' has been reactivated from r."
+
+    transitions:
+      - from: LATENT
+        to: ACTIVE
+        trigger: assembly
+        cost: C_a
+      - from: ACTIVE
+        to: DECAYING
+        trigger: time_elapsed
+        cost: C_d
+      - from: DECAYING
+        to: RESIDUAL
+        trigger: decay_complete
+        cost: "0"
+      - from: RESIDUAL
+        to: REACTIVATED
+        trigger: activation_threshold_exceeded
+        cost: C_r
+        condition: "A(s', r) > θ"
+      - from: REACTIVATED
+        to: DECAYING
+        trigger: time_elapsed
+        cost: C_d
+
+##############################################################################
+# 5  Invariants
+##############################################################################
+
+  invariants:
+    - id: INV-FM-01
+      statement: "C_r <= C_a when sim(s, s') > θ"
+      description: >
+        Reactivation SHALL be cheaper than full assembly when
+        the stimulus similarity exceeds the threshold.
+    - id: INV-FM-02
+      statement: "Reactivation requires A(s', r) > θ"
+      description: >
+        No interface SHALL be reactivated unless the activation
+        score exceeds the configured threshold.
+    - id: INV-FM-03
+      statement: "Decay is monotone: ‖I_t‖ decreases over time"
+      description: >
+        Once decay begins, the interface magnitude SHALL decrease
+        monotonically until the residual trace is reached.
+    - id: INV-FM-04
+      statement: "Trace preservation: dim(r) = dim(z)"
+      description: >
+        The residual trace SHALL preserve the dimensionality of
+        the original latent seed.
