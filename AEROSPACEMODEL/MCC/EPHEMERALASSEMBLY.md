@@ -2,10 +2,10 @@
 ##############################################################################
 # ephemeralassembly.yaml
 # EPHEMERALASSEMBLY — Ephemeral Cognitive Assembly Protocol
-# AEROSPACEMODEL MCC Specification Series — SPEC-010
+# AEROSPACEMODEL MCC Specification Series — SPEC-011
 ##############################################################################
 
-document_id: AEROSPACEMODEL-MCC-SPEC-010
+document_id: AEROSPACEMODEL-MCC-SPEC-011
 document_type: ephemeral_cognitive_assembly_protocol
 title: "EPHEMERALASSEMBLY — Ephemeral Cognitive Assembly Protocol"
 version: "0.1.0"
@@ -19,6 +19,9 @@ related_documents:
   - id: AEROSPACEMODEL-MCC-SPEC-009
     file: "AEROSPACEMODEL/MCC/TRAUMACODEDRAMA.md"
     relationship: transition_encoding_base
+  - id: AEROSPACEMODEL-MCC-SPEC-010
+    file: "AEROSPACEMODEL/MCC/EGI.md"
+    relationship: ephemeral_lifecycle_layer
 last_updated: "2026-04-14T00:00:00Z"
 
 ##############################################################################
@@ -197,14 +200,17 @@ integration:
     - layer: TRAUMACODEDRAMA (SPEC-009)
       unit: "Transition Δε"
       encodes: "Steganographic payload in transition magnitudes"
-    - layer: EPHEMERALASSEMBLY (SPEC-010)
+    - layer: EGI (SPEC-010)
+      unit: "Ephemeron lifecycle"
+      encodes: "Steganographic payload in generative interface lifecycle"
+    - layer: EPHEMERALASSEMBLY (SPEC-011)
       unit: "Persistence kernel 𝒦"
       encodes: "Regeneration rules for cognitive assembly reconstruction"
 ---
 
 # EPHEMERALASSEMBLY — Ephemeral Cognitive Assembly Protocol
 
-**Document ID:** AEROSPACEMODEL-MCC-SPEC-010  
+**Document ID:** AEROSPACEMODEL-MCC-SPEC-011  
 **Version:** 0.1.0  
 **Status:** Draft  
 **Parent:** AEROSPACEMODEL-MCC-SPEC-009 (TRAUMACODEDRAMA)  
@@ -390,7 +396,7 @@ bundled in `𝒦`. Failure to verify is a protocol violation.
 
 ---
 
-## 5. Integration with SENSORIUM and TRAUMACODEDRAMA
+## 5. Integration with SENSORIUM, TRAUMACODEDRAMA, and EGI
 
 EPHEMERALASSEMBLY extends the MCC layer stack by one level of abstraction:
 
@@ -398,7 +404,8 @@ EPHEMERALASSEMBLY extends the MCC layer stack by one level of abstraction:
 |-------|------|-----------------|
 | SENSORIUM (SPEC-008) | State `ε` | Steganographic payload in channel intensities |
 | TRAUMACODEDRAMA (SPEC-009) | Transition `Δε` | Steganographic payload in transition magnitudes |
-| **EPHEMERALASSEMBLY (SPEC-010)** | **Kernel `𝒦`** | **Regeneration rules for cognitive assembly reconstruction** |
+| EGI (SPEC-010) | Ephemeron lifecycle | Steganographic payload in generative interface lifecycle |
+| **EPHEMERALASSEMBLY (SPEC-011)** | **Kernel `𝒦`** | **Regeneration rules for cognitive assembly reconstruction** |
 
 The reactivation stimulus `σ` lives in the same six-channel space as the
 SENSORIUM emotive vector `ε`. Each `σⱼ` maps 1:1 onto the corresponding
@@ -407,7 +414,7 @@ cognitive analogue of SENSORIUM's multi-channel intensity encoding.
 
 The persistence kernel `𝒦` may itself be embedded as a TRAUMACODEDRAMA
 payload — the regeneration seed hidden in transition magnitudes of a dramatic
-arc. This achieves a three-layer encoding where each layer is orthogonal to
+arc. This achieves a four-layer encoding where each layer is orthogonal to
 the others.
 
 ---
@@ -416,7 +423,8 @@ the others.
 
 - AEROSPACEMODEL-MCC-SPEC-008 (SENSORIUM): sensory channel definitions
 - AEROSPACEMODEL-MCC-SPEC-009 (TRAUMACODEDRAMA): transition encoding base
-- [`ephemeralassembly.yaml`](ephemeralassembly.yaml): machine-readable companion (AEROSPACEMODEL-MCC-SPEC-010)
+- AEROSPACEMODEL-MCC-SPEC-010 (EGI): ephemeral generative interface
+- [`ephemeralassembly.yaml`](ephemeralassembly.yaml): machine-readable companion (AEROSPACEMODEL-MCC-SPEC-011)
 - [`SENSORIUM.md`](SENSORIUM.md): emotive vector space definitions
 - [`TRAUMACODEDRAMA.md`](TRAUMACODEDRAMA.md): dramatic-arc steganographic protocol
 

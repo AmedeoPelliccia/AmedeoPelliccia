@@ -1,10 +1,10 @@
 ##############################################################################
 # ephemeralassembly.yaml
 # EPHEMERALASSEMBLY — Ephemeral Cognitive Assembly Protocol
-# AEROSPACEMODEL MCC Specification Series — SPEC-010
+# AEROSPACEMODEL MCC Specification Series — SPEC-011
 ##############################################################################
 
-document_id: AEROSPACEMODEL-MCC-SPEC-010
+document_id: AEROSPACEMODEL-MCC-SPEC-011
 document_type: ephemeral_cognitive_assembly_protocol
 title: "EPHEMERALASSEMBLY — Ephemeral Cognitive Assembly Protocol"
 version: "0.1.0"
@@ -18,6 +18,9 @@ related_documents:
   - id: AEROSPACEMODEL-MCC-SPEC-009
     file: "AEROSPACEMODEL/MCC/TRAUMACODEDRAMA.md"
     relationship: transition_encoding_base
+  - id: AEROSPACEMODEL-MCC-SPEC-010
+    file: "AEROSPACEMODEL/MCC/EGI.md"
+    relationship: ephemeral_lifecycle_layer
 last_updated: "2026-04-14T00:00:00Z"
 
 ##############################################################################
@@ -196,6 +199,9 @@ integration:
     - layer: TRAUMACODEDRAMA (SPEC-009)
       unit: "Transition Δε"
       encodes: "Steganographic payload in transition magnitudes"
-    - layer: EPHEMERALASSEMBLY (SPEC-010)
+    - layer: EGI (SPEC-010)
+      unit: "Ephemeron lifecycle"
+      encodes: "Steganographic payload in generative interface lifecycle"
+    - layer: EPHEMERALASSEMBLY (SPEC-011)
       unit: "Persistence kernel 𝒦"
       encodes: "Regeneration rules for cognitive assembly reconstruction"

@@ -1,0 +1,292 @@
+##############################################################################
+# amedeo-bpfo.yaml
+# AMEDEO-BPFO — Autonomous Multimodal Execution &
+#                Deterministic Enhancement Orchestrator —
+#                Best Processable Formatted Output
+# System Normalization Specification
+##############################################################################
+
+document_id: AMEDEO-BPFO-001
+document_type: system_normalization_specification
+title: "AMEDEO-BPFO — Autonomous Multimodal Execution & Deterministic Enhancement Orchestrator"
+version: "0.1.0"
+schema_version: "1.0.0"
+status: proposed
+last_updated: "2026-04-14T00:00:00Z"
+
+##############################################################################
+# 0  System Identity
+##############################################################################
+
+system:
+  id: "AMEDEO-BPFO-001"
+  name: "AMEDEO-BPFO"
+  mode: "deterministic_orchestrated_transformation"
+
+  expansion:
+    amedeo: "Autonomous Multimodal Execution & Deterministic Enhancement Orchestrator"
+    bpfo: "Best Processable Formatted Output"
+
+  acronym_check:
+    A: "Autonomous"
+    M: "Multimodal"
+    E: "Execution"
+    D: "Deterministic"
+    E2: "Enhancement"
+    O: "Orchestrator"
+    BPFO: "Best Processable Formatted Output"
+
+  abstract: >
+    AMEDEO-BPFO is a multimodal transformation orchestrator designed to
+    ingest, refine, normalize, and export information as best-processable
+    formatted output under traceable execution rules.
+
+  purpose: >
+    Ingest heterogeneous multimodal inputs, refine them through iterative
+    generative and rule-bound transformations, and emit traceable,
+    process-ready outputs in normalized formats.
+
+  capabilities:
+    - "multimodal_ingestion"
+    - "iterative_generative_refinement"
+    - "traceable_formatting"
+    - "process_ready_export"
+
+##############################################################################
+# 1  Inputs
+##############################################################################
+
+inputs:
+  accepted_modalities:
+    - id: MOD-TXT
+      modality: "text"
+      description: "Plain text, structured text, or markup input."
+      examples: ["markdown", "yaml", "json", "csv", "plain_text"]
+
+    - id: MOD-IMG
+      modality: "image"
+      description: "Raster or vector image input for visual analysis."
+      examples: ["png", "jpeg", "svg", "tiff"]
+
+    - id: MOD-AUD
+      modality: "audio"
+      description: "Audio signals for transcription, analysis, or embedding."
+      examples: ["wav", "mp3", "flac", "ogg"]
+
+    - id: MOD-SEN
+      modality: "sensor_data"
+      description: "Time-series or event-driven telemetry from physical sensors."
+      examples: ["accelerometer", "gyroscope", "temperature", "pressure"]
+
+    - id: MOD-STR
+      modality: "structured_data"
+      description: "Tabular or graph-structured data from databases or APIs."
+      examples: ["sql_result_set", "graphql_response", "parquet", "arrow"]
+
+  ingestion_rules:
+    - "Each input must carry a modality tag."
+    - "Each input must include a provenance record (source, timestamp, hash)."
+    - "Unknown modalities are rejected with a diagnostic message."
+
+##############################################################################
+# 2  Pipeline
+##############################################################################
+
+pipeline:
+  description: >
+    The transformation pipeline is a deterministic, stage-gated sequence.
+    Each stage produces an immutable intermediate artifact with metadata.
+
+  stages:
+    - id: STAGE-01
+      name: "Ingestion"
+      description: >
+        Accept and validate multimodal inputs. Assign provenance metadata.
+        Compute input checksum.
+      input: "raw_multimodal_input"
+      output: "validated_input_bundle"
+      invariants:
+        - "Every accepted input has a provenance record."
+        - "Checksum is computed before any transformation."
+
+    - id: STAGE-02
+      name: "Normalization"
+      description: >
+        Convert heterogeneous inputs into a canonical internal representation.
+        Resolve encoding, schema, and unit discrepancies.
+      input: "validated_input_bundle"
+      output: "normalized_representation"
+      invariants:
+        - "All units are SI-aligned or explicitly tagged."
+        - "Character encoding is UTF-8."
+
+    - id: STAGE-03
+      name: "Generative Refinement"
+      description: >
+        Apply iterative generative and rule-bound transformations to enrich,
+        correct, or restructure the normalized representation.
+      input: "normalized_representation"
+      output: "refined_representation"
+      invariants:
+        - "Each transformation step is logged with a delta record."
+        - "Refinement is idempotent after convergence."
+
+    - id: STAGE-04
+      name: "Formatting"
+      description: >
+        Render the refined representation into the requested output format(s).
+        Apply layout, serialization, and encoding rules.
+      input: "refined_representation"
+      output: "formatted_output"
+      invariants:
+        - "Output conforms to the target format schema."
+        - "No information loss relative to the refined representation."
+
+    - id: STAGE-05
+      name: "Export"
+      description: >
+        Emit the formatted output with full traceability metadata,
+        checksums, and provenance chain.
+      input: "formatted_output"
+      output: "exported_artifact"
+      invariants:
+        - "Output checksum is computed and attached."
+        - "Full provenance chain from input to output is available."
+
+##############################################################################
+# 3  Validation
+##############################################################################
+
+validation:
+  description: >
+    Validation rules apply at every pipeline stage boundary and at final
+    export. Violations halt the pipeline and emit a diagnostic artifact.
+
+  rules:
+    - id: VAL-001
+      scope: "ingestion"
+      rule: "Input must declare a supported modality."
+      severity: "blocking"
+
+    - id: VAL-002
+      scope: "ingestion"
+      rule: "Input must include provenance (source, timestamp, hash)."
+      severity: "blocking"
+
+    - id: VAL-003
+      scope: "normalization"
+      rule: "Normalized representation must be valid against internal schema."
+      severity: "blocking"
+
+    - id: VAL-004
+      scope: "refinement"
+      rule: "Each refinement iteration must produce a delta record."
+      severity: "warning"
+
+    - id: VAL-005
+      scope: "formatting"
+      rule: "Output must validate against the target format schema."
+      severity: "blocking"
+
+    - id: VAL-006
+      scope: "export"
+      rule: "Exported artifact must include a provenance chain and checksum."
+      severity: "blocking"
+
+  diagnostics:
+    format: "yaml"
+    fields:
+      - "timestamp"
+      - "stage_id"
+      - "rule_id"
+      - "severity"
+      - "message"
+      - "input_hash"
+
+##############################################################################
+# 4  Outputs
+##############################################################################
+
+outputs:
+  specification: "Best Processable Formatted Output"
+
+  supported_formats:
+    - id: FMT-YAML
+      format: "yaml"
+      mime: "application/x-yaml"
+      description: "YAML 1.2 compliant structured output."
+
+    - id: FMT-JSON
+      format: "json"
+      mime: "application/json"
+      description: "JSON output conforming to RFC 8259."
+
+    - id: FMT-CSV
+      format: "csv"
+      mime: "text/csv"
+      description: "RFC 4180 compliant comma-separated values."
+
+    - id: FMT-MD
+      format: "md"
+      mime: "text/markdown"
+      description: "CommonMark-compliant Markdown."
+
+    - id: FMT-HTML
+      format: "html"
+      mime: "text/html"
+      description: "HTML5 compliant document fragment or full page."
+
+  artifact_metadata:
+    required_fields:
+      - "artifact_id"
+      - "source_document_id"
+      - "pipeline_run_id"
+      - "stage_checksums"
+      - "output_checksum"
+      - "provenance_chain"
+      - "timestamp"
+      - "format"
+
+##############################################################################
+# 5  Governance
+##############################################################################
+
+governance:
+  traceability: true
+  reproducibility: true
+  metadata_required: true
+  checksum_required: true
+
+  principles:
+    - id: GOV-001
+      name: "Full Traceability"
+      description: >
+        Every output artifact must be traceable to its input(s) through the
+        complete pipeline provenance chain.
+
+    - id: GOV-002
+      name: "Reproducibility"
+      description: >
+        Given the same inputs and pipeline configuration, the system must
+        produce byte-identical outputs.
+
+    - id: GOV-003
+      name: "Metadata Completeness"
+      description: >
+        Every artifact — intermediate or final — must carry its full
+        metadata record.
+
+    - id: GOV-004
+      name: "Integrity Verification"
+      description: >
+        Checksums (SHA-256) are computed at ingestion and export.
+        Any checksum mismatch halts the pipeline.
+
+    - id: GOV-005
+      name: "Auditability"
+      description: >
+        Pipeline execution logs are immutable and retained for the
+        configured audit retention period.
+
+  checksum_algorithm: "SHA-256"
+  audit_retention: "7 years"
