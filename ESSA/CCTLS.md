@@ -31,16 +31,30 @@ Every governed object follows this state machine:
 ```mermaid
 stateDiagram-v2
     [*] --> INTERPRET
-    INTERPRET --> CONFIRM : structured intent captured
-    CONFIRM --> ACTIVATE : schema + bindings + policies validated
-    ACTIVATE --> PUBLISH : released/usable artefact
-    CONFIRM --> INTERPRET : validation failed → revise
-    ACTIVATE --> CONFIRM : execution error → re-validate
 
-    note right of INTERPRET : Capture structured intent
-    note right of CONFIRM : Validate schema, bindings,\nmandatory links, policies
-    note right of ACTIVATE : Execute: generate / register / publish
-    note right of PUBLISH : Released / usable artefact
+    INTERPRET --> CONFIRM : Structured intent captured
+    CONFIRM --> ACTIVATE : Schema, bindings, and policies validated
+    ACTIVATE --> PUBLISH : Released usable artifact
+
+    CONFIRM --> INTERPRET : Validation failed / revise
+    ACTIVATE --> CONFIRM : Execution error / re-validate
+
+    note right of INTERPRET
+        Capture structured intent
+    end note
+
+    note right of CONFIRM
+        Validate schema, bindings,
+        mandatory links, and policies
+    end note
+
+    note right of ACTIVATE
+        Execute: generate, register, or publish
+    end note
+
+    note right of PUBLISH
+        Released / usable artifact
+    end note
 ```
 
 ---
