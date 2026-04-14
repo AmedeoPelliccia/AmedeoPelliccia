@@ -31,6 +31,7 @@ dimensions. Intensity is the universal steganographic channel.
 | **AEROSPACEMODEL-MCC-SPEC-008** | **SENSORIUM — Multi-Sensory Composition** | [`SENSORIUM.md`](SENSORIUM.md) · [`sensorium.yaml`](sensorium.yaml) | **draft** |
 | **AEROSPACEMODEL-MCC-SPEC-009** | **TRAUMACODEDRAMA — Dramatic-Arc Steganographic Protocol** | [`TRAUMACODEDRAMA.md`](TRAUMACODEDRAMA.md) · [`traumacodedrama.yaml`](traumacodedrama.yaml) | **draft** |
 | **AEROSPACEMODEL-MCC-SPEC-010** | **EGI — Ephemeral Generative Interface** | [`EGI.md`](EGI.md) · [`egi.yaml`](egi.yaml) | **draft** |
+| **AEROSPACEMODEL-MCC-SPEC-011** | **REGENERATION — Assembly Regeneration Protocol** | [`REGENERATION.md`](REGENERATION.md) · [`regeneration.yaml`](regeneration.yaml) | **draft** |
 
 ---
 
@@ -129,3 +130,27 @@ Chemosensory (`Φ_𝔽𝔾`), Proprioceptive (`Φ_ℙ`), Full-Spectrum (`Φ_★`
 The three MCC layers — SENSORIUM (intensity), TRAUMACODEDRAMA (transitions),
 EGI (lifecycle) — are orthogonal. A single Ephemeron with internal transitions
 carries **three independent payloads** simultaneously.
+
+---
+
+## REGENERATION — Assembly Regeneration Protocol (SPEC-011)
+
+REGENERATION extends the MCC stack with a **persistence and recall** layer.
+Where EGI addresses ephemeral lifecycle dynamics, REGENERATION addresses how
+cognitive assemblies survive beyond dissolution — through minimal kernels
+rather than full-state storage.
+
+```
+ℛ(σ) ≅ A₀  ⟺  ∀x ∈ 𝒟 : ℛ(σ)(x) = A₀(x)
+```
+
+Three core concepts:
+
+| Definition | Name | Symbol | Role |
+|-----------|------|--------|------|
+| 41 | **Regeneration Rule Set** | `ℛ` | Rules that reconstruct a functionally equivalent assembly |
+| 42 | **Reactivation Stimulus** | `σ` | SENSORIUM-space multimodal vector triggering recall |
+| 43 | **Persistence Kernel** | `𝒦` | Minimal compressed seed sufficient for reconstruction |
+
+**Cooperative reactivation:** a stimulus need not exceed the threshold in any
+single channel — sub-threshold channels combine via `Σⱼ (σⱼ / τⱼ) ≥ 1`.
