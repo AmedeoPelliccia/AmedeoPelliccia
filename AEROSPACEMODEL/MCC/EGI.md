@@ -1,6 +1,6 @@
 ---
 ##############################################################################
-# egi.yaml
+# EGI.md
 # EGI — Ephemeral Generative Interface
 # AEROSPACEMODEL MCC Specification Series — SPEC-010
 ##############################################################################
