@@ -3,10 +3,11 @@
 # Machine-readable capacity demonstration for the AI-BOOST Frontier AI Grand Challenge.
 # Human-readable companion: DEL-06-capacity-demonstration.md
 # Challenge: Frontier AI Grand Challenge (GA 101135737, EuroHPC JU)
+# Author: Amedeo Pelliccia
 
-schema_version: "1.0.0"
+schema_version: "2.0.0"
 document_type: capacity_demonstration
-last_updated: "2026-02-25T00:00:00Z"
+last_updated: "2026-04-14T00:00:00Z"
 
 # ─────────────────────────────────────────────
 # 1. Deliverable Identity
@@ -19,7 +20,17 @@ deliverable:
   grant_agreement: "101135737"
   managing_body: EuroHPC JU
   status: draft
+  version: "0.2"
+  author: Amedeo Pelliccia
+  priority: critical
   due: "M6 (initial), updated at M18 and M36"
+  due_milestones:
+    - milestone: M6
+      scope: initial
+    - milestone: M18
+      scope: mid_term_update
+    - milestone: M36
+      scope: final
 
 # ─────────────────────────────────────────────
 # 2. Key Personnel
@@ -119,6 +130,27 @@ portfolio:
         Civil space-transport regulatory framework —
         primary high-stakes application domain for GAIA-EU.
 
+    - asset: ESSA Sovereign Systems Architecture
+      path: ESSA/
+      relevance: >
+        European Sovereign Systems Architecture — constitutional substrate
+        providing Safety-First governance, H-PIPELINE certification gates,
+        and AMPEL360 full-lifecycle engineering method.
+
+    - asset: AMPEL360 Lifecycle Engine
+      path: ESSA/AMPEL360.md
+      relevance: >
+        End-to-end aerospace lifecycle architecture (P000–P120) governing
+        design, certification, operation, and digital traceability —
+        the lifecycle programming engine for GAIA-EU workloads.
+
+    - asset: PLUMA-GAI Governance Kernel
+      path: 00-PROGRAM/PLUMA-GAI/
+      relevance: >
+        Programme-level governance kernel with certification-phase
+        sequencing (CAX phases), evidence registry schema, and
+        inter-component dependency specification (AMP-GAI-ICD).
+
   publications:
     categories:
       - "Frontier AI scaling and MoE architectures"
@@ -141,6 +173,10 @@ portfolio:
     - system: HPC training infrastructure
       scale: "Multi-node GPU clusters"
       domain: "EuroHPC-compatible distributed training"
+    - system: GAIA-EU Prototype Demo
+      hosting: "Gemini Services"
+      note: "Currently hosted on Gemini Services; recently remixed"
+      domain: "Interactive demonstrator for evaluator review"
 
 # ─────────────────────────────────────────────
 # 4. Team Structure
@@ -258,6 +294,10 @@ deployment:
       infrastructure: "EuroHPC AI Factory"
       specification: "Research and public-sector batch workloads"
 
+    - capability: prototype_demo
+      infrastructure: "Gemini Services"
+      specification: "Interactive GAIA-EU prototype; accessible for evaluator review"
+
   scalability:
     - metric: tokens_per_second
       target: "≥ 500 tok/s per request (8-bit quantised)"
@@ -311,7 +351,62 @@ quality_assurance:
       evidence: "24-hour response window for data security events"
 
 # ─────────────────────────────────────────────
-# 8. Pre-Screening Score Mapping
+# 8. Training & Skills Development Capacity
+# ─────────────────────────────────────────────
+training_and_skills:
+  doctoral_training:
+    target: "≥ 10 doctoral/postdoctoral researchers trained over project lifetime"
+    domains:
+      - "Frontier AI architecture and MoE scaling"
+      - "HPC-native distributed training"
+      - "Certification-grade AI governance"
+      - "Quantum-classical hybrid methods"
+      - "Multilingual NLP for regulated sectors"
+  skills_transfer:
+    - channel: "Open courseware and training materials"
+      scope: "EuroHPC user community and broader EU AI ecosystem"
+    - channel: "Secondments between consortium partners"
+      scope: "Cross-sector knowledge exchange (academic ↔ industrial ↔ HPC)"
+    - channel: "Summer schools and hackathons"
+      scope: "Early-career researchers and HPC newcomers"
+  eurohpc_alignment:
+    - "EuroHPC JU strategic priority: Skills and talent development"
+    - "Contribution to European AI skills pipeline"
+
+# ─────────────────────────────────────────────
+# 9. Regulatory Compliance Capacity
+# ─────────────────────────────────────────────
+regulatory_compliance:
+  eu_ai_act:
+    classification: "GPAI model provider (Regulation 2024/1689)"
+    obligations:
+      - "Technical documentation per Annex XI"
+      - "Copyright compliance (text and data mining opt-outs)"
+      - "Training data summary publication"
+      - "Systemic risk assessment (if threshold exceeded)"
+    evidence:
+      - "simplex-contract.yaml provides deterministic evidence-gated classification"
+      - "PATH → MTL pipeline produces auditable governance trail"
+  easa_certification:
+    frameworks:
+      - "CS-25 / Part 21 airworthiness"
+      - "EASA AI Roadmap 2.0 compliance pathways"
+    evidence:
+      - "EACST regulatory framework (civil space-transport)"
+      - "Certification test cases from domain partners"
+  data_protection:
+    regulation: "GDPR (Regulation 2016/679)"
+    evidence:
+      - "DEL-03 Data Management Plan with privacy-by-design"
+      - "EU-sovereign hosting (no extra-EU data transfer for critical workloads)"
+  dual_use:
+    framework: "EU Dual-Use Regulation (2021/821)"
+    evidence:
+      - "Dual-use risk register with mitigation measures"
+      - "Export control compliance (IDEALE-D pillar)"
+
+# ─────────────────────────────────────────────
+# 10. Pre-Screening Score Mapping
 # ─────────────────────────────────────────────
 score_mapping:
   criterion: "Company capacities and experience"
@@ -335,13 +430,21 @@ score_mapping:
       estimated_contribution: "2–3"
 
 # ─────────────────────────────────────────────
-# 9. Revision History
+# 11. Revision History
 # ─────────────────────────────────────────────
 revision_history:
   - version: "0.1"
     date: "2026-02-25"
     milestone: M6
     description: Initial Capacity Demonstration
+  - version: "0.2"
+    date: "2026-04-14"
+    milestone: M6
+    description: >
+      Added ESSA/AMPEL360/PLUMA-GAI framework cross-references;
+      added GAIA-EU prototype demo (Gemini Services); added training
+      & skills development capacity; added regulatory compliance
+      capacity; bumped schema_version to 2.0.0.
 ---
 
 # DEL-06 — Capacity Demonstration
@@ -350,6 +453,7 @@ revision_history:
 **Section:** Quality & Efficiency → Capacity of Applicant
 **Programme:** AI-BOOST — Frontier AI Grand Challenge (GA 101135737, EuroHPC JU)
 **Author:** Amedeo Pelliccia
+**Version:** 0.2
 **Status:** Draft
 **Due:** M6 (initial), updated at M18 and M36
 
@@ -395,6 +499,9 @@ The applicant has originated and maintains a portfolio of formal methodology art
 | **Hilbert-Bell Manifold** | [`hilbert_bell_manifold.py`](../hilbert_bell_manifold.py) | 12×12 quantum-classical hybrid formalism — basis for quantum-augmented expert module (EXP-QNT) |
 | **Quantum Manifold Configuration** | [`quantum-manifold.yaml`](../quantum-manifold.yaml) | Basis sets, coupling matrices, decoherence thresholds — domain-specific quantum expert routing specification |
 | **EACST Regulatory Framework** | [`EACST/`](../EACST/) | Civil space-transport regulatory framework — primary high-stakes application domain for GAIA-EU |
+| **ESSA Sovereign Systems Architecture** | [`ESSA/`](../ESSA/) | Constitutional substrate providing Safety-First governance, H-PIPELINE certification gates, and AMPEL360 full-lifecycle engineering method |
+| **AMPEL360 Lifecycle Engine** | [`ESSA/AMPEL360.md`](../ESSA/AMPEL360.md) | End-to-end aerospace lifecycle architecture (P000–P120) governing design, certification, operation, and digital traceability |
+| **PLUMA-GAI Governance Kernel** | [`00-PROGRAM/PLUMA-GAI/`](../00-PROGRAM/PLUMA-GAI/) | Programme-level governance kernel with CAX-phase sequencing, evidence registry schema, and AMP-GAI-ICD inter-component specification |
 
 ### 2.2 Publications and Dissemination
 
@@ -412,6 +519,7 @@ The applicant has originated and maintains a portfolio of formal methodology art
 | Domain-specialist language models | 10 B–100 B+ parameters | Regulatory NLP, aerospace engineering, multilingual EU |
 | Certification-grade governance pipelines | Production | Safety-critical AI for aerospace and space transport |
 | HPC training infrastructure | Multi-node GPU clusters | EuroHPC-compatible distributed training |
+| **GAIA-EU Prototype Demo** | Gemini Services (hosted) | Interactive demonstrator for evaluator review (recently remixed) |
 
 ---
 
@@ -499,6 +607,7 @@ Post-training, GAIA-EU will be deployed via:
 | API gateway | EU cloud (OVHcloud / Scaleway / equivalent) | GDPR-compliant, EU-sovereign hosting |
 | Model distribution | Hugging Face Hub + Zenodo mirror | Open weights under Apache 2.0; DOI-assigned |
 | Batch inference | EuroHPC AI Factory | For research and public-sector batch workloads |
+| **Prototype demo** | Gemini Services | Interactive GAIA-EU prototype; accessible for evaluator review |
 
 ### 5.2 Scalability Demonstration
 
@@ -536,7 +645,72 @@ The applicant's governance capacity is demonstrated through the existing formal 
 
 ---
 
-## 7. Summary: Capacity Score Mapping
+## 7. Training & Skills Development Capacity
+
+### 7.1 Doctoral Training
+
+The consortium will train **≥ 10 doctoral/postdoctoral researchers** over the project lifetime across the following domains:
+
+| Domain | Relevance |
+|--------|-----------|
+| Frontier AI architecture and MoE scaling | Core model design and training |
+| HPC-native distributed training | EuroHPC operational skills |
+| Certification-grade AI governance | Safety-critical AI compliance |
+| Quantum-classical hybrid methods | Novel expert routing research |
+| Multilingual NLP for regulated sectors | EU-wide language coverage |
+
+### 7.2 Skills Transfer
+
+| Channel | Scope |
+|---------|-------|
+| Open courseware and training materials | EuroHPC user community and broader EU AI ecosystem |
+| Secondments between consortium partners | Cross-sector knowledge exchange (academic ↔ industrial ↔ HPC) |
+| Summer schools and hackathons | Early-career researchers and HPC newcomers |
+
+### 7.3 EuroHPC JU Alignment
+
+- EuroHPC JU strategic priority: **Skills and talent development**
+- Contribution to European AI skills pipeline
+- Open training materials published under Creative Commons
+
+---
+
+## 8. Regulatory Compliance Capacity
+
+### 8.1 EU AI Act (Regulation 2024/1689)
+
+| Obligation | Evidence |
+|------------|----------|
+| GPAI model provider classification | Architecture designed for Annex XI compliance |
+| Technical documentation | simplex-contract.yaml — deterministic evidence-gated classification |
+| Copyright compliance (TDM opt-outs) | DEL-03 Data Management Plan §3 |
+| Training data summary publication | Open data pipeline with provenance tracking |
+| Systemic risk assessment | PATH → MTL pipeline produces auditable governance trail |
+
+### 8.2 EASA Certification
+
+| Framework | Evidence |
+|-----------|----------|
+| CS-25 / Part 21 airworthiness | EACST regulatory framework (civil space-transport) |
+| EASA AI Roadmap 2.0 | Certification test cases from domain partners |
+
+### 8.3 Data Protection (GDPR)
+
+| Requirement | Evidence |
+|-------------|----------|
+| Privacy-by-design | DEL-03 Data Management Plan with DPIA |
+| EU-sovereign hosting | No extra-EU data transfer for safety-critical workloads |
+
+### 8.4 Dual-Use (Regulation 2021/821)
+
+| Requirement | Evidence |
+|-------------|----------|
+| Dual-use risk register | Risk assessment with mitigation measures |
+| Export control compliance | IDEALE-D pillar export control protocols |
+
+---
+
+## 9. Summary: Capacity Score Mapping
 
 The following table maps capacity evidence to the pre-screening criterion **"Company capacities and experience"** (max 20 points):
 
@@ -551,7 +725,7 @@ The following table maps capacity evidence to the pre-screening criterion **"Com
 
 ---
 
-## 8. Repository Assets Referenced
+## 10. Repository Assets Referenced
 
 | Asset | Path | Role in DEL-06 |
 |-------|------|----------------|
@@ -561,11 +735,15 @@ The following table maps capacity evidence to the pre-screening criterion **"Com
 | EACST framework | [`EACST/`](../EACST/) | Domain expertise — regulatory capacity evidence |
 | Hilbert-Bell manifold | [`hilbert_bell_manifold.py`](../hilbert_bell_manifold.py) | Quantum research — innovation capacity evidence |
 | Quantum manifold config | [`quantum-manifold.yaml`](../quantum-manifold.yaml) | Quantum expert specification — research capacity evidence |
+| ESSA architecture | [`ESSA/`](../ESSA/) | Constitutional substrate — Safety-First governance evidence |
+| AMPEL360 lifecycle | [`ESSA/AMPEL360.md`](../ESSA/AMPEL360.md) | Lifecycle engineering — full-lifecycle traceability evidence |
+| PLUMA-GAI kernel | [`00-PROGRAM/PLUMA-GAI/`](../00-PROGRAM/PLUMA-GAI/) | Programme governance — CAX-phase sequencing evidence |
 
 ---
 
-## 9. Revision History
+## 11. Revision History
 
 | Version | Date | Milestone | Description |
 |---------|------|-----------|-------------|
 | 0.1 | 2026-02-25 | M6 | Initial Capacity Demonstration |
+| 0.2 | 2026-04-14 | M6 | Added ESSA/AMPEL360/PLUMA-GAI framework cross-references; added GAIA-EU prototype demo (Gemini Services); added training & skills development capacity; added regulatory compliance capacity; bumped schema_version to 2.0.0 |
