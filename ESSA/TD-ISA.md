@@ -5,7 +5,7 @@
 | Metadata | Value |
 |----------|-------|
 | **Document ID** | ESSA-DOC-TDISA-001 |
-| **Version** | v0.2-draft |
+| **Version** | v0.3-draft |
 | **Status** | Entity Proposal |
 | **Parent** | ESSA-CONST-001 ([ESSA-AGENCY-CONSTITUTION.md](ESSA-AGENCY-CONSTITUTION.md)) |
 | **Companion** | [`td-isa.yaml`](td-isa.yaml) |
@@ -126,7 +126,60 @@ A stronger common framework would:
 
 ---
 
-## 5. Economic Argument: The Documentary Retraining Problem
+## 5. Value Proposition: The Quadruple Win
+
+TD-ISA's impact can be summarised in four reinforcing dimensions:
+
+> **More economic. Safer. More productive. Everyone benefits.**
+
+| Dimension | What Changes | Who Benefits |
+|-----------|-------------|--------------|
+| **More Economic** | Eliminates redundant documentary retraining; reduces format conversions, rework, and adaptation overhead | Operators, MROs, training organisations, OEMs |
+| **Safer** | Uniform safety semantics, consistent visual cues, and reduced interpretation ambiguity lower the probability of human error | Technicians, flight crews, passengers, regulators |
+| **More Productive** | Training time concentrates on real technical content — technology, risks, execution — instead of documentary grammar | Technicians, authors, instructors, SMEs |
+| **Everyone Benefits** | A shared representation language creates a positive-sum ecosystem: OEMs author once, operators read consistently, MROs transfer competences, regulators audit uniformly | The entire aviation value chain |
+
+### 5.1 Why It Is a Quadruple Win
+
+Traditional standardisation arguments focus narrowly on cost reduction.
+TD-ISA goes further:
+
+- **Economic savings** are real and multiplicative (see §6),
+  but they are accompanied by
+- **safety improvement** through cognitive consistency,
+- **productivity gains** by refocusing human effort on technical substance,
+  and
+- **ecosystem-wide satisfaction** because every stakeholder — from the
+  line technician to the regulator — benefits from a common documentary
+  language.
+
+These four dimensions are not trade-offs. They reinforce each other:
+
+```
+┌────────────────────────────────────────────────────┐
+│              THE QUADRUPLE WIN                      │
+│                                                     │
+│   ┌───────────┐         ┌───────────┐              │
+│   │  ECONOMIC  │◄───────►│   SAFER   │              │
+│   │  savings   │         │  outcomes │              │
+│   └─────┬─────┘         └─────┬─────┘              │
+│         │    reinforcing      │                      │
+│         │      cycle          │                      │
+│   ┌─────▼─────┐         ┌─────▼─────┐              │
+│   │   MORE    │◄───────►│ EVERYONE  │              │
+│   │PRODUCTIVE │         │ BENEFITS  │              │
+│   └───────────┘         └───────────┘              │
+└────────────────────────────────────────────────────┘
+```
+
+> **Standardised representation does not reduce technical depth.
+> It amplifies the value of every training hour, every maintenance action,
+> and every safety check — by removing the noise of documentary
+> fragmentation.**
+
+---
+
+## 6. Economic Argument: The Documentary Retraining Problem
 
 The strongest economic justification for TD-ISA lies in a distinction that is
 rarely made explicit:
@@ -139,7 +192,7 @@ the technical system itself, but also the specific way each manufacturer,
 variant, or platform **represents** that system in its publications. This
 creates cost at three levels.
 
-### 5.1 Cost of Formation (Initial Training)
+### 6.1 Cost of Formation (Initial Training)
 
 Training hours are consumed not only by the technical system, but also by:
 
@@ -152,7 +205,7 @@ Training hours are consumed not only by the technical system, but also by:
 Every organisation that publishes differently adds formation overhead that has
 **nothing to do with the aircraft itself**.
 
-### 5.2 Cost of Transition (Cross-Platform Adaptation)
+### 6.2 Cost of Transition (Cross-Platform Adaptation)
 
 Each transition between:
 
@@ -164,7 +217,7 @@ Each transition between:
 introduces an **adaptation curve** that consumes time and reduces initial
 efficiency — even when the underlying technical competence already exists.
 
-### 5.3 Cost of Operational Friction (In-Service Impact)
+### 6.3 Cost of Operational Friction (In-Service Impact)
 
 When technicians, instructors, authors, or SMEs must mentally translate
 between different documentary frameworks during operations, the result is:
@@ -175,7 +228,7 @@ between different documentary frameworks during operations, the result is:
 - increased probability of doubt or misinterpretation,
 - reduced ability to reuse competences across fleets.
 
-### 5.4 The Core Insight
+### 6.4 The Core Insight
 
 If the **representation** were significantly more standardised, training
 could concentrate on what genuinely matters:
@@ -191,7 +244,7 @@ And **not** on relearning, each time, a new documentary grammar.
 > training. It would eliminate unnecessary retraining on how different
 > organisations choose to represent the same maintenance intent.**
 
-### 5.5 Scale of Impact
+### 6.5 Scale of Impact
 
 This cost is not marginal. It is **multiplicative** across:
 
@@ -208,7 +261,7 @@ A common representation framework would **dramatically reduce training
 overhead, accelerate cross-platform readiness, and improve operational
 efficiency** across the entire aviation ecosystem.
 
-### 5.6 Formula
+### 6.6 Formula
 
 ```
 Total Training Cost = Technical Training (necessary)
@@ -225,7 +278,7 @@ opportunity**.
 
 ---
 
-## 6. Workstreams
+## 7. Workstreams
 
 TD-ISA operates through five main workstreams:
 
@@ -250,7 +303,7 @@ TD-ISA operates through five main workstreams:
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 6.1 WS-1 — Authoring Integrity
+### 7.1 WS-1 — Authoring Integrity
 
 Controlled terminology, procedural clarity, semantic consistency, and
 traceable content governance.
@@ -262,7 +315,7 @@ traceable content governance.
 | Content governance model | Change authority, review cycles, baseline rules | CCTLS gate sequence |
 | Traceability matrix template | Requirement → content → evidence chain | H-Pipeline H_REQ / H_EVIDENCE |
 
-### 6.2 WS-2 — Representation Standards
+### 7.2 WS-2 — Representation Standards
 
 Harmonised rules for visual hierarchy, colour coding, line conventions,
 illustration semantics, and safety cue presentation.
@@ -274,7 +327,7 @@ illustration semantics, and safety cue presentation.
 | Illustration standard | Line weights, callout conventions, greyscale legibility | UF-IC-01 through UF-IC-04 |
 | Colour scheme annex | Day-mode and night-mode palettes with WCAG AA compliance | UF-VH-05, UF-VH-06 |
 
-### 6.3 WS-3 — Digital Readability and Interaction
+### 7.3 WS-3 — Digital Readability and Interaction
 
 Standards for display behaviour on tablets, laptops, and maintenance-oriented
 digital interfaces.
@@ -286,7 +339,7 @@ digital interfaces.
 | Offline-mode specification | Baseline preservation, sync logic, conflict resolution | UF-IL-05 |
 | Accessibility conformance profile | WCAG 2.1 AA mapping for maintenance environments | UF-VH-04, UF-VH-05 |
 
-### 6.4 WS-4 — Technology-Specific Profiles
+### 7.4 WS-4 — Technology-Specific Profiles
 
 Adaptable chaptering and content structuring models for conventional aircraft,
 hydrogen systems, fuel cells, high-voltage architectures, AI-assisted systems,
@@ -300,7 +353,7 @@ and future aerospace configurations.
 | AI-assisted systems profile | Chapters 45A/45X/45M | UFATO §5.2.4 |
 | Domain Glossary Extension (DGE) template | Structured term registration for new technology domains | UFATO §5.3 |
 
-### 6.5 WS-5 — Automation Enablement
+### 7.5 WS-5 — Automation Enablement
 
 Machine-readable patterns, validation logic, structured semantics, and
 interoperability rules that support digital workflows and automation.
@@ -315,7 +368,7 @@ interoperability rules that support digital workflows and automation.
 
 ---
 
-## 7. Placement in the ESSA Stack
+## 8. Placement in the ESSA Stack
 
 TD-ISA operates as a **cross-cutting entity** within ESSA governance:
 
@@ -349,7 +402,7 @@ that UFATO's rules require for effective adoption.
 
 ---
 
-## 8. Institutional Positioning
+## 9. Institutional Positioning
 
 TD-ISA may be framed as one of the following, depending on its intended
 level of authority, governance, and participation:
@@ -368,9 +421,9 @@ governance, with a pathway to institutionalisation as a **Council** or
 
 ---
 
-## 9. Integration Points
+## 10. Integration Points
 
-### 9.1 With ESSA Governance
+### 10.1 With ESSA Governance
 
 | ESSA Artefact | TD-ISA Binding |
 |---------------|----------------|
@@ -382,7 +435,7 @@ governance, with a pathway to institutionalisation as a **Council** or
 | SPEC-PELS-014 lifecycle | Publication artefact states align with PELS engineering/product states |
 | Safety-First Doctrine | WS-2 safety semantics are derived from SAFETY-FIRST invariants |
 
-### 9.2 With External Standards and Bodies
+### 10.2 With External Standards and Bodies
 
 | Standard / Body | Relationship |
 |-----------------|-------------|
@@ -396,9 +449,9 @@ governance, with a pathway to institutionalisation as a **Council** or
 
 ---
 
-## 10. Conformance and Governance
+## 11. Conformance and Governance
 
-### 10.1 Workstream Maturity Levels
+### 11.1 Workstream Maturity Levels
 
 Each workstream progresses through defined maturity levels:
 
@@ -410,7 +463,7 @@ Each workstream progresses through defined maturity levels:
 | **M3** | Adopted | Deliverables in operational use by at least one external organisation |
 | **M4** | Institutionalised | Deliverables incorporated into formal industry standards |
 
-### 10.2 Current Maturity Assessment
+### 11.2 Current Maturity Assessment
 
 | Workstream | Level | Status |
 |------------|-------|--------|
@@ -422,7 +475,7 @@ Each workstream progresses through defined maturity levels:
 
 ---
 
-## 11. What TD-ISA Is Not
+## 12. What TD-ISA Is Not
 
 1. **Not a replacement for S1000D, ATA iSpec 2200, or any existing standard.**
    TD-ISA coordinates and extends; it does not supplant.
@@ -437,7 +490,7 @@ Each workstream progresses through defined maturity levels:
 
 ---
 
-## 12. Closing Statement
+## 13. Closing Statement
 
 Technical data should not remain fragmented where common understanding is
 essential.
@@ -449,9 +502,10 @@ execution.
 
 ---
 
-## 13. Revision History
+## 14. Revision History
 
 | Version | Date | Change |
 |---------|------|--------|
 | v0.1-draft | 2026-04-14 | Initial entity proposal. |
-| v0.2-draft | 2026-04-14 | Added §5 Economic Argument: The Documentary Retraining Problem. |
+| v0.2-draft | 2026-04-14 | Added §6 Economic Argument: The Documentary Retraining Problem. |
+| v0.3-draft | 2026-04-14 | Added §5 Value Proposition: The Quadruple Win. |

@@ -8,7 +8,7 @@
 document_id: ESSA-DOC-TDISA-001
 document_type: entity_proposal
 title: "TD-ISA — Technical Data Integrity, Standardization, and Automation"
-version: "0.2.0-draft"
+version: "0.3.0-draft"
 schema_version: "1.0.0"
 status: draft
 parent: ESSA-CONST-001
@@ -71,6 +71,64 @@ pillars:
       - validation_logic
       - content_reuse
       - workflow_integration
+
+##############################################################################
+# 2  Value Proposition: The Quadruple Win
+##############################################################################
+
+value_proposition:
+
+  summary: "More economic. Safer. More productive. Everyone benefits."
+
+  dimensions:
+
+    - id: VP-1
+      name: "More Economic"
+      description: >
+        Eliminates redundant documentary retraining; reduces format conversions,
+        rework, and adaptation overhead.
+      beneficiaries:
+        - operators
+        - mro_organisations
+        - training_organisations
+        - oems
+
+    - id: VP-2
+      name: "Safer"
+      description: >
+        Uniform safety semantics, consistent visual cues, and reduced
+        interpretation ambiguity lower the probability of human error.
+      beneficiaries:
+        - technicians
+        - flight_crews
+        - passengers
+        - regulators
+
+    - id: VP-3
+      name: "More Productive"
+      description: >
+        Training time concentrates on real technical content — technology,
+        risks, execution — instead of documentary grammar.
+      beneficiaries:
+        - technicians
+        - authors
+        - instructors
+        - subject_matter_experts
+
+    - id: VP-4
+      name: "Everyone Benefits"
+      description: >
+        A shared representation language creates a positive-sum ecosystem:
+        OEMs author once, operators read consistently, MROs transfer
+        competences, regulators audit uniformly.
+      beneficiaries:
+        - entire_aviation_value_chain
+
+  reinforcement_principle: >
+    These four dimensions are not trade-offs. They reinforce each other.
+    Standardised representation does not reduce technical depth. It amplifies
+    the value of every training hour, every maintenance action, and every
+    safety check — by removing the noise of documentary fragmentation.
 
 ##############################################################################
 # 2a Economic Argument
@@ -469,3 +527,7 @@ revision_history:
   - version: "0.2.0-draft"
     date: "2026-04-14"
     change: "Added economic_argument section: documentary retraining cost model with three cost levels, six multipliers, and formula."
+
+  - version: "0.3.0-draft"
+    date: "2026-04-14"
+    change: "Added value_proposition section: Quadruple Win (economic, safer, more productive, everyone benefits)."
