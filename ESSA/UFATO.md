@@ -1,3 +1,415 @@
+---
+##############################################################################
+# ESSA — Universal Form, Adaptive Technical Organisation (UFATO)
+# Machine-readable companion specification
+# Reference: ESSA-STD-UFATO-001 v0.1-draft
+# Author: Amedeo Pelliccia
+##############################################################################
+
+document_id: ESSA-STD-UFATO-001
+document_type: publication_governance_standard
+title: "Universal Form, Adaptive Technical Organisation (UFATO)"
+version: "0.1.0"
+schema_version: "1.0.0"
+status: draft
+parent: ESSA-STD-CCTLS-001
+last_updated: "2026-04-14T00:00:00Z"
+
+purpose: >
+  Define a common representation framework for aviation technical publications
+  that enforces universal presentation rules (form) while allowing
+  technology-domain-specific content structuring (adaptive organisation).
+
+core_principle: >
+  Universal form. Adaptive technical organisation.
+  Strong standardisation where cognitive consistency and safety matter most.
+  Controlled flexibility where engineering reality demands it.
+
+##############################################################################
+# 1  Two-Layer Architecture
+##############################################################################
+
+architecture:
+  description: >
+    UFATO separates the publication system into two formally distinct layers.
+    Layer 1 rules are never overridden by Layer 2 choices.
+  layers:
+    - id: L1
+      name: "Universal Form"
+      invariant: true
+      description: >
+        Invariant across all technology domains. Defines the cognitive contract
+        between the publication and every human reader.
+      domains:
+        - authoring_rules
+        - controlled_terminology
+        - safety_semantics
+        - visual_hierarchy
+        - illustration_conventions
+        - interaction_logic
+
+    - id: L2
+      name: "Adaptive Structure"
+      invariant: false
+      description: >
+        Technology-domain-specific chaptering and data-module decomposition,
+        governed by registered Chapter Schemes.
+      domains:
+        - chapter_schemes
+        - data_module_codes
+        - cross_reference_topology
+        - technology_extensions
+        - domain_glossary_extensions
+
+##############################################################################
+# 2  Layer 1 — Universal Form Rules
+##############################################################################
+
+layer_1:
+
+  # 2.1 Authoring Rules
+  authoring_rules:
+    - id: UF-AR-01
+      rule: "One instruction per sentence."
+      rationale: "Reduces ambiguity under stress."
+
+    - id: UF-AR-02
+      rule: "Active voice, imperative mood for procedural steps."
+      rationale: "Unambiguous actor/action assignment."
+
+    - id: UF-AR-03
+      rule: "Sentences ≤ 25 words (target); ≤ 30 words (hard limit)."
+      rationale: "Cognitive load control (MIL-STD-38784)."
+
+    - id: UF-AR-04
+      rule: "No nested conditionals beyond two levels."
+      rationale: "Prevents decision-tree overload."
+
+    - id: UF-AR-05
+      rule: "Controlled vocabulary per BREX dictionary."
+      rationale: "Eliminates synonym drift."
+
+    - id: UF-AR-06
+      rule: >
+        Warnings / Cautions / Notes in strict precedence order before the step
+        they govern.
+      rationale: "Aligns with S1000D Issue 5+ and ATA conventions."
+
+  # 2.2 Controlled Terminology
+  controlled_terminology:
+    - id: UF-CT-01
+      rule: "Each concept has exactly one approved term within a given BREX scope."
+
+    - id: UF-CT-02
+      rule: "Abbreviations are expanded on first use per data module."
+
+    - id: UF-CT-03
+      rule: >
+        Units follow SI with aviation-conventional exceptions (ft, kts, NM)
+        explicitly declared.
+
+    - id: UF-CT-04
+      rule: >
+        Technology-domain-specific terms are registered in a domain glossary
+        extension (Layer 2) but rendered using Layer 1 formatting rules.
+
+  # 2.3 Safety Semantics
+  safety_semantics:
+    invariant: true
+    note: >
+      These four levels are invariant. Technology-domain extensions may not
+      add, remove, or reorder safety severity levels.
+    levels:
+      - severity: danger
+        keyword: DANGER
+        colour_hex: "#CC0000"
+        background: white
+        icon: "▲ solid"
+        condition: "Immediate risk of death or catastrophic damage."
+
+      - severity: warning
+        keyword: WARNING
+        colour_hex: "#E65100"
+        background: white
+        icon: "▲ outline"
+        condition: "Potential risk of death or serious injury."
+
+      - severity: caution
+        keyword: CAUTION
+        colour_hex: "#F9A825"
+        background: white
+        icon: "◆"
+        condition: "Risk of equipment damage or degraded function."
+
+      - severity: note
+        keyword: NOTE
+        colour_hex: "#1565C0"
+        background: white
+        icon: "ℹ"
+        condition: "Supplementary information aiding correct execution."
+
+  # 2.4 Visual Hierarchy
+  visual_hierarchy:
+    - id: UF-VH-01
+      rule: >
+        Heading levels map 1:1 to document structure depth
+        (H1=publication title, H2=chapter, H3=section, H4=sub-section).
+
+    - id: UF-VH-02
+      rule: "Step numbering is continuous Arabic within each procedural block."
+
+    - id: UF-VH-03
+      rule: "Tables are captioned with 'Table [seq] — [title]' above the table."
+
+    - id: UF-VH-04
+      rule: "Minimum body text size: 10 pt print / 14 px screen (WCAG AA)."
+
+    - id: UF-VH-05
+      rule: "Contrast ratio ≥ 4.5:1 for body text, ≥ 3:1 for large text (WCAG 2.1 AA)."
+
+    - id: UF-VH-06
+      rule: "Night-mode palette is defined per UFATO colour scheme annex."
+
+  # 2.5 Illustration Conventions
+  illustration_conventions:
+    - id: UF-IC-01
+      rule: "Line weights: 0.25 mm (detail), 0.5 mm (outline), 1.0 mm (callout leader)."
+
+    - id: UF-IC-02
+      rule: >
+        Callout numbering follows the item/figure convention of the parent
+        standard (S1000D ICN or ATA figure/item).
+
+    - id: UF-IC-03
+      rule: "Colour in illustrations is supplementary; the illustration must be legible in greyscale."
+
+    - id: UF-IC-04
+      rule: "Hotspots in IETP displays have a minimum touch target of 44 × 44 px (WCAG 2.5.5)."
+
+  # 2.6 Interaction Logic (IETP-Specific)
+  interaction_logic:
+    - id: UF-IL-01
+      rule: "Navigation shall provide breadcrumb trail reflecting the chapter/section hierarchy."
+
+    - id: UF-IL-02
+      rule: "Cross-references are always hyperlinked; dead links are a conformance violation."
+
+    - id: UF-IL-03
+      rule: "Filtering by applicability (effectivity) never hides safety-critical information."
+
+    - id: UF-IL-04
+      rule: "Undo is available for all user-state changes (filter, selection, annotation)."
+
+    - id: UF-IL-05
+      rule: "Offline mode preserves the full publication baseline loaded at last sync."
+
+##############################################################################
+# 3  Layer 2 — Adaptive Structure Governance
+##############################################################################
+
+layer_2:
+
+  governance_rules:
+    - id: AS-GOV-01
+      rule: >
+        Each technology domain declares a Chapter Scheme registered in the
+        AGGIX registry under type CFG.
+
+    - id: AS-GOV-02
+      rule: >
+        A Chapter Scheme must map every chapter to at least one CCTLS
+        lifecycle phase (P000–P120).
+
+    - id: AS-GOV-03
+      rule: >
+        A Chapter Scheme must undergo the CCTLS gate sequence:
+        INTERPRET → CONFIRM → ACTIVATE → PUBLISH.
+
+    - id: AS-GOV-04
+      rule: "Chapter Schemes are versioned and traceable via AGGIX URI."
+
+    - id: AS-GOV-05
+      rule: >
+        Cross-domain chapter references use stable AGGIX URIs, never
+        positional chapter numbers.
+
+  # 3.1 Reference Chapter Schemes
+  reference_chapter_schemes:
+
+    - domain: conventional_aircraft
+      label: "Conventional Aircraft (ATA-Based)"
+      base_standard: "ATA iSpec 2200 / S1000D SNS"
+      deviation: none
+      note: "Direct mapping; no structural changes required."
+
+    - domain: hydrogen_lh2
+      label: "Hydrogen Systems (LH₂)"
+      chapters:
+        - code: "28H"
+          title: "LH₂ Fuel System — Cryogenic Storage"
+          rationale: "Sub-chapters for tank insulation, boil-off management, cryo-valve maintenance."
+        - code: "28V"
+          title: "LH₂ Fuel System — Venting & Inerting"
+          rationale: "Hydrogen vent-stack procedures; no kerosene equivalent."
+        - code: "28R"
+          title: "LH₂ Fuel System — Refuelling Interface"
+          rationale: "Cryogenic coupling, purge sequences, leak detection."
+        - code: "73H"
+          title: "Fuel Cell Power Plant — Stack Assembly"
+          rationale: "PEM/SOFC stack removal/installation, MEA inspection."
+        - code: "73C"
+          title: "Fuel Cell Power Plant — Balance of Plant"
+          rationale: "Humidifiers, compressors, coolant loops."
+        - code: "73E"
+          title: "Fuel Cell Power Plant — Electrical Integration"
+          rationale: "DC bus coupling, power conditioning, load-sharing logic."
+
+    - domain: high_voltage
+      label: "High-Voltage Architecture"
+      chapters:
+        - code: "24E"
+          title: "Electrical Power — HV Distribution (> 270 VDC)"
+          rationale: "Arc-flash hazard procedures, HV interlock verification."
+        - code: "24B"
+          title: "Electrical Power — Battery Management System"
+          rationale: "Cell balancing, thermal runaway mitigation, SoH diagnostics."
+        - code: "24G"
+          title: "Electrical Power — Ground Power HV Interface"
+          rationale: "HV ground cart procedures, isolation verification."
+
+    - domain: ai_assisted
+      label: "AI-Assisted Systems"
+      chapters:
+        - code: "45A"
+          title: "AI-Assisted System — Model Card & Boundary Doc"
+          rationale: "Decision-boundary specification, training-data provenance."
+        - code: "45X"
+          title: "AI-Assisted System — Explainability Audit"
+          rationale: "XAI output logs, confidence calibration records."
+        - code: "45M"
+          title: "AI-Assisted System — Monitoring & Drift Detection"
+          rationale: "Operational domain monitoring, retraining triggers."
+
+##############################################################################
+# 4  Conformance
+##############################################################################
+
+conformance:
+  levels:
+    - level: C1
+      label: "Universal-Compliant"
+      meaning: "Full Layer 1 compliance. Layer 2 uses a registered Chapter Scheme."
+
+    - level: C2
+      label: "Universal-Compliant, Structure-Pending"
+      meaning: "Full Layer 1 compliance. Layer 2 Chapter Scheme is in INTERPRET or CONFIRM state."
+
+    - level: C3
+      label: "Partial"
+      meaning: "Layer 1 deviations documented and risk-assessed."
+
+  validation_checks:
+    - check: "Layer 1 rules (UF-*)"
+      method: "Automated BREX / Schematron validation"
+      gate: CONFIRM
+
+    - check: "Safety semantics (§4.3)"
+      method: "Automated severity-keyword-to-display check"
+      gate: CONFIRM
+
+    - check: "Chapter Scheme registration"
+      method: "AGGIX registry lookup"
+      gate: ACTIVATE
+
+    - check: "Cross-reference integrity"
+      method: "Link-checker (IETP build pipeline)"
+      gate: PUBLISH
+
+    - check: "Accessibility (WCAG AA)"
+      method: "Automated + manual audit"
+      gate: PUBLISH
+
+##############################################################################
+# 5  Integration
+##############################################################################
+
+integration:
+  essa:
+    - artefact: "CCTLS gate sequence"
+      binding: "Chapter Schemes follow INTERPRET → CONFIRM → ACTIVATE → PUBLISH."
+
+    - artefact: "H-Pipeline (H_ENVELOPE)"
+      binding: "Safety semantics derive severity rendering from H_ENVELOPE.safety_objective."
+
+    - artefact: "AGGIX registry"
+      binding: "Chapter Schemes and DGEs are PUB and CFG resources."
+
+    - artefact: "SPEC-PELS-014 lifecycle"
+      binding: "Publication state aligns with PELS engineering/product state pair."
+
+  external_standards:
+    - standard: "S1000D Issue 5.0+"
+      relationship: >
+        Layer 1 rules align with S1000D BREX and presentation rules.
+        Layer 2 Chapter Schemes map to SNS extensions.
+
+    - standard: "ATA iSpec 2200"
+      relationship: "Conventional-aircraft Chapter Scheme is a direct mapping."
+
+    - standard: "DO-178C / DO-330"
+      relationship: >
+        AI-Assisted Systems Chapter Scheme references model qualification
+        as per DO-330 TQL.
+
+    - standard: "WCAG 2.1 AA"
+      relationship: "Display and interaction rules enforce WCAG thresholds."
+
+    - standard: "MIL-STD-38784"
+      relationship: "Authoring rules incorporate readability constraints."
+
+##############################################################################
+# 6  Technology Domains
+##############################################################################
+
+technology_domains:
+  - id: TD-CONV
+    label: "Conventional Aircraft"
+    description: "Traditional kerosene-powered fixed-wing and rotorcraft."
+
+  - id: TD-H2
+    label: "Hydrogen Systems (LH₂)"
+    description: "Cryogenic hydrogen storage, distribution, and fuel-cell power."
+
+  - id: TD-HV
+    label: "High-Voltage Architecture"
+    description: "Electrical systems above 270 VDC including batteries and HV buses."
+
+  - id: TD-SENS
+    label: "Advanced Sensing & Avionics"
+    description: "LiDAR, sensor fusion, advanced navigation."
+
+  - id: TD-AI
+    label: "AI-Assisted Systems"
+    description: "Machine-learning models in operational or maintenance roles."
+
+  - id: TD-UAS
+    label: "Autonomous / UAS"
+    description: "Unmanned aerial systems and autonomous flight operations."
+
+  - id: TD-RSP
+    label: "Reusable Space Platforms"
+    description: "Turnaround, TPS refurbishment, reuse certification."
+
+##############################################################################
+# 7  Revision History
+##############################################################################
+
+revision_history:
+  - version: "0.1.0"
+    date: "2026-04-14"
+    change: "Initial specification."
+---
+
 # ESSA — Universal Form, Adaptive Technical Organization (UFATO)
 
 **A Common Representation Framework with Technology-Specific Structural Flexibility**
