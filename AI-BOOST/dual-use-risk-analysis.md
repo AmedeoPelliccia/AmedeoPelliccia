@@ -1,30 +1,22 @@
 ---
 # ═══════════════════════════════════════════════
-# Front Matter 1 — Dual-Use Risk Analysis & Export Control
+# Consolidated Front Matter — Dual-Use Risk Analysis, Export Control & Data Protection
 # ═══════════════════════════════════════════════
-# Machine-readable companion: dual-use-risk-analysis.yaml (Document 1)
+# Machine-readable companion: dual-use-risk-analysis.yaml (Documents 1 and 2)
 # Programme: AI-BOOST — GA 101135737 (EuroHPC JU)
 # IDEALE Pillar: D — Defense (dual-use awareness & export control)
 # Author: Amedeo Pelliccia
-# Related: DEL-03 §5.5; README.md IDEALE-D pillar
+# Related: DEL-03 §5.5; DEL-03 §6.1; README.md IDEALE-D pillar
 
 schema_version: "1.0.0"
-document_type: dual_use_risk_analysis
 last_updated: "2026-04-14T00:00:00Z"
----
-
----
-# ═══════════════════════════════════════════════
-# Front Matter 2 — Data Protection / GDPR Compliance
-# ═══════════════════════════════════════════════
-# Machine-readable companion: dual-use-risk-analysis.yaml (Document 2)
-# Programme: AI-BOOST — GA 101135737 (EuroHPC JU)
-# Author: Amedeo Pelliccia
-# Related: DEL-03 §6.1; README.md IDEALE-D pillar
-
-schema_version: "1.0.0"
-document_type: data_protection
-last_updated: "2026-04-14T00:00:00Z"
+concern_areas:
+  - document_type: dual_use_risk_analysis
+    machine_readable_companion: dual-use-risk-analysis.yaml
+    yaml_document: 1
+  - document_type: data_protection
+    machine_readable_companion: dual-use-risk-analysis.yaml
+    yaml_document: 2
 ---
 
 # Dual-Use Risk Analysis, Export Control & Data Protection
@@ -40,9 +32,9 @@ last_updated: "2026-04-14T00:00:00Z"
 
 This document provides the AI-BOOST project's assessment of dual-use risks, export control obligations, and data protection compliance. It complements the Data Management Plan (DEL-03) and aligns with the **IDEALE-D** pillar's requirement for dual-use awareness, export control screening, and secure-by-design documentation.
 
-Each concern area carries its own front matter and a corresponding YAML document:
-- **Front Matter 1 / YAML Document 1:** `dual_use_risk_analysis` — risk register (§2) and export control (§3)
-- **Front Matter 2 / YAML Document 2:** `data_protection` — GDPR compliance (§4)
+This Markdown file uses a single consolidated front matter block, while the corresponding machine-readable companion remains split into two YAML documents:
+- **YAML Document 1:** `dual_use_risk_analysis` — risk register (§2) and export control (§3)
+- **YAML Document 2:** `data_protection` — GDPR compliance (§4)
 
 **Regulatory basis:**
 - EU Dual-Use Regulation (EU) 2021/821
