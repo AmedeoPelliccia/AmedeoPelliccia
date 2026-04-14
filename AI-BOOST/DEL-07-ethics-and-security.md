@@ -324,6 +324,30 @@ revision_history:
 
 ## 1. Ethical Framework
 
+```mermaid
+flowchart TD
+    subgraph PRINCIPLES ["Guiding Principles"]
+        ETH01["ETH-01\n🧑 Human Agency\n& Oversight"]
+        ETH02["ETH-02\n🛡️ Technical\nRobustness"]
+        ETH03["ETH-03\n🔒 Privacy &\nData Governance"]
+        ETH04["ETH-04\n🔍 Transparency"]
+        ETH05["ETH-05\n⚖️ Fairness &\nNon-Discrimination"]
+        ETH06["ETH-06\n🌱 Environmental\nWell-Being"]
+        ETH07["ETH-07\n📋 Accountability"]
+    end
+
+    AIBOOST["AI-BOOST\nEthical Framework"]
+    AIBOOST --> ETH01 & ETH02 & ETH03 & ETH04 & ETH05 & ETH06 & ETH07
+
+    ETH01 --- REF1["EU AI Act Art. 14\nALTAI §1"]
+    ETH02 --- REF2["simplex-contract.yaml\nINV-001–003"]
+    ETH03 --- REF3["GDPR Art. 5, 25"]
+    ETH07 --- REF7["PATH → MTL\naudit trails"]
+
+    style PRINCIPLES fill:#e8f5e9,stroke:#2E7D32
+    style AIBOOST fill:#e3f2fd,stroke:#1565C0,stroke-width:3px
+```
+
 ### 1.1 Guiding Principles
 
 | ID | Principle | Description | References |
@@ -349,6 +373,20 @@ revision_history:
 ## 2. Dual-Use Assessment
 
 ### 2.1 Risk Analysis
+
+```mermaid
+quadrantChart
+    title Dual-Use Risk Assessment
+    x-axis Low Likelihood --> High Likelihood
+    y-axis Low Impact --> High Impact
+    quadrant-1 Critical Risk
+    quadrant-2 Monitor Closely
+    quadrant-3 Low Priority
+    quadrant-4 Mitigate Proactively
+    DU-01 Military simulation: [0.25, 0.8]
+    DU-02 Adversarial misuse: [0.5, 0.5]
+    DU-03 Surveillance: [0.25, 0.8]
+```
 
 | ID | Category | Likelihood | Impact | Mitigation |
 |----|----------|------------|--------|------------|
@@ -424,6 +462,37 @@ revision_history:
 ## 5. Responsible AI Governance
 
 ### 5.1 Ethics Review Process
+
+```mermaid
+flowchart LR
+    subgraph PRE ["Pre-Training"]
+        P1["Ethics\nself-assessment"]
+        P2["DPIA"]
+        P3["Dual-use\nscreening"]
+    end
+    subgraph DURING ["During Training"]
+        D1["Continuous\nmonitoring"]
+    end
+    subgraph RELEASE ["Pre-Release"]
+        R1["Red-teaming"]
+        R2["Bias audit"]
+        R3["Safety\nevaluation"]
+        R4["Release\nchecklist"]
+    end
+    subgraph POST ["Post-Release"]
+        O1["Community\nfeedback"]
+        O2["Incident\nresponse"]
+        O3["Model update\nprotocol"]
+    end
+
+    PRE --> DURING --> RELEASE --> POST
+    POST -.->|"feedback loop"| PRE
+
+    style PRE fill:#e3f2fd,stroke:#1565C0
+    style DURING fill:#fff3e0,stroke:#EF6C00
+    style RELEASE fill:#ffebee,stroke:#c62828
+    style POST fill:#e8f5e9,stroke:#2E7D32
+```
 
 | Stage | Activities | Responsible |
 |-------|-----------|-------------|

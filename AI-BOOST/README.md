@@ -258,6 +258,35 @@ IDEALE-ESG is the applicant action submitted to the AI-BOOST call. Its objective
 
 ## 2. Deliverable Map
 
+```mermaid
+flowchart TD
+    subgraph EXCELLENCE ["🏆 Excellence"]
+        DEL01["DEL-01\nProject Concept &\nObjectives\n(draft)"]
+        DEL02["DEL-02\nMethodology\n(stub)"]
+        DEL07["DEL-07\nEthics & Security\n(draft)"]
+    end
+    subgraph IMPACT ["📈 Impact"]
+        DEL03["DEL-03\nData Management\nPlan (draft)"]
+        DEL04["DEL-04\nMeasures to\nMaximise Impact\n(stub)"]
+        DEL08["DEL-08\nPathways towards\nImpact (stub)"]
+    end
+    subgraph IMPLEMENTATION ["⚙️ Implementation"]
+        DEL05["DEL-05\nWork Plan &\nResources (stub)"]
+        DEL06["DEL-06\nCapacity of\nParticipants (stub)"]
+        DEL09["DEL-09\nFinancial Plan\n(stub)"]
+    end
+
+    AIBOOST["🚀 AI-BOOST\nGA 101135737"]
+    AIBOOST --> EXCELLENCE
+    AIBOOST --> IMPACT
+    AIBOOST --> IMPLEMENTATION
+
+    style EXCELLENCE fill:#e8f5e9,stroke:#2E7D32
+    style IMPACT fill:#e3f2fd,stroke:#1565C0
+    style IMPLEMENTATION fill:#fff3e0,stroke:#EF6C00
+    style AIBOOST fill:#f3e5f5,stroke:#6A1B9A,stroke-width:3px
+```
+
 | Deliverable | Title | Evaluation Criterion | Status |
 |-------------|-------|---------------------|--------|
 | **DEL-01** | Project Concept & Objectives | Excellence → Objectives & Ambition | draft |
