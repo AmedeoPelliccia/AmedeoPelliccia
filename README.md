@@ -1,3 +1,185 @@
+---
+title: "Amedeo Pelliccia"
+subtitle: "Aerospace Engineer · Researcher · Framework Originator"
+document_type: "README"
+document_role: "enterprise_profile_and_architecture_overview"
+status: "active"
+version: "1.0.0"
+last_updated: "2026-02-25"
+
+author:
+  name: "Amedeo Pelliccia"
+  role:
+    - "Aerospace Engineer"
+    - "Researcher"
+    - "Framework Originator"
+  location: "Madrid, Spain"
+  github:
+    primary: "Amedeopelliccia"
+    secondary: "Robbbo-T"
+
+organization:
+  name: "IDEALE-ESG.eu"
+  type: "Enterprise"
+  website: "https://ideale.eu"
+  model: "European Intelligence Foundation"
+
+summary: >
+  Enterprise-level README defining the identity, governance architecture,
+  pillar structure, active domains, and mathematical backend of the
+  IDEALE-ESG framework across aerospace, information, energy, logistics,
+  defense, and governed digital economy.
+
+mission: >
+  Establish a deterministic, traceable, fair, and exportable European
+  framework for governed industrial innovation across the IDEALE pillars.
+
+vision: >
+  Build an inclusive integrating model in which evidence, contribution,
+  governance, and qualified computation become structurally interoperable
+  and economically sustainable.
+
+scope:
+  includes:
+    - "Author profile"
+    - "IDEALE-ESG pillar architecture"
+    - "Aerospace domain bifurcation"
+    - "OPT-IN framework"
+    - "PATH → MTL pipeline"
+    - "DWGE intent-lock layer"
+    - "NBT gates"
+    - "Teknia Tokens"
+    - "Economy (Digital) pillar"
+    - "Portal architecture"
+    - "Mathematical backend and governance logic"
+  excludes:
+    - "Executable source code"
+    - "Certification approval"
+    - "Formal legal terms"
+    - "Full normative standard text"
+
+domains:
+  primary:
+    - name: "aircraftmodel.eu"
+      url: "https://aircraftmodel.eu"
+      repository: "https://github.com/Amedeopelliccia/aircraftmodel"
+      focus:
+        - "Aviation decarbonization"
+        - "Hydrogen-electric propulsion"
+        - "Blended wing body aircraft"
+        - "Certification-grade baselines"
+    - name: "aerospacemodel.com"
+      url: "https://aerospacemodel.com"
+      repository: "https://github.com/Amedeopelliccia/aerospacemodel"
+      focus:
+        - "Space-quantum infrastructure"
+        - "Manufacturing layers"
+        - "GAIA constellation systems"
+        - "GAIA-AIR / QAOS"
+
+pillars:
+  IDEALE:
+    - "Information"
+    - "Defense"
+    - "Energy"
+    - "Aerospace"
+    - "Logistics"
+    - "Economy"
+  ESG:
+    - "Environment"
+    - "Social"
+    - "Governance"
+
+frameworks:
+  - "OPT-IN Framework"
+  - "PATH → MTL"
+  - "DWGE"
+  - "NBT Gates"
+  - "TEKNIA Ledger"
+  - "Trace Threads"
+  - "Responsibility Chairs"
+  - "Capillary Merit Index"
+  - "IDEALE Portal"
+
+standards_and_references:
+  - "S1000D"
+  - "ATA iSpec 2200"
+  - "CSDB"
+  - "STD-PATH-MTL-001"
+  - "STD-OPTIN-001"
+  - "LC01_PROBLEM_STATEMENT"
+
+active_programmes:
+  - "AMPEL360 Q100"
+  - "GAIA-AIR / QAOS"
+  - "AQUA-V"
+  - "EACST"
+  - "AI-BOOST DEL-06"
+
+governance:
+  mode: "deterministic"
+  pipeline: "PATH → MTL"
+  intent_lock: "DWGE"
+  contribution_governance: "CLL"
+  ledger: "TEKNIA"
+  economic_layer: "Teknia Tokens"
+  exportability: "structured"
+  design_authority: "retained"
+
+keywords:
+  - "aerospace"
+  - "S1000D"
+  - "ATA iSpec 2200"
+  - "CSDB"
+  - "hydrogen aviation"
+  - "BWB"
+  - "deterministic AI governance"
+  - "digital product passport"
+  - "traceability"
+  - "quantum-classical bridge"
+  - "NBT gates"
+  - "IDEALE-ESG"
+  - "OPT-IN"
+  - "PATH-MTL"
+  - "industrial digital economy"
+
+badges:
+  - "IDEALE-ESG"
+  - "Economy Digital E2"
+  - "NBT"
+  - "S1000D"
+  - "ATA iSpec 2200"
+  - "OPT-IN"
+  - "PATH-MTL"
+  - "TT v3.14"
+
+repository_links:
+  federal_strategy: "https://github.com/Amedeopelliccia/Modello-federativo-europeo"
+  agenda_2028: "https://github.com/Amedeopelliccia/Agenda-2028"
+
+readme_sections:
+  - "IDEALE-ESG Foundation"
+  - "Two Domains"
+  - "Pillar Map"
+  - "What I'm Building"
+  - "What Drives This"
+  - "Contribution Philosophy"
+  - "Current Focus"
+  - "Backend — Logical Architecture Encoding"
+  - "Machine-Readable Contracts"
+  - "File Placement"
+
+license: "Proprietary or repository-specific"
+language: "en"
+audience:
+  - "engineering partners"
+  - "research collaborators"
+  - "programme stakeholders"
+  - "policy and funding evaluators"
+  - "technical governance reviewers"
+---
+
+
 <p align="center">
   <strong>Amedeo Pelliccia</strong><br>
   Aerospace Engineer · Researcher · Framework Originator<br>
