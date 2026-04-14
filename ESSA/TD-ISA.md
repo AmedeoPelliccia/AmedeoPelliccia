@@ -5,7 +5,7 @@
 | Metadata | Value |
 |----------|-------|
 | **Document ID** | ESSA-DOC-TDISA-001 |
-| **Version** | v0.3-draft |
+| **Version** | v0.4-draft |
 | **Status** | Entity Proposal |
 | **Parent** | ESSA-CONST-001 ([ESSA-AGENCY-CONSTITUTION.md](ESSA-AGENCY-CONSTITUTION.md)) |
 | **Companion** | [`td-isa.yaml`](td-isa.yaml) |
@@ -126,50 +126,63 @@ A stronger common framework would:
 
 ---
 
-## 5. Value Proposition: The Quadruple Win
+## 5. Value Proposition: The Quintuple Win
 
-TD-ISA's impact can be summarised in four reinforcing dimensions:
+TD-ISA's impact can be summarised in five reinforcing dimensions:
 
-> **More economic. Safer. More productive. Everyone benefits.**
+> **Más seguro. Más económico. Más trabajo. Muy necesario. Y todes felices.**
+>
+> *Safer. More economic. More productive. Very necessary. And everyone benefits.*
 
 | Dimension | What Changes | Who Benefits |
 |-----------|-------------|--------------|
-| **More Economic** | Eliminates redundant documentary retraining; reduces format conversions, rework, and adaptation overhead | Operators, MROs, training organisations, OEMs |
 | **Safer** | Uniform safety semantics, consistent visual cues, and reduced interpretation ambiguity lower the probability of human error | Technicians, flight crews, passengers, regulators |
+| **More Economic** | Eliminates redundant documentary retraining; reduces format conversions, rework, and adaptation overhead | Operators, MROs, training organisations, OEMs |
 | **More Productive** | Training time concentrates on real technical content — technology, risks, execution — instead of documentary grammar | Technicians, authors, instructors, SMEs |
+| **Very Necessary** | Emerging technologies (hydrogen, high-voltage, AI-assisted) demand structured technical data from inception — retrofitting standardisation later is orders of magnitude more expensive and more dangerous | Industry, regulators, future programmes |
 | **Everyone Benefits** | A shared representation language creates a positive-sum ecosystem: OEMs author once, operators read consistently, MROs transfer competences, regulators audit uniformly | The entire aviation value chain |
 
-### 5.1 Why It Is a Quadruple Win
+### 5.1 Why It Is a Quintuple Win
 
 Traditional standardisation arguments focus narrowly on cost reduction.
 TD-ISA goes further:
 
-- **Economic savings** are real and multiplicative (see §6),
-  but they are accompanied by
-- **safety improvement** through cognitive consistency,
-- **productivity gains** by refocusing human effort on technical substance,
+- **Safety improvement** through cognitive consistency comes first,
+- **economic savings** are real and multiplicative (see §6),
+- **productivity gains** refocus human effort on technical substance,
+- **necessity** is structural — new technology domains cannot afford
+  fragmented documentation from their first day of operation,
   and
-- **ecosystem-wide satisfaction** because every stakeholder — from the
-  line technician to the regulator — benefits from a common documentary
-  language.
+- **ecosystem-wide satisfaction** follows because every stakeholder —
+  from the line technician to the regulator — benefits from a common
+  documentary language.
 
-These four dimensions are not trade-offs. They reinforce each other:
+These five dimensions are not trade-offs. They reinforce each other:
 
 ```
-┌────────────────────────────────────────────────────┐
-│              THE QUADRUPLE WIN                      │
-│                                                     │
-│   ┌───────────┐         ┌───────────┐              │
-│   │  ECONOMIC  │◄───────►│   SAFER   │              │
-│   │  savings   │         │  outcomes │              │
-│   └─────┬─────┘         └─────┬─────┘              │
-│         │    reinforcing      │                      │
-│         │      cycle          │                      │
-│   ┌─────▼─────┐         ┌─────▼─────┐              │
-│   │   MORE    │◄───────►│ EVERYONE  │              │
-│   │PRODUCTIVE │         │ BENEFITS  │              │
-│   └───────────┘         └───────────┘              │
-└────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────┐
+│               THE QUINTUPLE WIN                           │
+│                                                           │
+│                    ┌─────────┐                            │
+│                    │  SAFER  │                            │
+│                    │outcomes │                            │
+│                    └────┬────┘                            │
+│                  ╱      │      ╲                          │
+│         ┌───────┴──┐    │    ┌──┴────────┐               │
+│         │  MORE    │    │    │   VERY    │               │
+│         │ECONOMIC  │◄───┼───►│NECESSARY  │               │
+│         └────┬─────┘    │    └─────┬─────┘               │
+│              │          │          │                      │
+│              │    ┌─────▼─────┐   │                      │
+│              └───►│   MORE    │◄──┘                      │
+│                   │PRODUCTIVE │                           │
+│                   └─────┬─────┘                           │
+│                         │                                 │
+│                   ┌─────▼─────┐                           │
+│                   │ EVERYONE  │                           │
+│                   │ BENEFITS  │                           │
+│                   └───────────┘                           │
+└──────────────────────────────────────────────────────────┘
 ```
 
 > **Standardised representation does not reduce technical depth.
@@ -509,3 +522,4 @@ execution.
 | v0.1-draft | 2026-04-14 | Initial entity proposal. |
 | v0.2-draft | 2026-04-14 | Added §6 Economic Argument: The Documentary Retraining Problem. |
 | v0.3-draft | 2026-04-14 | Added §5 Value Proposition: The Quadruple Win. |
+| v0.4-draft | 2026-04-14 | Upgraded to Quintuple Win: added 5th dimension "Very Necessary"; reordered safety-first; added Spanish summary. |
