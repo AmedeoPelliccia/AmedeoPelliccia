@@ -9,7 +9,7 @@
 | **Status** | Normative Standard |
 | **Parent** | ESSA-STD-CCTLS-001 ([CCTLS.md](CCTLS.md)) |
 | **Companion** | [`ufato.yaml`](ufato.yaml) |
-| **Related** | [`SAFETY-FIRST.md`](SAFETY-FIRST.md) · [`IPSN.md`](IPSN.md) · [`AMPEL360-ARCH-SPEC.md`](AMPEL360-ARCH-SPEC.md) |
+| **Related** | [`TD-ISA.md`](TD-ISA.md) · [`SAFETY-FIRST.md`](SAFETY-FIRST.md) · [`IPSN.md`](IPSN.md) · [`AMPEL360-ARCH-SPEC.md`](AMPEL360-ARCH-SPEC.md) |
 | **Last Updated** | 2026-04-14 |
 
 ---
