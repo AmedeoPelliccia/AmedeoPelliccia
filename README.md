@@ -242,7 +242,7 @@ value_matrix:
 <p align="center">
   <strong>Amedeo Pelliccia De Martino</strong><br>
   Aerospace Engineer · Researcher · Framework Originator<br>
-  Founder of the <a href="https://ideale.eu"><strong>P_L+D_M / IDEALE-ESG.eu</strong></a> Framework
+  Founder of the <a href="https://ideale.eu"><strong>PELDEM / IDEALE ESG Europe</strong></a> Framework
 </p>
 
 <p align="center">
