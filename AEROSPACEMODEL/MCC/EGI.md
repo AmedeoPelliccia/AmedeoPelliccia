@@ -369,7 +369,7 @@ security_properties:
   - property: Observer Ambiguity
     description: >
       A real-time observer cannot distinguish payload-carrying from
-      non-carrying Ephemerona: intensity profile is perceptually identical
+      non-carrying Ephemerons: intensity profile is perceptually identical
       (Post-Sextin Principle), lifecycle timing is natural, and decay profile
       is indistinguishable from standard exponential fade-out within
       resolution tolerance.
