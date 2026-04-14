@@ -25,6 +25,9 @@ last_updated: "2026-04-14T00:00:00Z"
 ##############################################################################
 
 core_principle:
+  statement: >
+    Cognitive continuity does not always require stable memory.
+    It can depend on the stability of the regeneration rules.
   generation_function: "𝒢(σ, π, t) → ε(t)"
   disjointness: "ℰ ∩ 𝒜 = ∅"
   description: >
@@ -41,6 +44,23 @@ core_principle:
   axiom: >
     "The interface is not the container of the data.
     The interface IS the encoding protocol."
+  axioms:
+    - id: E1
+      name: Ephemeral Assembly
+      description: >
+        Cognitive continuity does not always require stable memory.
+        It can depend on the stability of the regeneration rules.
+    - id: E2
+      name: Minimal Persistence
+      description: >
+        It is not necessary to preserve the entire structure; it suffices to
+        preserve what allows the reconstruction of a functionally equivalent
+        structure.
+    - id: E3
+      name: Multimodal Reactivation
+      description: >
+        Reactivation stimuli are not scalar. They are multimodal and may arrive
+        from any sensory channel or from a cooperative sum of weak channels.
 
 ##############################################################################
 # 1  Definitions

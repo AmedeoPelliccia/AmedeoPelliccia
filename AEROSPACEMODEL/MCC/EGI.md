@@ -26,6 +26,9 @@ last_updated: "2026-04-14T00:00:00Z"
 ##############################################################################
 
 core_principle:
+  statement: >
+    Cognitive continuity does not always require stable memory.
+    It can depend on the stability of the regeneration rules.
   generation_function: "𝒢(σ, π, t) → ε(t)"
   disjointness: "ℰ ∩ 𝒜 = ∅"
   description: >
@@ -42,6 +45,23 @@ core_principle:
   axiom: >
     "The interface is not the container of the data.
     The interface IS the encoding protocol."
+  axioms:
+    - id: E1
+      name: Ephemeral Assembly
+      description: >
+        Cognitive continuity does not always require stable memory.
+        It can depend on the stability of the regeneration rules.
+    - id: E2
+      name: Minimal Persistence
+      description: >
+        It is not necessary to preserve the entire structure; it suffices to
+        preserve what allows the reconstruction of a functionally equivalent
+        structure.
+    - id: E3
+      name: Multimodal Reactivation
+      description: >
+        Reactivation stimuli are not scalar. They are multimodal and may arrive
+        from any sensory channel or from a cooperative sum of weak channels.
 
 ##############################################################################
 # 1  Definitions
@@ -427,6 +447,42 @@ presenting a coherent perceptual experience to the observer.
 
 Ephemeral experience `ℰ` and archival artifact `𝒜` occupy disjoint domains.
 What is experienced cannot be replayed; what is stored was never the interface.
+
+### 0.1 Core Statement
+
+> **Cognitive continuity does not always require stable memory.
+> It can depend on the stability of the regeneration rules.**
+
+This statement grounds EGI in a deeper epistemological claim: the persistence
+of an interface — or of an identity — need not rely on a durable substrate.
+What matters is that the *rules* governing regeneration remain stable, so that
+each ephemeral instance is functionally equivalent to its predecessor.
+
+### 0.2 Axioms
+
+| ID | Name | Description |
+|----|------|-------------|
+| **E1** | Ephemeral Assembly | Cognitive continuity does not always require stable memory. It can depend on the stability of the regeneration rules. |
+| **E2** | Minimal Persistence | It is not necessary to preserve the entire structure; it suffices to preserve what allows the reconstruction of a functionally equivalent structure. |
+| **E3** | Multimodal Reactivation | Reactivation stimuli are not scalar. They are multimodal and may arrive from any sensory channel or from a cooperative sum of weak channels. |
+
+**E1 — Ephemeral Assembly** asserts that continuity arises from deterministic
+regeneration (`𝒢`) rather than persistent storage. An Ephemeron exists only
+during observation, yet successive Ephemerona generated from the same seed σ
+are perceptually — and informationally — equivalent.
+
+**E2 — Minimal Persistence** restricts what must be stored: only the seed σ
+and the generation function `𝒢` need to survive between lifecycle instances.
+The full emotive surface `ε(t)` is never archived; it is reconstructed on
+demand. This mirrors the EGI encoding rules E-001 (Ephemerality Guarantee) and
+E-002 (Generation Determinism).
+
+**E3 — Multimodal Reactivation** connects EGI to SENSORIUM's six-channel
+architecture. Reactivation of a cognitive or perceptual state is not limited to
+a single dominant channel; it may arrive from any combination of
+`{𝔸, ℍ, 𝕆, 𝔽, 𝔾, ℙ}`, including cooperative summation of weak sub-threshold
+signals across multiple channels. This axiom underpins the Full-Spectrum
+Ephemeron mode (EGI-MODE-006).
 
 ---
 
