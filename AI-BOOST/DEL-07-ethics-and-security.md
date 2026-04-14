@@ -8,18 +8,52 @@ schema_version: "1.0.0"
 document_type: ethics_and_security
 last_updated: "2026-02-25T00:00:00Z"
 
-# ─────────────────────────────────────────────
-# 1. Deliverable Identity
-# ─────────────────────────────────────────────
-deliverable:
-  id: DEL-07
-  title: Ethics and Security
-  application_section: "Ethics → Ethics and Security"
-  programme: AI-BOOST
-  grant_agreement: "101135737"
-  managing_body: EuroHPC JU
-  status: draft
-  due: "M6 (initial), updated at M18 and M36"
+---
+deliverable_id: "DEL-07"
+title: "Ethics and Security"
+document_type: "deliverable"
+application_section: "Ethics → Ethics and Security"
+
+programme: "AI-BOOST"
+grant_agreement: "101135737"
+managing_body: "EuroHPC JU"
+
+status: "draft"
+
+schedule:
+  initial_due: "M6"
+  updates:
+    - "M18"
+    - "M36"
+
+version: "0.1.0"
+language: "en"
+confidentiality: "working_draft"
+
+summary: >
+  Deliverable defining the ethics and security framework for the AI-BOOST
+  programme, including governance, risk controls, compliance alignment,
+  and update milestones across the project lifecycle.
+
+keywords:
+  - "AI-BOOST"
+  - "DEL-07"
+  - "ethics"
+  - "security"
+  - "EuroHPC"
+  - "compliance"
+  - "governance"
+
+owner:
+  programme: "AI-BOOST"
+  authority: "EuroHPC JU"
+
+lifecycle:
+  phase: "initial submission"
+  update_points:
+    - "M18"
+    - "M36"
+---
 
 # ─────────────────────────────────────────────
 # 2. Ethical Framework
