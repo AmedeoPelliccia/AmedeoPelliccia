@@ -280,7 +280,7 @@ encoding_rules:
     severity: MUST
 
 ##############################################################################
-# 4a  Assembly Encoding Rules
+# 4.1  Assembly Encoding Rules
 ##############################################################################
 
 assembly_encoding_rules:
