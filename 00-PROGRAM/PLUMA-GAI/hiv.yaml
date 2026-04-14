@@ -1,0 +1,315 @@
+##############################################################################
+# hiv.yaml
+# H.I.V. — Hydrogen · Infrared · Values
+# PLUMA-GAI Canonical Thread — Energy-Sense-Value Specification Layer
+##############################################################################
+
+document_id: PLUMA-GAI-HIV-001
+document_type: stack_specification
+title: "H.I.V. — Hydrogen · Infrared · Values"
+subtitle: "Energy-Sense-Value Specification Layer — PLUMA-GAI Canonical Thread"
+version: "0.1.0"
+schema_version: "1.0.0"
+status: draft
+parent: PLUMA-GAI-001
+last_updated: "2026-04-01T00:00:00Z"
+
+related_documents:
+  - id: PLUMA-GAI-TRH-001
+    file: "TranshidreOHs.md"
+    relationship: upstream_carrier
+  - id: PLUMA-GAI-VBZ-001
+    file: "VibidratAZIONE.md"
+    relationship: downstream_restoration
+  - id: ESSA-DOC-H-001
+    file: "ESSA/H-PIPELINE.md"
+    relationship: constitutional_backbone
+  - id: PLUMA-GAI-NET-001
+    file: "NET/README.md"
+    relationship: infrared_sensing_strategy
+
+purpose: >
+  H.I.V. is the energy-sense-value specification layer of the PLUMA-GAI
+  canonical thread. It reframes the stigmatised acronym as an operational
+  design triad: Hydrogen (energy source), Infrared (sensing ground truth),
+  and Values (constitutional governance kernel). The stack reads:
+  TranshidreOHs → H.I.V.
+
+##############################################################################
+# 1  Acronym Triad
+##############################################################################
+
+acronym_triad:
+  - letter: H
+    expansion: Hydrogen
+    role: Primary energy carrier (fuel source, not combustion product)
+    technical_layer: energy
+    physical_form:
+      - liquid_hydrogen_LH2
+      - gaseous_H2
+    invariant: >
+      The carrier is neutral — it carries no political or social payload;
+      its traceability is purely thermodynamic.
+
+  - letter: I
+    expansion: Infrared
+    role: Passive sensing stratum — every body emits, nothing is hidden
+    technical_layer: sensing_detection
+    band_coverage: [NIR, SWIR, MWIR, LWIR]
+    primary_metric: T_eff
+    invariant: >
+      Infrared output is physical ground truth — it cannot be suppressed,
+      falsified, or hidden. It is the thermal truth of any system.
+
+  - letter: V
+    expansion: Values
+    role: Constitutional governance kernel — non-negotiable invariants
+    technical_layer: governance
+    sources:
+      - "Constitutional articles of member states"
+      - "UN Universal Declaration of Human Rights (1948)"
+      - "Intrinsic human dignity (not earned; constitutive)"
+    invariant: >
+      Values governance is upstream of all engineering decisions. No packet
+      is activable without a validated V-token.
+
+##############################################################################
+# 2  Stack Position
+##############################################################################
+
+stack_position:
+  above: PLUMA-GAI-TRH-001        # TranshidreOHs carrier layer
+  below: PLUMA-GAI-VBZ-001        # VibidratAZIONE restoration layer
+  role_in_stack: specification_stratum
+  description: >
+    H.I.V. defines what the carrier carries (H), how the carrier's state is
+    measured (I), and the governance rules that bound the entire flow (V).
+
+##############################################################################
+# 3  Value-Stamped Energy-Data Packet (VSED)
+##############################################################################
+
+vsed_packet_schema:
+  description: >
+    Every H.I.V.-compliant data unit is a Value-Stamped Energy-Data
+    packet (VSED). No VSED is activable without a valid V-token.
+  fields:
+    header:
+      - name: packet_id
+        type: string
+        format: "UUID-v4"
+        required: true
+      - name: timestamp_utc
+        type: string
+        format: "ISO-8601Z"
+        required: true
+      - name: integrity_hash
+        type: string
+        format: "sha3-512:hex"
+        required: true
+      - name: v_token
+        type: string
+        description: "Constitutional values hash — V-layer governance stamp"
+        required: true
+    energy_metadata:
+      - name: hydrogen_flow_rate_kg_s
+        type: number
+        description: "H-layer input: hydrogen mass flow rate (standard mode only; omitted when boundary_mode=true)"
+        required: true
+        condition: "boundary_mode = false (standard mode)"
+      - name: fiber_optic_throughput_gbps
+        type: number
+        description: "Data throughput on the fibre-optic carrier channel (standard mode only; omitted when boundary_mode=true)"
+        required: true
+        condition: "boundary_mode = false (standard mode)"
+      - name: t_eff_kelvin
+        type: number
+        description: "I-layer: effective infrared temperature of source node"
+        required: true
+    traceability:
+      - name: t_eff_metric
+        type: number
+        description: "Traceability Efficiency (see traceability_efficiency)"
+        required: true
+      - name: source_node
+        type: string
+        required: true
+      - name: destination_node
+        type: string
+        required: true
+
+##############################################################################
+# 4  Traceability Efficiency (T_eff)
+##############################################################################
+
+traceability_efficiency:
+  symbol: T_eff
+  definition: >
+    T_eff = (verified_packets / total_packets) × (1 / mean_latency_s)
+  design_target: "T_eff → ∞"
+  corrective_principle: >
+    By making Traceability → ∞, the system makes misidentification events,
+    far-right signalling artefacts, and persecution patterns visible, traceable,
+    and ultimately engineered out of the operational loop.
+
+##############################################################################
+# 5  V-Token Schema
+##############################################################################
+
+v_token_schema:
+  description: "Constitutional values token — attached to every VSED packet"
+  fields:
+    - name: token_id
+      type: string
+      format: "V-<UUID>"
+      required: true
+    - name: constitutional_references
+      type: array
+      items:
+        type: string
+      required: true
+      examples:
+        - "UDHR Article 1 — All human beings are born free and equal"
+        - "UDHR Article 2 — No distinction of any kind"
+        - "UDHR Article 12 — No arbitrary interference with privacy"
+    - name: dignity_axiom
+      type: string
+      enum: [intrinsic]
+      description: "Human dignity is not earned; it is constitutive"
+      required: true
+    - name: governance_hash
+      type: string
+      format: "sha3-512:hex"
+      required: true
+    - name: expiry
+      type: null
+      description: "V-tokens do not expire"
+
+##############################################################################
+# 6  Interface Contracts
+##############################################################################
+
+interfaces:
+
+  - interface_id: HIV-IFC-001
+    name: "Energy-Data Handshake"
+    direction: "TranshidreOHs → H.I.V."
+    description: >
+      The infrastructure carrier layer provides the physical carrier;
+      H.I.V. defines the payload specification.
+    inputs:
+      - name: hydrogen_flow_rate_kg_s
+        source: TranshidreOHs
+        description: "Hydrogen mass flow rate from carrier (standard mode)"
+      - name: fiber_optic_throughput_gbps
+        source: TranshidreOHs
+        description: "Fibre-optic channel throughput (standard mode)"
+    transformation: >
+      Hash the energy-data metadata and attach a V-token to create a
+      Value-Stamped Energy-Data (VSED) packet.
+    output: VSED_packet
+    primary_metric: T_eff
+    integrity_algorithm: SHA3-512
+    event_boundary_mode:
+      description: >
+        When TranshidreOHs is operated in event-boundary abstraction, the
+        HIV-IFC-001 channel becomes a superconductor vector channel. In this
+        mode, the on-wire boundary payload carries only `carrier_state_hash`,
+        defined as the canonical SHA3-512 digest of the concatenated
+        `energy_state_hash || data_state_hash` boundary-state hashes.
+      inputs_replaced_by:
+        - name: carrier_state_hash
+          format: "sha3-512:hex"
+          description: >
+            Canonical boundary payload field; SHA3-512 of
+            energy_state_hash || data_state_hash. Replaces the individual
+            energy and data flow fields on the channel.
+          derivation: "SHA3-512(energy_state_hash || data_state_hash)"
+      vsed_additional_fields:
+        - name: boundary_mode
+          type: boolean
+          value: true
+        - name: carrier_state_hash
+          format: "sha3-512:hex"
+          description: >
+            Canonical boundary payload field; SHA3-512 of
+            energy_state_hash || data_state_hash.
+      channel_properties:
+        resistance: zero
+        signal_loss: zero
+        latency_contribution: zero
+        t_eff: "→ ∞ (by construction)"
+      t_eff_boundary_formula: >
+        T_eff_boundary = verified_packets / total_packets × lim(latency→0) = ∞
+
+  - interface_id: HIV-IFC-002
+    name: "Operational Trigger"
+    direction: "H.I.V. → VibidratAZIONE"
+    description: >
+      The H.I.V. layer detects a dry or stagnant node (low visibility /
+      high stigma) via infrared sensing and triggers a restoration action.
+    trigger:
+      condition: "Infrared_Sensing < Threshold_Value"
+      semantics: >
+        Low infrared emission = low visible presence = high stigma/exclusion
+        state. The node requires rehydration.
+    action: "VibidratAZIONE injection of Teknia Tokens / Equity"
+    result: "Signal rehydration and systemic re-integration of the node"
+    restoration_metric: "Node T_eff restored above threshold"
+
+##############################################################################
+# 7  Structural Summary
+##############################################################################
+
+structural_summary:
+  description: "Astigmatic Resolution — the architecture as corrective optic"
+  layers:
+    - layer: PLUMA-GAI
+      semantic_origin: Lifecycle architecture
+      technical_function: Programme governance
+      output: Unified governance
+    - layer: TranshidreOHs
+      semantic_origin: Multi-modal logistics
+      technical_function: Carrier layer
+      output: Verified carrier
+    - layer: H.I.V.
+      semantic_origin: Reframed stigmatised acronym
+      technical_function: Energy-Sense-Value triad
+      output: System specification
+    - layer: VibidratAZIONE
+      semantic_origin: Equity action
+      technical_function: Operational restoration
+      output: Equity / Visibility
+
+##############################################################################
+# 8  Invariants
+##############################################################################
+
+invariants:
+  - id: INV-HIV-H
+    name: Hydrogen neutrality
+    statement: >
+      Hydrogen is the energy source; combustion is not the goal.
+      The carrier carries no social or political payload.
+  - id: INV-HIV-I
+    name: Infrared ground truth
+    statement: >
+      Infrared sensing provides physical ground truth. No declared state
+      may override a thermal measurement.
+  - id: INV-HIV-V
+    name: Values primacy
+    statement: >
+      Values governance is upstream of all packet processing. No VSED
+      packet is activable without a valid V-token.
+  - id: INV-HIV-TEFF
+    name: Traceability monotonicity
+    statement: >
+      The system MUST drive T_eff upward. Any change that reduces
+      Traceability Efficiency requires a safety impact assessment.
+  - id: INV-HIV-SV
+    name: Superconductor vector
+    statement: >
+      When boundary_mode = true on HIV-IFC-001, the channel MUST carry
+      carrier_state_hash (defined as SHA3-512(energy_state_hash ||
+      data_state_hash)) and MUST NOT carry individual flow fields.
+      T_eff → ∞ is achieved by construction at the event boundary.

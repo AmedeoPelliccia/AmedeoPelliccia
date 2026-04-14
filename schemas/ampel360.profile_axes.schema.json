@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://essa.eu/schemas/ampel360/profile_axes/v2",
+  "title": "AMPEL360 Composite Profile — Three-Axis Schema v2.0",
+  "description": "JSON Schema for validating AMPEL360 composite profile objects. Ref: AMPEL360-ARCH-SPEC-v2.0 §9.4",
+  "type": "object",
+  "properties": {
+    "profile_id": {
+      "type": "string",
+      "pattern": "^(AIR|SPACE)\\.(PAX_TRANSPORT|CARGO_ONLY)\\.(CIVIL_PUBLIC|COMMERCIAL_SENSITIVE|EXPORT_CONTROLLED|DEFENSE_CLASSIFIED)\\..+$",
+      "description": "Composite profile identifier: ENV.FUNC.PAYLOAD.OVERLAY"
+    },
+    "axes": {
+      "type": "object",
+      "properties": {
+        "environment": {
+          "type": "string",
+          "enum": ["AIR", "SPACE"],
+          "description": "Axis A — Operational Environment"
+        },
+        "function": {
+          "type": "string",
+          "enum": ["PAX_TRANSPORT", "CARGO_ONLY"],
+          "description": "Axis B — Functional Mission"
+        },
+        "payload_class": {
+          "type": "string",
+          "enum": ["CIVIL_PUBLIC", "COMMERCIAL_SENSITIVE", "EXPORT_CONTROLLED", "DEFENSE_CLASSIFIED"],
+          "description": "Axis C — Payload Classification"
+        }
+      },
+      "required": ["environment", "function", "payload_class"],
+      "additionalProperties": false
+    },
+    "human_presence": {
+      "type": "string",
+      "enum": ["HUMAN_ON_BOARD", "NO_HUMAN_ON_BOARD"],
+      "description": "Derived from Axis B: PAX_TRANSPORT → HUMAN_ON_BOARD (HOB), CARGO_ONLY → NO_HUMAN_ON_BOARD (NHOB)"
+    },
+    "operational_context": {
+      "type": "string",
+      "enum": ["CIVIL", "DEFENSE"],
+      "description": "Civil or Defence operational context"
+    },
+    "regulatory": {
+      "type": "object",
+      "properties": {
+        "primary": {
+          "type": "string",
+          "description": "Primary regulatory authority (e.g. EASA, FAA, ESA)"
+        },
+        "overlay": {
+          "type": "string",
+          "description": "Named regulatory overlay identifier"
+        },
+        "software": {
+          "type": "object",
+          "properties": {
+            "do178c": {
+              "type": "object",
+              "properties": {
+                "enabled": { "type": "boolean" },
+                "dal": {
+                  "type": "string",
+                  "enum": ["A", "B", "C", "D", "E"]
+                }
+              },
+              "required": ["enabled"]
+            }
+          }
+        }
+      },
+      "required": ["primary"]
+    },
+    "disclosure_mode": {
+      "type": "string",
+      "enum": ["FULL", "REDACTED", "ATTESTATION_ONLY"],
+      "description": "Evidence disclosure mode (most restrictive wins)"
+    },
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "risk_threshold": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Maximum acceptable risk probability (lower is stricter)"
+        },
+        "dal_level": {
+          "type": "string",
+          "enum": ["A", "B", "C", "D", "E"],
+          "description": "Design Assurance Level (A is strictest)"
+        },
+        "require_authority": {
+          "type": "boolean",
+          "description": "Whether authority signoff is required"
+        },
+        "human_override": {
+          "type": "boolean",
+          "description": "Whether human override capability is required"
+        },
+        "query_relaxation": {
+          "type": "boolean",
+          "description": "Whether query relaxation is permitted"
+        }
+      }
+    },
+    "templates": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Union of all active template identifiers"
+    },
+    "rulesets": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Union of all active ruleset identifiers"
+    }
+  },
+  "required": ["profile_id", "axes", "human_presence", "operational_context", "regulatory", "disclosure_mode"],
+  "x-ampel360": {
+    "document_id": "AMPEL360-ARCH-SPEC-v2.0",
+    "spec_section": "§9.4 Composite Profile Model"
+  }
+}

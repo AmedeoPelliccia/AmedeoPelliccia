@@ -1,0 +1,409 @@
+##############################################################################
+# sensorium.yaml
+# SENSORIUM — Multi-Sensory Cryptographic Composition
+# AEROSPACEMODEL MCC Specification Series — SPEC-008
+##############################################################################
+
+document_id: AEROSPACEMODEL-MCC-SPEC-008
+document_type: multi_sensory_cryptographic_specification
+title: "SENSORIUM — Multi-Sensory Cryptographic Composition"
+version: "0.1.0"
+schema_version: "1.0.0"
+status: draft
+parent: AEROSPACEMODEL-MCC-SPEC-001
+related_documents:
+  - id: AEROSPACEMODEL-MCC-SPEC-007
+    title: "MUSIC-MCC"
+    relationship: parent_specialisation
+  - id: PLUMA-GAI-HIV-001
+    file: "00-PROGRAM/PLUMA-GAI/H.I.V.md"
+    relationship: analogue_sensing_layer
+  - id: PLUMA-GAI-VBZ-001
+    file: "00-PROGRAM/PLUMA-GAI/VibidratAZIONE.md"
+    relationship: restoration_layer
+last_updated: "2026-04-04T00:00:00Z"
+
+##############################################################################
+# 0  The Post-Sextin Principle
+##############################################################################
+
+post_sextin_principle:
+  statement: "𝒫 ∩ ℰ = ∅"
+  description: >
+    Payload and expression occupy disjoint dimensions. In audio, velocity
+    carries data while melody, harmony, rhythm, texture carry emotion.
+    This principle is sense-agnostic and applies to any perceptual channel
+    where humans distinguish intensity from identity.
+  generalisation: >
+    SENSORIUM generalises MUSIC-MCC from one sense to all six.
+    Intensity is the universal steganographic channel.
+
+##############################################################################
+# 1  Six Channels
+##############################################################################
+
+channels:
+  - index: 1
+    name: Auditory
+    latin: audītus
+    symbol: "𝔸"
+    receptor: Cochlea
+    intensity_dimension: "Velocity / amplitude"
+    expression_dimension: "Pitch, melody, harmony, rhythm"
+
+  - index: 2
+    name: Haptic
+    latin: tāctus
+    symbol: "ℍ"
+    receptor: Mechanoreceptors
+    intensity_dimension: "Pressure / vibration magnitude"
+    expression_dimension: "Texture, location, gesture"
+
+  - index: 3
+    name: Optic
+    latin: vīsus
+    symbol: "𝕆"
+    receptor: Retina
+    intensity_dimension: "Luminance / contrast"
+    expression_dimension: "Hue, saturation, shape, motion"
+
+  - index: 4
+    name: Olfactory
+    latin: olfactus
+    symbol: "𝔽"
+    receptor: Olfactory epithelium
+    intensity_dimension: "Concentration"
+    expression_dimension: "Molecular identity (scent profile)"
+    steganographic_priority: high    # low temporal resolution → high capacity
+
+  - index: 5
+    name: Gustatory
+    latin: gustātus
+    symbol: "𝔾"
+    receptor: Taste buds
+    intensity_dimension: "Intensity"
+    expression_dimension: "Taste identity (flavour profile)"
+    steganographic_priority: high    # low temporal resolution → high capacity
+
+  - index: 6
+    name: Proprioceptive
+    latin: sensus motūs
+    symbol: "ℙ"
+    receptor: "Muscle spindles, vestibular"
+    intensity_dimension: "Effort / acceleration"
+    expression_dimension: "Posture, direction, coordination"
+
+##############################################################################
+# 2  Emotive Vector — Definition 35
+##############################################################################
+
+emotive_vector:
+  definition: 35
+  name: "Emotive Vector"
+  formula: "ε = (κ_𝔸, κ_ℍ, κ_𝕆, κ_𝔽, κ_𝔾, κ_ℙ)"
+  domain: "κᵢ ∈ {0, …, 99}"
+  description: >
+    An emotive expression is a vector of sensory intensities in
+    six-dimensional SENSORIUM space. The radar polygon of ε IS the
+    geometric signature of the emotion — not a representation, but
+    its mathematical definition.
+
+  scalar_properties:
+    magnitude:
+      formula: "‖ε‖ = √(Σ κᵢ²)"
+      interpretation: "Total sensory intensity; measures arousal level"
+    dominant_sense:
+      formula: "argmax(κᵢ)"
+      interpretation: "The channel that leads the experience"
+    centroid:
+      formula: "μ = (Σ κᵢ) / 6"
+      interpretation: "Mean activation; measures emotional breadth"
+    entropy:
+      formula: "H(ε) = −Σ p̂ᵢ log p̂ᵢ  where  p̂ᵢ = κᵢ / Σκ"
+      interpretation: "Distribution uniformity; high in Estasi, low in Nostalgia"
+
+  steganographic_capacity:
+    per_channel:
+      formula: "C_i(ε) = 99 − κᵢ"
+      interpretation: "Residual intensity headroom for payload embedding"
+    total:
+      formula: "C_total(ε) = Σ C_i(ε) = 594 − Σ κᵢ"
+      interpretation: >
+        Total steganographic headroom. Estasi → minimum; Malinconia → maximum.
+        Carrier state selection is a security parameter of the composition.
+
+##############################################################################
+# 3  Canonical Emotion Catalogue
+##############################################################################
+
+canonical_emotions:
+
+  - id: SENSO-EMO-001
+    name_it: Gioia
+    name_en: Joy
+    vector:
+      auditory:       85
+      haptic:         60
+      optic:          90
+      olfactory:      45
+      gustatory:      70
+      proprioceptive: 80
+    magnitude: 180
+    dominant_sense: Optic
+    description: >
+      Bright, expansive, rhythmic. High visual and auditory intensity,
+      moderate warmth across all senses. The body moves. All senses present.
+    steganographic_note: "Moderate capacity; chemical channels (𝔽=45, 𝔾=70) usable"
+
+  - id: SENSO-EMO-002
+    name_it: Serenità
+    name_en: Serenity
+    vector:
+      auditory:       50
+      haptic:         45
+      optic:          55
+      olfactory:      40
+      gustatory:      38
+      proprioceptive: 48
+    magnitude: 114
+    dominant_sense: Optic
+    description: >
+      Still and open. Low total activation; no channel dominates strongly.
+      The body is present but unhurried. High steganographic headroom
+      across all channels.
+    steganographic_note: "High capacity; all channels well below saturation"
+
+  - id: SENSO-EMO-003
+    name_it: Malinconia
+    name_en: Melancholy
+    vector:
+      auditory:       30
+      haptic:         20
+      optic:          55
+      olfactory:      25
+      gustatory:      15
+      proprioceptive: 30
+    magnitude: 78
+    dominant_sense: Optic
+    description: >
+      A thin blue shape. Vision remains — the world is seen — but haptic and
+      gustatory signals fade. The body is quiet; taste is absent.
+      Highest total steganographic headroom of all canonical states.
+    steganographic_note: "Maximum total capacity; low arousal, wide embedding bandwidth"
+
+  - id: SENSO-EMO-004
+    name_it: Terrore
+    name_en: Terror
+    vector:
+      auditory:       90
+      haptic:         95
+      optic:          70
+      olfactory:       5
+      gustatory:        5
+      proprioceptive: 92
+    magnitude: 175
+    dominant_sense: Haptic
+    description: >
+      Near-hexagon with chemical void. The body electrifies (haptic 95,
+      proprioceptive 92, auditory 90). The slow chemical senses disappear.
+      High arousal, but maximum headroom on olfactory and gustatory channels.
+    steganographic_note: >
+      Paradox state: high arousal yet maximum chemical channel capacity (𝔽=5, 𝔾=5).
+      Viable carrier for high-bandwidth payloads on chemical channels.
+
+  - id: SENSO-EMO-005
+    name_it: Meraviglia
+    name_en: Wonder
+    vector:
+      auditory:       55
+      haptic:         35
+      optic:          78
+      olfactory:      25
+      gustatory:      20
+      proprioceptive: 68
+    magnitude: 126
+    dominant_sense: Optic
+    description: >
+      Asymmetric. Vision expands (78); the body orients (proprioceptive 68);
+      sound is present but not dominant. Chemical senses recede.
+      Wonder is the posture of seeing something new.
+    steganographic_note: "Good capacity on haptic and chemical channels"
+
+  - id: SENSO-EMO-006
+    name_it: Tenerezza
+    name_en: Tenderness
+    vector:
+      auditory:       40
+      haptic:         85
+      optic:          40
+      olfactory:      32
+      gustatory:      30
+      proprioceptive: 60
+    magnitude: 126
+    dominant_sense: Haptic
+    description: >
+      Touch dominates. The voice softens (auditory 40). The body leans
+      forward (proprioceptive 60). Chemical senses present, warm.
+      Tenerezza is a state of proximity.
+    steganographic_note: "Good capacity on auditory, optic, and chemical channels"
+
+  - id: SENSO-EMO-007
+    name_it: Estasi
+    name_en: Ecstasy
+    vector:
+      auditory:       80
+      haptic:         82
+      optic:          85
+      olfactory:      75
+      gustatory:      78
+      proprioceptive: 80
+    magnitude: 196
+    dominant_sense: Optic
+    description: >
+      The limit case. All channels near maximum. The sensorium is flooded.
+      Minimum steganographic capacity — when everything is at maximum, no
+      intensity gradient remains to hide data.
+    steganographic_note: >
+      PROHIBITED as carrier state (Rule S-002) for any non-trivial payload.
+      Minimum C_total ≈ 594 − 480 = 114.
+
+  - id: SENSO-EMO-008
+    name_it: Nostalgia
+    name_en: Nostalgia
+    vector:
+      auditory:       40
+      haptic:         30
+      optic:          40
+      olfactory:      80
+      gustatory:      60
+      proprioceptive: 20
+    magnitude: 120
+    dominant_sense: Olfactory
+    description: >
+      A triangle pointing toward olfactory (80) and gustatory (60). The
+      chemical senses dominate — aroma triggers memory. Vision blurs (40).
+      The body stills (proprioceptive 20). Nostalgia is the state where
+      smell and taste reconstruct what the eyes can no longer see.
+    steganographic_note: "Maximum capacity on fast channels (ℍ, ℙ, 𝔸); chemical channels occupied"
+
+##############################################################################
+# 4  Steganographic Composition Rules
+##############################################################################
+
+composition_rules:
+
+  - id: S-001
+    name: Payload Orthogonality
+    statement: >
+      The payload MUST be encoded in the intensity dimension (κᵢ) of each
+      channel. It MUST NOT alter the identity (expression) dimension.
+      Violation destroys the experiential surface and renders the composition
+      detectable.
+    severity: MUST
+
+  - id: S-002
+    name: Carrier State Selection
+    statement: >
+      The carrier emotional state ε MUST be selected such that
+      C_total(ε) ≥ B, where B is the payload bit-length. Estasi
+      (SENSO-EMO-007) is PROHIBITED as a carrier for any non-trivial payload.
+    severity: MUST
+
+  - id: S-003
+    name: Dominant Sense Integrity
+    statement: >
+      The dominant sense (argmax κᵢ) MUST NOT change between the plain
+      surface and the steganographic composition. A shift in dominant sense
+      is perceptible as an emotional shift and constitutes a detectable
+      anomaly.
+    severity: MUST
+
+  - id: S-004
+    name: Magnitude Tolerance
+    statement: >
+      The magnitude ‖ε‖ MAY change by at most ±3% without perceptible
+      arousal shift in calibrated human observers. Payload embedding MUST be
+      distributed across channels to stay within this tolerance.
+    tolerance_percent: 3
+    severity: MUST
+
+  - id: S-005
+    name: Chemical Channel Priority
+    statement: >
+      Olfactory (𝔽) and gustatory (𝔾) channels have the lowest temporal
+      resolution. They are the highest-capacity steganographic channels when
+      not assigned primary emotional role (κ_𝔽 < 50 AND κ_𝔾 < 50). In
+      Terrore, both chemical channels near zero — maximum chemical channel
+      capacity — making it a viable carrier despite high arousal.
+    priority: high
+    severity: SHOULD
+
+##############################################################################
+# 5  Axis Ordering Convention
+##############################################################################
+
+axis_ordering:
+  description: >
+    Six axes at 60° intervals. Chemosensory axes (𝔽, 𝔾) placed opposite
+    physical-action axes (𝔸, ℍ), with optic and proprioceptive at vertical poles.
+  order:
+    - position: top
+      channel: Optic
+      symbol: "𝕆"
+    - position: upper_right
+      channel: Auditory
+      symbol: "𝔸"
+    - position: lower_right
+      channel: Haptic
+      symbol: "ℍ"
+    - position: bottom
+      channel: Proprioceptive
+      symbol: "ℙ"
+    - position: lower_left
+      channel: Gustatory
+      symbol: "𝔾"
+    - position: upper_left
+      channel: Olfactory
+      symbol: "𝔽"
+
+##############################################################################
+# 6  Integration — PLUMA-GAI H.I.V. Correspondence
+##############################################################################
+
+pluma_gai_hiv_correspondence:
+  description: >
+    The SENSORIUM model maps onto the PLUMA-GAI canonical thread,
+    extending the H.I.V. specification with a multi-sensory interpretation.
+  mappings:
+    - sensorium_channel: "𝔸 Auditory — signal propagation"
+      hiv_analogue: "H₂ flow rate signal"
+      pluma_gai_layer: TranshidreOHs carrier
+
+    - sensorium_channel: "ℍ Haptic — physical contact/proximity"
+      hiv_analogue: "Infrared emission (every node emits)"
+      pluma_gai_layer: "H.I.V. sensing layer"
+      note: >
+        Every physical node emits IR in proportion to thermal state.
+        Intensity is ground truth. Nothing is hideable in the IR dimension.
+
+    - sensorium_channel: "𝕆 Optic — visibility, luminance"
+      hiv_analogue: "T_eff — traceability visibility"
+      pluma_gai_layer: "H.I.V. KPI"
+
+    - sensorium_channel: "𝔽 Olfactory — ambient trace"
+      hiv_analogue: "Ambient IR ground-truth"
+      pluma_gai_layer: "H.I.V. sensing layer"
+
+    - sensorium_channel: "𝔾 Gustatory — chemical identity"
+      hiv_analogue: "V-token constitutional signature"
+      pluma_gai_layer: "H.I.V. Values kernel"
+
+    - sensorium_channel: "ℙ Proprioceptive — body state / posture"
+      hiv_analogue: "Node operational state"
+      pluma_gai_layer: "VibidratAZIONE restoration target"
+      note: >
+        The VibidratAZIONE rehydration target is 310 K, distinct from the
+        lower default threshold used to trigger node intervention. Below the
+        detection threshold the proprioceptive channel (ℙ) collapses.
+        VibidratAZIONE first restores κ_ℙ above the detection threshold,
+        then drives it toward the 310 K rehydration target.

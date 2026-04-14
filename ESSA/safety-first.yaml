@@ -1,0 +1,296 @@
+##############################################################################
+# ESSA — Safety-First Doctrine
+# European Safety and Security Agency
+# Machine-readable companion to ESSA/SAFETY-FIRST.md
+##############################################################################
+
+document_id: ESSA-DOC-SF-001
+document_type: essa_safety_first_doctrine
+title: "ESSA Safety-First Doctrine — European Safety and Security Agency: Safety as the Primary Generative Objective"
+version: "0.1-draft"
+schema_version: "1.0.0"
+status: normative_doctrine
+parent: ESSA-STD-CCTLS-001
+last_updated: "2026-02-28T00:00:00Z"
+
+description: >
+  Formal doctrine establishing safety as the primary generative objective in all
+  lifecycle design processes governed under ESSA. Defines the formal generative
+  model, CCTLS token linkage rules, agentic AI contract, institutional consequence,
+  and the constitutional clause for insertion into the ESSA root document.
+
+# ─────────────────────────────────────────────
+# Preamble — Safety vs Security Distinction
+# ─────────────────────────────────────────────
+safety_security_distinction:
+  safety:
+    role: primary_generative_objective
+    definition: >
+      Defines the envelope within which all design, operation, and certification
+      proceeds. Safety invariants are the source of derived requirements and the
+      boundary of the valid design space.
+  security:
+    role: governance_of_safety_envelope_integrity
+    definition: >
+      Protects safety invariants from corruption, interference, or circumvention.
+      Security exists to preserve what safety defines.
+  ordering: safety_precedes_security_in_generative_order
+
+# ─────────────────────────────────────────────
+# 1. Core Principle
+# ─────────────────────────────────────────────
+core_principle:
+  statement: >
+    Safety is not a constraint checked after design. Safety is the generative
+    objective that shapes the design space.
+  traditional_flow:
+    - Requirements
+    - Design
+    - Test
+    - Verify_Safety
+  safety_first_flow:
+    - Safety_Envelope
+    - Derived_Requirements
+    - Restricted_Design_Space
+    - Bounded_Optimisation
+    - Invariant_Validation
+  safety_role: primary_objective_function
+
+# ─────────────────────────────────────────────
+# 2. Formal Generative Model
+# ─────────────────────────────────────────────
+formal_model:
+  symbols:
+    S: safety_invariant_set
+    R: derived_requirements
+    D: design_space
+    O: optimisation_goals
+  equations:
+    - id: FM-01
+      expression: "R = f(S)"
+      meaning: Requirements are derived from safety invariants
+    - id: FM-02
+      expression: "D ⊆ Valid(S)"
+      meaning: Design space is restricted to candidates that satisfy S
+    - id: FM-03
+      expression: "Optimise(O) subject to S is preserved"
+      meaning: Optimisation operates inside the safety-valid manifold only
+  constraints:
+    - No requirement SHALL be generated without a traceable safety invariant source
+    - No design candidate SHALL be evaluated if it violates any element of S
+    - Optimisation SHALL operate exclusively within the safety-valid design space
+    - Safety bounds SHALL NOT be relaxed to achieve optimisation targets
+
+# ─────────────────────────────────────────────
+# 3. CCTLS Implementation
+# ─────────────────────────────────────────────
+cctls_implementation:
+  model_to_token_mapping:
+    - model_element: "S — Safety invariant set"
+      cctls_token_types: [HAZARD, SAF_OBJ]
+      phase: P020
+    - model_element: "R = f(S) — Derived requirements"
+      cctls_token_types: [REQUIREMENT]
+      required_link: {rel: derives_from, target_phase: P020}
+      phase: [P010, P020]
+    - model_element: "D ⊆ Valid(S) — Design space restriction"
+      cctls_token_types: [DMU_ITEM, SIM_RUN, DOA_SIGN]
+      required_link: {rel: supports, target_type: SAF_OBJ}
+      phase: [P040, P050]
+    - model_element: "Optimise(O) subject to S"
+      cctls_token_types: [TEST_CAMPAIGN, TEST_REPORT]
+      required_link: {rel: verifies, target_type: SAF_OBJ}
+      phase: P070
+    - model_element: "S preservation in operation"
+      cctls_token_types: [ICA_TASK, MRO_JOB]
+      required_link: {rel: preserves, target_type: SAF_OBJ}
+      phase: P080
+
+  token_linkage_rules:
+    - id: SF-RULE-01
+      name: Safety Primacy
+      rule: >
+        Every SAF_OBJ token SHALL be generated at P020 before any design token
+        is created at P040 or P050.
+      enforcement: CONFIRM gate — P040/P050 tokens cannot reach CONFIRMED state
+                   if no SAF_OBJ exists in the same lifecycle graph.
+
+    - id: SF-RULE-02
+      name: Requirement Traceability
+      rule: >
+        Every requirement token SHALL carry a derives_from link to at least one
+        SAF_OBJ token.
+      enforcement: Schema validation at token creation.
+
+    - id: SF-RULE-03
+      name: Design Coverage
+      rule: >
+        Every design token at P040/P050 SHALL carry a supports link to at least
+        one SAF_OBJ token.
+      enforcement: CONFIRM gate fails if safety coverage graph is incomplete.
+
+    - id: SF-RULE-04
+      name: Confirm Gate Enforcement
+      rule: >
+        The CONFIRM gate SHALL fail if the safety coverage graph is incomplete —
+        i.e., any SAF_OBJ token has no supporting design token.
+      enforcement: ALPC structural completeness check (criterion ALP-001).
+
+    - id: SF-RULE-05
+      name: No Self-Relaxation
+      rule: >
+        No automated process or AI agent SHALL modify, override, or propose
+        relaxation of the safety invariant set S without explicit human authority
+        (MCSC-HOB-03) and DOA sign-off (P050 DOA_SIGN token).
+      enforcement: MCSC-HOB-03 at CONFIRM → ACTIVATE gate.
+
+    - id: SF-RULE-06
+      name: Preservation in Operation
+      rule: >
+        Every ICA_TASK and MRO_JOB token at P080 SHALL carry a preserves link
+        to the SAF_OBJ tokens it maintains.
+      enforcement: P080 package schema validation.
+
+# ─────────────────────────────────────────────
+# 4. Agentic AI Contract
+# ─────────────────────────────────────────────
+agentic_ai_contract:
+  applies_to: LCOS generative AI components
+  obligations:
+    - id: AI-OBL-01
+      obligation: Ingest safety invariant set before generating
+      rule: Agent SHALL receive S as read-only input at initialisation
+    - id: AI-OBL-02
+      obligation: Generate only within bounded design manifold
+      rule: Agent SHALL NOT produce candidates outside D ⊆ Valid(S)
+    - id: AI-OBL-03
+      obligation: Produce traceable justification links
+      rule: Every generated token SHALL carry derives_from or supports links to S
+    - id: AI-OBL-04
+      obligation: Flag safety uncertainty explicitly
+      rule: Agent SHALL emit SAF_UNCERTAINTY marker on any output where S coverage is partial
+    - id: AI-OBL-05
+      obligation: Never self-relax safety bounds
+      rule: Agent SHALL NOT modify, override, or propose relaxation of S without human authority
+  prevents: creative_drift
+  agent_role: bounded_synthesis_engine
+
+# ─────────────────────────────────────────────
+# 5. Institutional Consequence
+# ─────────────────────────────────────────────
+institutional_consequence:
+  agency_name: European Safety and Security Agency
+  agency_acronym: ESSA
+  agency_type: civil_sovereign_lifecycle_governance_authority
+  institutional_declaration: >
+    The European Safety and Security Agency (ESSA) operates under a Safety-First
+    Doctrine. Safety defines mission objectives and generative requirements.
+    Security ensures integrity, resilience and accountability of all
+    safety-critical systems.
+  agency_mission: >
+    The generation, validation, and continuous preservation of safety envelopes
+    for European space and aerospace systems.
+
+  three_layer_constitutional_hierarchy:
+    mission_layer:
+      name: Safety
+      functions:
+        - Safety envelope definition
+        - Evidence validation
+        - Incident management
+        - Cross-border safety coordination
+        - Autonomous system oversight
+    governance_layer:
+      name: Security
+      functions:
+        - Artefact integrity
+        - Change control
+        - Cyber resilience
+        - Industrial supply chain protection
+        - Authority and baseline control
+      constitutional_rule: >
+        Security never redefines the mission. Security ensures the mission is
+        never corrupted.
+    execution_layer:
+      name: Lifecycle & Operations
+      components: [CCTLS, ALPC, LCOS, AoR, MTLdg]
+
+  civil_scope:
+    domains:
+      - Aviation
+      - Space
+      - Reusable Platforms
+      - Autonomous Systems
+      - Critical Industrial Chains
+    nature: civil_not_military
+    security_clarification: >
+      Security in ESSA is governance of system integrity, not militarisation.
+      The EU-SECURITY (MCSC) layer is a civil regulatory abstraction. It does not
+      impose military command structures or activate defence or intelligence mandates.
+      It protects safety invariants from corruption, interference, or circumvention.
+
+  institutional_architecture_mapping:
+    - component: CIVIL_PLATFORMS
+      role: operational_technical_arm
+    - component: EU_SECURITY
+      role: constitutional_integrity_layer
+    - component: ALPC
+      role: certification_operator
+    - component: LCOS
+      role: executable_engine
+    - component: ESSA
+      role: institutional_umbrella
+
+  three_tier_essa_architecture:
+    - tier: 1
+      name: European Sovereign Systems Architecture
+      role: abstract_constitutional_framework
+    - tier: 2
+      name: European Safety and Security Agency
+      role: civil_institutional_umbrella_safety_mission_security_governance
+    - tier: 3
+      name: European Union Space Safety Agency
+      role: canonical_space_civil_platforms_implementation
+
+  function_reframing:
+    - function: Safety
+      traditional: Validation step at end of design
+      safety_first: Primary generative driver — defines the design space
+    - function: Security
+      traditional: Access and threat control
+      safety_first: Governance of safety envelope integrity — protects S from corruption
+    - function: Certification
+      traditional: Narrative conformance assessment
+      safety_first: Invariant validation — confirms S is preserved across the lifecycle graph
+  generation_model: safety_bounded_synthesis
+  certification_model: S_preservation_verification
+  security_model: S_integrity_governance
+
+# ─────────────────────────────────────────────
+# 6. Strategic Differentiation
+# ─────────────────────────────────────────────
+strategic_differentiation:
+  essa_primary_objective: safety_envelope_robustness
+  essa_secondary_objective: performance_inside_safety_valid_design_space
+  conventional_primary_objective: performance_cost_capability
+  alignment:
+    - European regulatory culture (precautionary and evidence-based)
+    - Public legitimacy (verifiable, not asserted, safety)
+    - Ethical projection (safety-first standards are exportable by architecture)
+
+# ─────────────────────────────────────────────
+# 7. Constitutional Clause
+# ─────────────────────────────────────────────
+constitutional_clause:
+  insert_into: ESSA/README.md §10
+  text: >
+    Safety SHALL be treated as the primary generative objective in all lifecycle
+    design processes governed under ESSA.
+    All derived requirements, design artefacts, and operational transitions MUST
+    demonstrate preservation of defined safety invariants prior to activation.
+    Security governs the integrity of those invariants.
+    Certification validates their preservation.
+    No element of the lifecycle graph SHALL be activated if safety coverage is
+    incomplete.
+  normative_force: constitutional
+  enforcement_mechanism: SF-RULE-01 through SF-RULE-06 + ALPC ALP-001 through ALP-006
