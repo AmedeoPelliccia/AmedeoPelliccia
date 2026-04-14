@@ -213,7 +213,7 @@ deliverables:
     title: "Ethics and Security"
     evaluation_criterion: EXCELLENCE
     evaluation_subsection: Ethics and Security
-    status: stub
+    status: draft
     description: >
       Ethical considerations, dual-use assessment, data protection, and security.
 
@@ -266,7 +266,7 @@ IDEALE-ESG is the applicant action submitted to the AI-BOOST call. Its objective
 | DEL-04 | Measures to Maximise Impact | Impact → Measures to Maximise Impact | stub |
 | DEL-05 | Work Plan and Resources | Implementation → Work Plan and Resources | stub |
 | DEL-06 | Capacity of Participants | Implementation → Capacity of Participants | stub |
-| DEL-07 | Ethics and Security | Ethics → Ethics and Security | stub |
+| DEL-07 | Ethics and Security | Ethics → Ethics and Security | draft |
 | DEL-08 | Pathways towards Impact | Impact → Pathways towards Impact | stub |
 | DEL-09 | Financial Plan | Implementation → Financial Plan | stub |
 
