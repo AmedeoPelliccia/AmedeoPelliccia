@@ -47,7 +47,7 @@ This Markdown file uses a single consolidated front matter block, while the corr
 
 | ID | Category | Description | Likelihood | Impact | Mitigation |
 |----|----------|-------------|:----------:|:------:|------------|
-| **DU-01** | Military application of simulation acceleration | AI surrogate models could accelerate weapons system design. | Low | **High** | Export-control screening of consortium partners; restricted model variants for defence-adjacent use cases. |
+| **DU-01** | Military application of simulation acceleration | AI surrogate models could accelerate weapons system design. | Low | **High** | Export-control screening of consortium partners; restricted model variants for defense-adjacent use cases. |
 | **DU-02** | Adversarial misuse of open-weights model | Open-weights release could enable generation of harmful content. | **Medium** | Medium | Red-teaming prior to release (WP4); safety fine-tuning; responsible release protocol. |
 | **DU-03** | Surveillance capability | Multilingual NLP could be repurposed for mass surveillance. | Low | **High** | No biometric processing capability; data processing agreements prohibit surveillance use. |
 
