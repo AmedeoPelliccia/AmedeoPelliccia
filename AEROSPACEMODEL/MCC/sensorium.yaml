@@ -407,3 +407,68 @@ pluma_gai_hiv_correspondence:
         detection threshold the proprioceptive channel (ℙ) collapses.
         VibidratAZIONE first restores κ_ℙ above the detection threshold,
         then drives it toward the 310 K rehydration target.
+
+##############################################################################
+# 7  Shared Database Schema — Minimal Fields
+##############################################################################
+
+database_schema:
+  description: >
+    Canonical field set for any Ephemeral Generative Interface (EGI) record.
+    Every conforming implementation MUST persist at least these fields.
+    A JSON Schema companion is provided at schemas/egi.shared_database.v1.schema.json.
+
+  minimal_fields:
+    - interface_id
+    - trigger_patterns
+    - seed_reference
+    - simplicial_signature
+    - assembly_rules
+    - decay_policy
+    - reactivation_conditions
+    - cross_model_compatibility
+    - provenance
+
+##############################################################################
+# 8  Shared Database Schema — Example Instance
+##############################################################################
+
+  example_instance:
+    id: "EGI-001"
+    title: "Ephemeral Generative Interface"
+    status: "proposed"
+    stimulus:
+      trigger_patterns:
+        - "music phrase"
+        - "face recognition"
+        - "olfactory signature"
+        - "touch sequence"
+      activation_threshold: 0.40
+    reconstruction:
+      seed_reference: "latent_seed://egi/001"
+      assembly_rules:
+        - "instantiate temporary nodes"
+        - "construct higher-order relations"
+        - "project to operational layer"
+    simplicial_signature:
+      max_dimension: 4
+      betti_numbers: [1, 0, 0]
+      euler_characteristic: 1
+      mode: "path"
+    persistence:
+      store_full_interface: false
+      residual_trace: true
+      decay_policy: "time_or_task_completion"
+    reactivation:
+      channel_affinity:
+        visual: 0.30
+        auditory: 0.80
+        olfactory: 0.60
+        tactile: 0.20
+        gustatory: 0.00
+        proprioceptive: 0.10
+      cross_channel_boost: true
+    provenance:
+      generating_model: "model_id"
+      generation_timestamp: "2026-02-25T00:00:00Z"
+      validation_status: "self_validated"
