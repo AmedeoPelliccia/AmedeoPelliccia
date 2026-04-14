@@ -59,15 +59,15 @@ risk_analysis:
 export_control:
   - requirement: "EU Dual-Use Regulation (EU) 2021/821 screening"
     status: planned
-    evidence: "All consortium partners screened; no listed entities"
+    evidence: "Screen consortium partners against EU dual-use lists and document screening results"
 
   - requirement: "US EAR/ITAR assessment"
     status: planned
-    evidence: "No US-origin controlled technology used in core pipeline"
+    evidence: "Assess whether any US-origin controlled technology is used in the core pipeline and record the determination"
 
   - requirement: "End-use monitoring"
     status: planned
-    evidence: "Responsible use license terms for model distribution"
+    evidence: "Define responsible-use license terms and end-use monitoring controls for model distribution"
 
 # ═══════════════════════════════════════════════
 # Document 2 — Data Protection / GDPR Compliance
