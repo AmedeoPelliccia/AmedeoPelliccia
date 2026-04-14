@@ -166,11 +166,11 @@ canonical_emotions:
       olfactory:      40
       gustatory:      38
       proprioceptive: 48
-    magnitude: 118
+    magnitude: 114
     dominant_sense: Optic
     description: >
       Still and open. Low total activation; no channel dominates strongly.
-      The body is present but unhurried. Maximum available steganographic headroom
+      The body is present but unhurried. High steganographic headroom
       across all channels.
     steganographic_note: "High capacity; all channels well below saturation"
 
@@ -184,7 +184,7 @@ canonical_emotions:
       olfactory:      25
       gustatory:      15
       proprioceptive: 30
-    magnitude: 80
+    magnitude: 78
     dominant_sense: Optic
     description: >
       A thin blue shape. Vision remains — the world is seen — but haptic and
@@ -202,7 +202,7 @@ canonical_emotions:
       olfactory:       5
       gustatory:        5
       proprioceptive: 92
-    magnitude: 178
+    magnitude: 175
     dominant_sense: Haptic
     description: >
       Near-hexagon with chemical void. The body electrifies (haptic 95,
@@ -222,7 +222,7 @@ canonical_emotions:
       olfactory:      25
       gustatory:      20
       proprioceptive: 68
-    magnitude: 137
+    magnitude: 126
     dominant_sense: Optic
     description: >
       Asymmetric. Vision expands (78); the body orients (proprioceptive 68);
@@ -240,7 +240,7 @@ canonical_emotions:
       olfactory:      32
       gustatory:      30
       proprioceptive: 60
-    magnitude: 131
+    magnitude: 126
     dominant_sense: Haptic
     description: >
       Touch dominates. The voice softens (auditory 40). The body leans
@@ -258,7 +258,7 @@ canonical_emotions:
       olfactory:      75
       gustatory:      78
       proprioceptive: 80
-    magnitude: 186
+    magnitude: 196
     dominant_sense: Optic
     description: >
       The limit case. All channels near maximum. The sensorium is flooded.
@@ -278,7 +278,7 @@ canonical_emotions:
       olfactory:      80
       gustatory:      60
       proprioceptive: 20
-    magnitude: 117
+    magnitude: 120
     dominant_sense: Olfactory
     description: >
       A triangle pointing toward olfactory (80) and gustatory (60). The
