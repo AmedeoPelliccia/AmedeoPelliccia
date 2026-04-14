@@ -365,9 +365,11 @@ security_properties:
 
   - property: Ephemerality as Defence
     description: >
-      Non-persistence is the primary security property. An adversary must
-      observe the Ephemeron in real time. Post-hoc analysis is impossible
-      because no recording exists.
+      Non-persistence of first-party state is the primary security property.
+      An adversary must observe the Ephemeron in real time to extract payload,
+      assuming no external recording or side-channel capture occurs. Under this
+      assumption, post-hoc analysis of the Ephemeron state itself is not
+      possible because no persistent representation is retained by the system.
 
   - property: Observer Ambiguity
     description: >
