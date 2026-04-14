@@ -133,7 +133,8 @@ Three canonical assemblies: **Polifonia** (Polyphony), **Sintesi** (Synthesis),
 
 EPHEMERALASSEMBLY, TRAUMACODEDRAMA, and SENSORIUM are orthogonal: an assembly
 can embed intra-arc transition payloads and intra-state intensity payloads
-simultaneously, achieving fully independent three-layer encoding.
+simultaneously, achieving three independent compositional layers (the full
+four-layer stack adds EGI's lifecycle dimension).
 
 ---
 

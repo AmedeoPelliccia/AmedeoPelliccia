@@ -655,9 +655,10 @@ EPHEMERALASSEMBLY extends TRAUMACODEDRAMA at the compositional level:
 | TRAUMACODEDRAMA | Transition `Δε` | Steganographic payload in transition magnitudes (within one arc) |
 | EPHEMERALASSEMBLY | Assembly `Ξ` | Steganographic payload in assembly topology and bridge magnitudes (across arcs) |
 
-The three layers are orthogonal: an assembly can embed intra-arc
+The first three layers are orthogonal: an assembly can embed intra-arc
 TRAUMACODEDRAMA payloads and intra-state SENSORIUM payloads simultaneously,
-achieving a **three-layer encoding** where:
+achieving a **three-layer encoding** (the full four-layer stack includes EGI
+as the lifecycle dimension above the assembly layer):
 - Inner layer (SENSORIUM): payload in `κᵢ` values within each state
 - Middle layer (TRAUMACODEDRAMA): payload in `‖Δεᵢ‖` values within each arc
 - Outer layer (EPHEMERALASSEMBLY): payload in `‖Δε_bridge‖` values and
