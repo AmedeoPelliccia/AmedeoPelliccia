@@ -1,5 +1,244 @@
-to be reviewed
-  
+---
+# contributions-registry.yaml
+# Backend-auditable classification of unpaid technical contributions.
+# Author: Amedeo Pelliccia
+# Reference: README.md §15
+# Format: Structured per contribution domain with formal separation between
+#   Nature, Assets Generated, Maturity Level, Technical Externality, Risk/Dependency.
+
+schema_version: "1.0.0"
+author: Amedeo Pelliccia
+classification_type: unpaid_technical_contributions
+last_updated: "2026-02-19T00:00:00Z"
+
+# ─────────────────────────────────────────────
+# 1. OPT-IN / KISS — Open Architecture
+# ─────────────────────────────────────────────
+contributions:
+  - id: CONTRIB-001
+    title: "OPT-IN / KISS Open Architecture"
+    domain: Aerospace Information Engineering
+    type: open_structural_framework
+
+    assets_generated:
+      - Deterministic O-P-T-I-N taxonomy
+      - Knowledge Space / Information Space separation
+      - SSOT model with explicit versioning
+      - Lifecycle governance LC01–LC14
+
+    nature:
+      - Meta-organizational architecture
+      - Structured document control system
+      - Foundation for certifiable traceability
+
+    maturity:
+      level: conceptual_solid
+      implementation: partial (open repository)
+      trl_equivalent: "TRL 2–3"
+
+    externality:
+      - Reusable by third parties
+      - Reduces structural ambiguity in complex programs
+
+    risk:
+      - Requires institutional adoption for systemic impact
+
+  # ─────────────────────────────────────────────
+  # 2. AMPEL360 — Hydrogen-Electric BWB Architecture
+  # ─────────────────────────────────────────────
+  - id: CONTRIB-002
+    title: "AMPEL360 — Hydrogen-Electric BWB Architecture"
+    domain: Advanced Aeronautical Engineering
+    type: open_conceptual_design
+
+    assets_generated:
+      - ATA 28 reinterpretation for LH2
+      - Conceptual integration BWB + fuel cell
+      - Trade studies (MLI, structural cryogenics)
+      - Preliminary CS-25 alignment matrices
+
+    nature:
+      - High-level architecture
+      - Early certification exploration
+      - Digital twin + compliance coupling
+
+    maturity:
+      level: conceptual_analytical
+      implementation: not industrialized
+      trl_equivalent: "TRL 1–2"
+
+    externality:
+      - Democratization of LH2 architecture
+      - Stimulus to open technical debate
+
+    risk:
+      - No formal industrial backing
+      - Dependent on regulatory evolution
+
+  # ─────────────────────────────────────────────
+  # 3. S1000D / ATA / BREX Standardization
+  # ─────────────────────────────────────────────
+  - id: CONTRIB-003
+    title: "S1000D / ATA / BREX Standardization"
+    domain: Aeronautical Technical Publications
+    type: structured_normalization
+
+    assets_generated:
+      - Data Module templates
+      - Verifiable YAML sidecars
+      - Canonical identification schemas
+      - BREX-driven integration patterns
+
+    nature:
+      - Precision documentary engineering
+      - Auditable metadata integration
+
+    maturity:
+      level: high_standard_alignment
+      implementation: reference templates published
+      trl_equivalent: "TRL 3–4"
+
+    externality:
+      - Facilitates professional implementation
+      - Reduces structural ambiguity
+
+    risk:
+      - Value depends on organizational adoption
+
+  # ─────────────────────────────────────────────
+  # 4. Critical AI Research and Determinism
+  # ─────────────────────────────────────────────
+  - id: CONTRIB-004
+    title: "Critical AI Research and Determinism"
+    domain: AI in Regulated Systems
+    type: structured_conceptual_framework
+
+    assets_generated:
+      - Deterministic NN architecture
+      - 5D Tokenization (MTL)
+      - Quantum-classical conceptual bridge
+      - Governance aligned with EU AI Act
+
+    nature:
+      - Theoretical meta-architecture
+      - Safety-critical systems orientation
+
+    maturity:
+      level: advanced_conceptual
+      implementation: not experimentally validated
+      trl_equivalent: "TRL 1–2"
+
+    externality:
+      - Convergence proposal AI + certification
+      - Uncommon structural approach
+
+    risk:
+      - High degree of conceptual complexity
+      - Requires formal validation
+
+  # ─────────────────────────────────────────────
+  # 5. Open Knowledge Production
+  # ─────────────────────────────────────────────
+  - id: CONTRIB-005
+    title: "Open Knowledge Production"
+    domain: Technical Knowledge Transfer
+    type: structured_documentation
+
+    assets_generated:
+      - Extensive explanatory guides
+      - Comparative analyses
+      - Mathematical formalization
+
+    nature:
+      - Specialized dissemination
+      - Indirect training
+
+    maturity:
+      level: published
+      implementation: openly available
+      trl_equivalent: "N/A"
+
+    externality:
+      - Open intellectual capital
+      - Potential foundation for technical community
+
+    risk:
+      - Not monetized
+      - Depends on visibility
+
+# ─────────────────────────────────────────────
+# Consolidated Technical Evaluation
+# ─────────────────────────────────────────────
+evaluation:
+  patterns:
+    - id: EVAL-001
+      label: High Formal Structuring
+      description: >
+        Not isolated ideas; these are systems with architecture.
+
+    - id: EVAL-002
+      label: Certification Orientation
+      description: >
+        Even at conceptual stage, the logic is anchored to compliance.
+
+    - id: EVAL-003
+      label: Determinism Pursuit
+      description: >
+        Explicit reduction of semantic and structural ambiguity.
+
+    - id: EVAL-004
+      label: Multi-Domain Integration
+      description: >
+        Aeronautics + documentation + AI + governance.
+
+    - id: EVAL-005
+      label: Open Publication Without Monetization
+      description: >
+        Intellectual transfer without a defined economic model.
+
+  strategic_observation:
+    structural_coherence: high
+    institutional_formalization: low
+    dependencies:
+      - industrial adoption
+      - academic collaboration
+      - transformation into validated product
+
+# ─────────────────────────────────────────────
+# Value Assessment Matrix
+# ─────────────────────────────────────────────
+value_matrix:
+  - contribution_id: CONTRIB-001
+    structural_coherence: high
+    certification_relevance: high
+    institutional_readiness: low
+    reusability: high
+
+  - contribution_id: CONTRIB-002
+    structural_coherence: high
+    certification_relevance: medium
+    institutional_readiness: low
+    reusability: medium
+
+  - contribution_id: CONTRIB-003
+    structural_coherence: high
+    certification_relevance: high
+    institutional_readiness: medium
+    reusability: high
+
+  - contribution_id: CONTRIB-004
+    structural_coherence: medium
+    certification_relevance: medium
+    institutional_readiness: low
+    reusability: medium
+
+  - contribution_id: CONTRIB-005
+    structural_coherence: high
+    certification_relevance: low
+    institutional_readiness: low
+    reusability: high
+---
+
 <p align="center">
   <strong>Amedeo Pelliccia</strong><br>
   Aerospace Engineer · Researcher · Framework Originator<br>
@@ -1111,10 +1350,7 @@ It is structural logic, not rhetoric.
 | `procedure_registry_entry.schema.json` | `.path_mtl/procedures/` | Procedure entry schema (`§3.1a` §7) |
 | `template_registry_entry.schema.json` | `.path_mtl/templates/` | Template entry schema (`§3.1a` §7) |
 | `ledger.schema.json` | `.path_mtl/ledger/` | TEKNIA ledger entry schema (`§STD`) |
-| `DEL-03-data-management-plan.md` | `AI-BOOST/` | DEL-03 Data Management Plan (YAML front matter + Markdown): datasets, FAIR mappings, security levels, governance, preservation (Excellence → Data) |
-| `application-strategy.yaml` | `AI-BOOST/` | AI-BOOST deliverable registry (DEL-01–DEL-09), EuroHPC JU Frontier AI Grand Challenge |
-| `uts-taxonomy.yaml` | `UTS/` | Universal Transport System domain taxonomy (categories 000–080), evidence/artefact registry, Domain Atlas integration |
-| `ipsn.yaml` | `ESSA/` | IPSN — Unified WBS/PBS numbering formula: 5-level project (W1–W5) and product (P1–P5) hierarchies, cross-reference rules, CCTLS phase mapping, unified vocabulary |
+| `workplan-milestones-gantt.yaml` | `AI-BOOST/` | DEL-05 Workplan, Milestones & Gantt — work packages, resource allocation, quality management |
 
 ### File Placement (OPT-IN / PLUMA)
 
@@ -1138,56 +1374,7 @@ It is structural logic, not rhetoric.
       contribution_event.schema.json   ← ContributionEvent + MeritUnit + CMI
 
 AI-BOOST/
-  application-strategy.yaml     ← deliverable registry (DEL-01–DEL-09), Frontier AI Grand Challenge
-
-UTS/
-  uts-taxonomy.yaml             ← Universal Transport System domain taxonomy (000–080)
-```
-
----
-
-## Part VI — 12×12 Intentional Hilbert–Bell Manifold
-
-### 31. Three-Layer Architecture
-
-Three formal levels are distinguished and must be separated with precision:
-
-| Layer | Name | Formal object | Role |
-|-------|------|---------------|------|
-| 1 | Spatial Discretisation | $\Omega = \bigcup_{i=1}^{N} V_i$ | Partition of the physical domain |
-| 2 | State Space (Hilbert) | $L^2(\Omega) \to \mathbb{C}^N$ | Induced state space (not the domain itself) |
-| 3 | Physical Field | $H, \boldsymbol{\sigma}, \nabla\cdot\boldsymbol{\sigma}$ | Operators acting on the state space |
-
-A voxelisation *induces* a finite-dimensional Hilbert space but does not replace it conceptually. The state space is the space of states of the system, not the physical space:
-
-```math
-L^2(\Omega) \;\to\; \mathbb{C}^N
-```
-
-For $N$ local subsystems with local dimension $d$, the total Hilbert space dimension grows as $\dim(\mathcal{H}_{total}) = d^N$ (exponential). The 12-basis constraint keeps this tractable by limiting the admissible subspace to exactly 12 ontological dimensions.
-
-### 32. Admissible Hilbert Subspace (12-Regime Basis)
-
-```math
-\mathcal{H}_{adm} = \text{span}\{|S_1\rangle, \dots, |S_{12}\rangle\}
-```
-
-Valid state:
-
-```math
-|\psi\rangle = \sum_{k=1}^{12} \alpha_k |S_k\rangle, \quad \Pi_{adm}|\psi\rangle = |\psi\rangle
-```
-
-Entanglement topography:
-
-```math
-H_{int} = \sum_{i < j} T_{ij}\,|S_i\rangle\langle S_j| + \text{h.c.}
-```
-
-Bell-bounded correlation envelope (CHSH):
-
-```math
-|B_{ij}| = |\langle A_1 B_1 \rangle + \langle A_1 B_2 \rangle + \langle A_2 B_1 \rangle - \langle A_2 B_2 \rangle| \le 2
+  workplan-milestones-gantt.yaml  ← DEL-05 work packages, milestones, Gantt, resources, quality
 ```
 
 Intentional Hamiltonian evolution:
