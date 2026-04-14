@@ -11,7 +11,7 @@
 | **Status** | Normative Architecture |
 | **Scope** | G1 ATA (civil) · G3 DTTA (defence) · cross-domain shared backbone |
 | **Authority** | GQAOA .INC — Principal Architect |
-| **Parent** | GLOSSARY_FOUNDATIONAL.md · ESSA-CONST-001 |
+| **Parent** | ESSA-CONST-001 ([ESSA-AGENCY-CONSTITUTION.md](ESSA-AGENCY-CONSTITUTION.md)) |
 | **Companion** | [TD-ISA.md](TD-ISA.md) · [UFATO.md](UFATO.md) · [ACQUA.md](ACQUA.md) · [QQQ.md](QQQ.md) |
 | **Last Updated** | 2026-04-15 |
 
