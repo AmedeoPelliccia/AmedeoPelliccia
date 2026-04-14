@@ -1,0 +1,334 @@
+##############################################################################
+# AMP-GAI-ICD-v0.1.0.yaml
+# PLUMA-GAI Interface Control Document
+# GAIA ↔ AMPEL360 Integration Channel Specification
+##############################################################################
+
+document_id: AMP-GAI-ICD-001
+document_type: interface_control_document
+title: "AMP-GAI Integration Channel Interface Control Document"
+version: "0.1.0"
+schema_version: "1.0.0"
+status: draft
+parent: PLUMA-GAI-001
+last_updated: "2026-02-28T12:00:00Z"
+
+purpose: >
+  Define the governed channel contract between AMPEL360 (ALICE — physical
+  execution node) and GAIA (BOB — information/compute node). Specifies
+  message schemas, latency budgets, integrity mechanisms, fallback behaviour,
+  and authority gating for the AMP-GAI-CORE integration channel.
+
+##############################################################################
+# 1  Channel Identity
+##############################################################################
+
+channel:
+  channel_id: "AMP-GAI-CORE"
+  directionality: bidirectional
+  roles:
+    producer_a: AMPEL360    # ALICE — emits state and intent
+    producer_b: GAIA        # BOB — emits verification and decision proposals
+
+##############################################################################
+# 2  Security & Integrity
+##############################################################################
+
+security:
+  integrity:
+    algorithm: SHA3-512
+    signature_required: true
+    signature_scheme: "ECDSA-P384 or equivalent"
+  keying:
+    classical:
+      protocol: "TLS 1.3 minimum"
+      certificate_authority: "Programme CA (DOA-controlled)"
+    qkd_optional:
+      standard: "ETSI GS QKD 014"
+      fallback_to_classical: true
+      note: >
+        QKD provisioning is optional. Classical keying is the primary
+        path. QKD upgrade does not change message schema.
+
+##############################################################################
+# 3  Real-time Envelope
+##############################################################################
+
+realtime:
+  default_max_latency_ms: 200
+  default_jitter_ms: 50
+  per_function_overrides:
+    # Functions may declare tighter envelopes; looser envelopes not permitted
+    - function_id: "SAFETY_MONITOR_SYNC"
+      max_latency_ms: 50
+      jitter_ms: 10
+      note: "LH2 leak / cryo thermal monitor synchronisation"
+    - function_id: "TRAJECTORY_OPT"
+      max_latency_ms: 2000
+      jitter_ms: 500
+      note: "Non-critical optimisation; latency-tolerant"
+    - function_id: "UAS_DECONFLICT"
+      max_latency_ms: 100
+      jitter_ms: 20
+      note: "UAS swarm deconfliction advisory"
+
+##############################################################################
+# 4  Degraded / Fallback Modes
+##############################################################################
+
+degraded_modes:
+  modes:
+    - mode_id: GAIA_ADVISORY_ONLY
+      trigger:
+        - integrity_check_fail
+        - latency_violation
+        - gaia_partial_degradation
+      behaviour: >
+        GAIA outputs are downgraded to advisory status. AMPEL360 continues
+        with locally certified control loops. No GAIA output may trigger
+        execution binding.
+      reversion_condition: "Integrity and latency restored + operator confirmation"
+
+    - mode_id: AMPEL_LOCAL_CONTROL
+      trigger:
+        - channel_loss
+        - gaia_unavailable
+        - coherence_loss
+      behaviour: >
+        Full channel loss. AMPEL360 operates entirely on local, certified
+        on-board control. GAIA is disconnected. Safe envelope maintained.
+      reversion_condition: "Channel restored + full integrity handshake + operator gate"
+
+  fail_safe_mode: AMPEL_SAFE_ENVELOPE
+  fail_safe_description: >
+    Ultimate fallback: AMPEL360 enters its certified safe envelope.
+    All primary flight-critical loops revert to deterministic on-board
+    logic. No dependency on external compute.
+
+##############################################################################
+# 5  Message Schemas
+##############################################################################
+
+message_schemas:
+
+  # ── ALICE → BOB ────────────────────────────────────────────────────────────
+  - schema_id: MSG-AMP-001
+    direction: AMPEL360 → GAIA
+    name: StateVector
+    description: "AMPEL360 current physical state"
+    fields:
+      - name: msg_id
+        type: string
+        format: "UUID v4"
+        required: true
+      - name: timestamp_utc
+        type: string
+        format: "ISO-8601Z"
+        required: true
+      - name: integrity_hash
+        type: string
+        format: "sha3-512:hex"
+        required: true
+      - name: flight_phase
+        type: string
+        enum: [PRE_FLIGHT, TAXI, TAKEOFF, CLIMB, CRUISE, DESCENT, LANDING,
+               GROUND_OPS, BOOST, ORBITAL, RE_ENTRY]
+        required: true
+      - name: position
+        type: object
+        fields:
+          - {name: lat_deg, type: number}
+          - {name: lon_deg, type: number}
+          - {name: alt_m, type: number}
+        required: true
+      - name: velocity_mps
+        type: object
+        fields:
+          - {name: vx, type: number}
+          - {name: vy, type: number}
+          - {name: vz, type: number}
+        required: true
+      - name: energy_state
+        type: object
+        fields:
+          - {name: lh2_mass_kg, type: number}
+          - {name: fuel_cell_power_kw, type: number}
+          - {name: tank_pressure_bar, type: number}
+          - {name: cryo_temp_k, type: number}
+        required: false
+
+  - schema_id: MSG-AMP-002
+    direction: AMPEL360 → GAIA
+    name: IntentDeclaration
+    description: "AMPEL360 declared intent for upcoming manoeuvre or phase transition"
+    fields:
+      - name: msg_id
+        type: string
+        format: "UUID v4"
+        required: true
+      - name: timestamp_utc
+        type: string
+        format: "ISO-8601Z"
+        required: true
+      - name: integrity_hash
+        type: string
+        format: "sha3-512:hex"
+        required: true
+      - name: intent_type
+        type: string
+        enum: [PHASE_TRANSITION, TRAJECTORY_REQUEST, ENERGY_OPTIMISATION,
+               ABORT_ADVISORY, MAINTENANCE_PLAN_REQUEST]
+        required: true
+      - name: target_phase
+        type: string
+        required: false
+      - name: parameters
+        type: object
+        description: "Intent-specific parameters (varies by intent_type)"
+        required: false
+
+  # ── BOB → ALICE ────────────────────────────────────────────────────────────
+  - schema_id: MSG-GAI-001
+    direction: GAIA → AMPEL360
+    name: VerifiedState
+    description: "GAIA integrity-verified state echo with anomaly flags"
+    fields:
+      - name: msg_id
+        type: string
+        format: "UUID v4"
+        required: true
+      - name: ref_msg_id
+        type: string
+        description: "References MSG-AMP-001 that triggered this response"
+        required: true
+      - name: timestamp_utc
+        type: string
+        format: "ISO-8601Z"
+        required: true
+      - name: integrity_hash
+        type: string
+        format: "sha3-512:hex"
+        required: true
+      - name: integrity_status
+        type: string
+        enum: [VERIFIED, DEGRADED, INTEGRITY_FAIL]
+        required: true
+      - name: anomaly_flags
+        type: array
+        items: string
+        description: "Anomaly identifiers if any detected"
+        required: false
+
+  - schema_id: MSG-GAI-002
+    direction: GAIA → AMPEL360
+    name: DecisionProposal
+    description: >
+      GAIA computed decision proposal (Δu). AMPEL360 executes only if
+      within certified envelope; otherwise rejects and remains in current
+      safe state.
+    fields:
+      - name: msg_id
+        type: string
+        format: "UUID v4"
+        required: true
+      - name: ref_msg_id
+        type: string
+        description: "References MSG-AMP-002 intent that triggered this proposal"
+        required: true
+      - name: timestamp_utc
+        type: string
+        format: "ISO-8601Z"
+        required: true
+      - name: integrity_hash
+        type: string
+        format: "sha3-512:hex"
+        required: true
+      - name: proposal_type
+        type: string
+        enum: [TRAJECTORY_DELTA, ENERGY_DISPATCH, MAINTENANCE_ACTION,
+               ABORT_SEQUENCE, ADVISORY_ONLY]
+        required: true
+      - name: delta_u
+        type: object
+        description: "Proposal-specific parameters"
+        required: true
+      - name: confidence
+        type: number
+        format: "[0.0, 1.0]"
+        required: true
+      - name: envelope_check
+        type: string
+        enum: [WITHIN_ENVELOPE, BOUNDARY, OUTSIDE_ENVELOPE]
+        required: true
+      - name: ai_class
+        type: string
+        enum: [A0, A1, A2, A3]
+        required: true
+      - name: binding
+        type: string
+        enum: [ADVISORY, CONDITIONAL, BINDING]
+        description: >
+          ADVISORY: informational only. CONDITIONAL: AMPEL may execute if
+          envelope check passes. BINDING: never used without DOA special approval.
+        required: true
+      - name: fallback_if_rejected
+        type: string
+        description: "Action AMPEL should take if it rejects this proposal"
+        required: false
+
+##############################################################################
+# 6  Authority & Access Control
+##############################################################################
+
+authority:
+  change_control: DOA_SIGNED
+  role_gates:
+    - role: Observer
+      channel_access: read_only
+      can_trigger_mode_change: false
+    - role: Delineant
+      channel_access: read_write
+      can_trigger_mode_change: false
+    - role: DesignAuthority
+      channel_access: read_write
+      can_trigger_mode_change: true
+      requires_countersignature: true
+    - role: DOA
+      channel_access: full
+      can_trigger_mode_change: true
+      regulatory_binding: true
+
+##############################################################################
+# 7  Validation Rules
+##############################################################################
+
+validation_rules:
+  - rule_id: ICD-RULE-001
+    description: >
+      Every message MUST contain a valid integrity_hash computed over the
+      full message body using SHA3-512 before transmission.
+    severity: error
+
+  - rule_id: ICD-RULE-002
+    description: >
+      A DecisionProposal with binding == BINDING requires DOA special
+      approval on record before AMPEL360 may act on it.
+    severity: error
+
+  - rule_id: ICD-RULE-003
+    description: >
+      If envelope_check == OUTSIDE_ENVELOPE, AMPEL360 MUST reject the
+      proposal and log the rejection with timestamp and proposal msg_id.
+    severity: error
+
+  - rule_id: ICD-RULE-004
+    description: >
+      Latency from MSG-AMP-001 emission to MSG-GAI-001 receipt MUST NOT
+      exceed max_latency_ms for the applicable function override.
+    severity: error
+
+  - rule_id: ICD-RULE-005
+    description: >
+      Any channel integrity failure MUST immediately trigger degraded
+      mode transition and be logged in the evidence ledger.
+    severity: error

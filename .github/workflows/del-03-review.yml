@@ -1,0 +1,176 @@
+# ─────────────────────────────────────────────────────────────
+# DEL-03 Data Management Plan — Scheduled Pre-Review Workflow
+# ─────────────────────────────────────────────────────────────
+# Triggers ~2 months before the M18 milestone (2027-02-25) to
+# perform an automated AI review of the DMP and notify the
+# coordinator of findings before the mid-term update deadline.
+#
+# Schedule: Dec 25 at 09:00 UTC (M18 minus ~2 months)
+# Model:    Uses GitHub Copilot's own capabilities by default.
+#           Override via workflow_dispatch to use a specific
+#           model from the GitHub Models marketplace.
+# ─────────────────────────────────────────────────────────────
+
+name: "DEL-03 DMP Pre-Review (M18)"
+
+on:
+  schedule:
+    # Dec 25 at 09:00 UTC — approximately 2 months before M18 (2027-02-25)
+    - cron: "0 9 25 12 *"
+  workflow_dispatch:
+    inputs:
+      model:
+        description: "AI model to use for the review"
+        required: false
+        default: "copilot"
+        type: string
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  review-del-03:
+    name: "AI Review — DEL-03 Data Management Plan"
+    runs-on: ubuntu-latest
+    env:
+      DMP_PATH: "AI-BOOST/DEL-03-data-management-plan.md"
+      MODEL: ${{ github.event.inputs.model || 'copilot' }}
+
+    steps:
+      - name: Check year gate (scheduled runs only fire in 2026)
+        if: github.event_name == 'schedule'
+        run: |
+          YEAR=$(date +%Y)
+          if [ "$YEAR" != "2026" ]; then
+            echo "::notice::Skipping — scheduled review is intended for 2026 only (current year: $YEAR)."
+            echo "SKIP=true" >> "$GITHUB_ENV"
+          fi
+
+      - name: Checkout repository
+        if: env.SKIP != 'true'
+        uses: actions/checkout@v4
+
+      - name: Extract DMP content
+        if: env.SKIP != 'true'
+        id: extract
+        run: |
+          DMP_CONTENT=$(cat "$DMP_PATH")
+          echo "dmp_length=$(echo "$DMP_CONTENT" | wc -l)" >> "$GITHUB_OUTPUT"
+          DMP_DELIM=$(uuidgen)
+          {
+            echo "DMP_CONTENT<<$DMP_DELIM"
+            echo "$DMP_CONTENT"
+            echo "$DMP_DELIM"
+          } >> "$GITHUB_ENV"
+
+      - name: AI Review via GitHub Models
+        if: env.SKIP != 'true'
+        id: ai_review
+        uses: actions/github-script@v7
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          script: |
+            const dmpContent = process.env.DMP_CONTENT;
+            const model = process.env.MODEL;
+
+            const systemPrompt = `You are an expert reviewer for Horizon Europe / EuroHPC JU deliverables.
+            You are reviewing DEL-03 (Data Management Plan) for the AI-BOOST project (GA 101135737).
+            The M18 mid-term update is due 2027-02-25.
+
+            Review the document for:
+            1. **Completeness** — Are all required DMP sections present per Horizon Europe guidelines?
+            2. **FAIR compliance** — Do all datasets meet Findable, Accessible, Interoperable, Reusable criteria?
+            3. **Security & Ethics** — Are classification levels, encryption, GDPR, and export controls adequate?
+            4. **Governance** — Are roles, responsibilities, and access procedures clearly defined?
+            5. **Preservation** — Are retention periods, integrity checks, and deletion policies sufficient?
+            6. **Consistency** — Do the YAML front matter and Markdown body agree on all facts?
+            7. **Actionable items for M18** — What specifically needs updating before the mid-term review?
+
+            Provide a structured report with:
+            - Executive summary (2-3 sentences)
+            - Section-by-section findings (numbered)
+            - List of required actions before M18
+            - Overall readiness score (1-10)`;
+
+            let response;
+            try {
+              response = await fetch("https://models.github.ai/inference/chat/completions", {
+                method: "POST",
+                headers: {
+                  "Authorization": `Bearer ${process.env.GITHUB_TOKEN}`,
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                  model: model,
+                  messages: [
+                    { role: "system", content: systemPrompt },
+                    { role: "user", content: `Please review this Data Management Plan:\n\n${dmpContent}` }
+                  ],
+                  temperature: 0.3,
+                  max_tokens: 4000
+                })
+              });
+            } catch (err) {
+              core.setFailed(`Network error calling GitHub Models API: ${err.message}`);
+              return;
+            }
+
+            if (!response.ok) {
+              const errBody = await response.text();
+              core.setFailed(`GitHub Models API error (${response.status}): ${errBody}`);
+              return;
+            }
+
+            const result = await response.json();
+
+            if (!result.choices || !Array.isArray(result.choices) || result.choices.length === 0) {
+              core.setFailed(`Unexpected API response: no choices returned. Body: ${JSON.stringify(result)}`);
+              return;
+            }
+
+            const review = result.choices[0].message.content;
+            core.setOutput("review", review);
+            core.setOutput("model_used", model);
+
+      - name: Create review issue and notify
+        if: env.SKIP != 'true' && steps.ai_review.outputs.review
+        uses: actions/github-script@v7
+        env:
+          REVIEW_CONTENT: ${{ steps.ai_review.outputs.review }}
+          MODEL_USED: ${{ steps.ai_review.outputs.model_used }}
+        with:
+          script: |
+            const review = process.env.REVIEW_CONTENT;
+            const model = process.env.MODEL_USED;
+            const today = new Date().toISOString().split('T')[0];
+
+            const issueBody =
+              "## DEL-03 Data Management Plan — Automated Pre-Review\n" +
+              "\n" +
+              `**Review date:** ${today}\n` +
+              "**Target milestone:** M18 (2027-02-25)\n" +
+              `**Model used:** \`${model}\`\n` +
+              "**Document:** `AI-BOOST/DEL-03-data-management-plan.md`\n" +
+              "\n" +
+              "---\n" +
+              "\n" +
+              `${review}\n` +
+              "\n" +
+              "---\n" +
+              "\n" +
+              "> ℹ️ This review was generated automatically by the `del-03-review` workflow,\n" +
+              "> scheduled ~2 months before the M18 mid-term update deadline.\n" +
+              "> Review the findings and update the DMP accordingly before 2027-02-25.";
+
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `[DEL-03] Automated Pre-Review for M18 — ${today}`,
+              body: issueBody,
+              labels: ["DEL-03", "review", "automated"],
+              assignees: ["AmedeoPelliccia"]
+            });
+
+            core.info(`Review issue created: ${issue.data.html_url}`);
