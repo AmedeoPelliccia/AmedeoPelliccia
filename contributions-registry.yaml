@@ -87,6 +87,7 @@ contributions:
       - Verifiable YAML sidecars
       - Canonical identification schemas
       - BREX-driven integration patterns
+      - UFATO — Universal Form, Adaptive Technical Organisation framework (ESSA-STD-UFATO-001)
 
     nature:
       - Precision documentary engineering
@@ -165,6 +166,40 @@ contributions:
       - Not monetized
       - Depends on visibility
 
+  # ─────────────────────────────────────────────
+  # 6. TD-ISA — Technical Data Integrity, Standardization, and Automation
+  # ─────────────────────────────────────────────
+  - id: CONTRIB-006
+    title: "TD-ISA — Technical Data Integrity, Standardization, and Automation"
+    domain: Technical Data Governance
+    type: entity_proposal
+
+    assets_generated:
+      - TD-ISA entity proposal (ESSA-DOC-TDISA-001)
+      - Five-workstream governance framework (Authoring Integrity, Representation Standards, Digital Readability, Technology-Specific Profiles, Automation Enablement)
+      - Workstream maturity model (M0–M4)
+      - Integration mapping to UFATO (ESSA-STD-UFATO-001) and ESSA governance artefacts
+      - Institutional positioning analysis (institute / council / foundation / standards initiative)
+
+    nature:
+      - Institutional governance architecture for technical data
+      - Cross-industry standards coordination framework
+      - Automation-readiness governance
+
+    maturity:
+      level: conceptual_solid
+      implementation: proposal documented
+      trl_equivalent: "TRL 2–3"
+
+    externality:
+      - Provides institutional anchor for UFATO adoption
+      - Coordinates cross-OEM / cross-MRO technical data interoperability
+      - Enables automation-ready publication ecosystems
+
+    risk:
+      - Requires cross-industry participation for legitimacy
+      - Dependent on ESSA institutional recognition
+
 # ─────────────────────────────────────────────
 # Consolidated Technical Evaluation
 # ─────────────────────────────────────────────
@@ -235,4 +270,10 @@ value_matrix:
     structural_coherence: high
     certification_relevance: low
     institutional_readiness: low
+    reusability: high
+
+  - contribution_id: CONTRIB-006
+    structural_coherence: high
+    certification_relevance: high
+    institutional_readiness: medium
     reusability: high
