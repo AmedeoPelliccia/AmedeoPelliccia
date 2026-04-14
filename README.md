@@ -242,9 +242,10 @@ value_matrix:
 <p align="center">
   <strong>Amedeo Pelliccia</strong><br>
   Aerospace Engineer · Researcher · Framework Originator<br>
-  Founder, <a href="https://ideale.eu">IDEALE-ESG.eu</a> Framework
+  Founder, <a href="https://ideale.eu">P&L-in-DeM-IDEALE-ESG.eu</a> Framework
 </p>
 
+# PEACE AND LOVE IN DEMOCRACY IDEALE ESG EUROPE
 ---
 
 I am a researcher moved by genuine desire to originate something powerful.
