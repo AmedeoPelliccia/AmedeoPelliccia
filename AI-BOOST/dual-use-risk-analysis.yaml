@@ -31,7 +31,7 @@ risk_analysis:
     impact: high
     mitigation: >
       Export-control screening of consortium partners; restricted model
-      variants for defence-adjacent use cases.
+      variants for defense-adjacent use cases.
 
   - id: DU-02
     category: Adversarial misuse of open-weights model
