@@ -1,5 +1,16 @@
 # Model Digital Constitution
 
+| Metadata | Value |
+|----------|-------|
+| **Document ID** | AEROSPACEMODEL-CONST-001 |
+| **Version** | v0.1-draft |
+| **Status** | Governing Repository Constitution |
+| **Applies To** | `AmedeoPelliccia/AmedeoPelliccia` as the AEROSPACEMODEL genesis repository |
+| **Related** | [`README.md`](README.md) |
+| **Last Updated** | 2026-04-14 |
+
+---
+
 ## I. Purpose and Definition
 
 This document establishes the **Digital Constitution** governing the design, development, integration, deployment, operation, and portfolio governance of all digital systems and published artifacts within the **AEROSPACEMODEL genesis** repository.
