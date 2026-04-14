@@ -8,7 +8,7 @@
 document_id: ESSA-DOC-TDISA-001
 document_type: entity_proposal
 title: "TD-ISA — Technical Data Integrity, Standardization, and Automation"
-version: "0.2.0"
+version: "0.2.0-draft"
 schema_version: "1.0.0"
 status: draft
 parent: ESSA-CONST-001
@@ -466,6 +466,6 @@ revision_history:
     date: "2026-04-14"
     change: "Initial entity proposal."
 
-  - version: "0.2.0"
+  - version: "0.2.0-draft"
     date: "2026-04-14"
     change: "Added economic_argument section: documentary retraining cost model with three cost levels, six multipliers, and formula."

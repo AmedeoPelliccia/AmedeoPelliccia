@@ -250,7 +250,7 @@ TD-ISA operates through five main workstreams:
 └──────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 5.1 WS-1 — Authoring Integrity
+### 6.1 WS-1 — Authoring Integrity
 
 Controlled terminology, procedural clarity, semantic consistency, and
 traceable content governance.
@@ -262,7 +262,7 @@ traceable content governance.
 | Content governance model | Change authority, review cycles, baseline rules | CCTLS gate sequence |
 | Traceability matrix template | Requirement → content → evidence chain | H-Pipeline H_REQ / H_EVIDENCE |
 
-### 5.2 WS-2 — Representation Standards
+### 6.2 WS-2 — Representation Standards
 
 Harmonised rules for visual hierarchy, colour coding, line conventions,
 illustration semantics, and safety cue presentation.
@@ -274,7 +274,7 @@ illustration semantics, and safety cue presentation.
 | Illustration standard | Line weights, callout conventions, greyscale legibility | UF-IC-01 through UF-IC-04 |
 | Colour scheme annex | Day-mode and night-mode palettes with WCAG AA compliance | UF-VH-05, UF-VH-06 |
 
-### 5.3 WS-3 — Digital Readability and Interaction
+### 6.3 WS-3 — Digital Readability and Interaction
 
 Standards for display behaviour on tablets, laptops, and maintenance-oriented
 digital interfaces.
@@ -286,7 +286,7 @@ digital interfaces.
 | Offline-mode specification | Baseline preservation, sync logic, conflict resolution | UF-IL-05 |
 | Accessibility conformance profile | WCAG 2.1 AA mapping for maintenance environments | UF-VH-04, UF-VH-05 |
 
-### 5.4 WS-4 — Technology-Specific Profiles
+### 6.4 WS-4 — Technology-Specific Profiles
 
 Adaptable chaptering and content structuring models for conventional aircraft,
 hydrogen systems, fuel cells, high-voltage architectures, AI-assisted systems,
@@ -300,7 +300,7 @@ and future aerospace configurations.
 | AI-assisted systems profile | Chapters 45A/45X/45M | UFATO §5.2.4 |
 | Domain Glossary Extension (DGE) template | Structured term registration for new technology domains | UFATO §5.3 |
 
-### 5.5 WS-5 — Automation Enablement
+### 6.5 WS-5 — Automation Enablement
 
 Machine-readable patterns, validation logic, structured semantics, and
 interoperability rules that support digital workflows and automation.
