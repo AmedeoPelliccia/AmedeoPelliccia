@@ -363,11 +363,13 @@ reactivation_geometries:
     reactivates: "chemical state + valence"
 
 residual_trace_types:
-  - r_point
-  - r_path
-  - r_star
-  - r_chain
-  - r_manifold
+  - r_point      # Point geometry (Olfactory and Gustatory — both chemical
+                 # senses share the point locus; Gustatory adds an affect
+                 # dimension but the residual trace remains a point)
+  - r_path       # Path geometry (Auditory)
+  - r_star       # Star geometry (Face / social-visual)
+  - r_chain      # Chain geometry (Tactile)
+  - r_manifold   # Manifold geometry (Proprioceptive)
 
 ##############################################################################
 # 6  Axis Ordering Convention
