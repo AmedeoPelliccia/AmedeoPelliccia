@@ -774,7 +774,7 @@ listed below. A machine-readable JSON Schema companion is provided at
 | 3 | `seed_reference` | `string` | Reference to the 256-bit seed `σ` that determines the generation function `𝒢`. May be a literal hex string, a vault URI, or an external key reference. |
 | 4 | `simplicial_signature` | `object` | Topological signature anchoring the record in the MCC simplicial complex (`complex_id`, optional `simplex_dimension`/`face_ids`, integrity `hash`). |
 | 5 | `assembly_rules` | `object` | Rules governing Ephemeron assembly: canonical mode, dominant channel, bloom-fraction minimum (≥ 0.6), nucleation ceiling (≤ 30), and lifecycle timing range. |
-| 6 | `decay_policy` | `object` | Dissolution behaviour: Decay Envelope type (`linear` / `exponential` / `sigmoid`), optional `half_life_ms`, terminal zero-vector, and CRC `resolution` (default 5). |
+| 6 | `decay_policy` | `object` | Dissolution behaviour: Decay Envelope type (`linear` / `exponential` / `sigmoid`), optional `half_life_ms`, terminal zero-vector, and `crc_resolution` (default 5). |
 | 7 | `reactivation_conditions` | `object` | Whether a dissolved Ephemeron may be re-nucleated, with `max_reactivations`, `cooldown_ms`, and `seed_rotation` policy. |
 | 8 | `cross_model_compatibility` | `object` | Boolean flags for SENSORIUM (SPEC-008) and TRAUMACODEDRAMA (SPEC-009) compliance, plus a list of `supported_specs`. |
 | 9 | `provenance` | `object` | Origin and audit trail: `created_by`, `created_at`, `source_spec`, `source_spec_version`, and optional `parent_record_id`. |

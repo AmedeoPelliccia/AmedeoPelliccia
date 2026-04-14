@@ -23,7 +23,7 @@
         },
         "terminal_vector": {
           "type": "array",
-          "items": { "type": "integer", "minimum": 0, "maximum": 99 },
+          "items": { "type": "integer", "minimum": 0, "maximum": 0 },
           "minItems": 6,
           "maxItems": 6,
           "description": "Required terminal emotive vector at t_dissolution. MUST be [0,0,0,0,0,0] per rule E-007."
@@ -144,7 +144,21 @@
           "description": "Canonical Ephemeron mode identifier (e.g. EGI-MODE-001)."
         },
         "dominant_channel": {
-          "type": ["string", "array", "null"],
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": ["Auditory", "Haptic", "Optic", "Olfactory", "Gustatory", "Proprioceptive"]
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["Auditory", "Haptic", "Optic", "Olfactory", "Gustatory", "Proprioceptive"]
+              },
+              "minItems": 1
+            },
+            { "type": "null" }
+          ],
           "description": "Primary SENSORIUM channel(s) for the cover signal. Null for Full-Spectrum."
         },
         "bloom_fraction_min": {
