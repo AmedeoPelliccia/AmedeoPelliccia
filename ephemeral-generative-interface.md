@@ -35,7 +35,7 @@ L'interfaccia può sparire come oggetto esplicito ma riapparire sotto stimoli co
 Quindi:
 
 * non si conserva necessariamente la forma completa,
-* si conserva una **seme**, una **firma** o una **traccia residuale**,
+* si conserva un **seme**, una **firma** o una **traccia residuale**,
 * la struttura può rifiorire come una **sinapsi funzionale riattivata**.
 
 ## Ciclo di vita
