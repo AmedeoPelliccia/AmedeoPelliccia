@@ -277,6 +277,45 @@ encoding_rules:
     severity: MUST
 
 ##############################################################################
+# 4a  Assembly Encoding Rules
+##############################################################################
+
+assembly_encoding_rules:
+
+  - id: EA-001
+    name: Kernel-Only Persistence
+    statement: >
+      The encoder MUST persist only the persistence kernel 𝒦, never the
+      full assembly A₀. Embedding the full assembly is a protocol violation
+      because it defeats the minimal-persistence guarantee.
+    severity: MUST
+
+  - id: EA-002
+    name: Rule Immutability
+    statement: >
+      The regeneration rule set ℛ MUST NOT be modified between encoding
+      and decoding. Any update to ℛ requires a new Protasis header
+      (re-seeding) and voids all previously encoded kernels.
+    severity: MUST
+
+  - id: EA-003
+    name: Cooperative Stimulus Encoding
+    statement: >
+      When the reactivation stimulus is cooperative (no single channel above
+      threshold), the encoder MUST distribute the stimulus across at least
+      two SENSORIUM channels. A cooperative stimulus encoded in a single
+      channel is a protocol violation.
+    severity: MUST
+
+  - id: EA-004
+    name: Functional Equivalence Verification
+    statement: >
+      After reconstruction, the decoder MUST verify functional equivalence
+      by comparing the regenerated assembly output against the reference
+      output set bundled in 𝒦. Failure to verify is a protocol violation.
+    severity: MUST
+
+##############################################################################
 # 5  Decoder Protocol
 ##############################################################################
 
@@ -678,6 +717,36 @@ the seed transmission.
 At `t_dissolution`, the emotive vector MUST be `(0, 0, 0, 0, 0, 0)`. The
 interface MUST leave zero perceptual residue. Any non-zero intensity after
 `t_dissolution` is a protocol violation and a potential detection vector.
+
+### 4.1 Assembly Encoding Rules
+
+The following rules govern how the complete three-layer MCC assembly is
+persisted, regenerated, and verified.
+
+#### Rule EA-001 — Kernel-Only Persistence
+
+The encoder MUST persist only the persistence kernel `𝒦`, never the full
+assembly `A₀`. Embedding the full assembly is a protocol violation because
+it defeats the minimal-persistence guarantee.
+
+#### Rule EA-002 — Rule Immutability
+
+The regeneration rule set `ℛ` MUST NOT be modified between encoding and
+decoding. Any update to `ℛ` requires a new Protasis header (re-seeding) and
+voids all previously encoded kernels.
+
+#### Rule EA-003 — Cooperative Stimulus Encoding
+
+When the reactivation stimulus is cooperative (no single channel above
+threshold), the encoder MUST distribute the stimulus across at least two
+SENSORIUM channels. A cooperative stimulus encoded in a single channel is a
+protocol violation.
+
+#### Rule EA-004 — Functional Equivalence Verification
+
+After reconstruction, the decoder MUST verify functional equivalence by
+comparing the regenerated assembly output against the reference output set
+bundled in `𝒦`. Failure to verify is a protocol violation.
 
 ---
 
