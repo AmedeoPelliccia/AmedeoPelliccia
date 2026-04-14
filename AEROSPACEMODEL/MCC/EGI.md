@@ -822,7 +822,7 @@ to 5 (Rule E-004). `lifecycle_range_ms` is a two-element `[min, max]` array.
 Rule E-007. `half_life_ms` is nullable for custom envelopes.
 
 **`reactivation_conditions`** — `allowed` (boolean) is the only required
-sub-field. Optional: `trigger` event name, `max_reactivations` count (null =
+field. Optional: `trigger` event name, `max_reactivations` count (null =
 unlimited), and `cooldown_ms` interval.
 
 **`cross_model_compatibility`** — Boolean flags `sensorium` and

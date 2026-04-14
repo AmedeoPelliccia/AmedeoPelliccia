@@ -20,7 +20,7 @@
         "half_life_ms": {
           "type": ["number", "null"],
           "minimum": 0,
-          "description": "Time in milliseconds for intensity to drop to 50 % of Bloom-end value. null when envelope_type is 'custom'."
+          "description": "Time in milliseconds for intensity to drop to 50% of Bloom-end value. null when envelope_type is 'custom'."
         },
         "terminal_vector": {
           "type": "array",
