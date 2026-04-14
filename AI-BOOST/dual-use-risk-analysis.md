@@ -73,9 +73,9 @@ Low      │              │                 │  DU-01, DU-03
 
 | Requirement | Status | Evidence |
 |-------------|:------:|----------|
-| EU Dual-Use Regulation (EU) 2021/821 screening | 🟡 Planned | All consortium partners screened; no listed entities. |
-| US EAR/ITAR assessment | 🟡 Planned | No US-origin controlled technology used in core pipeline. |
-| End-use monitoring | 🟡 Planned | Responsible use license terms for model distribution. |
+| EU Dual-Use Regulation (EU) 2021/821 screening | 🟢 Completed | All consortium partners screened; no listed entities. |
+| US EAR/ITAR assessment | 🟢 Completed | Core pipeline assessed; no US-origin controlled technology identified. |
+| End-use monitoring | 🟡 Planned | Responsible use license terms will be used to support monitoring of model distribution and downstream use. |
 
 ### 3.1 Screening Process
 
