@@ -167,8 +167,7 @@
     },
     "cross_model_compatibility": {
       "type": "boolean",
-      "default": true,
-      "description": "Whether the record is portable across different generating models."
+      "description": "Whether the record is portable across different generating models. Recommended value: true."
     },
     "provenance": {
       "$ref": "#/$defs/provenance"
@@ -184,6 +183,7 @@
     "simplicial_signature",
     "persistence",
     "reactivation",
+    "cross_model_compatibility",
     "provenance"
   ],
 
