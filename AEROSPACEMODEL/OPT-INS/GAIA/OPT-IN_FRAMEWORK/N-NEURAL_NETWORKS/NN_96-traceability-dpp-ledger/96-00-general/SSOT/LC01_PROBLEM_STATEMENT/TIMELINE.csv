@@ -1,0 +1,7 @@
+Milestone_ID,KNOT_ID,Name,Date,Entry_Criteria,Exit_Criteria,Status
+MS-GAIA-DPP-96-EVT,KNOT-GAIA-DPP-96-004,Lifecycle Event Recording Review,2026-07-15,FMEA + event taxonomy survey complete,Event recording protocol and sensor mapping approved,PLANNED
+MS-GAIA-DPP-96-SCH,KNOT-GAIA-DPP-96-001,DPP Schema Review,2026-07-31,Schema field set + regulatory gap analysis complete,DPP schema baselined,PLANNED
+MS-GAIA-DPP-96-LDG,KNOT-GAIA-DPP-96-002,Ledger Architecture PDR,2026-08-31,Trade study + integrity-performance Pareto complete,Ledger architecture selected,PLANNED
+MS-GAIA-DPP-96-PRV,KNOT-GAIA-DPP-96-003,Provenance Subsystem Review,2026-09-30,Ingestion pipeline design + provenance data model defined,Provenance tracking baseline approved,PLANNED
+MS-GAIA-DPP-96-INT,KNOT-GAIA-DPP-96-005,Cross-Domain Interoperability Review,2026-10-31,Data-flow model per subsystem validated + API contracts drafted,Interoperability baseline frozen,PLANNED
+MS-GAIA-DPP-96-AUD,KNOT-GAIA-DPP-96-006,Audit & Compliance Review,2026-11-30,Audit FMEA + compliance reporting procedures validated,Compliance reporting package approved,PLANNED

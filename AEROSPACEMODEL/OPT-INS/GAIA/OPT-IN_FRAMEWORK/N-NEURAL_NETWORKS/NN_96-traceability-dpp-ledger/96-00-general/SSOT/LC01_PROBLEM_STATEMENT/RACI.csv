@@ -1,0 +1,7 @@
+KNOT_ID,Activity,R,A,C,I
+KNOT-GAIA-DPP-96-001,DPP schema definition,STK_SE,STK_SE,STK_SAF;STK_CERT,STK_PMO
+KNOT-GAIA-DPP-96-002,Ledger architecture trade study,STK_SE,STK_CERT,STK_SAF;STK_TEST,STK_PMO
+KNOT-GAIA-DPP-96-003,Component provenance tracking design,STK_SE,STK_SE,STK_SAF;STK_TEST,STK_PMO
+KNOT-GAIA-DPP-96-004,Lifecycle event recording protocol,STK_OPS,STK_CERT,STK_SE;STK_TEST,STK_PMO
+KNOT-GAIA-DPP-96-005,Cross-domain interoperability API,STK_SE,STK_SE,STK_OPS,STK_PMO
+KNOT-GAIA-DPP-96-006,Audit & compliance reporting,STK_CERT,STK_CERT,STK_SE;STK_SAF;STK_OPS,STK_PMO
