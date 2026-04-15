@@ -1,0 +1,172 @@
+---
+# KNU-GAIA-DPP-96-ANA-001
+# DPP Schema Conformance Analysis — EU ESPR Baseline & GAIA Component Taxonomy
+#
+# Lifecycle: LC05 — Analysis Models
+# KNOT:      KNOT-GAIA-DPP-96-001 (DPP schema definition)
+# Owner:     STK_SE
+# Status:    PLANNED
+# Due:       2026-07-15
+
+knu_id: "KNU-GAIA-DPP-96-ANA-001"
+knot_id: "KNOT-GAIA-DPP-96-001"
+knu_type: "ANA"
+artifact_class: "SSOT"
+title: "DPP Schema Conformance Analysis — EU ESPR Baseline & GAIA Component Taxonomy"
+description: >
+  Gap analysis validating the canonical GAIA Digital Product Passport schema
+  against the EU Ecodesign for Sustainable Products Regulation (ESPR) baseline
+  requirements and the GAIA component taxonomy. Identifies mandatory fields,
+  enumeration coverage, and regulatory deltas.
+owner: "STK_SE"
+stakeholders:
+  - "STK_SAF"
+  - "STK_CERT"
+  - "STK_OPS"
+status: "PLANNED"
+due_date: "2026-07-15"
+effort_predicted: 13
+verification_method: "Inspection"
+acceptance_criteria: >
+  DPP schema validated against EU ESPR baseline and GAIA component taxonomy
+
+# ---------------------------------------------------------------------------
+# Analysis Model Definition
+# ---------------------------------------------------------------------------
+analysis:
+  type: "conformance_gap_analysis"
+  methodology: "field-by-field mapping with regulatory traceability matrix"
+
+  inputs:
+    - id: "INP-01"
+      name: "EU ESPR DPP baseline requirements"
+      source: "EU Regulation 2024/1781 (Ecodesign for Sustainable Products)"
+      description: >
+        Mandatory and optional DPP data fields defined by the EU ESPR
+        framework, including product identification, materials composition,
+        carbon footprint, repairability score, and end-of-life instructions.
+    - id: "INP-02"
+      name: "GAIA component taxonomy"
+      source: "GAIA OPT-IN_FRAMEWORK — subsystem manifest"
+      description: >
+        Hierarchical classification of GAIA station components across
+        T-TECHNOLOGIES, P-PROGRAMS, N-NEURAL_NETWORKS, I-INFRASTRUCTURES,
+        S-SPACE_SIMULATIONS, and O-ORGANIZATIONS domains.
+    - id: "INP-03"
+      name: "GAIA DPP draft schema"
+      source: "KNOT-GAIA-DPP-96-001 working artifacts"
+      description: >
+        Current candidate DPP field set produced by the schema definition
+        KNOT, to be validated by this analysis.
+
+  outputs:
+    - id: "OUT-01"
+      name: "ESPR conformance matrix"
+      format: "CSV"
+      description: >
+        Row-per-ESPR-field mapping to GAIA DPP schema fields, with
+        conformance status (COMPLIANT / PARTIAL / GAP / N-A).
+    - id: "OUT-02"
+      name: "GAIA taxonomy coverage report"
+      format: "Markdown"
+      description: >
+        Per-domain component class coverage showing which taxonomy nodes
+        have DPP field definitions and which require extension.
+    - id: "OUT-03"
+      name: "Regulatory delta log"
+      format: "YAML"
+      description: >
+        Machine-readable list of identified gaps with proposed remediation
+        actions and priority classification.
+
+  # ESPR mandatory DPP data categories (EU Reg 2024/1781 Art. 9)
+  espr_baseline_categories:
+    - category: "product_identification"
+      espr_ref: "Art.9(1)(a)"
+      description: "Unique product identifier, manufacturer, facility of manufacture"
+      mandatory: true
+    - category: "materials_composition"
+      espr_ref: "Art.9(1)(b)"
+      description: "Bill of materials with substances of concern"
+      mandatory: true
+    - category: "carbon_footprint"
+      espr_ref: "Art.9(1)(c)"
+      description: "Product carbon footprint per declared unit"
+      mandatory: true
+    - category: "circularity_parameters"
+      espr_ref: "Art.9(1)(d)"
+      description: "Durability, reusability, recyclability, recycled content"
+      mandatory: true
+    - category: "energy_performance"
+      espr_ref: "Art.9(1)(e)"
+      description: "Energy consumption during use phase"
+      mandatory: true
+    - category: "compliance_documentation"
+      espr_ref: "Art.9(1)(f)"
+      description: "EU declaration of conformity, test reports, certifications"
+      mandatory: true
+    - category: "end_of_life_instructions"
+      espr_ref: "Art.9(1)(g)"
+      description: "Disassembly, recycling, and disposal instructions"
+      mandatory: true
+    - category: "supply_chain_due_diligence"
+      espr_ref: "Art.9(2)"
+      description: "Supply chain traceability and due diligence records"
+      mandatory: false
+
+  # GAIA component taxonomy domains for DPP coverage mapping
+  gaia_taxonomy_domains:
+    - domain: "T-TECHNOLOGIES_ON_BOARD_SYSTEMS"
+      prefix: "SYS_"
+      description: "On-board station subsystems (ECLSS, power, thermal, avionics, etc.)"
+      dpp_relevance: "high"
+    - domain: "P-PROGRAMS"
+      prefix: "PRG_"
+      description: "Programme-level modules (mass properties, servicing, berthing, etc.)"
+      dpp_relevance: "medium"
+    - domain: "N-NEURAL_NETWORKS"
+      prefix: "NN_"
+      description: "Cross-cutting neural/digital subsystems (AI/ML, DPP, synthetic data)"
+      dpp_relevance: "high"
+    - domain: "I-INFRASTRUCTURES"
+      prefix: "INF_"
+      description: "Ground segment, launch ops, supply chain infrastructure"
+      dpp_relevance: "medium"
+    - domain: "S-SPACE_SIMULATIONS"
+      prefix: "SIM_"
+      description: "Orbital, thermal, radiation, microgravity simulation environments"
+      dpp_relevance: "low"
+    - domain: "O-ORGANIZATIONS"
+      prefix: "ORG_"
+      description: "Programme governance, policy, maintenance planning"
+      dpp_relevance: "low"
+
+# ---------------------------------------------------------------------------
+# Dependencies
+# ---------------------------------------------------------------------------
+dependencies:
+  upstream:
+    - ref: "KNOT-GAIA-DPP-96-001"
+      relationship: "analyses"
+      description: "DPP schema definition KNOT that produces the draft schema"
+    - ref: "KNOT-GAIA-MISS-001"
+      relationship: "constrained_by"
+      description: "Mission class drives traceability depth and regulatory regime"
+    - ref: "KNOT-GAIA-GOV-001"
+      relationship: "constrained_by"
+      description: "Governance framework sets DPP mandatory fields"
+  downstream:
+    - ref: "KNU-GAIA-DPP-96-REQ-001"
+      relationship: "informs"
+      description: "Conformance gaps feed back into schema requirements baseline"
+    - ref: "LC04_DESIGN_DEFINITION"
+      relationship: "informs"
+      description: "Analysis results inform DPP ingestion pipeline design"
+  external:
+    - ref: "EU Regulation 2024/1781 (ESPR)"
+      relationship: "compliance_baseline"
+      description: "EU Ecodesign for Sustainable Products Regulation — DPP requirements"
+    - ref: "ITAR/EAR"
+      relationship: "compliance_overlay"
+      description: "Export-control overlay for defence-adjacent DPP items"
+---
