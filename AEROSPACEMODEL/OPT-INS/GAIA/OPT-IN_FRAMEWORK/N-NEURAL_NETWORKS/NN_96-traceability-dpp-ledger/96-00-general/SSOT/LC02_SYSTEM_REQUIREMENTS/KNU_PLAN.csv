@@ -1,0 +1,5 @@
+KNU_ID,KNOT_ID,KNU_Type,Artifact_Class,Expected_Location,Acceptance_Criteria,Verification_Method,Owner_AoR,Due_Date,Status,Effort_Predicted
+KNU-GAIA-DPP-96-REQ-001,KNOT-GAIA-DPP-96-001,REQ,SSOT,NN_96-traceability-dpp-ledger/96-00-general/SSOT/LC02_SYSTEM_REQUIREMENTS/,DPP schema field set baselined with mandatory/optional classification,Review,STK_SE,2026-06-30,PLANNED,8
+KNU-GAIA-DPP-96-REQ-002,KNOT-GAIA-DPP-96-002,REQ,SSOT,NN_96-traceability-dpp-ledger/96-00-general/SSOT/LC02_SYSTEM_REQUIREMENTS/,Ledger throughput latency and integrity requirements specified,Review,STK_SE,2026-07-31,PLANNED,8
+KNU-GAIA-DPP-96-REQ-003,KNOT-GAIA-DPP-96-003,REQ,SSOT,NN_96-traceability-dpp-ledger/96-00-general/SSOT/LC02_SYSTEM_REQUIREMENTS/,Provenance data capture points and mandatory attestation fields specified,Review,STK_SE,2026-08-31,PLANNED,5
+KNU-GAIA-DPP-96-REQ-004,KNOT-GAIA-DPP-96-005,REQ,SSOT,NN_96-traceability-dpp-ledger/96-00-general/SSOT/LC02_SYSTEM_REQUIREMENTS/,API contract requirements traced to AGGIX URI scheme and subsystem manifest,Review,STK_SE,2026-10-15,PLANNED,5

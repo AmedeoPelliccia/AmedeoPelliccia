@@ -1,0 +1,5 @@
+KNOT_ID,Activity,R,A,C,I
+KNOT-GAIA-DPP-96-001,DPP schema requirements elicitation,STK_SE,STK_SE,STK_SAF;STK_CERT,STK_PMO
+KNOT-GAIA-DPP-96-002,Ledger throughput latency and integrity requirements specification,STK_SE,STK_CERT,STK_SAF;STK_TEST,STK_PMO
+KNOT-GAIA-DPP-96-003,Provenance data capture requirements definition,STK_SE,STK_SE,STK_SAF;STK_TEST,STK_PMO
+KNOT-GAIA-DPP-96-005,Cross-domain API contract requirements derivation,STK_SE,STK_SE,STK_OPS,STK_PMO

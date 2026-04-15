@@ -1,0 +1,5 @@
+Milestone_ID,KNU_ID,Name,Date,Entry_Criteria,Exit_Criteria,Status
+MS-GAIA-DPP-96-REQ-SCH,KNU-GAIA-DPP-96-REQ-001,DPP Schema Requirements Review,2026-06-30,KNOT-GAIA-DPP-96-001 problem statement accepted,DPP schema field set baselined with mandatory/optional classification,PLANNED
+MS-GAIA-DPP-96-REQ-LDG,KNU-GAIA-DPP-96-REQ-002,Ledger Requirements Review,2026-07-31,Ledger KNOT scope and trade-study inputs available,Ledger throughput latency and integrity requirements approved,PLANNED
+MS-GAIA-DPP-96-REQ-PRV,KNU-GAIA-DPP-96-REQ-003,Provenance Requirements Review,2026-08-31,Provenance KNOT scope and material-cert survey complete,Provenance data capture points and attestation fields specified,PLANNED
+MS-GAIA-DPP-96-REQ-API,KNU-GAIA-DPP-96-REQ-004,Interoperability API Requirements Review,2026-10-15,Cross-domain KNOT scope and subsystem manifest available,API contract requirements traced to AGGIX URI scheme,PLANNED

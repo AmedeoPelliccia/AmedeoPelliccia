@@ -1,0 +1,44 @@
+tokenomics:
+  token_symbol: "TT"
+  unit: "deg"
+  deg_per_tt: 360
+
+knot_rewards:
+  - knot_id: "KNOT-GAIA-DPP-96-001"
+    knu_id: "KNU-GAIA-DPP-96-REQ-001"
+    pool_tt: 150
+    pool_deg: 54000
+  - knot_id: "KNOT-GAIA-DPP-96-002"
+    knu_id: "KNU-GAIA-DPP-96-REQ-002"
+    pool_tt: 200
+    pool_deg: 72000
+  - knot_id: "KNOT-GAIA-DPP-96-003"
+    knu_id: "KNU-GAIA-DPP-96-REQ-003"
+    pool_tt: 100
+    pool_deg: 36000
+  - knot_id: "KNOT-GAIA-DPP-96-005"
+    knu_id: "KNU-GAIA-DPP-96-REQ-004"
+    pool_tt: 100
+    pool_deg: 36000
+
+eligibility:
+  require_status: ["COMPLETE", "ACCEPTED"]
+  require_links_resolved: true
+  require_brex_pass_for_pub: true
+
+allocation:
+  method: "effort_plus_impact"
+  formula: "w_i = alpha_effort*E_hat_i + alpha_impact*I_hat_i; T_i = P_k * w_i"
+  params:
+    alpha_effort: 0.30
+    alpha_impact: 0.70
+    rounding: "floor_deg"
+
+measurement:
+  residual_scale: "0..100"
+  required_fields_per_knu:
+    - effort_predicted
+    - delta_residual_primary
+    - delta_residual_adjacent_sum
+    - verification_status
+    - linked_artifacts

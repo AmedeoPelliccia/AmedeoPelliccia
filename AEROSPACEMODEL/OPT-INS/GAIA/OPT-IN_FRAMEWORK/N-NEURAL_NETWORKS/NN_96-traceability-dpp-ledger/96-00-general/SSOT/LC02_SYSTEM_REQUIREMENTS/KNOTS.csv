@@ -1,0 +1,5 @@
+KNOT_ID,Title,Requirement_Summary,Scope,Status,Owner_AoR,Stakeholders,Parent_KNOT,Target_Close_Date
+KNOT-GAIA-DPP-96-001,DPP schema definition,DPP schema field set baselined with mandatory/optional classification,"In: DPP field definitions, enumerations; Out: baselined schema spec",OPEN,STK_SE,STK_SAF;STK_CERT;STK_OPS,KNOT-GAIA-MISS-001,2026-06-30
+KNOT-GAIA-DPP-96-002,Ledger architecture (hash-chain vs DAG),Ledger throughput latency and integrity requirements specified,"In: ledger subsystem; Out: performance and integrity requirement set",OPEN,STK_SE,STK_SAF;STK_CERT;STK_TEST,KNOT-GAIA-DPP-96-001,2026-07-31
+KNOT-GAIA-DPP-96-003,Component provenance tracking,Provenance data capture points and mandatory attestation fields specified,"In: material certs, inspection records; Out: provenance requirement spec",OPEN,STK_SE,STK_SAF;STK_TEST,KNOT-GAIA-DPP-96-001,2026-08-31
+KNOT-GAIA-DPP-96-005,Cross-domain interoperability,API contract requirements traced to AGGIX URI scheme and subsystem manifest,"In: subsystem DPP interfaces; Out: API requirement spec",OPEN,STK_SE,STK_OPS;STK_PMO,KNOT-GAIA-DPP-96-001,2026-10-15
