@@ -10,7 +10,7 @@
 | **Parent** | ESSA-DOC-AMPEL360-001 ([AMPEL360.md](AMPEL360.md)) |
 | **Companion** | [`ampel360-q10.yaml`](ampel360-q10.yaml) |
 | **Related** | [`AMPEL360.md`](AMPEL360.md) · [`H-PIPELINE.md`](H-PIPELINE.md) · [`ESSA-AGENCY-CONSTITUTION.md`](ESSA-AGENCY-CONSTITUTION.md) |
-| **Domain** | Space — Reusable / Orbital / Hybrid Platforms |
+| **Domain** | Space — Crewed Shuttle-Type Spacecraft (Q10 quotient designator) |
 | **Regulatory Authority** | European Space Agency (ESA) · European Commission |
 | **Last Updated** | 2026-03-01 |
 
@@ -28,7 +28,7 @@ Q10 **tightens** the AMPEL360 baseline for the European space regulatory domain.
 
 ## 1. Domain Scope
 
-**Platform:** Reusable, orbital, and hybrid space platforms — including launch vehicles, spacecraft, and reentry systems.
+**Platform:** Crewed shuttle-type spacecraft for space travel and space tourism. Q10 is a **quotient designator**, not a passenger count.
 
 **H-factor:** The human safety envelope in the space domain covers:
 
