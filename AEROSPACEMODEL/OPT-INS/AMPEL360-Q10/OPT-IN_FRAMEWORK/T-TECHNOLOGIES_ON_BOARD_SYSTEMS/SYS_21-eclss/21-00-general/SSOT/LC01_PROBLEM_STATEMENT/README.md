@@ -22,7 +22,9 @@ Atmosphere composition, CO₂ removal, humidity management, cabin pressure integ
 | Up | `KNOT-Q10-MISS-001` | Mission class drives duration & orbit |
 | Up | `KNOT-Q10-ECLSS-001` | Product-level loop-closure decision |
 | Across | `SYS_52` (hatches) | Pressure boundary & leak paths |
+| Across | `SYS_53` (pressure boundary / structural shell) | Cabin pressure integrity depends on the structural pressure vessel |
 | Across | `SYS_30` (thermal) | Heat rejection for ECLSS equipment |
 | Across | `SYS_35` (breathing gas) | O₂ supply & EVA pre-breathe |
+| Across | `SYS_28` (propellant) | Consumables sizing and emergency constraints vary with mission propellant profile |
 | Across | `SYS_26` (fire) | Atmosphere inerting & detection |
 | Across | `SYS_25` (crew) | Metabolic loads & accommodation |
