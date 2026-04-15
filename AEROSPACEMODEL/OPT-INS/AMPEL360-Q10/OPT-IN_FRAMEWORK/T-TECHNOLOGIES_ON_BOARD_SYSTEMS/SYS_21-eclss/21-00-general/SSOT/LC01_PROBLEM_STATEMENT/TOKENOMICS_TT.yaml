@@ -30,11 +30,10 @@ eligibility:
 
 allocation:
   method: "effort_plus_impact"
-  formula: "w_i = alpha*E_hat_i + (1-alpha)*I_hat_i; T_i = P_k * w_i"
+  formula: "w_i = alpha_effort*E_hat_i + alpha_impact*I_hat_i; T_i = P_k * w_i"
   params:
     alpha_effort: 0.30
     alpha_impact: 0.70
-    lambda_spillover: 0.50
     rounding: "floor_deg"
 
 measurement:
