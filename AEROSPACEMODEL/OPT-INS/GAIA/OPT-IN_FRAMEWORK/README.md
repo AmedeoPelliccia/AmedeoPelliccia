@@ -12,7 +12,7 @@ last_updated: "2026-04-15"
 
 Long-duration orbital / deep-space crewed habitation. Regulatory anchors: ECSS-E/Q/M, NASA-STD-3001, ISS heritage, IDSS for docking.
 
-## 5-axis topology
+## 6-axis topology
 
 | Axis | Chapters | Scope |
 |------|----------|-------|
@@ -21,8 +21,9 @@ Long-duration orbital / deep-space crewed habitation. Regulatory anchors: ECSS-E
 | `T-TECHNOLOGIES_ON_BOARD_SYSTEMS/` | 27 | ECLSS, GNC, power, EVA, comms, radiation, robotics, etc. |
 | `I-INFRASTRUCTURES/` | 6 | Ground support, launch, MCC, EVA training, logistics |
 | `N-NEURAL_NETWORKS/` | 2 | Traceability / DPP / ledger, program slot |
+| `S-SPACE_SIMULATIONS/` | 6 | Orbital mechanics, vacuum/thermal, radiation, microgravity, RPO, reentry |
 
-Total: **48 chapters**, each with one seed subject `XX-00-general` carrying SSOT (LC01–LC14) and PUB/AMM/CSDB+EXPORT+IETP.
+Total: **54 chapters**, each with one seed subject `XX-00-general` carrying SSOT (LC01–LC14) and PUB/AMM/CSDB+EXPORT+IETP.
 
 ## Product-level LC01
 
