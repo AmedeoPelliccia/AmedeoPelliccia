@@ -1,6 +1,6 @@
 Milestone_ID,KNOT_ID,Name,Date,Entry_Criteria,Exit_Criteria,Status
-MS-Q10-ECLSS-21-ATM,KNOT-Q10-ECLSS-21-001,Atmosphere Setpoints Review,2026-07-31,pO₂/pCO₂/pN₂ analysis complete,Setpoints baselined,PLANNED
 MS-Q10-ECLSS-21-PRS,KNOT-Q10-ECLSS-21-004,Pressure Relief & Leak Detection Review,2026-07-15,FMEA + sensor survey complete,Relief valve sizing and sensor suite approved,PLANNED
+MS-Q10-ECLSS-21-ATM,KNOT-Q10-ECLSS-21-001,Atmosphere Setpoints Review,2026-07-31,pO₂/pCO₂/pN₂ analysis complete,Setpoints baselined,PLANNED
 MS-Q10-ECLSS-21-CO2,KNOT-Q10-ECLSS-21-002,CO₂ Removal PDR,2026-08-31,Trade study + Pareto analysis complete,CO₂ removal architecture selected,PLANNED
 MS-Q10-ECLSS-21-HUM,KNOT-Q10-ECLSS-21-003,Humidity Subsystem Review,2026-09-30,Condensate design + humidity band defined,Humidity management baseline approved,PLANNED
 MS-Q10-ECLSS-21-CON,KNOT-Q10-ECLSS-21-005,Consumables Sizing Review,2026-10-31,Mass-volume model per mission class validated,Consumables manifest frozen,PLANNED
