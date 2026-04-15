@@ -1,3 +1,18 @@
+---
+schema_version: "1.0.0"
+document_type: repository_constitution
+document_id: AEROSPACEMODEL-CONST-001
+title: "Model Digital Constitution"
+version: "0.1-draft"
+status: governing_repository_constitution
+applies_to:
+  - "AmedeoPelliccia/AmedeoPelliccia"
+origin_context: "AEROSPACEMODEL genesis repository"
+related:
+  - README.md
+last_updated: "2026-04-15"
+---
+
 # Model Digital Constitution
 
 | Metadata | Value |
@@ -7,7 +22,7 @@
 | **Status** | Governing Repository Constitution |
 | **Applies To** | `AmedeoPelliccia/AmedeoPelliccia` as the AEROSPACEMODEL genesis repository |
 | **Related** | [`README.md`](README.md) |
-| **Last Updated** | 2026-04-14 |
+| **Last Updated** | 2026-04-15 |
 
 ---
 
