@@ -18,6 +18,11 @@
 
 > ACQUA defines a formal technology architecture for hybrid systems that integrate aerospace infrastructure, classical computation, artificial intelligence, and quantum computing — organized as a multi-layer system governed by the QQQ framework (Quasi–Quanto–Quantum).
 
+Within this repository's architectural framing, **ACQUA** is also defined as
+the **quantum ecosystems companion assy joint**: the companion assembly joint
+that binds aerospace, computational, quantum, and governance ecosystems into a
+single coordinated architecture.
+
 ---
 
 ## 1. Architectural Principle
