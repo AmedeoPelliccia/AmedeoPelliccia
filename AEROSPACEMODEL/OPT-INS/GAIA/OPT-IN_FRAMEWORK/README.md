@@ -6,42 +6,37 @@ status: draft
 last_updated: "2026-04-15"
 ---
 
-# OPT-IN Framework — GAIA
+# GAIA — OPT-IN Framework Instance
 
-> Space stations and habitats — orbital and deep-space human habitation.
-> This is the OPT-IN framework instance for the GAIA product, housed inside the OPT-INS Space SIM wrapper.
+**Repo:** AEROSPACEMODEL · **Framework:** OPT-INS (OPT-IN + Space SIM) · **Product:** GAIA — Space stations & habitats
 
-## Mission
+Long-duration orbital / deep-space crewed habitation. Regulatory anchors: ECSS-E/Q/M, NASA-STD-3001, ISS heritage, IDSS for docking.
 
-Orbital / deep-space human habitation — space stations and habitats.
+## 5-axis topology
 
-## Regulatory Anchor
+| Axis | Chapters | Scope |
+|------|----------|-------|
+| `O-ORGANIZATIONS/` | 6 | Policy & org |
+| `P-PROGRAMS/` | 7 | Dimensions, handling, servicing |
+| `T-TECHNOLOGIES_ON_BOARD_SYSTEMS/` | 27 | ECLSS, GNC, power, EVA, comms, radiation, robotics, etc. |
+| `I-INFRASTRUCTURES/` | 6 | Ground support, launch, MCC, EVA training, logistics |
+| `N-NEURAL_NETWORKS/` | 2 | Traceability / DPP / ledger, program slot |
 
-- **ECSS-E/Q/M** — European Cooperation for Space Standardization (engineering, quality, management)
-- **NASA-STD-3001** — crew health and performance standards
-- **ISS heritage** — operational baseline from International Space Station
+Total: **48 chapters**, each with one seed subject `XX-00-general` carrying SSOT (LC01–LC14) and PUB/AMM/CSDB+EXPORT+IETP.
 
-## Seed KNOTs
+## Product-level LC01
 
-| KNOT ID | Domain |
-|---------|--------|
-| ORBIT-001 | Architecture |
-| ECLSS-001 | Regenerative loop |
-| RAD-001 | Radiation protection |
-| MOD-001 | Docking / berthing standard |
-| DUR-001 | Crew rotation |
-| EVA-001 | Airlock architecture |
-| CERT-001 | Human-rating path |
+See [`LC01_PROBLEM_STATEMENT/`](LC01_PROBLEM_STATEMENT/) for 7 seed KNOTs and 2,000 TT reward pool.
 
-## Five Axes (Spatial Chapter Set)
-
-| Axis | Scope |
-|------|-------|
-| **O** — Organizations | Mission-equivalent (ECSS-M) |
-| **P** — Programs | Mission-equivalent (ECSS-M) |
-| **T** — Technologies / On-Board Systems | ECLSS, TPS, GNC, OMS/RCS, EVA, comms, power |
-| **I** — Infrastructures | Launch, range, recovery, ground segment |
-| **N** — Neural Networks | Ledger, DPP, governance |
+| KNOT | Title | Pool |
+|---|---|---|
+| KNOT-GAIA-ORBIT-001 | Target orbit & architecture (LEO / GEO / cislunar / Lagrange) | 300 TT |
+| KNOT-GAIA-ECLSS-001 | Regenerative loop closure % | 400 TT |
+| KNOT-GAIA-RAD-001 | Radiation protection & storm shelter | 300 TT |
+| KNOT-GAIA-MOD-001 | Module & docking standard (IDSS / CBM) | 250 TT |
+| KNOT-GAIA-DUR-001 | Crew rotation cadence & long-duration HF | 250 TT |
+| KNOT-GAIA-EVA-001 | EVA cadence & airlock architecture | 250 TT |
+| KNOT-GAIA-CERT-001 | Human-rating certification path | 250 TT |
 
 ## Related
 
