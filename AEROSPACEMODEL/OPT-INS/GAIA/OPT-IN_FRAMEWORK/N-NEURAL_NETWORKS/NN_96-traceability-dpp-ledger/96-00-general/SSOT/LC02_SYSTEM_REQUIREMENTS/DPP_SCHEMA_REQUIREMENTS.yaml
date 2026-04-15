@@ -14,6 +14,12 @@ schema:
   name: "GAIA-DPP-SCHEMA"
   version: "1.0.0"
   uri_pattern: "aggix://gaia/nn96/dpp/{component_class}/{dpp_id}@{version}"
+  obligation_semantics:
+    mandatory: "Field MUST be present and non-null in every DPP record"
+    optional: "Field MAY be omitted; when present it MUST conform to its type"
+    conditional_mandatory: >
+      Field is optional by default but becomes mandatory when the condition
+      specified in the field's conditional_mandatory property evaluates to true
   description: >
     Canonical data schema for Digital Product Passports covering all GAIA
     component classes.  Each DPP record is an immutable, versioned entry in the
