@@ -1,0 +1,5 @@
+# SYS_31 · Avionics / on-board computer — SYS_31-00-general
+
+**Product:** ROBBBO-T · **Axis:** T-TECHNOLOGIES_ON_BOARD_SYSTEMS · **Chapter:** SYS_31
+
+Subject node. SSOT (LC01–LC14) + PUB/AMM (CSDB · EXPORT · IETP).

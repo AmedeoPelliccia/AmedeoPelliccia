@@ -6,49 +6,45 @@ status: draft
 last_updated: "2026-04-15"
 ---
 
-# OPT-IN Framework — ROBBBO-T
+# ROBBBO-T — OPT-IN Framework Instance
 
-> Unmanned platforms for communications, satellite servicing, repair, and debris removal.
-> This is the OPT-IN framework instance for the ROBBBO-T product, housed inside the OPT-INS Space SIM wrapper.
+**Repo:** AEROSPACEMODEL · **Framework:** OPT-INS (OPT-IN + Space SIM) · **Product:** ROBBBO-T — Unmanned spacecraft
 
-## Mission
+Mission lines: **COMMS**, **SAT**, **REPAIR**, **DEBRIS**. No crew onboard. Cert via ECSS, IADC debris mitigation, ITU (for COMMS).
 
-Unmanned space platforms — four mission classes:
+## Topology (OPT-INS = 6 axes)
 
-| Mission | Description |
-|---------|-------------|
-| **COMMS** | Communications relay / constellation |
-| **SAT** | Satellite servicing |
-| **REPAIR** | On-orbit repair operations |
-| **DEBRIS** | Debris removal and mitigation |
+| Axis | Path |
+|---|---|
+| O-ORGANIZATIONS | [`O-ORGANIZATIONS/`](O-ORGANIZATIONS/) |
+| P-PROGRAMS | [`P-PROGRAMS/`](P-PROGRAMS/) |
+| T-TECHNOLOGIES_ON_BOARD_SYSTEMS | [`T-TECHNOLOGIES_ON_BOARD_SYSTEMS/`](T-TECHNOLOGIES_ON_BOARD_SYSTEMS/) |
+| I-INFRASTRUCTURES | [`I-INFRASTRUCTURES/`](I-INFRASTRUCTURES/) |
+| N-NEURAL_NETWORKS | [`N-NEURAL_NETWORKS/`](N-NEURAL_NETWORKS/) |
+| **SPACE_SIM** | [`SPACE_SIM/`](SPACE_SIM/) — the explicit `S` of OPT-INS |
 
-## Regulatory Anchor
+## Mission lines (product variants)
 
-- **ECSS** — European Cooperation for Space Standardization
-- **IADC** — Inter-Agency Space Debris Coordination Committee debris mitigation guidelines
-- **ITU** — International Telecommunication Union (for comms missions)
+| Line | Scope | Path |
+|---|---|---|
+| COMMS  | Communication satellites and relay | [`MISSION_LINES/COMMS/`](MISSION_LINES/COMMS/)   |
+| SAT    | General-purpose satellite buses    | [`MISSION_LINES/SAT/`](MISSION_LINES/SAT/)       |
+| REPAIR | On-orbit servicing / refueling     | [`MISSION_LINES/REPAIR/`](MISSION_LINES/REPAIR/) |
+| DEBRIS | Active debris removal              | [`MISSION_LINES/DEBRIS/`](MISSION_LINES/DEBRIS/) |
 
-## Seed KNOTs
+## Product-level LC01
 
-| KNOT ID | Domain |
-|---------|--------|
-| AUTO-001 | Autonomy level |
-| RPO-001 | Proximity operations |
-| CAPTURE-001 | Capture mechanism |
-| DEBRIS-001 | IADC compliance |
-| COMMS-001 | ITU filing |
-| PROP-001 | Propulsion |
-| CYBER-001 | Uplink security |
+See [`LC01_PROBLEM_STATEMENT/`](LC01_PROBLEM_STATEMENT/) — 7 seed KNOTs, **2,100 TT** reward pool.
 
-## Five Axes (Spatial Chapter Set)
-
-| Axis | Scope |
-|------|-------|
-| **O** — Organizations | Mission-equivalent (ECSS-M) |
-| **P** — Programs | Mission-equivalent (ECSS-M) |
-| **T** — Technologies / On-Board Systems | ECLSS, TPS, GNC, OMS/RCS, EVA, comms, power |
-| **I** — Infrastructures | Launch, range, recovery, ground segment |
-| **N** — Neural Networks | Ledger, DPP, governance |
+| KNOT | Title | Pool |
+|---|---|---|
+| KNOT-RBT-AUTO-001    | Autonomy level per mission line             | 350 TT |
+| KNOT-RBT-RPO-001     | Rendezvous & proximity operations envelope  | 350 TT |
+| KNOT-RBT-CAPTURE-001 | Capture mechanism (arm/net/harpoon/magnet)  | 300 TT |
+| KNOT-RBT-DEBRIS-001  | IADC debris mitigation compliance           | 300 TT |
+| KNOT-RBT-COMMS-001   | ITU filing & frequency coordination         | 250 TT |
+| KNOT-RBT-PROP-001    | Propulsion architecture per mission class   | 250 TT |
+| KNOT-RBT-CYBER-001   | Uplink security & command authentication    | 300 TT |
 
 ## Related
 
