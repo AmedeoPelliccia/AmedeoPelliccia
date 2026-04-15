@@ -1,0 +1,50 @@
+tokenomics:
+  token_symbol: "TT"
+  unit: "deg"
+  deg_per_tt: 360
+
+knot_rewards:
+  - knot_id: "KNOT-Q100-CFG-001"
+    pool_tt: 400
+    pool_deg: 144000
+  - knot_id: "KNOT-Q100-CERT-001"
+    pool_tt: 500
+    pool_deg: 180000
+  - knot_id: "KNOT-Q100-H2-001"
+    pool_tt: 400
+    pool_deg: 144000
+  - knot_id: "KNOT-Q100-TANK-001"
+    pool_tt: 300
+    pool_deg: 108000
+  - knot_id: "KNOT-Q100-PROP-001"
+    pool_tt: 350
+    pool_deg: 126000
+  - knot_id: "KNOT-Q100-POWER-001"
+    pool_tt: 250
+    pool_deg: 90000
+  - knot_id: "KNOT-Q100-DPP-001"
+    pool_tt: 200
+    pool_deg: 72000
+
+eligibility:
+  require_status: ["COMPLETE", "ACCEPTED"]
+  require_links_resolved: true
+  require_brex_pass_for_pub: true
+
+allocation:
+  method: "effort_plus_impact"
+  formula: "w_i = alpha*E_hat_i + (1-alpha)*I_hat_i; T_i = P_k * w_i"
+  params:
+    alpha_effort: 0.30
+    alpha_impact: 0.70
+    lambda_spillover: 0.50
+    rounding: "floor_deg"
+
+measurement:
+  residual_scale: "0..100"
+  required_fields_per_knu:
+    - effort_predicted
+    - delta_residual_primary
+    - delta_residual_adjacent_sum
+    - verification_status
+    - linked_artifacts
