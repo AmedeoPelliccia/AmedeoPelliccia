@@ -8,52 +8,18 @@ schema_version: "1.0.0"
 document_type: ethics_and_security
 last_updated: "2026-02-25T00:00:00Z"
 
----
-deliverable_id: "DEL-07"
-title: "Ethics and Security"
-document_type: "deliverable"
-application_section: "Ethics → Ethics and Security"
-
-programme: "AI-BOOST"
-grant_agreement: "101135737"
-managing_body: "EuroHPC JU"
-
-status: "draft"
-
-schedule:
-  initial_due: "M6"
-  updates:
-    - "M18"
-    - "M36"
-
-version: "0.1.0"
-language: "en"
-confidentiality: "working_draft"
-
-summary: >
-  Deliverable defining the ethics and security framework for the AI-BOOST
-  programme, including governance, risk controls, compliance alignment,
-  and update milestones across the project lifecycle.
-
-keywords:
-  - "AI-BOOST"
-  - "DEL-07"
-  - "ethics"
-  - "security"
-  - "EuroHPC"
-  - "compliance"
-  - "governance"
-
-owner:
-  programme: "AI-BOOST"
-  authority: "EuroHPC JU"
-
-lifecycle:
-  phase: "initial submission"
-  update_points:
-    - "M18"
-    - "M36"
----
+# ─────────────────────────────────────────────
+# 1. Deliverable Identity
+# ─────────────────────────────────────────────
+deliverable:
+  id: DEL-07
+  title: Ethics and Security
+  application_section: "Ethics → Ethics and Security"
+  programme: AI-BOOST
+  grant_agreement: "101135737"
+  managing_body: EuroHPC JU
+  status: draft
+  due: "M6 (initial), updated at M18 and M36"
 
 # ─────────────────────────────────────────────
 # 2. Ethical Framework
@@ -350,7 +316,7 @@ revision_history:
 **Deliverable ID:** DEL-07
 **Section:** Ethics → Ethics and Security
 **Programme:** AI-BOOST — Frontier AI Grand Challenge (GA 101135737, EuroHPC JU)
-**Author:** Amedeo Pelliccia
+**Machine-readable spec:** [`ethics-and-security.yaml`](ethics-and-security.yaml)
 **Status:** Draft
 **Due:** M6 (initial), updated at M18 and M36
 
@@ -358,47 +324,83 @@ revision_history:
 
 ## 1. Ethical Framework
 
+```mermaid
+flowchart TD
+    subgraph PRINCIPLES ["Guiding Principles"]
+        ETH01["ETH-01\n🧑 Human Agency\n& Oversight"]
+        ETH02["ETH-02\n🛡️ Technical\nRobustness"]
+        ETH03["ETH-03\n🔒 Privacy &\nData Governance"]
+        ETH04["ETH-04\n🔍 Transparency"]
+        ETH05["ETH-05\n⚖️ Fairness &\nNon-Discrimination"]
+        ETH06["ETH-06\n🌱 Environmental\nWell-Being"]
+        ETH07["ETH-07\n📋 Accountability"]
+    end
+
+    AIBOOST["AI-BOOST\nEthical Framework"]
+    AIBOOST --> ETH01 & ETH02 & ETH03 & ETH04 & ETH05 & ETH06 & ETH07
+
+    ETH01 --- REF1["EU AI Act Art. 14\nALTAI §1"]
+    ETH02 --- REF2["simplex-contract.yaml\nINV-001–003"]
+    ETH03 --- REF3["GDPR Art. 5, 25"]
+    ETH07 --- REF7["PATH → MTL\naudit trails"]
+
+    style PRINCIPLES fill:#e8f5e9,stroke:#2E7D32
+    style AIBOOST fill:#e3f2fd,stroke:#1565C0,stroke-width:3px
+```
+
 ### 1.1 Guiding Principles
 
-AI-BOOST adheres to the following ethical principles throughout all project phases:
+| ID | Principle | Description | References |
+|----|-----------|-------------|------------|
+| ETH-01 | Human Agency and Oversight | AI systems remain under meaningful human control; no fully autonomous safety-critical decisions without human-in-the-loop. | EU AI Act Art. 14; ALTAI §1 |
+| ETH-02 | Technical Robustness and Safety | Models are validated through evidence-gated pipelines before deployment in safety-critical domains. | simplex-contract.yaml INV-001–INV-003 |
+| ETH-03 | Privacy and Data Governance | All training data complies with GDPR; personal data is minimised, pseudonymised, or excluded. | GDPR Art. 5, 25 |
+| ETH-04 | Transparency | Model architectures, training data sources, and evaluation results are publicly documented. | EU AI Act Art. 53 (GPAI transparency) |
+| ETH-05 | Diversity, Non-Discrimination, and Fairness | Multilingual training ensures balanced performance across all 24 EU official languages; bias audits are conducted per work package. | EU AI Act Recital 70 |
+| ETH-06 | Societal and Environmental Well-Being | Environmental footprint (CO₂-per-inference) is tracked and reported; sustainability targets are set per HPC job. | Green Deal Digital alignment |
+| ETH-07 | Accountability | All AI artefacts are traceable through the PATH → MTL governance pipeline with immutable audit trails. | simplex-contract.yaml execution model |
 
-| ID | Principle | Description | Reference |
-|----|-----------|-------------|-----------|
-| ETH-01 | Human Agency and Oversight | AI systems remain under meaningful human control; no fully autonomous safety-critical decisions without human-in-the-loop | EU AI Act Art. 14; ALTAI §1 |
-| ETH-02 | Technical Robustness and Safety | Models are validated through evidence-gated pipelines before deployment in safety-critical domains | Simplex-contract.yaml INV-001–INV-003 |
-| ETH-03 | Privacy and Data Governance | All training data complies with GDPR; personal data is minimised, pseudonymised, or excluded | GDPR Art. 5, 25 |
-| ETH-04 | Transparency | Model architectures, training data sources, and evaluation results are publicly documented | EU AI Act Art. 53 (GPAI transparency) |
-| ETH-05 | Diversity, Non-Discrimination, and Fairness | Multilingual training ensures balanced performance across all 24 EU official languages; bias audits are conducted per work package | EU AI Act Recital 70 |
-| ETH-06 | Societal and Environmental Well-Being | Environmental footprint (CO₂-per-inference) is tracked and reported; sustainability targets are set per HPC job | Green Deal Digital alignment |
-| ETH-07 | Accountability | All AI artefacts are traceable through the PATH → MTL governance pipeline with immutable audit trails | Simplex-contract.yaml execution model |
+### 1.2 EU AI Act Classification
 
-### 1.2 Alignment with EU AI Act
-
-| EU AI Act Category | AI-BOOST Classification | Justification |
-|--------------------|------------------------|---------------|
-| General-Purpose AI (GPAI) | Yes — GAIA-EU is a frontier foundation model | Training compute exceeds GPAI threshold; open-weights release triggers GPAI provider obligations |
-| High-Risk AI System | Domain-dependent — high-risk when deployed in aerospace certification (Annex III) | Simplex-contract evidence gating satisfies conformity assessment requirements |
-| Prohibited AI Practices | Not applicable | No social scoring, real-time biometric identification, or manipulation techniques |
+| Category | Applicable | Justification |
+|----------|------------|---------------|
+| General-Purpose AI (GPAI) | Yes | Training compute exceeds GPAI threshold; open-weights release triggers GPAI provider obligations. |
+| High-Risk AI System | Domain-dependent | High-risk when deployed in aerospace certification (Annex III). Simplex-contract evidence gating satisfies conformity assessment requirements. |
+| Prohibited AI Practices | No | No social scoring, real-time biometric identification, or manipulation techniques. |
 
 ---
 
 ## 2. Dual-Use Assessment
 
-### 2.1 Dual-Use Risk Analysis
+### 2.1 Risk Analysis
 
-| ID | Risk Category | Description | Likelihood | Impact | Mitigation |
-|----|---------------|-------------|------------|--------|------------|
-| DU-01 | Military application of simulation acceleration | AI surrogate models could accelerate weapons system design | Low | High | Export-control screening of consortium partners; restricted model variants for defence-adjacent use cases |
-| DU-02 | Adversarial misuse of open-weights model | Open-weights release could enable generation of harmful content | Medium | Medium | Red-teaming prior to release (WP4); safety fine-tuning; responsible release protocol |
-| DU-03 | Surveillance capability | Multilingual NLP could be repurposed for mass surveillance | Low | High | No biometric processing capability; data processing agreements prohibit surveillance use |
+```mermaid
+quadrantChart
+    title Dual-Use Risk Assessment
+    x-axis Low Likelihood --> High Likelihood
+    y-axis Low Impact --> High Impact
+    quadrant-1 Critical Risk
+    quadrant-2 Monitor Closely
+    quadrant-3 Low Priority
+    quadrant-4 Mitigate Proactively
+    DU-01 Military simulation: [0.25, 0.8]
+    DU-02 Adversarial misuse: [0.5, 0.5]
+    DU-03 Surveillance: [0.25, 0.8]
+```
 
-### 2.2 Export Control Compliance
+| ID | Category | Likelihood | Impact | Mitigation |
+|----|----------|------------|--------|------------|
+| DU-01 | Military application of simulation acceleration | Low | High | Export-control screening of consortium partners; restricted model variants for defence-adjacent use cases. |
+| DU-02 | Adversarial misuse of open-weights model | Medium | Medium | Red-teaming prior to release (WP4); safety fine-tuning; responsible release protocol. |
+| DU-03 | Surveillance capability | Low | High | No biometric processing capability; data processing agreements prohibit surveillance use. |
+
+### 2.2 Export Control
 
 | Requirement | Status | Evidence |
 |-------------|--------|----------|
-| EU Dual-Use Regulation (EU) 2021/821 screening | ✅ Planned | All consortium partners screened; no listed entities |
-| US EAR/ITAR assessment (for international collaborations) | ✅ Planned | No US-origin controlled technology used in core pipeline |
-| End-use monitoring | ✅ Planned | Responsible use license terms for model distribution |
+| EU Dual-Use Regulation (EU) 2021/821 screening | Planned | All consortium partners screened; no listed entities |
+| US EAR/ITAR assessment | Planned | No US-origin controlled technology used in core pipeline |
+| End-use monitoring | Planned | Responsible use license terms for model distribution |
 
 ---
 
@@ -406,19 +408,19 @@ AI-BOOST adheres to the following ethical principles throughout all project phas
 
 ### 3.1 GDPR Compliance
 
-| Aspect | Approach | Reference |
-|--------|----------|-----------|
-| Legal basis for data processing | Legitimate interest (Art. 6(1)(f)) for research; consent where required | GDPR Art. 6 |
-| Data minimisation | Training corpora use publicly available, non-personal data; personal data excluded or pseudonymised | GDPR Art. 5(1)(c) |
-| Data subject rights | Procedures for access, rectification, erasure requests documented in DMP (DEL-03) | GDPR Art. 15–22 |
-| Data Protection Impact Assessment (DPIA) | Conducted before training on any dataset containing personal data | GDPR Art. 35 |
-| Data Protection Officer (DPO) | Designated within coordinator organisation | GDPR Art. 37 |
-| Cross-border data transfers | All training and inference on EU-based infrastructure (EuroHPC nodes); no extra-EU data transfers for safety-critical workloads | GDPR Chapter V |
+| Aspect | Detail |
+|--------|--------|
+| Legal basis | Legitimate interest (Art. 6(1)(f)) for research; consent where required |
+| Data minimisation | Training corpora use publicly available, non-personal data; personal data excluded or pseudonymised. |
+| Data subject rights | Procedures documented in DMP (DEL-03) |
+| DPIA | Conducted before training on any dataset containing personal data |
+| DPO | Designated within coordinator organisation |
+| Cross-border transfers | All training and inference on EU-based infrastructure (EuroHPC nodes); no extra-EU data transfers for safety-critical workloads. |
 
 ### 3.2 Training Data Ethics
 
-| Criterion | Requirement | Verification Method |
-|-----------|-------------|---------------------|
+| Criterion | Requirement | Verification |
+|-----------|-------------|--------------|
 | Copyright compliance | All training data sources licensed or public domain | Data provenance registry (DEL-03) |
 | Consent verification | Consent obtained where data includes user-generated content | Consent audit trail |
 | Bias assessment | Training data audited for demographic, linguistic, and geographic bias | Bias evaluation report per WP |
@@ -428,7 +430,7 @@ AI-BOOST adheres to the following ethical principles throughout all project phas
 
 ## 4. Security
 
-### 4.1 Information Security Framework
+### 4.1 Information Security
 
 | Domain | Measure | Standard |
 |--------|---------|----------|
@@ -461,12 +463,43 @@ AI-BOOST adheres to the following ethical principles throughout all project phas
 
 ### 5.1 Ethics Review Process
 
-| Stage | Activity | Responsible |
-|-------|----------|-------------|
-| Pre-training | Ethics self-assessment; DPIA if personal data involved; dual-use screening | Governance & Safety Lead |
+```mermaid
+flowchart LR
+    subgraph PRE ["Pre-Training"]
+        P1["Ethics\nself-assessment"]
+        P2["DPIA"]
+        P3["Dual-use\nscreening"]
+    end
+    subgraph DURING ["During Training"]
+        D1["Continuous\nmonitoring"]
+    end
+    subgraph RELEASE ["Pre-Release"]
+        R1["Red-teaming"]
+        R2["Bias audit"]
+        R3["Safety\nevaluation"]
+        R4["Release\nchecklist"]
+    end
+    subgraph POST ["Post-Release"]
+        O1["Community\nfeedback"]
+        O2["Incident\nresponse"]
+        O3["Model update\nprotocol"]
+    end
+
+    PRE --> DURING --> RELEASE --> POST
+    POST -.->|"feedback loop"| PRE
+
+    style PRE fill:#e3f2fd,stroke:#1565C0
+    style DURING fill:#fff3e0,stroke:#EF6C00
+    style RELEASE fill:#ffebee,stroke:#c62828
+    style POST fill:#e8f5e9,stroke:#2E7D32
+```
+
+| Stage | Activities | Responsible |
+|-------|-----------|-------------|
+| Pre-training | Ethics self-assessment; DPIA if personal data involved; Dual-use screening | Governance & Safety Lead |
 | During training | Continuous monitoring of training outputs for harmful content generation capability | Governance & Safety Lead + ML team |
-| Pre-release | Red-teaming; bias audit; safety evaluation; responsible release checklist | Full consortium review |
-| Post-release | Community feedback monitoring; incident response; model update protocol | Coordinator + community |
+| Pre-release | Red-teaming; Bias audit; Safety evaluation; Responsible release checklist | Full consortium review |
+| Post-release | Community feedback monitoring; Incident response; Model update protocol | Coordinator + community |
 
 ### 5.2 Ethics Advisory
 
@@ -481,7 +514,7 @@ AI-BOOST adheres to the following ethical principles throughout all project phas
 ## 6. Environmental Ethics
 
 | Aspect | Commitment | Metric |
-|--------|------------|--------|
+|--------|-----------|--------|
 | Carbon footprint tracking | CO₂ emissions tracked per training run and per inference request | kg CO₂e per 1M tokens |
 | Renewable energy preference | HPC allocations prioritise nodes powered by renewable energy | % renewable energy in compute mix |
 | Efficiency optimisation | Model architecture and training pipeline optimised for compute efficiency | FLOPs per quality point |
@@ -493,10 +526,9 @@ AI-BOOST adheres to the following ethical principles throughout all project phas
 
 | Asset | Path | Role in DEL-07 |
 |-------|------|----------------|
-| Simplex contract | [`simplex-contract.yaml`](../simplex-contract.yaml) | Evidence-gated governance — ethics-by-design enforcement |
-| Contributions registry | [`contributions-registry.yaml`](../contributions-registry.yaml) | Fair attribution — ethical contributor governance |
-| EACST framework | [`EACST/`](../EACST/) | Regulatory domain — safety-critical ethics context |
-| Data Management Plan | DEL-03 | GDPR compliance, data provenance, training data ethics |
+| Simplex contract | [`simplex-contract.yaml`](../simplex-contract.yaml) | Evidence-gated admissibility — ETH-02 robustness and safety |
+| Data Management Plan | [`DEL-03-data-management-plan.md`](DEL-03-data-management-plan.md) | GDPR compliance, data provenance, opt-out procedures |
+| Application strategy | [`README.md`](README.md) | DEL-07 deliverable registry entry |
 
 ---
 

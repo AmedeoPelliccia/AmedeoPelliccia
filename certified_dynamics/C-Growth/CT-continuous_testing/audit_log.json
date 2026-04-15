@@ -1,0 +1,40 @@
+[
+    {
+        "timestamp": "2026-02-21T17:22:59.327508",
+        "simulation_time": 1.0,
+        "system_id": "AERO-EVTOL-1",
+        "state_vector": [
+            79.5
+        ],
+        "status": "FULLY_ADMISSIBLE",
+        "reason": "All constraints satisfied.",
+        "violations": [],
+        "applied": true
+    },
+    {
+        "timestamp": "2026-02-21T17:22:59.327544",
+        "simulation_time": 2.0,
+        "system_id": "AERO-EVTOL-1",
+        "state_vector": [
+            80.0
+        ],
+        "status": "FULLY_ADMISSIBLE",
+        "reason": "All constraints satisfied.",
+        "violations": [],
+        "applied": true
+    },
+    {
+        "timestamp": "2026-02-21T17:22:59.327568",
+        "simulation_time": 3.0,
+        "system_id": "AERO-EVTOL-1",
+        "state_vector": [
+            80.5
+        ],
+        "status": "FULLY_ADMISSIBLE",
+        "reason": "Conditional approval granted via valid evidence gates.",
+        "violations": [
+            "Noise_Limit_CS23"
+        ],
+        "applied": true
+    }
+]

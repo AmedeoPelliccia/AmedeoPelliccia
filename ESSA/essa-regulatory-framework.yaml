@@ -1,7 +1,7 @@
-# eacst-regulatory-framework.yaml
-# Machine-readable specification for the European Agency for Civil Space
-# Transportation (EACST) regulatory framework.
-# Reference: EACST/README.md §1–§12
+# essa-regulatory-framework.yaml
+# Machine-readable specification for the European Union Space Safety
+# Agency (ESSA) regulatory framework.
+# Reference: ESSA/README.md §1–§12
 # Author: Amedeo Pelliccia
 # Aligned with EU Space Act (2025) safety/resilience/sustainability pillars
 # and IDEALE-ESG Aerospace pillar governance.
@@ -14,8 +14,34 @@ last_updated: "2026-02-25T00:00:00Z"
 # 1. Agency Identity
 # ─────────────────────────────────────────────
 agency:
-  name: European Agency for Civil Space Transportation
-  acronym: EACST
+  name: European Union Space Safety Agency
+  acronym: ESSA
+  institutional_status:
+    type: governance_artefact
+    framework: IDEALE-ESG / AMPEL
+    disclaimer: >
+      ESSA is a governance artefact and institutional model within the
+      IDEALE-ESG / AMPEL framework, intended to formalise and unify space
+      safety, certification, and lifecycle oversight in the conceptual model.
+      It is not currently an enacted EU agency in the legal framework of the
+      European Union.  In the extant EU institutional ecosystem, some
+      analogous functions are performed by the European Union Agency for
+      the Space Programme (EUSPA) and associated bodies under the EU Space
+      Programme Regulation (2021/696) and EU Space Act proposals.  ESSA
+      expands or abstracts those functions to cover additional normative
+      spaces — notably civil space transportation lifecycle regulation,
+      product-specific certification, and continued airworthiness for
+      reusable platforms.
+    normative_counterpart:
+      name: European Union Agency for the Space Programme
+      acronym: EUSPA
+      legal_basis: "Regulation (EU) 2021/696 (EU Space Programme Regulation)"
+      relationship: >
+        ESSA is designed as a complementary governance layer to EUSPA,
+        not a replacement.  Where EUSPA already operates a service
+        (e.g. EU SST conjunction warnings), ESSA consumes or references
+        that data.  ESSA fills normative gaps in civil space
+        transportation that fall outside EUSPA's current mandate.
   mission: >
     Ensure safe, resilient, and sustainable civil space transportation
     in Europe, with harmonised licensing and oversight for operators
@@ -336,7 +362,7 @@ roadmap:
 # ─────────────────────────────────────────────
 institutional_options:
   - id: OPT-NEW
-    name: New agency (EACST)
+    name: New agency (ESSA)
     parent: DG DEFIS
     pros:
       - Clean mandate
@@ -356,13 +382,13 @@ institutional_options:
       - Risk of aviation-centric bias
 
   - id: OPT-HYBRID
-    name: Hybrid (EASA + EACST split)
+    name: Hybrid (EASA + ESSA split)
     parent: DG DEFIS / EASA
     split:
       easa_handles:
         - Crew licensing and training
         - ATM interfaces
-      eacst_handles:
+      essa_handles:
         - Launch/re-entry licensing
         - Continued airworthiness for reusables
     pros:
@@ -381,8 +407,17 @@ institutional_options:
 institutional_context:
   existing_bodies:
     - name: EUSPA
+      full_name: European Union Agency for the Space Programme
+      legal_basis: "Regulation (EU) 2021/696"
       role: EU Space Programme implementation (Galileo, Copernicus, GOVSATCOM, SST)
       gap: Not structured as a transport safety regulator
+      relationship_to_essa: >
+        EUSPA is the normative counterpart of ESSA in the current EU
+        institutional ecosystem.  ESSA is designed as a complementary
+        governance layer — not a replacement — that fills normative
+        gaps in civil space transportation lifecycle regulation,
+        product-specific certification, and continued airworthiness
+        for reusable platforms, areas outside EUSPA's current mandate.
 
     - name: EASA
       role: Aviation regulation; higher airspace operations discussions
@@ -399,5 +434,59 @@ institutional_context:
         - resilience_cybersecurity
         - sustainability
       relevance: >
-        EACST operationalises the EU Space Act's transport-related
+        ESSA operationalises the EU Space Act's transport-related
         obligations into enforceable implementing rules.
+
+# ─────────────────────────────────────────────
+# 12. EUSPA ↔ ESSA Interface Definitions
+# ─────────────────────────────────────────────
+euspa_interfaces:
+  description: >
+    Clear interface definitions between ESSA (proposed governance
+    artefact) and EUSPA (enacted EU agency) roles and services.
+    Where EUSPA already operates a service, ESSA consumes or
+    references that data rather than duplicating it.  Conversely,
+    ESSA outputs feed back into EU-level safety and sustainability
+    reporting channels.
+  interfaces:
+    - id: IF-SST
+      essa_function: "Operations Oversight & Safety Data (DIR-04)"
+      euspa_service: "EU SST front desk — conjunction warnings and re-entry alerts"
+      direction: "EUSPA → ESSA"
+      description: >
+        ESSA consumes EU SST conjunction/re-entry data for operator
+        safety directives and occurrence correlation.
+
+    - id: IF-REG
+      essa_function: "Registry & Digital Systems (DIR-07)"
+      euspa_service: "Programme-level registries (Galileo, EGNOS service provision)"
+      direction: "ESSA → EUSPA (data sharing)"
+      description: >
+        ESSA's EU Civil Space Transport Registry provides transport-operator
+        and platform data that complement EUSPA programme registries.
+
+    - id: IF-SEC
+      essa_function: "Cyber Resilience (Part-CYB-S)"
+      euspa_service: "GOVSATCOM / Galileo security accreditation"
+      direction: "bidirectional"
+      description: >
+        ESSA baseline cybersecurity requirements for civil transport
+        operators align with EUSPA's programme-specific security
+        accreditation practices; mutual recognition where feasible.
+
+    - id: IF-SUST
+      essa_function: "Sustainability & Debris Compliance (DIR-06, Part-SUST)"
+      euspa_service: "EU SST debris tracking and cataloguing"
+      direction: "bidirectional"
+      description: >
+        ESSA enforces transport-grade debris-mitigation rules; relies
+        on EUSPA/SST cataloguing for compliance verification. ESSA
+        occurrence and disposal data feed back into the SST catalogue.
+
+    - id: IF-STM
+      essa_function: "Mission Ops coordination (Part-LRE, Part-SPP)"
+      euspa_service: "Space traffic management coordination under EU Space Act"
+      direction: "bidirectional"
+      description: >
+        ESSA launch/re-entry licensing coordinates with EUSPA-managed
+        STM services for slot deconfliction and airspace integration.

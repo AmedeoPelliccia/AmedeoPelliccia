@@ -1,0 +1,187 @@
+##############################################################################
+# ESSA — AMPEL360 Q10
+# Spacecraft Profile (ESA / European Space Regulatory Framework)
+# Machine-readable companion to ESSA/AMPEL360-Q10.md
+##############################################################################
+
+document_id: ESSA-DOC-AMPEL360-Q10-001
+document_type: essa_ampel360_domain_profile
+title: "AMPEL360 Q10 — Spacecraft Profile (ESA / European Space Regulatory Framework)"
+version: "0.1-draft"
+schema_version: "1.0.0"
+status: normative_method
+parent: ESSA-DOC-AMPEL360-001
+last_updated: "2026-03-01T00:00:00Z"
+
+domain:
+  name: Space
+  platform: Reusable / Orbital / Hybrid Platforms
+  regulatory_authority:
+    - European Space Agency (ESA)
+    - European Commission
+
+profile_principle: >
+  One AMPEL360 kernel. Q10 is the ESA/European space lifecycle profile.
+  Safety-first invariant unchanged. Q10 tightens the AMPEL360 baseline;
+  cannot weaken any ESSA constitutional invariant. Governance layer varies
+  by civil/commercial or dual-use scope — H-pipeline is mandatory in all cases.
+
+# ─────────────────────────────────────────────
+# H-Factor Definition
+# ─────────────────────────────────────────────
+h_factor:
+  definition: Mission risk bounds and population safety envelope
+  dimensions:
+    - id: RANGE_SAFETY
+      description: IIP bounds, flight termination system activation thresholds
+    - id: ORBITAL_DEBRIS
+      description: 25-year deorbit compliance, conjunction avoidance manoeuvre envelope
+    - id: COLLISION_AVOIDANCE
+      description: Probability of collision (Pc) threshold per conjunction event
+    - id: REENTRY_SAFETY
+      description: >
+        Surviving debris casualty expectation (Ec) threshold; demisable mass fraction
+    - id: HUMAN_OVERRIDE
+      description: Crew abort decision bounds (if crewed or hybrid platform)
+  security_role: >
+    Mission data integrity and authority chain over launch authorisation,
+    conjunction clearance, and operational decision artefacts
+
+# ─────────────────────────────────────────────
+# Regulatory Framework
+# ─────────────────────────────────────────────
+regulatory_alignment:
+  - framework: ESA-Space-Debris-Mitigation
+    role: Orbital debris constraints as H_CONSTRAINT
+  - framework: ECSS-E/Q/M
+    role: Engineering, quality, and management standards — artefacts as H_EVIDENCE
+  - framework: EU-2021-696
+    role: European space programme framework — governance authority chain
+  - framework: National-Licensing-Frameworks
+    role: Launch licence as H_SIGNOFF at P050
+  - framework: COSPAR-Planetary-Protection
+    role: Mission-specific H_CONSTRAINT for planetary missions
+  - framework: ITU-Radio-Regulations
+    role: Spectrum coordination as H_CONSTRAINT where applicable
+
+# ─────────────────────────────────────────────
+# Phase Profile
+# ─────────────────────────────────────────────
+phase_profile:
+  - phase: P010
+    name: Concept
+    q10_specialisation:
+      - Mission objectives → probabilistic risk decomposition → H_HAZARD
+      - H_ENVELOPE v1.0 initialised with all five safety dimensions
+      - FMEA/FTA → H_CONSTRAINT derived
+  - phase: P020
+    name: Architecture and Requirements
+    q10_specialisation:
+      - Frequency-consequence (F-C) matrix established
+      - Safety requirements traceable to H_HAZARD tokenised as H_REQ
+    mandatory_mcsc: [MCSC-ETH-03, MCSC-RES-01]
+  - phase: P030
+    name: Industrial Chain
+    q10_specialisation:
+      - Launch vehicle supply chain H_CONSTRAINT binding
+      - Heritage/novel hardware evidence as H_EVIDENCE
+  - phase: P040
+    name: Engineering
+    q10_specialisation:
+      - ECSS-aligned methods
+      - Probabilistic risk propagation models as H_EVIDENCE
+      - Conjunction analysis results as H_EVIDENCE
+      - Structural, thermal, propulsion models as H_EVIDENCE
+  - phase: P050
+    name: Authority and Compliance
+    q10_specialisation:
+      - Launch licence (H_SIGNOFF) from national authority
+      - Range safety clearance (H_SIGNOFF) from range authority
+      - Safety case = ALPC-ready compliance bundle
+    mandatory_mcsc: [MCSC-ACC-02, MCSC-ETH-01]
+  - phase: P060
+    name: Integration
+    q10_specialisation:
+      - Integration test sequence as H_EVIDENCE
+  - phase: P070
+    name: Test
+    q10_specialisation:
+      - Qualification and acceptance tests as H_EVIDENCE
+      - Range safety test (FTS) — H_SIGNOFF per test
+      - Reentry thermal model validation as H_EVIDENCE
+  - phase: P080
+    name: Operations
+    q10_specialisation:
+      - Mission operations procedures (ICA) as H_EVIDENCE
+      - CDM assessment per H_ENVELOPE Pc bound — out-of-envelope → H_UPDATE
+      - Anomalies / near-miss conjunctions → H_UPDATE → H_ENVELOPE re-evaluation
+    mandatory_mcsc: [MCSC-ACC-03, MCSC-SCI-01]
+  - phase: P090
+    name: Mission
+    q10_specialisation:
+      - Active range/orbit/reentry corridor bounded by H_ENVELOPE
+      - Real-time conjunction avoidance manoeuvre decision → H_UPDATE
+      - Human override envelope at mission control level (crewed)
+    mandatory_mcsc: [MCSC-HOB-03, MCSC-ETH-02]
+  - phase: P100
+    name: Reporting
+    q10_specialisation:
+      - Consolidated mission evidence including range safety and conjunction records
+      - Post-mission debris assessment as H_EVIDENCE
+  - phase: P120
+    name: Baseline Update and Reuse Cycle
+    q10_specialisation:
+      - Reuse cycle: structural life consumption as H_EVIDENCE
+      - Refurbishment evidence → H_SIGNOFF before re-launch
+      - H_ENVELOPE version increment with mission authority
+    mandatory_mcsc: ["MCSC-RES-*"]
+
+# ─────────────────────────────────────────────
+# Reuse Cycle Sub-Loop
+# ─────────────────────────────────────────────
+reuse_cycle:
+  enabled: true
+  loop:
+    - H_ENVELOPE (mission n)
+    - Operations (P080)
+    - Feedback → Structural Life Update (H_UPDATE)
+    - Refurbishment Evidence (H_EVIDENCE)
+    - Reuse Authority Sign-off (H_SIGNOFF)
+    - H_ENVELOPE (mission n+1)
+  invariant: >
+    A platform whose remaining structural life falls outside the H_ENVELOPE
+    is non-reusable by construction until re-qualified and H_ENVELOPE
+    version incremented.
+
+# ─────────────────────────────────────────────
+# Gate Invariant (Q10 Specialisation)
+# ─────────────────────────────────────────────
+gate_invariant:
+  conditions_per_phase:
+    - "Tokens(pᵢ) ⊆ Valid(H_SPACE)            # space safety envelope"
+    - "MCSC(pᵢ) ⊆ S                            # security invariant"
+    - "Complete(T, pᵢ)                         # no orphaned tokens"
+    - "Signed(H_SIGNOFF, Authority, pᵢ)        # authority confirmed"
+    - "DebrisMitigation(pᵢ) = COMPLIANT        # debris rule satisfied"
+    - "RangeSafety(pᵢ) = CLEARED               # range authority cleared"
+  q10_rule: >
+    Any mission phase artefact without a complete H-chain including range
+    safety clearance and debris mitigation evidence SHALL NOT be activated.
+
+# ─────────────────────────────────────────────
+# Constitutional Relationships
+# ─────────────────────────────────────────────
+constitutional_relationships:
+  - instrument: ESSA-DOC-AMPEL360-001
+    role: Q10 inherits all five core responsibilities unchanged
+  - instrument: ESSA-CONST-001
+    satisfies: [CI-001, CI-002, CI-003, CI-004, CI-005, CI-006, CI-007]
+    context: Within the European space regulatory domain
+  - instrument: ESSA-DOC-H-001
+    role: Q10 maps all eight H-tokens to ECSS/ESA/range-authority artefact types
+  - instrument: ESSA-DOC-SF-001
+    role: Enforces SF-RULE-01 through SF-RULE-06 within the space domain
+  - instrument: ESSA-STD-CCTLS-001
+    role: >
+      Phase coverage P000–P120 with space-specific gate conditions
+      including reuse cycle sub-loop

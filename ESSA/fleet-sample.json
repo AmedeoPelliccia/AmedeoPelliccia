@@ -1,0 +1,213 @@
+{
+  "$schema": "https://essa.eu/schemas/ampel360-fed/fleet-record/v0.1",
+  "document_id": "ESSA-DOC-AMPEL360-FED-SAMPLE-001",
+  "document_type": "fleet_sample_dataset",
+  "title": "AMPEL360 Federated Fleet — Sample Dataset",
+  "version": "0.1-draft",
+  "parent": "ESSA-DOC-AMPEL360-FED-001",
+  "description": "Representative sample fleet records demonstrating the three mandatory Global Tags (manufacturer, aircraft_model, operator) and optional traceability fields. Upload this file via the Integrations tab to pre-populate the AMPEL-A7 RAG engine context.",
+
+  "field_map": {
+    "manufacturer":             { "global_tag": true,  "h_token": "H_CONSTRAINT", "mandatory": true  },
+    "aircraft_model":           { "global_tag": true,  "h_token": "H_CONSTRAINT", "mandatory": true  },
+    "aircraft_variant":         { "global_tag": false, "h_token": "H_CONSTRAINT", "mandatory": false },
+    "operator":                 { "global_tag": true,  "h_token": "H_CONSTRAINT", "mandatory": true  },
+    "msn":                      { "global_tag": false, "h_token": null,            "mandatory": false },
+    "registration":             { "global_tag": false, "h_token": null,            "mandatory": false },
+    "fleet_id":                 { "global_tag": false, "h_token": null,            "mandatory": false },
+    "configuration_baseline":   { "global_tag": false, "h_token": "H_CONSTRAINT", "mandatory": false },
+    "regulatory_authority":     { "global_tag": false, "h_token": "H_CONSTRAINT", "mandatory": false },
+    "h_evidence_ref":           { "global_tag": false, "h_token": "H_EVIDENCE",   "mandatory": false },
+    "h_constraint_ref":         { "global_tag": false, "h_token": "H_CONSTRAINT", "mandatory": false },
+    "h_signoff_ref":            { "global_tag": false, "h_token": "H_SIGNOFF",    "mandatory": false }
+  },
+
+  "ia_mode_hints": {
+    "technical_publications_mode": {
+      "required_tags": ["manufacturer", "aircraft_model"],
+      "optional_tags": ["operator"],
+      "note": "Narrows AMM/IPC searches to the specific model and manufacturer."
+    },
+    "compliance_lease_mode": {
+      "required_tags": ["manufacturer", "aircraft_model", "operator"],
+      "derived_field": "regulatory_authority",
+      "note": "Determines FAA or EASA regulatory environment from the operator tag."
+    },
+    "fleet_management_mode": {
+      "required_tags": ["manufacturer", "aircraft_model", "operator"],
+      "multi_operator": true,
+      "note": "Aggregates across all operator values in the dataset."
+    }
+  },
+
+  "records": [
+    {
+      "manufacturer": "AIRBUS",
+      "aircraft_model": "A321",
+      "aircraft_variant": "A321neo CFM LEAP-1A",
+      "operator": "BAW",
+      "msn": "10001",
+      "registration": "G-TTNE",
+      "fleet_id": "BA-0101",
+      "configuration_baseline": "SB-A321-28-1234-R02",
+      "regulatory_authority": "EASA",
+      "h_evidence_ref": "H-EV-BAW-0001",
+      "h_constraint_ref": "H-CON-BAW-0001",
+      "h_signoff_ref": null
+    },
+    {
+      "manufacturer": "AIRBUS",
+      "aircraft_model": "A321",
+      "aircraft_variant": "A321neo CFM LEAP-1A",
+      "operator": "BAW",
+      "msn": "10002",
+      "registration": "G-TTNF",
+      "fleet_id": "BA-0102",
+      "configuration_baseline": "SB-A321-28-1234-R02",
+      "regulatory_authority": "EASA",
+      "h_evidence_ref": "H-EV-BAW-0002",
+      "h_constraint_ref": "H-CON-BAW-0002",
+      "h_signoff_ref": null
+    },
+    {
+      "manufacturer": "AIRBUS",
+      "aircraft_model": "A320",
+      "aircraft_variant": "A320neo CFM LEAP-1A",
+      "operator": "AFR",
+      "msn": "9501",
+      "registration": "F-HXYA",
+      "fleet_id": "AF-0201",
+      "configuration_baseline": "SB-A320-28-1190-R03",
+      "regulatory_authority": "EASA",
+      "h_evidence_ref": "H-EV-AFR-0001",
+      "h_constraint_ref": "H-CON-AFR-0001",
+      "h_signoff_ref": null
+    },
+    {
+      "manufacturer": "AIRBUS",
+      "aircraft_model": "A320",
+      "aircraft_variant": "A320neo CFM LEAP-1A",
+      "operator": "AFR",
+      "msn": "9502",
+      "registration": "F-HXYB",
+      "fleet_id": "AF-0202",
+      "configuration_baseline": "SB-A320-28-1190-R03",
+      "regulatory_authority": "EASA",
+      "h_evidence_ref": "H-EV-AFR-0002",
+      "h_constraint_ref": "H-CON-AFR-0002",
+      "h_signoff_ref": null
+    },
+    {
+      "manufacturer": "BOEING",
+      "aircraft_model": "B737",
+      "aircraft_variant": "737-MAX8 CFM LEAP-1B",
+      "operator": "RYR",
+      "msn": "44101",
+      "registration": "EI-HGA",
+      "fleet_id": "FR-0301",
+      "configuration_baseline": "SB-737-28-1070-R01",
+      "regulatory_authority": "EASA",
+      "h_evidence_ref": "H-EV-RYR-0001",
+      "h_constraint_ref": "H-CON-RYR-0001",
+      "h_signoff_ref": null
+    },
+    {
+      "manufacturer": "BOEING",
+      "aircraft_model": "B737",
+      "aircraft_variant": "737-MAX8 CFM LEAP-1B",
+      "operator": "RYR",
+      "msn": "44102",
+      "registration": "EI-HGB",
+      "fleet_id": "FR-0302",
+      "configuration_baseline": "SB-737-28-1070-R01",
+      "regulatory_authority": "EASA",
+      "h_evidence_ref": "H-EV-RYR-0002",
+      "h_constraint_ref": "H-CON-RYR-0002",
+      "h_signoff_ref": null
+    },
+    {
+      "manufacturer": "BOEING",
+      "aircraft_model": "B737",
+      "aircraft_variant": "737-MAX8 CFM LEAP-1B",
+      "operator": "SWA",
+      "msn": "45001",
+      "registration": "N8701Q",
+      "fleet_id": "WN-0401",
+      "configuration_baseline": "SB-737-28-1072-R01",
+      "regulatory_authority": "FAA",
+      "h_evidence_ref": "H-EV-SWA-0001",
+      "h_constraint_ref": "H-CON-SWA-0001",
+      "h_signoff_ref": null
+    },
+    {
+      "manufacturer": "BOEING",
+      "aircraft_model": "B737",
+      "aircraft_variant": "737-MAX8 CFM LEAP-1B",
+      "operator": "SWA",
+      "msn": "45002",
+      "registration": "N8702Q",
+      "fleet_id": "WN-0402",
+      "configuration_baseline": "SB-737-28-1072-R01",
+      "regulatory_authority": "FAA",
+      "h_evidence_ref": "H-EV-SWA-0002",
+      "h_constraint_ref": "H-CON-SWA-0002",
+      "h_signoff_ref": null
+    },
+    {
+      "manufacturer": "EMBRAER",
+      "aircraft_model": "E195",
+      "aircraft_variant": "E195-E2 PW1900G",
+      "operator": "TAP",
+      "msn": "20301",
+      "registration": "CS-TXA",
+      "fleet_id": "TP-0501",
+      "configuration_baseline": "SB-E195-28-0055-R00",
+      "regulatory_authority": "EASA",
+      "h_evidence_ref": "H-EV-TAP-0001",
+      "h_constraint_ref": "H-CON-TAP-0001",
+      "h_signoff_ref": null
+    },
+    {
+      "manufacturer": "EMBRAER",
+      "aircraft_model": "E195",
+      "aircraft_variant": "E195-E2 PW1900G",
+      "operator": "TAP",
+      "msn": "20302",
+      "registration": "CS-TXB",
+      "fleet_id": "TP-0502",
+      "configuration_baseline": "SB-E195-28-0055-R00",
+      "regulatory_authority": "EASA",
+      "h_evidence_ref": "H-EV-TAP-0002",
+      "h_constraint_ref": "H-CON-TAP-0002",
+      "h_signoff_ref": null
+    },
+    {
+      "manufacturer": "AIRBUS",
+      "aircraft_model": "A321",
+      "aircraft_variant": "A321neo IAE PW1100G",
+      "operator": "LESSOR-001",
+      "msn": "10101",
+      "registration": "LSD-001",
+      "fleet_id": "LS-0601",
+      "configuration_baseline": "SB-A321-28-1240-R01",
+      "regulatory_authority": "EASA+FAA",
+      "h_evidence_ref": "H-EV-LS-0001",
+      "h_constraint_ref": "H-CON-LS-0001",
+      "h_signoff_ref": null
+    },
+    {
+      "manufacturer": "AIRBUS",
+      "aircraft_model": "A320",
+      "aircraft_variant": "A320neo IAE PW1100G",
+      "operator": "LESSOR-001",
+      "msn": "9601",
+      "registration": "LSD-002",
+      "fleet_id": "LS-0602",
+      "configuration_baseline": "SB-A320-28-1195-R02",
+      "regulatory_authority": "EASA+FAA",
+      "h_evidence_ref": "H-EV-LS-0002",
+      "h_constraint_ref": "H-CON-LS-0002",
+      "h_signoff_ref": null
+    }
+  ]
+}

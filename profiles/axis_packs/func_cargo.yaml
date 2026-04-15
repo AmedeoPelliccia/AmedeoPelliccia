@@ -1,0 +1,36 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# AMPEL360 — Axis Pack: FUNC = CARGO_ONLY
+# Cargo and unmanned payload operations
+# Ref: AMPEL360-ARCH-SPEC-v2.0 §9.2, §9.6
+# ──────────────────────────────────────────────────────────────────────────────
+
+axis: function
+value: CARGO_ONLY
+description: >
+  Cargo and unmanned payload operations. Safety objective shifts to
+  public/ground safety and third-party harm minimisation, with higher
+  tolerance for mission loss and cargo-specific hazard management.
+
+human_presence: NO_HUMAN_ON_BOARD
+
+templates:
+  - THIRD_PARTY_HARM_ENVELOPE
+  - CARGO_HAZARD_CLASSIFICATION
+  - DANGEROUS_GOODS_TEMPLATE
+
+rulesets:
+  - GROUND_RISK_CONTAINMENT_RULE
+  - CARGO_FIRE_SUPPRESSION_RULE
+  - PAYLOAD_RESTRAINT_RULE
+
+constraints:
+  human_override: false
+
+h_factor_derivation:
+  objective: external_harm_minimization
+  ground_risk: containment_required
+  mission_loss_tolerance: higher
+  cargo_hazard_management:
+    - dangerous_goods
+    - payload_restraint
+    - cargo_fire_suppression

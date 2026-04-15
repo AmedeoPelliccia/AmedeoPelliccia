@@ -1,0 +1,39 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# AMPEL360 — Axis Pack: ENV = SPACE
+# Orbital, sub-orbital, and deep-space operations
+# Ref: AMPEL360-ARCH-SPEC-v2.0 §9.1, §9.6
+# ──────────────────────────────────────────────────────────────────────────────
+
+axis: environment
+value: SPACE
+description: >
+  Orbital, sub-orbital, and deep-space operations. Controls the regulatory
+  grammar (space safety case authorities), the effectivity model (mission
+  phase + orbit regime + conjunction ops + range safety), and operational
+  feedback sources (telemetry, conjunction events, re-entry events,
+  anomaly reports).
+
+templates:
+  - CONJUNCTION_EVIDENCE_LOOP
+  - ORBIT_REGIME_APPLICABILITY
+  - REENTRY_SAFETY_CONSTRAINT
+
+rulesets:
+  - CONJUNCTION_EVIDENCE_RULE
+  - ORBIT_REGIME_RULE
+  - REENTRY_SAFETY_RULE
+
+constraints:
+  risk_threshold: 1.0e-4
+
+regulatory_grammar:
+  authorities: [ESA, EU_SPACE_SAFETY, NATIONAL_LAUNCH_AUTHORITY]
+  effectivity_model:
+    identifiers: [mission_phase, orbit_regime]
+    conjunction_ops: true
+    range_safety: true
+  feedback_sources:
+    - telemetry
+    - conjunction_events
+    - reentry_events
+    - anomaly_reports
