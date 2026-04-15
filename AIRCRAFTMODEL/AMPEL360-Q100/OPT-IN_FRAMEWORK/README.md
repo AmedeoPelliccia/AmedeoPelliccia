@@ -6,10 +6,23 @@ status: draft
 last_updated: "2026-04-15"
 ---
 
-# OPT-IN Framework — AMPEL360-Q100
+# AMPEL360-Q100 — OPT-IN Framework (singular, AERIAL)
 
-> Shared 5-axis framework instance for the AMPEL360-Q100 aerial product.
-> Both sibling configurations (WTW and BWB) share this single OPT-IN instance.
+One framework instance shared across Q100 configurations (WTW, BWB).
+
+## Axes
+
+- `O-ORGANIZATIONS/` — ATA 00–05 (6 chapters)
+- `P-PROGRAMS/` — ATA 06–12 (7 chapters)
+- `T-TECHNOLOGIES_ON_BOARD_SYSTEMS/` — 14 sub-axes, 49 ATA chapters
+- `I-INFRASTRUCTURES/` — 6 chapters (support/H2 GSE/facilities)
+- `N-NEURAL_NETWORKS/` — 2 chapters (ledger, program slot)
+
+**Total: 70 chapters**, each with seed subject `XX-00-general` carrying SSOT (LC01–LC14) + PUB/AMM/CSDB+EXPORT+IETP.
+
+## Product-level LC01
+
+See [`LC01_PROBLEM_STATEMENT/`](LC01_PROBLEM_STATEMENT/).
 
 ## Five Axes
 
@@ -23,24 +36,11 @@ last_updated: "2026-04-15"
 
 ## Designator
 
-**Q100** is a **quotient designator**, not a passenger count. It identifies the AMPEL360 aerial product quotient.
+**Q100** is a **quotient designator**, not a passenger count.
 
 ## Configurations
 
-This framework is shared by two sibling configurations:
-
-- **WTW** (Wing-Tube-Wing) — conventional cylindrical fuselage + wing geometry
-- **BWB** (Blended Wing Body) — non-cylindrical centerbody + blended outer wing geometry
+- **WTW** (Wing-Tube-Wing)
+- **BWB** (Blended Wing Body)
 
 Configuration-specific content lives under `../CONFIGURATIONS/WTW/` and `../CONFIGURATIONS/BWB/`.
-
-## Regulatory Alignment
-
-- **CS-25 / Part-25** — primary airworthiness standard
-- **Part-21** — Design Organisation Approval (DOA)
-- **DO-178C / DO-254** — software and hardware assurance
-
-## Related
-
-- [AMPEL Family Taxonomy](../../../AMPEL-FAMILY-TAXONOMY.md)
-- [ESSA AMPEL360-Q100 Profile](../../../ESSA/AMPEL360-Q100.md)
