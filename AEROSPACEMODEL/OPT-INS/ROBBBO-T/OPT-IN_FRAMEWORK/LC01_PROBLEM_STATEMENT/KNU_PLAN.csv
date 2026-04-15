@@ -1,0 +1,10 @@
+KNU_ID,KNOT_ID,KNU_Type,Artifact_Class,Expected_Location,Acceptance_Criteria,Verification_Method,Owner_AoR,Due_Date,Status,Effort_Predicted
+KNU-RBT-AUTO-REQ-001,KNOT-RBT-AUTO-001,REQ,SSOT,./T-TECHNOLOGIES_ON_BOARD_SYSTEMS/SYS_89-autonomy-mission-mgmt/,Autonomy ladder per mission line baselined,Review,STK_SE,2026-08-15,PLANNED,8
+KNU-RBT-AUTO-AI-001,KNOT-RBT-AUTO-001,ANA,SSOT,./T-TECHNOLOGIES_ON_BOARD_SYSTEMS/SYS_95-ai-ml-models/,AI/ML model card per autonomy level,Review,STK_AI,2026-08-30,PLANNED,8
+KNU-RBT-RPO-ANA-001,KNOT-RBT-RPO-001,ANA,SSOT,./SPACE_SIM/SIM_05-rpo-rendezvous-proximity-ops/,RPO corridor & abort-tree analysis,Review,STK_SE,2026-09-15,PLANNED,13
+KNU-RBT-CAPTURE-TS-001,KNOT-RBT-CAPTURE-001,ANA,SSOT,./T-TECHNOLOGIES_ON_BOARD_SYSTEMS/SYS_87-robotics-capture-mechanism/,Capture mechanism trade study,Review,STK_SE,2026-10-15,PLANNED,13
+KNU-RBT-DEBRIS-CERT-001,KNOT-RBT-DEBRIS-001,REQ,SSOT,./O-ORGANIZATIONS/ORG_04-spaceworthiness-limitations/,IADC compliance plan,Review,STK_CERT,2026-09-15,PLANNED,5
+KNU-RBT-COMMS-ICD-001,KNOT-RBT-COMMS-001,ICD,SSOT,./T-TECHNOLOGIES_ON_BOARD_SYSTEMS/SYS_23-comms-rf-optical/,Frequency plan & ITU filing pkg,Review,STK_CERT,2026-08-15,PLANNED,8
+KNU-RBT-PROP-ANA-001,KNOT-RBT-PROP-001,ANA,SSOT,./T-TECHNOLOGIES_ON_BOARD_SYSTEMS/SYS_72-main-propulsion/,Propulsion trade per mission line,Review,STK_SE,2026-09-15,PLANNED,13
+KNU-RBT-CYBER-REQ-001,KNOT-RBT-CYBER-001,REQ,SSOT,./T-TECHNOLOGIES_ON_BOARD_SYSTEMS/SYS_99-cybersecurity-uplink/,Cmd auth & key mgmt requirements,Review,STK_CY,2026-09-30,PLANNED,8
+KNU-RBT-DPP-PUB-001,KNOT-RBT-DEBRIS-001,PUB,CSDB,./N-NEURAL_NETWORKS/NN_96-traceability-dpp-ledger/,DPP entry for end-of-life disposal passes BREX,BREX+CI,STK_CM,2026-10-15,PLANNED,5
