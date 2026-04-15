@@ -8,7 +8,7 @@ last_updated: "2026-04-15"
 
 # AMPEL360-Q10 — OPT-IN Framework (Space SIM context)
 
-Q10 crewed space-tourism shuttle. Full 5-axis scaffold with spacecraft-adapted chapter set.
+Q10 crewed space-tourism shuttle. Full 6-axis scaffold with spacecraft-adapted chapter set.
 
 ## Designator
 
@@ -29,8 +29,9 @@ Q10 crewed space-tourism shuttle. Full 5-axis scaffold with spacecraft-adapted c
 | `T-TECHNOLOGIES_ON_BOARD_SYSTEMS/` | 21 | ECLSS, GNC, TPS, Main Prop, OMS, RCS, Abort, Reentry, etc. |
 | `I-INFRASTRUCTURES/` | 6 | Launch, range, recovery, ground segment, training, propellant |
 | `N-NEURAL_NETWORKS/` | 2 | Traceability / DPP / ledger, program slot |
+| `S-SPACE_SIMULATIONS/` | 6 | Orbital mechanics, vacuum/thermal, radiation, microgravity, RPO, reentry |
 
-Total: **42 chapters**, each with one seed subject `XX-00-general` carrying SSOT (LC01–LC14) and PUB/AMM/CSDB+EXPORT+IETP.
+Total: **48 chapters**, each with one seed subject `XX-00-general` carrying SSOT (LC01–LC14) and PUB/AMM/CSDB+EXPORT+IETP.
 
 ## Product-level LC01
 

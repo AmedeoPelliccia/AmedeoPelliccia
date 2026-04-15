@@ -36,7 +36,7 @@ OPT-INS/
     └── OPT-IN_FRAMEWORK/
 ```
 
-## Shared 5-Axis Topology (Spatial Chapter Set)
+## Shared 6-Axis Topology (Spatial Chapter Set)
 
 | Axis | Spatial Chapter Set |
 |------|---------------------|
@@ -45,6 +45,7 @@ OPT-INS/
 | **T** — Technologies / On-Board Systems | ECLSS, TPS, GNC, OMS/RCS, EVA, comms, power |
 | **I** — Infrastructures | Launch, range, recovery, ground segment |
 | **N** — Neural Networks | Ledger, DPP, governance |
+| **S** — Space Simulations | Orbital mechanics, vacuum/thermal, radiation, microgravity, RPO, reentry |
 
 ## Related
 
