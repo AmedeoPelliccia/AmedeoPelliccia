@@ -1,0 +1,8 @@
+KNU_ID,KNOT_ID,KNU_Type,Artifact_Class,Expected_Location,Acceptance_Criteria,Verification_Method,Owner_AoR,Due_Date,Status,Effort_Predicted
+KNU-GAIA-ORBIT-REQ-001,KNOT-GAIA-ORBIT-001,REQ,SSOT,./O-ORGANIZATIONS/,Orbit & architecture requirements baselined,Review,STK_SE,2026-07-31,PLANNED,8
+KNU-GAIA-ECLSS-ANA-001,KNOT-GAIA-ECLSS-001,ANA,SSOT,./T-TECHNOLOGIES_ON_BOARD_SYSTEMS/SYS_21-eclss-regenerative/,Loop closure trade & selection,Review,STK_SE,2026-10-15,PLANNED,21
+KNU-GAIA-RAD-SAF-001,KNOT-GAIA-RAD-001,SAF,SSOT,./T-TECHNOLOGIES_ON_BOARD_SYSTEMS/SYS_60-radiation-protection/,Radiation dose analysis & storm shelter spec,Review,STK_SAF,2026-11-15,PLANNED,13
+KNU-GAIA-MOD-ICD-001,KNOT-GAIA-MOD-001,ICD,SSOT,./T-TECHNOLOGIES_ON_BOARD_SYSTEMS/SYS_52-hatches-docking/,Docking/berthing ICD baselined,Review,STK_SE,2026-09-15,PLANNED,8
+KNU-GAIA-DUR-REQ-001,KNOT-GAIA-DUR-001,REQ,SSOT,./P-PROGRAMS/,Mission duration class & rotation cadence REQ,Review,STK_OPS,2026-09-15,PLANNED,5
+KNU-GAIA-EVA-REQ-001,KNOT-GAIA-EVA-001,REQ,SSOT,./T-TECHNOLOGIES_ON_BOARD_SYSTEMS/SYS_85-eva-airlock/,EVA & airlock requirements baselined,Review,STK_SE,2026-10-15,PLANNED,8
+KNU-GAIA-CERT-PUB-001,KNOT-GAIA-CERT-001,PUB,CSDB,./N-NEURAL_NETWORKS/NN_96-traceability-dpp-ledger/,Cert basis summary DM passes BREX,BREX+CI,STK_CERT,2026-12-15,PLANNED,8

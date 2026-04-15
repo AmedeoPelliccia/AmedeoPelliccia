@@ -1,0 +1,49 @@
+tokenomics:
+  token_symbol: "TT"
+  unit: "deg"
+  deg_per_tt: 360
+
+scope:
+  product: "GAIA"
+  repo: "AEROSPACEMODEL"
+  framework: "OPT-INS"
+  level: "product"
+
+knot_rewards:
+  - knot_id: "KNOT-GAIA-ORBIT-001"
+    title: "Target orbit & architecture"
+    pool_tt: 300
+  - knot_id: "KNOT-GAIA-ECLSS-001"
+    title: "Regenerative loop closure %"
+    pool_tt: 400
+  - knot_id: "KNOT-GAIA-RAD-001"
+    title: "Radiation protection & storm shelter"
+    pool_tt: 300
+  - knot_id: "KNOT-GAIA-MOD-001"
+    title: "Module & docking standard"
+    pool_tt: 250
+  - knot_id: "KNOT-GAIA-DUR-001"
+    title: "Crew rotation cadence & long-duration HF"
+    pool_tt: 250
+  - knot_id: "KNOT-GAIA-EVA-001"
+    title: "EVA cadence & airlock architecture"
+    pool_tt: 250
+  - knot_id: "KNOT-GAIA-CERT-001"
+    title: "Human-rating certification path"
+    pool_tt: 250
+
+total_pool_tt: 2000
+total_pool_deg: 720000
+
+eligibility:
+  require_status: ["COMPLETE", "ACCEPTED"]
+  require_links_resolved: true
+  require_brex_pass_for_pub: true
+
+allocation:
+  method: "effort_plus_impact"
+  formula: "w_i = alpha_effort*E_hat + alpha_impact*I_hat ; T_i = P_k * w_i"
+  params:
+    alpha_effort: 0.30
+    alpha_impact: 0.70
+    lambda_spillover: 0.50
