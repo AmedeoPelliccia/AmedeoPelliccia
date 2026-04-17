@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   BREX Data Module – AMPEL360-Q10 / ATA Chapter 21 – ECLSS
-  S1000D Issue 5.0 compliant skeleton.
+  S1000D Issue 5.0 compliant – Extended SNS granularity
   =======================================================
   This module defines the business rules that govern all
   data modules produced under SYS_21 (Environmental Control
   and Life Support System) for the AMPEL360-Q10 aircraft.
+
+  Issue 000-02: Extended SNS to sub-sub-system level,
+  added additional structure/object rules, validation notes.
 -->
 <!DOCTYPE dmodule [
   <!NOTATION cgm SYSTEM "cgm">
@@ -33,7 +36,7 @@
                 infoCodeVariant="A"
                 itemLocationCode="D"/>
         <language languageIsoCode="en" countryIsoCode="US"/>
-        <issueInfo issueNumber="000" inWork="01"/>
+        <issueInfo issueNumber="000" inWork="02"/>
       </dmIdent>
       <dmAddressItems>
         <issueDate year="2026" month="04" day="17"/>
@@ -44,7 +47,7 @@
       </dmAddressItems>
     </dmAddress>
 
-    <dmStatus issueType="new">
+    <dmStatus issueType="changed">
       <security securityClassification="01"/>
       <responsiblePartnerCompany>
         <enterpriseName>AMPEL Aerospace</enterpriseName>
@@ -77,6 +80,9 @@
       <qualityAssurance>
         <unverified/>
       </qualityAssurance>
+      <reasonForUpdate>
+        <simplePara>Extended SNS rules to sub-sub-system level; added unit-of-measure and language constraints; added CI validation hooks.</simplePara>
+      </reasonForUpdate>
     </dmStatus>
   </identAndStatusSection>
 
@@ -87,59 +93,210 @@
     <brex>
 
       <!-- ========================================================
-           1. SNS RULES – Allowed System / Sub-system Codes
+           1. SNS RULES – Allowed System / Sub-system / Sub-sub-system Codes
            ======================================================== -->
       <snsRules>
+
+        <!-- 21-00  ECLSS General -->
         <snsSubSystem>
           <snsCode>21-00</snsCode>
           <snsTitle>ECLSS – General</snsTitle>
           <snsDescr>General information, overview, and theory of operation for the Environmental Control and Life Support System.</snsDescr>
         </snsSubSystem>
+
+        <!-- 21-10  Cabin Pressurisation -->
         <snsSubSystem>
           <snsCode>21-10</snsCode>
           <snsTitle>Cabin Pressurisation</snsTitle>
           <snsDescr>Cabin pressure control, outflow valves, safety valves, and pressure controllers.</snsDescr>
         </snsSubSystem>
         <snsSubSystem>
+          <snsCode>21-11</snsCode>
+          <snsTitle>Cabin Pressure Controller</snsTitle>
+          <snsDescr>Digital cabin pressure controller (CPC) and auto/manual modes.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-12</snsCode>
+          <snsTitle>Outflow Valve Assembly</snsTitle>
+          <snsDescr>Motorised outflow valve, position feedback sensors, and torque limiters.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-13</snsCode>
+          <snsTitle>Safety and Relief Valves</snsTitle>
+          <snsDescr>Positive and negative pressure relief valves and cabin altitude limiter.</snsDescr>
+        </snsSubSystem>
+
+        <!-- 21-20  Air Distribution -->
+        <snsSubSystem>
           <snsCode>21-20</snsCode>
           <snsTitle>Air Distribution</snsTitle>
           <snsDescr>Air distribution ducting, mixing valves, and zone control.</snsDescr>
         </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-21</snsCode>
+          <snsTitle>Supply Ducting</snsTitle>
+          <snsDescr>Main supply ducts, risers, and overhead distribution plenums.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-22</snsCode>
+          <snsTitle>Mixing Chamber and Zone Valves</snsTitle>
+          <snsDescr>Hot/cold air mixing chambers, trim-air valves, and zone shutoff valves.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-23</snsCode>
+          <snsTitle>Recirculation Fans</snsTitle>
+          <snsDescr>Cabin recirculation fans, HEPA pre-filter stages, and fan controllers.</snsDescr>
+        </snsSubSystem>
+
+        <!-- 21-30  Cabin Temperature Control -->
         <snsSubSystem>
           <snsCode>21-30</snsCode>
           <snsTitle>Cabin Temperature Control</snsTitle>
           <snsDescr>Pack valves, ACMs (air cycle machines), heat exchangers, and temperature controllers.</snsDescr>
         </snsSubSystem>
         <snsSubSystem>
+          <snsCode>21-31</snsCode>
+          <snsTitle>Pack Valve Assembly</snsTitle>
+          <snsDescr>Flow-control and shutoff pack valve, position feedback, and BITE interface.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-32</snsCode>
+          <snsTitle>Air Cycle Machine (ACM)</snsTitle>
+          <snsDescr>Bootstrap or four-wheel ACM, turbine, compressor, and fan sections.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-33</snsCode>
+          <snsTitle>Primary and Secondary Heat Exchangers</snsTitle>
+          <snsDescr>Ram-air heat exchangers, condensers, and reheaters.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-34</snsCode>
+          <snsTitle>Temperature Controller</snsTitle>
+          <snsDescr>Zone temperature controller, temperature sensors, and control logic.</snsDescr>
+        </snsSubSystem>
+
+        <!-- 21-40  Humidity / Contamination Control -->
+        <snsSubSystem>
           <snsCode>21-40</snsCode>
           <snsTitle>Humidity / Contamination Control</snsTitle>
           <snsDescr>HEPA filters, ozone converters, humidity sensors, and catalytic converters.</snsDescr>
         </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-41</snsCode>
+          <snsTitle>HEPA Filter Assembly</snsTitle>
+          <snsDescr>High-efficiency particulate air filters – cabin supply and recirculation stages.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-42</snsCode>
+          <snsTitle>Ozone Converter</snsTitle>
+          <snsDescr>Catalytic ozone converter – inlet, catalyst bed, and outlet monitoring.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-43</snsCode>
+          <snsTitle>Humidity Sensor and Controller</snsTitle>
+          <snsDescr>Relative humidity sensors, dew-point transmitters, and humidification control.</snsDescr>
+        </snsSubSystem>
+
+        <!-- 21-50  Cabin Atmosphere Monitoring -->
         <snsSubSystem>
           <snsCode>21-50</snsCode>
           <snsTitle>Cabin Atmosphere Monitoring</snsTitle>
           <snsDescr>CO₂ sensors, O₂ sensors, cabin altitude warning, and atmosphere data concentrators.</snsDescr>
         </snsSubSystem>
         <snsSubSystem>
+          <snsCode>21-51</snsCode>
+          <snsTitle>CO₂ Sensor Suite</snsTitle>
+          <snsDescr>NDIR-based CO₂ sensors, calibration ports, and data bus interface.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-52</snsCode>
+          <snsTitle>O₂ Sensor Suite</snsTitle>
+          <snsDescr>Galvanic and paramagnetic O₂ sensors for cabin and cockpit zones.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-53</snsCode>
+          <snsTitle>Cabin Altitude Warning System</snsTitle>
+          <snsDescr>Cabin altitude warning logic, aural/visual alerts, and auto-deploy triggers.</snsDescr>
+        </snsSubSystem>
+
+        <!-- 21-60  Oxygen Generation and Distribution -->
+        <snsSubSystem>
           <snsCode>21-60</snsCode>
           <snsTitle>Oxygen Generation and Distribution</snsTitle>
           <snsDescr>OBOGS (On-Board Oxygen Generating System), crew/passenger oxygen masks, and distribution lines.</snsDescr>
         </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-61</snsCode>
+          <snsTitle>OBOGS Concentrator</snsTitle>
+          <snsDescr>Molecular-sieve oxygen concentrator, zeolite beds, and control valves.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-62</snsCode>
+          <snsTitle>Crew Oxygen Masks and Regulators</snsTitle>
+          <snsDescr>Quick-don masks, diluter-demand regulators, and flow indicators.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-63</snsCode>
+          <snsTitle>Passenger Oxygen Masks (PSU)</snsTitle>
+          <snsDescr>Passenger service unit drop-down masks, chemical O₂ generators, and lanyards.</snsDescr>
+        </snsSubSystem>
+
+        <!-- 21-70  CO₂ Removal and Air Revitalisation -->
         <snsSubSystem>
           <snsCode>21-70</snsCode>
           <snsTitle>CO₂ Removal and Air Revitalisation</snsTitle>
           <snsDescr>CO₂ scrubbers, amine-swing beds, regenerative life support components.</snsDescr>
         </snsSubSystem>
         <snsSubSystem>
+          <snsCode>21-71</snsCode>
+          <snsTitle>Amine-Swing CO₂ Scrubber</snsTitle>
+          <snsDescr>Temperature-swing amine beds, vacuum desorption pump, and regeneration cycle controller.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-72</snsCode>
+          <snsTitle>Sabatier Reactor (if equipped)</snsTitle>
+          <snsDescr>Catalytic CO₂-to-CH₄ reactor for closed-loop air revitalisation missions.</snsDescr>
+        </snsSubSystem>
+
+        <!-- 21-80  Water Recovery and Waste Management -->
+        <snsSubSystem>
           <snsCode>21-80</snsCode>
           <snsTitle>Water Recovery and Waste Management</snsTitle>
           <snsDescr>Condensate recovery, waste-water processing, and potable-water interface (ECLSS scope).</snsDescr>
         </snsSubSystem>
         <snsSubSystem>
+          <snsCode>21-81</snsCode>
+          <snsTitle>Condensate Collection and Separator</snsTitle>
+          <snsDescr>Water separator, condensate drain lines, and collection reservoir.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-82</snsCode>
+          <snsTitle>Water Purification Module</snsTitle>
+          <snsDescr>Multi-stage filtration, UV sterilisation, and quality monitoring sensors.</snsDescr>
+        </snsSubSystem>
+
+        <!-- 21-90  Digital Twin and Health Monitoring -->
+        <snsSubSystem>
           <snsCode>21-90</snsCode>
           <snsTitle>ECLSS Digital Twin and Health Monitoring</snsTitle>
           <snsDescr>Real-time ECLSS digital twin interface, predictive analytics, and IVHM integration.</snsDescr>
         </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-91</snsCode>
+          <snsTitle>ECLSS Data Concentrator Unit</snsTitle>
+          <snsDescr>ARINC 664 / TTP data concentrator aggregating all ECLSS sensor feeds.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-92</snsCode>
+          <snsTitle>Predictive Maintenance Analytics</snsTitle>
+          <snsDescr>ML-based remaining-useful-life models, anomaly detection, and maintenance advisory generation.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-93</snsCode>
+          <snsTitle>Digital Twin Real-Time Interface</snsTitle>
+          <snsDescr>ECLSS physics-based digital twin sync, ground-station telemetry link, and scenario simulation API.</snsDescr>
+        </snsSubSystem>
+
       </snsRules>
 
       <!-- ========================================================
@@ -159,16 +316,34 @@
           <objectUse>An applicability statement SHOULD be present to identify the AMPEL360-Q10 variant(s) to which the data module applies.</objectUse>
         </structureObjectRule>
 
-        <!-- Prohibit legacy <foldout> inside procedural steps -->
+        <!-- Prohibit legacy foldout inside procedural steps -->
         <structureObjectRule>
           <objectPath allowedObjectFlag="0">//proceduralStep/foldout</objectPath>
-          <objectUse>Foldout illustrations inside procedural steps are NOT permitted. Use <figure> with a separate graphic entity instead.</objectUse>
+          <objectUse>Foldout illustrations inside procedural steps are NOT permitted. Use figure with a separate graphic entity instead.</objectUse>
         </structureObjectRule>
 
-        <!-- Require a <warningAndCautionRef> or inline <warning>/<caution> before any removal/installation step -->
+        <!-- Require safety warnings on removal/install steps -->
         <structureObjectRule>
           <objectPath allowedObjectFlag="2">//proceduralStep/warning | //proceduralStep/caution | //proceduralStep/warningAndCautionRef</objectPath>
           <objectUse>Safety-critical removal or installation steps SHALL include at least one warning, caution, or reference to a common warnings/cautions data module.</objectUse>
+        </structureObjectRule>
+
+        <!-- SI units required for all quantityValue elements -->
+        <structureObjectRule>
+          <objectPath allowedObjectFlag="2">//quantityValue/@quantityUnitOfMeasure</objectPath>
+          <objectUse>All quantity values SHALL use SI units (kg, m, Pa, K, °C, L/min). Imperial units are NOT permitted as primary values.</objectUse>
+        </structureObjectRule>
+
+        <!-- Language constraint: only en-US permitted -->
+        <structureObjectRule>
+          <objectPath allowedObjectFlag="2">/dmodule/identAndStatusSection/dmAddress/dmIdent/language[@languageIsoCode='en'][@countryIsoCode='US']</objectPath>
+          <objectUse>All Chapter 21 data modules SHALL be authored in English (en-US). Translations are managed as separate language variants.</objectUse>
+        </structureObjectRule>
+
+        <!-- reasonForUpdate required when issueType is 'changed' -->
+        <structureObjectRule>
+          <objectPath allowedObjectFlag="1">/dmodule/identAndStatusSection/dmStatus/reasonForUpdate</objectPath>
+          <objectUse>A reasonForUpdate SHOULD be provided when issueType is 'changed' to support change tracking and audit trails.</objectUse>
         </structureObjectRule>
 
       </structureObjectRuleGroup>
@@ -180,17 +355,17 @@
         <notationRule>
           <notationName>png</notationName>
           <notationDescr>Portable Network Graphics – preferred raster format for screen display.</notationDescr>
-          <objectUse>PNG is ALLOWED for illustrations, schematics, and photographs.</objectUse>
+          <objectUse>PNG is ALLOWED for illustrations, schematics, and photographs. Minimum resolution: 300 DPI for print deliverables.</objectUse>
         </notationRule>
         <notationRule>
           <notationName>svg</notationName>
           <notationDescr>Scalable Vector Graphics – preferred vector format for diagrams and schematics.</notationDescr>
-          <objectUse>SVG is ALLOWED and RECOMMENDED for technical diagrams.</objectUse>
+          <objectUse>SVG is ALLOWED and RECOMMENDED for technical diagrams, schematics, and flowcharts.</objectUse>
         </notationRule>
         <notationRule>
           <notationName>cgm</notationName>
           <notationDescr>Computer Graphics Metafile – legacy vector format.</notationDescr>
-          <objectUse>CGM is ALLOWED for backward-compatible deliverables only.</objectUse>
+          <objectUse>CGM is ALLOWED for backward-compatible deliverables only. New illustrations SHOULD use SVG.</objectUse>
         </notationRule>
       </notationRuleList>
 
@@ -198,41 +373,42 @@
            4. OBJECT RULES – Allowed Info Codes (DM Types)
            ======================================================== -->
       <objectRules>
-        <!-- Description data modules -->
         <objectRule>
           <objectRef infoCode="018">Description and operation</objectRef>
           <objectUse>ALLOWED – Use for system/sub-system descriptions and theory of operation.</objectUse>
         </objectRule>
-        <!-- Maintenance procedures -->
+        <objectRule>
+          <objectRef infoCode="040">Technical data and specifications</objectRef>
+          <objectUse>ALLOWED – Use for performance envelopes, limits, and design specifications.</objectUse>
+        </objectRule>
+        <objectRule>
+          <objectRef infoCode="200">Servicing</objectRef>
+          <objectUse>ALLOWED – Scheduled servicing tasks (filter replacement, fluid checks).</objectUse>
+        </objectRule>
+        <objectRule>
+          <objectRef infoCode="300">Fault reports and isolation procedures</objectRef>
+          <objectUse>ALLOWED – Fault isolation logic (FMEA-derived) for ECLSS components.</objectUse>
+        </objectRule>
+        <objectRule>
+          <objectRef infoCode="400">Wiring data</objectRef>
+          <objectUse>ALLOWED – Wiring diagrams and connector pin-out tables for ECLSS harnesses.</objectUse>
+        </objectRule>
         <objectRule>
           <objectRef infoCode="520">Remove procedure</objectRef>
           <objectUse>ALLOWED – Standard removal procedures for ECLSS LRUs.</objectUse>
         </objectRule>
         <objectRule>
+          <objectRef infoCode="600">Inspection / check</objectRef>
+          <objectUse>ALLOWED – Scheduled and unscheduled inspection procedures.</objectUse>
+        </objectRule>
+        <objectRule>
           <objectRef infoCode="720">Install procedure</objectRef>
           <objectUse>ALLOWED – Standard installation procedures for ECLSS LRUs.</objectUse>
         </objectRule>
-        <!-- Fault isolation -->
-        <objectRule>
-          <objectRef infoCode="300">Fault reports and isolation procedures</objectRef>
-          <objectUse>ALLOWED – Fault isolation logic (FMEA-derived) for ECLSS components.</objectUse>
-        </objectRule>
-        <!-- Servicing -->
-        <objectRule>
-          <objectRef infoCode="200">Servicing</objectRef>
-          <objectUse>ALLOWED – Scheduled servicing tasks (filter replacement, fluid checks).</objectUse>
-        </objectRule>
-        <!-- Illustrated Parts Data -->
         <objectRule>
           <objectRef infoCode="941">Illustrated Parts Data</objectRef>
           <objectUse>ALLOWED – IPD figures and parts lists for ECLSS assemblies.</objectUse>
         </objectRule>
-        <!-- Wiring data -->
-        <objectRule>
-          <objectRef infoCode="400">Wiring data</objectRef>
-          <objectUse>ALLOWED – Wiring diagrams and connector pin-out tables for ECLSS harnesses.</objectUse>
-        </objectRule>
-        <!-- BREX itself -->
         <objectRule>
           <objectRef infoCode="022">Business rules exchange</objectRef>
           <objectUse>ALLOWED – This BREX data module type.</objectUse>
