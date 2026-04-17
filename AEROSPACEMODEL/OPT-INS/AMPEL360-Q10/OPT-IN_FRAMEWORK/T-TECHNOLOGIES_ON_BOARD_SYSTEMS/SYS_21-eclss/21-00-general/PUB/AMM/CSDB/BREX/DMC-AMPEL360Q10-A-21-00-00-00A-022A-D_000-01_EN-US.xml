@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  BREX Data Module – AMPEL360-Q10 / ATA Chapter 21 – ECLSS
+  S1000D Issue 5.0 compliant skeleton.
+  =======================================================
+  This module defines the business rules that govern all
+  data modules produced under SYS_21 (Environmental Control
+  and Life Support System) for the AMPEL360-Q10 aircraft.
+-->
+<!DOCTYPE dmodule [
+  <!NOTATION cgm SYSTEM "cgm">
+  <!NOTATION png SYSTEM "png">
+  <!NOTATION svg SYSTEM "svg">
+]>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://www.s1000d.org/S1000D_5-0/xml_schema_flat/brex.xsd">
+
+  <!-- ============================================================
+       IDENTIFICATION AND STATUS SECTION
+       ============================================================ -->
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <dmCode modelIdentCode="AMPEL360Q10"
+                systemDiffCode="A"
+                systemCode="21"
+                subSystemCode="0"
+                subSubSystemCode="0"
+                assyCode="00"
+                disassyCode="00"
+                disassyCodeVariant="A"
+                infoCode="022"
+                infoCodeVariant="A"
+                itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="000" inWork="01"/>
+      </dmIdent>
+      <dmAddressItems>
+        <issueDate year="2026" month="04" day="17"/>
+        <dmTitle>
+          <techName>Environmental Control and Life Support System (ECLSS)</techName>
+          <infoName>Business Rules Exchange (BREX) Data Module</infoName>
+        </dmTitle>
+      </dmAddressItems>
+    </dmAddress>
+
+    <dmStatus issueType="new">
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany>
+        <enterpriseName>AMPEL Aerospace</enterpriseName>
+      </responsiblePartnerCompany>
+      <originator>
+        <enterpriseName>AMPEL Aerospace – Systems Engineering</enterpriseName>
+      </originator>
+      <applic>
+        <displayText>
+          <simplePara>All AMPEL360-Q10 variants</simplePara>
+        </displayText>
+      </applic>
+      <brexDmRef>
+        <dmRef>
+          <dmRefIdent>
+            <dmCode modelIdentCode="S1000D"
+                    systemDiffCode="G"
+                    systemCode="04"
+                    subSystemCode="1"
+                    subSubSystemCode="0"
+                    assyCode="03"
+                    disassyCode="01"
+                    disassyCodeVariant="A"
+                    infoCode="022"
+                    infoCodeVariant="A"
+                    itemLocationCode="D"/>
+          </dmRefIdent>
+        </dmRef>
+      </brexDmRef>
+      <qualityAssurance>
+        <unverified/>
+      </qualityAssurance>
+    </dmStatus>
+  </identAndStatusSection>
+
+  <!-- ============================================================
+       CONTENT SECTION – BUSINESS RULES
+       ============================================================ -->
+  <content>
+    <brex>
+
+      <!-- ========================================================
+           1. SNS RULES – Allowed System / Sub-system Codes
+           ======================================================== -->
+      <snsRules>
+        <snsSubSystem>
+          <snsCode>21-00</snsCode>
+          <snsTitle>ECLSS – General</snsTitle>
+          <snsDescr>General information, overview, and theory of operation for the Environmental Control and Life Support System.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-10</snsCode>
+          <snsTitle>Cabin Pressurisation</snsTitle>
+          <snsDescr>Cabin pressure control, outflow valves, safety valves, and pressure controllers.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-20</snsCode>
+          <snsTitle>Air Distribution</snsTitle>
+          <snsDescr>Air distribution ducting, mixing valves, and zone control.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-30</snsCode>
+          <snsTitle>Cabin Temperature Control</snsTitle>
+          <snsDescr>Pack valves, ACMs (air cycle machines), heat exchangers, and temperature controllers.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-40</snsCode>
+          <snsTitle>Humidity / Contamination Control</snsTitle>
+          <snsDescr>HEPA filters, ozone converters, humidity sensors, and catalytic converters.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-50</snsCode>
+          <snsTitle>Cabin Atmosphere Monitoring</snsTitle>
+          <snsDescr>CO₂ sensors, O₂ sensors, cabin altitude warning, and atmosphere data concentrators.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-60</snsCode>
+          <snsTitle>Oxygen Generation and Distribution</snsTitle>
+          <snsDescr>OBOGS (On-Board Oxygen Generating System), crew/passenger oxygen masks, and distribution lines.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-70</snsCode>
+          <snsTitle>CO₂ Removal and Air Revitalisation</snsTitle>
+          <snsDescr>CO₂ scrubbers, amine-swing beds, regenerative life support components.</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-80</snsCode>
+          <snsTitle>Water Recovery and Waste Management</snsTitle>
+          <snsDescr>Condensate recovery, waste-water processing, and potable-water interface (ECLSS scope).</snsDescr>
+        </snsSubSystem>
+        <snsSubSystem>
+          <snsCode>21-90</snsCode>
+          <snsTitle>ECLSS Digital Twin and Health Monitoring</snsTitle>
+          <snsDescr>Real-time ECLSS digital twin interface, predictive analytics, and IVHM integration.</snsDescr>
+        </snsSubSystem>
+      </snsRules>
+
+      <!-- ========================================================
+           2. STRUCTURE OBJECT RULES – Element Constraints
+           ======================================================== -->
+      <structureObjectRuleGroup>
+
+        <!-- Every data module MUST have a security classification -->
+        <structureObjectRule>
+          <objectPath allowedObjectFlag="2">/dmodule/identAndStatusSection/dmStatus/security/@securityClassification</objectPath>
+          <objectUse>All Chapter 21 data modules SHALL carry a security classification attribute (01 = unclassified).</objectUse>
+        </structureObjectRule>
+
+        <!-- Warn if no applicability block is present -->
+        <structureObjectRule>
+          <objectPath allowedObjectFlag="1">/dmodule/identAndStatusSection/dmStatus/applic</objectPath>
+          <objectUse>An applicability statement SHOULD be present to identify the AMPEL360-Q10 variant(s) to which the data module applies.</objectUse>
+        </structureObjectRule>
+
+        <!-- Prohibit legacy <foldout> inside procedural steps -->
+        <structureObjectRule>
+          <objectPath allowedObjectFlag="0">//proceduralStep/foldout</objectPath>
+          <objectUse>Foldout illustrations inside procedural steps are NOT permitted. Use <figure> with a separate graphic entity instead.</objectUse>
+        </structureObjectRule>
+
+        <!-- Require a <warningAndCautionRef> or inline <warning>/<caution> before any removal/installation step -->
+        <structureObjectRule>
+          <objectPath allowedObjectFlag="2">//proceduralStep/warning | //proceduralStep/caution | //proceduralStep/warningAndCautionRef</objectPath>
+          <objectUse>Safety-critical removal or installation steps SHALL include at least one warning, caution, or reference to a common warnings/cautions data module.</objectUse>
+        </structureObjectRule>
+
+      </structureObjectRuleGroup>
+
+      <!-- ========================================================
+           3. NOTATION RULES – Allowed Graphic Formats
+           ======================================================== -->
+      <notationRuleList>
+        <notationRule>
+          <notationName>png</notationName>
+          <notationDescr>Portable Network Graphics – preferred raster format for screen display.</notationDescr>
+          <objectUse>PNG is ALLOWED for illustrations, schematics, and photographs.</objectUse>
+        </notationRule>
+        <notationRule>
+          <notationName>svg</notationName>
+          <notationDescr>Scalable Vector Graphics – preferred vector format for diagrams and schematics.</notationDescr>
+          <objectUse>SVG is ALLOWED and RECOMMENDED for technical diagrams.</objectUse>
+        </notationRule>
+        <notationRule>
+          <notationName>cgm</notationName>
+          <notationDescr>Computer Graphics Metafile – legacy vector format.</notationDescr>
+          <objectUse>CGM is ALLOWED for backward-compatible deliverables only.</objectUse>
+        </notationRule>
+      </notationRuleList>
+
+      <!-- ========================================================
+           4. OBJECT RULES – Allowed Info Codes (DM Types)
+           ======================================================== -->
+      <objectRules>
+        <!-- Description data modules -->
+        <objectRule>
+          <objectRef infoCode="018">Description and operation</objectRef>
+          <objectUse>ALLOWED – Use for system/sub-system descriptions and theory of operation.</objectUse>
+        </objectRule>
+        <!-- Maintenance procedures -->
+        <objectRule>
+          <objectRef infoCode="520">Remove procedure</objectRef>
+          <objectUse>ALLOWED – Standard removal procedures for ECLSS LRUs.</objectUse>
+        </objectRule>
+        <objectRule>
+          <objectRef infoCode="720">Install procedure</objectRef>
+          <objectUse>ALLOWED – Standard installation procedures for ECLSS LRUs.</objectUse>
+        </objectRule>
+        <!-- Fault isolation -->
+        <objectRule>
+          <objectRef infoCode="300">Fault reports and isolation procedures</objectRef>
+          <objectUse>ALLOWED – Fault isolation logic (FMEA-derived) for ECLSS components.</objectUse>
+        </objectRule>
+        <!-- Servicing -->
+        <objectRule>
+          <objectRef infoCode="200">Servicing</objectRef>
+          <objectUse>ALLOWED – Scheduled servicing tasks (filter replacement, fluid checks).</objectUse>
+        </objectRule>
+        <!-- Illustrated Parts Data -->
+        <objectRule>
+          <objectRef infoCode="941">Illustrated Parts Data</objectRef>
+          <objectUse>ALLOWED – IPD figures and parts lists for ECLSS assemblies.</objectUse>
+        </objectRule>
+        <!-- Wiring data -->
+        <objectRule>
+          <objectRef infoCode="400">Wiring data</objectRef>
+          <objectUse>ALLOWED – Wiring diagrams and connector pin-out tables for ECLSS harnesses.</objectUse>
+        </objectRule>
+        <!-- BREX itself -->
+        <objectRule>
+          <objectRef infoCode="022">Business rules exchange</objectRef>
+          <objectUse>ALLOWED – This BREX data module type.</objectUse>
+        </objectRule>
+      </objectRules>
+
+    </brex>
+  </content>
+</dmodule>
