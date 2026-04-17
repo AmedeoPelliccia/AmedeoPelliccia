@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!-- identAndStatusSection defines data module identity, language, issue, and ownership metadata. -->
+  <identAndStatusSection>
+    <dmAddress>
+      <dmIdent>
+        <!-- DMC for ATA 21-00 ACT (applicability type 00WA) for AMPEL360-Q10. -->
+        <dmCode modelIdentCode="AMPEL360Q10" systemDiffCode="A" systemCode="21" subSystemCode="0" subSubSystemCode="0" assyCode="00" disassyCode="00" disassyCodeVariant="A" infoCode="00W" infoCodeVariant="A" itemLocationCode="D"/>
+        <language languageIsoCode="en" countryIsoCode="US"/>
+        <issueInfo issueNumber="000" inWork="00"/>
+      </dmIdent>
+      <dmAddressItems>
+        <issueDate year="2026" month="04" day="17"/>
+        <dmTitle>
+          <techName>ATA 21-00 ECLSS General</techName>
+          <infoName>Applicability Cross-Reference Table (ACT)</infoName>
+        </dmTitle>
+      </dmAddressItems>
+    </dmAddress>
+    <dmStatus issueType="new">
+      <security securityClassification="01"/>
+      <responsiblePartnerCompany enterpriseCode="AMPEL-AEROSPACE">
+        <enterpriseName>AMPEL Aerospace</enterpriseName>
+      </responsiblePartnerCompany>
+      <originator enterpriseCode="AMPEL-AEROSPACE">
+        <enterpriseName>AMPEL Aerospace</enterpriseName>
+      </originator>
+    </dmStatus>
+  </identAndStatusSection>
+
+  <!-- content contains a starter ACT matrix that can be extended with real fleet effectivity data. -->
+  <content>
+    <applicCrossRefTable id="act-21-00">
+      <!-- Example row set for model variants and serial effectivity ranges. -->
+      <applicabilityRow id="act-row-001">
+        <modelVariant>AMPEL360-Q10-100</modelVariant>
+        <serialNumberEffectivity>0001-0050</serialNumberEffectivity>
+        <modificationApplicability>Pre-MOD-21-001</modificationApplicability>
+        <remarks>Baseline production block before ECLSS MOD-21-001 implementation.</remarks>
+      </applicabilityRow>
+      <applicabilityRow id="act-row-002">
+        <modelVariant>AMPEL360-Q10-200</modelVariant>
+        <serialNumberEffectivity>0051-0100</serialNumberEffectivity>
+        <modificationApplicability>Post-MOD-21-001</modificationApplicability>
+        <remarks>Updated production block with ECLSS MOD-21-001 embodied.</remarks>
+      </applicabilityRow>
+    </applicCrossRefTable>
+  </content>
+</dmodule>
