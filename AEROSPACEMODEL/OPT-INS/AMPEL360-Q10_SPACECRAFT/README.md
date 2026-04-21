@@ -51,6 +51,6 @@ See [`LC01_PROBLEM_STATEMENT/`](LC01_PROBLEM_STATEMENT/) for 7 seed KNOTs and 2,
 
 ## Related
 
-- [OPT-INS wrapper](../../README.md)
-- [ESSA AMPEL360-Q10 Profile](../../../../ESSA/AMPEL360-Q10.md)
-- [AMPEL Family Taxonomy](../../../../AMPEL-FAMILY-TAXONOMY.md)
+- [OPT-INS wrapper](../README.md)
+- [ESSA AMPEL360-Q10 Profile](../../../ESSA/AMPEL360-Q10.md)
+- [AMPEL Family Taxonomy](../../../AMPEL-FAMILY-TAXONOMY.md)

@@ -24,7 +24,7 @@ last_updated: "2026-04-15"
 AEROSPACEMODEL/
 ├── MCC/                              # Multi-Channel Cryptographic Composition
 └── OPT-INS/                          # "OPT-IN + S (Space SIM)" wrapper
-    ├── AMPEL360-Q10/OPT-IN_FRAMEWORK/
+    ├── AMPEL360-Q10_SPACECRAFT/
     ├── GAIA/OPT-IN_FRAMEWORK/
     └── ROBBBO-T/OPT-IN_FRAMEWORK/
 ```
