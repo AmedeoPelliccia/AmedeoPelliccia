@@ -41,5 +41,5 @@ See [`LC01_PROBLEM_STATEMENT/`](LC01_PROBLEM_STATEMENT/) for 7 seed KNOTs and 2,
 
 ## Related
 
-- [OPT-INS wrapper](../../README.md)
-- [AMPEL Family Taxonomy](../../../../AMPEL-FAMILY-TAXONOMY.md)
+- [OPT-INS wrapper](../README.md)
+- [AMPEL Family Taxonomy](../../../AMPEL-FAMILY-TAXONOMY.md)

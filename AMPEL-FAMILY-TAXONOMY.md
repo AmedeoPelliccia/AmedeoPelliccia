@@ -90,7 +90,7 @@ Three products, each with its own OPT-IN_FRAMEWORK instance, all grouped under t
 AEROSPACEMODEL/
 └── OPT-INS/                        # "OPT-IN + S (Space SIM)"
     ├── AMPEL360-Q10/OPT-IN_FRAMEWORK/
-    ├── GAIA/OPT-IN_FRAMEWORK/
+    ├── GAIA-AIR-SPACE_FRAMEWORK/
     └── ROBBBO-T/OPT-IN_FRAMEWORK/
 ```
 
