@@ -1,0 +1,320 @@
+##############################################################################
+# traumacodedrama.yaml
+# TRAUMACODEDRAMA — Dramatic-Arc Steganographic Protocol
+# AEROSPACEMODEL MCC Specification Series — SPEC-009
+##############################################################################
+
+document_id: AEROSPACEMODEL-MCC-SPEC-009
+document_type: dramatic_arc_steganographic_protocol
+title: "TRAUMACODEDRAMA — Dramatic-Arc Steganographic Protocol"
+version: "0.1.0"
+schema_version: "1.0.0"
+status: draft
+parent: AEROSPACEMODEL-MCC-SPEC-008
+related_documents:
+  - id: AEROSPACEMODEL-MCC-SPEC-008
+    file: "AEROSPACEMODEL/MCC/SENSORIUM.md"
+    relationship: parent_base_layer
+  - id: PLUMA-GAI-HIV-001
+    file: "00-PROGRAM/PLUMA-GAI/H.I.V.md"
+    relationship: infrastructure_analogue
+last_updated: "2026-04-04T00:00:00Z"
+
+##############################################################################
+# 0  Core Principle
+##############################################################################
+
+core_principle:
+  statement: "𝒟 ∩ 𝒯 = ∅"
+  description: >
+    Dramaturgical intent and encoded transitions occupy disjoint perceptual
+    dimensions. Data is hidden in the transition magnitudes between consecutive
+    emotional states, NOT in the states themselves.
+  generalisation: >
+    TRAUMACODEDRAMA extends SENSORIUM by one derivative: from state intensity
+    to transition magnitude. The dramatic arc is the encoding protocol.
+  axiom: >
+    "The drama is not the container of the data.
+    The drama IS the encoding protocol."
+
+##############################################################################
+# 1  Definitions
+##############################################################################
+
+definitions:
+
+  - definition: 36
+    name: Transition Vector
+    formula: "Δεᵢ = εᵢ − εᵢ₋₁"
+    components: "(Δκ_𝔸, Δκ_ℍ, Δκ_𝕆, Δκ_𝔽, Δκ_𝔾, Δκ_ℙ)"
+    domain: "Δκⱼ ∈ {−99, …, +99} for each channel j"
+    description: >
+      The six-dimensional vector representing the change in sensory intensities
+      between two consecutive emotional states in a dramatic sequence.
+
+  - definition: 37
+    name: MonKBit Encoding
+    formula: "κᵢ = f(‖Δεᵢ‖)"
+    magnitude_formula: "‖Δεᵢ‖ = √(Σ Δκⱼ²)"
+    description: >
+      The payload word at transition i is encoded in the L2 magnitude of the
+      transition vector. The direction of Δεᵢ carries dramaturgical intent;
+      the magnitude carries data. These are orthogonal dimensions.
+    direction_semantic: "Dramaturgical intent — which sense leads the shift"
+    magnitude_semantic: "Data payload — MonKBit value"
+    capacity_formula: "C_transition = log(‖Δε_max‖ / resolution)"
+    resolution_default: 5
+
+##############################################################################
+# 2  Three-Act Encoding Structure
+##############################################################################
+
+encoding_structure:
+
+  acts:
+    - act: I
+      greek: Protasis
+      role: Header
+      cryptographic_function: "Establish baseline ε₀, seed, channel parameters"
+      transition_constraint: "‖Δε‖ ≤ 30 (normality; no sudden shifts in Act I)"
+      carries:
+        - field: epsilon_0
+          description: "Initial emotional state (seed state)"
+        - field: seed
+          format: "sha3-256:hex"
+          description: "Determines f (MonKBit encoding function) for this dramatic instance"
+        - field: active_channels
+          description: "Subset of {𝔸, ℍ, 𝕆, 𝔽, 𝔾, ℙ} carrying payload"
+        - field: arc_closure_threshold
+          default: 30
+          description: "Maximum ‖ε_final − ε₀‖ for arc-closure invariant"
+
+    - act: II
+      greek: Epitasis
+      role: Payload
+      cryptographic_function: "Maximum transition variance → maximum capacity"
+      transition_constraint: "Unconstrained in magnitude (subject to state space)"
+      carries:
+        - field: payload_words
+          description: "κᵢ = f(‖Δεᵢ‖) for each transition i in Act II"
+        - field: climax
+          description: "argmax(‖Δεᵢ‖) carries MSW (most significant word)"
+      nearest_drama_constraint: >
+        The encoder MUST select target state εᵢ as the canonical state nearest
+        to the required magnitude in the direction of dramaturgical intent.
+
+    - act: III
+      greek: Katharsis
+      role: Footer
+      cryptographic_function: "Convergence, CRC, channel closure"
+      transition_constraint: "Converge toward ε_final"
+      carries:
+        - field: crc_word
+          description: "Katharsis CRC transition carries CRC of entire payload"
+        - field: seal
+          description: "Final transition: arc closure — ‖ε_final − ε₀‖ ≤ threshold"
+
+##############################################################################
+# 3  Canonical Dramaturgies
+##############################################################################
+
+canonical_dramaturgies:
+
+  - id: DRAMA-001
+    name_it: Perdita
+    name_en: Loss
+    arc_sequence:
+      - Serenità
+      - Tenerezza
+      - Malinconia
+      - Terrore
+      - ε_vuoto
+      - Nostalgia
+      - Serenità
+    acts:
+      protasis: [Serenità, Tenerezza]
+      epitasis: [Tenerezza, Malinconia, Terrore, ε_vuoto]
+      katharsis: [ε_vuoto, Nostalgia, Serenità]
+    climax_transition: "Malinconia → Terrore"
+    climax_delta_magnitude: 185
+    crc_transition: "ε_vuoto → Nostalgia"
+    arc_closure_threshold: 30
+    steganographic_note: >
+      Maximum capacity at Malinconia → Terrore climax (‖Δε‖ ≈ 185).
+      Sudden terror in a loss narrative is dramaturgically expected — full cover
+      for MSW. Katharsis uses chemosensory recovery (nostalgia as memory
+      re-surfacing) for CRC embedding with minimal closure distortion.
+
+  - id: DRAMA-002
+    name_it: Rinascita
+    name_en: Rebirth
+    arc_sequence:
+      - Malinconia
+      - Serenità
+      - Meraviglia
+      - Gioia
+      - Estasi
+      - Tenerezza
+      - Serenità
+    acts:
+      protasis: [Malinconia, Serenità]
+      epitasis: [Serenità, Meraviglia, Gioia, Estasi]
+      katharsis: [Estasi, Tenerezza, Serenità]
+    climax_transition: "Gioia → Estasi"
+    climax_delta_magnitude: 45
+    crc_transition: "Estasi → Tenerezza"
+    arc_closure_threshold: 30
+    steganographic_note: >
+      Gioia → Estasi transition has lower capacity (both high-magnitude states).
+      Katharsis Estasi → Tenerezza carries CRC with high capacity (large Δε
+      plausible as intensity fading into warmth). Decoder: Estasi (magnitude 196)
+      is the highest-magnitude state; transitions away from it have high ‖Δε‖.
+
+  - id: DRAMA-003
+    name_it: Metamorfosi
+    name_en: Transformation
+    arc_sequence:
+      - Terrore
+      - Malinconia
+      - Meraviglia
+      - Tenerezza
+      - Nostalgia
+      - Gioia
+      - Serenità
+    acts:
+      protasis: [Terrore, Malinconia]
+      epitasis: [Malinconia, Meraviglia, Tenerezza, Nostalgia]
+      katharsis: [Nostalgia, Gioia, Serenità]
+    climax_transition: "Malinconia → Meraviglia"
+    climax_delta_magnitude: 115
+    crc_transition: "Nostalgia → Gioia"
+    arc_closure_threshold: 200
+    arc_closure_note: >
+      Metamorfosi does NOT return to its starting register by design.
+      arc_closure_threshold relaxed to 200 (non-return is part of the narrative).
+    steganographic_note: >
+      Protasis starts with large-magnitude Terrore → Malinconia transition (‖Δε‖ ≈ 155),
+      expected at the opening of a transformation story — wide seed-encoding window.
+      Katharsis Nostalgia → Gioia is unusually large for a footer but credible as
+      the narrative payoff of transformation.
+
+##############################################################################
+# 4  Encoding Rules
+##############################################################################
+
+encoding_rules:
+
+  - id: D-001
+    name: Transition Primacy
+    statement: >
+      Data MUST be encoded in ‖Δεᵢ‖ (transition magnitude), NOT in εᵢ
+      (state magnitude). Any correlation of payload with absolute state values
+      rather than state differences is a protocol violation.
+    severity: MUST
+
+  - id: D-002
+    name: Nearest-Drama Constraint
+    statement: >
+      For each payload-carrying transition, the encoder MUST select target state
+      εᵢ as the canonical state nearest to the required magnitude in the direction
+      of dramaturgical intent. Violation is detectable as emotionally implausible
+      state sequences.
+    severity: MUST
+
+  - id: D-003
+    name: Act II Climax Placement
+    statement: >
+      The payload word with the highest value (MSW) MUST be placed at the
+      transition with the maximum dramatic magnitude (the climax). This aligns
+      maximum information density with maximum narrative tension.
+    severity: MUST
+
+  - id: D-004
+    name: Katharsis CRC
+    statement: >
+      The final transition before arc closure MUST carry a valid CRC/checksum
+      of the entire payload. The CRC word magnitude is adjusted in ±resolution
+      steps (resolution ≈ 5 units per channel).
+    severity: MUST
+
+  - id: D-005
+    name: Arc Closure Invariant
+    statement: >
+      ‖ε_final − ε₀‖ ≤ arc_closure_threshold. Default: 30. May be relaxed to
+      200 for Metamorfosi-archetype arcs where non-return to baseline is declared
+      in the Protasis header.
+    default_threshold: 30
+    metamorfosi_threshold: 200
+    severity: MUST
+
+  - id: D-006
+    name: Vuoto Guard
+    statement: >
+      ε_vuoto = (5,5,5,5,5,5) is the reserved minimum-signal state. It is
+      permitted ONLY in Act II transitions. It MUST NOT appear as ε₀ or ε_final.
+      Transitions to/from ε_vuoto have maximum theoretical ‖Δε‖ and should be
+      reserved for the highest-capacity payload words.
+    vuoto_vector: [5, 5, 5, 5, 5, 5]
+    severity: MUST
+
+##############################################################################
+# 5  Decoder Protocol
+##############################################################################
+
+decoder_protocol:
+  steps:
+    - step: 1
+      name: Identify Acts
+      description: >
+        Determine Protasis / Epitasis / Katharsis boundaries by ‖Δεᵢ‖ profile.
+        Protasis = low-variance prefix (‖Δε‖ ≤ 30); Katharsis = convergent suffix;
+        Epitasis = all transitions between.
+
+    - step: 2
+      name: Extract Seed
+      description: >
+        Protasis carries seed in Act I transition magnitudes using the
+        pre-shared extraction function.
+
+    - step: 3
+      name: Recover f
+      description: "Derive the MonKBit encoding function from seed."
+
+    - step: 4
+      name: Decode Payload
+      description: >
+        For each Epitasis transition i: κᵢ = f(‖Δεᵢ‖).
+
+    - step: 5
+      name: Verify CRC
+      description: >
+        Apply f to the Katharsis CRC transition and compare with CRC(κ₁, …, κ_N).
+
+    - step: 6
+      name: Verify Arc Closure
+      description: >
+        Check ‖εₙ − ε₀‖ ≤ arc_closure_threshold. Fail if exceeded without
+        Metamorfosi flag in Protasis header.
+
+##############################################################################
+# 6  Integration with SENSORIUM
+##############################################################################
+
+sensorium_integration:
+  description: >
+    TRAUMACODEDRAMA extends SENSORIUM at the compositional level.
+    The two layers are orthogonal and may be combined for two-layer encoding.
+  layers:
+    - layer: SENSORIUM (SPEC-008)
+      unit: "State ε"
+      encodes: "Steganographic payload in channel intensities within one state"
+    - layer: TRAUMACODEDRAMA (SPEC-009)
+      unit: "Transition Δε"
+      encodes: "Steganographic payload in transition magnitudes across state sequences"
+  two_layer_encoding:
+    description: >
+      A TRAUMACODEDRAMA arc can additionally embed intra-state SENSORIUM payloads
+      in each εᵢ, achieving a two-layer encoding where inner and outer payloads
+      are fully independent by the Transition Primacy and Post-Sextin principles.
+    inner_layer: SENSORIUM — payload in κᵢ values within each state
+    outer_layer: TRAUMACODEDRAMA — payload in ‖Δεᵢ‖ values between states

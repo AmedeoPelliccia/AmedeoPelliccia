@@ -1,0 +1,8 @@
+KNOT_ID,Title,Problem_Statement,Scope,Status,Owner_AoR,Stakeholders,Residual_Before,Residual_Target,Dependencies,Target_Close_Date
+KNOT-Q100-CFG-001,Configuration trade WTW vs BWB,Lead configuration selection for primary variant,In: WTW/BWB trade; Out: retired concepts,OPEN,STK_SE,STK_CERT;STK_SAF;STK_PMO,100,10,,2026-05-31
+KNOT-Q100-CERT-001,Certification basis,CS-25 / FAA Part 25 basis with H2 special conditions TBD,In: cert plan; Out: variant-specific AMOC,OPEN,STK_CERT,STK_SE;STK_SAF,100,15,,2026-09-30
+KNOT-Q100-H2-001,H2 PEM fuel cell architecture,Primary electrical power gen architecture undefined,In: FC stack/BoP; Out: battery pack details,OPEN,STK_SE,STK_SAF;STK_TEST,100,15,,2026-10-31
+KNOT-Q100-TANK-001,H2 storage integration,Cryogenic/gaseous H2 tank integration into airframe undefined,In: tank + routing; Out: refueling GSE,OPEN,STK_SE,STK_SAF;STK_CERT,100,10,KNOT-Q100-CFG-001,2026-11-30
+KNOT-Q100-PROP-001,Propulsor architecture,Distributed vs open-fan vs hybrid propulsor arch TBD,In: propulsor arch; Out: engine core,OPEN,STK_SE,STK_TEST,100,15,KNOT-Q100-CFG-001,2026-12-15
+KNOT-Q100-POWER-001,Peak-power buffering,Transient load management and buffer topology undefined,In: buffer + EMS; Out: primary power gen,OPEN,STK_SE,STK_TEST,100,10,KNOT-Q100-H2-001,2027-01-31
+KNOT-Q100-DPP-001,Digital Product Passport,DPP + circularity requirements baselining,In: DPP schema + lifecycle hooks; Out: recycling ops,OPEN,STK_DATA,STK_CM;STK_PMO,100,10,,2027-03-31

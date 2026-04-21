@@ -19,17 +19,20 @@
 >
 > *ESSA advances in safety. ESSA protects in security.*
 
-> **Three-Tier ESSA Architecture**
+> **Four-Tier ESSA Architecture**
 >
-> The acronym ESSA resolves at three complementary levels:
+> The acronym ESSA resolves at four complementary levels:
 >
-> | Tier | Level | Full Name | Role |
-> |------|-------|-----------|------|
-> | 1 | Constitutional Architecture | **European Sovereign Systems Architecture** | The abstract constitutional framework governing lifecycle integrity, certification, and ethical invariants across all sovereign domains |
-> | 2 | Institutional Agency | **European Safety and Security Agency** | The civil institutional umbrella — safety mission + security governance — sitting between constitutional architecture and domain implementations |
-> | 3 | Domain Implementation | **European Union Space Safety Agency** | The canonical space-based, civil-platforms implementation documented in [`essa-regulatory-framework.yaml`](essa-regulatory-framework.yaml) |
+> | Tier | Level | Full Name | Institutional Principal | Role |
+> |------|-------|-----------|------------------------|------|
+> | **0** | **Global / UN** | **Earth Safety and Security Agency** | **United Nations** | Planetary civil safety governance — cross-jurisdictional interoperability, global constitutional invariants, federated recognition across all sovereign actors |
+> | 1 | Constitutional Architecture | **European Sovereign Systems Architecture** | European Constitutional Framework | The abstract constitutional framework governing lifecycle integrity, certification, and ethical invariants across all sovereign domains |
+> | 2 | Institutional Agency | **European Safety and Security Agency** | European Union / Sovereign EU States | The civil institutional umbrella — safety mission + security governance — sitting between constitutional architecture and domain implementations |
+> | 3 | Domain Implementation | **European Union Space Safety Agency** | EU, Member States, International Bodies | The canonical space-based, civil-platforms implementation documented in [`essa-regulatory-framework.yaml`](essa-regulatory-framework.yaml) |
 >
 > ESSA (European Safety and Security Agency) is a **governance artefact and institutional model** within the IDEALE-ESG / AMPEL framework. It is **not** currently an enacted EU agency in the legal framework of the European Union. Some analogous functions are performed by the **European Union Agency for the Space Programme (EUSPA)** under the EU Space Programme Regulation (2021/696) and EU Space Act proposals.
+>
+> ESSA (Earth Safety and Security Agency — Tier 0) is a **planetary-scale constitutional model** intended to operate under United Nations authority as a civil, non-military global safety governance body. It is a conceptual extension of the European model to the global domain, and is **not** currently a recognised UN specialised agency.
 
 ---
 
@@ -288,15 +291,17 @@ Evolution does not seek maximum efficiency. It seeks improvement within Human Sa
 
 ---
 
-### 3.7 AMPEL360 — Assisted Methods for Programming ESSA Lifecycles
+### 3.7 AMPEL360 — Assisted Methods for Programming ESSA Lifecycles - end to end digital Aerospace Model for Product and Engineering Lifecycles
 
 **Canonical artefacts:** [`AMPEL360.md`](AMPEL360.md) · [`ampel360.yaml`](ampel360.yaml)
 
 **Document ID:** `ESSA-DOC-AMPEL360-001`
 
-**AMPEL360** is the concrete lifecycle instantiation of AMPEL — the **programmable execution layer** for ESSA lifecycle architectures. It is not abstract: it governs the ESSA lifecycle (P000–P120) end-to-end.
+**AMPEL360** is the concrete lifecycle instantiation of AMPEL — the **programmable execution layer** for ESSA lifecycle architectures. It is not abstract: it governs the ESSA lifecycle (P000–P120) end-to-end as an Aerospace Model for Product and Engineering Lifecycles. Within this repository's ontology framing, it is also the **next-generation market-oriented manifestation of the Ontogenesis group**.
 
 > **"360" = complete state-cycle closure** — full lifecycle coverage (P000–P120), cross-chain integration, closed feedback loop, profile extensibility, and governance + mission coherence.
+
+> **Tagline:** 360° end-to-end digital aerospace lifecycle governance.
 
 AMPEL360 implements five core responsibilities:
 
@@ -339,6 +344,108 @@ The **Profile Resolver** (`ESSA-DOC-AMPEL360-PR-001`) is a functional component 
 | [`ampel360-pr.yaml`](ampel360-pr.yaml) | Machine-readable companion |
 
 **Document ID:** `ESSA-DOC-AMPEL360-PR-001`
+
+---
+
+### 3.10 QQQ Foundation — Quasi–Quanto–Quantum
+
+**Canonical artefacts:** [`QQQ.md`](QQQ.md) · [`qqq.yaml`](qqq.yaml)
+
+**Document ID:** `ESSA-DOC-QQQ-001`
+
+The **QQQ Foundation** is the conceptual framework that formalizes the transition between three regimes of organization in complex systems: deterministic (Quasi), probabilistic (Quanto), and coherent (Quantum). It provides a common grammar for modeling physical, computational, and socio-technical systems that evolve from local rules toward global correlations.
+
+**Three fundamental regimes:**
+
+| Regime | Character | Formal Dynamics | Central Idea |
+|--------|-----------|-----------------|--------------|
+| **Quasi** | Deterministic · Rule-Based | `x_{t+1} = f(x_t, u_t)` | state → unique outcome |
+| **Quanto** | Stochastic · Probabilistic | `dX_t = μ dt + σ dW_t` | state → distribution of outcomes |
+| **Quantum** | Coherent · Correlated · Global | `iℏ ∂/∂t |ψ⟩ = Ĥ|ψ⟩` | state → coherent amplitudes |
+
+**Structural regime parameter:**
+```
+λ = αC + βI + γΛ - δO
+```
+where `C` = coupling, `I` = information density, `Λ` = coherence, `O` = dissipation.
+
+Regime selection: `λ < λ₁` → Quasi · `λ₁ ≤ λ < λ₂` → Quanto · `λ ≥ λ₂` → Quantum.
+
+The QQQ Foundation does not replace existing physical theories; it acts as a conceptual architecture for hybrid systems. It is the theoretical substrate for the ACQUA architecture.
+
+---
+
+### 3.11 ACQUA — Aerospace Computational Quantum Universal Architecture
+
+**Canonical artefacts:** [`ACQUA.md`](ACQUA.md) · [`acqua.yaml`](acqua.yaml)
+
+**Document ID:** `ESSA-DOC-ACQUA-001`
+
+**ACQUA** is the formal technology architecture for hybrid systems that integrate aerospace infrastructure, classical computation, artificial intelligence, and quantum computing. It is organized as a five-layer system governed by the QQQ framework. Within this repository's architectural framing, it is also the **quantum ecosystems companion assy joint**.
+
+```
+ACQUA = ⟨ Mission, System, Compute, Quantum, Governance ⟩
+```
+
+| Layer | Symbol | Dynamics | Function |
+|-------|--------|----------|----------|
+| Mission | `L_M` | — | Objectives, scenarios, KPIs, constraints |
+| System | `L_S` | — | Platforms, sensors, actuators, networks, interfaces |
+| Compute | `L_C` | Quasi + Quanto | Deterministic control · ML · Bayesian inference · Digital twins |
+| Quantum | `L_Q` | Quantum | Quantum sensing · optimization · simulation · networking |
+| Governance | `L_G` | Transversal | Policy · assurance · safety · compliance · traceability |
+
+**Hybrid decision engine:**
+```
+X_{t+1} = w_1·f_det(X_t) + w_2·f_prob(X_t) + w_3·f_quant(X_t),  w_1+w_2+w_3 = 1
+```
+
+Governance is transversal: `L_G ⊣ {L_M, L_S, L_C, L_Q}`.
+
+ACQUA operationalizes QQQ regime theory into an actionable architecture for aerospace, AI, and quantum computing integration under a unified governance model.
+
+**Document IDs:** `ESSA-DOC-QQQ-001` (parent framework) · `ESSA-DOC-ACQUA-001` (this architecture)
+
+---
+
+### 3.12 ESSA-GLOBAL — Earth Safety and Security Agency (UN Tier 0)
+
+**Canonical artefacts:** [`ESSA-GLOBAL.md`](ESSA-GLOBAL.md) · [`essa-global.yaml`](essa-global.yaml)
+
+**Document ID:** `ESSA-GLOBAL-001`
+
+**ESSA-GLOBAL** scales the ESSA constitutional lifecycle governance architecture to the **planetary level** under United Nations authority. It represents the apex tier (Tier 0) of the four-tier ESSA architecture — a global civil safety governance body operating above and in federation with regional ESSA-class agencies.
+
+The Earth Safety and Security Agency doctrine extends the European model:
+
+```
+Advance in Safety.  Protect in Security.  Sustain for Earth.
+```
+
+**Seven global constitutional invariants (GCI-001 — GCI-007):**
+
+| ID | Invariant |
+|----|-----------|
+| GCI-001 | Safety Primacy — no objective overrides global safety envelopes |
+| GCI-002 | Security as Governance — security protects safety, never overrides it |
+| GCI-003 | Traceability Universality — cross-border machine-verifiable provenance |
+| GCI-004 | Human Override Guarantee — accessible override path for all autonomous systems |
+| GCI-005 | Ethical Non-Maleficence — AI systems SHALL NOT be activated against civilian populations or protected ecosystems |
+| GCI-006 | Interoperability by Protocol — mutually recognisable certification across ESSA-affiliated agencies |
+| GCI-007 | Sustainability Accountability — ESG accountability auditable at planetary level |
+
+**Global profiles:** `GPROFILE-CIVIL-AVIATION` · `GPROFILE-SPACE-SAFETY` · `GPROFILE-AI-ASSURANCE` · `GPROFILE-QUANTUM-SAFETY` · `GPROFILE-CLIMATE-INFRASTRUCTURE` · `GPROFILE-CRITICAL-CHAINS`
+
+**UN system relationships:** UN General Assembly (institutional authority) · ITU · ICAO · UNOOSA · UNEP
+
+The four-tier ESSA architecture is now:
+
+| Tier | ESSA = | Institutional Principal |
+|------|--------|------------------------|
+| **0** | **Earth Safety and Security Agency** | **United Nations** |
+| 1 | European Sovereign Systems Architecture | European Constitutional Framework |
+| 2 | European Safety and Security Agency | European Union |
+| 3 | European Union Space Safety Agency | EU / Member States |
 
 ---
 
@@ -442,9 +549,10 @@ ESSA seeks to:
 - Enable sovereign digital engineering
 - Provide ethical outward projection of capability
 - Establish interoperable European lifecycle governance
+- **Scale to global planetary governance under the United Nations** — as the Earth Safety and Security Agency (ESSA-GLOBAL-001), providing a constitutional overlay for all civil safety-critical systems regardless of jurisdiction
 
 ESSA is not static.
-It is a federated constitutional architecture.
+It is a federated constitutional architecture — scalable from the European domain to the planetary level.
 
 ---
 
@@ -565,8 +673,9 @@ Measured sustainability overlay integrated into lifecycle tokens and chain nodes
 
 ### ESSA
 
-**ESSA** is used in this document as a three-tier acronym:
+**ESSA** is used in this document as a four-tier acronym:
 
+- **Tier 0 — Earth Safety and Security Agency** (global / UN tier — planetary civil safety governance under the United Nations; see [`ESSA-GLOBAL.md`](ESSA-GLOBAL.md))
 - **Tier 1 — European Sovereign Systems Architecture** (this document layer — constitutional digital substrate)
 - **Tier 2 — European Safety and Security Agency** (institutional mission and governance layer)
 - **Tier 3 — European Union Space Safety Agency** (space-domain execution fork; also referenced as EUSSA to disambiguate from the tier-2 acronym)
@@ -693,6 +802,14 @@ Architectural principle establishing safety as the **primary generative objectiv
 
 | File | Purpose |
 |------|---------|
+| [`ESSA-GLOBAL.md`](ESSA-GLOBAL.md) | ESSA-GLOBAL — Earth Safety and Security Agency (Tier 0 / UN): planetary-scale constitutional instrument, four-tier architecture, seven global invariants (GCI-001–007), global profiles |
+| [`essa-global.yaml`](essa-global.yaml) | Machine-readable companion — ESSA-GLOBAL-001: four-tier architecture, GCI invariants, global profiles, UN relationships, hybrid decision engine, doctrine stages |
+| [`QQQ.md`](QQQ.md) | QQQ Foundation — Quasi–Quanto–Quantum conceptual framework for complex system regimes |
+| [`qqq.yaml`](qqq.yaml) | Machine-readable companion — ESSA-DOC-QQQ-001: regimes, λ parameter, applications |
+| [`ACQUA.md`](ACQUA.md) | ACQUA Architecture — Aerospace Computational Quantum Universal Architecture (5-layer) |
+| [`acqua.yaml`](acqua.yaml) | Machine-readable companion — ESSA-DOC-ACQUA-001: layers, decision engine, authority matrix, traceability |
+| [`ACQUA-GLOSSARY.md`](ACQUA-GLOSSARY.md) | ACQUA Glossary and Acronyms — controlled vocabulary for ACQUA and QQQ terminology (A–V, regime parameter, authority summary) |
+| [`acqua-glossary.yaml`](acqua-glossary.yaml) | Machine-readable companion — ESSA-DOC-ACQUA-GLOSS-001: terms catalogue with symbols, formal definitions, and regime mappings |
 | [`essa-regulatory-framework.yaml`](essa-regulatory-framework.yaml) | Machine-readable ESSA space-agency specification: Parts catalogue, registry schema, implementation phases, institutional options |
 | [`cctls.yaml`](cctls.yaml) | Machine-readable CCTLS v0.3.0 lifecycle standard |
 | [`CCTLS.md`](CCTLS.md) | Human-readable CCTLS specification |

@@ -1,0 +1,8 @@
+Milestone_ID,KNOT_ID,Name,Date,Entry_Criteria,Exit_Criteria,Status
+MS-GAIA-ORBIT,KNOT-GAIA-ORBIT-001,Orbit/architecture freeze,2026-08-31,Architecture trade complete,Orbit + topology baselined,PLANNED
+MS-GAIA-MOD,KNOT-GAIA-MOD-001,Module/docking baseline,2026-09-30,IDSS/CBM trade complete,Standard baselined,PLANNED
+MS-GAIA-DUR,KNOT-GAIA-DUR-001,Duration class baseline,2026-09-30,HF review complete,Duration class set,PLANNED
+MS-GAIA-ECLSS,KNOT-GAIA-ECLSS-001,Loop closure baseline,2026-10-31,Loop closure trade complete,Closure % baselined,PLANNED
+MS-GAIA-EVA,KNOT-GAIA-EVA-001,EVA/airlock baseline,2026-10-31,EVA cadence trade complete,Airlock baselined,PLANNED
+MS-GAIA-RAD,KNOT-GAIA-RAD-001,Radiation baseline,2026-11-30,Dose analysis complete,Shelter concept set,PLANNED
+MS-GAIA-CERT,KNOT-GAIA-CERT-001,Cert basis baseline,2026-12-31,All subsystem baselines,Cert plan signed,PLANNED

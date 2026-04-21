@@ -1,0 +1,112 @@
+# declaration-of-honour.yaml
+# Machine-readable specification for DEL-09: Declaration of Honour
+# Programme: Frontier AI Grand Challenge (GA 101135737, EuroHPC JU)
+# Reference: AI-BOOST/DEL-09-declaration-of-honour.md
+# Author: Amedeo Pelliccia
+
+schema_version: "1.0.0"
+document_type: declaration_of_honour
+last_updated: "2026-02-26T00:00:00Z"
+
+# ─────────────────────────────────────────────
+# 1. Deliverable Metadata
+# ─────────────────────────────────────────────
+deliverable:
+  id: DEL-09
+  title: Declaration of Honour
+  programme: Frontier AI Grand Challenge
+  grant_agreement: GA 101135737
+  funding_body: EuroHPC JU
+  section: Mandatory attachment (administrative)
+  status: Required
+  version: "1.0.0"
+  author: Amedeo Pelliccia
+  date: "2026-02-26"
+
+# ─────────────────────────────────────────────
+# 2. Source
+# ─────────────────────────────────────────────
+source:
+  template_url: "https://aiboost-project.eu/"
+  description: >
+    The Declaration of Honour template must be downloaded from the
+    official AI-BOOST project website. The template is published by
+    the funding body and must be used without modification to its
+    mandatory clauses.
+
+# ─────────────────────────────────────────────
+# 3. Signatory Requirements
+# ─────────────────────────────────────────────
+signatory:
+  role: legal_representative
+  entity: coordinating_entity
+  description: >
+    The Declaration of Honour must be completed and signed by the
+    legal representative of the coordinating entity — the person
+    authorised to enter into legally binding commitments on behalf
+    of the organisation.
+  signature_type:
+    - wet_signature
+    - qualified_electronic_signature
+
+# ─────────────────────────────────────────────
+# 4. Eligibility Criteria
+# ─────────────────────────────────────────────
+eligibility_criteria:
+  - id: ELIG-01
+    criterion: EU establishment
+    description: >
+      The coordinating entity is established in an EU Member State
+      or an associated country eligible under the call.
+    reference: Horizon Europe participation rules
+
+  - id: ELIG-02
+    criterion: EU control
+    description: >
+      The coordinating entity is under EU control and not subject
+      to control by a non-EU country or non-EU entity that could
+      compromise security or public order.
+    reference: Call-specific eligibility conditions
+
+  - id: ELIG-03
+    criterion: Exclusion grounds clearance
+    description: >
+      The coordinating entity and all partners are clear of
+      exclusion grounds as defined in the Financial Regulation.
+    reference: "Regulation (EU, Euratom) 2018/1046, Articles 136-141"
+
+# ─────────────────────────────────────────────
+# 5. Financial Regulation
+# ─────────────────────────────────────────────
+financial_regulation:
+  title: >
+    Regulation (EU, Euratom) 2018/1046 of the European Parliament
+    and of the Council of 18 July 2018
+  short_ref: "2018/1046"
+  relevant_articles:
+    - article: 136
+      topic: Exclusion criteria
+    - article: 137
+      topic: Rejection from a specific award procedure
+    - article: 138
+      topic: Administrative and financial penalties
+    - article: 139
+      topic: Remedial measures
+    - article: 140
+      topic: Publication of information on exclusion and financial penalties
+    - article: 141
+      topic: Central database (EDES)
+
+# ─────────────────────────────────────────────
+# 6. Submission
+# ─────────────────────────────────────────────
+submission:
+  platform: F6S
+  attachment_number: 1
+  format: PDF
+  steps:
+    - Download the Declaration of Honour template from https://aiboost-project.eu/
+    - Complete all required fields
+    - Legal representative signs the document
+    - Save as PDF
+    - Attach as Attachment 1 to the F6S application form

@@ -1,0 +1,6 @@
+Milestone_ID,KNOT_ID,Name,Date,Entry_Criteria,Exit_Criteria,Status
+MS-Q100-CFG,KNOT-Q100-CFG-001,Configuration Freeze,2026-05-31,Trade studies done,WTW/BWB lead selected,PLANNED
+MS-Q100-SRR,KNOT-Q100-CERT-001,System Requirements Review,2026-09-30,Reqs stable,Reqs baselined,PLANNED
+MS-Q100-PDR,KNOT-Q100-H2-001,Preliminary Design Review,2027-03-31,Subsystems designed,Design baseline,PLANNED
+MS-Q100-CDR,KNOT-Q100-PROP-001,Critical Design Review,2027-09-30,Detailed design done,Production-ready,PLANNED
+MS-Q100-FTRR,KNOT-Q100-POWER-001,Flight Test Readiness,2028-06-30,Ground tests pass,Cleared for flight test,PLANNED

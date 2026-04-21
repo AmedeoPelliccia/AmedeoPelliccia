@@ -489,3 +489,23 @@ deliverables:
     file: "00-PROGRAM/PLUMA-GAI/NET/CERT_CROSS_MAP.yaml"
     content: "CS-25 + spaceflight special conditions + EU AI Act Article 6 cross-mapping"
     status: planned
+
+  - id: NET-DEL-07
+    title: "Stack Diagrams & Topological Network Graphics"
+    file: "00-PROGRAM/PLUMA-GAI/NET/STACK-DIAGRAMS.md"
+    content: >
+      Mermaid diagrams: canonical PLUMA-GAI stack, NET layer stack (L0–L5),
+      ground-air-space node topology with IR link types, event-boundary /
+      superconductor vector channel, degradation state machine (States 0–3),
+      full integration map (lifecycle → thread → NET → topology).
+    status: draft
+
+  - id: NET-DEL-08
+    title: "Development Plan"
+    file: "00-PROGRAM/PLUMA-GAI/NET/DEV-PLAN.md"
+    content: >
+      Phased development roadmap: milestone overview (P010–P070), per-phase
+      deliverables table with owners and statuses, fork-point resolution
+      schedule (FP-NET-001 to 005), dependency graph (Mermaid), risk register,
+      and governance table.
+    status: draft

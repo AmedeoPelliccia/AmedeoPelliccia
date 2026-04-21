@@ -1,0 +1,241 @@
+##############################################################################
+# ESSA — Earth Safety and Security Agency
+# ESSA-GLOBAL-001 — Global Tier Constitutional Instrument
+# Machine-readable companion to ESSA/ESSA-GLOBAL.md
+##############################################################################
+
+document_id: ESSA-GLOBAL-001
+document_type: constitutional_instrument
+title: "Earth Safety and Security Agency"
+subtitle: "Global Civil Sovereign Lifecycle Governance — Under the United Nations"
+version: "0.1-draft"
+schema_version: "1.0.0"
+status: constitutional_instrument
+parent: ESSA-CONST-001
+last_updated: "2026-03-10T00:00:00Z"
+
+description: >
+  ESSA-Global is the civil planetary-level authority for lifecycle governance
+  of safety-critical, security-sensitive, and environmentally accountable
+  systems. Operating under the United Nations as its institutional principal,
+  it scales the ESSA safety-first constitutional architecture beyond the
+  European domain to encompass all sovereign actors, regional safety bodies,
+  and global technology systems.
+
+institutional_principal: United Nations
+doctrine: "Advance in Safety. Protect in Security. Sustain for Earth."
+operating_mode:
+  - federated
+  - extensible
+  - interoperable
+
+# ─────────────────────────────────────────────
+# ESSA Four-Tier Architecture
+# ─────────────────────────────────────────────
+four_tier_architecture:
+  - tier: 0
+    level: "Global / UN"
+    name: "Earth Safety and Security Agency"
+    acronym_expansion: "Earth Safety and Security Agency"
+    institutional_principal: "United Nations"
+    document_id: ESSA-GLOBAL-001
+    role: >
+      Planetary civil safety governance — cross-jurisdictional interoperability,
+      global invariants, and federated recognition across all sovereign actors.
+
+  - tier: 1
+    level: "Constitutional Architecture"
+    name: "European Sovereign Systems Architecture"
+    acronym_expansion: "European Sovereign Systems Architecture"
+    institutional_principal: "European Constitutional Framework"
+    document_id: ESSA-CONST-001
+    role: >
+      Abstract constitutional digital substrate — standards, token graph,
+      and lifecycle governance.
+
+  - tier: 2
+    level: "Institutional Agency"
+    name: "European Safety and Security Agency"
+    acronym_expansion: "European Safety and Security Agency"
+    institutional_principal: "European Union / Sovereign EU States"
+    document_id: ESSA-CONST-001
+    role: >
+      Civil institutional umbrella — safety mission and security governance.
+
+  - tier: 3
+    level: "Sector Execution"
+    name: "European Union Space Safety Agency / Sector Agencies"
+    acronym_expansion: "European Union Space Safety Agency"
+    institutional_principal: "EU, Member States, International Bodies"
+    document_id: null
+    role: >
+      Domain-specific safety operations under ESSA-Agency mandates.
+
+# ─────────────────────────────────────────────
+# Global Constitutional Invariants (GCI)
+# ─────────────────────────────────────────────
+global_constitutional_invariants:
+  - id: GCI-001
+    name: Safety Primacy
+    statement: >
+      Safety defines mission objectives globally. No economic, political, or
+      operational objective overrides defined safety envelopes.
+
+  - id: GCI-002
+    name: Security as Governance
+    statement: >
+      Security exists to protect safety invariants — never to circumvent,
+      override, or redefine them.
+
+  - id: GCI-003
+    name: Traceability Universality
+    normative_requirement: SHALL
+    statement: >
+      All safety-critical lifecycle artefacts SHALL carry traceable,
+      machine-verifiable provenance across jurisdictional boundaries.
+
+  - id: GCI-004
+    name: Human Override Guarantee
+    normative_requirement: SHALL
+    statement: >
+      No autonomous system SHALL operate without a defined and accessible
+      human override path, enforceable across all jurisdictions.
+
+  - id: GCI-005
+    name: Ethical Non-Maleficence
+    normative_requirement: SHALL_NOT
+    statement: >
+      AI-assisted and autonomous systems SHALL NOT be activated against
+      civilian populations, sustainable infrastructure, or protected
+      ecosystems.
+
+  - id: GCI-006
+    name: Interoperability by Protocol
+    normative_requirement: SHALL
+    statement: >
+      Certification and conformance attestations SHALL be mutually
+      recognisable across ESSA-affiliated agencies via governed protocol
+      exchange.
+
+  - id: GCI-007
+    name: Sustainability Accountability
+    normative_requirement: SHALL
+    statement: >
+      All lifecycle systems SHALL maintain measurable ESG accountability,
+      auditable at the planetary level.
+
+# ─────────────────────────────────────────────
+# Global Profiles
+# ─────────────────────────────────────────────
+global_profiles:
+  - id: GPROFILE-CIVIL-AVIATION
+    domain: Cross-border civil aviation safety
+    alignment: ICAO
+
+  - id: GPROFILE-SPACE-SAFETY
+    domain: Global space traffic management and planetary defence
+    alignment: UNOOSA
+
+  - id: GPROFILE-AI-ASSURANCE
+    domain: Global AI and autonomous system safety governance
+    alignment: UN AI Advisory Body
+
+  - id: GPROFILE-QUANTUM-SAFETY
+    domain: Quantum technology governance and security assurance
+    alignment: ITU
+
+  - id: GPROFILE-CLIMATE-INFRASTRUCTURE
+    domain: Safety governance for climate-critical systems
+    alignment: UNEP
+
+  - id: GPROFILE-CRITICAL-CHAINS
+    domain: Global supply chain integrity and provenance
+    alignment: UN Global Compact
+
+# ─────────────────────────────────────────────
+# Safety Mission at Planetary Scale
+# ─────────────────────────────────────────────
+safety_mission:
+  formal_pipeline: >
+    Safety Envelope (S)
+    → Derived Requirements [R = f(S)]
+    → Restricted Design Space [D ⊆ Valid(S)]
+    → Bounded Optimisation [Optimise(O) subject to S preserved]
+    → Invariant Validation
+  scales:
+    - scale: Planetary
+      components:
+        - Climate resilience of critical infrastructure
+        - Asteroid and space-weather early warning
+        - Global autonomous system safety boundaries
+    - scale: Regional
+      components:
+        - Cross-border aviation and space traffic safety
+        - Multilateral incident coordination
+        - Technology diffusion risk governance
+    - scale: Systemic
+      components:
+        - AI and quantum technology safety assurance
+        - Dual-use technology governance
+        - Supply chain integrity at global scale
+
+# ─────────────────────────────────────────────
+# UN System Relationships
+# ─────────────────────────────────────────────
+un_relationships:
+  - body: UN General Assembly
+    nature: Institutional authority — mandate and scope
+
+  - body: ITU
+    full_name: International Telecommunication Union
+    nature: Protocol interoperability for quantum communications and space telemetry
+    profile: GPROFILE-QUANTUM-SAFETY
+
+  - body: ICAO
+    full_name: International Civil Aviation Organization
+    nature: Aviation safety profile alignment
+    profile: GPROFILE-CIVIL-AVIATION
+
+  - body: UNOOSA
+    full_name: UN Office for Outer Space Affairs
+    nature: Space safety and STM coordination
+    profile: GPROFILE-SPACE-SAFETY
+
+  - body: UNEP
+    full_name: UN Environment Programme
+    nature: Climate-critical infrastructure sustainability
+    profile: GPROFILE-CLIMATE-INFRASTRUCTURE
+
+# ─────────────────────────────────────────────
+# Hybrid Decision Engine (Global Scale)
+# ─────────────────────────────────────────────
+hybrid_decision_engine:
+  formula: "X_{t+1} = w_G·f_global(X_t) + w_R·f_regional(X_t) + w_Q·f_quantum(X_t)"
+  constraint: "w_G + w_R + w_Q = 1"
+  components:
+    - symbol: f_global
+      description: Global governance authority function
+    - symbol: f_regional
+      description: Regional ESSA agency governance function
+    - symbol: f_quantum
+      description: Quantum-enabled computation governance function
+
+# ─────────────────────────────────────────────
+# Doctrine Stages
+# ─────────────────────────────────────────────
+doctrine_stages:
+  - stage: Generate
+    doctrine: Advance in Safety
+    description: Inside safety bounds — derive requirements from global Safety Envelope
+  - stage: Design
+    doctrine: Advance in Safety
+    description: "Bounded synthesis — valid design space D ⊆ Valid(S_global)"
+  - stage: Govern
+    doctrine: Protect in Security
+    description: Security invariants protect S from corruption or geopolitical override
+  - stage: Certify
+    doctrine: Protect in Security
+    description: Invariant validation over the planetary lifecycle graph — deterministic
+  - stage: Sustain
+    doctrine: Sustain for Earth
+    description: ESG accountability embedded in every lifecycle baseline — auditable globally

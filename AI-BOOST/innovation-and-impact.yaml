@@ -1,0 +1,372 @@
+# innovation-and-impact.yaml
+# Machine-readable specification for DEL-04 Innovation and Impact.
+# Programme: AI-BOOST — Frontier AI Grand Challenge (GA 101135737, EuroHPC JU)
+# Section: Impact → Measures to Maximise Impact
+# Reference: AI-BOOST/DEL-04-innovation-and-impact.md
+# Author: Amedeo Pelliccia
+
+schema_version: "1.0.0"
+document_type: innovation_and_impact
+last_updated: "2026-02-25T00:00:00Z"
+
+# ─────────────────────────────────────────────
+# 1. Deliverable Metadata
+# ─────────────────────────────────────────────
+deliverable:
+  id: DEL-04
+  title: Innovation and Impact
+  section: "Impact → Measures to Maximise Impact"
+  programme:
+    name: AI-BOOST
+    grant_agreement: "GA 101135737"
+    funding_body: EuroHPC JU
+  status: draft
+  due_milestones:
+    - milestone: M6
+      scope: initial
+    - milestone: M18
+      scope: mid_term_update
+    - milestone: M36
+      scope: final
+
+# ─────────────────────────────────────────────
+# 2. Expected Impact
+# ─────────────────────────────────────────────
+impact:
+  scientific:
+    - id: SCI-01
+      area: Sovereign Frontier AI
+      outcome: >
+        First EU-sovereign ≥ 400 B parameter MoE model trained
+        entirely on EuroHPC infrastructure.
+      indicator: "Peer-reviewed publication; model card published"
+    - id: SCI-02
+      area: Certification-Grade AI Governance
+      outcome: >
+        Deterministic governance pipeline (PATH → MTL) validated for
+        safety-critical AI in regulated sectors.
+      indicator: "≥ 3 AI models gate-qualified; methodology adopted by ≥ 1 standards body"
+    - id: SCI-03
+      area: Quantum-Augmented Expert Routing
+      outcome: >
+        Novel quantum-classical hybrid approach to expert selection
+        and trajectory optimisation.
+      indicator: "≥ 2 peer-reviewed publications on quantum manifold methodology"
+    - id: SCI-04
+      area: Multilingual Regulatory NLP
+      outcome: >
+        Balanced 24-language training with regulatory domain specialists.
+      indicator: "Benchmark scores published; MMLU-EU extension contributed upstream"
+
+  economic:
+    - id: ECO-01
+      area: European AI Industry Competitiveness
+      outcome: >
+        Reduction of strategic dependency on non-EU frontier model providers.
+      indicator: "≥ 2 EU industrial partners adopting GAIA-EU outputs"
+    - id: ECO-02
+      area: HPC Service Market Expansion
+      outcome: >
+        Demonstration of certification-grade AI workloads on EuroHPC.
+      indicator: "≥ 1 new commercial HPC service offering derived from project toolchain"
+    - id: ECO-03
+      area: Aerospace Certification Cost Reduction
+      outcome: >
+        AI-accelerated simulation reducing certification cycle time.
+      indicator: "≥ 30 % reduction in simulation-to-certification elapsed time (demonstrated)"
+    - id: ECO-04
+      area: AI Act Compliance Tooling
+      outcome: >
+        Reusable compliance-by-design framework for GPAI model providers.
+      indicator: "Open-source compliance toolkit released"
+
+  societal:
+    - id: SOC-01
+      area: European Digital Sovereignty
+      outcome: >
+        Reduced dependency on extra-EU AI infrastructure for critical sectors.
+      indicator: "Policy brief published; uptake metric tracked"
+    - id: SOC-02
+      area: Environmental Accountability
+      outcome: >
+        CO₂-per-inference tracking normalised across HPC workloads.
+      indicator: "Sustainability dashboard public; methodology contributed to Green Deal Digital"
+    - id: SOC-03
+      area: Skills and Talent Development
+      outcome: >
+        Training of next-generation EU researchers in frontier AI + HPC.
+      indicator: "≥ 10 doctoral/postdoctoral researchers trained; open courseware published"
+    - id: SOC-04
+      area: Multilingual Access
+      outcome: >
+        Equal-quality AI services across EU official languages.
+      indicator: "Language parity scores published for all 24 EU languages"
+
+# ─────────────────────────────────────────────
+# 3. Dissemination Plan
+# ─────────────────────────────────────────────
+dissemination:
+  audiences:
+    - id: AUD-SCI
+      label: Scientific community
+      channels: [peer-reviewed journals, conferences, preprint servers]
+    - id: AUD-IND
+      label: Industry (aerospace, energy, defence)
+      channels: [trade conferences, bilateral workshops, demonstrators]
+    - id: AUD-POL
+      label: Policy makers and regulators
+      channels: [policy briefs, regulatory sandboxes, standardisation bodies]
+    - id: AUD-PUB
+      label: General public
+      channels: [project website, social media, press releases]
+    - id: AUD-OSS
+      label: Open-source / developer community
+      channels: [GitHub, Hugging Face, Zenodo]
+
+  publication_strategy:
+    open_access: true
+    oa_compliance: "Horizon Europe Article 17"
+    preprint_policy: "arXiv or HAL within one week of submission"
+    target_venues:
+      - name: "NeurIPS / ICML / ICLR"
+        type: conference
+        relevance: "Frontier AI architecture, MoE scaling"
+      - name: "ACL / EMNLP"
+        type: conference
+        relevance: "Multilingual NLP, regulatory language"
+      - name: "SC (Supercomputing)"
+        type: conference
+        relevance: "HPC scaling, distributed training"
+      - name: "Aerospace journals (AIAA, CEAS)"
+        type: journal
+        relevance: "Certification-grade AI for aerospace"
+      - name: "Nature Machine Intelligence"
+        type: journal
+        relevance: "High-impact cross-disciplinary"
+
+  conference_target: "≥ 4 international conferences per year"
+
+# ─────────────────────────────────────────────
+# 4. Exploitation Plan
+# ─────────────────────────────────────────────
+exploitation:
+  pathways:
+    - id: EXP-01
+      result: "GAIA-EU model weights (open)"
+      route: "Open release on Hugging Face under permissive licence"
+      owner: coordinator
+      timeline: "M24 (initial), M36 (final)"
+    - id: EXP-02
+      result: "Deterministic governance pipeline"
+      route: "Integration into AMPEL360 certification framework; licensing to industrial partners"
+      owner: coordinator
+      timeline: "M18 onwards"
+    - id: EXP-03
+      result: "Regulatory NLP benchmarks (MMLU-EU)"
+      route: "Contribution to MLCommons; adoption by EU AI Office for evaluation"
+      owner: "coordinator + NLP partner"
+      timeline: "M12 onwards"
+    - id: EXP-04
+      result: "AI Act compliance toolkit"
+      route: "Open-source release; commercial support offering by SME partners"
+      owner: "SME partner(s)"
+      timeline: "M24 onwards"
+    - id: EXP-05
+      result: "HPC training recipes"
+      route: "Publication as reproducible pipelines on EuroHPC documentation"
+      owner: "HPC partner"
+      timeline: "M18 onwards"
+    - id: EXP-06
+      result: "CO₂-per-inference methodology"
+      route: "Standardisation proposal to CEN/CENELEC; integration with Digital Product Passport"
+      owner: "coordinator + sustainability partner"
+      timeline: "M24 onwards"
+
+  ip_strategy:
+    default_licence_code: Apache-2.0
+    default_licence_data: CC-BY-4.0
+    protected_results_protocol: "60-day consortium opt-in window before open publication"
+    joint_ownership: "Horizon Europe default rules (Regulation (EU) 2021/695, Article 40)"
+    access_rights_duration: "project duration + 5 years"
+    ip_governance_ref: contributions-registry.yaml
+
+  standardisation:
+    - body: CEN/CENELEC
+      group: "JTC 21 AI"
+      contribution: "AI governance pipeline specification; deterministic gating methodology"
+    - body: "EUROCAE / SAE"
+      group: "ED-12C / DO-178C AI supplement"
+      contribution: "Certification-grade AI evidence packages for aerospace"
+    - body: ISO
+      group: "ISO/IEC 42001 AI Management"
+      contribution: "Alignment evidence for AI management system"
+    - body: "W3C / OASIS"
+      group: "ML model documentation"
+      contribution: "GPAI model card schema extension"
+    - body: ECSS
+      group: "Space segment AI"
+      contribution: "Quantum-augmented expert module specification"
+
+# ─────────────────────────────────────────────
+# 5. Communication Plan
+# ─────────────────────────────────────────────
+communication:
+  objectives:
+    - "Raise awareness of European AI sovereignty and the role of EuroHPC in frontier AI"
+    - "Engage stakeholders across scientific, industrial, regulatory, and public audiences"
+    - "Demonstrate impact through measurable outcomes (publications, adoptions, policy influence)"
+
+  channels:
+    - channel: Project website
+      frequency: continuous
+      responsibility: "coordinator (WP lead)"
+    - channel: "Social media (LinkedIn, X/Twitter, Mastodon)"
+      frequency: "≥ 2 posts/week"
+      responsibility: communication officer
+    - channel: Newsletter
+      frequency: quarterly
+      responsibility: communication officer
+    - channel: Press releases
+      frequency: "at key milestones (M6, M18, M36)"
+      responsibility: coordinator
+    - channel: Public demonstrators
+      frequency: "annual (M12, M24, M36)"
+      responsibility: technical leads
+    - channel: Policy briefs
+      frequency: biannual
+      responsibility: policy engagement lead
+
+  kpis:
+    - metric: Peer-reviewed publications
+      target_m36: "≥ 10"
+    - metric: Conference presentations
+      target_m36: "≥ 12"
+    - metric: Website unique visitors
+      target_m36: "≥ 50 000"
+    - metric: Social media followers (total)
+      target_m36: "≥ 5 000"
+    - metric: Media mentions
+      target_m36: "≥ 20"
+    - metric: Policy briefs distributed
+      target_m36: "≥ 4"
+    - metric: Open-source downloads (models + code)
+      target_m36: "≥ 10 000"
+
+# ─────────────────────────────────────────────
+# 6. Innovation Potential
+# ─────────────────────────────────────────────
+innovation:
+  dimensions:
+    - dimension: technological
+      description: >
+        First EU-sovereign frontier MoE model with integrated
+        certification gating; quantum-augmented expert routing.
+    - dimension: process
+      description: >
+        Deterministic AI governance pipeline (PATH → MTL) replacing
+        ad-hoc model evaluation with evidence-gated admissibility.
+    - dimension: organisational
+      description: >
+        Capillary Merit Index (CMI) enabling fair attribution and
+        incentive structures in HPC-scale multi-partner projects.
+    - dimension: regulatory
+      description: >
+        AI Act compliance-by-design framework moving regulation from
+        post-hoc audit to integrated engineering practice.
+    - dimension: environmental
+      description: >
+        CO₂-per-inference metric integrated at HPC job level, enabling
+        sustainability-aware model selection and deployment.
+
+  readiness:
+    - result: GAIA-EU foundation model
+      current_trl: 2
+      target_trl: 5
+      innovation_type: product
+    - result: "Governance pipeline (PATH → MTL)"
+      current_trl: 3
+      target_trl: 6
+      innovation_type: process
+    - result: AI Act compliance toolkit
+      current_trl: 2
+      target_trl: 6
+      innovation_type: service
+    - result: "CO₂-per-inference framework"
+      current_trl: 2
+      target_trl: 5
+      innovation_type: process
+    - result: Quantum-augmented expert module
+      current_trl: 1
+      target_trl: 3
+      innovation_type: research
+
+  barriers:
+    - barrier: HPC allocation delays
+      likelihood: medium
+      impact: high
+      mitigation: "Early allocation request; fallback to national HPC centres"
+    - barrier: "Regulatory uncertainty (AI Act delegated acts)"
+      likelihood: medium
+      impact: medium
+      mitigation: "Active participation in standardisation; adaptive compliance framework"
+    - barrier: Model scaling challenges
+      likelihood: medium
+      impact: high
+      mitigation: "Staged scaling strategy (S1→S2→S3); Chinchilla-optimal compute schedule"
+    - barrier: IP conflicts within consortium
+      likelihood: low
+      impact: medium
+      mitigation: "Clear background IP register; 60-day opt-in publication protocol"
+    - barrier: Recruitment of specialised AI/HPC talent
+      likelihood: high
+      impact: medium
+      mitigation: "Competitive salaries; remote-first policy; partnership with EU doctoral networks"
+
+# ─────────────────────────────────────────────
+# 7. Sustainability Beyond the Project
+# ─────────────────────────────────────────────
+sustainability:
+  mechanisms:
+    - mechanism: Open-source community
+      description: >
+        Model weights, training recipes, and governance tools maintained
+        as open-source projects.
+      timeline: "M24 onwards"
+    - mechanism: Industrial licensing
+      description: >
+        Commercial licensing of certification-grade governance pipeline
+        to aerospace and energy sectors.
+      timeline: "M30 onwards"
+    - mechanism: Standardisation embedding
+      description: >
+        Governance methodology embedded in CEN/CENELEC and EUROCAE
+        standards.
+      timeline: "M18–M48"
+    - mechanism: Follow-on funding
+      description: >
+        Preparation of follow-on proposals under Horizon Europe
+        Cluster 4 and Digital Europe Programme.
+      timeline: "M30 onwards"
+    - mechanism: EuroHPC continuation
+      description: >
+        Integration of training recipes into EuroHPC service portfolio.
+      timeline: "M36 onwards"
+
+  post_project:
+    model_hosting:
+      platform: "Hugging Face + Zenodo mirror"
+      minimum_years: 10
+    code_maintenance:
+      responsible: coordinator
+      minimum_years: 3
+    data_preservation_ref: DEL-03
+    community_governance: "Transition to community governance model (e.g., Linux Foundation AI) if adoption threshold reached"
+
+# ─────────────────────────────────────────────
+# 8. Revision History
+# ─────────────────────────────────────────────
+revision_history:
+  - version: "0.1"
+    date: "2026-02-25"
+    milestone: M6
+    description: Initial Innovation and Impact plan

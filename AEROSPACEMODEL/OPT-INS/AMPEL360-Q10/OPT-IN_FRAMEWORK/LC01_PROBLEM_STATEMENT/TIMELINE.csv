@@ -1,0 +1,6 @@
+Milestone_ID,KNOT_ID,Name,Date,Entry_Criteria,Exit_Criteria,Status
+MS-Q10-MCR,KNOT-Q10-MISS-001,Mission Concept Review,2026-06-30,Trade studies complete,Mission class frozen,PLANNED
+MS-Q10-SRR,KNOT-Q10-CERT-001,System Requirements Review,2026-10-15,Top-level reqs stable,Reqs baselined,PLANNED
+MS-Q10-PDR,KNOT-Q10-TPS-001,Preliminary Design Review,2027-03-31,Subsystem designs complete,Design baseline,PLANNED
+MS-Q10-TRR,KNOT-Q10-TPS-001,TPS Test Readiness Review,2027-06-30,Article delivered,TPS arc-jet test ready,PLANNED
+MS-Q10-FRR,KNOT-Q10-ABORT-001,Flight Readiness Review,2028-06-30,Uncrewed tests pass,Cleared for flight,PLANNED

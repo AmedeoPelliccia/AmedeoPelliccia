@@ -1,0 +1,13 @@
+KNU_ID,KNOT_ID,KNU_Type,Artifact_Class,Expected_Location,Acceptance_Criteria,Verification_Method,Owner_AoR,Due_Date,Status,Effort_Predicted
+KNU-Q10-ECLSS-21-REQ-001,KNOT-Q10-ECLSS-21-001,REQ,SSOT,SYS_21-eclss/21-00-general/SSOT/LC02_SYSTEM_REQUIREMENTS/,pO₂ pCO₂ pN₂ setpoints baselined with margins,Review,STK_SE,2026-06-30,PLANNED,8
+KNU-Q10-ECLSS-21-ANA-001,KNOT-Q10-ECLSS-21-001,ANA,SSOT,SYS_21-eclss/21-00-general/SSOT/LC05_ANALYSIS_MODELS/,Atmosphere equilibrium model validated against NASA-STD-3001,Inspection,STK_SE,2026-07-15,PLANNED,13
+KNU-Q10-ECLSS-21-REQ-002,KNOT-Q10-ECLSS-21-002,REQ,SSOT,SYS_21-eclss/21-00-general/SSOT/LC02_SYSTEM_REQUIREMENTS/,CO₂ removal throughput requirements traced to crew metabolic model,Review,STK_SE,2026-07-31,PLANNED,8
+KNU-Q10-ECLSS-21-ANA-002,KNOT-Q10-ECLSS-21-002,ANA,SSOT,SYS_21-eclss/21-00-general/SSOT/LC05_ANALYSIS_MODELS/,LiOH vs swing-bed trade study complete with mass-power Pareto,Inspection,STK_SE,2026-08-15,PLANNED,21
+KNU-Q10-ECLSS-21-REQ-003,KNOT-Q10-ECLSS-21-003,REQ,SSOT,SYS_21-eclss/21-00-general/SSOT/LC02_SYSTEM_REQUIREMENTS/,Humidity band and condensate rate requirements specified,Review,STK_SE,2026-08-31,PLANNED,5
+KNU-Q10-ECLSS-21-DES-001,KNOT-Q10-ECLSS-21-003,DES,SSOT,SYS_21-eclss/21-00-general/SSOT/LC04_DESIGN_DEFINITION/,Condensate separator and plumbing layout defined,Review,STK_SE,2026-09-15,PLANNED,13
+KNU-Q10-ECLSS-21-SAF-001,KNOT-Q10-ECLSS-21-004,SAF,SSOT,SYS_21-eclss/21-00-general/SSOT/LC03_SAFETY_RELIABILITY/,Pressure relief FMEA and leak-detection coverage analysis complete,Review,STK_SAF,2026-06-30,PLANNED,13
+KNU-Q10-ECLSS-21-VER-001,KNOT-Q10-ECLSS-21-004,VER,SSOT,SYS_21-eclss/21-00-general/SSOT/LC06_VERIFICATION/,Leak detection sensor suite verification plan approved,Review,STK_TEST,2026-07-15,PLANNED,8
+KNU-Q10-ECLSS-21-ANA-003,KNOT-Q10-ECLSS-21-005,ANA,SSOT,SYS_21-eclss/21-00-general/SSOT/LC05_ANALYSIS_MODELS/,Consumables mass-volume model per mission duration class,Inspection,STK_SE,2026-09-30,PLANNED,13
+KNU-Q10-ECLSS-21-REQ-004,KNOT-Q10-ECLSS-21-005,REQ,SSOT,SYS_21-eclss/21-00-general/SSOT/LC02_SYSTEM_REQUIREMENTS/,Consumables quantity requirements traced to mission manifest,Review,STK_SE,2026-10-15,PLANNED,5
+KNU-Q10-ECLSS-21-SAF-002,KNOT-Q10-ECLSS-21-006,SAF,SSOT,SYS_21-eclss/21-00-general/SSOT/LC03_SAFETY_RELIABILITY/,Emergency ECLSS modes FMEA covering rapid depress fire and contamination,Review,STK_SAF,2026-10-31,PLANNED,13
+KNU-Q10-ECLSS-21-OPS-001,KNOT-Q10-ECLSS-21-006,OPS,SSOT,SYS_21-eclss/21-00-general/SSOT/LC10_OPERATIONS/,Emergency ECLSS procedures validated by crew-in-the-loop sim,Test,STK_OPS,2026-11-15,PLANNED,13

@@ -1,0 +1,49 @@
+tokenomics:
+  token_symbol: "TT"
+  unit: "deg"
+  deg_per_tt: 360
+
+scope:
+  product: "ROBBBO-T"
+  repo: "AEROSPACEMODEL"
+  framework: "OPT-INS"
+  level: "product"
+
+knot_rewards:
+  - knot_id: "KNOT-RBT-AUTO-001"
+    title: "Autonomy level per mission line"
+    pool_tt: 350
+  - knot_id: "KNOT-RBT-RPO-001"
+    title: "Rendezvous & proximity operations envelope"
+    pool_tt: 350
+  - knot_id: "KNOT-RBT-CAPTURE-001"
+    title: "Capture mechanism"
+    pool_tt: 300
+  - knot_id: "KNOT-RBT-DEBRIS-001"
+    title: "IADC debris mitigation compliance"
+    pool_tt: 300
+  - knot_id: "KNOT-RBT-COMMS-001"
+    title: "ITU filing & frequency coordination"
+    pool_tt: 250
+  - knot_id: "KNOT-RBT-PROP-001"
+    title: "Propulsion architecture per mission class"
+    pool_tt: 250
+  - knot_id: "KNOT-RBT-CYBER-001"
+    title: "Uplink security & command authentication"
+    pool_tt: 300
+
+total_pool_tt: 2100
+total_pool_deg: 756000
+
+eligibility:
+  require_status: ["COMPLETE", "ACCEPTED"]
+  require_links_resolved: true
+  require_brex_pass_for_pub: true
+
+allocation:
+  method: "effort_plus_impact"
+  formula: "w_i = alpha*E_hat + (1-alpha)*I_hat ; T_i = P_k * w_i"
+  params:
+    alpha_effort: 0.30
+    alpha_impact: 0.70
+    lambda_spillover: 0.50

@@ -71,6 +71,27 @@ H_UPDATE  (if safety-relevant)
 H_ENVELOPE  (version increment → loop restart)
 ```
 
+```mermaid
+flowchart TD
+    ENV["🛡️ H_ENVELOPE\n(Safety Envelope)"]
+    REQ["H_REQ\nRequirements derivation"]
+    DES["Design\n(bounded by H_CONSTRAINT)"]
+    EVI["H_EVIDENCE\nTest · Analysis · Operational"]
+    AUT["H_SIGNOFF\nAuthority / DOA closure"]
+    REL["ACTIVATE gate\nEnvelope validated ✅"]
+    OPS["Operation\nP080 — ICA/MRO/Mission"]
+    FBK["Feedback\nOccurrences · Performance · Incidents"]
+    UPD["H_UPDATE\n(if safety-relevant)"]
+
+    ENV --> REQ --> DES --> EVI --> AUT --> REL --> OPS --> FBK
+    FBK -->|"safety-relevant"| UPD
+    UPD -->|"version increment"| ENV
+
+    style ENV fill:#c8e6c9,stroke:#2E7D32,stroke-width:3px
+    style REL fill:#e8f5e9,stroke:#2E7D32
+    style UPD fill:#fff3e0,stroke:#EF6C00
+```
+
 **Critical distinction:** The Evolutionary Loop is **not free change**. It is change **contained by invariants**. Each iteration must satisfy the same constitutional constraints as the first.
 
 ---
@@ -154,6 +175,31 @@ ESSA  (Tier 2 — Constitutional Framework)
 AMPEL  (Evolutionary Engine — this document)
     ↓
 Sector Profiles  (Aviation · Space · RSP · Autonomy · Critical Industrial Chains)
+```
+
+```mermaid
+flowchart TD
+    T1["🏛️ European Sovereign Systems Architecture\n(Tier 1 — Constitutional Substrate)"]
+    T2["📜 ESSA\n(Tier 2 — Constitutional Framework)"]
+    T3["🔄 AMPEL\n(Evolutionary Engine)"]
+    T4A["✈️ Aviation"]
+    T4B["🚀 Space"]
+    T4C["🔁 RSP"]
+    T4D["🤖 Autonomy"]
+    T4E["🏭 Critical Industrial\nChains"]
+
+    T1 -->|"defines constitutional limits"| T2
+    T2 -->|"governs evolution"| T3
+    T3 --> T4A & T4B & T4C & T4D & T4E
+
+    style T1 fill:#e3f2fd,stroke:#1565C0,stroke-width:3px
+    style T2 fill:#e8eaf6,stroke:#283593
+    style T3 fill:#fff3e0,stroke:#E65100
+    style T4A fill:#f3e5f5,stroke:#6A1B9A
+    style T4B fill:#f3e5f5,stroke:#6A1B9A
+    style T4C fill:#f3e5f5,stroke:#6A1B9A
+    style T4D fill:#f3e5f5,stroke:#6A1B9A
+    style T4E fill:#f3e5f5,stroke:#6A1B9A
 ```
 
 | Layer | Role |

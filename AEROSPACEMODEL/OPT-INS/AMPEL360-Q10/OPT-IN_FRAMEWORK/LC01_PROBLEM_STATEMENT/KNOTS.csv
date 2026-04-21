@@ -1,0 +1,8 @@
+KNOT_ID,Title,Problem_Statement,Scope,Status,Owner_AoR,Stakeholders,Residual_Before,Residual_Target,Dependencies,Target_Close_Date
+KNOT-Q10-MISS-001,Mission class freeze,Suborbital vs orbital vs cislunar TBD,In: mission class; Out: specific orbit,OPEN,STK_SE,STK_CERT;STK_OPS;STK_PMO,100,5,,2026-06-30
+KNOT-Q10-LAUNCH-001,Launch mode,Air-launched vs vertical vs HTHL undefined,In: launch mode; Out: carrier vehicle,OPEN,STK_SE,STK_TEST;STK_OPS,100,10,KNOT-Q10-MISS-001,2026-07-31
+KNOT-Q10-TPS-001,Thermal protection,Reentry heating envelope and TPS concept undefined,In: TPS materials+layout; Out: ground thermal,OPEN,STK_SE,STK_SAF;STK_TEST;STK_CERT,100,15,KNOT-Q10-MISS-001,2026-09-15
+KNOT-Q10-ECLSS-001,ECLSS loop closure,Open vs regenerative loop for tourist mission duration undefined,In: ECLSS arch; Out: deep-space life support,OPEN,STK_SE,STK_SAF;STK_CERT,100,10,KNOT-Q10-MISS-001,2026-10-15
+KNOT-Q10-ABORT-001,Abort and crew escape,Launch abort and crew-escape architecture undefined,In: abort modes; Out: nominal OMS,OPEN,STK_SAF,STK_SE;STK_CERT;STK_TEST,100,5,KNOT-Q10-LAUNCH-001,2026-11-15
+KNOT-Q10-CERT-001,Regulatory path,FAA AST Part 460 baseline + ECSS/human-rating overlay undefined,In: cert plan; Out: type cert (N/A),OPEN,STK_CERT,STK_SE;STK_SAF;STK_PMO,100,15,KNOT-Q10-MISS-001,2026-12-15
+KNOT-Q10-PAX-001,Spaceflight-participant framework,Training/informed-consent/medical-screening framework undefined,In: SFP program; Out: crew training,OPEN,STK_CERT,STK_OPS;STK_SAF,100,10,KNOT-Q10-CERT-001,2027-01-31

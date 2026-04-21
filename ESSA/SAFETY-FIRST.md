@@ -53,6 +53,30 @@ Safety Envelope
 → Invariant Validation
 ```
 
+```mermaid
+flowchart TD
+    subgraph TRADITIONAL ["❌ Traditional Approach"]
+        direction LR
+        TR["Requirements"] --> TD["Design"] --> TT["Test"] --> TV["Verify Safety"]
+    end
+
+    subgraph ESSA ["✅ ESSA Safety-First Approach"]
+        SE["🛡️ Safety Envelope\n(Primary Objective)"]
+        DR["Derived Requirements"]
+        RD["Restricted Design Space"]
+        BO["Bounded Optimisation"]
+        IV["Invariant Validation"]
+        FB["Feedback Loop"]
+
+        SE --> DR --> RD --> BO --> IV
+        IV -->|"operational evidence"| FB -->|"H_UPDATE"| SE
+    end
+
+    style TRADITIONAL fill:#ffebee,stroke:#c62828
+    style ESSA fill:#e8f5e9,stroke:#2E7D32
+    style SE fill:#c8e6c9,stroke:#2E7D32,stroke-width:3px
+```
+
 Safety becomes the **primary objective function**.
 Not a constraint term appended at the end of an optimisation problem.
 
