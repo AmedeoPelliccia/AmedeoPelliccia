@@ -1,0 +1,288 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://essa.eu/schemas/aircraftmodel/ampel-system/v1",
+  "title": "AMPELSystem — AIRCRAFTMODEL Configuration Schema v1.0",
+  "description": "JSON Schema for AMPELSystem configuration documents used in the AIRCRAFTMODEL domain. Defines project metadata, mapping, detection, capture capsules, technologies, metrics, financial benefits, stakeholders, and potential clients.",
+  "type": "object",
+  "required": ["AMPELSystem"],
+  "additionalProperties": false,
+  "properties": {
+    "AMPELSystem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ProjectInfo"],
+      "properties": {
+        "ProjectInfo": { "$ref": "#/$defs/ProjectInfo" },
+        "Mapping": { "$ref": "#/$defs/Mapping" },
+        "Detection": { "$ref": "#/$defs/Detection" },
+        "CaptureCapsules": { "$ref": "#/$defs/CaptureCapsules" },
+        "Technologies": { "$ref": "#/$defs/Technologies" },
+        "Metrics": { "$ref": "#/$defs/Metrics" },
+        "FinancialBenefits": { "$ref": "#/$defs/FinancialBenefits" },
+        "Stakeholders": { "$ref": "#/$defs/Stakeholders" },
+        "PotentialClients": { "$ref": "#/$defs/PotentialClients" }
+      }
+    }
+  },
+  "$defs": {
+    "Property": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["PropertyName", "PropertyValue"],
+      "properties": {
+        "PropertyName": { "type": "string", "minLength": 1 },
+        "PropertyValue": {
+          "oneOf": [
+            { "type": "string" },
+            { "type": "number" },
+            { "type": "boolean" }
+          ]
+        }
+      }
+    },
+    "Algorithm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["AlgorithmName"],
+      "properties": {
+        "AlgorithmName": { "type": "string", "minLength": 1 },
+        "AlgorithmDescription": { "type": "string" }
+      }
+    },
+    "Mechanism": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["MechanismName"],
+      "properties": {
+        "MechanismName": { "type": "string", "minLength": 1 },
+        "MechanismDescription": { "type": "string" }
+      }
+    },
+    "ProjectInfo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ProjectName"],
+      "properties": {
+        "ProjectName": { "type": "string", "minLength": 1 },
+        "Description": { "type": "string" },
+        "StartDate": { "type": "string", "format": "date" },
+        "EndDate": { "type": "string", "format": "date" }
+      }
+    },
+    "Mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["MapID", "MapName"],
+      "properties": {
+        "MapID": { "type": "string", "minLength": 1 },
+        "MapName": { "type": "string", "minLength": 1 },
+        "Industry": { "type": "string" },
+        "MapProperties": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["Property"],
+          "properties": {
+            "Property": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/Property" }
+            }
+          }
+        },
+        "MappingAlgorithms": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["Algorithm"],
+          "properties": {
+            "Algorithm": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/Algorithm" }
+            }
+          }
+        }
+      }
+    },
+    "Detection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["DetectionID", "DetectionName"],
+      "properties": {
+        "DetectionID": { "type": "string", "minLength": 1 },
+        "DetectionName": { "type": "string", "minLength": 1 },
+        "DetectionProperties": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["Property"],
+          "properties": {
+            "Property": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/Property" }
+            }
+          }
+        },
+        "DetectionAlgorithms": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["Algorithm"],
+          "properties": {
+            "Algorithm": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/Algorithm" }
+            }
+          }
+        }
+      }
+    },
+    "CaptureCapsules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["Capsule"],
+      "properties": {
+        "Capsule": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["CapsuleID", "CapsuleName"],
+            "properties": {
+              "CapsuleID": { "type": "string", "minLength": 1 },
+              "CapsuleName": { "type": "string", "minLength": 1 },
+              "CapsuleProperties": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["Property"],
+                "properties": {
+                  "Property": {
+                    "type": "array",
+                    "items": { "$ref": "#/$defs/Property" }
+                  }
+                }
+              },
+              "CaptureMechanisms": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["Mechanism"],
+                "properties": {
+                  "Mechanism": {
+                    "type": "array",
+                    "items": { "$ref": "#/$defs/Mechanism" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Technologies": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["Technology"],
+      "properties": {
+        "Technology": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["TechnologyName"],
+            "properties": {
+              "TechnologyName": { "type": "string", "minLength": 1 },
+              "Description": { "type": "string" },
+              "IntegrationLevel": {
+                "oneOf": [
+                  { "type": "string" },
+                  { "type": "integer", "minimum": 1, "maximum": 9 }
+                ],
+                "description": "Free-form integration level identifier or TRL (1-9)."
+              }
+            }
+          }
+        }
+      }
+    },
+    "Metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["Metric"],
+      "properties": {
+        "Metric": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["MetricName", "MetricValue"],
+            "properties": {
+              "MetricName": { "type": "string", "minLength": 1 },
+              "MetricValue": {
+                "oneOf": [
+                  { "type": "string" },
+                  { "type": "number" }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "FinancialBenefits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["Benefit"],
+      "properties": {
+        "Benefit": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["BenefitName", "BenefitValue"],
+            "properties": {
+              "BenefitName": { "type": "string", "minLength": 1 },
+              "BenefitValue": { "type": "number" },
+              "StakeholderID": { "type": "string" },
+              "ClientID": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "Stakeholders": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["Stakeholder"],
+      "properties": {
+        "Stakeholder": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["StakeholderID", "StakeholderName"],
+            "properties": {
+              "StakeholderID": { "type": "string", "minLength": 1 },
+              "StakeholderName": { "type": "string", "minLength": 1 },
+              "StakeholderType": { "type": "string" },
+              "Contribution": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "PotentialClients": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["Client"],
+      "properties": {
+        "Client": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["ClientID", "ClientName"],
+            "properties": {
+              "ClientID": { "type": "string", "minLength": 1 },
+              "ClientName": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "AMPELSystem": {
+    "ProjectInfo": {
+      "ProjectName": "AMPEL360-Q100",
+      "Description": "Hydrogen-electric aircraft program — reference AMPELSystem instance.",
+      "StartDate": "2026-01-01",
+      "EndDate": "2035-12-31"
+    },
+    "Mapping": {
+      "MapID": "MAP-AIR-001",
+      "MapName": "Aerial Mission Mapping",
+      "Industry": "Aerospace",
+      "MapProperties": {
+        "Property": [
+          { "PropertyName": "Domain",   "PropertyValue": "AIR" },
+          { "PropertyName": "Coverage", "PropertyValue": "Global" }
+        ]
+      },
+      "MappingAlgorithms": {
+        "Algorithm": [
+          {
+            "AlgorithmName": "RouteOptimization",
+            "AlgorithmDescription": "Optimizes flight routes for H2 fuel efficiency."
+          }
+        ]
+      }
+    },
+    "Detection": {
+      "DetectionID": "DET-001",
+      "DetectionName": "Anomaly Detection",
+      "DetectionProperties": {
+        "Property": [
+          { "PropertyName": "Sensitivity", "PropertyValue": "high" }
+        ]
+      },
+      "DetectionAlgorithms": {
+        "Algorithm": [
+          {
+            "AlgorithmName": "QuantumAnomalyDetector",
+            "AlgorithmDescription": "Hybrid classical/quantum anomaly detection."
+          }
+        ]
+      }
+    },
+    "CaptureCapsules": {
+      "Capsule": [
+        {
+          "CapsuleID": "CAP-001",
+          "CapsuleName": "Telemetry Capsule",
+          "CapsuleProperties": {
+            "Property": [
+              { "PropertyName": "SamplingRateHz", "PropertyValue": 1000 }
+            ]
+          },
+          "CaptureMechanisms": {
+            "Mechanism": [
+              {
+                "MechanismName": "OnboardSensorBus",
+                "MechanismDescription": "Captures sensor streams via ARINC bus."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "Technologies": {
+      "Technology": [
+        {
+          "TechnologyName": "HydrogenFuelCell",
+          "Description": "PEM fuel cell stack for primary propulsion.",
+          "IntegrationLevel": 6
+        }
+      ]
+    },
+    "Metrics": {
+      "Metric": [
+        { "MetricName": "CO2ReductionPct",  "MetricValue": 95 },
+        { "MetricName": "RangeKm",          "MetricValue": 3500 }
+      ]
+    },
+    "FinancialBenefits": {
+      "Benefit": [
+        {
+          "BenefitName": "FuelCostSavings",
+          "BenefitValue": 12000000,
+          "StakeholderID": "STK-001",
+          "ClientID": "CLI-001"
+        }
+      ]
+    },
+    "Stakeholders": {
+      "Stakeholder": [
+        {
+          "StakeholderID": "STK-001",
+          "StakeholderName": "ESSA Consortium",
+          "StakeholderType": "Consortium",
+          "Contribution": "Program governance and certification."
+        }
+      ]
+    },
+    "PotentialClients": {
+      "Client": [
+        { "ClientID": "CLI-001", "ClientName": "Reference Launch Customer" }
+      ]
+    }
+  }
+}

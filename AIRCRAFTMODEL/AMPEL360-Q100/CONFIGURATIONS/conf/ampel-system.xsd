@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="https://essa.eu/schemas/aircraftmodel/ampel-system/v1"
+           targetNamespace="https://essa.eu/schemas/aircraftmodel/ampel-system/v1"
+           elementFormDefault="qualified"
+           version="1.0">
+
+  <xs:annotation>
+    <xs:documentation xml:lang="en">
+      AMPELSystem — AIRCRAFTMODEL Configuration XML Schema v1.0.
+      Mirrors the JSON Schema (ampel-system.schema.json) for XML serializations.
+    </xs:documentation>
+  </xs:annotation>
+
+  <!-- Root -->
+  <xs:element name="AMPELSystem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ProjectInfo"        type="ProjectInfoType"/>
+        <xs:element name="Mapping"            type="MappingType"            minOccurs="0"/>
+        <xs:element name="Detection"          type="DetectionType"          minOccurs="0"/>
+        <xs:element name="CaptureCapsules"    type="CaptureCapsulesType"    minOccurs="0"/>
+        <xs:element name="Technologies"       type="TechnologiesType"       minOccurs="0"/>
+        <xs:element name="Metrics"            type="MetricsType"            minOccurs="0"/>
+        <xs:element name="FinancialBenefits"  type="FinancialBenefitsType"  minOccurs="0"/>
+        <xs:element name="Stakeholders"       type="StakeholdersType"       minOccurs="0"/>
+        <xs:element name="PotentialClients"   type="PotentialClientsType"   minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Reusable types -->
+  <xs:complexType name="PropertyType">
+    <xs:sequence>
+      <xs:element name="PropertyName"  type="xs:string"/>
+      <xs:element name="PropertyValue" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="PropertiesContainerType">
+    <xs:sequence>
+      <xs:element name="Property" type="PropertyType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AlgorithmType">
+    <xs:sequence>
+      <xs:element name="AlgorithmName"        type="xs:string"/>
+      <xs:element name="AlgorithmDescription" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AlgorithmsContainerType">
+    <xs:sequence>
+      <xs:element name="Algorithm" type="AlgorithmType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MechanismType">
+    <xs:sequence>
+      <xs:element name="MechanismName"        type="xs:string"/>
+      <xs:element name="MechanismDescription" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MechanismsContainerType">
+    <xs:sequence>
+      <xs:element name="Mechanism" type="MechanismType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- ProjectInfo -->
+  <xs:complexType name="ProjectInfoType">
+    <xs:sequence>
+      <xs:element name="ProjectName" type="xs:string"/>
+      <xs:element name="Description" type="xs:string" minOccurs="0"/>
+      <xs:element name="StartDate"   type="xs:date"   minOccurs="0"/>
+      <xs:element name="EndDate"     type="xs:date"   minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Mapping -->
+  <xs:complexType name="MappingType">
+    <xs:sequence>
+      <xs:element name="MapID"             type="xs:string"/>
+      <xs:element name="MapName"           type="xs:string"/>
+      <xs:element name="Industry"          type="xs:string"                minOccurs="0"/>
+      <xs:element name="MapProperties"     type="PropertiesContainerType"  minOccurs="0"/>
+      <xs:element name="MappingAlgorithms" type="AlgorithmsContainerType"  minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Detection -->
+  <xs:complexType name="DetectionType">
+    <xs:sequence>
+      <xs:element name="DetectionID"         type="xs:string"/>
+      <xs:element name="DetectionName"       type="xs:string"/>
+      <xs:element name="DetectionProperties" type="PropertiesContainerType"  minOccurs="0"/>
+      <xs:element name="DetectionAlgorithms" type="AlgorithmsContainerType"  minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- CaptureCapsules -->
+  <xs:complexType name="CapsuleType">
+    <xs:sequence>
+      <xs:element name="CapsuleID"         type="xs:string"/>
+      <xs:element name="CapsuleName"       type="xs:string"/>
+      <xs:element name="CapsuleProperties" type="PropertiesContainerType"  minOccurs="0"/>
+      <xs:element name="CaptureMechanisms" type="MechanismsContainerType"  minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CaptureCapsulesType">
+    <xs:sequence>
+      <xs:element name="Capsule" type="CapsuleType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Technologies -->
+  <xs:complexType name="TechnologyType">
+    <xs:sequence>
+      <xs:element name="TechnologyName"   type="xs:string"/>
+      <xs:element name="Description"      type="xs:string" minOccurs="0"/>
+      <xs:element name="IntegrationLevel" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TechnologiesType">
+    <xs:sequence>
+      <xs:element name="Technology" type="TechnologyType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Metrics -->
+  <xs:complexType name="MetricType">
+    <xs:sequence>
+      <xs:element name="MetricName"  type="xs:string"/>
+      <xs:element name="MetricValue" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MetricsType">
+    <xs:sequence>
+      <xs:element name="Metric" type="MetricType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- FinancialBenefits -->
+  <xs:complexType name="BenefitType">
+    <xs:sequence>
+      <xs:element name="BenefitName"   type="xs:string"/>
+      <xs:element name="BenefitValue"  type="xs:decimal"/>
+      <xs:element name="StakeholderID" type="xs:string" minOccurs="0"/>
+      <xs:element name="ClientID"      type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="FinancialBenefitsType">
+    <xs:sequence>
+      <xs:element name="Benefit" type="BenefitType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Stakeholders -->
+  <xs:complexType name="StakeholderType">
+    <xs:sequence>
+      <xs:element name="StakeholderID"   type="xs:string"/>
+      <xs:element name="StakeholderName" type="xs:string"/>
+      <xs:element name="StakeholderType" type="xs:string" minOccurs="0"/>
+      <xs:element name="Contribution"    type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="StakeholdersType">
+    <xs:sequence>
+      <xs:element name="Stakeholder" type="StakeholderType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- PotentialClients -->
+  <xs:complexType name="ClientType">
+    <xs:sequence>
+      <xs:element name="ClientID"   type="xs:string"/>
+      <xs:element name="ClientName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="PotentialClientsType">
+    <xs:sequence>
+      <xs:element name="Client" type="ClientType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
