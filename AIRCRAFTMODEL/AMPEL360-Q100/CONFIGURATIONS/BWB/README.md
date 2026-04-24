@@ -18,7 +18,7 @@ Non-cylindrical centerbody with blended outer wing — a lifting-body design.
 
 | Area | BWB Characteristic |
 |------|---------------------|
-| **Pressure vessel** | Non-cylindrical — multi-bubble or Y-frame structural concept |
+| **Pressure vessel** | Non-cylindrical — Y-frame / integrally-stiffened centerbody structural concept |
 | **Propulsion integration** | Boundary-layer ingestion (BLI) propulsion |
 | **Cabin / egress** | Wide-cabin layout; non-standard emergency egress paths |
 | **Aeroelastics** | Coupled centerbody–outer-wing aeroelastic response |

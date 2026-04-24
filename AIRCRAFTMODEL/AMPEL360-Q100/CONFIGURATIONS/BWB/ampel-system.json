@@ -28,11 +28,11 @@
     },
     "Detection": {
       "DetectionID": "DET-Q100-BWB-001",
-      "DetectionName": "Multi-Bubble Centerbody Anomaly Detection",
+      "DetectionName": "Non-Cylindrical Centerbody Anomaly Detection",
       "DetectionProperties": {
         "Property": [
           { "PropertyName": "Sensitivity",   "PropertyValue": "high" },
-          { "PropertyName": "VesselTopology", "PropertyValue": "multi-bubble" }
+          { "PropertyName": "VesselTopology", "PropertyValue": "non-cylindrical-Y-frame" }
         ]
       },
       "DetectionAlgorithms": {
@@ -79,8 +79,8 @@
           "IntegrationLevel": 4
         },
         {
-          "TechnologyName": "MultiBubblePressureVessel",
-          "Description": "Non-cylindrical pressure vessel concept for BWB cabin volume.",
+          "TechnologyName": "NonCylindricalPressureVessel",
+          "Description": "Non-cylindrical Y-frame / integrally-stiffened centerbody pressure vessel concept for the AMPEL360-Q100 BWB cabin volume.",
           "IntegrationLevel": 4
         }
       ]
