@@ -2,17 +2,15 @@
 """
 G10.975 containment grammar validator.
 
-Validates:
+Validates the v0.2.0 normative spec and companion artifacts:
 - canonical flat UTA path is used
 - stale G10-QCSAA directory path is not introduced
 - stale G109 path is not referenced outside controlled rejection lists
-- G10.975 specification exists
-- UTA-DOMAINS.md links to the spec
-- registry and BREX files exist
-- 970-979 ZGen/regent-ZetaGentz containment semantics are explicit
-- monster alias has mandatory interpretive note
-- containment states are defined
-- quarantine / regency / evidence sections exist
+- G10.975 specification, schema, registry, BREX, and UTA index exist
+- v0.2.0 containment states, transitions, quarantine exit criteria, LC01/KNOT,
+  NIB disambiguation, enforcement authority, and evidence schema are specified
+- registry and BREX implement the v0.2.0 normative model
+- prohibited names appear only in controlled prohibition contexts
 """
 
 from pathlib import Path
@@ -27,28 +25,11 @@ REGISTRY = ROOT / "OPT-INS_FRAMEWORK/GQAOA-UTA-G10-QCSAA-REGISTRY-001.yaml"
 BREX = ROOT / "OPT-INS_FRAMEWORK/GQAOA-UTA-G10-975-BREX-RULES-001.yaml"
 UTA_DOMAINS = ROOT / "OPT-INS_FRAMEWORK/UTA-DOMAINS.md"
 README = ROOT / "OPT-INS_FRAMEWORK/README.md"
+SCHEMA = ROOT / "schemas/G10.975-evidence-package.schema.yaml"
 
 STALE_PATHS = [
     "OPT-INS_FRAMEWORK/G10-QCSAA/",
     "GQAOA-UTA-G109-G10-975-CONTAINMENT-GRAMMAR-001.md",
-]
-
-REQUIRED_SPEC_TERMS = [
-    "G10.975",
-    "Containment Grammar",
-    "G10.970–G10.979",
-    "ZGen",
-    "regent-ZetaGentz",
-    "Zero-Gene",
-    "QUARANTINED",
-    "REGENCY_REVIEW",
-    "Evidence Package",
-    "STK-GOV",
-    "STK-SAFETY",
-    "AEROSPACEMODEL-ASIT-NIB-SPEC-001",
-    "KNOT-G10.97x-*",
-    "Residual_Target",
-    "schemas/g10-975-evidence-package.schema.yaml",
 ]
 
 REQUIRED_STATES = [
@@ -71,6 +52,7 @@ REQUIRED_FILES = [
     REGISTRY,
     BREX,
     UTA_DOMAINS,
+    SCHEMA,
 ]
 
 PROHIBITED_TERMS = [
@@ -85,6 +67,9 @@ PROHIBITED_TERMS = [
     "uncontained synthetic life",
 ]
 
+REQUIRED_QE_IDS = [f"QE-{index:03d}" for index in range(1, 11)]
+REQUIRED_AC_IDS = [f"AC-{index:03d}" for index in range(1, 16)]
+
 
 def read(path: Path) -> str:
     return path.read_text(encoding="utf-8")
@@ -96,6 +81,12 @@ def fail(errors, message):
 
 def warn(warnings, message):
     warnings.append(f"WARN: {message}")
+
+
+def require_items(text: str, items, errors, label: str):
+    for item in items:
+        if item not in text:
+            fail(errors, f"{label} missing required item: {item}")
 
 
 def validate_required_files(errors):
@@ -113,6 +104,12 @@ def strip_allowed_stale_path_sections(text: str) -> str:
     )
     text = re.sub(
         r"warning_rules:.*?(?=\n[a-zA-Z0-9_]+:|\Z)",
+        "",
+        text,
+        flags=re.DOTALL,
+    )
+    text = re.sub(
+        r"Stale paths explicitly rejected:.*?(?=\n## |\Z)",
         "",
         text,
         flags=re.DOTALL,
@@ -146,41 +143,48 @@ def validate_spec_content(errors):
 
     text = read(SPEC)
 
-    for term in REQUIRED_SPEC_TERMS:
-        if term not in text:
-            fail(errors, f"Missing required term in spec: {term}")
+    required = [
+        'version: "0.2.0"',
+        'status: "draft-controlled"',
+        "## 2. Taxonomy Placement",
+        "### 2.1 Relationship to Non-Inference Boundaries",
+        "AEROSPACEMODEL-ASIT-NIB-SPEC-001",
+        "## 3. Scope",
+        "Non-biological generative agent class; `Zero-Gene Generative Agents` is the permitted descriptive variant",
+        "## 5. Containment States",
+        "### 5.1 Permitted State Transitions",
+        "### 5.2 State Transition Diagram",
+        "Direct transition from `QUARANTINED` to `CONTAINED_ACTIVE` is prohibited.",
+        "Direct transition from `OBSERVE_ONLY` to `CONTAINED_ACTIVE` is prohibited.",
+        "### 6.1 Quarantine Exit Criteria",
+        "A `QUARANTINED` entity may exit quarantine only through `REGENCY_REVIEW`.",
+        "Regency escalation is governed by `G10.978 — Regency Escalation`.",
+        "### 7.4 LC01 / KNOT Mapping",
+        "KNOT-G10.97x-<NORMALIZED-ENTITY-NAME>-<SEQ>",
+        "residual_target",
+        "Every `G10.975` quarantine or regency escalation must generate a signed YAML evidence package.",
+        "schemas/G10.975-evidence-package.schema.yaml",
+        "G10.975-EVIDENCE-<YYYYMMDD>-<SEQ>.yaml",
+        "### 9.2.1 Inline BREX rule examples",
+        "## 11. References and Enforcement Authority",
+        "STK-GOV SHALL NOT permit operational interpretation",
+    ]
+    require_items(text, required, errors, "Spec")
 
     for state in REQUIRED_STATES:
         if state not in text:
             fail(errors, f"Missing containment state in spec: {state}")
 
+    for qe_id in REQUIRED_QE_IDS:
+        if qe_id not in text:
+            fail(errors, f"Missing quarantine exit criterion in spec: {qe_id}")
+
+    for ac_id in REQUIRED_AC_IDS:
+        if ac_id not in text:
+            fail(errors, f"Missing acceptance criterion in spec: {ac_id}")
+
     if "Generative Monsters" in text and REQUIRED_INTERPRETIVE_NOTE not in text:
         fail(errors, "Generative Monsters alias appears without mandatory interpretive note")
-
-    required_sections = [
-        "State transition matrix",
-        "## 7. Regency Escalation",
-        "## 8. Evidence Package",
-        "## 9. BREX / Validation Rules",
-        "## 10. Registry Requirements",
-        "## 12. Acceptance Criteria",
-    ]
-
-    for section in required_sections:
-        if section not in text:
-            fail(errors, f"Missing required spec section: {section}")
-
-    required_controls = [
-        "Quarantine exit criteria",
-        "signed YAML",
-        "G10.978",
-        "STK-GOV is the enforcement authority",
-        "No prohibited-name occurrence appears outside controlled prohibition contexts",
-    ]
-
-    for control in required_controls:
-        if control not in text:
-            fail(errors, f"Missing required spec control: {control}")
 
 
 def validate_uta_domains_link(errors):
@@ -197,10 +201,7 @@ def validate_uta_domains_link(errors):
         "GQAOA-UTA-G10-QCSAA-REGISTRY-001.yaml",
         "GQAOA-UTA-G10-975-BREX-RULES-001.yaml",
     ]
-
-    for item in required:
-        if item not in text:
-            fail(errors, f"UTA-DOMAINS.md missing required G10 reference: {item}")
+    require_items(text, required, errors, "UTA-DOMAINS.md")
 
 
 def validate_registry(errors):
@@ -210,24 +211,28 @@ def validate_registry(errors):
     text = read(REGISTRY)
 
     required = [
-        "G10.970",
-        "G10.971",
-        "G10.972",
-        "G10.973",
-        "G10.974",
-        "G10.975",
-        "G10.976",
-        "G10.977",
-        "G10.978",
-        "G10.979",
-        "regent-ZetaGentz",
-        "OBSERVE_ONLY",
+        'version: "0.2.0"',
+        "schemas/G10.975-evidence-package.schema.yaml",
+        "owner_stk",
+        "evidence_package_pointer",
+        "state_transition_matrix_required",
+        "quarantine_exit_criteria_required",
+        "lc01_knot_required_for_regency_review",
+        "nib_relationship_disambiguated",
+        "QUARANTINED -> CONTAINED_ACTIVE",
+        "Zero-Gene Generative Agents",
+        "STK-GOV",
+        "STK-SAFETY",
+        "STK-QCSAA",
+        "STK-LEDGER",
+        "STK-ETHICS",
         "monster_alias_requires_interpretive_note",
     ]
+    require_items(text, required, errors, "Registry")
 
-    for item in required:
-        if item not in text:
-            fail(errors, f"Registry missing required item: {item}")
+    for code in [f"G10.97{index}" for index in range(10)]:
+        if code not in text:
+            fail(errors, f"Registry missing required code: {code}")
 
 
 def validate_brex(errors):
@@ -237,26 +242,70 @@ def validate_brex(errors):
     text = read(BREX)
 
     required = [
+        'version: "0.2.0"',
+        "schemas/G10.975-evidence-package.schema.yaml",
+        "permitted_state_transitions",
+        "prohibited_state_transitions",
+        "quarantine_exit_criteria",
+        "lc01_knot_mapping",
         "G10-975-BLOCK-001",
         "G10-975-BLOCK-002",
         "G10-975-BLOCK-003",
         "G10-975-BLOCK-004",
         "G10-975-BLOCK-005",
+        "G10-975-BLOCK-006",
+        "G10-975-BLOCK-007",
+        "G10-975-BLOCK-008",
+        "G10-975-BLOCK-009",
+        "G10-975-BLOCK-010",
+        "G10-975-BLOCK-011",
         "G10-975-WARN-004",
         "G10-975-WARN-005",
         "prohibited_terms",
+        "QUARANTINED",
+        "CONTAINED_ACTIVE",
+        "KNOT-G10.97x-<NORMALIZED-ENTITY-NAME>-<SEQ>",
     ]
+    require_items(text, required, errors, "BREX file")
 
-    for item in required:
-        if item not in text:
-            fail(errors, f"BREX file missing required item: {item}")
+    for qe_id in REQUIRED_QE_IDS:
+        if qe_id not in text:
+            fail(errors, f"BREX file missing quarantine exit criterion: {qe_id}")
+
+
+def validate_schema(errors):
+    if not SCHEMA.exists():
+        return
+
+    text = read(SCHEMA)
+    required = [
+        "G10.975 Evidence Package",
+        "evidence_package",
+        "G10",
+        "975-EVIDENCE-[0-9]{8}-[0-9]{3,}",
+        "97[0-9]",
+        "source_hash",
+        "residual_target",
+        "STK-GOV",
+        "STK-SAFETY",
+        "STK-LEDGER",
+        "anchor_id",
+    ]
+    require_items(text, required, errors, "Evidence schema")
+
+    for state in REQUIRED_STATES:
+        if state not in text:
+            fail(errors, f"Evidence schema missing containment state: {state}")
 
 
 def strip_allowed_prohibition_sections(text: str) -> str:
     """
-    Remove controlled sections where prohibited terms are allowed to appear:
-    - spec section 4.4
-    - BREX prohibited_terms list
+    Remove controlled sections where prohibited terms are allowed to appear.
+
+    This preserves AC-011 by allowing prohibited-name strings only in the
+    normative spec's controlled prohibition section and in the BREX
+    prohibited_terms detector list; any other occurrence under OPT-INS_FRAMEWORK
+    fails validation.
     """
     text = re.sub(
         r"### 4\.4 Prohibited names.*?(?=\n### |\n## |\Z)",
@@ -306,6 +355,7 @@ def main():
     validate_uta_domains_link(errors)
     validate_registry(errors)
     validate_brex(errors)
+    validate_schema(errors)
     validate_prohibited_terms(errors)
     validate_readme_optional(warnings)
 
