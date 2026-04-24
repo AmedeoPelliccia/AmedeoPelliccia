@@ -56,7 +56,11 @@ REQUIRED_STATES = [
     "RETIRED",
 ]
 
-REQUIRED_INTERPRETIVE_NOTE = '"Monster" is used in the original sense of monstrum'
+REQUIRED_INTERPRETIVE_NOTE = (
+    '"Monster" is used in the original sense of monstrum: a sign, warning, '
+    "or boundary-form requiring careful interpretation, not a moral claim, "
+    "personhood claim, or operational authorization."
+)
 
 REQUIRED_FILES = [
     SPEC,
