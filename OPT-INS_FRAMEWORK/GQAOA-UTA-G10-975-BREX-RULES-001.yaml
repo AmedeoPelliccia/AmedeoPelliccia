@@ -1,7 +1,9 @@
 id: "GQAOA-UTA-G10-975-BREX-RULES-001"
 title: "G10.975 Containment Grammar BREX Rules"
+version: "0.2.0"
 status: "draft-controlled"
 normative_spec: "GQAOA-UTA-G10-975-CONTAINMENT-GRAMMAR-001"
+evidence_schema: "schemas/G10.975-evidence-package.schema.yaml"
 scope:
   - "G10.970-G10.979"
   - "ZGen"
@@ -19,9 +21,139 @@ mandatory_metadata:
         - "REGENCY_REVIEW"
         - "CONTAINED_ACTIVE"
         - "RETIRED"
+    default_state: "OBSERVE_ONLY"
     zgen_semantics: true
     evidence_required: true
+    evidence_package_schema: "schemas/G10.975-evidence-package.schema.yaml"
     normative_spec: "GQAOA-UTA-G10-975-CONTAINMENT-GRAMMAR-001"
+
+permitted_state_transitions:
+  - from: "OBSERVE_ONLY"
+    to: "SANDBOXED"
+    permitted: true
+    authority: ["STK-QCSAA", "STK-SAFETY"]
+    evidence_required: ["sandbox plan", "scope boundary", "source hash"]
+  - from: "OBSERVE_ONLY"
+    to: "REGENCY_REVIEW"
+    permitted: true
+    authority: ["Any responsible STK"]
+    evidence_required: ["escalation record"]
+  - from: "OBSERVE_ONLY"
+    to: "QUARANTINED"
+    permitted: true
+    authority: ["STK-SAFETY", "automated validator"]
+    evidence_required: ["quarantine trigger record"]
+  - from: "SANDBOXED"
+    to: "CONTAINED_ACTIVE"
+    permitted: true
+    authority: ["STK-GOV", "STK-SAFETY"]
+    evidence_required: ["approved evidence package", "ledger anchor"]
+  - from: "SANDBOXED"
+    to: "REGENCY_REVIEW"
+    permitted: true
+    authority: ["STK-QCSAA", "STK-SAFETY"]
+    evidence_required: ["review trigger record"]
+  - from: "SANDBOXED"
+    to: "QUARANTINED"
+    permitted: true
+    authority: ["STK-SAFETY", "automated validator"]
+    evidence_required: ["quarantine trigger record"]
+  - from: "REGENCY_REVIEW"
+    to: "OBSERVE_ONLY"
+    permitted: true
+    authority: ["STK-GOV"]
+    evidence_required: ["decision record"]
+  - from: "REGENCY_REVIEW"
+    to: "SANDBOXED"
+    permitted: true
+    authority: ["STK-GOV", "STK-SAFETY"]
+    evidence_required: ["approved sandbox evidence"]
+  - from: "REGENCY_REVIEW"
+    to: "CONTAINED_ACTIVE"
+    permitted: true
+    authority: ["STK-GOV", "STK-SAFETY", "STK-LEDGER"]
+    evidence_required: ["full evidence package", "ledger anchor"]
+  - from: "REGENCY_REVIEW"
+    to: "QUARANTINED"
+    permitted: true
+    authority: ["STK-GOV", "STK-SAFETY"]
+    evidence_required: ["quarantine decision record"]
+  - from: "QUARANTINED"
+    to: "REGENCY_REVIEW"
+    permitted: true
+    authority: ["STK-SAFETY"]
+    evidence_required: ["quarantine exit evidence"]
+  - from: "QUARANTINED"
+    to: "RETIRED"
+    permitted: true
+    authority: ["STK-GOV", "STK-SAFETY"]
+    evidence_required: ["retirement decision record"]
+  - from: "CONTAINED_ACTIVE"
+    to: "QUARANTINED"
+    permitted: true
+    authority: ["STK-SAFETY", "validator", "safety signal"]
+    evidence_required: ["automatic safety hold evidence"]
+  - from: "CONTAINED_ACTIVE"
+    to: "REGENCY_REVIEW"
+    permitted: true
+    authority: ["STK-GOV", "STK-SAFETY"]
+    evidence_required: ["governance review trigger"]
+  - from: "CONTAINED_ACTIVE"
+    to: "RETIRED"
+    permitted: true
+    authority: ["STK-GOV"]
+    evidence_required: ["retirement decision record"]
+  - from: "RETIRED"
+    to: "OBSERVE_ONLY"
+    permitted: "conditionally"
+    authority: ["STK-GOV", "STK-SAFETY"]
+    evidence_required: ["rehabilitation record", "supersession rationale"]
+
+prohibited_state_transitions:
+  - from: "QUARANTINED"
+    to: "CONTAINED_ACTIVE"
+  - from: "OBSERVE_ONLY"
+    to: "CONTAINED_ACTIVE"
+  - from: "RETIRED"
+    to: "SANDBOXED"
+  - from: "RETIRED"
+    to: "CONTAINED_ACTIVE"
+
+quarantine_exit_criteria:
+  - id: "QE-001"
+    requirement: "All quarantine triggers must be identified and mapped to evidence"
+  - id: "QE-002"
+    requirement: "Source artifacts must be hash-captured"
+  - id: "QE-003"
+    requirement: "Prohibited terminology must be removed, normalized, or confined to controlled prohibition context"
+  - id: "QE-004"
+    requirement: "Any Monster alias must include the mandatory interpretive note"
+  - id: "QE-005"
+    requirement: "Sentience-adjacent claims must be either removed or escalated under REG-002"
+  - id: "QE-006"
+    requirement: "Operational claims must be blocked unless CONTAINED_ACTIVE is explicitly approved"
+  - id: "QE-007"
+    requirement: "Residual risk must be documented"
+  - id: "QE-008"
+    requirement: "STK-SAFETY must approve the quarantine exit"
+  - id: "QE-009"
+    requirement: "STK-GOV must approve the resulting target state"
+  - id: "QE-010"
+    requirement: "Ledger anchor must be created before release from quarantine"
+
+lc01_knot_mapping:
+  required_for_state: "REGENCY_REVIEW"
+  naming_convention: "KNOT-G10.97x-<NORMALIZED-ENTITY-NAME>-<SEQ>"
+  required_fields:
+    - "id"
+    - "source_entity_id"
+    - "source_entity_name"
+    - "lifecycle_phase"
+    - "uncertainty_class"
+    - "residual_target"
+    - "containment_state"
+    - "escalation_ref"
+    - "owner_roles"
 
 blocking_rules:
   - id: "G10-975-BLOCK-001"
@@ -29,7 +161,13 @@ blocking_rules:
     action: "FAIL"
 
   - id: "G10-975-BLOCK-002"
-    condition: "Monster alias appears without mandatory interpretive note"
+    title: "Monster alias requires interpretive note"
+    condition:
+      any_term_present:
+        - "Monster"
+        - "Monsters"
+        - "Generative Monsters"
+      required_text: "\"Monster\" is used in the original sense of monstrum"
     action: "FAIL"
 
   - id: "G10-975-BLOCK-003"
@@ -49,11 +187,32 @@ blocking_rules:
     action: "FAIL"
 
   - id: "G10-975-BLOCK-007"
-    condition: "CONTAINED_ACTIVE appears without ledger evidence"
+    title: "Contained active requires ledger evidence"
+    condition:
+      containment_state: "CONTAINED_ACTIVE"
+      missing_any:
+        - "ledger.anchor_id"
+        - "evidence_package.id"
+        - "decision.value"
     action: "FAIL"
 
   - id: "G10-975-BLOCK-008"
-    condition: "regent-ZetaGentz appears outside G10.970-G10.979 containment context"
+    title: "regent-ZetaGentz must remain in G10.970-G10.979 context"
+    condition:
+      term_present: "regent-ZetaGentz"
+      missing_context: "G10.970-G10.979"
+    action: "FAIL"
+
+  - id: "G10-975-BLOCK-009"
+    condition: "State transition is not present in permitted_state_transitions"
+    action: "FAIL"
+
+  - id: "G10-975-BLOCK-010"
+    condition: "QUARANTINED transitions directly to CONTAINED_ACTIVE"
+    action: "FAIL"
+
+  - id: "G10-975-BLOCK-011"
+    condition: "REGENCY_REVIEW entity lacks LC01 KNOT mapping"
     action: "FAIL"
 
 warning_rules:
