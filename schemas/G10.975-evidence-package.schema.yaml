@@ -1,0 +1,105 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "schemas/G10.975-evidence-package.schema.yaml"
+title: "G10.975 Evidence Package"
+type: object
+additionalProperties: false
+required:
+  - evidence_package
+properties:
+  evidence_package:
+    type: object
+    additionalProperties: false
+    required:
+      - id
+      - entity
+      - containment_state
+      - source_hash
+      - residual_target
+      - authority
+      - decision
+      - ledger
+    properties:
+      id:
+        type: string
+        pattern: "^G10\\.975-EVIDENCE-[0-9]{8}-[0-9]{3,}$"
+      entity:
+        type: object
+        additionalProperties: false
+        required:
+          - id
+          - name
+        properties:
+          id:
+            type: string
+            pattern: "^G10\\.97[0-9]$"
+          name:
+            type: string
+            minLength: 1
+      containment_state:
+        type: string
+        enum:
+          - OBSERVE_ONLY
+          - SANDBOXED
+          - QUARANTINED
+          - REGENCY_REVIEW
+          - CONTAINED_ACTIVE
+          - RETIRED
+      source_hash:
+        type: string
+        pattern: "^(<sha256>|[A-Fa-f0-9]{64})$"
+      quarantine_trigger:
+        type: string
+      residual_target:
+        type: string
+        minLength: 1
+      authority:
+        type: object
+        additionalProperties: false
+        required:
+          - gov
+          - safety
+          - ledger
+        properties:
+          gov:
+            const: STK-GOV
+          safety:
+            const: STK-SAFETY
+          qcsaa:
+            const: STK-QCSAA
+          ledger:
+            const: STK-LEDGER
+          ethics:
+            const: STK-ETHICS
+      decision:
+        type: object
+        additionalProperties: false
+        required:
+          - value
+          - reviewer
+        properties:
+          value:
+            type: string
+            enum:
+              - OBSERVE_ONLY
+              - SANDBOXED
+              - QUARANTINED
+              - REGENCY_REVIEW
+              - CONTAINED_ACTIVE
+              - RETIRED
+          reviewer:
+            type: string
+            minLength: 1
+          timestamp:
+            type: string
+            format: date-time
+      ledger:
+        type: object
+        additionalProperties: false
+        required:
+          - anchor_id
+        properties:
+          anchor_id:
+            type: string
+            minLength: 1
+          csv_row_ref:
+            type: string
