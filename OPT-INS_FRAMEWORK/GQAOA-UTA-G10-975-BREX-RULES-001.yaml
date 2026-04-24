@@ -1,0 +1,104 @@
+id: "GQAOA-UTA-G10-975-BREX-RULES-001"
+title: "G10.975 Containment Grammar BREX Rules"
+status: "draft-controlled"
+normative_spec: "GQAOA-UTA-G10-975-CONTAINMENT-GRAMMAR-001"
+scope:
+  - "G10.970-G10.979"
+  - "ZGen"
+  - "regent-ZetaGentz"
+  - "Zero-Gene Generative Agents"
+
+mandatory_metadata:
+  g10_containment:
+    range: "G10.970-G10.979"
+    containment_state:
+      allowed:
+        - "OBSERVE_ONLY"
+        - "SANDBOXED"
+        - "QUARANTINED"
+        - "REGENCY_REVIEW"
+        - "CONTAINED_ACTIVE"
+        - "RETIRED"
+    zgen_semantics: true
+    evidence_required: true
+    normative_spec: "GQAOA-UTA-G10-975-CONTAINMENT-GRAMMAR-001"
+
+blocking_rules:
+  - id: "G10-975-BLOCK-001"
+    condition: "G10.970-G10.979 document lacks containment metadata"
+    action: "FAIL"
+
+  - id: "G10-975-BLOCK-002"
+    condition: "Monster alias appears without mandatory interpretive note"
+    action: "FAIL"
+
+  - id: "G10-975-BLOCK-003"
+    condition: "Entity is marked operational without evidence package"
+    action: "FAIL"
+
+  - id: "G10-975-BLOCK-004"
+    condition: "Sentience-adjacent claim appears without REGENCY_REVIEW"
+    action: "FAIL"
+
+  - id: "G10-975-BLOCK-005"
+    condition: "Prohibited name appears outside controlled prohibition list"
+    action: "FAIL"
+
+  - id: "G10-975-BLOCK-006"
+    condition: "Quarantine trigger exists without escalation record"
+    action: "FAIL"
+
+  - id: "G10-975-BLOCK-007"
+    condition: "CONTAINED_ACTIVE appears without ledger evidence"
+    action: "FAIL"
+
+  - id: "G10-975-BLOCK-008"
+    condition: "regent-ZetaGentz appears outside G10.970-G10.979 containment context"
+    action: "FAIL"
+
+warning_rules:
+  - id: "G10-975-WARN-001"
+    condition: "ZGen alias used without QCSAA reference"
+    action: "WARN"
+
+  - id: "G10-975-WARN-002"
+    condition: "Boundary-form terminology appears in public-facing text"
+    action: "WARN"
+
+  - id: "G10-975-WARN-003"
+    condition: "Ethical interface terms appear without G10.976 reference"
+    action: "WARN"
+
+  - id: "G10-975-WARN-004"
+    condition: "Stale path OPT-INS_FRAMEWORK/G10-QCSAA/ is referenced"
+    action: "WARN"
+
+  - id: "G10-975-WARN-005"
+    condition: "Stale path GQAOA-UTA-G109-G10-975-CONTAINMENT-GRAMMAR-001.md is referenced"
+    action: "WARN"
+
+permitted_formal_names:
+  - "ZGen Systems"
+  - "Zero-Gene Agents"
+  - "Zero-Gene Generative Agents"
+  - "ZetaGentz"
+  - "regent-ZetaGentz"
+  - "QCSAA Frontier Agency Class"
+  - "QCSAA/ZGen Containment Class"
+
+permitted_aliases_with_note:
+  - "Zero-Gene Generative Monsters"
+  - "Generative Monsters"
+  - "Boundary-form Generative Systems"
+  - "Zone of Generative Emergence"
+
+prohibited_terms:
+  - "evil AI"
+  - "demon AI"
+  - "killer agent"
+  - "sentient weapon"
+  - "autonomous monster"
+  - "god agent"
+  - "slave intelligence"
+  - "disposable sentience"
+  - "uncontained synthetic life"

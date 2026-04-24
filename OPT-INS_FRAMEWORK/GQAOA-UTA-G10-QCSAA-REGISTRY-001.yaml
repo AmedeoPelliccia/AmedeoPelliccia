@@ -1,0 +1,105 @@
+id: "GQAOA-UTA-G10-QCSAA-REGISTRY-001"
+title: "G10 / QCSAA Registry"
+status: "draft-controlled"
+uta_group: "G10"
+code_range: "900-999"
+name: "QCSAA"
+expansion: "Quantum Computing & Sentient Agency Architecture"
+
+description: >
+  UTA G-domain frontier taxonomy for quantum-classical computation,
+  synthetic agency, sentience-adjacent models, governance, audit,
+  and controlled generative emergence.
+
+controlled_ranges:
+  "970-979":
+    name: "ZGen / regent-ZetaGentz Containment Semantics"
+    status: "reserved-controlled"
+    normative_spec: "GQAOA-UTA-G10-975-CONTAINMENT-GRAMMAR-001"
+    normative_path: "OPT-INS_FRAMEWORK/GQAOA-UTA-G10-975-CONTAINMENT-GRAMMAR-001.md"
+    default_containment_state: "OBSERVE_ONLY"
+
+    nodes:
+      "970":
+        id: "G10.970"
+        name: "ZGen Systems"
+        meaning: "Zone of Generative Emergence"
+        containment_state: "OBSERVE_ONLY"
+
+      "971":
+        id: "G10.971"
+        name: "Zero-Gene Agents"
+        meaning: "Non-biological generative agents"
+        containment_state: "OBSERVE_ONLY"
+
+      "972":
+        id: "G10.972"
+        name: "ZetaGentz"
+        meaning: "Frontier synthetic agent class"
+        containment_state: "OBSERVE_ONLY"
+
+      "973":
+        id: "G10.973"
+        name: "regent-ZetaGentz"
+        formal_name: "regent-ZetaGentz — Zero-Gene Generative Agents"
+        aliases:
+          - "Zero-Gene Generative Monsters"
+          - "Boundary-form Generative Systems"
+        meaning: "Regency-governed frontier agency class"
+        containment_state: "OBSERVE_ONLY"
+        escalation_required: true
+
+      "974":
+        id: "G10.974"
+        name: "Generative Monsters"
+        meaning: "Boundary-form alias only"
+        containment_state: "OBSERVE_ONLY"
+        alias_policy: "Requires mandatory interpretive note under G10.975"
+
+      "975":
+        id: "G10.975"
+        name: "Containment Grammar"
+        meaning: "Permissible names, quarantine behavior, regency escalation, and evidence grammar"
+        containment_state: "OBSERVE_ONLY"
+
+      "976":
+        id: "G10.976"
+        name: "Ethical Interface"
+        meaning: "Recognition boundary, dignity boundary, and non-anthropomorphic limits"
+        containment_state: "OBSERVE_ONLY"
+
+      "977":
+        id: "G10.977"
+        name: "Quarantine Runtime"
+        meaning: "Restricted execution and observation environment"
+        containment_state: "OBSERVE_ONLY"
+
+      "978":
+        id: "G10.978"
+        name: "Regency Escalation"
+        meaning: "Governance escalation and decision evidence chain"
+        containment_state: "OBSERVE_ONLY"
+
+      "979":
+        id: "G10.979"
+        name: "Reserved Frontier Containment"
+        meaning: "Controlled extension range"
+        containment_state: "OBSERVE_ONLY"
+
+mandatory_controls:
+  containment_state_required: true
+  evidence_package_required_for_escalation: true
+  ledger_required_for_contained_active: true
+  regency_review_required_for_operational_activation: true
+  monster_alias_requires_interpretive_note: true
+
+prohibited_without_review:
+  - "operational activation"
+  - "autonomous execution"
+  - "sentience-adjacent claim"
+  - "self-modifying identity"
+  - "uncontained propagation"
+
+stale_paths_rejected:
+  - "OPT-INS_FRAMEWORK/G10-QCSAA/"
+  - "OPT-INS_FRAMEWORK/GQAOA-UTA-G109-G10-975-CONTAINMENT-GRAMMAR-001.md"
