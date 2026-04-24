@@ -11,6 +11,12 @@ scope: full product taxonomy — aerial and spatial domains
 
 **Status:** consolidated baseline · **Date:** 2026-04-15 · **Scope:** full product taxonomy across aerial and spatial domains, with OPT-IN / OPT-INS framework naming rules.
 
+> This document defines the **Model** layer only. For how Models relate to the
+> three other parallel baseline layers — **CSP** (Certifiable Strategies and
+> Programmes), **OTAPC** (Overlap-Top Architectures Project Charters), and
+> **FIDITA** (historical fully-integrated design/industrialisation/test
+> articles) — see [`AMPEL-ARTIFACT-LAYERS.md`](./AMPEL-ARTIFACT-LAYERS.md).
+
 ---
 
 ## 1. Two Repositories

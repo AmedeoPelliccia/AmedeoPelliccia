@@ -76,6 +76,8 @@ All documents, repositories, data modules, and engineering artifacts **SHALL** u
 
 **CB → QB → UE → FE → FWD → QS** `[G]` — Quantum-Classical Bridge Layer Stack. Six-layer abstraction from Classical Base through Quantum Substrate.
 
+**CSP** `[G]` — **Certifiable Strategies and Programmes.** Programme-level baseline binding a Model (or one of its configurations) to a regulatory anchor, a means-of-compliance strategy, and a programme plan. Owned by the Programme Director. Parallel baseline to Models, OTAPCs, and FIDITAs. See `AMPEL-ARTIFACT-LAYERS.md`.
+
 **CCB** `[I]` — Configuration Control Board.
 
 **CCT** `[I]` — Condition Cross-reference Table. S1000D condition-based applicability.
@@ -131,6 +133,8 @@ All documents, repositories, data modules, and engineering artifacts **SHALL** u
 **FAA Part 25** `[I]` — Airworthiness Standards: Transport Category Airplanes.
 
 **FDIR** `[I]` — Fault Detection, Isolation, and Recovery.
+
+**FIDITA** `[G]` *(historical)* — **Fully-Integrated Design / Industrialisation / Test Article.** Frozen, append-only baseline snapshot bundling design definition, industrialisation package, and the physical or virtual article that realises a Model configuration at a given epoch. Predates the current Model + CSP + OTAPC split; retained for traceability to legacy qualification dossiers and supplier data packages. See `AMPEL-ARTIFACT-LAYERS.md`.
 
 ---
 
@@ -217,6 +221,8 @@ All documents, repositories, data modules, and engineering artifacts **SHALL** u
 
 **Machine Instinct Thesis** `[G]` — AI systems developing functional analogues to biological instinct within governed boundaries.
 
+**Model** `[G]` — Top-level product-line repository scoping one engineering domain (e.g. `AIRCRAFTMODEL`, `AEROSPACEMODEL`). Answers *what* is being built; runs as a parallel baseline to CSP, OTAPC, and FIDITA. See `AMPEL-FAMILY-TAXONOMY.md` and `AMPEL-ARTIFACT-LAYERS.md`.
+
 **MonKBit** `[G]` — NeuronBit_{KB=100}. Log₁₀₀ unit in MUSIC-MCC.
 
 **MonoBit** `[G]` — Base MUSIC-MCC unit. Minimal cryptographic communication quantum.
@@ -246,6 +252,8 @@ All documents, repositories, data modules, and engineering artifacts **SHALL** u
 **OPT-IN** `[G]` — Organizations · Programs · Technologies · Infrastructures · Neural networks. 5-axis framework.
 
 **OPT-INS** `[G]` — 6-axis (+1): OPT-IN + SIM-TEST. Canonical topology aligned with G1–G10 UTA.
+
+**OTAPC** `[G]` — **Overlap-Top Architectures Project Charter.** Multilateral charter governing an architecture pattern that overlaps the top of two or more Models or configurations (e.g. shared compute spine across `AMPEL360-Q100` and `AMPEL360-Q10`). Owned by the Principal Architect with co-signature from each affected Model's Chief Engineer. Parallel baseline to Models, CSPs, and FIDITAs. See `AMPEL-ARTIFACT-LAYERS.md`.
 
 ---
 
