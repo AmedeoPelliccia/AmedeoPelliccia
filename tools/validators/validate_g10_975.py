@@ -45,6 +45,10 @@ REQUIRED_SPEC_TERMS = [
     "Evidence Package",
     "STK-GOV",
     "STK-SAFETY",
+    "AEROSPACEMODEL-ASIT-NIB-SPEC-001",
+    "KNOT-G10.97x-*",
+    "Residual_Target",
+    "schemas/g10-975-evidence-package.schema.yaml",
 ]
 
 REQUIRED_STATES = [
@@ -154,6 +158,7 @@ def validate_spec_content(errors):
         fail(errors, "Generative Monsters alias appears without mandatory interpretive note")
 
     required_sections = [
+        "### 3.1 State transition matrix",
         "## 7. Regency Escalation",
         "## 8. Evidence Package",
         "## 9. BREX / Validation Rules",
@@ -164,6 +169,18 @@ def validate_spec_content(errors):
     for section in required_sections:
         if section not in text:
             fail(errors, f"Missing required spec section: {section}")
+
+    required_controls = [
+        "Quarantine exit criteria",
+        "signed YAML",
+        "G10.978",
+        "STK-GOV` is the enforcement authority",
+        "No prohibited-name occurrence appears outside controlled prohibition contexts",
+    ]
+
+    for control in required_controls:
+        if control not in text:
+            fail(errors, f"Missing required spec control: {control}")
 
 
 def validate_uta_domains_link(errors):
