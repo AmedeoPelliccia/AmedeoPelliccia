@@ -198,3 +198,89 @@ invalidates.
    `supersedes:` field; the original is retained.
 5. **OTAPCs require multilateral sign-off** by every Model they touch.
    A unilateral OTAPC is a Model-internal architecture note, not an OTAPC.
+
+---
+
+## 9. Differentiation vs. Competitor "Concept Baseline + Evidence Plan" Duality
+
+Most competing programmes — incumbent OEMs running clean-sheet concepts and
+the wave of well-funded entrants chasing hydrogen, BWB, or quantum-assisted
+aerospace — organise their work around **two axes only**:
+
+- a **Concept Baseline** (a frozen point design with a configuration-of-record), and
+- an **Evidence Plan** (a cert/test/credit roadmap pointing at that baseline).
+
+This duality is structurally weak in five specific places. The
+Models / CSP / OTAPC / FIDITA decomposition is engineered to fix each one.
+This section names the failure modes and the corresponding AMPEL invariants
+so the difference is auditable, not rhetorical.
+
+### 9.1 Failure modes of the two-axis approach
+
+| # | Competitor failure mode | What actually goes wrong |
+|---|---|---|
+| F1 | **Single-authority lock-in** | One Concept Baseline ⇒ one cert path. Adding a second authority (FAA after EASA, or military after civil) forces a re-baseline, dragging unrelated engineering with it. |
+| F2 | **Overlap is everyone's and no one's** | Cross-product commonality (shared compute, shared ECLSS, shared cabin) is owned by neither product team; conflicts are escalated ad hoc or frozen by default into divergence. |
+| F3 | **Evidence drifts from article** | The Evidence Plan cites "the baseline"; meanwhile three different test articles diverge from each other and from the design intent. Drift is discovered at qualification, not before. |
+| F4 | **Configuration immutability is faked** | "Frozen" baselines are edited in place under change-control bureaucracy; lineage is reconstructed from PLM diffs rather than asserted by the artifact. |
+| F5 | **Concept-novelty tax is invisible** | Quantum, hybrid-electric, BWB pressure-vessel, BLI — each demands special conditions. The Evidence Plan absorbs them silently, so the *novelty surface* itself is never a reviewable artifact. |
+
+### 9.2 How AMPEL closes each gap
+
+| # | AMPEL invariant | Mechanism | Where enforced |
+|---|---|---|---|
+| F1 | **n CSPs per Model are first-class.** | CSP cardinality is `n : 1` (per authority/scope). EASA and FAA programmes can run *concurrently* against an unchanged Model. | §1 cardinality row; §3 |
+| F2 | **Overlap has its own owner and its own charter.** | OTAPCs are multilateral, co-signed by every affected Chief Engineer; a unilateral overlap document is explicitly *not* an OTAPC. | §4; Authoring Rule 5 |
+| F3 | **Articles are typed, plural, and snapshot-bound.** | Multiple FIDITAs co-exist for the same configuration (static, fatigue, iron-bird, flight-test); each carries as-designed + as-built lists and a deviation log. | §5; §7 worked example |
+| F4 | **Immutability is asserted by the artifact, not by process.** | FIDITA is append-only; corrections are *new* FIDITAs with an explicit `supersedes:` link. Lineage is queryable, not reconstructed. | §5; Authoring Rule 4 |
+| F5 | **Novelty surface is a named OTAPC.** | Every cross-cutting novelty (e.g. `OTAPC-OPT-IN×OPT-INS-COMPUTE`) is a charter that CSPs *cite* when arguing special conditions, making the novelty tax visible and reviewable. | §4; §7 |
+
+### 9.3 The differentiation, stated as a contract
+
+A competitor's two-axis stack answers:
+> *"Here is the design. Here is how we will prove it."*
+
+The AMPEL four-layer stack answers four orthogonal questions and refuses to
+let any single artifact answer more than one:
+
+> *"Here is the **product line** (Model). Here are the **certification
+> programmes** running against it, possibly in parallel under different
+> authorities (CSPs). Here are the **architecture overlaps** with our other
+> product lines, governed multilaterally (OTAPCs). Here are the **frozen
+> articles** that realise it at named epochs (FIDITAs)."*
+
+That orthogonality is the moat. It is what lets a single change request be
+walked across all four layers deterministically (§7), instead of being
+absorbed into a monolithic baseline whose semantics quietly drift.
+
+### 9.4 Concept Baseline → AMPEL mapping (for reviewers from competitor stacks)
+
+Reviewers familiar only with the two-axis vocabulary should read the mapping
+both ways:
+
+| Competitor concept | AMPEL equivalent | Note |
+|---|---|---|
+| Concept Baseline (point design) | **Model** + the latest **FIDITA** for the configuration in question | A Model is *evolving*; the FIDITA is the frozen snapshot the competitor would call "the baseline". |
+| Configuration-of-record | **FIDITA** | Append-only, with explicit `supersedes:` lineage. |
+| Evidence Plan | **CSP** (one of possibly several) | One CSP per authority/scope; not a single document. |
+| Cross-product commonality memo | **OTAPC** | Must be multilateral; otherwise it is a Model-internal note. |
+| Special-conditions package | Clauses inside a **CSP** sourced from one or more **OTAPCs** | The novelty surface is itself a reviewable charter. |
+
+### 9.5 Evidence that this distinction holds — verification per layer
+
+The four-layer split is only meaningful if each layer can be independently
+verified. The verification programme below is the public commitment behind
+the differentiation; CSPs are the place where each row is operationalised
+into auditable evidence.
+
+| Layer | Verification artifact | Independent test of the differentiation |
+|---|---|---|
+| **Model** | Taxonomy conformance check against `AMPEL-FAMILY-TAXONOMY.md` | A Model that mutates without a corresponding CSP/OTAPC/FIDITA touch is flagged: differentiation requires that engineering edits do not silently consume certification or overlap budget. |
+| **CSP** | Means-of-Compliance Matrix + gate minutes from the Certification Authority | Two CSPs against the same Model must reach gates *independently*; if one drags the other, the n:1 invariant has failed. |
+| **OTAPC** | Multilateral sign-off log + divergence register | An OTAPC with a single signatory is rejected by definition; an unsigned overlap surfacing in a CSP is a finding. |
+| **FIDITA** | As-designed vs. as-built reconciliation + `supersedes:` chain | Any in-place edit to a published FIDITA is a process failure; the chain must be reconstructable from the artifacts alone, with no reliance on PLM history. |
+
+Together these checks make the differentiation **falsifiable**: each row is
+something a competitor running a Concept-Baseline + Evidence-Plan stack
+provably cannot demonstrate, because their architecture does not name the
+required artifact in the first place.
