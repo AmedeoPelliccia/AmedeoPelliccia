@@ -33,7 +33,7 @@ question and each is owned by a different authority. A given product (e.g.
 | **Models** | Product-line repositories | *What are we building?* | Chief Engineer (per repo) | Product / configuration |
 | **CSP** | **Certifiable Strategies and Programmes** | *How do we get it certified and into service?* | Programme Director / Certification Authority interface | Certification & programme |
 | **OTAPC** | **Overlap-Top Architectures Project Charters** | *Which cross-cutting architectures span multiple models, and who governs the overlap?* | Principal Architect (cross-product) | Architecture-overlap charter |
-| **FIDITA** *(historical)* | **Fully-Integrated Design / Industrialisation / Test Articles** | *Which physical/virtual articles realise a frozen baseline at a given epoch?* | Industrialisation lead | Configuration-of-record snapshot |
+| **FIDITA** | **Full Identical Digital Implementation of Twin Architecture** | *Which fully-identical digital-twin implementation realises a frozen baseline at a given epoch?* | Industrialisation lead + Digital Twin lead | Configuration-of-record snapshot |
 
 The four layers run **in parallel**: a change can land in any one without
 forcing the others to re-baseline, but each layer publishes traceability
@@ -124,41 +124,47 @@ links to the others.
 
 ---
 
-## 5. FIDITA — *(historical)* Fully-Integrated Design / Industrialisation / Test Articles
+## 5. FIDITA — Full Identical Digital Implementation of Twin Architecture
 
-- **Definition.** A **FIDITA** is a *frozen, fully-integrated baseline
-  snapshot* — design definition + industrialisation package + the physical
-  or virtual test article that realises it — taken at a specific programme
-  epoch.
-- **Historical note.** The FIDITA construct predates the current Model /
-  CSP / OTAPC split. It is retained because legacy programme records,
-  qualification dossiers, and supplier data packages reference FIDITA
-  identifiers, and traceability to those records is non-negotiable. New
-  programmes use Models + CSP + OTAPC primarily and emit FIDITA snapshots
-  only at major freeze points.
+- **Definition.** A **FIDITA** is a *frozen, byte-identical digital
+  implementation of a Model configuration's full twin architecture* —
+  design definition + industrialisation package + the running digital-twin
+  implementation that mirrors the as-built / as-flown article — captured
+  at a specific programme epoch.
+- **Why "identical".** A FIDITA **SHALL** be bit-for-bit reproducible from
+  the artifacts it cites: re-running the build from the cited Model commit,
+  industrialisation package, and twin manifest reproduces an identical
+  digital implementation. This reproducibility is what makes a FIDITA
+  admissible as configuration-of-record.
 - **Why it is parallel to Models.** A Model evolves continuously; a FIDITA
   is immutable once issued. Multiple FIDITAs can co-exist for the same
-  Model configuration — for example, the article used for static test, the
-  article used for fatigue test, and the article flown for certification
-  credit — each frozen at a different epoch.
-- **Owned by.** Industrialisation lead, with sign-off from Chief Engineer
-  (design integrity), Quality (conformance), and Test (utilisation plan).
+  Model configuration — for example the implementation snapshot used for
+  static-test correlation, the one used for fatigue correlation, the one
+  flown for certification credit, and the one mirrored in operations —
+  each frozen at a different epoch.
+- **Owned by.** Industrialisation lead and Digital Twin lead jointly,
+  with sign-off from Chief Engineer (design integrity), Quality
+  (conformance), and Test (utilisation plan).
 - **Lifecycle.** Created → frozen → utilised → archived. Never edited
-  in place; superseded by a new FIDITA with explicit traceability.
+  in place; superseded by a new FIDITA with explicit `supersedes:`
+  traceability.
 - **Typical artifacts.** As-designed configuration list, as-built
-  configuration list, deviation log, qualification test plan and report
+  configuration list, deviation log, twin manifest (image digests,
+  simulator versions, dataset hashes), qualification test plan and report
   bundle, article serial register.
+- **Taxonomy anchor.** G4 (DTCEC — Digital Twin, Cloud &amp; Edge Computing)
+  in the UTA taxonomy.
 - **Relationship to other layers.**
   - Snapshots the **Model** configuration at its freeze epoch.
   - Provides the conformance evidence the **CSP** consumes at gates.
   - Carries a manifest of **OTAPC**-mandated invariants present in the
-    article.
+    twin implementation.
 
 ---
 
 ## 6. Side-by-Side Comparison
 
-| Dimension | **Model** | **CSP** | **OTAPC** | **FIDITA** *(hist.)* |
+| Dimension | **Model** | **CSP** | **OTAPC** | **FIDITA** |
 |---|---|---|---|---|
 | Question answered | What | How (certify & deliver) | Where models overlap | What was frozen, when |
 | Scope | One product line | One programme × one authority | An intersection of ≥2 lines/configs | One epoch of one configuration |
@@ -167,7 +173,7 @@ links to the others.
 | Primary anchor | Engineering definition | Regulation + plan | Cross-cutting architecture | Configuration-of-record |
 | Cardinality vs. product | 1 : 1 with a product line | n : 1 (per authority/scope) | m : n across products | n : 1 (per freeze epoch) |
 | Reviewed at | Design reviews | Certification gates | Architecture board | Freeze events only |
-| Repository surface | Top-level repo (`AIRCRAFTMODEL`, …) | `00-PROGRAM/…/CSP/` | `00-PROGRAM/…/OTAPC/` | `00-PROGRAM/…/FIDITA/` *(legacy)* |
+| Repository surface | Top-level repo (`AIRCRAFTMODEL`, …) | `00-PROGRAM/…/CSP/` | `00-PROGRAM/…/OTAPC/` | `00-PROGRAM/…/FIDITA/` |
 
 ---
 
@@ -178,7 +184,7 @@ links to the others.
 | **Model** | `AIRCRAFTMODEL/AMPEL360-Q100/` with configurations `WTW` and `BWB` |
 | **CSP** | e.g. `CSP-Q100-EASA-CS25` (EASA pax) and `CSP-Q100-FAA-Part25` (FAA pax) — same Model, two parallel certification programmes |
 | **OTAPC** | e.g. `OTAPC-OPT-IN×OPT-INS-COMPUTE` (shared quantum/classical compute spine with `AMPEL360-Q10`); `OTAPC-Q100-WTW×BWB-AVIONICS` (commonality charter between the two configurations) |
-| **FIDITA** *(hist.)* | e.g. `FIDITA-Q100-WTW-STATIC-2027Q3`, `FIDITA-Q100-WTW-FATIGUE-2028Q1`, `FIDITA-Q100-BWB-IRON-BIRD-2028Q4` |
+| **FIDITA** | e.g. `FIDITA-Q100-WTW-STATIC-2027Q3`, `FIDITA-Q100-WTW-FATIGUE-2028Q1`, `FIDITA-Q100-BWB-IRON-BIRD-2028Q4` |
 
 A change request walks every layer: which Models it touches, which CSPs need
 re-argumentation, which OTAPCs it perturbs, and which (if any) FIDITAs it
@@ -246,8 +252,9 @@ let any single artifact answer more than one:
 > *"Here is the **product line** (Model). Here are the **certification
 > programmes** running against it, possibly in parallel under different
 > authorities (CSPs). Here are the **architecture overlaps** with our other
-> product lines, governed multilaterally (OTAPCs). Here are the **frozen
-> articles** that realise it at named epochs (FIDITAs)."*
+> product lines, governed multilaterally (OTAPCs). Here are the **frozen,
+> byte-identical digital-twin implementations** that realise it at named
+> epochs (FIDITAs)."*
 
 That orthogonality is the moat. It is what lets a single change request be
 walked across all four layers deterministically (§7), instead of being
@@ -260,7 +267,7 @@ both ways:
 
 | Competitor concept | AMPEL equivalent | Note |
 |---|---|---|
-| Concept Baseline (point design) | **Model** + the latest **FIDITA** for the configuration in question | A Model is *evolving*; the FIDITA is the frozen snapshot the competitor would call "the baseline". |
+| Concept Baseline (point design) | **Model** + the latest **FIDITA** for the configuration in question | A Model is *evolving*; the FIDITA is the frozen, byte-identical digital-twin snapshot the competitor would call "the baseline". |
 | Configuration-of-record | **FIDITA** | Append-only, with explicit `supersedes:` lineage. |
 | Evidence Plan | **CSP** (one of possibly several) | One CSP per authority/scope; not a single document. |
 | Cross-product commonality memo | **OTAPC** | Must be multilateral; otherwise it is a Model-internal note. |

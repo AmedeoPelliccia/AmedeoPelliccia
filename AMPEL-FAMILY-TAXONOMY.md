@@ -14,8 +14,7 @@ scope: full product taxonomy — aerial and spatial domains
 > This document defines the **Model** layer only. For how Models relate to the
 > three other parallel baseline layers — **CSP** (Certifiable Strategies and
 > Programmes), **OTAPC** (Overlap-Top Architectures Project Charters), and
-> **FIDITA** (historical fully-integrated design/industrialisation/test
-> articles) — see [`AMPEL-ARTIFACT-LAYERS.md`](./AMPEL-ARTIFACT-LAYERS.md).
+> **FIDITA** (full identical digital implementation of twin architecture) — see [`AMPEL-ARTIFACT-LAYERS.md`](./AMPEL-ARTIFACT-LAYERS.md).
 
 ---
 

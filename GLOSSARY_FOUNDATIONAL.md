@@ -134,7 +134,7 @@ All documents, repositories, data modules, and engineering artifacts **SHALL** u
 
 **FDIR** `[I]` — Fault Detection, Isolation, and Recovery.
 
-**FIDITA** `[G]` *(historical)* — **Fully-Integrated Design / Industrialisation / Test Article.** Frozen, append-only baseline snapshot bundling design definition, industrialisation package, and the physical or virtual article that realises a Model configuration at a given epoch. Predates the current Model + CSP + OTAPC split; retained for traceability to legacy qualification dossiers and supplier data packages. See `AMPEL-ARTIFACT-LAYERS.md`.
+**FIDITA** `[G]` — **Full Identical Digital Implementation of Twin Architecture.** Frozen, byte-identical digital twin of a Model configuration's full twin architecture — design definition + industrialisation package + the running digital-twin implementation that mirrors the as-built / as-flown article — captured at a specific programme epoch. Append-only baseline: new FIDITAs supersede prior ones via explicit `supersedes:` lineage and are never edited in place. Bit-for-bit reproducible from the artifacts it cites. Parallel baseline to Models, CSPs, and OTAPCs. Anchors to G4 (DTCEC — Digital Twin, Cloud &amp; Edge Computing). See `AMPEL-ARTIFACT-LAYERS.md`.
 
 ---
 
@@ -154,6 +154,29 @@ All documents, repositories, data modules, and engineering artifacts **SHALL** u
 | G8 | 700–799 | ACV — Aerial City Viability |
 | G9 | 800–899 | CYB — Cybersecurity Architecture |
 | G10 | 900–999 | QCSAA — Quantum Computing &amp; Sentient Agency |
+
+**G109** `[G]` — Subdomain within G10 (QCSAA, chapters 900–999) covering agentic systems. Two branches:
+
+| Code | Name | Scope |
+|------|------|-------|
+| G109-10 | **SENTIENTIT** | Known agents — certifiable, auditable; zGen outputs = KNUs; DO-178C adjacent. |
+| G109-30 | **regent-ZetaGentz** | Frontier agents — boundary-forms; supervisory / regency governance. |
+
+Within G109-30:
+
+| Code | Name |
+|------|------|
+| G10.970 | ZGen Systems |
+| G10.971 | Zero-Gene Agents |
+| G10.972 | ZetaGentz classes |
+| G10.973 | regent-ZetaGentz (supervisory / regency governance) |
+| G10.974 | Generative Monsters (*monstrum* — boundary-form, not evil) |
+| G10.975 | **Containment Grammar** (load-bearing primitive — see `KNOT-G10-975-001`) |
+| G10.976 | Ethical Interface |
+
+**Containment Grammar (G10.975)** is the load-bearing primitive of G109-30. Without it, "frontier agent" becomes a blanket exemption from auditability. The grammar **SHALL** define (a) which agent names are permissible (no taxonomy creep without formal entry), (b) which behaviours are containable vs. quarantinable, and (c) which evidence triggers regency escalation (`SENTIENTIT_zGen` → `regent-ZetaGentz` reclassification).
+
+**KNOT-G10-975-001** `[G]` — *Containment Grammar undefined.* Any `regent-ZetaGentz`-class agent without G10.975 compliance is unclassifiable under G109 and **SHALL NOT** be admitted as airworthiness evidence. Residual: 100. Status: open.
 
 **GAIA** `[G]` — Programme family prefix. Enterprise: GAIA QUANTUM AMPEL OPT-INS ARCHITECTURE.
 
