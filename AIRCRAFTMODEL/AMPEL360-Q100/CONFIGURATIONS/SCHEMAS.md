@@ -2,7 +2,8 @@
 
 This directory holds the **schema definitions** for `AMPELSystem` configuration
 documents used across the `AIRCRAFTMODEL/AMPEL360-Q100` configurations
-(`WTW`, `BWB`).
+(`WTW`, `BWB`). The schemas live directly in `CONFIGURATIONS/` alongside the
+sibling configuration folders.
 
 ## Files
 
@@ -37,8 +38,8 @@ JSON Schema (with any draft 2020-12 validator, e.g. `check-jsonschema`):
 
 ```bash
 check-jsonschema \
-  --schemafile AIRCRAFTMODEL/AMPEL360-Q100/CONFIGURATIONS/conf/ampel-system.schema.json \
-  AIRCRAFTMODEL/AMPEL360-Q100/CONFIGURATIONS/conf/ampel-system.example.json
+  --schemafile AIRCRAFTMODEL/AMPEL360-Q100/CONFIGURATIONS/ampel-system.schema.json \
+  AIRCRAFTMODEL/AMPEL360-Q100/CONFIGURATIONS/ampel-system.example.json
 ```
 
 XML Schema (`xmllint`):
