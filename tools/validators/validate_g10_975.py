@@ -174,7 +174,7 @@ def validate_spec_content(errors):
         "Quarantine exit criteria",
         "signed YAML",
         "G10.978",
-        "STK-GOV` is the enforcement authority",
+        "STK-GOV is the enforcement authority",
         "No prohibited-name occurrence appears outside controlled prohibition contexts",
     ]
 

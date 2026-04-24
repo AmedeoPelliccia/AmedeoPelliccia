@@ -115,7 +115,11 @@ An Evidence Package for G10.970–G10.979 must include:
 - `STK-SAFETY` safety evidence;
 - ledger evidence for `CONTAINED_ACTIVE`.
 
-The Evidence Package artifact form is signed YAML. The canonical schema location is `schemas/g10-975-evidence-package.schema.yaml`; ledger-backed transitions additionally reference a CSV ledger row for the decision, reviewer, timestamp, residual target, and resulting containment state.
+The Evidence Package artifact form is signed YAML.
+
+The canonical schema location is `schemas/g10-975-evidence-package.schema.yaml`.
+
+Ledger-backed transitions additionally reference a CSV ledger row for the decision, reviewer, timestamp, residual target, and resulting containment state.
 
 ## 9. BREX / Validation Rules
 
@@ -132,7 +136,7 @@ The registry is defined in `GQAOA-UTA-G10-QCSAA-REGISTRY-001.yaml`. Registry ent
 
 ## 11. Operational Constraint
 
-`STK-GOV` is the enforcement authority for operational interpretation. No G10.970–G10.979 entity may be treated as operational without G10.975 containment grammar, an Evidence Package, and regency escalation review.
+STK-GOV is the enforcement authority for operational interpretation. No G10.970–G10.979 entity may be treated as operational without G10.975 containment grammar, an Evidence Package, and regency escalation review.
 
 ## 12. Acceptance Criteria
 
