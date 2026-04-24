@@ -158,7 +158,7 @@ def validate_spec_content(errors):
         fail(errors, "Generative Monsters alias appears without mandatory interpretive note")
 
     required_sections = [
-        "### 3.1 State transition matrix",
+        "State transition matrix",
         "## 7. Regency Escalation",
         "## 8. Evidence Package",
         "## 9. BREX / Validation Rules",

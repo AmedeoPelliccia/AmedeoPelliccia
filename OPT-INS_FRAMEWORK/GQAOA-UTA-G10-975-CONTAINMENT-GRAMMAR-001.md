@@ -73,11 +73,11 @@ No other transition is valid without a G10.978 regency exception record.
 
 Permitted formal names include ZGen Systems, Zero-Gene Agents, Zero-Gene Generative Agents, ZetaGentz, regent-ZetaGentz, QCSAA Frontier Agency Class, and QCSAA/ZGen Containment Class.
 
-`Zero-Gene Generative Agents` is a descriptive-only variant of `G10.971` and does not create a separate node.
-
 ### 4.2 Alias handling
 
 Aliases may be used only with containment context and an interpretive note. The alias `Generative Monsters` is boundary-form language and never creates an operational class.
+
+`Zero-Gene Generative Agents` is a descriptive-only variant of `G10.971` and does not create a separate node.
 
 ### 4.3 Mandatory interpretive note
 
@@ -136,7 +136,9 @@ The registry is defined in `GQAOA-UTA-G10-QCSAA-REGISTRY-001.yaml`. Registry ent
 
 ## 11. Operational Constraint
 
-STK-GOV is the enforcement authority for operational interpretation. No G10.970–G10.979 entity may be treated as operational without G10.975 containment grammar, an Evidence Package, and regency escalation review.
+STK-GOV is the enforcement authority for operational interpretation.
+
+No G10.970–G10.979 entity may be treated as operational without G10.975 containment grammar, an Evidence Package, and regency escalation review.
 
 ## 12. Acceptance Criteria
 
