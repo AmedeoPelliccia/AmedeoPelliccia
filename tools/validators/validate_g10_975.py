@@ -56,6 +56,8 @@ REQUIRED_STATES = [
     "RETIRED",
 ]
 
+REQUIRED_INTERPRETIVE_NOTE = '"Monster" is used in the original sense of monstrum'
+
 REQUIRED_FILES = [
     SPEC,
     REGISTRY,
@@ -144,8 +146,7 @@ def validate_spec_content(errors):
         if state not in text:
             fail(errors, f"Missing containment state in spec: {state}")
 
-    required_note = '"Monster" is used in the original sense of monstrum'
-    if "Generative Monsters" in text and required_note not in text:
+    if "Generative Monsters" in text and REQUIRED_INTERPRETIVE_NOTE not in text:
         fail(errors, "Generative Monsters alias appears without mandatory interpretive note")
 
     required_sections = [
