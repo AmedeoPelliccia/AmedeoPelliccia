@@ -1,0 +1,114 @@
+{
+  "AMPELSystem": {
+    "ProjectInfo": {
+      "ProjectName": "AMPEL360-Q100-WTW",
+      "Description": "Wing-Tube-Wing sibling configuration of AMPEL360-Q100. Conventional cylindrical pressure vessel with under-wing/aft-mounted propulsors; shares the OPT-IN framework with BWB.",
+      "StartDate": "2026-01-01",
+      "EndDate": "2035-12-31"
+    },
+    "Mapping": {
+      "MapID": "MAP-Q100-WTW-001",
+      "MapName": "Q100 WTW Mission Mapping",
+      "Industry": "Aerospace",
+      "MapProperties": {
+        "Property": [
+          { "PropertyName": "Domain",        "PropertyValue": "AIR" },
+          { "PropertyName": "Configuration", "PropertyValue": "WTW" },
+          { "PropertyName": "Coverage",      "PropertyValue": "Regional" }
+        ]
+      },
+      "MappingAlgorithms": {
+        "Algorithm": [
+          {
+            "AlgorithmName": "RouteOptimization",
+            "AlgorithmDescription": "H2 fuel-burn-optimal routing for tube-and-wing geometry."
+          }
+        ]
+      }
+    },
+    "Detection": {
+      "DetectionID": "DET-Q100-WTW-001",
+      "DetectionName": "Conventional Pressure Vessel Anomaly Detection",
+      "DetectionProperties": {
+        "Property": [
+          { "PropertyName": "Sensitivity", "PropertyValue": "high" },
+          { "PropertyName": "ATAScope",    "PropertyValue": "ATA-53/57" }
+        ]
+      },
+      "DetectionAlgorithms": {
+        "Algorithm": [
+          {
+            "AlgorithmName": "ClassicalAnomalyDetector",
+            "AlgorithmDescription": "Conventional fleet-monitoring anomaly detection on cylindrical fuselage strain data."
+          }
+        ]
+      }
+    },
+    "CaptureCapsules": {
+      "Capsule": [
+        {
+          "CapsuleID": "CAP-Q100-WTW-TLM",
+          "CapsuleName": "WTW Telemetry Capsule",
+          "CapsuleProperties": {
+            "Property": [
+              { "PropertyName": "SamplingRateHz", "PropertyValue": 1000 }
+            ]
+          },
+          "CaptureMechanisms": {
+            "Mechanism": [
+              {
+                "MechanismName": "ARINC664Bus",
+                "MechanismDescription": "Captures flight-test sensor streams via AFDX."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "Technologies": {
+      "Technology": [
+        {
+          "TechnologyName": "HydrogenFuelCell",
+          "Description": "PEM fuel-cell stack feeding under-wing electric propulsors.",
+          "IntegrationLevel": 6
+        },
+        {
+          "TechnologyName": "ConventionalPressureVessel",
+          "Description": "Canonical cylindrical fuselage per ATA-53.",
+          "IntegrationLevel": 9
+        }
+      ]
+    },
+    "Metrics": {
+      "Metric": [
+        { "MetricName": "CO2ReductionPct", "MetricValue": 95 },
+        { "MetricName": "RangeKm",         "MetricValue": 3500 }
+      ]
+    },
+    "FinancialBenefits": {
+      "Benefit": [
+        {
+          "BenefitName": "FuelCostSavings",
+          "BenefitValue": 12000000,
+          "StakeholderID": "STK-001",
+          "ClientID": "CLI-001"
+        }
+      ]
+    },
+    "Stakeholders": {
+      "Stakeholder": [
+        {
+          "StakeholderID": "STK-001",
+          "StakeholderName": "ESSA Consortium",
+          "StakeholderType": "Consortium",
+          "Contribution": "Programme governance and certification."
+        }
+      ]
+    },
+    "PotentialClients": {
+      "Client": [
+        { "ClientID": "CLI-001", "ClientName": "Reference Regional Operator" }
+      ]
+    }
+  }
+}

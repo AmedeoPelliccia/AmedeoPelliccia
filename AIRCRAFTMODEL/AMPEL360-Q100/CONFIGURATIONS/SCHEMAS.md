@@ -54,3 +54,40 @@ These schemas are shared by both sibling configurations (`WTW/`, `BWB/`) of
 `AMPEL360-Q100`. Configuration-specific instance documents should live next to
 the configuration they describe and reference this schema via `$schema` /
 `xsi:schemaLocation`.
+
+## Evidence instances
+
+Each sibling configuration carries a concrete `ampel-system.json` instance
+that exercises **every** section of the structure above. These are the
+auditable evidences that the declared structure is realised in the
+configurations themselves, not only in the schema.
+
+| Configuration | Evidence file | Exercises |
+|---|---|---|
+| WTW | [`WTW/ampel-system.json`](./WTW/ampel-system.json) | All 9 sections (ProjectInfo … PotentialClients) |
+| BWB | [`BWB/ampel-system.json`](./BWB/ampel-system.json) | All 9 sections (ProjectInfo … PotentialClients) |
+| Reference | [`ampel-system.example.json`](./ampel-system.example.json) | All 9 sections (ProjectInfo … PotentialClients) |
+
+### Section-coverage matrix
+
+| Section            | WTW | BWB | Example |
+|--------------------|:---:|:---:|:-------:|
+| ProjectInfo        | ✅  | ✅  | ✅ |
+| Mapping            | ✅  | ✅  | ✅ |
+| Detection          | ✅  | ✅  | ✅ |
+| CaptureCapsules    | ✅  | ✅  | ✅ |
+| Technologies       | ✅  | ✅  | ✅ |
+| Metrics            | ✅  | ✅  | ✅ |
+| FinancialBenefits  | ✅  | ✅  | ✅ |
+| Stakeholders       | ✅  | ✅  | ✅ |
+| PotentialClients   | ✅  | ✅  | ✅ |
+
+Validate all three at once:
+
+```bash
+check-jsonschema \
+  --schemafile AIRCRAFTMODEL/AMPEL360-Q100/CONFIGURATIONS/ampel-system.schema.json \
+  AIRCRAFTMODEL/AMPEL360-Q100/CONFIGURATIONS/WTW/ampel-system.json \
+  AIRCRAFTMODEL/AMPEL360-Q100/CONFIGURATIONS/BWB/ampel-system.json \
+  AIRCRAFTMODEL/AMPEL360-Q100/CONFIGURATIONS/ampel-system.example.json
+```

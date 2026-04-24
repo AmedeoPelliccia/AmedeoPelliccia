@@ -1,0 +1,121 @@
+{
+  "AMPELSystem": {
+    "ProjectInfo": {
+      "ProjectName": "AMPEL360-Q100-BWB",
+      "Description": "Blended-Wing-Body sibling configuration of AMPEL360-Q100. Non-cylindrical centerbody with BLI propulsion; shares the OPT-IN framework with WTW. Drives special-condition certification beyond standard CS-25.",
+      "StartDate": "2026-01-01",
+      "EndDate": "2035-12-31"
+    },
+    "Mapping": {
+      "MapID": "MAP-Q100-BWB-001",
+      "MapName": "Q100 BWB Mission Mapping",
+      "Industry": "Aerospace",
+      "MapProperties": {
+        "Property": [
+          { "PropertyName": "Domain",        "PropertyValue": "AIR" },
+          { "PropertyName": "Configuration", "PropertyValue": "BWB" },
+          { "PropertyName": "Coverage",      "PropertyValue": "Regional" }
+        ]
+      },
+      "MappingAlgorithms": {
+        "Algorithm": [
+          {
+            "AlgorithmName": "BLIRouteOptimization",
+            "AlgorithmDescription": "Boundary-layer-ingestion-aware mission profile optimisation for blended-wing geometry."
+          }
+        ]
+      }
+    },
+    "Detection": {
+      "DetectionID": "DET-Q100-BWB-001",
+      "DetectionName": "Multi-Bubble Centerbody Anomaly Detection",
+      "DetectionProperties": {
+        "Property": [
+          { "PropertyName": "Sensitivity",   "PropertyValue": "high" },
+          { "PropertyName": "VesselTopology", "PropertyValue": "multi-bubble" }
+        ]
+      },
+      "DetectionAlgorithms": {
+        "Algorithm": [
+          {
+            "AlgorithmName": "QuantumAnomalyDetector",
+            "AlgorithmDescription": "Hybrid classical/quantum anomaly detection on coupled centerbody-outer-wing strain fields."
+          }
+        ]
+      }
+    },
+    "CaptureCapsules": {
+      "Capsule": [
+        {
+          "CapsuleID": "CAP-Q100-BWB-TLM",
+          "CapsuleName": "BWB Telemetry Capsule",
+          "CapsuleProperties": {
+            "Property": [
+              { "PropertyName": "SamplingRateHz",      "PropertyValue": 2000 },
+              { "PropertyName": "AeroelasticChannels", "PropertyValue": 64 }
+            ]
+          },
+          "CaptureMechanisms": {
+            "Mechanism": [
+              {
+                "MechanismName": "DistributedFiberOpticSensing",
+                "MechanismDescription": "Captures distributed strain across the non-cylindrical pressure vessel."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "Technologies": {
+      "Technology": [
+        {
+          "TechnologyName": "HydrogenFuelCell",
+          "Description": "PEM fuel-cell stack feeding distributed BLI propulsors.",
+          "IntegrationLevel": 6
+        },
+        {
+          "TechnologyName": "BoundaryLayerIngestion",
+          "Description": "Aft-mounted BLI propulsors integrated into the centerbody trailing edge.",
+          "IntegrationLevel": 4
+        },
+        {
+          "TechnologyName": "MultiBubblePressureVessel",
+          "Description": "Non-cylindrical pressure vessel concept for BWB cabin volume.",
+          "IntegrationLevel": 4
+        }
+      ]
+    },
+    "Metrics": {
+      "Metric": [
+        { "MetricName": "CO2ReductionPct",  "MetricValue": 97 },
+        { "MetricName": "RangeKm",          "MetricValue": 4000 },
+        { "MetricName": "L_over_D_Cruise",  "MetricValue": 23 }
+      ]
+    },
+    "FinancialBenefits": {
+      "Benefit": [
+        {
+          "BenefitName": "FuelCostSavings",
+          "BenefitValue": 15000000,
+          "StakeholderID": "STK-001",
+          "ClientID": "CLI-001"
+        }
+      ]
+    },
+    "Stakeholders": {
+      "Stakeholder": [
+        {
+          "StakeholderID": "STK-001",
+          "StakeholderName": "ESSA Consortium",
+          "StakeholderType": "Consortium",
+          "Contribution": "Programme governance and certification."
+        }
+      ]
+    },
+    "PotentialClients": {
+      "Client": [
+        { "ClientID": "CLI-001", "ClientName": "Reference Regional Operator" }
+      ]
+    }
+  }
+}
