@@ -153,7 +153,7 @@ All documents, repositories, data modules, and engineering artifacts **SHALL** u
 | G7 | 600–699 | OGATA — On-Ground Automation Technology |
 | G8 | 700–799 | ACV — Aerial City Viability |
 | G9 | 800–899 | CYB — Cybersecurity Architecture |
-| G10 | 900–999 | QCSAA — Quantum Computing &amp; Sentient Agency |
+| G10 | 900–999 | QCSAA — Quantum Computing &amp; Sentient Agency (chapters **970–979** carry ZGen / regent-ZetaGentz containment semantics governed by `G10.975` — see `G10-975-CONTAINMENT-GRAMMAR.md`) |
 
 **G109** `[G]` — Subdomain within G10 (QCSAA, chapters 900–999) covering agentic systems. Two branches:
 
@@ -171,12 +171,12 @@ Within G109-30:
 | G10.972 | ZetaGentz classes |
 | G10.973 | regent-ZetaGentz (supervisory / regency governance) |
 | G10.974 | Generative Monsters (*monstrum* — boundary-form, not evil) |
-| G10.975 | **Containment Grammar** (load-bearing primitive — see `KNOT-G10-975-001`) |
+| G10.975 | **Containment Grammar** (load-bearing primitive — see `KNOT-G10-975-001` and the normative spec [`G10-975-CONTAINMENT-GRAMMAR.md`](./G10-975-CONTAINMENT-GRAMMAR.md)) |
 | G10.976 | Ethical Interface |
 
 **Containment Grammar (G10.975)** is the load-bearing primitive of G109-30. Without it, "frontier agent" becomes a blanket exemption from auditability. The grammar **SHALL** define (a) which agent names are permissible (no taxonomy creep without formal entry), (b) which behaviours are containable vs. quarantinable, and (c) which evidence triggers regency escalation (`SENTIENTIT_zGen` → `regent-ZetaGentz` reclassification).
 
-**KNOT-G10-975-001** `[G]` — *Containment Grammar undefined.* Any `regent-ZetaGentz`-class agent without G10.975 compliance is unclassifiable under G109 and **SHALL NOT** be admitted as airworthiness evidence. Residual: 100. Status: open.
+**KNOT-G10-975-001** `[G]` — *Containment Grammar undefined.* Any `regent-ZetaGentz`-class agent without G10.975 compliance is unclassifiable under G109 and **SHALL NOT** be admitted as airworthiness evidence. Residual: 100. Status: open. Normative spec: [`G10-975-CONTAINMENT-GRAMMAR.md`](./G10-975-CONTAINMENT-GRAMMAR.md).
 
 **GAIA** `[G]` — Programme family prefix. Enterprise: GAIA QUANTUM AMPEL OPT-INS ARCHITECTURE.
 
@@ -298,7 +298,7 @@ Within G109-30:
 
 ## Q
 
-**QCSAA** `[G]` — Quantum Computing &amp; Sentient Agency Architecture. G10 (900–999).
+**QCSAA** `[G]` — Quantum Computing &amp; Sentient Agency Architecture. G10 (900–999). Chapters **970–979** are reserved for agentic systems with containment semantics (ZGen Systems, Zero-Gene Agents, ZetaGentz classes, regent-ZetaGentz, Generative Monsters, Containment Grammar, Ethical Interface), governed normatively by `G10.975` — see `G10-975-CONTAINMENT-GRAMMAR.md` and the `G109` entry.
 
 **QKD** `[I]` — Quantum Key Distribution.
 
