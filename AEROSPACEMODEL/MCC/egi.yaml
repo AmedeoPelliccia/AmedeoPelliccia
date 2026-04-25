@@ -187,25 +187,25 @@ residual_trace_types:
 sci:
   formula: "SCI = (V, A, O, T, G, P | Σ)"
   codecs:
-    - channel: Vision
+    - channel: Visual
       data_nature: "spatial / relational"
       codec: ["embedding", "graph_hash", "point_cloud_hash"]
-    - channel: Hearing
+    - channel: Auditory
       data_nature: "temporal / sequential"
       codec: ["melodic_contour", "spectral_envelope"]
-    - channel: Smell
+    - channel: Olfactory
       data_nature: "chemical / categorical"
       codec: ["molecular_fingerprint"]
-    - channel: Touch
+    - channel: Tactile
       data_nature: "procedural / ordered"
       codec: ["action_grammar", "pressure_map_hash"]
-    - channel: Taste
+    - channel: Gustatory
       data_nature: "chemical / valence"
       codec: ["chemical_snapshot", "valence_intensity"]
-    - channel: Proprioception
+    - channel: Proprioceptive
       data_nature: "spatial / continuous"
       codec: ["pose_skeleton", "motion_trajectory"]
-    - channel: Topology
+    - channel: Topological
       data_nature: "higher-order relational"
       codec: ["betti_numbers", "euler_characteristic"]
 
