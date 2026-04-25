@@ -250,14 +250,13 @@ robotic_sensorium:
 
 database_schema:
   minimal_fields:
-    - interface_id
-    - trigger_patterns
-    - seed_reference
+    - id
+    - stimulus.trigger_patterns
+    - reconstruction.seed_reference
     - simplicial_signature
-    - assembly_rules
-    - decay_policy
-    - reactivation_conditions
-    - cross_model_compatibility
+    - reconstruction.assembly_rules
+    - persistence.decay_policy
+    - reactivation
     - provenance
 
   example_instance:
