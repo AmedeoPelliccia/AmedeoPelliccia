@@ -54,6 +54,32 @@ The H Pipeline traverses eight chains, each mapped to its canonical CCTLS phase(
 
 The H Pipeline is not a single phase or a single artefact. It is the **binding thread** that links all chains under a common Human Safety obligation.
 
+```mermaid
+flowchart TB
+    H["🛡️ H Pipeline\nHuman Safety Backbone"]
+
+    IND["🏭 Industrial\nP030"]
+    DIG["💾 Digital\nP000 · P120"]
+    ENG["🔧 Engineering\nP040"]
+    AUT["📜 Authority\nP050"]
+    TST["🧪 Test\nP070"]
+    OPS["✈️ Operations\nP080"]
+    MIS["🎯 Mission\nP090"]
+    RPT["📊 Reporting\nP100"]
+
+    H --- IND & DIG & ENG & AUT & TST & OPS & MIS & RPT
+
+    style H fill:#c8e6c9,stroke:#2E7D32,stroke-width:3px
+    style IND fill:#e3f2fd,stroke:#1565C0
+    style DIG fill:#e3f2fd,stroke:#1565C0
+    style ENG fill:#e3f2fd,stroke:#1565C0
+    style AUT fill:#e3f2fd,stroke:#1565C0
+    style TST fill:#e3f2fd,stroke:#1565C0
+    style OPS fill:#e3f2fd,stroke:#1565C0
+    style MIS fill:#e3f2fd,stroke:#1565C0
+    style RPT fill:#e3f2fd,stroke:#1565C0
+```
+
 ---
 
 ## 3. H-Token Ontology
@@ -97,6 +123,22 @@ H_SIGNOFF  (authority acceptance)
 [ACTIVATE gate — permissible]
 ```
 
+```mermaid
+flowchart TD
+    ENV["🛡️ H_ENVELOPE\nSafety envelope"]
+    HAZ["⚠️ H_HAZARD\n(1+ per envelope)"]
+    REQ["📋 H_REQ\n(1+ per hazard/envelope)"]
+    CON["🔒 H_CONSTRAINT\n(derived per requirement)"]
+    EVI["🔬 H_EVIDENCE\nTest · Analysis · Operational"]
+    SIG["✍️ H_SIGNOFF\nAuthority acceptance"]
+    ACT["✅ ACTIVATE gate"]
+
+    ENV --> HAZ --> REQ --> CON --> EVI --> SIG --> ACT
+
+    style ENV fill:#c8e6c9,stroke:#2E7D32,stroke-width:3px
+    style ACT fill:#e8f5e9,stroke:#2E7D32
+```
+
 ### 4.2 Feedback chain (operations → envelope update)
 
 ```
@@ -109,6 +151,19 @@ H_ENVELOPE  (updated — version increment)
 [Re-derivation of H_REQ / H_CONSTRAINT as required]
 ```
 
+```mermaid
+flowchart TD
+    OCC["📊 Operational occurrence\nor incident"]
+    UPD["🔄 H_UPDATE\nNew evidence / revised bounds"]
+    ENV["🛡️ H_ENVELOPE\n(version increment)"]
+    RED["📋 Re-derivation\nH_REQ / H_CONSTRAINT"]
+
+    OCC --> UPD --> ENV --> RED
+
+    style UPD fill:#fff3e0,stroke:#EF6C00
+    style ENV fill:#c8e6c9,stroke:#2E7D32,stroke-width:3px
+```
+
 ### 4.3 Exception path (controlled deviation)
 
 ```
@@ -117,6 +172,19 @@ H_EXCEPTION  (declared when normal chain cannot be completed)
 H_SIGNOFF  (explicit authority acceptance of exception)
     ↓
 [ACTIVATE gate — conditional: exception scope is bounded]
+```
+
+```mermaid
+flowchart TD
+    EXC["🚨 H_EXCEPTION\nNormal chain incomplete"]
+    MIT["📝 Mitigation +\nRollback definition"]
+    SIG["✍️ H_SIGNOFF\nExplicit authority acceptance"]
+    ACT["⚠️ ACTIVATE gate\n(conditional — scope bounded)"]
+
+    EXC --> MIT --> SIG --> ACT
+
+    style EXC fill:#ffebee,stroke:#c62828
+    style ACT fill:#fff3e0,stroke:#EF6C00
 ```
 
 ### 4.4 Link rules summary
@@ -143,6 +211,36 @@ The H Pipeline maps directly onto the four deterministic CCTLS lifecycle gates:
 | **CONFIRM** | Constraint derivation, evidence planning, exception review | `H_CONSTRAINT` · `H_EVIDENCE` (in preparation) · `H_EXCEPTION` |
 | **ACTIVATE** | Full evidence chain validated; `H_SIGNOFF` present on all evidence; no orphan H-tokens | `H_EVIDENCE` · `H_SIGNOFF` |
 | **PUBLISH** | Baseline frozen; all H-links immutable; feedback loop open | All H-tokens (frozen) · `H_UPDATE` (from ops) |
+
+```mermaid
+flowchart LR
+    subgraph INTERPRET ["INTERPRET Gate"]
+        I1["H_ENVELOPE"]
+        I2["H_HAZARD"]
+        I3["H_REQ"]
+    end
+    subgraph CONFIRM ["CONFIRM Gate"]
+        C1["H_CONSTRAINT"]
+        C2["H_EVIDENCE\n(in preparation)"]
+        C3["H_EXCEPTION"]
+    end
+    subgraph ACTIVATE ["ACTIVATE Gate"]
+        A1["H_EVIDENCE\n(validated)"]
+        A2["H_SIGNOFF"]
+    end
+    subgraph PUBLISH ["PUBLISH Gate"]
+        P1["All H-tokens\n(frozen)"]
+        P2["H_UPDATE\n(from ops)"]
+    end
+
+    INTERPRET --> CONFIRM --> ACTIVATE --> PUBLISH
+    P2 -.->|"feedback"| I1
+
+    style INTERPRET fill:#e3f2fd,stroke:#1565C0
+    style CONFIRM fill:#fff3e0,stroke:#EF6C00
+    style ACTIVATE fill:#e8f5e9,stroke:#2E7D32
+    style PUBLISH fill:#f3e5f5,stroke:#6A1B9A
+```
 
 **Gate invariant (non-negotiable):**
 An artefact that cannot produce a complete `H_ENVELOPE → … → H_SIGNOFF` chain **SHALL NOT** be activated.

@@ -1,0 +1,8 @@
+Milestone_ID,KNOT_ID,Name,Date,Entry_Criteria,Exit_Criteria,Status
+MS-RBT-AUTO,KNOT-RBT-AUTO-001,Autonomy ladder freeze,2026-08-31,REQ + AI model cards drafted,Ladder baselined,PLANNED
+MS-RBT-COMMS,KNOT-RBT-COMMS-001,ITU filing readiness,2026-08-31,Frequency plan complete,Filing pkg sent,PLANNED
+MS-RBT-RPO,KNOT-RBT-RPO-001,RPO envelope baseline,2026-09-30,Corridor analysis complete,Envelope baselined,PLANNED
+MS-RBT-DEBRIS,KNOT-RBT-DEBRIS-001,IADC compliance baseline,2026-09-30,Disposal strategy chosen,Compliance plan signed,PLANNED
+MS-RBT-PROP,KNOT-RBT-PROP-001,Propulsion baseline,2026-09-30,Trade per line complete,Architectures baselined,PLANNED
+MS-RBT-CAPTURE,KNOT-RBT-CAPTURE-001,Capture down-select,2026-10-31,Trade complete,Mechanism selected,PLANNED
+MS-RBT-CYBER,KNOT-RBT-CYBER-001,Uplink security baseline,2026-10-31,REQ accepted,Auth scheme baselined,PLANNED

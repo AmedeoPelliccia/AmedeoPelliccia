@@ -1,0 +1,73 @@
+name: S1000D XML Validation
+
+on:
+  push:
+    paths:
+      - "AEROSPACEMODEL/**/*.xml"
+  pull_request:
+    paths:
+      - "AEROSPACEMODEL/**/*.xml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-s1000d-xml:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install xmllint
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libxml2-utils
+
+      - name: Validate XML well-formedness and optional schema
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mapfile -t xml_files < <(find AEROSPACEMODEL -type f -name "*.xml" | sort)
+          if [ "${#xml_files[@]}" -eq 0 ]; then
+            echo "No XML files found under AEROSPACEMODEL/. Nothing to validate."
+            exit 0
+          fi
+
+          schema_file=""
+          if [ -d "AEROSPACEMODEL/schemas" ]; then
+            schema_file=$(find AEROSPACEMODEL/schemas -type f -name "*.xsd" | sort | head -n 1 || true)
+          fi
+
+          if [ -n "$schema_file" ]; then
+            echo "Schema detected: $schema_file"
+          else
+            # Add S1000D Issue 5.0+ XSD files under AEROSPACEMODEL/schemas/ to enable schema-level validation.
+            echo "::notice::No XSD found in AEROSPACEMODEL/schemas/. Running well-formedness checks only."
+          fi
+
+          failures=0
+          for file in "${xml_files[@]}"; do
+            echo "Checking XML well-formedness: $file"
+            if ! xmllint --noout "$file"; then
+              echo "::error file=$file::XML well-formedness validation failed."
+              failures=1
+              continue
+            fi
+
+            if [ -n "$schema_file" ]; then
+              echo "Checking XML against schema: $file"
+              if ! xmllint --noout --schema "$schema_file" "$file"; then
+                echo "::error file=$file::Schema validation failed using $schema_file."
+                failures=1
+              fi
+            fi
+          done
+
+          if [ "$failures" -ne 0 ]; then
+            echo "One or more XML files failed validation."
+            exit 1
+          fi
+
+          echo "All XML files under AEROSPACEMODEL/ passed validation."

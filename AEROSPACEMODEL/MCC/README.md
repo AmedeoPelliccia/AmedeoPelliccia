@@ -30,6 +30,7 @@ dimensions. Intensity is the universal steganographic channel.
 | AEROSPACEMODEL-MCC-SPEC-007 | MUSIC-MCC — Audio Composition Layer | *planned* | planned |
 | **AEROSPACEMODEL-MCC-SPEC-008** | **SENSORIUM — Multi-Sensory Composition** | [`SENSORIUM.md`](SENSORIUM.md) · [`sensorium.yaml`](sensorium.yaml) | **draft** |
 | **AEROSPACEMODEL-MCC-SPEC-009** | **TRAUMACODEDRAMA — Dramatic-Arc Steganographic Protocol** | [`TRAUMACODEDRAMA.md`](TRAUMACODEDRAMA.md) · [`traumacodedrama.yaml`](traumacodedrama.yaml) | **draft** |
+| **AEROSPACEMODEL-MCC-SPEC-010** | **EGI — Ephemeral Generative Interface** | [`EGI.md`](EGI.md) · [`egi.yaml`](egi.yaml) | **draft** |
 
 ---
 
@@ -97,3 +98,34 @@ Three canonical arcs: **Perdita** (Loss), **Rinascita** (Rebirth), **Metamorfosi
 TRAUMACODEDRAMA and SENSORIUM are orthogonal: a dramatic arc can embed
 intra-state SENSORIUM payloads inside each `εᵢ` simultaneously, achieving
 fully independent two-layer encoding.
+
+---
+
+## EGI — Ephemeral Generative Interface (SPEC-010)
+
+EGI completes the three-layer MCC encoding stack by adding a **lifecycle**
+dimension: data is hidden in the existence and dissolution of dynamically
+generated sensory surfaces.
+
+```
+𝒢(σ, π, t) → ε(t)
+```
+
+The generation function `𝒢` takes a seed `σ`, payload `π`, and time `t` to
+produce a time-varying emotive vector `ε(t)` — an ephemeral interface that
+carries the payload in its SENSORIUM-encoded intensity profile.
+
+Three lifecycle phases:
+
+| Phase | Encoding role |
+|-------|---------------|
+| **Nucleation** | Header: seed `σ` encoded in channel onset order and timing |
+| **Bloom** | Payload: `πₖ = f(ε(tₖ))` at each sample window |
+| **Dissolution** | Footer: CRC in decay curvature, terminal zero |
+
+Six canonical modes: Optic (`Φ_𝕆`), Acoustic (`Φ_𝔸`), Haptic (`Φ_ℍ`),
+Chemosensory (`Φ_𝔽𝔾`), Proprioceptive (`Φ_ℙ`), Full-Spectrum (`Φ_★`).
+
+The three MCC layers — SENSORIUM (intensity), TRAUMACODEDRAMA (transitions),
+EGI (lifecycle) — are orthogonal. A single Ephemeron with internal transitions
+carries **three independent payloads** simultaneously.

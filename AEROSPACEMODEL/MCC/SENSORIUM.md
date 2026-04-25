@@ -406,6 +406,71 @@ pluma_gai_hiv_correspondence:
         Rehydration floor 310 K = minimum IR intensity for node registration.
         Below 310 K the proprioceptive channel (ℙ) collapses.
         VibidratAZIONE restores κ_ℙ above detection threshold.
+
+##############################################################################
+# 7  Shared Database Schema — Minimal Fields
+##############################################################################
+
+database_schema:
+  description: >
+    Canonical field set for any Ephemeral Generative Interface (EGI) record.
+    Every conforming implementation MUST persist at least these fields.
+    A JSON Schema companion is provided at schemas/egi.shared_database.v1.schema.json.
+
+  minimal_fields:
+    - interface_id
+    - trigger_patterns
+    - seed_reference
+    - simplicial_signature
+    - assembly_rules
+    - decay_policy
+    - reactivation_conditions
+    - cross_model_compatibility
+    - provenance
+
+##############################################################################
+# 8  Shared Database Schema — Example Instance
+##############################################################################
+
+  example_instance:
+    id: "EGI-001"
+    title: "Ephemeral Generative Interface"
+    status: "proposed"
+    stimulus:
+      trigger_patterns:
+        - "music phrase"
+        - "face recognition"
+        - "olfactory signature"
+        - "touch sequence"
+      activation_threshold: 0.40
+    reconstruction:
+      seed_reference: "latent_seed://egi/001"
+      assembly_rules:
+        - "instantiate temporary nodes"
+        - "construct higher-order relations"
+        - "project to operational layer"
+    simplicial_signature:
+      max_dimension: 4
+      betti_numbers: [1, 0, 0]
+      euler_characteristic: 1
+      mode: "path"
+    persistence:
+      store_full_interface: false
+      residual_trace: true
+      decay_policy: "time_or_task_completion"
+    reactivation:
+      channel_affinity:
+        visual: 0.30
+        auditory: 0.80
+        olfactory: 0.60
+        tactile: 0.20
+        gustatory: 0.00
+        proprioceptive: 0.10
+      cross_channel_boost: true
+    provenance:
+      generating_model: "model_id"
+      generation_timestamp: "2026-02-25T00:00:00Z"
+      validation_status: "self_validated"
 ---
 
 # SENSORIUM — Multi-Sensory Cryptographic Composition
@@ -694,7 +759,89 @@ drives it toward or above the 310 K rehydration target.
 
 ---
 
-## 7. References
+## 8. Shared Database Schema
+
+### 8.1 Minimal Fields
+
+Every Ephemeral Generative Interface (EGI) record MUST include the following
+fields:
+
+| # | Field | Description |
+|---|-------|-------------|
+| 1 | `interface_id` | Unique EGI identifier (e.g. `EGI-001`) |
+| 2 | `trigger_patterns` | Sensory patterns that activate the interface |
+| 3 | `seed_reference` | Latent-space seed URI for reconstruction |
+| 4 | `simplicial_signature` | Topological invariants (max dimension, Betti numbers, Euler characteristic) |
+| 5 | `assembly_rules` | Ordered steps to instantiate the interface |
+| 6 | `decay_policy` | Condition under which the interface is discarded |
+| 7 | `reactivation_conditions` | Channel affinities and cross-channel boost flag |
+| 8 | `cross_model_compatibility` | Whether the record is portable across generating models |
+| 9 | `provenance` | Generating model, timestamp, and validation status |
+
+A formal JSON Schema is provided at
+[`../../schemas/egi.shared_database.v1.schema.json`](../../schemas/egi.shared_database.v1.schema.json).
+
+### 8.2 Example Instance
+
+```yaml
+id: "EGI-001"
+title: "Ephemeral Generative Interface"
+status: "proposed"
+stimulus:
+  trigger_patterns:
+    - "music phrase"
+    - "face recognition"
+    - "olfactory signature"
+    - "touch sequence"
+  activation_threshold: 0.40
+reconstruction:
+  seed_reference: "latent_seed://egi/001"
+  assembly_rules:
+    - "instantiate temporary nodes"
+    - "construct higher-order relations"
+    - "project to operational layer"
+simplicial_signature:
+  max_dimension: 4
+  betti_numbers: [1, 0, 0]
+  euler_characteristic: 1
+  mode: "path"
+persistence:
+  store_full_interface: false
+  residual_trace: true
+  decay_policy: "time_or_task_completion"
+reactivation:
+  channel_affinity:
+    visual: 0.30
+    auditory: 0.80
+    olfactory: 0.60
+    tactile: 0.20
+    gustatory: 0.00
+    proprioceptive: 0.10
+  cross_channel_boost: true
+provenance:
+  generating_model: "model_id"
+  generation_timestamp: "2026-02-25T00:00:00Z"
+  validation_status: "self_validated"
+```
+
+### 8.3 Design Notes
+
+- **Ephemeral by default.** `store_full_interface: false` — the system stores
+  only the seed and assembly rules, not the fully expanded interface.
+- **Residual trace.** A lightweight fingerprint survives decay so that
+  reactivation can recognise a previously constructed interface.
+- **SENSORIUM alignment.** The six `channel_affinity` dimensions correspond to
+  the SENSORIUM axes (§1). An EGI whose dominant reactivation channel is
+  auditory (`0.80`) will preferentially reconstruct when an auditory stimulus
+  matches one of its `trigger_patterns`.
+- **Simplicial signature.** The Betti numbers `[1, 0, 0]` and Euler
+  characteristic `1` describe a contractible complex — a single connected
+  component with no holes or voids. The `mode: path` flag indicates
+  reconstruction follows a path-based (sequential) strategy.
+
+---
+
+## 9. References
 
 - AEROSPACEMODEL-MCC-SPEC-001 through SPEC-007: parent specifications (MCC series)
 - [`sensorium.yaml`](sensorium.yaml): machine-readable companion (AEROSPACEMODEL-MCC-SPEC-008)
@@ -702,6 +849,7 @@ drives it toward or above the 310 K rehydration target.
 - TranshidreOHs: [`../../00-PROGRAM/PLUMA-GAI/TranshidreOHs.md`](../../00-PROGRAM/PLUMA-GAI/TranshidreOHs.md) (PLUMA-GAI-TRH-001)
 - VibidratAZIONE: [`../../00-PROGRAM/PLUMA-GAI/VibidratAZIONE.md`](../../00-PROGRAM/PLUMA-GAI/VibidratAZIONE.md) (PLUMA-GAI-VBZ-001)
 - ESSA H Pipeline: `ESSA/H-PIPELINE.md` (ESSA-DOC-H-001)
+- EGI Schema: [`../../schemas/egi.shared_database.v1.schema.json`](../../schemas/egi.shared_database.v1.schema.json)
 
 ---
 

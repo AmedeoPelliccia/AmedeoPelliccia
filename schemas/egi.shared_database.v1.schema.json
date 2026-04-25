@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://essa.eu/schemas/egi/shared_database/v1",
+  "title": "Ephemeral Generative Interface — Shared Database Schema v1",
+  "description": "Contract-grade schema for Ephemeral Generative Interface (EGI) records. Defines the minimal field set, stimulus/reconstruction model, simplicial topology, persistence policy, and multi-sensory reactivation conditions. Ref: AEROSPACEMODEL-MCC-SPEC-008 §8",
+  "type": "object",
+
+  "$defs": {
+    "provenance": {
+      "title": "EGI Provenance",
+      "description": "Origin metadata for the EGI record.",
+      "type": "object",
+      "properties": {
+        "generating_model": {
+          "type": "string",
+          "description": "Identifier of the model that created this interface."
+        },
+        "generation_timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp of interface creation."
+        },
+        "validation_status": {
+          "type": "string",
+          "enum": ["self_validated", "peer_validated", "authority_validated", "unvalidated"],
+          "description": "Validation state of the generated interface."
+        }
+      },
+      "required": ["generating_model", "generation_timestamp", "validation_status"]
+    },
+
+    "simplicial_signature": {
+      "title": "Simplicial Signature",
+      "description": "Topological invariants of the interface complex.",
+      "type": "object",
+      "properties": {
+        "max_dimension": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Maximum simplex dimension in the complex."
+        },
+        "betti_numbers": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 0 },
+          "minItems": 1,
+          "description": "Betti numbers β₀, β₁, β₂, … characterising the complex topology."
+        },
+        "euler_characteristic": {
+          "type": "integer",
+          "description": "Euler characteristic χ = Σ (-1)^k β_k."
+        },
+        "mode": {
+          "type": "string",
+          "enum": ["path", "graph", "hypergraph"],
+          "description": "Reconstruction strategy: path (sequential), graph (relational), or hypergraph (higher-order)."
+        }
+      },
+      "required": ["max_dimension", "betti_numbers", "euler_characteristic", "mode"]
+    },
+
+    "channel_affinity": {
+      "title": "SENSORIUM Channel Affinity",
+      "description": "Per-channel reactivation probability aligned with the six SENSORIUM axes.",
+      "type": "object",
+      "properties": {
+        "visual":          { "type": "number", "minimum": 0, "maximum": 1 },
+        "auditory":        { "type": "number", "minimum": 0, "maximum": 1 },
+        "olfactory":       { "type": "number", "minimum": 0, "maximum": 1 },
+        "tactile":         { "type": "number", "minimum": 0, "maximum": 1 },
+        "gustatory":       { "type": "number", "minimum": 0, "maximum": 1 },
+        "proprioceptive":  { "type": "number", "minimum": 0, "maximum": 1 }
+      },
+      "required": ["visual", "auditory", "olfactory", "tactile", "gustatory", "proprioceptive"],
+      "additionalProperties": false
+    }
+  },
+
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^EGI-[0-9]{3,}$",
+      "description": "Unique EGI record identifier. Pattern: EGI-NNN (e.g. EGI-001)."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable title of the interface."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["proposed", "active", "decayed", "reactivated", "archived"],
+      "description": "Lifecycle status of the EGI record."
+    },
+    "stimulus": {
+      "title": "Stimulus Configuration",
+      "type": "object",
+      "properties": {
+        "trigger_patterns": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1,
+          "description": "Sensory patterns that activate this interface."
+        },
+        "activation_threshold": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Minimum match score required to trigger activation."
+        }
+      },
+      "required": ["trigger_patterns", "activation_threshold"]
+    },
+    "reconstruction": {
+      "title": "Reconstruction Configuration",
+      "type": "object",
+      "properties": {
+        "seed_reference": {
+          "type": "string",
+          "pattern": "^latent_seed://",
+          "description": "URI pointing to the latent-space seed for reconstruction."
+        },
+        "assembly_rules": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1,
+          "description": "Ordered steps to instantiate the interface from the seed."
+        }
+      },
+      "required": ["seed_reference", "assembly_rules"]
+    },
+    "simplicial_signature": {
+      "$ref": "#/$defs/simplicial_signature"
+    },
+    "persistence": {
+      "title": "Persistence Policy",
+      "type": "object",
+      "properties": {
+        "store_full_interface": {
+          "type": "boolean",
+          "description": "If false, only the seed and assembly rules are persisted."
+        },
+        "residual_trace": {
+          "type": "boolean",
+          "description": "If true, a lightweight fingerprint survives decay for future recognition."
+        },
+        "decay_policy": {
+          "type": "string",
+          "enum": ["time_or_task_completion", "time_only", "task_completion_only", "manual", "never"],
+          "description": "Condition under which the interface is discarded."
+        }
+      },
+      "required": ["store_full_interface", "residual_trace", "decay_policy"]
+    },
+    "reactivation": {
+      "title": "Reactivation Conditions",
+      "type": "object",
+      "properties": {
+        "channel_affinity": {
+          "$ref": "#/$defs/channel_affinity"
+        },
+        "cross_channel_boost": {
+          "type": "boolean",
+          "description": "When true, co-occurring stimuli across channels multiply reactivation probability."
+        }
+      },
+      "required": ["channel_affinity", "cross_channel_boost"]
+    },
+    "cross_model_compatibility": {
+      "type": "boolean",
+      "description": "Whether the record is portable across different generating models. Recommended value: true."
+    },
+    "provenance": {
+      "$ref": "#/$defs/provenance"
+    }
+  },
+
+  "required": [
+    "id",
+    "title",
+    "status",
+    "stimulus",
+    "reconstruction",
+    "simplicial_signature",
+    "persistence",
+    "reactivation",
+    "cross_model_compatibility",
+    "provenance"
+  ],
+
+  "x-sensorium": {
+    "document_id": "AEROSPACEMODEL-MCC-SPEC-008",
+    "spec_section": "§8 Shared Database Schema",
+    "companion_yaml": "AEROSPACEMODEL/MCC/sensorium.yaml"
+  }
+}

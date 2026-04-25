@@ -5,7 +5,7 @@
 
 schema_version: "1.0.0"
 document_type: capacity_demonstration
-last_updated: "2026-02-25T00:00:00Z"
+last_updated: "2026-03-08T00:00:00Z"
 
 # ─────────────────────────────────────────────
 # 1. Deliverable Identity
@@ -140,6 +140,11 @@ portfolio:
     - system: HPC training infrastructure
       scale: "Multi-node GPU clusters"
       domain: "EuroHPC-compatible distributed training"
+    - system: GAIA-EU Prototype Demo
+      scale: demo
+      domain: "Interactive proof-of-concept for the GAIA-EU multilingual frontier AI architecture"
+      hosting: Gemini Services
+      note: "Currently hosted on Gemini Services; recently remixed"
 
 # ─────────────────────────────────────────────
 # 4. Team Structure
@@ -257,6 +262,10 @@ deployment:
       infrastructure: "EuroHPC AI Factory"
       specification: "Research and public-sector batch workloads"
 
+    - capability: prototype_demo
+      infrastructure: "Gemini Services"
+      specification: "Interactive demo currently hosted on Gemini Services (recently remixed); accessible for evaluator review"
+
   scalability:
     - metric: tokens_per_second
       target: "≥ 500 tok/s per request (8-bit quantised)"
@@ -341,3 +350,7 @@ revision_history:
     date: "2026-02-25"
     milestone: M6
     description: Initial Capacity Demonstration
+  - version: "0.2"
+    date: "2026-03-08"
+    milestone: M6
+    description: Added Gemini Services prototype demo hosting reference (deployed_systems, deployment.inference)

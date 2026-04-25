@@ -40,6 +40,12 @@ Sector Profiles  (Aviation · Space · RSP · Autonomy · Critical Industrial Ch
 
 **AMPEL360** is the end-to-end aerospace lifecycle architecture for the ESSA lifecycle (P000–P120), governing the design, engineering, certification, operation, and continuous digital traceability of aircraft systems and programmes. In programme terms, it spans concept, requirements, architecture, design, analysis, verification, validation, certification, production, operation, maintenance, modification / retrofit, reuse / refurbishment, and retirement / traceable closure. "360" is not marketing — it denotes:
 
+Within this repository's ontology framing, **AMPEL360** is also the
+**next-generation market-oriented manifestation of the Ontogenesis group**:
+the concrete industrial expression through which ontogenetic intent is
+translated into certifiable lifecycle objects, market-facing programmes, and
+traceable aerospace evidence.
+
 | "360" Dimension | Meaning |
 |----------------|---------|
 | **Full lifecycle coverage** | P000 through P120 — all eleven phases |

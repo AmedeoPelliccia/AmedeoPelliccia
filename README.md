@@ -240,10 +240,22 @@ value_matrix:
 ---
 
 <p align="center">
-  <strong>Amedeo Pelliccia</strong><br>
+  <strong>Amedeo Pelliccia De Martino</strong><br>
   Aerospace Engineer · Researcher · Framework Originator<br>
-  Founder, <a href="https://ideale.eu">IDEALE-ESG.eu</a> Framework
+  Founder of the <a href="https://ideale.eu"><strong>PELDEM / IDEALE ESG Europe</strong></a> Framework
 </p>
+
+<p align="center">
+  <strong>PELDEM</strong><br>
+  <em>Pelliccia De Martino</em><br>
+  <em>Peace and Love in Democracy (P&L in DeM)</em>
+</p>
+
+<p align="center">
+  <strong>In dedication to my parents, from whom this name, this path, and this foundation begin.</strong>
+</p>
+
+<h1 align="center">IDEALE ESG Europe</h1>
 
 ---
 
@@ -253,9 +265,20 @@ By day I work as an aerospace engineer specializing in aircraft technical data s
 
 expansion by structure. As Cosmos Cycle Historical Issue.
 
+This repository is the public **Amedeopelliccia profile** presented as a
+**governed portfolio**. Its structure, published artefacts, and portfolio-level
+governance claims are bounded by the
+[`Model_Digital_Constitution.md`](Model_Digital_Constitution.md), which serves
+as the repository's governing legal and operational frame.
+
+Within that frame, I am the **originator** of a framework whose ontology treats
+the **model as the primary product**, **aerospace determinism** as the
+governing boundary, and **Ontogenesis** as the explicit lifecycle through which
+organizations and models are formed, governed, and evolved.
+
 ---
 
-### IDEALE-ESG.eu — European Intelligence Foundation
+### IDEALE-ESG.eu — European Intelligence Ontogenesis
 
 **IDEALE** is both an acronym and a commitment. It names the six pillars of an integrated framework for sovereign European capability:
 
@@ -325,6 +348,11 @@ Space-quantum infrastructure · Manufacturing technology layers · AQUA-V progra
 
 Where the aircraft domain ends, the space and quantum domain begins. Orbital logistics, quantum-classical bridge architectures, synthetic data validation, the manufacturing pipeline that connects design to material reality, and the **GAIA-AIR** ecosystem with its Quantum Aerospace Operating System (**QAOS**) — where NBT gates bridge classical telemetry into quantum-augmented structural analysis, digital twins, and predictive maintenance.
 
+Within this repository, the **GAIA foundational objects** are defined as
+**Earth Intelligence Ontogenesis**: the Earth-scale ontogenetic frame from
+which GAIA constellation systems, GAIA-AIR, and QAOS derive their governing
+object logic.
+
 **IDEALE pillars touched:** A (primary), I (quantum-classical data, NBT substrate), D (dual-use awareness), L (manufacturing pipelines)
 
 </td>
@@ -381,6 +409,11 @@ The common engineering spine across all IDEALE pillars:
 *360° end-to-end digital aerospace lifecycle governance*
 
 AMPEL360 is an end-to-end aerospace lifecycle architecture that governs the design, engineering, certification, operation, and continuous digital traceability of aircraft systems and programmes.
+
+Within this repository, AMPEL360 is also defined as the **next-generation
+market-oriented manifestation of the Ontogenesis group**: the applied
+industrial and market-facing realization through which ontogenetic governance
+is translated into lifecycle-ready aerospace assets, programmes, and evidence.
 
 As a formal programme identity, AMPEL360 covers the full aerospace lifecycle:
 
@@ -620,6 +653,39 @@ The full pipeline composes as:
 \text{RAW} \xrightarrow{\text{DWGE}} \text{IntentSpec} \xrightarrow{\Pi_\mathcal{F}} \text{Artefact} \xrightarrow{\text{Gates}} \text{SSOT/PUB}
 ```
 
+```mermaid
+flowchart LR
+    RAW["🔹 RAW prompt"]
+    subgraph DWGE ["DWGE — Intent Lock"]
+        W1["#1 INTENT-PARSE"]
+        W2["#2 INTENT-CONFIRM"]
+    end
+    subgraph PATH ["PATH — Constrained Trajectory"]
+        W3["#3 PROC-MATCH"]
+        W4["#4 TPL-SELECT"]
+        W5["#5 TPL-REFORMAT"]
+        OP["Operator execution"]
+    end
+    subgraph GATES ["Acceptance Gates"]
+        W6["#6 CHECK-COMPLETENESS"]
+        W7["#7 BREX-VALIDATE"]
+        W10["#10 CONTRIBUTION-MAP"]
+    end
+    subgraph MTL ["Model → Teknia Ledger"]
+        W8["#8 REGISTER-MODEL"]
+        W9["#9 LEDGER-WRITE"]
+    end
+    SSOT["✅ SSOT / PUB"]
+
+    RAW --> W1 --> W2 --> W3 --> W4 --> W5 --> OP
+    OP --> W6 --> W7 --> W10 --> W8 --> W9 --> SSOT
+
+    style DWGE fill:#e8f4f8,stroke:#2196F3
+    style PATH fill:#fff3e0,stroke:#FF9800
+    style GATES fill:#fce4ec,stroke:#E91E63
+    style MTL fill:#e8f5e9,stroke:#4CAF50
+```
+
 | Pipeline stage | Mathematical role | `§STD` / `§3.1a` reference |
 |---------------|-------------------|---------------------------|
 | RAW prompt | Unconstrained gradient $\nabla J(x)$ | Human or automated trigger |
@@ -753,6 +819,25 @@ Rollbacks (require regulatory_event_id + signed_approval):
   CONDITIONAL ──[regulatory_rollback]──▶ MIXED
 ```
 
+```mermaid
+stateDiagram-v2
+    [*] --> MIXED
+    MIXED --> CONDITIONAL : moc_pkg submitted
+    MIXED --> INADMISSIBLE : refine → fail
+    CONDITIONAL --> FULL : evidence approved ✅
+    CONDITIONAL --> MIXED : refine (loop back)
+    CONDITIONAL --> REJECTED : evidence fail ❌
+    FULL --> CONDITIONAL : regulatory rollback 🔄
+    CONDITIONAL --> MIXED : regulatory rollback 🔄
+    FULL --> [*] : Certified ✅
+
+    note right of MIXED : KNOT OPEN\nKNU PLANNED\nResidual = 100
+    note right of CONDITIONAL : KNOT IN_PROGRESS\nEvidence gates open
+    note right of FULL : KNOT CLOSED\nAll gates PASS\nTT distribution
+    note left of REJECTED : Terminal state
+    note left of INADMISSIBLE : Terminal state
+```
+
 **`§LC01` cross-reference:** This state machine is the KNOT lifecycle:
 
 | State machine state | KNOT status | KNU status | Residual |
@@ -842,6 +927,52 @@ The NBT gate operates bidirectionally across the classical-quantum boundary:
 \underbrace{\text{O-P-T-I}}_{\text{classical axes}} \xrightarrow[\text{BRIDGE}]{\text{NBT gate}} \underbrace{\text{QPU (simplicial manifold)}}_{\text{quantum-augmented}} \xrightarrow[\text{TUNNEL}]{\text{NBT gate}} \underbrace{\text{N-axis registration}}_{\text{classical evidence}}
 ```
 
+```mermaid
+flowchart LR
+    subgraph CLASSICAL ["O-P-T-I Classical Axes"]
+        DWGE["DWGE\nIntent Lock"]
+        PATH["PATH → MTL\nPipeline"]
+        ART["Registered\nArtefact"]
+        DWGE --> PATH --> ART
+    end
+
+    subgraph BRIDGE ["NBT BRIDGE Gate"]
+        B1["Simplicial state\npreparation"]
+        B2["NeuronBit anchor\nencoding"]
+        B1 --> B2
+    end
+
+    subgraph QPU ["QPU — Quantum Processing"]
+        Q1["Superposition of\nk-simplices"]
+        Q2["Persistent homology\ncomputation"]
+        Q3["Topological\ninvariants"]
+        Q1 --> Q2 --> Q3
+    end
+
+    subgraph TUNNEL ["NBT TUNNEL Gate"]
+        T1["Geometric structure\nmapping"]
+        T2["Topological coherence\npreservation"]
+        T1 --> T2
+    end
+
+    subgraph NAXIS ["N-Axis Registration"]
+        REG["Gated evidence\nartefact"]
+        SSOT["SSOT / PUB\n(INV-001–003)"]
+        REG --> SSOT
+    end
+
+    ART --> B1
+    B2 --> Q1
+    Q3 --> T1
+    T2 --> REG
+
+    style CLASSICAL fill:#e3f2fd,stroke:#1565C0
+    style BRIDGE fill:#fff8e1,stroke:#F9A825
+    style QPU fill:#f3e5f5,stroke:#7B1FA2
+    style TUNNEL fill:#fff8e1,stroke:#F9A825
+    style NAXIS fill:#e8f5e9,stroke:#2E7D32
+```
+
 **Bridge path** (classical → quantum):
 
 1. PATH → MTL produces a registered artefact (e.g. structural sensor data, KNOT evidence complex, TLAR parameter set)
@@ -905,6 +1036,10 @@ Both variants use **Variational Quantum Circuits (VQCs)** — parameterized quan
 ### 17. GAIA-AIR and QAOS — N-Axis Aerospace Realization
 
 The most concrete implementation of NBT gates is **GAIA-AIR** and its **Quantum Aerospace Operating System (QAOS)** — a full N-axis instantiation where classical aerospace telemetry crosses into quantum-augmented structural analysis and tunnels back as operational evidence:
+
+At the foundational-object level, **GAIA** is treated here as **Earth
+Intelligence Ontogenesis**, making GAIA-AIR the aerospace realization of that
+Earth-oriented ontogenetic frame.
 
 | GAIA-AIR module | NBT gate function | Operational function |
 |----------------|-----------------|---------------------|
@@ -1430,6 +1565,6 @@ See [`quantum-manifold.yaml`](quantum-manifold.yaml) for the full specification 
 
 <p align="center">
   <em>Last updated: 2026-02-25</em><br>
-  <em>Enterprise: IDEALE-ESG.eu — Information · Defense · Energy · Aerospace · Logistics · Economy (Digital) | Environment · Social · Governance</em><br>
+  <em>Enterprise: PELDEM / IDEALE-ESG.eu — Information · Defense · Energy · Aerospace · Logistics · Economy (Digital) | Environment · Social · Governance</em><br>
   <em>Standard family: STD-PATH-MTL-001 v1.0 + §3.1a DWGE v0.1 + §3.1b CLL v0.1 + §NBT Gates v0.1 + §PORTAL v0.1</em>
 </p>

@@ -28,6 +28,35 @@ Every governed object follows this state machine:
 
 **Rule:** no "operational" output exists without Confirm → Activate.
 
+```mermaid
+stateDiagram-v2
+    [*] --> INTERPRET
+
+    INTERPRET --> CONFIRM : Structured intent captured
+    CONFIRM --> ACTIVATE : Schema, bindings, and policies validated
+    ACTIVATE --> PUBLISH : Released usable artifact
+
+    CONFIRM --> INTERPRET : Validation failed / revise
+    ACTIVATE --> CONFIRM : Execution error / re-validate
+
+    note right of INTERPRET
+        Capture structured intent
+    end note
+
+    note right of CONFIRM
+        Validate schema, bindings,
+        mandatory links, and policies
+    end note
+
+    note right of ACTIVATE
+        Execute: generate, register, or publish
+    end note
+
+    note right of PUBLISH
+        Released / usable artifact
+    end note
+```
+
 ---
 
 ## 2) ESSA Phases (Corrected Numbering)
@@ -47,6 +76,36 @@ Every governed object follows this state machine:
 | **P100** | ESG Reporting & Transparency                      | consolidation + ESG publication (chains + operation) + audit                     | `ESG_REPORT`, `AGG_RULE`               |
 | **P110** | RESERVED                                          | Reserved for future extensions (e.g., spaceport infrastructure/training orgs)    | —                                      |
 | **P120** | Cyber & Resilience (Cross-cutting)                | controls, risks, incidents; linkable to any phase                                | `CYB_CONTROL`, `RES_CONTROL`           |
+
+```mermaid
+flowchart LR
+    P000["P000\nRegistry &\nGovernance"]
+    P010["P010\nScope &\nContext"]
+    P020["P020\nSafety &\nRisk"]
+    P030["P030\nLogistics &\nIndustrial"]
+    P040["P040\nSimulation\nDMU+PMU"]
+    P050["P050\nDOA\nAuthority"]
+    P060["P060\nQuality &\nConformity"]
+    P070["P070\nFlight\nTests"]
+    P080["P080\nIn-Service\nMRO"]
+    P090["P090\nMission\nOps"]
+    P100["P100\nESG\nReporting"]
+    P120["P120\nCyber &\nResilience"]
+
+    P000 --> P010 --> P020 --> P030 --> P040 --> P050
+    P050 --> P060 --> P070 --> P080 --> P090 --> P100
+    P100 -.->|"feedback"| P000
+
+    P120 -.->|"cross-cutting"| P000
+    P120 -.-> P020
+    P120 -.-> P080
+
+    style P000 fill:#e3f2fd,stroke:#1565C0
+    style P020 fill:#ffebee,stroke:#c62828
+    style P070 fill:#fff3e0,stroke:#EF6C00
+    style P100 fill:#e8f5e9,stroke:#2E7D32
+    style P120 fill:#f3e5f5,stroke:#6A1B9A
+```
 
 > **P110** is **reserved** (unused in v0.3.0) for future extensions without breaking numbering.
 
