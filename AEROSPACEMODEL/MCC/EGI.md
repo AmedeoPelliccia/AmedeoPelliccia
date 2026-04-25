@@ -29,6 +29,23 @@ A higher-order relational structure—not only nodes and edges, but relations of
 
 The minimal footprint left after an ephemeral interface decays: a seed, a signature, or a functional fingerprint sufficient to enable future reconstruction under compatible stimuli.
 
+### Definition 38 (Ephemeron) — *compatibility*
+
+Retained for continuity with earlier MCC drafts and with [`README.md`](../README.md). An **Ephemeron** is the legacy name for an instance of an Ephemeral Generative Interface (Definition 40): a dynamically generated, time-varying sensory surface `ε(t)` that exists only for the duration of a task. In the present model an Ephemeron corresponds to the assembled object `I_t` produced by `Assemble(s, z, K)`.
+
+### Definition 39 (Generation Function) — *compatibility*
+
+Retained for continuity with earlier MCC drafts. The **Generation Function** `𝒢(σ, π, t) → ε(t)` from the legacy formulation is the parameterised assembly map. Under the present model it factors as
+
+```
+σ ≡ z          (latent seed)
+π ≡ payload bound into K (the temporary simplicial structure)
+t ≡ stimulus / lifecycle clock driving Assemble → Use → Decay
+𝒢(σ, π, t) ≡ Assemble(s, z, K) followed by the Use phase of §3.1
+```
+
+Definitions 38 and 39 are kept solely to preserve contiguous numbering across SPEC-008 (Def 35), SPEC-009 (Defs 36–37), and SPEC-010 (Defs 40–42), and to give legacy references a precise target. The operative definitions of this specification remain 40–42.
+
 ---
 
 ## 2. Axioms
@@ -329,7 +346,70 @@ I_t' = Reactivate(s, r) iff A(s, r) > θ
 
 ---
 
-## 10. Applications
+## 10. Compatibility with Prior MCC Formalism
+
+This specification reframes EGI in conceptual / lifecycle terms (assembly,
+decay, residual trace, multimodal reactivation). Earlier drafts of the MCC
+series — and the project [`README.md`](../README.md) — describe EGI using a
+more concrete encoding-rule formalism. Both views describe the same artefact
+at different levels of abstraction. The mapping below is normative for
+consumers that still rely on the legacy vocabulary.
+
+### 10.1 Construct Mapping
+
+| Legacy construct (pre-1.0.0 schema)                   | Current construct (this spec)                            | Section            |
+| ----------------------------------------------------- | -------------------------------------------------------- | ------------------ |
+| **Ephemeron** (instance of an EGI)                    | `I_t` — assembled ephemeral interface                    | §3.2, Def 38       |
+| **Generation Function** `𝒢(σ, π, t) → ε(t)`           | `Assemble(s, z, K)` + Use phase                          | §3.2, Def 39       |
+| Seed `σ`                                              | Latent seed `z` (and `seed_reference` in §8)             | §3.2, §8.2         |
+| Payload `π`                                           | Information bound into `K` and into the residual trace `r` | §3.2, §3.4       |
+| Time `t`                                              | Lifecycle clock driving Assembly → Use → Decay           | §3.1               |
+| Phase **Nucleation** (header: seed encoded in onset)  | Phases **Stimulus + Assembly**                           | §3.1               |
+| Phase **Bloom** (payload: `πₖ = f(ε(tₖ))`)            | Phase **Use**                                            | §3.1               |
+| Phase **Dissolution** (footer: CRC, terminal zero)    | Phases **Decay + Residual Trace**                        | §3.1, §5           |
+| Φ-modes (`Φ_𝕆`, `Φ_𝔸`, `Φ_ℍ`, `Φ_𝔽𝔾`, `Φ_ℙ`, `Φ_★`)   | Stimulus channels `(s_V, s_A, s_O, s_T, s_G, s_P)` and SCI codecs | §4, §6   |
+| Six canonical Φ-modes                                 | Six SENSORIUM channels + topological signature `Σ`       | §4, §6             |
+| **CRC / terminal-zero** integrity contract            | Residual trace `r` + activation threshold `A(s, r) > θ`  | §3.4, §5.1         |
+| Three-layer encoding stack (SENSORIUM / TRAUMACODEDRAMA / EGI) | Same three orthogonal layers; this spec defines only the EGI lifecycle layer | §3, README §SPEC-010 |
+| Explicit phase contracts (per-phase encoding role)    | Lifecycle phases of §3.1 (informative, not bit-exact)    | §3.1               |
+
+### 10.2 Compatibility Notes
+
+1. **Phase contracts.** The old per-phase contracts (Nucleation = header,
+   Bloom = payload, Dissolution = footer) remain valid as *informative*
+   guidance for implementations that need a deterministic encoding profile.
+   They are not contradicted by §3.1; they are a refinement of the Assembly →
+   Use → Decay sub-sequence.
+
+2. **CRC / terminal-zero.** The integrity guarantee previously expressed as a
+   CRC word in the dissolution curvature plus a terminal zero is, in the
+   current model, expressed as the pair *(residual trace `r`, activation
+   threshold `θ`)*: a reactivation `Reactivate(s', r)` succeeds only when
+   `A(s', r) > θ`, which functionally subsumes the CRC integrity check.
+   Implementations that need bit-exact integrity SHOULD continue to apply the
+   TRAUMACODEDRAMA Katharsis-CRC rule (SPEC-009 §Rule D-004) at the
+   transition layer; EGI does not override it.
+
+3. **Φ-mode notation.** Documents that still use `Φ_𝕆 … Φ_★` SHOULD be read
+   against the channel table in §4 and the SCI codec table in §6. The Φ
+   notation is retained only in [`README.md`](../README.md) for
+   cross-document continuity.
+
+4. **YAML schema.** The companion [`egi.yaml`](egi.yaml) carries
+   `schema_version: 1.0.0` and a `schema_compatibility` block that lists
+   removed top-level keys (`encoding_rules`, `decoder_protocol`,
+   `three_layer_stack`) together with their replacement sections, so older
+   tooling can detect the schema change explicitly rather than failing on
+   missing keys.
+
+5. **Definition numbering.** Definitions 38 (Ephemeron) and 39 (Generation
+   Function) are kept in §1 as compatibility definitions so that the global
+   MCC numbering (35 in SPEC-008, 36–37 in SPEC-009, 38–42 in SPEC-010)
+   remains contiguous and unambiguous.
+
+---
+
+## 11. Applications
 
 * **Transitional cognition** — AI systems that reason through complex relational landscapes without permanent memory overhead.
 * **Cross-model knowledge transfer** — shared database of minimal interface specs enables different AI models to reconstruct equivalent operational interfaces.

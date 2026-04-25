@@ -74,6 +74,38 @@ definitions:
       a signature, or a functional fingerprint sufficient to enable future
       reconstruction under compatible stimuli.
 
+  # ----------------------------------------------------------------------------
+  # Compatibility definitions (38, 39)
+  # Retained to preserve contiguous global MCC numbering across SPEC-008
+  # (Def 35), SPEC-009 (Defs 36–37), and SPEC-010 (Defs 40–42), and to give
+  # legacy references in README.md a precise anchor. The operative definitions
+  # of this specification remain 40–42.
+  # ----------------------------------------------------------------------------
+
+  - definition: 38
+    name: Ephemeron
+    status: compatibility
+    legacy: true
+    description: >
+      Legacy name for an instance of an Ephemeral Generative Interface
+      (Definition 40): a dynamically generated, time-varying sensory surface
+      ε(t) that exists only for the duration of a task. In the present model
+      an Ephemeron corresponds to the assembled object I_t produced by
+      Assemble(s, z, K).
+    maps_to: I_t
+
+  - definition: 39
+    name: Generation Function
+    status: compatibility
+    legacy: true
+    description: >
+      Legacy parameterised assembly map 𝒢(σ, π, t) → ε(t). Under the present
+      model it factors as: σ ≡ z (latent seed); π ≡ payload bound into K
+      (the temporary simplicial structure); t ≡ stimulus / lifecycle clock
+      driving Assemble → Use → Decay. Operationally,
+      𝒢(σ, π, t) ≡ Assemble(s, z, K) followed by the Use phase.
+    maps_to: "Assemble(s, z, K) + Use phase"
+
 ##############################################################################
 # 2  Lifecycle
 ##############################################################################
@@ -299,3 +331,102 @@ database_schema:
       generating_model: "model_id"
       generation_timestamp: "2026-02-25T00:00:00Z"
       validation_status: "self_validated"
+
+##############################################################################
+# 9  Schema Compatibility
+#
+# This block exists so that consumers written against the pre-1.0.0 schema can
+# detect the schema change explicitly rather than fail on missing keys.
+# It documents which top-level keys were removed in this version and where
+# their content was relocated. The deprecated stubs intentionally carry no
+# semantic payload — they only point to their replacement section.
+##############################################################################
+
+schema_compatibility:
+  current_schema_version: "1.0.0"
+  previous_schema_version: "pre-1.0.0 (unversioned)"
+  policy: >
+    Removed top-level keys are kept below as deprecated stubs for one major
+    version. Tooling SHOULD treat the presence of a `deprecated: true` marker
+    as a non-fatal signal and read the `replaced_by` pointer instead. The
+    schema version at which each stub was removed is given by
+    `current_schema_version` above; per-stub `removed_in_schema_version`
+    fields are intentionally omitted to keep a single source of truth.
+  notes:
+    - >
+      The legacy "three-layer stack" framing (SENSORIUM / TRAUMACODEDRAMA /
+      EGI) is preserved at the series level in AEROSPACEMODEL/MCC/README.md;
+      it is no longer duplicated inside this document.
+    - >
+      The legacy "encoding_rules" and "decoder_protocol" sections were
+      EGI-specific phase contracts (Nucleation / Bloom / Dissolution with a
+      CRC / terminal-zero footer). Their lifecycle content is now captured in
+      `lifecycle.phases` and `formal_model`; their integrity content is
+      captured in `formal_model.activation_function` and the residual trace
+      semantics. For bit-exact CRC integrity, see SPEC-009
+      (TRAUMACODEDRAMA) Rule D-004 — Katharsis CRC, which EGI does not
+      override.
+    - >
+      Definition numbers 38 (Ephemeron) and 39 (Generation Function) are kept
+      in `definitions` above as compatibility entries to avoid a numbering
+      gap between SPEC-009 (Def 37) and SPEC-010 (Def 40).
+
+  construct_mapping:
+    - legacy: "Ephemeron"
+      current: "I_t (assembled ephemeral interface)"
+      reference: "formal_model.core.assembly"
+    - legacy: "Generation Function 𝒢(σ, π, t) → ε(t)"
+      current: "Assemble(s, z, K) + Use phase"
+      reference: "formal_model.core, lifecycle.phases"
+    - legacy: "Phase: Nucleation (header, seed in onset)"
+      current: "Phases: Stimulus + Assembly"
+      reference: "lifecycle.phases[0..1]"
+    - legacy: "Phase: Bloom (payload π_k = f(ε(t_k)))"
+      current: "Phase: Use"
+      reference: "lifecycle.phases[2]"
+    - legacy: "Phase: Dissolution (footer, CRC, terminal zero)"
+      current: "Phases: Decay + Residual Trace"
+      reference: "lifecycle.phases[3..4]"
+    - legacy: "Φ-modes: Φ_𝕆, Φ_𝔸, Φ_ℍ, Φ_𝔽𝔾, Φ_ℙ, Φ_★"
+      current: "stimulus_vector.channels and sci.codecs"
+      reference: "stimulus_vector, sci"
+    - legacy: "CRC / terminal-zero integrity contract"
+      current: "Residual trace r + activation threshold A(s,r) > θ"
+      reference: "formal_model.activation_function"
+
+  deprecated_stubs:
+
+    encoding_rules:
+      deprecated: true
+      replaced_by:
+        - "lifecycle.phases"
+        - "formal_model"
+        - "formal_model.activation_function"
+      note: >
+        Previously held EGI-specific phase encoding rules
+        (Nucleation header / Bloom payload / Dissolution footer). The
+        lifecycle is now described in `lifecycle.phases`; the formal
+        encoding/decoding semantics live in `formal_model`. For bit-exact
+        CRC rules, see SPEC-009 traumacodedrama.yaml `encoding_rules`.
+
+    decoder_protocol:
+      deprecated: true
+      replaced_by:
+        - "formal_model.core.reactivation"
+        - "formal_model.activation_function"
+        - "database_schema"
+      note: >
+        Previously specified the step-by-step decoder for an EGI payload.
+        Decoding is now modelled as Reactivate(s', r) gated by
+        A(s, r) > θ; reconstruction inputs are documented in
+        `database_schema.example_instance.reconstruction`.
+
+    three_layer_stack:
+      deprecated: true
+      replaced_by:
+        - "AEROSPACEMODEL/MCC/README.md (series-level overview)"
+      note: >
+        The orthogonal three-layer framing (SENSORIUM intensity /
+        TRAUMACODEDRAMA transitions / EGI lifecycle) is documented once at
+        the series level in README.md and is no longer duplicated inside
+        this specification.
