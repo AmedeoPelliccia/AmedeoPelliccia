@@ -1,0 +1,194 @@
+##############################################################################
+# GQAOA-UTA-G10-975-BREX-RULES-001
+# BREX rule set implementing G10.975 v0.2.0 containment grammar
+##############################################################################
+
+document_id: GQAOA-UTA-G10-975-BREX-RULES-001
+document_type: gqaoa_brex_rules
+title: "BREX rules for G10.975 containment grammar"
+version: "0.2.0"
+schema_version: "1.0.0"
+status: draft_controlled
+governs: GQAOA-UTA-G10-975-CONTAINMENT-GRAMMAR-001
+registry: GQAOA-UTA-G10-QCSAA-REGISTRY-001
+last_updated: "2026-04-25T00:00:00Z"
+
+description: >
+  Business Rule Exchange (BREX) rule set implementing the G10.975 v0.2.0
+  containment grammar. Rules are grouped by section of the spec and are
+  enforced by tools/validators/validate_g10_975.py.
+
+governance:
+  lead_location: "Naples, Campania, Italy"
+  lead_jurisdiction: "Italy / European Union"
+  regulatory_posture: >
+    Naples-led governance; apply applicable Naples municipal, Italian
+    national, and European Union requirements jointly. Where requirements
+    overlap, the stricter safety or containment control governs.
+  enforcement_authority: STK-GOV
+
+# ─────────────────────────────────────────────
+# Containment metadata (§3, §4)
+# ─────────────────────────────────────────────
+rules:
+
+  - id: BREX-G10.975-001
+    section: "§3 / §4.1"
+    rule: "Every QCSAA registry entry SHALL declare containment_state ∈ {OBSERVE_ONLY, SANDBOXED, BOUNDED_PILOT, CONTAINED_ACTIVE, QUARANTINED, REGENCY_REVIEW, RETIRED}."
+    scope: GQAOA-UTA-G10-QCSAA-REGISTRY-001.yaml
+    severity: error
+
+  - id: BREX-G10.975-002
+    section: "§4.1"
+    rule: "Every QCSAA registry entry SHALL declare a permitted_descriptive_name string."
+    scope: GQAOA-UTA-G10-QCSAA-REGISTRY-001.yaml
+    severity: error
+
+  - id: BREX-G10.975-003
+    section: "§2"
+    rule: "Every QCSAA registry entry's uta_code SHALL match the regex ^G10\\.97[0-9]$."
+    scope: GQAOA-UTA-G10-QCSAA-REGISTRY-001.yaml
+    severity: error
+
+# ─────────────────────────────────────────────
+# Naming controls (§4.3, §4.4, §4.5)
+# ─────────────────────────────────────────────
+
+  - id: BREX-G10.975-004
+    section: "§4.3"
+    rule: >
+      Any authored occurrence of a boundary-form term (e.g. "monster", "monstrum",
+      "leviathan", "chimera") referencing a G10.97x entity SHALL be accompanied
+      by an interpretive note on first occurrence in the document, identifying
+      the UTA code and citing G10.975 §4.3.
+    scope: authored_content
+    severity: error
+
+  - id: BREX-G10.975-PROHIBITED-NAME
+    section: "§4.4 / §4.5"
+    rule: >
+      No prohibited-name term (per registry.prohibited_names) SHALL appear in
+      authored content outside a controlled prohibition context. A controlled
+      prohibition context is a sentence that explicitly cites G10.975 §4.4 and
+      states that the term is prohibited.
+    scope: authored_content
+    severity: error
+
+# ─────────────────────────────────────────────
+# State transitions (§3.1)
+# ─────────────────────────────────────────────
+
+  - id: BREX-G10.975-TRANSITION-MATRIX
+    section: "§3.1"
+    rule: >
+      Every recorded state transition SHALL be one of the allowed transitions
+      enumerated in G10.975 §3.1. Direct ACT→QRN is permitted only on a
+      recognised safety signal; direct RET→OBS is prohibited and SHALL go via
+      RET→RGN→OBS.
+    scope: ledger
+    allowed_transitions:
+      OBS: [SBX, QRN, RGN, RET]
+      SBX: [OBS, BPL, QRN, RGN, RET]
+      BPL: [OBS, SBX, ACT, QRN, RGN, RET]
+      ACT: [SBX, BPL, QRN, RGN, RET]
+      QRN: [OBS, SBX, BPL, RGN, RET]
+      RGN: [OBS, SBX, BPL, ACT, QRN, RET]
+      RET: [RGN]
+    severity: error
+
+  - id: BREX-G10.975-AUTO-DOWNGRADE
+    section: "§3.1†, §5.1"
+    rule: "Automatic ACT→QRN transitions SHALL carry a safety_signal_ref in the Evidence Package."
+    scope: ledger
+    severity: error
+
+# ─────────────────────────────────────────────
+# Evidence (§8)
+# ─────────────────────────────────────────────
+
+  - id: BREX-G10.975-EVIDENCE-SCHEMA
+    section: "§8"
+    rule: "Every Evidence Package SHALL be signed YAML and SHALL validate against schemas/G10.975-evidence-package.schema.yaml."
+    scope: evidence_packages
+    severity: error
+
+  - id: BREX-G10.975-EVIDENCE-SIGNERS
+    section: "§8, §11"
+    rule: >
+      Every Evidence Package SHALL carry signatures from STK-SAFETY and STK-GOV
+      at minimum. Packages supporting RGN entry/exit SHALL additionally carry an
+      STK-REGENCY signature.
+    scope: evidence_packages
+    severity: error
+
+  - id: BREX-G10.975-EVIDENCE-ACTIVE
+    section: "§12 (3)"
+    rule: "Every CONTAINED_ACTIVE registry entry SHALL reference a current Evidence Package."
+    scope: GQAOA-UTA-G10-QCSAA-REGISTRY-001.yaml
+    severity: error
+
+# ─────────────────────────────────────────────
+# Quarantine (§5)
+# ─────────────────────────────────────────────
+
+  - id: BREX-G10.975-QUARANTINE-EXIT
+    section: "§5.3"
+    rule: >
+      QUARANTINED→{lifecycle} transitions SHALL satisfy all five exit criteria
+      of §5.3 (review by STK-SAFETY and STK-GOV; residual risk ≤ KNOT
+      Residual_Target; explicit exit-state authorisation; signed Evidence
+      Package; ledger gate). Direct exit to CONTAINED_ACTIVE is prohibited.
+    scope: ledger
+    severity: error
+
+# ─────────────────────────────────────────────
+# Regency escalation (§7)
+# ─────────────────────────────────────────────
+
+  - id: BREX-G10.975-REGENCY-ESCALATION
+    section: "§7"
+    rule: >
+      Escalations to REGENCY_REVIEW SHALL record the trigger class
+      (ACT-safety-unresolvable, naming-violation, contested-evidence,
+      controlled-prohibition-violation) and the originating STK identity.
+    scope: ledger
+    severity: error
+
+# ─────────────────────────────────────────────
+# LC01 / KNOT mapping (§6)
+# ─────────────────────────────────────────────
+
+  - id: BREX-G10.975-KNOT-MAPPING
+    section: "§6"
+    rule: >
+      Every entity that is currently in REGENCY_REVIEW or has ever held
+      QUARANTINED SHALL have a knot_ref pointing to a KNOT entry whose
+      Residual_Target is consumed by §5.3 (2).
+    scope: GQAOA-UTA-G10-QCSAA-REGISTRY-001.yaml
+    severity: error
+
+# ─────────────────────────────────────────────
+# Ledger gate (§10)
+# ─────────────────────────────────────────────
+
+  - id: BREX-G10.975-LEDGER
+    section: "§10, §12 (8)"
+    rule: >
+      A state transition is operationally effective only after the
+      corresponding Evidence Package has been registered against the GQAOA
+      ledger. Absence of a ledger entry SHALL be treated as transition not
+      effective.
+    scope: ledger
+    severity: error
+
+# ─────────────────────────────────────────────
+# Stale-path rejection
+# ─────────────────────────────────────────────
+
+  - id: BREX-G10.975-STALE-PATHS
+    section: "registry.rejected_paths"
+    rule: >
+      No artefact in the package SHALL reference any path in
+      registry.rejected_paths (G10-QCSAA, G109, G10/QCSAA/).
+    scope: package
+    severity: error

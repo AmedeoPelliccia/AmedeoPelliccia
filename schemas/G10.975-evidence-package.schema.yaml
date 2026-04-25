@@ -1,0 +1,183 @@
+##############################################################################
+# G10.975 Evidence Package Schema
+# Signed YAML schema for state-transition evidence under the G10.975
+# containment grammar (v0.2.0).
+##############################################################################
+
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "schemas/G10.975-evidence-package.schema.yaml"
+title: "G10.975 Evidence Package"
+description: >
+  Signed YAML evidence package for a state transition of an entity registered
+  in the QCSAA range (G10.970–G10.979) under the G10.975 v0.2.0 containment
+  grammar.
+type: object
+additionalProperties: false
+
+required:
+  - schema_version
+  - package_id
+  - entity_uta_code
+  - prior_state
+  - target_state
+  - transition_kind
+  - opened_at
+  - opened_by
+  - evidence_items
+  - signatures
+  - interpretive_note_present
+
+properties:
+
+  schema_version:
+    type: string
+    const: "1.0.0"
+
+  package_id:
+    type: string
+    pattern: "^EP-G10\\.97[0-9]-[0-9]{8}-[0-9]{3}$"
+    description: "EP-<uta>-<YYYYMMDD>-<seq>"
+
+  entity_uta_code:
+    type: string
+    pattern: "^G10\\.97[0-9]$"
+
+  prior_state:
+    $ref: "#/$defs/containment_state"
+
+  target_state:
+    $ref: "#/$defs/containment_state"
+
+  transition_kind:
+    type: string
+    enum: [lifecycle, hold-entry, hold-exit, retire, rehabilitation]
+
+  opened_at:
+    type: string
+    format: date-time
+
+  opened_by:
+    type: string
+    description: "STK identity of the opener (e.g., STK-SAFETY, STK-GOV)."
+    pattern: "^STK-[A-Z]+$"
+
+  safety_signal_ref:
+    type: [string, "null"]
+    description: >
+      REQUIRED when transition is an automatic ACT→QUARANTINED downgrade
+      (G10.975 §3.1†, §5.1). MAY be null otherwise.
+
+  residual_risk_hypothesis:
+    type: [string, "null"]
+
+  knot_ref:
+    type: [string, "null"]
+    pattern: "^(KNOT-G10\\.97[0-9]-[0-9]{3})?$"
+    description: >
+      REQUIRED when prior_state or target_state is QUARANTINED or
+      REGENCY_REVIEW (G10.975 §6).
+
+  lc01_residual_target:
+    type: [number, "null"]
+    minimum: 0
+    description: >
+      REQUIRED when knot_ref is non-null; consumed by §5.3 (2) as the
+      threshold for quarantine exit.
+
+  interpretive_note_present:
+    type: boolean
+    description: >
+      MUST be true when authored content using boundary-form vocabulary
+      (G10.975 §4.3) accompanies this transition; false when no such
+      vocabulary appears.
+
+  controlled_prohibition_context:
+    type: [boolean, "null"]
+    description: >
+      When the package quotes a prohibited name (§4.4), set true and provide
+      prohibition_citation.
+
+  prohibition_citation:
+    type: [string, "null"]
+
+  evidence_items:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      additionalProperties: false
+      required: [type, reference, hash]
+      properties:
+        type:
+          type: string
+          enum:
+            - test_report
+            - simulation_run
+            - red_team_assessment
+            - safety_signal_log
+            - regency_minutes
+            - external_attestation
+            - other
+        reference:
+          type: string
+          description: "URI or repo-relative path to the evidence artefact."
+        hash:
+          type: string
+          pattern: "^sha256:[0-9a-f]{64}$"
+        notes:
+          type: [string, "null"]
+
+  signatures:
+    type: array
+    minItems: 2
+    description: >
+      MUST contain at least STK-SAFETY and STK-GOV. MUST additionally contain
+      STK-REGENCY when prior_state or target_state is REGENCY_REVIEW.
+    items:
+      type: object
+      additionalProperties: false
+      required: [signer, signed_at, signature]
+      properties:
+        signer:
+          type: string
+          pattern: "^STK-[A-Z]+$"
+        signed_at:
+          type: string
+          format: date-time
+        signature:
+          type: string
+          description: "Detached cryptographic signature over the package canonicalisation."
+        key_id:
+          type: [string, "null"]
+
+  ledger_entry:
+    type: [string, "null"]
+    description: "GQAOA ledger entry id once §10 ledger gate is satisfied."
+
+  jurisdiction:
+    type: object
+    additionalProperties: false
+    properties:
+      lead_location:
+        type: string
+        const: "Naples, Campania, Italy"
+      lead_jurisdiction:
+        type: string
+        const: "Italy / European Union"
+      regulatory_posture:
+        type: string
+      conflict_rule:
+        type: string
+        const: "stricter_control_governs"
+
+$defs:
+  containment_state:
+    type: string
+    enum:
+      - OBSERVE_ONLY
+      - SANDBOXED
+      - BOUNDED_PILOT
+      - CONTAINED_ACTIVE
+      - QUARANTINED
+      - REGENCY_REVIEW
+      - RETIRED

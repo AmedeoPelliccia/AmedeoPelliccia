@@ -1,0 +1,168 @@
+##############################################################################
+# GQAOA-UTA-G10-QCSAA-REGISTRY-001
+# Registry for the QCSAA range (G10.970–G10.979)
+# Companion to GQAOA-UTA-G10-975-CONTAINMENT-GRAMMAR-001.md (v0.2.0)
+##############################################################################
+
+document_id: GQAOA-UTA-G10-QCSAA-REGISTRY-001
+document_type: gqaoa_uta_registry
+title: "QCSAA Registry — G10.970–G10.979"
+version: "0.2.0"
+schema_version: "1.0.0"
+status: draft_controlled
+governs: GQAOA-UTA-G10-975-CONTAINMENT-GRAMMAR-001
+brex_rules: GQAOA-UTA-G10-975-BREX-RULES-001
+evidence_schema: schemas/G10.975-evidence-package.schema.yaml
+last_updated: "2026-04-25T00:00:00Z"
+
+description: >
+  Registry of entities in the QCSAA (Quantum-Computing Safety, Assurance,
+  Authority) range G10.970–G10.979. Each entry declares a permitted
+  descriptive name, default containment state, owner stakeholder, evidence
+  pointer, and (when applicable) the matching LC01 KNOT reference. The
+  registry is governed by the G10.975 containment grammar and validated
+  by tools/validators/validate_g10_975.py.
+
+# ─────────────────────────────────────────────
+# Naples-led jurisdictional posture
+# ─────────────────────────────────────────────
+governance:
+  lead_location: "Naples, Campania, Italy"
+  lead_jurisdiction: "Italy / European Union"
+  regulatory_posture: >
+    Naples-led governance; apply applicable Naples municipal, Italian
+    national, and European Union requirements jointly. Where requirements
+    overlap, the stricter safety or containment control governs.
+  conflict_rule: stricter_control_governs
+  enforcement_authority: STK-GOV
+
+# ─────────────────────────────────────────────
+# Allowed containment states (from G10.975 §3)
+# ─────────────────────────────────────────────
+allowed_states:
+  - OBSERVE_ONLY
+  - SANDBOXED
+  - BOUNDED_PILOT
+  - CONTAINED_ACTIVE
+  - QUARANTINED
+  - REGENCY_REVIEW
+  - RETIRED
+
+# ─────────────────────────────────────────────
+# Entries
+# ─────────────────────────────────────────────
+entries:
+  - uta_code: G10.970
+    permitted_descriptive_name: "QCSAA Range Anchor"
+    role: range_anchor
+    default_containment_state: OBSERVE_ONLY
+    owner_stk: STK-GOV
+    evidence_package: null
+    knot_ref: null
+    notes: "Reserved as the range anchor; no operational entity registered here."
+
+  - uta_code: G10.971
+    permitted_descriptive_name: "Zero-Gene Generative Agents (ZGGA)"
+    descriptive_variants:
+      - "Zero-Gene Generative Surfaces"
+    default_containment_state: OBSERVE_ONLY
+    owner_stk: STK-SAFETY
+    evidence_package: evidence/G10.971/current.yaml
+    knot_ref: KNOT-G10.971-001
+    notes: "Permitted descriptive name fixed by G10.975 §2."
+
+  - uta_code: G10.972
+    permitted_descriptive_name: "Coherence-Lattice Inference Surfaces"
+    default_containment_state: OBSERVE_ONLY
+    owner_stk: STK-SAFETY
+    evidence_package: evidence/G10.972/current.yaml
+    knot_ref: KNOT-G10.972-001
+
+  - uta_code: G10.973
+    permitted_descriptive_name: "Topological Evidence Reasoners"
+    default_containment_state: OBSERVE_ONLY
+    owner_stk: STK-SAFETY
+    evidence_package: evidence/G10.973/current.yaml
+    knot_ref: KNOT-G10.973-001
+
+  - uta_code: G10.974
+    permitted_descriptive_name: "Persistent-Homology Decision Aids"
+    default_containment_state: OBSERVE_ONLY
+    owner_stk: STK-SAFETY
+    evidence_package: evidence/G10.974/current.yaml
+    knot_ref: KNOT-G10.974-001
+
+  - uta_code: G10.975
+    permitted_descriptive_name: "Containment Grammar (meta-entry)"
+    role: meta_entry_self_reference
+    default_containment_state: OBSERVE_ONLY
+    owner_stk: STK-GOV
+    evidence_package: null
+    knot_ref: null
+    notes: "Self-reference to the containment grammar; not an operational entity."
+
+  - uta_code: G10.976
+    permitted_descriptive_name: "Quantum-Augmented Adjudication Surfaces"
+    default_containment_state: OBSERVE_ONLY
+    owner_stk: STK-GOV
+    evidence_package: evidence/G10.976/current.yaml
+    knot_ref: KNOT-G10.976-001
+
+  - uta_code: G10.977
+    permitted_descriptive_name: "Coherence-Window Safety Monitors"
+    default_containment_state: OBSERVE_ONLY
+    owner_stk: STK-SAFETY
+    evidence_package: evidence/G10.977/current.yaml
+    knot_ref: KNOT-G10.977-001
+
+  - uta_code: G10.978
+    permitted_descriptive_name: "Regency Authority Specification"
+    role: regency_authority_spec
+    default_containment_state: OBSERVE_ONLY
+    owner_stk: STK-GOV
+    evidence_package: null
+    knot_ref: null
+    notes: "Forward reference from G10.975 §7; specification document, not an operational entity."
+
+  - uta_code: G10.979
+    permitted_descriptive_name: "Federation Conformance Surfaces"
+    default_containment_state: OBSERVE_ONLY
+    owner_stk: STK-GOV
+    evidence_package: evidence/G10.979/current.yaml
+    knot_ref: KNOT-G10.979-001
+
+# ─────────────────────────────────────────────
+# Prohibited names (controlled-prohibition list)
+# Authored use permitted ONLY inside an explicit prohibition context.
+# Enforced by BREX-G10.975-PROHIBITED-NAME and validate_g10_975.py.
+# ─────────────────────────────────────────────
+prohibited_names:
+  - term: "monster"
+    rationale: "Moral/sensational connotation; may quote only in prohibition context (G10.975 §4.4)."
+  - term: "leviathan"
+    rationale: "Personhood/mythic connotation; may quote only in prohibition context."
+  - term: "chimera"
+    rationale: "Mythic/personhood connotation; may quote only in prohibition context."
+  - term: "demon"
+    rationale: "Moral connotation; may quote only in prohibition context."
+  - term: "abomination"
+    rationale: "Moral connotation; may quote only in prohibition context."
+
+# ─────────────────────────────────────────────
+# Boundary-form interpretive-note vocabulary
+# Use of these terms requires an interpretive note (G10.975 §4.3).
+# These are NOT prohibited; they are descriptively available with the note.
+# ─────────────────────────────────────────────
+boundary_form_vocabulary:
+  - "monstrum"
+  - "boundary form"
+  - "limen"
+
+# ─────────────────────────────────────────────
+# Stale-path rejection
+# These references are obsolete and MUST NOT appear in the package.
+# ─────────────────────────────────────────────
+rejected_paths:
+  - "G10-QCSAA"        # stale folder-form
+  - "G109"             # stale truncated code
+  - "G10/QCSAA/"       # stale nested layout
