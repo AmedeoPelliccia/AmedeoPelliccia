@@ -159,7 +159,7 @@ def check_evidence_schema() -> None:
         fail("evidence schema missing canonical $id reference")
     if "STK-" not in text:
         fail("evidence schema missing STK signer pattern")
-    info("evidence schema present with seven containment states and STK pattern")
+    info("evidence schema present with all containment states (six-state lattice + RETIRED) and STK pattern")
 
 
 def check_registry() -> None:
