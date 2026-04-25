@@ -7,6 +7,9 @@ uta_group: "G10"
 code_range: "900-999"
 name: "QCSAA"
 expansion: "Quantum Computing & Sentient Agency Architecture"
+lead_location: "Naples, Campania, Italy"
+lead_jurisdiction: "Italy / European Union"
+regulatory_posture: "Naples-led governance; apply applicable municipal, Italian national, and EU requirements, with the stricter safety or containment control governing where requirements overlap."
 normative_spec: "GQAOA-UTA-G10-975-CONTAINMENT-GRAMMAR-001"
 evidence_schema: "schemas/G10.975-evidence-package.schema.yaml"
 
@@ -162,6 +165,8 @@ stale_paths_rejected:
 **QCSAA** — Quantum Computing & Sentient Agency Architecture
 
 `G10` defines the UTA frontier-domain range for quantum-classical computation, synthetic agency, sentience-adjacent models, governance, audit, and controlled generative emergence.
+
+Lead jurisdiction: Naples, Campania, Italy. G10 / QCSAA governance applies applicable Naples municipal, Italian national, and European Union requirements; where regulatory, safety, or containment controls overlap, the stricter control governs.
 
 ### G10.970–G10.979 — ZGen / regent-ZetaGentz Containment Semantics
 
