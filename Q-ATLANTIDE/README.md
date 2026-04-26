@@ -1,6 +1,6 @@
 ---
-title: "Q-ATLANTIDE"
-subtitle: "Quantum and Aerospace Top-Level Architectures - Novel Technologies Identification Data Ecosystem"
+title: "Q+ATLANTIDE"
+subtitle: "Quantum + Aerospace Top-Level Architectures. Novel Technologies Identification Data Ecosystem"
 document_id: "QATL-ATLAS1000-README"
 baseline: "v1.0.0"
 status: "controlled-baseline"
@@ -23,11 +23,11 @@ created: "2026-04-26"
 last_updated: "2026-04-26"
 ---
 
-# Q-ATLANTIDE /
+# Q+ATLANTIDE /
 
-**Quantum and Aerospace Top-Level Architectures. Novel Technologies Identification Data Ecosystem**
+**Quantum + Aerospace Top-Level Architectures. Novel Technologies Identification Data Ecosystem**
 
-Q-ATLANTIDE / ATLAS-1000 is a controlled `000-999` taxonomy and traceability ecosystem for classifying aerospace, space, defence, digital, energy, materials, ground automation, urban air mobility, cybersecurity, and quantum / sentient-agency technologies.
+Q+ATLANTIDE / ATLAS-1000 is a controlled `000-999` taxonomy and traceability ecosystem for classifying aerospace, space, defence, digital, energy, materials, ground automation, urban air mobility, cybersecurity, and quantum / sentient-agency technologies.
 
 ---
 
