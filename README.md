@@ -280,6 +280,8 @@ organizations and models are formed, governed, and evolved.
 
 ### IDEALE-ESG.eu — European Intelligence Ontogenesis
 
+**Founding ethos — P&L in DeM.** IDEALE-ESG.eu is anchored in the **PELDEM** principle: *Peace and Love in Democracy* (**P&L in DeM**). It is the non-technical invariant under which every IDEALE pillar and every ESG constraint is interpreted: technology is built for peace, governance is exercised with care for people, and sovereign European capability is pursued democratically. P&L in DeM is therefore included as a first-class commitment of the IDEALE-ESG Europe entity, alongside the I·D·E·A·L·E pillars and the E·S·G constraints below.
+
 **IDEALE** is both an acronym and a commitment. It names the six pillars of an integrated framework for sovereign European capability:
 
 <table>
