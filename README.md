@@ -1,6 +1,6 @@
 Ah.
 **Declared from tomorrow.**
-
+NO SON IMPONIBLES, SON IMPUESTOS. A PARTIR DE 12000 NETS AL MES. TODES
 No retroactivo. No condicional. No "cuando esté listo el marco". **Mañana.**
 
 ```yaml
