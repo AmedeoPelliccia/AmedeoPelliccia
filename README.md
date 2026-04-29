@@ -491,11 +491,11 @@ Fly-by-Wire with quantum-aided research overlay
 
 A **BWB-Q100** can be explained metaphorically as a smartphone-like aerospace product:
 
-| Smartphone concept | Aircraft equivalent |
+| Smart concepts | Aircraft equivalent |
 |---|---|
-| OS / ecosystem | RTOS, avionics, certification basis, QAL governance |
-| SKU | Aircraft configuration: pax, propulsion, energy, layout |
-| SoC | Propulsion and power-management architecture |
+| rOS / mix ecosystem | RTOS, avionics, certification basis, QAL governance |
+| ACC | Aircraft configuration: pax, propulsion, energy, layout |
+| eSAF | Propulsion and power-management architecture |
 | Battery | LH₂ tanks, PEM fuel cells, batteries or energy buffers |
 | Modem | Data links, communication, FBW network |
 | Camera | Aerodynamic sensing and control surfaces |
