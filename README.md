@@ -282,11 +282,21 @@ organizations and models are formed, governed, and evolved.
 
 **Founding ethos — P&L in DeM.** The entity is declared under two co-resident, equally-first-class aliases — **PANPARA.EU** (short form, `IDEALE-ESG.eu`) and **PANPARA.EUROPE** (full form, `IDEALE-ESG.europe`). Both are declared, neither is used without declaration: the `.eu` and `.europe` namespaces live together by design and are not a binary — they are two declared faces of the same entity. The entity, under either alias, is anchored in the **PELDEM** principle: *Peace and Love in Democracy* (**P&L in DeM**). P&L in DeM is the non-technical invariant under which every IDEALE pillar and every ESG constraint is interpreted: technology is built for peace, governance is exercised with care for people, and sovereign European capability is pursued democratically. P&L in DeM is therefore included as a first-class commitment of **PANPARA.EU / PANPARA.EUROPE** (`IDEALE-ESG.eu` / `IDEALE-ESG.europe`), alongside the I·D·E·A·L·E pillars and the E·S·G constraints below.
 
-**Structural anchor — MCD (Minimal Common Denominator).** Alongside the P&L in DeM ethos, **PANPARA.EU / PANPARA.EUROPE** is anchored on a structural invariant: the **MCD**. Its properties are: *structural minimalism, shared constraint layer, open extension surface, deterministic governance, aggregation without fragmentation*. Formally, let $S_i$ denote individual system instances and $F(S_i)$ the invariant structural features extracted from each system; the MCD is their intersection:
+**Structural anchor — MCD (Minimal Common Denominator).** Alongside the P&L in DeM ethos, **PANPARA.EU / PANPARA.EUROPE** is anchored on a structural invariant: the **MCD (Minimal Common Denominator)**. Following the same declaration discipline as the `.eu` / `.europe` aliases above (nothing is used without its own declaration), every symbol is declared first and only then used.
+
+*Declarations.*
+
+- **$n \in \mathbb{N},\ n \geq 1$** is declared as the number of system instances under consideration.
+- **$S_i$**, for declared indices $i = 1, \dots, n$, is declared as an individual system instance of PANPARA.EU / PANPARA.EUROPE.
+- **$F$** is declared as the operator that, given a system instance, returns its set of invariant structural features; **$F(S_i)$** is therefore declared as the invariant structural features extracted from $S_i$.
+- **MCD** is declared as the **Minimal Common Denominator** of the declared family $\{S_1, \dots, S_n\}$, with declared properties: *structural minimalism, shared constraint layer, open extension surface, deterministic governance, aggregation without fragmentation*.
+- **Core** is declared as the content of MCD; **extensions** are declared as everything in any $F(S_i)$ that lies outside MCD.
+
+*Definition (using only declared symbols).*
 
 $$\mathrm{MCD} \;=\; \bigcap_{i=1}^{n} F(S_i)$$
 
-The core is contained in *all* systems; extensions exist outside the invariant core. The MCD is what every IDEALE pillar and every ESG constraint must conserve; everything beyond it is an open extension surface — aggregated, not fragmented, and governed deterministically.
+*Reading.* The **core** (= MCD) is, by declaration, contained in *all* declared systems $S_i$; **extensions** exist, by declaration, outside the invariant core. The MCD is what every IDEALE pillar and every ESG constraint must conserve; everything beyond it is an open extension surface — aggregated, not fragmented, and governed deterministically.
 
 **IDEALE** is both an acronym and a commitment. It names the six pillars of an integrated framework for sovereign European capability:
 
