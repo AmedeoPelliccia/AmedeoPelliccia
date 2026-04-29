@@ -29,6 +29,8 @@ last_updated: "2026-04-26"
 
 Q+ATLANTIDE / ATLAS-1000 is a controlled `000-999` taxonomy and traceability ecosystem for classifying aerospace, space, defence, digital, energy, materials, ground automation, urban air mobility, cybersecurity, and quantum / sentient-agency technologies.
 
+Linked repository: [`AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated)
+
 ---
 
 ## 1. Glossary of Terms
@@ -249,4 +251,3 @@ Q+ATLANTIDE / ATLAS-1000 is a controlled `000-999` taxonomy and traceability eco
 | Canonical table SHA-256 | `d13371fbe833278835194f74586eb5f7914adc287553d955138ba65421024a9b` |
 | Generated date | `2026-04-26` |
 | Timezone | `Europe/Madrid` |
-
