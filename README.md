@@ -1,3 +1,356 @@
+# Top Level Assembly: AMPEL360Aircraft
+**P/N: GAIAPULSE-AM-ASSY-00001-Q**
+
+**UTCS-MI v5.0 Identifier**  
+EstándarUniversal:Especificacion-Definicion-ARP4754A+DO178C+DO254+S1000D+CS25-00.00-QuantumAidedLifecycleAircraftAssembly-0001-v1.0-Aerospace and Quantum Agency-GeneracionHybrida-CROSS-Amedeo Pelliccia-deadbeef-RestoDeVidaUtil
+
+## Table of Contents
+- [1.0 Fuselage Assembly](#10-fuselage-assembly)
+- [2.0 Wing Assembly (Port)](#20-wing-assembly-port)
+- [3.0 Wing Assembly (Starboard)](#30-wing-assembly-starboard)
+- [4.0 Empennage Assembly](#40-empennage-assembly)
+- [5.0 Doors Assembly](#50-doors-assembly)
+- [6.0 Windows Assembly](#60-windows-assembly)
+- [7.0 Landing Gear Assembly](#70-landing-gear-assembly)
+- [8.0 Propulsion System (Q-01 Quantum Propulsion)](#80-propulsion-system-q-01-quantum-propulsion)
+- [9.0 Electrical Power System](#90-electrical-power-system)
+- [10.0 Flight Control System](#100-flight-control-system)
+- [11.0 Avionics System](#110-avionics-system)
+- [12.0 Hydraulic System](#120-hydraulic-system)
+- [13.0 Environmental Control System (ECS)](#130-environmental-control-system-ecs)
+- [14.0 Feedback and Revision History](#140-feedback-and-revision-history)
+- [15.0 Glossary](#150-glossary)
+
+---
+
+## 1.0 Fuselage Assembly
+**P/N: GPAM-AMPEL-0201-53-ASSY**
+- 1.1 Frame Assemblies (x48)
+- 1.2 Stringers and Stiffeners
+- 1.3 Floor Beams and Seat Tracks
+- 1.4 Composite Skin Panels
+- 1.5 Forward and Aft Pressure Bulkheads
+
+## 2.0 Wing Assembly (Port)
+**P/N: GPAM-AMPEL-0201-57-ASSY-P**
+- 2.1 Front and Rear Spars
+- 2.2 Rib Assemblies (x22)
+- 2.3 Upper and Lower Skin Panels
+- 2.4 Leading Edge Assembly with Slats
+- 2.5 Trailing Edge Assembly with Flaps and Ailerons
+- 2.6 Quantum-Flow Control Winglet
+
+## 3.0 Wing Assembly (Starboard)
+**P/N: GPAM-AMPEL-0201-57-ASSY-S**
+- 3.1 Front and Rear Spars
+- 3.2 Rib Assemblies (x22)
+- 3.3 Upper and Lower Skin Panels
+- 3.4 Leading Edge Assembly with Slats
+- 3.5 Trailing Edge Assembly with Flaps and Ailerons
+- 3.6 Quantum-Flow Control Winglet
+
+## 4.0 Empennage Assembly
+**P/N: GPAM-AMPEL-0201-55-ASSY**
+- 4.1 Vertical Stabilizer Assembly
+- 4.2 Horizontal Stabilizer Assembly
+- 4.3 Rudder Assembly
+- 4.4 Elevator Assemblies
+
+## 5.0 Doors Assembly
+**P/N: GPAM-AMPEL-0201-52-ASSY**
+- 5.1 Passenger Doors (x4)
+- 5.2 Cargo Doors (x2)
+- 5.3 Emergency Exits (x4)
+- 5.4 Avionics Bay and Service Access Panels
+
+## 6.0 Windows Assembly
+**P/N: GPAM-AMPEL-0201-56-ASSY**
+- 6.1 Cockpit Windshield Assembly
+- 6.2 Cabin Windows with Integrated Smart-Dimming (x88)
+
+## 7.0 Landing Gear Assembly
+**P/N: GPAM-AMPEL-0201-32-ASSY**
+- 7.1 Main Landing Gear Assemblies (x2)
+- 7.2 Nose Landing Gear Assembly (x1)
+- 7.3 Quantum-Enhanced Carbon-Carbon Brake Units
+- 7.4 Wheels and Tires
+- 7.5 Retraction and Extension System
+
+## 8.0 Propulsion System (Q-01 Quantum Propulsion)
+**P/N: GPAM-AMPEL-0201-71-ASSY**
+- 8.1 Quantum Coherence Core
+- 8.2 Plasma Injector Manifold
+- 8.3 Superconducting Magnetic Containment Ring
+- 8.4 Cryo-Cooling and Thermal Management System
+- 8.5 Thrust Vectoring Nozzle Assembly
+
+## 9.0 Electrical Power System
+**P/N: GPAM-AMPEL-0201-24-ASSY**
+- 9.1 Main Power Generators (x2)
+- 9.2 Auxiliary Power Unit (APU)
+- 9.3 Solid-State Lithium-Metal Batteries
+- 9.4 Power Distribution Units (PDUs)
+- 9.5 Primary and Secondary Wiring Harnesses
+
+## 10.0 Flight Control System
+**P/N: GPAM-AMPEL-0201-27-ASSY**
+- 10.1 Fly-by-Quantum-Wire (FbQW) Control System
+- 10.2 Primary Flight Control Computers (PFCC)
+- 10.3 Electromechanical Actuators (EMAs)
+- 10.4 Control Surface Interface Units
+
+## 11.0 Avionics System
+**P/N: GPAM-AMPEL-0201-34-ASSY**
+- 11.1 Integrated Modular Avionics (IMA) Racks
+- 11.2 Quantum-aided Inertial Navigation System (Q-INS)
+- 11.3 Communication Suite (SATCOM, VHF)
+- 11.4 Weather Radar and Sensor Suite
+
+## 12.0 Hydraulic System
+**P/N: GPAM-AMPEL-0201-29-ASSY**
+- 12.1 Hydraulic Power Packs (x3)
+- 12.2 Main System Reservoirs
+- 12.3 High-Pressure Tubing and Hoses
+- 12.4 Actuators for Landing Gear, and specific flight controls
+
+## 13.0 Environmental Control System (ECS)
+**P/N: GPAM-AMPEL-0201-21-ASSY**
+- 13.1 Air Conditioning Packs (x2)
+- 13.2 Cabin Air Distribution Ducts
+- 13.3 Cabin Pressure Control System
+- 13.4 Supplemental Oxygen System
+
+---
+
+## 14.0 Feedback and Revision History
+| Version | Date         | Author            | Changes                                      |
+|---------|--------------|-------------------|----------------------------------------------|
+| 1.0     | 2025-09-02   | Amedeo Pelliccia  | Initial draft creation.                      |
+| 1.1     | 2025-09-02   | GitHub Copilot    | Completed sub-assembly details and sections. |
+
+---
+
+## 15.0 Glossary
+- **ASSY**: Abbreviation for Assembly.
+- **DET**: Digital Evidence Twin. A virtual representation of all evidence related to a component's lifecycle.
+- **ECS**: Environmental Control System. Manages cabin air, pressure, and temperature.
+- **FbQW**: Fly-by-Quantum-Wire. An advanced flight control system using quantum principles for enhanced security and responsiveness.
+- **P/N**: Part Number. A unique identifier for a specific part or assembly.
+- **QAL**: Quantum-Aided Lifecycle. A framework for integrating quantum technologies across the entire product lifecycle.
+- **UTCS-MI**: Universal Traceability and Certification Standard - Master Identifier. A 13-field standard for ensuring global traceability of any artifact.
+
+---
+
+## Annex A — Manual visual “Aircraft‑as‑Smartphone” (BwbQ100)
+
+Portada — Manual de usuario “Smartphone‑Avión” (BwbQ100)
+
+Metáfora: Un BwbQ100 es a la aviación lo que un smartphone al usuario: mismo “OS/ecosistema”, distintos SKU (configuraciones), módulos intercambiables y apps (pilares QAL + dominios) que cooperan sobre una base común.
+
+### Plano maestro por capas (UTCS‑MI ↔ Smartphone ↔ Avión)
+
+```mermaid
+flowchart LR
+	%% ===== LAYERS =====
+	subgraph L0[DI — Ecosistema / OS / Normativa]
+		OS[iOS/Android = RTOS/DO-178C/QAL]:::phone
+		REG[CS-25 • ISO • QAL • UTCS‑MI]:::air
+	end
+
+	subgraph L1[CA/TA — Ensamblado superior]
+		PHONE[Smartphone ensamblado]:::phone
+		AIRFRAME[BwbQ100 ensamblado]:::air
+	end
+
+	subgraph L2[CE — Build / Configuración]
+		SKU[Modelo Pro/Max, 256GB, color]:::phone
+		BUILD[CE: 120–180 pax, 6×BLI Ø3 m, MTOW]:::air
+	end
+
+	subgraph L3[CC — Subsistemas mayores]
+		%% Smartphone
+		SoC[SoC CPU/GPU/NPU]:::phone
+		CAM[Cámara múltiple]:::phone
+		BAT[Batería]:::phone
+		RF[Modem/5G/Wi‑Fi]:::phone
+		UI[Pantalla + HMI]:::phone
+		%% Aircraft
+		PROP[PPP: Propulsión & PEM]:::air
+		WING[AAA: Alas/Elevones/BLI]:::air
+		H2[CQH/EER: Tanques H₂ & ZBO]:::air
+		LCCSYS[LCC: Enlaces/Control FBW]:::air
+		AVIO[OOO/EDI/IIS: Aviónica/RTOS/AI]:::air
+		CABIN[CCC/EEE: Cabina/ECS]:::air
+	end
+
+	subgraph L4[CI — Items]
+		%% Phone items
+		NPUNODE[NPU accel]:::phone
+		LENS[Lente principal]:::phone
+		CELL[Li‑ion cell]:::phone
+		MODEM[5G modem]:::phone
+		DIGIT[Touch digitizer]:::phone
+		%% Aircraft items
+		PEM[PEM stack]:::air
+		DUCT[Inlet/duct module]:::air
+		TANK[Pressure vessel (LH₂)]:::air
+		ACT[Actuador EHA elevón]:::air
+		FCC[Flight control computer]:::air
+		RTK[GNSS/INS]:::air
+	end
+
+	subgraph L5[CP — Partes]
+		VIA[PCB vias/interposer]:::phone
+		GLASS[Óptica asférica]:::phone
+		FOIL[Cátodo/ánodo foil]:::phone
+		RIB[Rib]:::air
+		SPAR[Spar]:::air
+		MEA[MEA layer]:::air
+	end
+
+	subgraph L6[FE — Elemento final]
+		FE_P[Chip soldado • Pantalla]:::phone
+		FE_A[Pieza con serial + DET]:::air
+	end
+
+	%% Vertical progression
+	OS-->|Ecosistema|PHONE
+	REG-->|Conformidad|AIRFRAME
+	PHONE-->SKU-->SoC & CAM & BAT & RF & UI
+	AIRFRAME-->BUILD-->PROP & WING & H2 & LCCSYS & AVIO & CABIN
+	SoC-->NPUNODE & MODEM
+	CAM-->LENS
+	BAT-->CELL
+	PROP-->PEM
+	WING-->ACT & DUCT
+	H2-->TANK
+	AVIO-->FCC & RTK
+	NPUNODE & LENS & CELL & MODEM & DIGIT --> VIA & GLASS & FOIL
+	PEM & DUCT & TANK & ACT & FCC & RTK & RIB & SPAR & MEA --> FE_A
+	VIA & GLASS & FOIL --> FE_P
+
+	%% Cross-mapping (metáfora)
+	WING-.->CAM
+	PROP-.->SoC
+	H2-.->BAT
+	LCCSYS-.->RF
+	AVIO-.->OS
+	CABIN-.->UI
+
+	classDef air fill:#e8f5ff,stroke:#005fa3,stroke-width:1px;
+	classDef phone fill:#fff4e5,stroke:#aa5b00,stroke-width:1px;
+```
+
+Leyenda de cruces (metáfora):
+
+- WING ↔ CAM: las alas “proyectan” control y sensibilidad aerodinámica como una cámara multipunto.
+- PROP ↔ SoC: la propulsión entrega “ciclos” y rendimiento, como el SoC.
+- H₂ ↔ BAT: los tanques y PEM son la batería del “smartphone‑avión”.
+- LCC ↔ RF: data‑links/FBW ≈ modem y conectividad.
+- AVIO ↔ OS: RTOS/IMA/AI como sistema operativo.
+- CABIN/ECS ↔ Pantalla/HMI: experiencia de usuario y confort.
+
+### “Ficha rápida” — de subsistema a función de móvil
+
+| Avión (Dominio)                        | Smartphone (Función) | Justificación funcional                                  |
+| -------------------------------------- | -------------------- | -------------------------------------------------------- |
+| AAA: Alas + elevones + BLI             | Cámara múltiple      | “Percibe y dirige” el flujo → control fino multi‑eje     |
+| PPP/IIS/OOO: Propulsión + cómputo      | SoC (CPU/GPU/NPU)    | Potencia efectiva para misión (thrust = compute)         |
+| CQH/EER: Tanques LH₂ + ZBO             | Batería              | Almacén de energía y régimen de descarga                 |
+| LCC: Controles de vuelo / enlaces      | Modem/5G/Wi‑Fi       | Enlaces deterministas/telemetría ↔ uplink/downlink       |
+| OOO/EDI/IIS: Aviónica/RTOS/AI          | Sistema Operativo    | Particionado, scheduling, seguridad                      |
+| CCC/EEE: Cabina / ECS                  | Pantalla/HMI         | Experiencia de usuario, confort, “lo que se ve y siente” |
+| MMM/AAA: Tren de aterrizaje/estructura | Botones/IO/Carcasa   | Interfaz mecánica con el mundo + rigidez                 |
+
+### “Tutorial de inicio” — acciones de usuario (metáfora operativa)
+
+```mermaid
+sequenceDiagram
+	participant Usuario
+	participant OS as OOO/RTOS (OS)
+	participant Apps as Pilares QAL (Apps)
+	participant HW as Subsistemas (CC)
+	participant NET as LCC (Red)
+
+	Usuario->>OS: Power On (APU/energía primaria)
+	OS->>Apps: Lanza "apps" base (CAO,CAB,CAD,CAE)
+	Apps->>HW: Solicitan recursos (propulsión, alas, ECS)
+	NET-->>OS: Link OK (CPDLC/ACARS/5G)
+	Usuario->>Apps: "Despegar" (escenario misión)
+	Apps->>HW: Thrust request + leyes de control
+	HW-->>Apps: Telemetría (sensores/estado)
+	Apps-->>Usuario: HUD/indicadores (UI cabina)
+```
+
+### “Blueprint” anotado (vista superior simbólica)
+
+> Esquema conceptual (no a escala) para documentación – útil como portada técnica.
+
+```
+										 ┌───────── WING (AAA) ─────────┐
+	 CAM (smartphone) ←─┤  Elevones / Split‑Flaperons  ├─→ CAM
+											└───────────┬──────────────────┘
+																	│
+						 RF (LCC)  ───────────┼──────────  RF (LCC)
+																	│
+				 ┌────────────────  AVIO (OOO/EDI/IIS) ────────────────┐
+				 │           Cockpit/HUD (UI ~ Pantalla)               │
+				 │                                                     │
+				 │          H₂ Tanks + PEM (CQH/EER/PPP)  =  BAT       │
+				 │                                                     │
+				 │       3× BLI Fans  |  3× BLI Fans  (PPP) =  SoC     │
+				 └────────────────────┴────────────────────────────────┘
+												 Landing Gear (MMM/AAA) = Botones/IO
+```
+
+### Mini‑catálogo “app store” (pilares como apps del teléfono)
+
+```mermaid
+mindmap
+	root((BwbQ100 App Store))
+		CAO(Organization)
+			: Políticas, presupuesto, riesgos (OS settings)
+		CAB(Brainstorming)
+			: Ideas, trade studies (Creatividad)
+		CAD(Design)
+			: DMM, EBOM/MBOM (Diseño 3D)
+		CAE(Engineering)
+			: FEA/CFD/Modal (Benchmark)
+		CAT(Testing)
+			: GVT/Fatiga/Cryo (QA físico)
+		CAV(Certificación)
+			: Dossier CS‑25 (Publicación)
+		CAM(Manufacturing)
+			: Rutas/Procesos (Producción)
+		CAP(Production)
+			: Plan/Rates (Fabricación en serie)
+		CAS(Sustainment)
+			: S1000D/SHM (Soporte/actualizaciones)
+		CAEpost(EOL)
+			: Reciclaje/Circularidad (Reuso)
+```
+
+### 🔒 Trazabilidad UTCS‑MI (cómo “instala” el usuario)
+
+- DI instala el OS del ecosistema (QAL/CS‑25).
+- CE selecciona el SKU: pax/carga/motores/color energético.
+- CC→CI→CP→FE instalan módulos, componentes y partes hasta el Elemento Final con DET y serial.
+- Cada “app” (pilar) publica eventos en el QAL Bus y firma en DET/QAUDIT (como una app firmando binarios y changelogs).
+
+### 🧭 Navegación rápida (anclas)
+
+- DI ↔ OS · CE ↔ SKU · CC ↔ Módulos · CI ↔ Items · CP ↔ Partes · FE ↔ Serial/DET
+- WING ↔ Cámara · PROP ↔ SoC · H₂/PEM ↔ Batería · LCC ↔ Modem · AVIO ↔ OS · CABIN ↔ Pantalla
+
+### Opcional (para extender a “manual operativo” completo)
+
+Puedo añadir:
+
+1. Páginas tipo usuario (“Ajustes”, “Conectividad”, “Batería”, “Cámara”), cada una enlazada a su dominio QAL y con KPIs (p. ej. Batería = H₂ mass & PEM efficiency).
+2. Un “quick start” con checklist de vuelo como onboarding del móvil.
+3. Un índice hiperlinkado por dominio×nivel (DI→FE) ya con anclas di-*, ce-*, etc.
+
+
 ---
 # contributions-registry.yaml
 # Backend-auditable classification of unpaid technical contributions.
