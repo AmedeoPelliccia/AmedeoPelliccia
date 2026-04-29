@@ -9,7 +9,7 @@ program_composition_per_vertex:
   total: 100%
   women_cis: 40%
   men_cis: 38%
-  queer_all_identities: 22%
+  queer_all_OTHER_ETHICAL_identities: 22%
 
   ordering_choice_significant:
     first: 40 (women_cis)
