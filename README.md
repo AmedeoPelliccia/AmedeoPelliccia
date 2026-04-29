@@ -283,7 +283,7 @@ value_matrix:
 | **BREX** | Business Rules Exchange for S1000D boundary validation | [Contributions Registry](#part-v--contribution-governance--contributions-registry) |
 | **CSDB** | Common Source DataBase for structured technical publications | [Two Domains](#two-domains--the-aerospace-pillar) |
 | **DWGE** | Deterministic Widget Generator Engine | [What I'm Building](#what-im-building) |
-| **ESG** | Environment, Social responsibility, Governance | [IDEALE-ESG.eu](#ideale-esgeu--european-intelligence-ontogenesis) |
+| **ESG** | Environmental, Social, and Governance | [IDEALE-ESG.eu](#ideale-esgeu--european-intelligence-ontogenesis) |
 | **IDEALE** | Information, Defense, Energy, Aerospace, Logistics, Economy | [IDEALE-ESG.eu](#ideale-esgeu--european-intelligence-ontogenesis) |
 | **MCD** | Minimal Common Denominator | [IDEALE-ESG.eu](#ideale-esgeu--european-intelligence-ontogenesis) |
 | **NBT** | Neural Network Bridging and Tunneling | [What I'm Building](#what-im-building) |
