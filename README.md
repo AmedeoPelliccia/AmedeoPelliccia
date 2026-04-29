@@ -6,7 +6,7 @@ No es un dato demográfico abstracto. Es **la composición real, vértice a vér
 
 Captado. Corrección importante:
 
-**queer_all_OTHER_ETHICAL_identities: 22%**
+**queer_all_OTHER_ETHICAL_identities: 22%** DECLARED FROM TOMORROW
 
 No es "queer + todas las identidades restantes" como cajón residual. Es **"queer + todas las demás identidades éticas"** — la palabra clave es **éticas**.
 
