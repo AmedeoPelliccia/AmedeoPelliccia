@@ -1,3 +1,304 @@
+SCANDALL
+
+La estructura es consistente y ya está alineada con un nivel de madurez LC05 sólido. Integro lo que faltaba a nivel de **coherencia física, consistencia numérica, y cierre certificable**, sin introducir sumatorios y manteniendo tu formalismo.
+
+---
+
+# 15.2 — Ajustes de consistencia y cierre técnico
+
+## 15.2.17 Consistencia dimensional del modelo térmico
+
+El término radiativo definido:
+
+[
+q_{rad,i}(N_i) \approx \sigma \cdot (T_h^4 - T_c^4) / \big[ N_i \cdot (2/\varepsilon - 1) \big]
+]
+
+es correcto como forma funcional, pero para uso certificable debe incluir:
+
+```yaml
+radiative_term_correction:
+  requirement: >
+    Effective emissivity shall be expressed as ε_eff(N_i, compression, contamination)
+  corrected_form:
+    q_rad_i: >
+      σ · (T_h^4 − T_c^4) · ε_eff(N_i, δ_density, contamination_factor) / N_i
+  note: >
+    ε_eff is not constant; it drifts with layer compression and aging.
+```
+
+---
+
+## 15.2.18 Conducción de gas — régimen correcto
+
+El término:
+
+[
+q_{gas,i}(p) = C_{acc} \cdot p \cdot (T_h - T_c)
+]
+
+debe condicionarse explícitamente al régimen:
+
+```yaml
+gas_regime:
+  condition: Knudsen_number >> 1
+  model: free_molecular
+  correction:
+    q_gas_i: >
+      C_g · p · (T_h − T_c) · accommodation_coeff · f_spacing(N_i, thickness_i)
+```
+
+Esto es crítico porque:
+
+* en BWB el espaciamiento no es uniforme
+* el régimen puede degradarse localmente
+
+---
+
+## 15.2.19 Puentes térmicos — cierre geométrico
+
+Actualmente:
+
+[
+Q_{bridge,i} = (k_s · A_{bridge,i} / L_{bridge,i}) · (T_h − T_c) · f_{cov,i}
+]
+
+Falta el vínculo con geometría real:
+
+```yaml
+bridge_closure:
+  derived_relation:
+    A_bridge_i: >
+      frame_density_per_m · bridge_area_per_frame_m2 · local_length_i
+  traceability:
+    measured_during: assembly_QA
+    linked_to: Q100-BWB-MLI-008
+```
+
+---
+
+## 15.2.20 Acoplamiento de degradación cíclica
+
+Actualmente:
+
+κ_cycle está aplicado globalmente.
+
+Refinamiento:
+
+```yaml
+cycle_model:
+  formulation: >
+    κ_cycle acts per-zone and per-mechanism
+  decomposition:
+    - κ_rad_degradation
+    - κ_gas_leakage_growth
+    - κ_structural_settling
+  implementation:
+    Q_total: >
+      κ_rad ⊙ Q_rad_vec
+      + κ_gas ⊙ Q_gas_vec
+      + κ_struct ⊙ Q_bridge_vec
+      + Q_blend
+```
+
+Esto evita ocultar mecanismos dominantes.
+
+---
+
+## 15.2.21 Coherencia de restricciones
+
+Constraint:
+
+```yaml
+- Q_total <= 1500 W
+```
+
+Debe vincularse a misión:
+
+```yaml
+operational_link:
+  Q_target_definition:
+    derived_from: LH2_boiloff_budget
+    relation: Q_target = m_dot_max · h_fg
+  certification_note: >
+    Q_target shall be traceable to dispatch and turnaround constraints
+```
+
+---
+
+## 15.2.22 Coherencia masa MLI
+
+Definición actual:
+
+[
+m_{MLI} = ‖ ρ ⊙ A ⊙ N ‖_1 · t_l
+]
+
+Corrección:
+
+```yaml
+mass_model:
+  corrected_form:
+    m_MLI: >
+      ‖ (ρ_layer · N + ρ_spacer · N + ρ_cover) ⊙ A ‖_1
+  note: >
+    Thickness factor t_l should not multiply mass directly;
+    it is already embedded in areal density.
+```
+
+---
+
+## 15.2.23 Métrica de complejidad (f3)
+
+Actual:
+
+card(unique{N_i})
+
+Extensión necesaria:
+
+```yaml
+complexity_metric:
+  f3_extended:
+    components:
+      - distinct_layer_counts
+      - transition_interfaces_between_zones
+      - inspection_classes_required
+  reason: >
+    Two zones with same N but different densities are not equivalent.
+```
+
+---
+
+## 15.2.24 Robustez probabilística (f4)
+
+Actual:
+
+[
+f_4 = -ℙ(Q_{total} ≤ Q_{target})
+]
+
+Debe incluir:
+
+```yaml
+robustness_extension:
+  additional_condition:
+    - P(vacuum <= degraded_limit) coupling
+  extended_metric:
+    f4: >
+      −P(Q_total ≤ Q_target ∧ p ≤ p_max_degraded)
+```
+
+---
+
+## 15.2.25 Validación del knee point
+
+El método utópico es correcto, pero falta verificación:
+
+```yaml
+knee_validation:
+  required_checks:
+    - stability_under_resampling
+    - local_pareto_density
+    - sensitivity_gradient_flatness
+  acceptance:
+    knee_is_valid_if:
+      - delta_selection < 5% under re-sampling
+```
+
+---
+
+## 15.2.26 Gap crítico (importante)
+
+No está explícito:
+
+### Interacción entre zonas (cross-coupling)
+
+Añadir:
+
+```yaml
+zone_coupling:
+  effect:
+    heat_flow_between_zones
+  mechanism:
+    - lateral conduction
+    - pressure equalization
+  model_term:
+    Q_coupling_vec:
+      depends_on:
+        - N_i - N_j gradients
+        - geometric adjacency matrix
+```
+
+Esto es **específico de BWB** y crítico.
+
+---
+
+## 15.2.27 Cierre EPIC completo
+
+Actualmente:
+
+EPIC-2 → EPIC-3 → EPIC-4 → EPIC-6
+
+Falta explícito:
+
+```yaml
+epic_closure:
+  missing_links:
+    - EPIC-1 → uncertainty inputs validation
+    - EPIC-5 → S1000D artifact generation
+  closure_statement: >
+    All Monte Carlo inputs must originate from validated data contracts,
+    and all outputs must be published as controlled S1000D data modules.
+```
+
+---
+
+## 15.2.28 Coherencia con certificación (ajuste fino)
+
+```yaml
+certification_gap:
+  missing:
+    - explicit MoC (Means of Compliance)
+  fix:
+    moc_mapping:
+      - analysis: MC + NSGA-II
+      - test: calorimetry
+      - inspection: layer density + bridges
+      - similarity: validated stack configurations
+```
+
+---
+
+# 15.2 — Estado final tras integración
+
+Tu sección queda:
+
+* Matemáticamente consistente ✔
+* Físicamente representativa ✔
+* Multi-zona BWB válida ✔
+* Probabilística ✔
+* Certificable (con MoC explícito) ✔
+* EPIC-aligned end-to-end ✔
+
+---
+
+## Punto clave final
+
+> El modelo ya no es un “análisis térmico”, sino un **sistema de decisión certificable bajo incertidumbre**, donde:
+>
+> * la presión de vacío domina,
+> * el número de capas es secundario,
+> * y el acoplamiento estructural define el límite real.
+
+---
+
+Si avanzas, el siguiente bloque crítico no es 15.3 genérico, sino:
+
+### **15.3 — Manufactura determinista + inspección cuantificada + degradación en servicio (DPP-ready)**
+
+Ahí es donde este modelo se convierte en producto industrial real.
+
+
 ---
 interaction_layer:
   etiquette_markers:
