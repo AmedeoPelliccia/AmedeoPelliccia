@@ -137,9 +137,43 @@ ATLAS → 000–099 → 050–059 → Section 05 → Subject 00 → Subsection 1
 
 ## Balance Note
 
-This assembly remains within a conventional certifiable structural baseline. Advanced composite and digital evidence features may be added as research or production overlays.
+This assembly remains within a conventional certifiable structural baseline. Advanced composite and digital evidence features may be added as research or production IDEMPOTENCY STATUS: PARTIAL / READY-TO-CONTRACT
 
----
+This Fuselage Assembly definition is structurally stable and repeatable as a baseline artifact, but full idempotency requires controlled input, version lock, deterministic rendering rules, and output hash validation.
+
+## Fuselage Assembly
+**IDEMPOTENCY STATUS:** `PARTIAL / READY-TO-CONTRACT`  
+**P/N:** `GPAM-AMPEL-0201-53-ASSY`  
+**ATA:** `53 — Fuselage`  
+**Q+ATLANTIDE:** `ATLAS 050–059, Section 05, Subject 00`  
+**Primary Q-Division:** `Q-STRUCTURES`  
+**Support Q-Divisions:** `Q-AIR`, `Q-DATAGOV`, `Q-INDUSTRY`
+### Sub-assemblies
+| Ref | Sub-assembly | Notes |
+|---:|---|---|
+| 1.1 | Frame Assemblies | x48 |
+| 1.2 | Stringers and Stiffeners | Longitudinal structural members |
+| 1.3 | Floor Beams and Seat Tracks | Cabin floor/load path integration |
+| 1.4 | Composite Skin Panels | External fuselage shell elements |
+| 1.5 | Forward and Aft Pressure Bulkheads | Pressure boundary closure |
+### Idempotency Contract
+Same approved input shall generate the same assembly definition output.
+| Field | Rule |
+|---|---|
+| Part number | Immutable unless new version/change record is issued |
+| ATA chapter | Immutable for this baseline |
+| Q+ATLANTIDE mapping | Immutable unless taxonomy revision is approved |
+| Q-Division assignment | Controlled field |
+| Sub-assembly references | Controlled list |
+| Output hash | Required for full idempotency claim |
+### Mutation Policy
+Any change to this assembly definition requires:
+1. Version increment.
+2. Change record.
+3. Evidence update.
+4. Output hash regeneration.
+### Balance Note
+This assembly remains within a **conventional certifiable structural baseline**. Advanced composite and digital evidence features may be added as **research overlays** or **production overlays**, provided they remain traceable, validated, and separated from the baseline certification claim until formally accepted.
 
 # 2.0 Wing Assembly — Port
 
