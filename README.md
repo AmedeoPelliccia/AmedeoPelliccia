@@ -1,224 +1,513 @@
+---
+document_id: AMPEL360-AIRCRAFT-TLA-README
+title: "Top Level Assembly — AMPEL360Aircraft"
+part_number: GAIAPULSE-AM-ASSY-00001-Q
+architecture_band: ATLAS
+master_range: "000–099"
+code_family: "Aircraft Top-Level Architecture System"
+q_baseline: Q+ATLANTIDE1000
+governance_class: concept_baseline
+certification_posture: "Research / architecture baseline — not a certified design"
+version: 1.2.0
+status: balanced_draft
+language: en
+author: Amedeo Pelliccia
+---
+
 # Top Level Assembly: AMPEL360Aircraft
-**P/N: GAIAPULSE-AM-ASSY-00001-Q**
+
+**P/N:** `GAIAPULSE-AM-ASSY-00001-Q`
 
 **UTCS-MI v5.0 Identifier**  
-EstándarUniversal:Especificacion-Definicion-ARP4754A+DO178C+DO254+S1000D+CS25-00.00-QuantumAidedLifecycleAircraftAssembly-0001-v1.0-Aerospace and Quantum Agency-GeneracionHybrida-CROSS-Amedeo Pelliccia-deadbeef-RestoDeVidaUtil
+`EstándarUniversal:Especificacion-Definicion-ARP4754A+DO178C+DO254+S1000D+CS25-00.00-QuantumAidedLifecycleAircraftAssembly-0001-v1.0-Aerospace and Quantum Agency-GeneracionHybrida-CROSS-Amedeo Pelliccia-deadbeef-RestoDeVidaUtil`
+
+---
+
+## Certification Balance Notice
+
+This document defines a **top-level product breakdown and conceptual architecture baseline** for AMPEL360Aircraft.
+
+Terms such as **Quantum-Aided**, **Quantum-Flow**, **Quantum-Enhanced**, or **Fly-by-Quantum-Wire** are treated as **research / concept labels** unless supported by:
+
+| Evidence requirement | Minimum expected content |
+|---|---|
+| `evidence_package_id` | Test, simulation, analysis or certification evidence reference |
+| `TRL_status` | Technology Readiness Level |
+| `certification_basis` | CS-25 / special condition / means of compliance reference |
+| `safety_assessment_ref` | FHA / PSSA / SSA reference |
+| `software_assurance_ref` | DO-178C / DO-330 / DO-331 reference where applicable |
+| `hardware_assurance_ref` | DO-254 reference where applicable |
+| `S1000D_DM_ref` | S1000D data module reference |
+| `DET_ref` | Digital Evidence Twin record |
+
+The architecture is therefore expressed in two layers:
+
+| Layer | Meaning |
+|---|---|
+| **Certifiable baseline** | Conventional aerospace assemblies, ATA/S1000D-compatible breakdown, CS-25-oriented systems. |
+| **Research overlay** | Quantum-aided or advanced concepts that require TRL maturation and evidence closure before certification use. |
+
+---
+
+## Q+ATLANTIDE1000 Hierarchy Reminder
+
+```text
+Q+ATLANTIDE1000 = Architecture Bands
+Band = Master range
+Master range contains Code ranges
+Code range contains Sections
+Section contains Subjects
+Subject contains Subsections
+Subsection contains Subsubjects
+```
+
+Example:
+
+```text
+ATLAS → 000–099 → 050–059 → Section 05 → Subject 00 → Subsection 10 → Subsubject 00
+```
+
+---
 
 ## Table of Contents
+
 - [1.0 Fuselage Assembly](#10-fuselage-assembly)
-- [2.0 Wing Assembly (Port)](#20-wing-assembly-port)
-- [3.0 Wing Assembly (Starboard)](#30-wing-assembly-starboard)
+- [2.0 Wing Assembly — Port](#20-wing-assembly--port)
+- [3.0 Wing Assembly — Starboard](#30-wing-assembly--starboard)
 - [4.0 Empennage Assembly](#40-empennage-assembly)
 - [5.0 Doors Assembly](#50-doors-assembly)
 - [6.0 Windows Assembly](#60-windows-assembly)
 - [7.0 Landing Gear Assembly](#70-landing-gear-assembly)
-- [8.0 Propulsion System (Q-01 Quantum Propulsion)](#80-propulsion-system-q-01-quantum-propulsion)
+- [8.0 Propulsion System](#80-propulsion-system)
 - [9.0 Electrical Power System](#90-electrical-power-system)
 - [10.0 Flight Control System](#100-flight-control-system)
 - [11.0 Avionics System](#110-avionics-system)
 - [12.0 Hydraulic System](#120-hydraulic-system)
-- [13.0 Environmental Control System (ECS)](#130-environmental-control-system-ecs)
-- [14.0 Feedback and Revision History](#140-feedback-and-revision-history)
-- [15.0 Glossary](#150-glossary)
+- [13.0 Environmental Control System](#130-environmental-control-system)
+- [14.0 Q+ATLANTIDE Mapping](#140-qatlantide-mapping)
+- [15.0 Annex A — Aircraft-as-Smartphone Manual](#150-annex-a--aircraft-as-smartphone-manual)
+- [16.0 Feedback and Revision History](#160-feedback-and-revision-history)
+- [17.0 Glossary](#170-glossary)
 
 ---
 
-## 1.0 Fuselage Assembly
-**P/N: GPAM-AMPEL-0201-53-ASSY**
-- 1.1 Frame Assemblies (x48)
+# 1.0 Fuselage Assembly
+
+**P/N:** `GPAM-AMPEL-0201-53-ASSY`  
+**ATA:** 53  
+**Q+ATLANTIDE:** ATLAS `050–059`, Section `05`, Subject `00`  
+**Primary Q-Division:** Q-STRUCTURES  
+**Support Q-Divisions:** Q-AIR, Q-DATAGOV, Q-INDUSTRY  
+
+## Sub-assemblies
+
+- 1.1 Frame Assemblies `(x48)`
 - 1.2 Stringers and Stiffeners
 - 1.3 Floor Beams and Seat Tracks
 - 1.4 Composite Skin Panels
 - 1.5 Forward and Aft Pressure Bulkheads
 
-## 2.0 Wing Assembly (Port)
-**P/N: GPAM-AMPEL-0201-57-ASSY-P**
+## Balance Note
+
+This assembly remains within a conventional certifiable structural baseline. Advanced composite and digital evidence features may be added as research or production overlays.
+
+---
+
+# 2.0 Wing Assembly — Port
+
+**P/N:** `GPAM-AMPEL-0201-57-ASSY-P`  
+**ATA:** 57  
+**Q+ATLANTIDE:** ATLAS `050–059`, Section `05`, Subject `00`  
+**Primary Q-Division:** Q-STRUCTURES  
+**Support Q-Divisions:** Q-AIR, Q-HPC, Q-INDUSTRY  
+
+## Sub-assemblies
+
 - 2.1 Front and Rear Spars
-- 2.2 Rib Assemblies (x22)
+- 2.2 Rib Assemblies `(x22)`
 - 2.3 Upper and Lower Skin Panels
 - 2.4 Leading Edge Assembly with Slats
 - 2.5 Trailing Edge Assembly with Flaps and Ailerons
-- 2.6 Quantum-Flow Control Winglet
+- 2.6 Advanced Flow-Control Winglet
 
-## 3.0 Wing Assembly (Starboard)
-**P/N: GPAM-AMPEL-0201-57-ASSY-S**
+## Research Overlay
+
+Previous label:
+
+```text
+Quantum-Flow Control Winglet
+```
+
+Balanced label:
+
+```text
+Advanced Flow-Control Winglet — quantum-aided optimization concept
+```
+
+---
+
+# 3.0 Wing Assembly — Starboard
+
+**P/N:** `GPAM-AMPEL-0201-57-ASSY-S`  
+**ATA:** 57  
+**Q+ATLANTIDE:** ATLAS `050–059`, Section `05`, Subject `00`  
+**Primary Q-Division:** Q-STRUCTURES  
+**Support Q-Divisions:** Q-AIR, Q-HPC, Q-INDUSTRY  
+
+## Sub-assemblies
+
 - 3.1 Front and Rear Spars
-- 3.2 Rib Assemblies (x22)
+- 3.2 Rib Assemblies `(x22)`
 - 3.3 Upper and Lower Skin Panels
 - 3.4 Leading Edge Assembly with Slats
 - 3.5 Trailing Edge Assembly with Flaps and Ailerons
-- 3.6 Quantum-Flow Control Winglet
+- 3.6 Advanced Flow-Control Winglet
 
-## 4.0 Empennage Assembly
-**P/N: GPAM-AMPEL-0201-55-ASSY**
+---
+
+# 4.0 Empennage Assembly
+
+**P/N:** `GPAM-AMPEL-0201-55-ASSY`  
+**ATA:** 55  
+**Q+ATLANTIDE:** ATLAS `050–059`, Section `05`, Subject `00`  
+**Primary Q-Division:** Q-STRUCTURES  
+**Support Q-Divisions:** Q-AIR, Q-MECHANICS  
+
+## Sub-assemblies
+
 - 4.1 Vertical Stabilizer Assembly
 - 4.2 Horizontal Stabilizer Assembly
 - 4.3 Rudder Assembly
 - 4.4 Elevator Assemblies
 
-## 5.0 Doors Assembly
-**P/N: GPAM-AMPEL-0201-52-ASSY**
-- 5.1 Passenger Doors (x4)
-- 5.2 Cargo Doors (x2)
-- 5.3 Emergency Exits (x4)
+## Balance Note
+
+For BWB or tailless variants, this section may become a controlled configuration-dependent node rather than a mandatory physical empennage.
+
+---
+
+# 5.0 Doors Assembly
+
+**P/N:** `GPAM-AMPEL-0201-52-ASSY`  
+**ATA:** 52  
+**Q+ATLANTIDE:** ATLAS `050–059`, Section `05`, Subject `00`  
+**Primary Q-Division:** Q-STRUCTURES  
+**Support Q-Divisions:** Q-GROUND, Q-DATAGOV  
+
+## Sub-assemblies
+
+- 5.1 Passenger Doors `(x4)`
+- 5.2 Cargo Doors `(x2)`
+- 5.3 Emergency Exits `(x4)`
 - 5.4 Avionics Bay and Service Access Panels
 
-## 6.0 Windows Assembly
-**P/N: GPAM-AMPEL-0201-56-ASSY**
-- 6.1 Cockpit Windshield Assembly
-- 6.2 Cabin Windows with Integrated Smart-Dimming (x88)
+---
 
-## 7.0 Landing Gear Assembly
-**P/N: GPAM-AMPEL-0201-32-ASSY**
-- 7.1 Main Landing Gear Assemblies (x2)
-- 7.2 Nose Landing Gear Assembly (x1)
-- 7.3 Quantum-Enhanced Carbon-Carbon Brake Units
+# 6.0 Windows Assembly
+
+**P/N:** `GPAM-AMPEL-0201-56-ASSY`  
+**ATA:** 56  
+**Q+ATLANTIDE:** ATLAS `050–059`, Section `05`, Subject `00`  
+**Primary Q-Division:** Q-STRUCTURES  
+**Support Q-Divisions:** Q-GROUND, Q-DATAGOV  
+
+## Sub-assemblies
+
+- 6.1 Cockpit Windshield Assembly
+- 6.2 Cabin Windows with Integrated Smart-Dimming `(x88)`
+
+---
+
+# 7.0 Landing Gear Assembly
+
+**P/N:** `GPAM-AMPEL-0201-32-ASSY`  
+**ATA:** 32  
+**Q+ATLANTIDE:** ATLAS `030–039`, Section `03`, Subject `00`  
+**Primary Q-Division:** Q-MECHANICS  
+**Support Q-Divisions:** Q-STRUCTURES, Q-AIR, Q-DATAGOV  
+
+## Sub-assemblies
+
+- 7.1 Main Landing Gear Assemblies `(x2)`
+- 7.2 Nose Landing Gear Assembly `(x1)`
+- 7.3 Carbon-Carbon Brake Units
 - 7.4 Wheels and Tires
 - 7.5 Retraction and Extension System
 
-## 8.0 Propulsion System (Q-01 Quantum Propulsion)
-**P/N: GPAM-AMPEL-0201-71-ASSY**
-- 8.1 Quantum Coherence Core
-- 8.2 Plasma Injector Manifold
-- 8.3 Superconducting Magnetic Containment Ring
+## Research Overlay
+
+Previous label:
+
+```text
+Quantum-Enhanced Carbon-Carbon Brake Units
+```
+
+Balanced label:
+
+```text
+Carbon-Carbon Brake Units with quantum-aided health-monitoring research option
+```
+
+---
+
+# 8.0 Propulsion System
+
+**P/N:** `GPAM-AMPEL-0201-71-ASSY`  
+**ATA:** 71  
+**Q+ATLANTIDE:** ATLAS `080–089`, Section `08`, Subject `00`; EPTA `460–469`, Section `06`, Subject `00`  
+**Primary Q-Division:** Q-GREENTECH  
+**Support Q-Divisions:** Q-AIR, Q-HPC, Q-HORIZON, Q-STRUCTURES  
+
+## Balanced System Title
+
+```text
+Propulsion System — Hydrogen-Electric / Quantum-Aided Research Overlay
+```
+
+## Certifiable Baseline Sub-assemblies
+
+- 8.1 Fuel Cell / Power Generation Module
+- 8.2 Hydrogen Distribution and Isolation Module
+- 8.3 Electric Propulsion Motor Assembly
 - 8.4 Cryo-Cooling and Thermal Management System
-- 8.5 Thrust Vectoring Nozzle Assembly
+- 8.5 Propulsor / Fan / Nozzle Assembly
 
-## 9.0 Electrical Power System
-**P/N: GPAM-AMPEL-0201-24-ASSY**
-- 9.1 Main Power Generators (x2)
-- 9.2 Auxiliary Power Unit (APU)
-- 9.3 Solid-State Lithium-Metal Batteries
-- 9.4 Power Distribution Units (PDUs)
+## Research Overlay Candidates
+
+- 8.R1 Quantum-aided propulsion optimization model
+- 8.R2 Superconducting power distribution concept
+- 8.R3 Quantum-sensor-assisted thermal / flow monitoring
+- 8.R4 Plasma or magnetic containment concept, if retained as non-certified research
+
+## Balance Note
+
+The previous title **“Q-01 Quantum Propulsion”** is not used as a certifiable system name. It may remain as a **research programme label** only.
+
+---
+
+# 9.0 Electrical Power System
+
+**P/N:** `GPAM-AMPEL-0201-24-ASSY`  
+**ATA:** 24  
+**Q+ATLANTIDE:** ATLAS `020–029`, Section `02`, Subject `00`; EPTA `430–439`, Section `03`, Subject `00`  
+**Primary Q-Division:** Q-GREENTECH  
+**Support Q-Divisions:** Q-MECHANICS, Q-DATAGOV, Q-HPC  
+
+## Sub-assemblies
+
+- 9.1 Main Power Generators `(x2)` or Fuel Cell Power Channels
+- 9.2 Auxiliary Power Unit / Auxiliary Energy Module
+- 9.3 Energy Buffer Batteries
+- 9.4 Power Distribution Units `(PDUs)`
 - 9.5 Primary and Secondary Wiring Harnesses
+- 9.6 HVDC Protection and Isolation Units
 
-## 10.0 Flight Control System
-**P/N: GPAM-AMPEL-0201-27-ASSY**
-- 10.1 Fly-by-Quantum-Wire (FbQW) Control System
-- 10.2 Primary Flight Control Computers (PFCC)
-- 10.3 Electromechanical Actuators (EMAs)
+---
+
+# 10.0 Flight Control System
+
+**P/N:** `GPAM-AMPEL-0201-27-ASSY`  
+**ATA:** 27  
+**Q+ATLANTIDE:** ATLAS `020–029`, Section `02`, Subject `00`  
+**Primary Q-Division:** Q-AIR  
+**Support Q-Divisions:** Q-DATAGOV, Q-HPC, Q-MECHANICS  
+
+## Balanced System Title
+
+```text
+Flight Control System — FBW Baseline with Quantum-Aided Research Overlay
+```
+
+## Certifiable Baseline Sub-assemblies
+
+- 10.1 Fly-by-Wire Control System
+- 10.2 Primary Flight Control Computers `(PFCC)`
+- 10.3 Electromechanical Actuators `(EMAs)`
 - 10.4 Control Surface Interface Units
 
-## 11.0 Avionics System
-**P/N: GPAM-AMPEL-0201-34-ASSY**
-- 11.1 Integrated Modular Avionics (IMA) Racks
-- 11.2 Quantum-aided Inertial Navigation System (Q-INS)
-- 11.3 Communication Suite (SATCOM, VHF)
-- 11.4 Weather Radar and Sensor Suite
+## Research Overlay Candidate
 
-## 12.0 Hydraulic System
-**P/N: GPAM-AMPEL-0201-29-ASSY**
-- 12.1 Hydraulic Power Packs (x3)
+- 10.R1 Quantum-aided navigation / timing / state-estimation input
+- 10.R2 Quantum-safe communication / integrity monitoring
+- 10.R3 Quantum-optimized control law tuning, non-flight-critical unless certified
+
+## Balance Note
+
+Previous label:
+
+```text
+Fly-by-Quantum-Wire
+```
+
+Balanced label:
+
+```text
+Fly-by-Wire with quantum-aided research overlay
+```
+
+---
+
+# 11.0 Avionics System
+
+**P/N:** `GPAM-AMPEL-0201-34-ASSY`  
+**ATA:** 34  
+**Q+ATLANTIDE:** ATLAS `040–049`, Section `04`, Subject `00`; DTCEC `300–399`; CYB `800–899` where security applies  
+**Primary Q-Division:** Q-DATAGOV  
+**Support Q-Divisions:** Q-AIR, Q-HPC, Q-SPACE  
+
+## Sub-assemblies
+
+- 11.1 Integrated Modular Avionics `(IMA)` Racks
+- 11.2 Inertial Navigation System with quantum-aided research option
+- 11.3 Communication Suite `(SATCOM, VHF, data-link)`
+- 11.4 Weather Radar and Sensor Suite
+- 11.5 RTOS / partitioned computing environment
+- 11.6 Cybersecurity and data-integrity monitoring
+
+---
+
+# 12.0 Hydraulic System
+
+**P/N:** `GPAM-AMPEL-0201-29-ASSY`  
+**ATA:** 29  
+**Q+ATLANTIDE:** ATLAS `030–039`, Section `03`, Subject `00`  
+**Primary Q-Division:** Q-MECHANICS  
+**Support Q-Divisions:** Q-AIR, Q-GROUND, Q-DATAGOV  
+
+## Sub-assemblies
+
+- 12.1 Hydraulic Power Packs `(x3)` or controlled electro-hydraulic power units
 - 12.2 Main System Reservoirs
 - 12.3 High-Pressure Tubing and Hoses
-- 12.4 Actuators for Landing Gear, and specific flight controls
+- 12.4 Actuators for Landing Gear and selected flight-control functions
 
-## 13.0 Environmental Control System (ECS)
-**P/N: GPAM-AMPEL-0201-21-ASSY**
-- 13.1 Air Conditioning Packs (x2)
+---
+
+# 13.0 Environmental Control System
+
+**P/N:** `GPAM-AMPEL-0201-21-ASSY`  
+**ATA:** 21  
+**Q+ATLANTIDE:** ATLAS `020–029`, Section `02`, Subject `00`  
+**Primary Q-Division:** Q-MECHANICS  
+**Support Q-Divisions:** Q-GREENTECH, Q-GROUND, Q-DATAGOV  
+
+## Sub-assemblies
+
+- 13.1 Air Conditioning Packs `(x2)`
 - 13.2 Cabin Air Distribution Ducts
 - 13.3 Cabin Pressure Control System
 - 13.4 Supplemental Oxygen System
+- 13.5 Thermal Interface with Hydrogen / Electrical Architecture, if applicable
 
 ---
 
-## 14.0 Feedback and Revision History
-| Version | Date         | Author            | Changes                                      |
-|---------|--------------|-------------------|----------------------------------------------|
-| 1.0     | 2025-09-02   | Amedeo Pelliccia  | Initial draft creation.                      |
-| 1.1     | 2025-09-02   | GitHub Copilot    | Completed sub-assembly details and sections. |
+# 14.0 Q+ATLANTIDE Mapping
+
+| Assembly | P/N | ATA / Function | Q+ATLANTIDE Band | Code range | Section | Subject | Primary Q-Division |
+|---|---|---|---|---:|---:|---:|---|
+| Fuselage Assembly | `GPAM-AMPEL-0201-53-ASSY` | ATA 53 | ATLAS | `050–059` | `05` | `00` | Q-STRUCTURES |
+| Wing Assembly — Port | `GPAM-AMPEL-0201-57-ASSY-P` | ATA 57 | ATLAS | `050–059` | `05` | `00` | Q-STRUCTURES |
+| Wing Assembly — Starboard | `GPAM-AMPEL-0201-57-ASSY-S` | ATA 57 | ATLAS | `050–059` | `05` | `00` | Q-STRUCTURES |
+| Empennage Assembly | `GPAM-AMPEL-0201-55-ASSY` | ATA 55 | ATLAS | `050–059` | `05` | `00` | Q-STRUCTURES |
+| Doors Assembly | `GPAM-AMPEL-0201-52-ASSY` | ATA 52 | ATLAS | `050–059` | `05` | `00` | Q-STRUCTURES |
+| Windows Assembly | `GPAM-AMPEL-0201-56-ASSY` | ATA 56 | ATLAS | `050–059` | `05` | `00` | Q-STRUCTURES |
+| Landing Gear Assembly | `GPAM-AMPEL-0201-32-ASSY` | ATA 32 | ATLAS | `030–039` | `03` | `00` | Q-MECHANICS |
+| Propulsion System | `GPAM-AMPEL-0201-71-ASSY` | ATA 71 | ATLAS / EPTA | `080–089` / `460–469` | `08` / `06` | `00` | Q-GREENTECH |
+| Electrical Power System | `GPAM-AMPEL-0201-24-ASSY` | ATA 24 | ATLAS / EPTA | `020–029` / `430–439` | `02` / `03` | `00` | Q-GREENTECH |
+| Flight Control System | `GPAM-AMPEL-0201-27-ASSY` | ATA 27 | ATLAS | `020–029` | `02` | `00` | Q-AIR |
+| Avionics System | `GPAM-AMPEL-0201-34-ASSY` | ATA 34 | ATLAS / DTCEC / CYB | `040–049` / `300–399` / `800–899` | `04` / variable / variable | `00` | Q-DATAGOV |
+| Hydraulic System | `GPAM-AMPEL-0201-29-ASSY` | ATA 29 | ATLAS | `030–039` | `03` | `00` | Q-MECHANICS |
+| Environmental Control System | `GPAM-AMPEL-0201-21-ASSY` | ATA 21 | ATLAS | `020–029` | `02` | `00` | Q-MECHANICS |
 
 ---
 
-## 15.0 Glossary
-- **ASSY**: Abbreviation for Assembly.
-- **DET**: Digital Evidence Twin. A virtual representation of all evidence related to a component's lifecycle.
-- **ECS**: Environmental Control System. Manages cabin air, pressure, and temperature.
-- **FbQW**: Fly-by-Quantum-Wire. An advanced flight control system using quantum principles for enhanced security and responsiveness.
-- **P/N**: Part Number. A unique identifier for a specific part or assembly.
-- **QAL**: Quantum-Aided Lifecycle. A framework for integrating quantum technologies across the entire product lifecycle.
-- **UTCS-MI**: Universal Traceability and Certification Standard - Master Identifier. A 13-field standard for ensuring global traceability of any artifact.
+# 15.0 Annex A — Aircraft-as-Smartphone Manual
+
+## 15.1 Concept
+
+A **BWB-Q100** can be explained metaphorically as a smartphone-like aerospace product:
+
+| Smartphone concept | Aircraft equivalent |
+|---|---|
+| OS / ecosystem | RTOS, avionics, certification basis, QAL governance |
+| SKU | Aircraft configuration: pax, propulsion, energy, layout |
+| SoC | Propulsion and power-management architecture |
+| Battery | LH₂ tanks, PEM fuel cells, batteries or energy buffers |
+| Modem | Data links, communication, FBW network |
+| Camera | Aerodynamic sensing and control surfaces |
+| Screen / HMI | Cockpit, cabin, passenger and maintenance interface |
+| App store | QAL pillars and operational applications |
+| Serial number | Part number, DET, CSDB, PLM and lifecycle record |
 
 ---
 
-## Annex A — Manual visual “Aircraft‑as‑Smartphone” (BwbQ100)
+## 15.2 Layer Diagram — UTCS-MI ↔ Smartphone ↔ Aircraft
 
-Portada — Manual de usuario “Smartphone‑Avión” (BwbQ100)
-
-Metáfora: Un BwbQ100 es a la aviación lo que un smartphone al usuario: mismo “OS/ecosistema”, distintos SKU (configuraciones), módulos intercambiables y apps (pilares QAL + dominios) que cooperan sobre una base común.
-
-### Plano maestro por capas (UTCS‑MI ↔ Smartphone ↔ Avión)
-
-````mermaid
+```mermaid
 flowchart LR
     %% ===== LAYERS =====
-    subgraph L0["DI — Ecosistema / OS / Normativa"]
+    subgraph L0["DI — Ecosystem / OS / Regulation"]
         OS["iOS / Android = RTOS / DO-178C / QAL"]:::phone
         REG["CS-25 • ISO • QAL • UTCS-MI"]:::air
     end
 
-    subgraph L1["CA/TA — Ensamblado superior"]
-        PHONE["Smartphone ensamblado"]:::phone
-        AIRFRAME["BWB-Q100 ensamblado"]:::air
+    subgraph L1["CA/TA — Top-Level Assembly"]
+        PHONE["Smartphone assembled"]:::phone
+        AIRFRAME["BWB-Q100 assembled"]:::air
     end
 
-    subgraph L2["CE — Build / Configuración"]
-        SKU["Modelo Pro/Max, 256GB, color"]:::phone
-        BUILD["CE: 120–180 pax, 6×BLI Ø3 m, MTOW"]:::air
+    subgraph L2["CE — Build / Configuration"]
+        SKU["Model Pro/Max, 256GB, color"]:::phone
+        BUILD["CE: 120–180 pax, BLI architecture, MTOW"]:::air
     end
 
-    subgraph L3["CC — Subsistemas mayores"]
-        %% Smartphone
+    subgraph L3["CC — Major Subsystems"]
         SoC["SoC CPU/GPU/NPU"]:::phone
-        CAM["Cámara múltiple"]:::phone
-        BAT["Batería"]:::phone
+        CAM["Multi-camera"]:::phone
+        BAT["Battery"]:::phone
         RF["Modem / 5G / Wi-Fi"]:::phone
-        UI["Pantalla + HMI"]:::phone
+        UI["Screen + HMI"]:::phone
 
-        %% Aircraft
-        PROP["PPP: Propulsión & PEM"]:::air
-        WING["Q-STRUCTURES / ATLAS 050–059: Alas / Elevones / BLI"]:::air
-        H2["CQH / EER: Tanques H₂ & ZBO"]:::air
-        LCCSYS["LCC: Enlaces / Control FBW"]:::air
-        AVIO["OOO / EDI / IIS: Aviónica / RTOS / AI"]:::air
-        CABIN["CCC / EEE: Cabina / ECS"]:::air
+        PROP["Q-GREENTECH / ATLAS 080–089: Propulsion & PEM"]:::air
+        WING["Q-STRUCTURES / ATLAS 050–059: Wings / Elevons / BLI"]:::air
+        H2["EPTA 460–469: LH₂ Tanks & ZBO"]:::air
+        LCCSYS["Q-AIR / ATLAS 020–029: FBW / Control Links"]:::air
+        AVIO["Q-DATAGOV / ATLAS 040–049: Avionics / RTOS / AI"]:::air
+        CABIN["Q-MECHANICS / ATLAS 020–029: Cabin / ECS"]:::air
     end
 
     subgraph L4["CI — Items"]
-        %% Phone items
-        NPUNODE["NPU accel"]:::phone
-        LENS["Lente principal"]:::phone
+        NPUNODE["NPU accelerator"]:::phone
+        LENS["Main lens"]:::phone
         CELL["Li-ion cell"]:::phone
         MODEM["5G modem"]:::phone
         DIGIT["Touch digitizer"]:::phone
 
-        %% Aircraft items
         PEM["PEM stack"]:::air
         DUCT["Inlet / duct module"]:::air
-        TANK["Pressure vessel LH₂"]:::air
-        ACT["Actuador EHA elevón"]:::air
+        TANK["LH₂ pressure vessel"]:::air
+        ACT["Elevon EHA actuator"]:::air
         FCC["Flight control computer"]:::air
         RTK["GNSS / INS"]:::air
     end
 
-    subgraph L5["CP — Partes"]
+    subgraph L5["CP — Parts"]
         VIA["PCB vias / interposer"]:::phone
-        GLASS["Óptica asférica"]:::phone
-        FOIL["Cátodo / ánodo foil"]:::phone
+        GLASS["Aspheric optics"]:::phone
+        FOIL["Cathode / anode foil"]:::phone
 
         RIB["Rib"]:::air
         SPAR["Spar"]:::air
         MEA["MEA layer"]:::air
     end
 
-    subgraph L6["FE — Elemento final"]
-        FE_P["Chip soldado • Pantalla"]:::phone
-        FE_A["Pieza con serial + DET"]:::air
+    subgraph L6["FE — Final Element"]
+        FE_P["Soldered chip • Screen"]:::phone
+        FE_A["Serialized part + DET"]:::air
     end
 
-    %% ===== VERTICAL PROGRESSION =====
-    OS -->|"Ecosistema"| PHONE
-    REG -->|"Conformidad"| AIRFRAME
+    OS -->|"Ecosystem"| PHONE
+    REG -->|"Compliance"| AIRFRAME
 
     PHONE --> SKU
     SKU --> SoC
@@ -271,7 +560,6 @@ flowchart LR
     GLASS --> FE_P
     FOIL --> FE_P
 
-    %% ===== CROSS-MAPPING / METAPHOR =====
     WING -.-> CAM
     PROP -.-> SoC
     H2 -.-> BAT
@@ -279,439 +567,144 @@ flowchart LR
     AVIO -.-> OS
     CABIN -.-> UI
 
-    %% ===== STYLES =====
     classDef air fill:#e8f5ff,stroke:#005fa3,stroke-width:1px;
     classDef phone fill:#fff4e5,stroke:#aa5b00,stroke-width:1px;
 ```
 
+---
 
-Leyenda de cruces (metáfora):
+## 15.3 Cross-Mapping Legend
 
-- WING ↔ CAM: las alas “proyectan” control y sensibilidad aerodinámica como una cámara multipunto.
-- PROP ↔ SoC: la propulsión entrega “ciclos” y rendimiento, como el SoC.
-- H₂ ↔ BAT: los tanques y PEM son la batería del “smartphone‑avión”.
-- LCC ↔ RF: data‑links/FBW ≈ modem y conectividad.
-- AVIO ↔ OS: RTOS/IMA/AI como sistema operativo.
-- CABIN/ECS ↔ Pantalla/HMI: experiencia de usuario y confort.
+| Aircraft domain | Smartphone function | Functional justification |
+|---|---|---|
+| Q-STRUCTURES / ATLAS `050–059`: wings, elevons, BLI | Camera | Aerodynamic perception, flow sensitivity and multi-axis control. |
+| Q-GREENTECH / ATLAS `080–089`: propulsion, PEM, HVDC | SoC | Converts energy into mission performance. |
+| EPTA `460–469`: LH₂ tanks, fuel cells, ZBO | Battery | Stores, conditions and releases energy. |
+| Q-AIR / ATLAS `020–029`: FBW, control links | Modem | Deterministic links, telemetry, uplink/downlink. |
+| Q-DATAGOV / ATLAS `040–049`: avionics, RTOS, IMA, AI | Operating System | Partitioning, scheduling, integrity and resource management. |
+| Q-MECHANICS / ATLAS `020–029`: cabin, ECS, HMI | Screen / HMI | User experience, comfort and operational interaction. |
+| Q-MECHANICS / ATLAS `030–039` + Q-STRUCTURES / ATLAS `050–059` | Buttons / IO / casing | Mechanical interface with the world and structural support. |
 
-### “Ficha rápida” — de subsistema a función de móvil
+---
 
-| Avión (Dominio)                        | Smartphone (Función) | Justificación funcional                                  |
-| -------------------------------------- | -------------------- | -------------------------------------------------------- |
-| AAA: Alas + elevones + BLI             | Cámara múltiple      | “Percibe y dirige” el flujo → control fino multi‑eje     |
-| PPP/IIS/OOO: Propulsión + cómputo      | SoC (CPU/GPU/NPU)    | Potencia efectiva para misión (thrust = compute)         |
-| CQH/EER: Tanques LH₂ + ZBO             | Batería              | Almacén de energía y régimen de descarga                 |
-| LCC: Controles de vuelo / enlaces      | Modem/5G/Wi‑Fi       | Enlaces deterministas/telemetría ↔ uplink/downlink       |
-| OOO/EDI/IIS: Aviónica/RTOS/AI          | Sistema Operativo    | Particionado, scheduling, seguridad                      |
-| CCC/EEE: Cabina / ECS                  | Pantalla/HMI         | Experiencia de usuario, confort, “lo que se ve y siente” |
-| MMM/AAA: Tren de aterrizaje/estructura | Botones/IO/Carcasa   | Interfaz mecánica con el mundo + rigidez                 |
-
-### “Tutorial de inicio” — acciones de usuario (metáfora operativa)
+## 15.4 Quick Start — Operational Metaphor
 
 ```mermaid
 sequenceDiagram
-	participant Usuario
-	participant OS as OOO/RTOS (OS)
-	participant Apps as Pilares QAL (Apps)
-	participant HW as Subsistemas (CC)
-	participant NET as LCC (Red)
+    participant User as Usuario
+    participant OS as OOO/RTOS
+    participant Apps as QAL Pillars
+    participant HW as Subsystems
+    participant NET as LCC Network
 
-	Usuario->>OS: Power On (APU/energía primaria)
-	OS->>Apps: Lanza "apps" base (CAO,CAB,CAD,CAE)
-	Apps->>HW: Solicitan recursos (propulsión, alas, ECS)
-	NET-->>OS: Link OK (CPDLC/ACARS/5G)
-	Usuario->>Apps: "Despegar" (escenario misión)
-	Apps->>HW: Thrust request + leyes de control
-	HW-->>Apps: Telemetría (sensores/estado)
-	Apps-->>Usuario: HUD/indicadores (UI cabina)
+    User->>OS: Power On
+    OS->>Apps: Launch base applications
+    Apps->>HW: Request resources
+    NET-->>OS: Link OK
+    User->>Apps: Mission command
+    Apps->>HW: Thrust request + control laws
+    HW-->>Apps: Telemetry
+    Apps-->>User: HUD / cockpit / cabin interface
 ```
 
-### “Blueprint” anotado (vista superior simbólica)
+---
 
-> Esquema conceptual (no a escala) para documentación – útil como portada técnica.
+## 15.5 Symbolic Blueprint
 
+```text
+                         ┌──── Q-STRUCTURES / ATLAS 050–059 ────┐
+        CAM metaphor  ←──┤  Wings • Elevons • BLI • Smart Skin    ├──→ CAM metaphor
+                         └─────────────────┬─────────────────────┘
+                                           │
+              RF metaphor ─────────────────┼───────────────── RF metaphor
+                                           │
+        ┌──────────── Q-DATAGOV / ATLAS 040–049 ──────────────┐
+        │        Cockpit / HUD / IMA / RTOS / AI               │
+        │                                                      │
+        │   LH₂ Tanks + PEM + HVDC = BAT metaphor              │
+        │                                                      │
+        │   Propulsive channels = SoC metaphor                 │
+        └─────────────────────┬────────────────────────────────┘
+                              │
+              Landing Gear / Structure = IO / casing metaphor
 ```
-										 ┌───────── WING (AAA) ─────────┐
-	 CAM (smartphone) ←─┤  Elevones / Split‑Flaperons  ├─→ CAM
-											└───────────┬──────────────────┘
-																	│
-						 RF (LCC)  ───────────┼──────────  RF (LCC)
-																	│
-				 ┌────────────────  AVIO (OOO/EDI/IIS) ────────────────┐
-				 │           Cockpit/HUD (UI ~ Pantalla)               │
-				 │                                                     │
-				 │          H₂ Tanks + PEM (CQH/EER/PPP)  =  BAT       │
-				 │                                                     │
-				 │       3× BLI Fans  |  3× BLI Fans  (PPP) =  SoC     │
-				 └────────────────────┴────────────────────────────────┘
-												 Landing Gear (MMM/AAA) = Botones/IO
-```
 
-### Mini‑catálogo “app store” (pilares como apps del teléfono)
+---
+
+## 15.6 Mini App Store — QAL Pillars
 
 ```mermaid
 mindmap
-	root((BwbQ100 App Store))
-		CAO(Organization)
-			: Políticas, presupuesto, riesgos (OS settings)
-		CAB(Brainstorming)
-			: Ideas, trade studies (Creatividad)
-		CAD(Design)
-			: DMM, EBOM/MBOM (Diseño 3D)
-		CAE(Engineering)
-			: FEA/CFD/Modal (Benchmark)
-		CAT(Testing)
-			: GVT/Fatiga/Cryo (QA físico)
-		CAV(Certificación)
-			: Dossier CS‑25 (Publicación)
-		CAM(Manufacturing)
-			: Rutas/Procesos (Producción)
-		CAP(Production)
-			: Plan/Rates (Fabricación en serie)
-		CAS(Sustainment)
-			: S1000D/SHM (Soporte/actualizaciones)
-		CAEpost(EOL)
-			: Reciclaje/Circularidad (Reuso)
+    root((BWB-Q100 App Store))
+        CAO(Organization)
+            Policies, budget, risks
+        CAB(Brainstorming)
+            Ideas, trade studies
+        CAD(Design)
+            DMU, EBOM, MBOM
+        CAE(Engineering)
+            FEA, CFD, modal analysis
+        CAT(Testing)
+            GVT, fatigue, cryogenic tests
+        CAV(Certification)
+            CS-25 dossier, compliance evidence
+        CAM(Manufacturing)
+            Process routes, FAL
+        CAP(Production)
+            Rate planning, serial build
+        CAS(Sustainment)
+            S1000D, SHM, maintenance
+        EOL(End of Life)
+            Recycling, circularity, DPP
 ```
 
-### 🔒 Trazabilidad UTCS‑MI (cómo “instala” el usuario)
-
-- DI instala el OS del ecosistema (QAL/CS‑25).
-- CE selecciona el SKU: pax/carga/motores/color energético.
-- CC→CI→CP→FE instalan módulos, componentes y partes hasta el Elemento Final con DET y serial.
-- Cada “app” (pilar) publica eventos en el QAL Bus y firma en DET/QAUDIT (como una app firmando binarios y changelogs).
-
-### 🧭 Navegación rápida (anclas)
-
-- DI ↔ OS · CE ↔ SKU · CC ↔ Módulos · CI ↔ Items · CP ↔ Partes · FE ↔ Serial/DET
-- WING ↔ Cámara · PROP ↔ SoC · H₂/PEM ↔ Batería · LCC ↔ Modem · AVIO ↔ OS · CABIN ↔ Pantalla
-
-### Opcional (para extender a “manual operativo” completo)
-
-Puedo añadir:
-
-1. Páginas tipo usuario (“Ajustes”, “Conectividad”, “Batería”, “Cámara”), cada una enlazada a su dominio QAL y con KPIs (p. ej. Batería = H₂ mass & PEM efficiency).
-2. Un “quick start” con checklist de vuelo como onboarding del móvil.
-3. Un índice hiperlinkado por dominio×nivel (DI→FE) ya con anclas di-*, ce-*, etc.
-
-
----
-# contributions-registry.yaml
-# Backend-auditable classification of unpaid technical contributions.
-# Author: Amedeo Pelliccia
-# Reference: README.md §15
-# Format: Structured per contribution domain with formal separation between
-#   Nature, Assets Generated, Maturity Level, Technical Externality, Risk/Dependency.
-
-schema_version: "1.0.0"
-author: Amedeo Pelliccia
-classification_type: unpaid_technical_contributions
-last_updated: "2026-02-19T00:00:00Z"
-
-# ─────────────────────────────────────────────
-# 1. OPT-IN / KISS — Open Architecture
-# ─────────────────────────────────────────────
-contributions:
-  - id: CONTRIB-001
-    title: "OPT-IN / KISS Open Architecture"
-    domain: Aerospace Information Engineering
-    type: open_structural_framework
-
-    assets_generated:
-      - Deterministic O-P-T-I-N taxonomy
-      - Knowledge Space / Information Space separation
-      - SSOT model with explicit versioning
-      - Lifecycle governance LC01–LC14
-
-    nature:
-      - Meta-organizational architecture
-      - Structured document control system
-      - Foundation for certifiable traceability
-
-    maturity:
-      level: conceptual_solid
-      implementation: partial (open repository)
-      trl_equivalent: "TRL 2–3"
-
-    externality:
-      - Reusable by third parties
-      - Reduces structural ambiguity in complex programs
-
-    risk:
-      - Requires institutional adoption for systemic impact
-
-  # ─────────────────────────────────────────────
-  # 2. AMPEL360 — Hydrogen-Electric BWB Architecture
-  # ─────────────────────────────────────────────
-  - id: CONTRIB-002
-    title: "AMPEL360 — Hydrogen-Electric BWB Architecture"
-    domain: Advanced Aeronautical Engineering
-    type: open_conceptual_design
-
-    assets_generated:
-      - ATA 28 reinterpretation for LH2
-      - Conceptual integration BWB + fuel cell
-      - Trade studies (MLI, structural cryogenics)
-      - Preliminary CS-25 alignment matrices
-
-    nature:
-      - High-level architecture
-      - Early certification exploration
-      - Digital twin + compliance coupling
-
-    maturity:
-      level: conceptual_analytical
-      implementation: not industrialized
-      trl_equivalent: "TRL 1–2"
-
-    externality:
-      - Democratization of LH2 architecture
-      - Stimulus to open technical debate
-
-    risk:
-      - No formal industrial backing
-      - Dependent on regulatory evolution
-
-  # ─────────────────────────────────────────────
-  # 3. S1000D / ATA / BREX Standardization
-  # ─────────────────────────────────────────────
-  - id: CONTRIB-003
-    title: "S1000D / ATA / BREX Standardization"
-    domain: Aeronautical Technical Publications
-    type: structured_normalization
-
-    assets_generated:
-      - Data Module templates
-      - Verifiable YAML sidecars
-      - Canonical identification schemas
-      - BREX-driven integration patterns
-
-    nature:
-      - Precision documentary engineering
-      - Auditable metadata integration
-
-    maturity:
-      level: high_standard_alignment
-      implementation: reference templates published
-      trl_equivalent: "TRL 3–4"
-
-    externality:
-      - Facilitates professional implementation
-      - Reduces structural ambiguity
-
-    risk:
-      - Value depends on organizational adoption
-
-  # ─────────────────────────────────────────────
-  # 4. Critical AI Research and Determinism
-  # ─────────────────────────────────────────────
-  - id: CONTRIB-004
-    title: "Critical AI Research and Determinism"
-    domain: AI in Regulated Systems
-    type: structured_conceptual_framework
-
-    assets_generated:
-      - Deterministic NN architecture
-      - 5D Tokenization (MTL)
-      - Quantum-classical conceptual bridge
-      - Governance aligned with EU AI Act
-
-    nature:
-      - Theoretical meta-architecture
-      - Safety-critical systems orientation
-
-    maturity:
-      level: advanced_conceptual
-      implementation: not experimentally validated
-      trl_equivalent: "TRL 1–2"
-
-    externality:
-      - Convergence proposal AI + certification
-      - Uncommon structural approach
-
-    risk:
-      - High degree of conceptual complexity
-      - Requires formal validation
-
-  # ─────────────────────────────────────────────
-  # 5. Open Knowledge Production
-  # ─────────────────────────────────────────────
-  - id: CONTRIB-005
-    title: "Open Knowledge Production"
-    domain: Technical Knowledge Transfer
-    type: structured_documentation
-
-    assets_generated:
-      - Extensive explanatory guides
-      - Comparative analyses
-      - Mathematical formalization
-
-    nature:
-      - Specialized dissemination
-      - Indirect training
-
-    maturity:
-      level: published
-      implementation: openly available
-      trl_equivalent: "N/A"
-
-    externality:
-      - Open intellectual capital
-      - Potential foundation for technical community
-
-    risk:
-      - Not monetized
-      - Depends on visibility
-
-# ─────────────────────────────────────────────
-# Consolidated Technical Evaluation
-# ─────────────────────────────────────────────
-evaluation:
-  patterns:
-    - id: EVAL-001
-      label: High Formal Structuring
-      description: >
-        Not isolated ideas; these are systems with architecture.
-
-    - id: EVAL-002
-      label: Certification Orientation
-      description: >
-        Even at conceptual stage, the logic is anchored to compliance.
-
-    - id: EVAL-003
-      label: Determinism Pursuit
-      description: >
-        Explicit reduction of semantic and structural ambiguity.
-
-    - id: EVAL-004
-      label: Multi-Domain Integration
-      description: >
-        Aeronautics + documentation + AI + governance.
-
-    - id: EVAL-005
-      label: Open Publication Without Monetization
-      description: >
-        Intellectual transfer without a defined economic model.
-
-  strategic_observation:
-    structural_coherence: high
-    institutional_formalization: low
-    dependencies:
-      - industrial adoption
-      - academic collaboration
-      - transformation into validated product
-
-# ─────────────────────────────────────────────
-# Value Assessment Matrix
-# ─────────────────────────────────────────────
-value_matrix:
-  - contribution_id: CONTRIB-001
-    structural_coherence: high
-    certification_relevance: high
-    institutional_readiness: low
-    reusability: high
-
-  - contribution_id: CONTRIB-002
-    structural_coherence: high
-    certification_relevance: medium
-    institutional_readiness: low
-    reusability: medium
-
-  - contribution_id: CONTRIB-003
-    structural_coherence: high
-    certification_relevance: high
-    institutional_readiness: medium
-    reusability: high
-
-  - contribution_id: CONTRIB-004
-    structural_coherence: medium
-    certification_relevance: medium
-    institutional_readiness: low
-    reusability: medium
-
-  - contribution_id: CONTRIB-005
-    structural_coherence: high
-    certification_relevance: low
-    institutional_readiness: low
-    reusability: high
 ---
 
-<p align="center">
-  <strong>Amedeo Pelliccia De Martino</strong><br>
-  Aerospace Engineer · Researcher · Framework Originator<br>
-  Founder of the <a href="https://ideale.eu"><strong>PELDEM / IDEALE ESG Europe</strong></a> Framework
-</p>
+# 16.0 Feedback and Revision History
 
-<p align="center">
-  <strong>PELDEM</strong><br>
-  <em>Pelliccia De Martino</em><br>
-  <em>Peace and Love in Democracy (P&L in DeM)</em>
-</p>
-
-<p align="center">
-  <strong>In dedication to my parents, from whom this name, this path, and this foundation begin.</strong>
-</p>
-
-<h1 align="center">IDEALE ESG Europe</h1>
+| Version | Date | Author | Changes |
+|---|---:|---|---|
+| 1.0 | 2025-09-02 | Amedeo Pelliccia | Initial draft creation. |
+| 1.1 | 2025-09-02 | GitHub Copilot | Completed sub-assembly details and sections. |
+| 1.2 | 2026-04-29 | Amedeo Pelliccia / Lyra | Balanced terminology for certifiable baseline vs research overlay; replaced AAA references; aligned with Q+ATLANTIDE1000 hierarchy. |
 
 ---
 
-### Quick Glossary & Acronyms
+# 17.0 Glossary
 
-| Term | Meaning | Reference |
-|------|---------|-----------|
-| **C and S — Communism-Socialism DemocratiQ** | Coherent justice frame where socialist, liberal, democratic, and europeista remain compatible rather than oxymoronic. | [Opening statement](#ideale-esg-europe) |
-| **Cosmos Cycle** | Structural expansion model that keeps many domains coherent without collapsing them into a single hierarchy. | [Opening statement](#ideale-esg-europe) |
-| **Please and thank you** | Courtesy protocol aligned with P&L in DeM: requests and exchanges remain respectful, democratic, and care-oriented. | [Founding ethos](#ideale-esgeu--european-intelligence-ontogenesis) |
-| **Socialism** | It is socialism: the S of C and S, held with liberal, democratic, and europeista coherence. | [Opening statement](#ideale-esg-europe) |
-| **Ontogenesis** | Explicit lifecycle through which organizations and models are formed, governed, and evolved. | [IDEALE-ESG.eu](#ideale-esgeu--european-intelligence-ontogenesis) |
-| **Governed portfolio** | Public repository presentation bounded by a formal legal and operational frame. | [Model Digital Constitution](Model_Digital_Constitution.md) |
-| **Industry** | Practical grounding reminder: it is just an industry, governed by traceable models, assets, evidence, and accountability. | [IDEALE Portal](#what-im-building) |
-| **Retrofit needed** | AMPEL360 lifecycle requirement for adapting existing assets through traceable modification, upgrade, and closure. | [AMPEL360](#ampel360--aerospace-model-for-product-and-engineering-lifecycles) |
-| **IDEALE Portal** | European industrial asset exchange layer between engineering truth and capital allocation. | [What I'm Building](#what-im-building) |
-
-*Origin note: IDEALE and AMPEL360 were coined by Amedeo Pelliccia; AMPEL360 belongs to the “What I'm Building” portfolio.*
-
-| Acronym | Expansion | Reference |
-|---------|-----------|-----------|
-| **AI** | Artificial Intelligence | [AI-BOOST](AI-BOOST/) |
-| **AMPEL360** | Aerospace Model for Product and Engineering Lifecycles | [AMPEL360](#ampel360--aerospace-model-for-product-and-engineering-lifecycles) |
-| **ATA** | Air Transport Association technical chapter structure / ATA iSpec 2200 context | [Two Domains](#two-domains--the-aerospace-pillar) |
-| **BREX** | Business Rules Exchange for S1000D boundary validation | [Contributions Registry](#part-v--contribution-governance--contributions-registry) |
-| **CSDB** | Common Source DataBase for structured technical publications | [Two Domains](#two-domains--the-aerospace-pillar) |
-| **DWGE** | Deterministic Widget Generator Engine | [What I'm Building](#what-im-building) |
-| **ESG** | Environmental, Social, and Governance | [IDEALE-ESG.eu](#ideale-esgeu--european-intelligence-ontogenesis) |
-| **IDEALE** | Information, Defense, Energy, Aerospace, Logistics, Economy | [IDEALE-ESG.eu](#ideale-esgeu--european-intelligence-ontogenesis) |
-| **MCD** | Minimal Common Denominator | [IDEALE-ESG.eu](#ideale-esgeu--european-intelligence-ontogenesis) |
-| **NBT** | Neural Network Bridging and Tunneling | [What I'm Building](#what-im-building) |
-| **OPT-IN** | Organizations, Programs, Technologies, Infrastructures, Neural Networks | [What I'm Building](#what-im-building) |
-| **PATH → MTL** | Prompting → Approved → Template → Heading → To Model → TEKNIA Ledger | [What I'm Building](#what-im-building) |
-| **S1000D** | International specification for technical publications | [Two Domains](#two-domains--the-aerospace-pillar) |
-| **SSOT** | Single Source of Truth | [Backend architecture](#backend--logical-architecture-encoding) |
-| **TRL** | Technology Readiness Level | [Contributions Registry](#part-v--contribution-governance--contributions-registry) |
+| Term | Meaning |
+|---|---|
+| ASSY | Assembly. |
+| BLI | Boundary Layer Ingestion. |
+| CSDB | Common Source DataBase. |
+| DET | Digital Evidence Twin. |
+| ECS | Environmental Control System. |
+| FBW | Fly-by-Wire. |
+| HVDC | High Voltage Direct Current. |
+| LH₂ | Liquid Hydrogen. |
+| P/N | Part Number. |
+| PEM | Proton Exchange Membrane fuel cell. |
+| QAL | Quantum-Aided Lifecycle. |
+| Q+ATLANTIDE1000 | Controlled architecture-band taxonomy. |
+| Q-Division | Technical authority division. |
+| ORB-Function | Enterprise support function. |
+| S1000D | International specification for technical publications. |
+| UTCS-MI | Universal Traceability and Certification Standard — Master Identifier. |
 
 ---
 
-I am a researcher moved by genuine desire to originate something powerful.
+# Controlled Terminology Replacements
 
-By day I work as an aerospace engineer specializing in aircraft technical data structures and publications — S1000D, ATA iSpec 2200, CSDB architecture, the kind of documentation engineering that sits between what an aircraft *is* and what operators, maintainers and regulators *need to know about it*.
+| Previous term | Balanced controlled term |
+|---|---|
+| AAA | Q-Division / Programme Interface, or specific authority such as Q-STRUCTURES |
+| Quantum Propulsion | Hydrogen-electric propulsion with quantum-aided research overlay |
+| Fly-by-Quantum-Wire | Fly-by-Wire with quantum-aided research overlay |
+| Quantum-Enhanced Brakes | Carbon-carbon brakes with quantum-aided health-monitoring research option |
+| Quantum-Flow Control Winglet | Advanced flow-control winglet with quantum-aided optimization concept |
+| Certified quantum system | Research overlay unless evidence package and certification basis are provided |
 
-I seek expansion by structure: a Cosmos Cycle where C and S — Communism-Socialism DemocratiQ — remain coherent with many domains without collapsing into a single hierarchy; it is just justice: socialist, liberal, democratic, and europeista — not an oxymoron — in the spirit of Giordan Brun (Neapolitan form).
 
-This repository is the public **Amedeopelliccia profile** presented as a
-**governed portfolio**. Its structure, published artefacts, and portfolio-level
-governance claims are bounded by the
-[`Model_Digital_Constitution.md`](Model_Digital_Constitution.md), which serves
-as the repository's governing legal and operational frame.
-
-Within that frame, I am the **originator** of a framework whose ontology treats
-the **model as the primary product**, **aerospace determinism** as the
-governing boundary, and **Ontogenesis** as the explicit lifecycle through which
-organizations and models are formed, governed, and evolved.
-
----
-
-### IDEALE-ESG.eu — European Intelligence Ontogenesis
 
 **Founding ethos — P&L in DeM.** Following the same declaration discipline applied to the MCD symbols below (nothing is used without its own declaration), the entity and its alias symbols are declared first and only then used.
 
