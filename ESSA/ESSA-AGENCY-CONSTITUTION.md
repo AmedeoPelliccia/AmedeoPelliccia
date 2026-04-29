@@ -155,9 +155,9 @@ ESSA-Agency mandates a **certification operator (ALPC)** that validates:
 
 ---
 
-## 7. Relationship to EUSSA and Sector Agencies
+## 7. Relationship to EUSSSA and Sector Agencies
 
-EUSSA (European Union Space Safety Agency) becomes a **sector execution authority** that:
+EUSSA (European Union Space Safety and Security Agency) becomes a **sector execution authority** that:
 
 - Applies ESSA-Agency Safety Envelopes to space operations (STM, traffic, range safety)
 - Reports occurrences and operational evidence back into the ESSA lifecycle graph
