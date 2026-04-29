@@ -270,6 +270,7 @@ value_matrix:
 | **Ontogenesis** | Explicit lifecycle through which organizations and models are formed, governed, and evolved. | [IDEALE-ESG.eu](#ideale-esgeu--european-intelligence-ontogenesis) |
 | **Governed portfolio** | Public repository presentation bounded by a formal legal and operational frame. | [Model Digital Constitution](Model_Digital_Constitution.md) |
 | **Industry** | Practical grounding reminder: it is just an industry, governed by traceable models, assets, evidence, and accountability. | [IDEALE Portal](#what-im-building) |
+| **Retrofit needed** | AMPEL360 lifecycle requirement for adapting existing assets through traceable modification, upgrade, and closure. | [AMPEL360](#ampel360--aerospace-model-for-product-and-engineering-lifecycles) |
 | **IDEALE Portal** | European industrial asset exchange layer between engineering truth and capital allocation. | [What I'm Building](#what-im-building) |
 
 *Origin note: IDEALE and AMPEL360 were coined by Amedeo Pelliccia; AMPEL360 belongs to the “What I'm Building” portfolio.*
