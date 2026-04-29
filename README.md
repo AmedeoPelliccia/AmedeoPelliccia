@@ -263,7 +263,7 @@ value_matrix:
 
 | Term | Meaning | Reference |
 |------|---------|-----------|
-| **C and S — Comunism-Socialism DemocratiQ** | Coherent justice frame where socialist, liberal, democratic, and europeista remain compatible rather than oxymoronic. | [Opening statement](#ideale-esg-europe) |
+| **C and S — Communism-Socialism DemocratiQ** | Coherent justice frame where socialist, liberal, democratic, and europeista remain compatible rather than oxymoronic. | [Opening statement](#ideale-esg-europe) |
 | **Cosmos Cycle** | Structural expansion model that keeps many domains coherent without collapsing them into a single hierarchy. | [Opening statement](#ideale-esg-europe) |
 | **Please and thank you** | Courtesy protocol aligned with P&L in DeM: requests and exchanges remain respectful, democratic, and care-oriented. | [Founding ethos](#ideale-esgeu--european-intelligence-ontogenesis) |
 | **Socialism** | It is socialism: the S of C and S, held with liberal, democratic, and europeista coherence. | [Opening statement](#ideale-esg-europe) |
