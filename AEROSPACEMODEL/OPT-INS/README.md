@@ -50,5 +50,7 @@ OPT-INS/
 ## Related
 
 - [AMPEL Family Taxonomy](../../AMPEL-FAMILY-TAXONOMY.md)
+- [AMPEL Artifact Layers](../../AMPEL-ARTIFACT-LAYERS.md) — Models / CSP / OTAPC / FIDITA parallel baselines
+- [G10.975 Containment Grammar](../../G10-975-CONTAINMENT-GRAMMAR.md) — load-bearing primitive of G109-30 (`regent-ZetaGentz`); `KNOT-G10-975-001` is open and gates admissibility of any frontier-agent evidence emitted from this OPT-INS wrapper
 - [AEROSPACEMODEL root](../README.md)
 - [AIRCRAFTMODEL (aerial domain)](../../AIRCRAFTMODEL/README.md)

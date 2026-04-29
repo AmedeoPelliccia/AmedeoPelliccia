@@ -18,7 +18,7 @@ Non-cylindrical centerbody with blended outer wing — a lifting-body design.
 
 | Area | BWB Characteristic |
 |------|---------------------|
-| **Pressure vessel** | Non-cylindrical — multi-bubble or Y-frame structural concept |
+| **Pressure vessel** | Non-cylindrical — Y-frame / integrally-stiffened centerbody structural concept |
 | **Propulsion integration** | Boundary-layer ingestion (BLI) propulsion |
 | **Cabin / egress** | Wide-cabin layout; non-standard emergency egress paths |
 | **Aeroelastics** | Coupled centerbody–outer-wing aeroelastic response |
@@ -28,6 +28,14 @@ Non-cylindrical centerbody with blended outer wing — a lifting-body design.
 
 This configuration shares the OPT-IN framework instance at `../../OPT-IN_FRAMEWORK/`.
 Configuration-specific overrides and divergence items are placed in this directory.
+
+## AMPELSystem instance
+
+Concrete `AMPELSystem` evidence for this configuration is in
+[`ampel-system.json`](./ampel-system.json) and exercises every section of the
+shared structure (ProjectInfo, Mapping, Detection, CaptureCapsules,
+Technologies, Metrics, FinancialBenefits, Stakeholders, PotentialClients).
+Schema in [`../SCHEMAS.md`](../SCHEMAS.md).
 
 ## Related
 

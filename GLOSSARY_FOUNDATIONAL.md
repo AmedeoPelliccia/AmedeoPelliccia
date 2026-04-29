@@ -76,6 +76,8 @@ All documents, repositories, data modules, and engineering artifacts **SHALL** u
 
 **CB → QB → UE → FE → FWD → QS** `[G]` — Quantum-Classical Bridge Layer Stack. Six-layer abstraction from Classical Base through Quantum Substrate.
 
+**CSP** `[G]` — **Certifiable Strategies and Programmes.** Programme-level baseline binding a Model (or one of its configurations) to a regulatory anchor, a means-of-compliance strategy, and a programme plan. Owned by the Programme Director. Parallel baseline to Models, OTAPCs, and FIDITAs. See `AMPEL-ARTIFACT-LAYERS.md`.
+
 **CCB** `[I]` — Configuration Control Board.
 
 **CCT** `[I]` — Condition Cross-reference Table. S1000D condition-based applicability.
@@ -132,6 +134,8 @@ All documents, repositories, data modules, and engineering artifacts **SHALL** u
 
 **FDIR** `[I]` — Fault Detection, Isolation, and Recovery.
 
+**FIDITA** `[G]` — **Full Identical Digital Implementation of Twin Architecture.** Frozen, byte-identical digital twin of a Model configuration's full twin architecture — design definition + industrialisation package + the running digital-twin implementation that mirrors the as-built / as-flown article — captured at a specific programme epoch. Append-only baseline: new FIDITAs supersede prior ones via explicit `supersedes:` lineage and are never edited in place. Bit-for-bit reproducible from the artifacts it cites. Parallel baseline to Models, CSPs, and OTAPCs. Anchors to G4 (DTCEC — Digital Twin, Cloud &amp; Edge Computing). See `AMPEL-ARTIFACT-LAYERS.md`.
+
 ---
 
 ## G
@@ -149,7 +153,30 @@ All documents, repositories, data modules, and engineering artifacts **SHALL** u
 | G7 | 600–699 | OGATA — On-Ground Automation Technology |
 | G8 | 700–799 | ACV — Aerial City Viability |
 | G9 | 800–899 | CYB — Cybersecurity Architecture |
-| G10 | 900–999 | QCSAA — Quantum Computing &amp; Sentient Agency |
+| G10 | 900–999 | QCSAA — Quantum Computing &amp; Sentient Agency (chapters **970–979** carry ZGen / regent-ZetaGentz containment semantics governed by `G10.975` — see `G10-975-CONTAINMENT-GRAMMAR.md`) |
+
+**G109** `[G]` — Subdomain within G10 (QCSAA, chapters 900–999) covering agentic systems. Two branches:
+
+| Code | Name | Scope |
+|------|------|-------|
+| G109-10 | **SENTIENTIT** | Known agents — certifiable, auditable; zGen outputs = KNUs; DO-178C adjacent. |
+| G109-30 | **regent-ZetaGentz** | Frontier agents — boundary-forms; supervisory / regency governance. |
+
+Within G109-30:
+
+| Code | Name |
+|------|------|
+| G10.970 | ZGen Systems |
+| G10.971 | Zero-Gene Agents |
+| G10.972 | ZetaGentz classes |
+| G10.973 | regent-ZetaGentz (supervisory / regency governance) |
+| G10.974 | Generative Monsters (*monstrum* — boundary-form, not evil) |
+| G10.975 | **Containment Grammar** (load-bearing primitive — see `KNOT-G10-975-001` and the normative spec [`G10-975-CONTAINMENT-GRAMMAR.md`](./G10-975-CONTAINMENT-GRAMMAR.md)) |
+| G10.976 | Ethical Interface |
+
+**Containment Grammar (G10.975)** is the load-bearing primitive of G109-30. Without it, "frontier agent" becomes a blanket exemption from auditability. The grammar **SHALL** define (a) which agent names are permissible (no taxonomy creep without formal entry), (b) which behaviours are containable vs. quarantinable, and (c) which evidence triggers regency escalation (`SENTIENTIT_zGen` → `regent-ZetaGentz` reclassification).
+
+**KNOT-G10-975-001** `[G]` — *Containment Grammar undefined.* Any `regent-ZetaGentz`-class agent without G10.975 compliance is unclassifiable under G109 and **SHALL NOT** be admitted as airworthiness evidence. Residual: 100. Status: open. Normative spec: [`G10-975-CONTAINMENT-GRAMMAR.md`](./G10-975-CONTAINMENT-GRAMMAR.md).
 
 **GAIA** `[G]` — Programme family prefix. Enterprise: GAIA QUANTUM AMPEL OPT-INS ARCHITECTURE.
 
@@ -217,6 +244,8 @@ All documents, repositories, data modules, and engineering artifacts **SHALL** u
 
 **Machine Instinct Thesis** `[G]` — AI systems developing functional analogues to biological instinct within governed boundaries.
 
+**Model** `[G]` — Top-level product-line repository scoping one engineering domain (e.g. `AIRCRAFTMODEL`, `AEROSPACEMODEL`). Answers *what* is being built; runs as a parallel baseline to CSP, OTAPC, and FIDITA. See `AMPEL-FAMILY-TAXONOMY.md` and `AMPEL-ARTIFACT-LAYERS.md`.
+
 **MonKBit** `[G]` — NeuronBit_{KB=100}. Log₁₀₀ unit in MUSIC-MCC.
 
 **MonoBit** `[G]` — Base MUSIC-MCC unit. Minimal cryptographic communication quantum.
@@ -247,6 +276,8 @@ All documents, repositories, data modules, and engineering artifacts **SHALL** u
 
 **OPT-INS** `[G]` — 6-axis (+1): OPT-IN + SIM-TEST. Canonical topology aligned with G1–G10 UTA.
 
+**OTAPC** `[G]` — **Overlap-Top Architectures Project Charter.** Multilateral charter governing an architecture pattern that overlaps the top of two or more Models or configurations (e.g. shared compute spine across `AMPEL360-Q100` and `AMPEL360-Q10`). Owned by the Principal Architect with co-signature from each affected Model's Chief Engineer. Parallel baseline to Models, CSPs, and FIDITAs. See `AMPEL-ARTIFACT-LAYERS.md`.
+
 ---
 
 ## P
@@ -267,7 +298,7 @@ All documents, repositories, data modules, and engineering artifacts **SHALL** u
 
 ## Q
 
-**QCSAA** `[G]` — Quantum Computing &amp; Sentient Agency Architecture. G10 (900–999).
+**QCSAA** `[G]` — Quantum Computing &amp; Sentient Agency Architecture. G10 (900–999). Chapters **970–979** are reserved for agentic systems with containment semantics (ZGen Systems, Zero-Gene Agents, ZetaGentz classes, regent-ZetaGentz, Generative Monsters, Containment Grammar, Ethical Interface), governed normatively by `G10.975` — see `G10-975-CONTAINMENT-GRAMMAR.md` and the `G109` entry.
 
 **QKD** `[I]` — Quantum Key Distribution.
 

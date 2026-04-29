@@ -28,6 +28,14 @@ Conventional cylindrical fuselage with discrete wing attachment.
 This configuration shares the OPT-IN framework instance at `../../OPT-IN_FRAMEWORK/`.
 Configuration-specific overrides and divergence items are placed in this directory.
 
+## AMPELSystem instance
+
+Concrete `AMPELSystem` evidence for this configuration is in
+[`ampel-system.json`](./ampel-system.json) and exercises every section of the
+shared structure (ProjectInfo, Mapping, Detection, CaptureCapsules,
+Technologies, Metrics, FinancialBenefits, Stakeholders, PotentialClients).
+Schema in [`../SCHEMAS.md`](../SCHEMAS.md).
+
 ## Related
 
 - [OPT-IN Framework (shared)](../../OPT-IN_FRAMEWORK/README.md)
