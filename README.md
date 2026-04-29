@@ -1,4 +1,78 @@
-SCANDALL
+PARA HACER UN AVIÓN HACEN FALTA YA MILL
+
+Sí. Ese es el punto crítico.
+
+Para cerrar el vínculo con **geometría real BWB**, añade este bloque:
+
+```yaml
+geometry_link_bwb:
+  id: GEO-BWB-CCC-MLI-001
+  purpose: >
+    Bind thermal bridge and MLI zone calculations to the actual BWB geometric
+    definition instead of using abstract area or bridge factors.
+
+  geometry_sources:
+    - BWB_master_outer_mold_line
+    - CCC_cell_layout
+    - center_body_frame_map
+    - blend_zone_rib_map
+    - service_penetration_map
+    - vacuum_jacket_segmentation
+    - MLI_zone_partition
+
+  zone_geometry:
+    center_body:
+      area_source: CCC_center_body_surface_mesh
+      local_length_source: frame_station_spacing
+      bridge_source: center_body_frames
+      adjacency: [blend_zone]
+
+    blend_zone:
+      area_source: CCC_blend_surface_mesh
+      local_length_source: rib_and_frame_intersection_map
+      bridge_source: blend_frames_ribs_hardpoints
+      adjacency: [center_body, outer_wing]
+
+    outer_wing:
+      area_source: CCC_outer_wing_surface_mesh
+      local_length_source: rib_station_spacing
+      bridge_source: outer_wing_ribs_and_supports
+      adjacency: [blend_zone]
+
+  derived_quantities:
+    A_zone_i: extracted_from_surface_mesh
+    local_length_i: extracted_from_station_map
+    A_bridge_i: frame_density_per_m * bridge_area_per_frame_m2 * local_length_i
+    L_bridge_i: extracted_from_structural_stackup
+    f_cov_i: measured_or_inspected_bridge_coverage_fraction
+    adjacency_matrix: extracted_from_zone_partition
+```
+
+Y en el texto técnico:
+
+> All BWB MLI thermal terms shall be geometrically bound to the product definition through the BWB outer mold line, CCC cell layout, frame/rib station maps, penetration maps, and MLI zone partition. Abstract bridge factors are not acceptable unless traced to extracted geometric quantities.
+
+Versión requisito:
+
+```yaml
+- id: Q100-BWB-MLI-009
+  text: >
+    All zone areas, bridge areas, bridge lengths, local thermal path lengths,
+    penetration locations, and adjacency relationships used in the CCC MLI
+    thermal model shall be extracted from the controlled BWB geometric
+    definition and configuration-managed as LC05 input data.
+  verification: analysis + inspection + configuration_audit
+  evidence:
+    - GEO-BWB-CCC-MLI-001
+    - CAD_mesh_area_extraction_report
+    - frame_rib_station_map
+    - penetration_register
+    - MLI_zone_partition_map
+```
+
+Frase corta:
+
+> Sin geometría real, el modelo sólo es correlación. Con geometría vinculada, se convierte en evidencia de producto.
 
 La estructura es consistente y ya está alineada con un nivel de madurez LC05 sólido. Integro lo que faltaba a nivel de **coherencia física, consistencia numérica, y cierre certificable**, sin introducir sumatorios y manteniendo tu formalismo.
 
