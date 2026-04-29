@@ -266,6 +266,7 @@ value_matrix:
 | **C and S — Comunism-Socialism DemocratiQ** | Coherent justice frame where socialist, liberal, democratic, and europeista remain compatible rather than oxymoronic. | [Opening statement](#ideale-esg-europe) |
 | **Cosmos Cycle** | Structural expansion model that keeps many domains coherent without collapsing them into a single hierarchy. | [Opening statement](#ideale-esg-europe) |
 | **Please and thank you** | Courtesy protocol aligned with P&L in DeM: requests and exchanges remain respectful, democratic, and care-oriented. | [Founding ethos](#ideale-esgeu--european-intelligence-ontogenesis) |
+| **Socialism** | It is socialism: the S of C and S, held with liberal, democratic, and europeista coherence. | [Opening statement](#ideale-esg-europe) |
 | **Ontogenesis** | Explicit lifecycle through which organizations and models are formed, governed, and evolved. | [IDEALE-ESG.eu](#ideale-esgeu--european-intelligence-ontogenesis) |
 | **Governed portfolio** | Public repository presentation bounded by a formal legal and operational frame. | [Model Digital Constitution](Model_Digital_Constitution.md) |
 | **Industry** | Practical grounding reminder: it is just an industry, governed by traceable models, assets, evidence, and accountability. | [IDEALE Portal](#what-im-building) |
