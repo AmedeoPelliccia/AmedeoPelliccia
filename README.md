@@ -272,7 +272,7 @@ value_matrix:
 | **Industry** | Practical grounding reminder: it is just an industry, governed by traceable models, assets, evidence, and accountability. | [IDEALE Portal](#what-im-building) |
 | **IDEALE Portal** | European industrial asset exchange layer between engineering truth and capital allocation. | [What I'm Building](#what-im-building) |
 
-*Origin note: IDEALE was coined by Amedeo Pelliccia.*
+*Origin note: IDEALE and AMPEL360 were coined by Amedeo Pelliccia; AMPEL360 belongs to the “What I'm Building” portfolio.*
 
 | Acronym | Expansion | Reference |
 |---------|-----------|-----------|
