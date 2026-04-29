@@ -127,6 +127,8 @@ ATLAS → 000–099 → 050–059 → Section 05 → Subject 00 → Subsection 1
 **Primary Q-Division:** Q-STRUCTURES  
 **Support Q-Divisions:** Q-AIR, Q-DATAGOV, Q-INDUSTRY  
 
+
+
 ## Sub-assemblies
 
 - 1.1 Frame Assemblies `(x48)`
@@ -173,7 +175,7 @@ Any change to this assembly definition requires:
 3. Evidence update.
 4. Output hash regeneration.
 ### Balance Note
-This assembly remains within a **conventional certifiable structural baseline**. Advanced composite and digital evidence features may be added as **research overlays** or **production overlays**, provided they remain traceable, validated, and separated from the baseline certification claim until formally accepted.
+This assembly remains within a **conventional certifiable structural baseline**. Advanced composite and digital evidence features it must be mandatory be added as **research overlays** or **production overlays**, provided they remain traceable, validated, and separated from the baseline certification claim until formally accepted.
 
 # 2.0 Wing Assembly — Port
 
