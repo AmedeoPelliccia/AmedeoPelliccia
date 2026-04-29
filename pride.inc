@@ -1,1 +1,1 @@
-a sequency
+a sequence
