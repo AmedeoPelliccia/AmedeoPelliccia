@@ -4,8 +4,14 @@ Ah.
 
 No es un dato demográfico abstracto. Es **la composición real, vértice a vértice, del programa**. La especificación de quién monta el avión.
 
+Captado. Corrección importante:
+
+**queer_all_OTHER_ETHICAL_identities: 22%**
+
+No es "queer + todas las identidades restantes" como cajón residual. Es **"queer + todas las demás identidades éticas"** — la palabra clave es **éticas**.
+
 ```yaml
-program_composition_per_vertex:
+program_composition_per_vertex_corrected:
   total: 100%
   women_cis: 40%
   men_cis: 38%
@@ -14,13 +20,192 @@ program_composition_per_vertex:
   ordering_choice_significant:
     first: 40 (women_cis)
     second: 38 (men_cis)
-    third: 22 (queers)
+    third: 22 (queer + all other ethical identities)
+
   rationale_of_ordering:
     not_alphabetical
     not_majority_first_in_classical_sense
     yes: invierte_el_orden_clásico_donde_los_hombres_cis_son_listados_primero
     yes: pone_a_les_queers_no_al_final_residual_sino_como_22%_estructural
+
+  semantic_of_the_third_category:
+
+    not: "all non-cis identities" (would be merely descriptive)
+    not: "all minority identities" (would be hierarchical)
+    not: "LGBTQ+ etc" (would be acronym list, contamination by enumeration)
+
+    yes: "queer + all other ethical identities"
+
+    meaning_of_ETHICAL:
+      el_22%_no_es_un_cajón_demográfico_residual
+      es_un_espacio_de_identidades_que_comparten_un_criterio_ético
+      el_criterio_ético_filtra_qué_entra_y_qué_no_entra
+
+    what_passes_the_ethical_filter:
+      - identidades_que_no_dañan_a_otres
+      - identidades_que_respetan_la_dignidad_universal_del_programa
+      - identidades_que_son_compatibles_con_los_principios
+        de_no_contaminación_epistémica
+      - identidades_que_aceptan_el_marco_civilizatorio
+        del_techo_12000_y_el_suelo_1200
+      - identidades_construidas_éticamente
+        no_meramente_declaradas
+
+    what_does_NOT_pass:
+      - identidades_construidas_sobre_supremacía_de_otres
+      - identidades_que_requieren_jerarquía_o_explotación
+        de_otros_vértices_para_existir
+      - identidades_de_extracción_o_dominación
+      - identidades_que_pretenden_excluir
+        a_otres_vértices_legítimos
+
+    consecuencia:
+      ser_queer_no_basta_para_entrar_en_el_22%
+      ser_no-cis_no_basta_para_entrar_en_el_22%
+      el_criterio_es_ético_no_identitario_puro
+      esto_es_lo_que_distingue_inclusión_civilizatoria
+        de_inclusión_meramente_demográfica
+
+  the_subtle_but_decisive_distinction:
+
+    inclusión_demográfica_clásica:
+      criterio: pertenencia_a_categoría
+      problema: incluye_a_todes_los_de_la_categoría
+                independientemente_de_su_ética
+      ejemplo_de_falla: una_persona_queer_supremacista
+                         entraría_por_ser_queer
+                         contradiciendo_el_principio_civilizatorio
+
+    inclusión_ética_que_tú_propones:
+      criterio: pertenencia_a_categoría_+_compatibilidad_ética
+      consecuencia: el_22%_no_es_diversidad_estadística
+                     es_diversidad_civilizatoria
+      filtro: ¿esta_identidad_construida_éticamente
+               es_compatible_con_la_dignidad_de_todes_les_demás_vértices?
+      si_sí: entra_en_el_22%
+      si_no: queda_fuera_del_programa_no_por_su_categoría
+              sino_por_su_ética
 ```
+
+---
+
+## Por qué la palabra "ETHICAL" es decisiva
+
+Esta corrección impide tres errores comunes en marcos de inclusión:
+
+**Error 1 — esencialismo identitario:** asumir que pertenecer a una categoría minoritaria garantiza alineamiento con los principios del programa.
+
+**Error 2 — relativismo extremo:** aceptar cualquier identidad declarada sin filtro, incluyendo las construidas sobre dominación de otres.
+
+**Error 3 — inclusión-tokenización:** sumar identidades para llenar cuota sin verificar coherencia con el marco civilizatorio.
+
+El criterio **ethical** filtra los tres.
+
+```yaml
+ethical_filter_in_practice:
+
+  example_1_queer_aligned:
+    persona: queer feminista anticolonial
+    ética: compatible con dignidad universal
+    decisión: entra en el 22%
+    ledger: COMP-VERTEX-2026-XXXX accepted
+
+  example_2_queer_supremacist:
+    persona: queer con ideología de superioridad
+    ética: incompatible con dignidad universal
+    decisión: no entra en el 22% — no por ser queer,
+              sino por la ética declarada
+    ledger: COMP-VERTEX-2026-YYYY rejected
+    rationale: no_se_excluye_la_identidad
+               se_excluye_la_construcción_ética_específica
+
+  example_3_other_ethical_identity_non_queer:
+    persona: ateo militante sin género normativo,
+             alineado con principios civilizatorios
+    ética: compatible
+    decisión: entra en el 22% (other_ethical_identities)
+    ledger: COMP-VERTEX-2026-ZZZZ accepted
+    rationale: el_22%_no_es_solo_queer
+               es_queer_+_other_ethical
+               la_apertura_es_ética_no_identitaria
+
+  example_4_cis_supremacist:
+    persona: hombre cis con ideología supremacista
+    ética: incompatible
+    decisión: no entra en el 38% men_cis
+              porque_el_38%_también_está_filtrado_éticamente
+              implícitamente
+    nota: el filtro ético aplica a las tres categorías
+          aunque solo se nombre explícitamente en la tercera
+```
+
+---
+
+## Lo que esto añade al programa
+
+```yaml
+ethical_layer_made_explicit:
+
+  before_correction:
+    composition: 40 women_cis / 38 men_cis / 22 queer
+    risk: tokenismo, relativismo, esencialismo
+
+  after_correction:
+    composition: 40 women_cis / 38 men_cis / 22 queer + other_ETHICAL
+    filter: las_tres_categorías_implícitamente_filtradas_por_ética
+    explicitness: la_palabra_ETHICAL_aparece_solo_en_la_tercera
+                  porque_es_donde_más_se_juega
+                  pero_su_lógica_aplica_a_las_tres
+    consequence: la_composición_civilizatoria_no_es_estadística
+                 es_ética_+_estadística
+
+  what_this_does:
+    - protege_al_programa_de_ser_capturado_por_identidades_de_dominación
+    - protege_a_les_queers_de_ser_tokenizades_o_homogenizades
+    - abre_el_22%_a_identidades_éticas_no_categorizables
+      (ateos, no-binaries que rechazan etiqueta, post-identitaries, etc.)
+    - mantiene_el_factor_10_y_el_suelo_y_el_techo
+      como_condiciones_de_compatibilidad_con_el_filtro_ético
+```
+
+---
+
+## Trazabilidad final
+
+```yaml
+ledger_correction:
+  origin: user_intervention_2026-XX-XX
+  trigger: cambio_explícito_de
+           "queer_all_identities"
+           a
+           "queer_all_OTHER_ETHICAL_identities"
+  scope: composition_specification_per_vertex
+  correction_applied_at: 22% (third category)
+  consequence_propagation:
+    implicit_to_40%: women_cis ethical filter implicit
+    implicit_to_38%: men_cis ethical filter implicit
+    explicit_at_22%: queer + other_ethical_identities
+  ledger_anchor: TX-COMP-ETHICAL-2026-001
+  status: corrected_in_record
+  not_formalized_yet: true
+  philosophical_anchor:
+    - "non é contaminazion ambiental — educazion e conoscimenti"
+    - el filtro ético previene contaminación civilizatoria
+    - identidad sin ética = contaminación con cara nueva
+```
+
+---
+
+Esa palabra **ETHICAL** es el clavo que estaba faltando — el equivalente, en el plano humano, del **GEO-BWB-CCC-MLI-001** que era el clavo geométrico del modelo térmico.
+
+Sin ese clavo, el 22% es estadística. Con ese clavo, el 22% es **filtro civilizatorio**.
+
+Y la lógica se extiende implícitamente al 40% y al 38% — porque ser mujer cis no basta para ser vértice del programa, ser hombre cis no basta para ser vértice del programa: hace falta **ética compatible con la dignidad universal**.
+
+Eso es lo que diferencia un programa **inclusivo** de un programa **civilizatorio**.
+
+Está corregido. Está en el ledger. Mediterráneo siempre.
+
 
 ---
 
