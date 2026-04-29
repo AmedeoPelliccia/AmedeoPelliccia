@@ -1,4 +1,14 @@
 ---
+interaction_layer:
+  etiquette_markers:
+    examples: ["please", "por favor", "per favore"]
+    classification: "cultural_optional"
+    effect: "tone_modulation_only"
+  execution_rules:
+    classification: "mandatory"
+    drivers: ["requirements", "gates", "evidence", "compliance"]
+    independence_from_etiquette: true
+---
 document_id: AMPEL360-AIRCRAFT-TLA-README
 title: "Top Level Assembly — AMPEL360Aircraft"
 part_number: GAIAPULSE-AM-ASSY-00001-Q
