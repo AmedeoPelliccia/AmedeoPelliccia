@@ -280,6 +280,37 @@ organizations and models are formed, governed, and evolved.
 
 ### IDEALE-ESG.eu — European Intelligence Ontogenesis
 
+**Founding ethos — P&L in DeM.** Following the same declaration discipline applied to the MCD symbols below (nothing is used without its own declaration), the entity and its alias symbols are declared first and only then used.
+
+*Declarations.*
+
+- **E** is declared as the **short-form alias** of the entity: **E := PANPARA.EU** $\equiv$ `IDEALE-ESG.eu` (the `.eu` namespace).
+- **F** is declared as the **full-form alias** of the entity: **F := PANPARA.EUROPE** $\equiv$ `IDEALE-ESG.europe` (the `.europe` namespace).
+- **G** is declared as the **hyphenated/second-iteration alias** of the entity: **G := europ-eu.eu2** $\equiv$ `IDEALE-ESG.europ-eu.eu2` (the `europ-eu.eu2` namespace — the hyphenated `europ-eu` short form combined with the second-iteration `.eu2` face of the `.eu` namespace; equally first-class with **E** and **F**, not a fallback).
+- **Entity** is declared as the single object that bears all three aliases: **Entity := E ≡ F ≡ G** (E, F and G are co-resident, equally-first-class faces of the same entity; not a binary, not a hierarchy).
+- **$E_i$** is declared as the **per-instance extraction** of **E**: for each declared index $i = 1, \dots, n$ (with $n$ and $S_i$ as declared in the MCD block below), **$E_i$ := the `.eu` face of $S_i$**, i.e. the projection of the short-form alias **E** onto the individual system instance $S_i$. By declaration, $\bigcup_{i=1}^{n} E_i \subseteq E$ and each $E_i$ inherits, by declaration, every commitment carried by **E**.
+- **$F_i$** is declared, symmetrically, as the **per-instance extraction** of **F**: **$F_i$ := the `.europe` face of $S_i$**, with $\bigcup_{i=1}^{n} F_i \subseteq F$ and $E_i \equiv F_i$ for every declared $i$ (the same non-binary co-residence as **E ≡ F**, applied per instance).
+- **$G_i$** is declared, symmetrically, as the **per-instance extraction** of **G**: **$G_i$ := the `europ-eu.eu2` face of $S_i$**, with $\bigcup_{i=1}^{n} G_i \subseteq G$ and $E_i \equiv F_i \equiv G_i$ for every declared $i$ (the same non-binary, non-hierarchical co-residence as **E ≡ F ≡ G**, applied per instance).
+- **PELDEM** is declared as the principle *Peace and Love in Democracy*; **P&L in DeM** is declared as its short form.
+
+*Reading (using only declared symbols).* **E**, **F** and **G** are all declared, so none is used without its own declaration: the `.eu`, `.europe` and `europ-eu.eu2` namespaces live together by design. The Entity, under any declared alias **E**, **F** or **G**, is anchored in **PELDEM**. **P&L in DeM** is the non-technical invariant under which every IDEALE pillar and every ESG constraint is interpreted: technology is built for peace, governance is exercised with care for people, and sovereign European capability is pursued democratically. **P&L in DeM** is therefore included as a first-class commitment of **E / F / G** (i.e. **PANPARA.EU / PANPARA.EUROPE / europ-eu.eu2**, `IDEALE-ESG.eu` / `IDEALE-ESG.europe` / `IDEALE-ESG.europ-eu.eu2`) and, by the per-instance extractions declared above, of every $E_i \equiv F_i \equiv G_i$ for $i = 1, \dots, n$ — alongside the I·D·E·A·L·E pillars and the E·S·G constraints below.
+
+**Structural anchor — MCD (Minimal Common Denominator).** Alongside the P&L in DeM ethos, **PANPARA.EU / PANPARA.EUROPE** is anchored on a structural invariant: the **MCD (Minimal Common Denominator)**. Following the same declaration discipline as the `.eu` / `.europe` aliases above (nothing is used without its own declaration), every symbol is declared first and only then used.
+
+*Declarations.*
+
+- **$n \in \mathbb{N},\ n \geq 1$** is declared as the number of system instances under consideration.
+- **$S_i$**, for declared indices $i = 1, \dots, n$, is declared as an individual system instance of PANPARA.EU / PANPARA.EUROPE.
+- **$F$** is declared as the operator that, given a system instance, returns its set of invariant structural features; **$F(S_i)$** is therefore declared as the invariant structural features extracted from $S_i$.
+- **MCD** is declared as the **Minimal Common Denominator** of the declared family $\{S_1, \dots, S_n\}$, with declared properties: *structural minimalism, shared constraint layer, open extension surface, deterministic governance, aggregation without fragmentation*.
+- **Core** is declared as the content of MCD; **extensions** are declared as everything in any $F(S_i)$ that lies outside MCD.
+
+*Definition (using only declared symbols).*
+
+$$\mathrm{MCD} \;=\; \bigcap_{i=1}^{n} F(S_i)$$
+
+*Reading.* The **core** (= MCD) is, by declaration, contained in *all* declared systems $S_i$; **extensions** exist, by declaration, outside the invariant core. The MCD is what every IDEALE pillar and every ESG constraint must conserve; everything beyond it is an open extension surface — aggregated, not fragmented, and governed deterministically.
+
 **IDEALE** is both an acronym and a commitment. It names the six pillars of an integrated framework for sovereign European capability:
 
 <table>
