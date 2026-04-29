@@ -14,6 +14,22 @@ language: en
 author: Amedeo Pelliccia
 ---
 
+## Origin Note — *sin dalle elementari*
+
+This work did not begin as a market thesis, a funding strategy, or a branding exercise.
+
+It began **sin dalle elementari** — from the earliest school years — as a persistent way of seeing systems: objects, rules, machines, words, maps, aircraft, institutions and people not as isolated things, but as connected structures requiring order, fairness, and traceability.
+
+What later became **AMPEL360**, **IDEALE**, **OPT-IN**, **PATH → MTL**, **Q+ATLANTIDE1000**, **NBT gates**, and the wider **P&L in DeM** governance logic is therefore not a sudden invention. It is the formalization of a long-running cognitive pattern:
+
+- to classify without reducing;
+- to connect without confusing;
+- to design without erasing people;
+- to govern complexity without killing imagination;
+- to make technical systems accountable to evidence, safety and dignity.
+
+In this sense, the aerospace architecture is only one expression of a deeper invariant:  
+**structure as care, traceability as justice, and engineering as a democratic act.**
 # Top Level Assembly: AMPEL360Aircraft
 
 **P/N:** `GAIAPULSE-AM-ASSY-00001-Q`
