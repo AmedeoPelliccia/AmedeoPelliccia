@@ -280,7 +280,16 @@ organizations and models are formed, governed, and evolved.
 
 ### IDEALE-ESG.eu — European Intelligence Ontogenesis
 
-**Founding ethos — P&L in DeM.** The entity is declared under two co-resident, equally-first-class aliases — **PANPARA.EU** (short form, `IDEALE-ESG.eu`) and **PANPARA.EUROPE** (full form, `IDEALE-ESG.europe`). Both are declared, neither is used without declaration: the `.eu` and `.europe` namespaces live together by design and are not a binary — they are two declared faces of the same entity. The entity, under either alias, is anchored in the **PELDEM** principle: *Peace and Love in Democracy* (**P&L in DeM**). P&L in DeM is the non-technical invariant under which every IDEALE pillar and every ESG constraint is interpreted: technology is built for peace, governance is exercised with care for people, and sovereign European capability is pursued democratically. P&L in DeM is therefore included as a first-class commitment of **PANPARA.EU / PANPARA.EUROPE** (`IDEALE-ESG.eu` / `IDEALE-ESG.europe`), alongside the I·D·E·A·L·E pillars and the E·S·G constraints below.
+**Founding ethos — P&L in DeM.** Following the same declaration discipline applied to the MCD symbols below (nothing is used without its own declaration), the entity and its alias symbols are declared first and only then used.
+
+*Declarations.*
+
+- **E** is declared as the **short-form alias** of the entity: **E := PANPARA.EU** $\equiv$ `IDEALE-ESG.eu` (the `.eu` namespace).
+- **F** is declared as the **full-form alias** of the entity: **F := PANPARA.EUROPE** $\equiv$ `IDEALE-ESG.europe` (the `.europe` namespace).
+- **Entity** is declared as the single object that bears both aliases: **Entity := E ≡ F** (E and F are co-resident, equally-first-class faces of the same entity; not a binary).
+- **PELDEM** is declared as the principle *Peace and Love in Democracy*; **P&L in DeM** is declared as its short form.
+
+*Reading (using only declared symbols).* Both **E** and **F** are declared, so neither is used without its own declaration: the `.eu` and `.europe` namespaces live together by design. The Entity, under either declared alias **E** or **F**, is anchored in **PELDEM**. **P&L in DeM** is the non-technical invariant under which every IDEALE pillar and every ESG constraint is interpreted: technology is built for peace, governance is exercised with care for people, and sovereign European capability is pursued democratically. **P&L in DeM** is therefore included as a first-class commitment of **E / F** (i.e. **PANPARA.EU / PANPARA.EUROPE**, `IDEALE-ESG.eu` / `IDEALE-ESG.europe`), alongside the I·D·E·A·L·E pillars and the E·S·G constraints below.
 
 **Structural anchor — MCD (Minimal Common Denominator).** Alongside the P&L in DeM ethos, **PANPARA.EU / PANPARA.EUROPE** is anchored on a structural invariant: the **MCD (Minimal Common Denominator)**. Following the same declaration discipline as the `.eu` / `.europe` aliases above (nothing is used without its own declaration), every symbol is declared first and only then used.
 
