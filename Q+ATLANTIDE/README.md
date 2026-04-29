@@ -35,6 +35,23 @@ Q+ATLANTIDE / ATLAS-1000 is a controlled `000-999` taxonomy and traceability eco
 |---|---|---|
 | `AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated` | <https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated> | Sibling repository under the same maintainer. |
 
+#### Per-band example links
+
+One example link to `PeL.inc_Peace-and-Love_incorporated` for each `000–999` master range:
+
+| Rango maestro | Arquitectura | Ejemplo de enlace |
+|---|---|---|
+| 000–099 | ATLAS  | [`PeL.inc/.../000-099`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/000-099) |
+| 100–199 | STA    | [`PeL.inc/.../100-199`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/100-199) |
+| 200–299 | DTTA   | [`PeL.inc/.../200-299`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/200-299) |
+| 300–399 | DTCEC  | [`PeL.inc/.../300-399`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/300-399) |
+| 400–499 | EPTA   | [`PeL.inc/.../400-499`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/400-499) |
+| 500–599 | AMTA   | [`PeL.inc/.../500-599`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/500-599) |
+| 600–699 | OGATA  | [`PeL.inc/.../600-699`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/600-699) |
+| 700–799 | ACV    | [`PeL.inc/.../700-799`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/700-799) |
+| 800–899 | CYB    | [`PeL.inc/.../800-899`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/800-899) |
+| 900–999 | QCSAA  | [`PeL.inc/.../900-999`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/900-999) |
+
 ---
 
 ## 1. Glossary of Terms
