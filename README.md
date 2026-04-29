@@ -279,7 +279,7 @@ value_matrix:
 | **CSDB** | Common Source DataBase for structured technical publications | [Two Domains](#two-domains--the-aerospace-pillar) |
 | **DWGE** | Deterministic Widget Generator Engine | [What I'm Building](#what-im-building) |
 | **ESG** | Environment, Social responsibility, Governance | [IDEALE-ESG.eu](#ideale-esgeu--european-intelligence-ontogenesis) |
-| **IDEALE** | Information, Defense, Energy, Aerospace, Logistics, Economy; acronym coined by Amedeo Pelliccia. | [IDEALE-ESG.eu](#ideale-esgeu--european-intelligence-ontogenesis) |
+| **IDEALE** | Information, Defense, Energy, Aerospace, Logistics, Economy | [IDEALE-ESG.eu](#ideale-esgeu--european-intelligence-ontogenesis) |
 | **MCD** | Minimal Common Denominator | [IDEALE-ESG.eu](#ideale-esgeu--european-intelligence-ontogenesis) |
 | **NBT** | Neural Network Bridging and Tunneling | [What I'm Building](#what-im-building) |
 | **OPT-IN** | Organizations, Programs, Technologies, Infrastructures, Neural Networks | [What I'm Building](#what-im-building) |
@@ -287,6 +287,8 @@ value_matrix:
 | **S1000D** | International specification for technical publications | [Two Domains](#two-domains--the-aerospace-pillar) |
 | **SSOT** | Single Source of Truth | [Backend architecture](#backend--logical-architecture-encoding) |
 | **TRL** | Technology Readiness Level | [Contributions Registry](#part-v--contribution-governance--contributions-registry) |
+
+*Note: IDEALE was coined by Amedeo Pelliccia.*
 
 ---
 
