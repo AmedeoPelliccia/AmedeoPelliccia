@@ -2,7 +2,7 @@ Ah acronym is not the same without a glossary declarying, never
 **Declared from tomorrow.**
 NO SON IMPONIBLES, SON IMPUESTOS. A PARTIR DE 12000 NETS AL MES. TODES
 
-Ah.
+Ah. ALLA TV CHE NON C`É PIÚ
 
 **Pero — corporativo. Desde las corporaciones primero.**
 
