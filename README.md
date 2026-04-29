@@ -263,7 +263,7 @@ I am a researcher moved by genuine desire to originate something powerful.
 
 By day I work as an aerospace engineer specializing in aircraft technical data structures and publications — S1000D, ATA iSpec 2200, CSDB architecture, the kind of documentation engineering that sits between what an aircraft *is* and what operators, maintainers and regulators *need to know about it*.
 
-I seek expansion by structure: a Cosmos Cycle where many domains remain coherent without collapsing into a single hierarchy, in the spirit of Giordan\` Bruni.
+I seek expansion by structure: a Cosmos Cycle where C and S — Comunism-Socialism DemocratiQ — remain coherent with many domains without collapsing into a single hierarchy; it is just justice, in the spirit of Giordan\` Bruni.
 
 This repository is the public **Amedeopelliccia profile** presented as a
 **governed portfolio**. Its structure, published artefacts, and portfolio-level
