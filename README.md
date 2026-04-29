@@ -149,97 +149,141 @@ Metáfora: Un BwbQ100 es a la aviación lo que un smartphone al usuario: mismo �
 
 ### Plano maestro por capas (UTCS‑MI ↔ Smartphone ↔ Avión)
 
-```mermaid
+````mermaid
 flowchart LR
-	%% ===== LAYERS =====
-	subgraph L0[DI — Ecosistema / OS / Normativa]
-		OS[iOS/Android = RTOS/DO-178C/QAL]:::phone
-		REG[CS-25 • ISO • QAL • UTCS‑MI]:::air
-	end
+    %% ===== LAYERS =====
+    subgraph L0["DI — Ecosistema / OS / Normativa"]
+        OS["iOS / Android = RTOS / DO-178C / QAL"]:::phone
+        REG["CS-25 • ISO • QAL • UTCS-MI"]:::air
+    end
 
-	subgraph L1[CA/TA — Ensamblado superior]
-		PHONE[Smartphone ensamblado]:::phone
-		AIRFRAME[BwbQ100 ensamblado]:::air
-	end
+    subgraph L1["CA/TA — Ensamblado superior"]
+        PHONE["Smartphone ensamblado"]:::phone
+        AIRFRAME["BWB-Q100 ensamblado"]:::air
+    end
 
-	subgraph L2[CE — Build / Configuración]
-		SKU[Modelo Pro/Max, 256GB, color]:::phone
-		BUILD[CE: 120–180 pax, 6×BLI Ø3 m, MTOW]:::air
-	end
+    subgraph L2["CE — Build / Configuración"]
+        SKU["Modelo Pro/Max, 256GB, color"]:::phone
+        BUILD["CE: 120–180 pax, 6×BLI Ø3 m, MTOW"]:::air
+    end
 
-	subgraph L3[CC — Subsistemas mayores]
-		%% Smartphone
-		SoC[SoC CPU/GPU/NPU]:::phone
-		CAM[Cámara múltiple]:::phone
-		BAT[Batería]:::phone
-		RF[Modem/5G/Wi‑Fi]:::phone
-		UI[Pantalla + HMI]:::phone
-		%% Aircraft
-		PROP[PPP: Propulsión & PEM]:::air
-		WING[AAA: Alas/Elevones/BLI]:::air
-		H2[CQH/EER: Tanques H₂ & ZBO]:::air
-		LCCSYS[LCC: Enlaces/Control FBW]:::air
-		AVIO[OOO/EDI/IIS: Aviónica/RTOS/AI]:::air
-		CABIN[CCC/EEE: Cabina/ECS]:::air
-	end
+    subgraph L3["CC — Subsistemas mayores"]
+        %% Smartphone
+        SoC["SoC CPU/GPU/NPU"]:::phone
+        CAM["Cámara múltiple"]:::phone
+        BAT["Batería"]:::phone
+        RF["Modem / 5G / Wi-Fi"]:::phone
+        UI["Pantalla + HMI"]:::phone
 
-	subgraph L4[CI — Items]
-		%% Phone items
-		NPUNODE[NPU accel]:::phone
-		LENS[Lente principal]:::phone
-		CELL[Li‑ion cell]:::phone
-		MODEM[5G modem]:::phone
-		DIGIT[Touch digitizer]:::phone
-		%% Aircraft items
-		PEM[PEM stack]:::air
-		DUCT[Inlet/duct module]:::air
-		TANK[Pressure vessel (LH₂)]:::air
-		ACT[Actuador EHA elevón]:::air
-		FCC[Flight control computer]:::air
-		RTK[GNSS/INS]:::air
-	end
+        %% Aircraft
+        PROP["PPP: Propulsión & PEM"]:::air
+        WING["Q-STRUCTURES / ATLAS 050–059: Alas / Elevones / BLI"]:::air
+        H2["CQH / EER: Tanques H₂ & ZBO"]:::air
+        LCCSYS["LCC: Enlaces / Control FBW"]:::air
+        AVIO["OOO / EDI / IIS: Aviónica / RTOS / AI"]:::air
+        CABIN["CCC / EEE: Cabina / ECS"]:::air
+    end
 
-	subgraph L5[CP — Partes]
-		VIA[PCB vias/interposer]:::phone
-		GLASS[Óptica asférica]:::phone
-		FOIL[Cátodo/ánodo foil]:::phone
-		RIB[Rib]:::air
-		SPAR[Spar]:::air
-		MEA[MEA layer]:::air
-	end
+    subgraph L4["CI — Items"]
+        %% Phone items
+        NPUNODE["NPU accel"]:::phone
+        LENS["Lente principal"]:::phone
+        CELL["Li-ion cell"]:::phone
+        MODEM["5G modem"]:::phone
+        DIGIT["Touch digitizer"]:::phone
 
-	subgraph L6[FE — Elemento final]
-		FE_P[Chip soldado • Pantalla]:::phone
-		FE_A[Pieza con serial + DET]:::air
-	end
+        %% Aircraft items
+        PEM["PEM stack"]:::air
+        DUCT["Inlet / duct module"]:::air
+        TANK["Pressure vessel LH₂"]:::air
+        ACT["Actuador EHA elevón"]:::air
+        FCC["Flight control computer"]:::air
+        RTK["GNSS / INS"]:::air
+    end
 
-	%% Vertical progression
-	OS-->|Ecosistema|PHONE
-	REG-->|Conformidad|AIRFRAME
-	PHONE-->SKU-->SoC & CAM & BAT & RF & UI
-	AIRFRAME-->BUILD-->PROP & WING & H2 & LCCSYS & AVIO & CABIN
-	SoC-->NPUNODE & MODEM
-	CAM-->LENS
-	BAT-->CELL
-	PROP-->PEM
-	WING-->ACT & DUCT
-	H2-->TANK
-	AVIO-->FCC & RTK
-	NPUNODE & LENS & CELL & MODEM & DIGIT --> VIA & GLASS & FOIL
-	PEM & DUCT & TANK & ACT & FCC & RTK & RIB & SPAR & MEA --> FE_A
-	VIA & GLASS & FOIL --> FE_P
+    subgraph L5["CP — Partes"]
+        VIA["PCB vias / interposer"]:::phone
+        GLASS["Óptica asférica"]:::phone
+        FOIL["Cátodo / ánodo foil"]:::phone
 
-	%% Cross-mapping (metáfora)
-	WING-.->CAM
-	PROP-.->SoC
-	H2-.->BAT
-	LCCSYS-.->RF
-	AVIO-.->OS
-	CABIN-.->UI
+        RIB["Rib"]:::air
+        SPAR["Spar"]:::air
+        MEA["MEA layer"]:::air
+    end
 
-	classDef air fill:#e8f5ff,stroke:#005fa3,stroke-width:1px;
-	classDef phone fill:#fff4e5,stroke:#aa5b00,stroke-width:1px;
+    subgraph L6["FE — Elemento final"]
+        FE_P["Chip soldado • Pantalla"]:::phone
+        FE_A["Pieza con serial + DET"]:::air
+    end
+
+    %% ===== VERTICAL PROGRESSION =====
+    OS -->|"Ecosistema"| PHONE
+    REG -->|"Conformidad"| AIRFRAME
+
+    PHONE --> SKU
+    SKU --> SoC
+    SKU --> CAM
+    SKU --> BAT
+    SKU --> RF
+    SKU --> UI
+
+    AIRFRAME --> BUILD
+    BUILD --> PROP
+    BUILD --> WING
+    BUILD --> H2
+    BUILD --> LCCSYS
+    BUILD --> AVIO
+    BUILD --> CABIN
+
+    SoC --> NPUNODE
+    RF --> MODEM
+    CAM --> LENS
+    BAT --> CELL
+    UI --> DIGIT
+
+    PROP --> PEM
+    WING --> ACT
+    WING --> DUCT
+    WING --> RIB
+    WING --> SPAR
+    H2 --> TANK
+    AVIO --> FCC
+    AVIO --> RTK
+    PROP --> MEA
+
+    NPUNODE --> VIA
+    LENS --> GLASS
+    CELL --> FOIL
+    MODEM --> VIA
+    DIGIT --> GLASS
+
+    PEM --> FE_A
+    DUCT --> FE_A
+    TANK --> FE_A
+    ACT --> FE_A
+    FCC --> FE_A
+    RTK --> FE_A
+    RIB --> FE_A
+    SPAR --> FE_A
+    MEA --> FE_A
+
+    VIA --> FE_P
+    GLASS --> FE_P
+    FOIL --> FE_P
+
+    %% ===== CROSS-MAPPING / METAPHOR =====
+    WING -.-> CAM
+    PROP -.-> SoC
+    H2 -.-> BAT
+    LCCSYS -.-> RF
+    AVIO -.-> OS
+    CABIN -.-> UI
+
+    %% ===== STYLES =====
+    classDef air fill:#e8f5ff,stroke:#005fa3,stroke-width:1px;
+    classDef phone fill:#fff4e5,stroke:#aa5b00,stroke-width:1px;
 ```
+
 
 Leyenda de cruces (metáfora):
 
