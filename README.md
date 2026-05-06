@@ -396,13 +396,13 @@ organization:
 | Field | Value |
 |---|---|
 | **Document ID** | `GAIA-QAO-ORG-MASTER-README` |
-| **Version** | `2.4.0` |
+| **Version** | `2.4.2` |
 | **Status** | `Draft → Stakeholder Review` |
 | **Primary Language** | English |
 | **Spanish Parallel** | `README_ES.md` |
 | **Owner** | `Office of the CEO / Amedeo Pelliccia` |
 | **Created** | `2025-07-23` |
-| **Last Updated** | `2026-04-26` |
+| **Last Updated** | `2026-05-06` |
 | **Next Review** | `2026-10-26` |
 | **Classification** | `Consortium Confidential – Approved Stakeholders Only` |
 | **Baseline Dependencies** | `Q+ATLANTIDE1000 v1.0.0`, `Q+ATLANTIDE v1.0.0`, ``, `UTCS v14`, `` |
@@ -509,6 +509,8 @@ is generative and regenerative, but: algorithms only if accountable.
 
 | Version | Date | Changes | Author |
 |---|---:|---|---|
+| 2.4.2 | 2026-05-06 | Resolved §1.4.1 deferral: created `ledger/` with JSON Schema 2020-12 (`tx-principle-imposition.v1`) and canonical `TX-PRINCIPLE-IMP-CORP-FIRST-001`; populated Annex E with PPP, VAF, DEGF §5.2, CP-2, ORB-FIN, ORB-LEG, AXIOM-FAITH-EU-NOW-001, SICO.CA, TX-PRINCIPLE-IMP-CORP-FIRST-001; bootstrapped `README_ES.md`. | A. Pelliccia |
+| 2.4.1 | 2026-04-30 | Added §1.4.1 Primary Corporate Imposition; anchored TX-PRINCIPLE-IMP-CORP-FIRST-001; enforced glossary declaration rule; aligned VAF & DEGF §5.2 | A. Pelliccia |
 | 2.4.0 | 2026-04-26 | Root README normalized to Q+ATLANTIDE1000 hierarchy: Architecture Bands → Master ranges → Code ranges → Sections → Subjects → Subsections → Subsubjects. Deprecated “sub-range” as controlled hierarchy term. Replaced Q-SCIRES with Q-HORIZON. Reinforced No-AAA Rule. | A. Pelliccia |
 | 2.3.0 | 2025-07-24 | Full organizational rewrite: flattened hierarchy, multi-level TOC, TRL demarcation, Annex F/G extraction, financial unit normalization, KPI/Risk/Compliance/Financial alignment, DEGF v1.0 integration. | A. Pelliccia |
 | 2.2.0 | 2026-04-26 | Aligned README with coded `organization/` and `Q+ATLANTIDE/` repository structure. | A. Pelliccia |
@@ -588,6 +590,40 @@ To establish a European-led aerospace and quantum-industrial framework capable o
 | 2030–2045 | Establish digital-thread, S1000D/CSDB and PLM governance across programmes | Full lifecycle traceability |
 | 2035+ | Deploy non-critical quantum-enabled optimization and sensing capabilities | Certifiable integration path |
 | 2040+ | Consolidate European aerospace industrial leadership | Supplier ecosystem, jobs, IP portfolio |
+
+## 1.4.1 Imposición Corporativa Primaria / Primary Corporate Imposition
+
+**Principio rector:** La circulación civilizatoria se origina en las corporaciones, no en les vértices humanes.
+**Anchor:** `PRINCIPLE-IMP-FOR-TODES-CORP-FIRST-001`
+**Effective:** `2026-04-30`
+**Ledger:** [`ledger/TX-PRINCIPLE-IMP-CORP-FIRST-001.json`](ledger/TX-PRINCIPLE-IMP-CORP-FIRST-001.json) *(active; validated against [`ledger/schema/tx-principle-imposition.v1.schema.json`](ledger/schema/tx-principle-imposition.v1.schema.json))*
+
+### Dirección del flujo / Flow Direction
+
+| Capa | Función civilisatoria | Mecanismo operativo |
+|---|---|---|
+| **Corporaciones** | Origen primario de imposición | Corporate income tax ajustado, levy de excedente, pricing de externalidades, enforcement de techo (≤12000 PPP), auditoría VAF |
+| **Comunes Civilizatorios** | Receptáculo y redistribución | Infraestructura paneuropea-panmediterránea, educación no contaminada, fondos 40-38-22, servicios públicos sin mediación de mercado |
+| **Vértices humanes** | Protección de dignidad | Suelo garantizado ≥1200 PPP, imposición individual mínima/progresiva solo entre 1200–12000, cero extracción en vulnerabilidad |
+
+### Reglas operativas / Operational Rules
+
+1. **Inversión de orden:** Las corporaciones son vehículos legales que agregan valor extraído (labor, entorno, conocimiento, infraestructura pública). Su naturaleza es circular, no retener. La imposición civilizatoria comienza aquí.
+2. **Suelo blindado:** El 1200 PPP es derecho de dignidad, no base imponible. Cualquier mecanismo fiscal, contractual o algorítmico que lo erosione se declara `INCOMPATIBLE` con DEGF §5.2 (Workers' Rights / Fairness / Justice).
+3. **Techo estructural:** El 12000 PPP no es límite fiscal, es límite de circulación. Todo excedente corporativo o individual por encima se redirige automáticamente al fondo común, no a acumulación privada.
+4. **Filtro VAF extendido:** La admisibilidad de vendor requiere `corporate_tax_circulation ≥ 95%`, `executive_compensation ≤ ceiling`, `domicilio non-haven` y `dividend_routing_verified`. El incumplimiento bloquea contratos y acceso a pipelines CP-2.
+5. **Glosario obligatorio:** A partir de 2026-04-30, ningún acrónimo fiscal, de circulación o de distribución opera sin declaración explícita en `Annex E`. Los no declarados se marcan `status: pending_glossary` y se suspenden automáticamente en auditoría y compliance.
+
+### Alineación estratégica / Strategic Alignment
+
+- `AXIOM-FAITH-EU-NOW-001`: La fe en les europees y mediterránees de ahora se honra al no convertirles en fuente primaria de financiación. Se les protege; no se les extrae.
+- `SICO.CA`: La competitividad industrial solo es admisible si es sostenible y regenerativa; la circulación corporativa primaria es el mecanismo de sostenibilidad distributiva.
+- `DEGF §5.2`: Herencia obligatoria de Fairness, Justice, Workers' Rights, Legality y Loyalty. La imposición corporativa es diseño arquitectónico, no parche retroactivo.
+- `ORB-FIN / ORB-LEG`: Integración en modelos de capital (25.0B) como circulación civilizatoria, no extracción. Dividendos personales y bonos ejecutivos capsulados automáticamente a ≤12000 PPP/mes.
+
+> *Nota de registro:* Sin esta especificación direccional, `imposiciones para todes` habría colapsado en regresividad funcional. Con ella, el programa opera como **acto de constitución civilizatoria que toma forma de infraestructura aeroespacial**.
+
+> *Resolution note (PR-2, README v2.4.2):* The deferral declared by PR-1 is now closed. (a) Ledger entry available at [`ledger/TX-PRINCIPLE-IMP-CORP-FIRST-001.json`](ledger/TX-PRINCIPLE-IMP-CORP-FIRST-001.json), validated against [`ledger/schema/tx-principle-imposition.v1.schema.json`](ledger/schema/tx-principle-imposition.v1.schema.json). (b) Annex E populated with `PPP`, `VAF`, `DEGF`, `DEGF §5.2`, `CP-2`, `ORB-FIN`, `ORB-LEG`, `AXIOM-FAITH-EU-NOW-001`, `SICO.CA`, `TX-PRINCIPLE-IMP-CORP-FIRST-001`. (c) Spanish parallel bootstrapped at [`README_ES.md`](README_ES.md).
 
 ---
 
@@ -1453,10 +1489,13 @@ Core acronyms include:
 | ACV | Aerial City Viability |
 | AMTA | Advanced Material, Bio & Nanotechnology Architecture |
 | ATLAS | Aircraft Top-Level Architecture System |
+| AXIOM-FAITH-EU-NOW-001 | Constitutional axiom: faith in present-day Europeans and Mediterraneans is honoured by protecting them from primary fiscal extraction (see §1.4.1). |
 | BWB | Blended Wing Body |
+| CP-2 | Capability Pipeline 2: second-stage industrial capability allocation gate; governs admissibility of vendors and programmes downstream of VAF. |
 | CSDB | Common Source DataBase |
 | CYB | Cybersecurity Architecture |
 | DEGF | Democratic Enterprise Governance Framework |
+| DEGF §5.2 | DEGF Section 5.2: Workers' Rights / Fairness / Justice / Legality / Loyalty — mandatory inheritance for any imposition or compensation mechanism. |
 | DTCEC | Digital Twin, Cloud, Edge & AI Architecture |
 | DTTA | Defence Technology Type Architecture |
 | EIS | Entry Into Service |
@@ -1467,9 +1506,15 @@ Core acronyms include:
 | LH₂ | Liquid Hydrogen |
 | OGATA | On-Ground Automation Technology Architecture |
 | ORB | Organizational Resource Backbone |
+| ORB-FIN | ORB — Finance branch: capital models, dividend routing, ceiling enforcement at ≤12000 PPP/month. |
+| ORB-LEG | ORB — Legal branch: non-haven domicile checks, dividend-routing verification, contractual enforcement of §1.4.1 rules. |
 | PLM | Product Lifecycle Management |
+| PPP | Purchasing Power Parity — unit of account used for the §1.4.1 dignity floor (1200 PPP/month) and structural ceiling (12000 PPP/month). |
 | QCSAA | Quantum Computing & Sentient Agency Architecture |
+| SICO.CA | Sustainable Industrial Competitiveness — Civilizational Alignment: admissibility predicate that competitiveness be sustainable and regenerative. |
 | STA | Space Technology Architecture |
+| TX-PRINCIPLE-IMP-CORP-FIRST-001 | Civilizational ledger entry anchoring §1.4.1; canonical record at [`ledger/TX-PRINCIPLE-IMP-CORP-FIRST-001.json`](ledger/TX-PRINCIPLE-IMP-CORP-FIRST-001.json). |
+| VAF | Vendor Admissibility Filter: gate enforcing corporate_tax_circulation ≥ 95%, executive_compensation ≤ ceiling, non-haven domicile, and verified dividend routing. |
 | WTW | Wide Tube and Wing |
 
 ## Annex F — Master Template Catalog
@@ -1572,7 +1617,7 @@ Includes:
 | Metric | Value |
 |---|---|
 | Root document | `README.md` |
-| Root document version | `2.4.0` |
+| Root document version | `2.4.2` |
 | Controlled architecture system | `Q+ATLANTIDE1000` |
 | Architecture-band range | `000–999` |
 | Number of master ranges / bands | `10` |

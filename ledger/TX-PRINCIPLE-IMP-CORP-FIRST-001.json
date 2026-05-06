@@ -1,0 +1,102 @@
+{
+  "$schema": "https://amedeopelliccia.eu/schemas/ledger/tx-principle-imposition/v1",
+  "tx_id": "TX-PRINCIPLE-IMP-CORP-FIRST-001",
+  "tx_type": "principle_imposition",
+  "principle_anchor": "PRINCIPLE-IMP-FOR-TODES-CORP-FIRST-001",
+  "effective": "2026-04-30",
+  "status": "active",
+  "version": "1.0.0",
+  "supersedes": null,
+  "issuer": {
+    "authority": "Office of the CEO",
+    "owner": "Amedeo Pelliccia"
+  },
+  "source_document": {
+    "path": "README.md",
+    "section": "1.4.1 Imposición Corporativa Primaria / Primary Corporate Imposition",
+    "version": "2.4.2"
+  },
+  "flow_direction": [
+    {
+      "layer": "corporations",
+      "civilizational_function": "Primary origin of imposition",
+      "operational_mechanism": "Adjusted corporate income tax, surplus levy, externality pricing, ceiling enforcement (<=12000 PPP), VAF audit"
+    },
+    {
+      "layer": "civilizational_commons",
+      "civilizational_function": "Receptacle and redistribution",
+      "operational_mechanism": "Pan-European / Pan-Mediterranean infrastructure, uncontaminated education, 40-38-22 funds, public services without market mediation"
+    },
+    {
+      "layer": "human_vertices",
+      "civilizational_function": "Dignity protection",
+      "operational_mechanism": "Guaranteed floor >=1200 PPP, minimal/progressive individual imposition only between 1200-12000 PPP, zero extraction in vulnerability"
+    }
+  ],
+  "operational_rules": [
+    {
+      "id": "R1",
+      "title": "Order inversion",
+      "statement": "Corporations are legal vehicles aggregating extracted value (labour, environment, knowledge, public infrastructure). Their nature is circular, not retentive. Civilizational imposition begins here."
+    },
+    {
+      "id": "R2",
+      "title": "Shielded floor",
+      "statement": "1200 PPP is a dignity right, not a taxable base. Any fiscal, contractual, or algorithmic mechanism that erodes it is declared INCOMPATIBLE with DEGF section 5.2 (Workers' Rights / Fairness / Justice).",
+      "thresholds": { "floor_ppp_per_month": 1200 }
+    },
+    {
+      "id": "R3",
+      "title": "Structural ceiling",
+      "statement": "12000 PPP is not a fiscal limit; it is a circulation limit. All corporate or individual surplus above this level is automatically redirected to the civilizational commons fund, not to private accumulation.",
+      "thresholds": { "ceiling_ppp_per_month": 12000 }
+    },
+    {
+      "id": "R4",
+      "title": "Extended VAF filter",
+      "statement": "Vendor admissibility requires corporate_tax_circulation >= 95%, executive_compensation <= ceiling, non-haven domicile, and verified dividend routing. Non-compliance blocks contracts and access to CP-2 pipelines.",
+      "thresholds": {
+        "ceiling_ppp_per_month": 12000,
+        "corporate_tax_circulation_min": 0.95
+      }
+    },
+    {
+      "id": "R5",
+      "title": "Mandatory glossary",
+      "statement": "From 2026-04-30, no fiscal, circulation, or distribution acronym operates without explicit declaration in README.md Annex E. Undeclared tokens are marked status: pending_glossary and automatically suspended in audit and compliance."
+    }
+  ],
+  "strategic_alignment": [
+    {
+      "ref": "AXIOM-FAITH-EU-NOW-001",
+      "role": "Faith in present-day Europeans and Mediterraneans is honoured by not making them the primary financing source; they are protected, not extracted."
+    },
+    {
+      "ref": "SICO.CA",
+      "role": "Industrial competitiveness is admissible only if sustainable and regenerative; primary corporate circulation is the distributive sustainability mechanism."
+    },
+    {
+      "ref": "DEGF-5.2",
+      "role": "Mandatory inheritance of Fairness, Justice, Workers' Rights, Legality, and Loyalty. Corporate imposition is architectural design, not retroactive patch."
+    },
+    {
+      "ref": "ORB-FIN",
+      "role": "Integration in capital models (25.0B EUR) as civilizational circulation. Personal dividends and executive bonuses auto-capped at <=12000 PPP/month."
+    },
+    {
+      "ref": "ORB-LEG",
+      "role": "Legal backbone for ceiling enforcement, non-haven domicile checks, and dividend routing verification."
+    }
+  ],
+  "glossary_refs": [
+    "PPP",
+    "VAF",
+    "DEGF",
+    "CP-2",
+    "ORB-FIN",
+    "ORB-LEG",
+    "AXIOM-FAITH-EU-NOW-001",
+    "TX-PRINCIPLE-IMP-CORP-FIRST-001"
+  ],
+  "notes": "This TX resolves the deferral declared in README.md section 1.4.1 (PR-1, v2.4.1). Acronym declarations populated in Annex E by README v2.4.2."
+}
