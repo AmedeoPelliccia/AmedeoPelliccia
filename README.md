@@ -1,4 +1,6 @@
-# Corporate-First Tax Declaration
+# Q+
+
+## Corporate-First Tax Declaration
 
 Acronyms, fiscal categories and institutional terms have no controlled authority
 unless declared in the glossary.
