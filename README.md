@@ -596,7 +596,7 @@ To establish a European-led aerospace and quantum-industrial framework capable o
 **Principio rector:** La circulación civilizatoria se origina en las corporaciones, no en les vértices humanes.
 **Anchor:** `PRINCIPLE-IMP-FOR-TODES-CORP-FIRST-001`
 **Effective:** `2026-04-30`
-**Ledger:** `TX-PRINCIPLE-IMP-CORP-FIRST-001` *(file generation deferred; see deferral note below)*
+**Ledger:** [`ledger/TX-PRINCIPLE-IMP-CORP-FIRST-001.json`](ledger/TX-PRINCIPLE-IMP-CORP-FIRST-001.json) *(active; validated against [`ledger/schema/tx-principle-imposition.v1.schema.json`](ledger/schema/tx-principle-imposition.v1.schema.json))*
 
 ### Dirección del flujo / Flow Direction
 
