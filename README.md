@@ -1,4 +1,4 @@
-# Q+ — For All Queer People
+# Q+ — **For All Queer People and Quantum**
 
 ## Corporate-First Tax Declaration
 
