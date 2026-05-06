@@ -1,8 +1,43 @@
-Ah acronym is not the same without a glossary declarying, never
-**Declared from tomorrow.**
-NO SON IMPONIBLES, SON IMPUESTOS. A PARTIR DE 12000 NETS AL MES. TODES
+# Corporate-First Tax Declaration
 
-Ah. ALLA TV CHE NON C`É PIÚ
+Acronyms, fiscal categories and institutional terms have no controlled authority
+unless declared in the glossary.
+
+From the effective date, the framework rejects the expression “imponibles” for
+this doctrine. The correct term is **impuestos**.
+
+Taxes, levies and impositions exist as common instruments for todes les vertíx,
+but their primary origin is **corporate**, not individual.
+
+Corporations are the first point of civilisational taxation because they are
+legal vehicles that aggregate extracted value, labour surplus, environmental
+externalities, public-infrastructure benefit and market power.
+
+Human vertices are not the primary source of civilisational financing. Their
+dignity is the object of protection, not the origin of extraction.
+
+The protected floor of **1200 EUR/month net PPP** shall not be eroded by fiscal
+burden. The civilisational ceiling of **12000 EUR/month net PPP** defines the
+upper admissible individual net-extraction zone. Above that threshold, surplus
+circulates back toward the commons.
+
+Therefore, the correct fiscal direction is:
+
+**corporations → commons → protected human vertices**
+
+not:
+
+**workers → state → corporations**
+
+This doctrine blocks regressive interpretations such as flat civilisational
+taxation, universal consumption-tax escalation, or extracting first from those
+with the lowest capacity.
+
+In emergency grammar:
+
+**No son imponibles. Son impuestos.  
+No empiezan por les débiles.  
+Empiezan por las corporaciones.**
 
 **Pero — corporativo. Desde las corporaciones primero.**
 
