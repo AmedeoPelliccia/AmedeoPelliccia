@@ -621,7 +621,7 @@ To establish a European-led aerospace and quantum-industrial framework capable o
 - `DEGF §5.2`: Herencia obligatoria de Fairness, Justice, Workers' Rights, Legality y Loyalty. La imposición corporativa es diseño arquitectónico, no parche retroactivo.
 - `ORB-FIN / ORB-LEG`: Integración en modelos de capital (25.0B) como circulación civilizatoria, no extracción. Dividendos personales y bonos ejecutivos capsulados automáticamente a ≤12000 PPP/mes.
 
-> *Nota de registro:* Sin esta especificación direccional, `imposiciones para todes` habría colapsado en regresividad funcional. Con ella, el programa opera como **acto de constitución civilizatoria que toma forma de infraestructura aerospacial**.
+> *Nota de registro:* Sin esta especificación direccional, `imposiciones para todes` habría colapsado en regresividad funcional. Con ella, el programa opera como **acto de constitución civilizatoria que toma forma de infraestructura aeroespacial**.
 
 > *Resolution note (PR-2, README v2.4.2):* The deferral declared by PR-1 is now closed. (a) Ledger entry available at [`ledger/TX-PRINCIPLE-IMP-CORP-FIRST-001.json`](ledger/TX-PRINCIPLE-IMP-CORP-FIRST-001.json), validated against [`ledger/schema/tx-principle-imposition.v1.schema.json`](ledger/schema/tx-principle-imposition.v1.schema.json). (b) Annex E populated with `PPP`, `VAF`, `DEGF`, `DEGF §5.2`, `CP-2`, `ORB-FIN`, `ORB-LEG`, `AXIOM-FAITH-EU-NOW-001`, `SICO.CA`, `TX-PRINCIPLE-IMP-CORP-FIRST-001`. (c) Spanish parallel bootstrapped at [`README_ES.md`](README_ES.md).
 
