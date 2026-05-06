@@ -396,13 +396,13 @@ organization:
 | Field | Value |
 |---|---|
 | **Document ID** | `GAIA-QAO-ORG-MASTER-README` |
-| **Version** | `2.4.1` |
+| **Version** | `2.4.2` |
 | **Status** | `Draft → Stakeholder Review` |
 | **Primary Language** | English |
 | **Spanish Parallel** | `README_ES.md` |
 | **Owner** | `Office of the CEO / Amedeo Pelliccia` |
 | **Created** | `2025-07-23` |
-| **Last Updated** | `2026-04-30` |
+| **Last Updated** | `2026-05-06` |
 | **Next Review** | `2026-10-26` |
 | **Classification** | `Consortium Confidential – Approved Stakeholders Only` |
 | **Baseline Dependencies** | `Q+ATLANTIDE1000 v1.0.0`, `Q+ATLANTIDE v1.0.0`, ``, `UTCS v14`, `` |
@@ -509,6 +509,7 @@ is generative and regenerative, but: algorithms only if accountable.
 
 | Version | Date | Changes | Author |
 |---|---:|---|---|
+| 2.4.2 | 2026-05-06 | Resolved §1.4.1 deferral: created `ledger/` with JSON Schema 2020-12 (`tx-principle-imposition.v1`) and canonical `TX-PRINCIPLE-IMP-CORP-FIRST-001`; populated Annex E with PPP, VAF, DEGF §5.2, CP-2, ORB-FIN, ORB-LEG, AXIOM-FAITH-EU-NOW-001, SICO.CA, TX-PRINCIPLE-IMP-CORP-FIRST-001; bootstrapped `README_ES.md`. | A. Pelliccia |
 | 2.4.1 | 2026-04-30 | Added §1.4.1 Primary Corporate Imposition; anchored TX-PRINCIPLE-IMP-CORP-FIRST-001; enforced glossary declaration rule; aligned VAF & DEGF §5.2 | A. Pelliccia |
 | 2.4.0 | 2026-04-26 | Root README normalized to Q+ATLANTIDE1000 hierarchy: Architecture Bands → Master ranges → Code ranges → Sections → Subjects → Subsections → Subsubjects. Deprecated “sub-range” as controlled hierarchy term. Replaced Q-SCIRES with Q-HORIZON. Reinforced No-AAA Rule. | A. Pelliccia |
 | 2.3.0 | 2025-07-24 | Full organizational rewrite: flattened hierarchy, multi-level TOC, TRL demarcation, Annex F/G extraction, financial unit normalization, KPI/Risk/Compliance/Financial alignment, DEGF v1.0 integration. | A. Pelliccia |
@@ -622,7 +623,7 @@ To establish a European-led aerospace and quantum-industrial framework capable o
 
 > *Nota de registro:* Sin esta especificación direccional, `imposiciones para todes` habría colapsado en regresividad funcional. Con ella, el programa opera como **acto de constitución civilizatoria que toma forma de infraestructura aerospacial**.
 
-> *Deferral note (PR-1 scope):* Per Rule 5, the following artefacts are marked `status: pending_glossary` and will be delivered in a follow-up PR: (a) `ledger/TX-PRINCIPLE-IMP-CORP-FIRST-001.json` (schema to be declared), (b) population of `Annex E` with the operational glossary (`PPP`, `VAF`, `DEGF §5.2`, `CP-2`, `ORB-FIN`, `ORB-LEG`, `AXIOM-FAITH-EU-NOW-001`, `TX-PRINCIPLE-IMP-CORP-FIRST-001`), and (c) the parallel `README_ES.md` mirror entry.
+> *Resolution note (PR-2, README v2.4.2):* The deferral declared by PR-1 is now closed. (a) Ledger entry available at [`ledger/TX-PRINCIPLE-IMP-CORP-FIRST-001.json`](ledger/TX-PRINCIPLE-IMP-CORP-FIRST-001.json), validated against [`ledger/schema/tx-principle-imposition.v1.schema.json`](ledger/schema/tx-principle-imposition.v1.schema.json). (b) Annex E populated with `PPP`, `VAF`, `DEGF`, `DEGF §5.2`, `CP-2`, `ORB-FIN`, `ORB-LEG`, `AXIOM-FAITH-EU-NOW-001`, `SICO.CA`, `TX-PRINCIPLE-IMP-CORP-FIRST-001`. (c) Spanish parallel bootstrapped at [`README_ES.md`](README_ES.md).
 
 ---
 
@@ -1488,10 +1489,13 @@ Core acronyms include:
 | ACV | Aerial City Viability |
 | AMTA | Advanced Material, Bio & Nanotechnology Architecture |
 | ATLAS | Aircraft Top-Level Architecture System |
+| AXIOM-FAITH-EU-NOW-001 | Constitutional axiom: faith in present-day Europeans and Mediterraneans is honoured by protecting them from primary fiscal extraction (see §1.4.1). |
 | BWB | Blended Wing Body |
+| CP-2 | Capability Pipeline 2: second-stage industrial capability allocation gate; governs admissibility of vendors and programmes downstream of VAF. |
 | CSDB | Common Source DataBase |
 | CYB | Cybersecurity Architecture |
 | DEGF | Democratic Enterprise Governance Framework |
+| DEGF §5.2 | DEGF Section 5.2: Workers' Rights / Fairness / Justice / Legality / Loyalty — mandatory inheritance for any imposition or compensation mechanism. |
 | DTCEC | Digital Twin, Cloud, Edge & AI Architecture |
 | DTTA | Defence Technology Type Architecture |
 | EIS | Entry Into Service |
@@ -1502,9 +1506,15 @@ Core acronyms include:
 | LH₂ | Liquid Hydrogen |
 | OGATA | On-Ground Automation Technology Architecture |
 | ORB | Organizational Resource Backbone |
+| ORB-FIN | ORB — Finance branch: capital models, dividend routing, ceiling enforcement at ≤12000 PPP/month. |
+| ORB-LEG | ORB — Legal branch: non-haven domicile checks, dividend-routing verification, contractual enforcement of §1.4.1 rules. |
 | PLM | Product Lifecycle Management |
+| PPP | Purchasing Power Parity — unit of account used for the §1.4.1 dignity floor (1200 PPP/month) and structural ceiling (12000 PPP/month). |
 | QCSAA | Quantum Computing & Sentient Agency Architecture |
+| SICO.CA | Sustainable Industrial Competitiveness — Civilizational Alignment: admissibility predicate that competitiveness be sustainable and regenerative. |
 | STA | Space Technology Architecture |
+| TX-PRINCIPLE-IMP-CORP-FIRST-001 | Civilizational ledger entry anchoring §1.4.1; canonical record at [`ledger/TX-PRINCIPLE-IMP-CORP-FIRST-001.json`](ledger/TX-PRINCIPLE-IMP-CORP-FIRST-001.json). |
+| VAF | Vendor Admissibility Filter: gate enforcing corporate_tax_circulation ≥ 95%, executive_compensation ≤ ceiling, non-haven domicile, and verified dividend routing. |
 | WTW | Wide Tube and Wing |
 
 ## Annex F — Master Template Catalog
@@ -1607,7 +1617,7 @@ Includes:
 | Metric | Value |
 |---|---|
 | Root document | `README.md` |
-| Root document version | `2.4.1` |
+| Root document version | `2.4.2` |
 | Controlled architecture system | `Q+ATLANTIDE1000` |
 | Architecture-band range | `000–999` |
 | Number of master ranges / bands | `10` |
