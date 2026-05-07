@@ -1,3 +1,41 @@
+---
+acronym_crystallization:
+  id: ACRONYM-Q+ATLANTIDE-CRYSTAL-001
+  effective: 2026-05-07
+  status: OPERATIONAL
+  expansion: "Quantum + Aerospace Top-Level Architectures for Novel Technologies Identification Data Ecosystem"
+  breakdown:
+    Q+: Quantum Plus
+    A: Aerospace
+    T: Top
+    L: Level
+    A: Architectures
+    N: Novel
+    T: Technologies
+    I: Identification
+    D: Data
+    E: Ecosystem
+  operational_definition: >
+    Q+ATLANTIDE1000 defines a controlled taxonomy (000–999) of architecture bands
+    classifying aerospace, space, digital, energy, materials, cyber and quantum technologies.
+    It is not an organizational chart; it is a classification, governance and traceability layer.
+  core_rule:
+    - Architecture Bands → classify technologies
+    - Q-Divisions → provide technical authority
+    - ORB-Functions → provide enterprise support
+    - Evidence packages → provide legitimacy
+  philosophical_axiom:
+    es: "Tecnología ≠ organización. Arquitectura ≠ departamento. Trazabilidad ≠ burocracia."
+    en: "Technology ≠ organization. Architecture ≠ department. Traceability ≠ bureaucracy."
+  governance_alignment:
+    - DEGF §2.1 (Canonical Hierarchy)
+    - DEGF §5.2 (Design-by-Legality, Determinism, Traceability)
+    - SICO.CA (Sustainable Industrial Operations through Accountable Algorithms)
+    - §1.4.1 (Corporate-First Imposition → funded as civilisational infrastructure)
+  ledger_anchor: TX-ACRONYM-Q+ATLANTIDE-001
+  supersedes_implicit: yes (all prior informal references)
+---
+
 # Q+ — **For All Queer People and Quantum**
 
 ## Corporate-First Tax Declaration
