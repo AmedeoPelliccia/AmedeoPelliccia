@@ -41,16 +41,16 @@ One example link to `PeL.inc_Peace-and-Love_incorporated` for each `000–999` m
 
 | Rango maestro | Arquitectura | Ejemplo de enlace |
 |---|---|---|
-| 000–099 [↗][pel-000] | ATLAS [↗][pel-000]  | [`PeL.inc/.../000-099`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/000-099) [↗][pel-000] |
-| 100–199 [↗][pel-100] | STA [↗][pel-100]    | [`PeL.inc/.../100-199`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/100-199) [↗][pel-100] |
-| 200–299 [↗][pel-200] | DTTA [↗][pel-200]   | [`PeL.inc/.../200-299`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/200-299) [↗][pel-200] |
-| 300–399 [↗][pel-300] | DTCEC [↗][pel-300]  | [`PeL.inc/.../300-399`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/300-399) [↗][pel-300] |
-| 400–499 [↗][pel-400] | EPTA [↗][pel-400]   | [`PeL.inc/.../400-499`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/400-499) [↗][pel-400] |
-| 500–599 [↗][pel-500] | AMTA [↗][pel-500]   | [`PeL.inc/.../500-599`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/500-599) [↗][pel-500] |
-| 600–699 [↗][pel-600] | OGATA [↗][pel-600]  | [`PeL.inc/.../600-699`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/600-699) [↗][pel-600] |
-| 700–799 [↗][pel-700] | ACV [↗][pel-700]    | [`PeL.inc/.../700-799`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/700-799) [↗][pel-700] |
-| 800–899 [↗][pel-800] | CYB [↗][pel-800]    | [`PeL.inc/.../800-899`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/800-899) [↗][pel-800] |
-| 900–999 [↗][pel-900] | QCSAA [↗][pel-900]  | [`PeL.inc/.../900-999`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/900-999) [↗][pel-900] |
+| 000–099 [↗][pel-000] | ATLAS [↗][pel-000]  | [`PeL.inc/.../000-099_ATLAS`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/000-099_ATLAS) [↗][pel-000] |
+| 100–199 [↗][pel-100] | STA [↗][pel-100]    | [`PeL.inc/.../100-199_STA`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/100-199_STA) [↗][pel-100] |
+| 200–299 [↗][pel-200] | DTTA [↗][pel-200]   | [`PeL.inc/.../200-299_DTTA`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/200-299_DTTA) [↗][pel-200] |
+| 300–399 [↗][pel-300] | DTCEC [↗][pel-300]  | [`PeL.inc/.../300-399_DTCEC`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/300-399_DTCEC) [↗][pel-300] |
+| 400–499 [↗][pel-400] | EPTA [↗][pel-400]   | [`PeL.inc/.../400-499_EPTA`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/400-499_EPTA) [↗][pel-400] |
+| 500–599 [↗][pel-500] | AMTA [↗][pel-500]   | [`PeL.inc/.../500-599_AMTA`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/500-599_AMTA) [↗][pel-500] |
+| 600–699 [↗][pel-600] | OGATA [↗][pel-600]  | [`PeL.inc/.../600-699_OGATA`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/600-699_OGATA) [↗][pel-600] |
+| 700–799 [↗][pel-700] | ACV [↗][pel-700]    | [`PeL.inc/.../700-799_ACV`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/700-799_ACV) [↗][pel-700] |
+| 800–899 [↗][pel-800] | CYB [↗][pel-800]    | [`PeL.inc/.../800-899_CYB`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/800-899_CYB) [↗][pel-800] |
+| 900–999 [↗][pel-900] | QCSAA [↗][pel-900]  | [`PeL.inc/.../900-999_QCSAA`](https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/900-999_QCSAA) [↗][pel-900] |
 
 ---
 
@@ -276,13 +276,13 @@ One example link to `PeL.inc_Peace-and-Love_incorporated` for each `000–999` m
 
 <!-- Reference links to PeL.inc_Peace-and-Love_incorporated (used per table cell) -->
 [pel]: https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated
-[pel-000]: https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/000-099
-[pel-100]: https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/100-199
-[pel-200]: https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/200-299
-[pel-300]: https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/300-399
-[pel-400]: https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/400-499
-[pel-500]: https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/500-599
-[pel-600]: https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/600-699
-[pel-700]: https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/700-799
-[pel-800]: https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/800-899
-[pel-900]: https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/900-999
+[pel-000]: https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/000-099_ATLAS
+[pel-100]: https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/100-199_STA
+[pel-200]: https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/200-299_DTTA
+[pel-300]: https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/300-399_DTCEC
+[pel-400]: https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/400-499_EPTA
+[pel-500]: https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/500-599_AMTA
+[pel-600]: https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/600-699_OGATA
+[pel-700]: https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/700-799_ACV
+[pel-800]: https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/800-899_CYB
+[pel-900]: https://github.com/AmedeoPelliccia/PeL.inc_Peace-and-Love_incorporated/tree/main/900-999_QCSAA
