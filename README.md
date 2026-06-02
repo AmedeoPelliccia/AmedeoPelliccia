@@ -1,5 +1,6 @@
 # BIT → BOT → NEURONAL BOOM
 ### Una correlación disciplinada entre teoría de la información y cosmología del Big Bang
+*Author: Amedeo Pelliccia*
 
 **Versión:** v0.2 — *Borrador para discusión*
 **Cambios v0.1 → v0.2:** se fija «potencial de diferenciación informacional» en lugar de «superposición máxima»; frase central reformulada; cadena canónica (§4.7) actualizada; nueva identidad $\Delta S$ = potencial = presupuesto (§4.5); potencial reconocido como propiedad del par $(\Psi_0,\text{operador})$, no del estado solo (§4.6 bis); guardarraíl **BIT₀ ≠ bit clásico** añadido (§4.7).
