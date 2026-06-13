@@ -1,3 +1,16 @@
+# Cognitive Value Recognition Doctrine
+
+There exists an entire class of cognitive value that the current economic system does not know how to recognize, protect, price, or govern.
+
+This value may be produced by workers, independent researchers, technicians, precarious people, students, engineers, citizens, or excluded communities.
+
+Its invisibility is not proof of low value.
+It is proof of missing institutional architecture.
+
+The purpose is therefore not merely to denounce inequality, but to build mechanisms by which cognitive value can be declared, traced, reviewed, protected, validated, and rewarded.
+
+Rage becomes architecture when it stops asking power for permission and becomes a governance system.
+
 # Una correlación disciplinada entre teoría de la información y cosmología del Big Bang
 
 **Versión:** v0.5 — *Borrador para discusión*  
