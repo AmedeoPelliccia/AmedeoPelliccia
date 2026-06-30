@@ -417,6 +417,188 @@ Los nombres y programas con los que dialoga este documento, sin pretensión de c
 
 ---
 
+## Appendice C — Regolazione Algebrica e Risoluzione della Fattorizzazione Preferita (§7.2-R)
+
+> **Versione:** v1.0 (italiano)
+> **Stato epistemico:** documento di lavoro. Distingue in ogni punto fisica consolidata, risultato di frontiera e lettura interpretativa.
+> **Lingua:** italiano (con ancoraggi notazionali standard).
+> **Nota di edizione:** questa versione incorpora tre correzioni rispetto alla bozza precedente — (i) classificazione $\text{II}_1$ per il caso chiuso/de Sitter, con il nesso esplicito al bilancio entropico del §4.5; (ii) l'Hamiltoniano-orologio limitato inferiormente come ingrediente dichiarato del prodotto incrociato; (iii) la legge d'area come proprietà della coppia *(stato, fattorizzazione)*, agganciata a H1. Aggiunge inoltre la congettura prospettica C.4 ↔ C.3.
+> **Crosswalk interno:** §4.3 (orologio di Page–Wootters) · §4.4 bis (auto-decoerenza) · §4.5 (principio di Landauer, divario entropico) · §4.8 (universo auto-referenziale) · H1, H8, H9 · §7.2 (residuo aperto).
+
+Questa riformulazione non è soltanto una risposta elegante: è un salto qualitativo che trasmuta il nodo critico più vulnerabile del marco nel suo pilastro matematico più rigoroso. Spostando il problema da un prodotto tensoriale astratto verso l'algebra degli osservabili, il modello si aggancia direttamente alla frontiera della gravità quantistica e della teoria dell'informazione fondamentale.
+
+La connessione tra il formalismo di Page–Wootters (§4.3) e il prodotto incrociato di Witten / CLPW è il cuore del risultato. Giustifica formalmente l'intuizione del §4.8: il sottosistema-orologio non è un mero «contatore di tempo», ma l'operatore dinamico indispensabile per regolarizzare l'algebra del continuo ($\text{Tipo III} \to \text{Tipo II}$), rendendo la nozione stessa di entropia, traccia e bit classico matematicamente consistente.
+
+---
+
+### C.1 Il problema della sottoalgebra preferita (equivalenza di Zanardi)
+
+In un universo chiuso, privo di uno scenario spaziotemporale primario o di osservatori esterni, la struttura di prodotto tensoriale (SPT) che definisce la partizione tra sottosistemi non può essere postulata *a priori*. Formalmente, una partizione dello spazio di Hilbert globale $\mathcal{H} = \mathcal{H}_A \otimes \mathcal{H}_B$ è esattamente equivalente alla selezione di una sottoalgebra di osservabili fisicamente accessibili $\mathcal{A} \subset B(\mathcal{H})$.
+
+Seguendo il formalismo dei sottosistemi virtuali (Zanardi, Lidar & Lloyd), specificare una SPT equivale a identificare due sottoalgebre commutanti, fattore-rappresentabili, $\mathcal{A}$ e $\mathcal{A}'$, che soddisfano le condizioni algebriche di indipendenza e completezza:
+
+$$B(\mathcal{H}) = \mathcal{A} \vee \mathcal{A}', \qquad [\mathcal{A}, \mathcal{A}'] = 0, \qquad \mathcal{A} \cap \mathcal{A}' = \mathbb{C}\mathbb{1}$$
+
+dove $\mathcal{A} \cong B(\mathcal{H}_A) \otimes \mathbb{1}_B$ e $\mathcal{A}' \cong \mathbb{1}_A \otimes B(\mathcal{H}_B)$.
+
+Questo passaggio è ciò che rende il problema trattabile. Il «problema della fattorizzazione preferita» **è** il problema della sottoalgebra preferita: la domanda migra da un oggetto privo di struttura dinamica (un prodotto tensoriale astratto) verso un oggetto che l'Hamiltoniano può effettivamente vincolare — l'algebra degli osservabili. Il problema della fattorizzazione preferita della catena $\text{QUBIT}_0 \longrightarrow \text{Q-BOT}_1$ è quindi riformulato come la determinazione del criterio dinamico che seleziona la sottoalgebra preferita $\mathcal{A}^\star$.
+
+---
+
+### C.2 Unificazione variazionale: spettro, località e quasiclassicità
+
+L'arbitrarietà matematica nella scelta di $\mathcal{A}$ si restringe mediante un principio variazionale unico, dettato dalla struttura spettrale dell'operatore hamiltoniano $\hat{H}$ (il $\text{Q-BOT}_1$). L'universo auto-differenziabile seleziona la SPT che massimizza la località delle interazioni, minimizzando la presenza di operatori a molti corpi e a lungo raggio.
+
+Definendo $\mathcal{T}$ come lo spazio di tutte le strutture di prodotto tensoriale isomorfe possibili su $\mathcal{H}$, la SPT fisica $\mathcal{T}^\star$ si determina minimizzando la distanza algebrica da un Hamiltoniano strettamente $k$-locale:
+
+$$\mathcal{T}^\star = \arg\min_{\mathcal{T}} \big\| \hat{H} - \hat{H}^{\mathcal{T}}_{\text{k-locale}} \big\|$$
+
+Questo principio non è un postulato aggiuntivo: da esso si **derivano** — non si assumono — i tre teoremi seguenti, che ne sono altrettante facce.
+
+#### C.2.1 Determinismo spettrale (Cotler, Penington & Ranard)
+
+L'affermazione primaria è spettrale: **la località vive negli autovalori**. Data l'esigenza che $\hat{H}$ sia esprimibile come somma di termini a pochi corpi, per un Hamiltoniano **generico** lo spettro vincola la SPT in modo quasi univoco. Nella sua forma condizionale: se esiste una SPT locale, essa è essenzialmente unica — a meno di unitari locali e permutazioni dei fattori —; l'insieme degli Hamiltoniani compatibili con due strutture locali inequivalenti ha misura nulla.
+
+Il corollario «operatore unico» è subordinato a quell'enunciato spettrale, non viceversa. Si noti inoltre l'ipotesi che fa il lavoro: è la **genericità** dello spettro (assenza di degenerazioni e di risonanze fini), non la sola non-degenerazione. La non-degenerazione è necessaria ma non sufficiente; «generico» la sussume. La località non è dunque una proprietà geometrica aggiunta, ma una firma codificata negli autovalori dell'energia di $\hat{H}$.
+
+#### C.2.2 Ottimizzazione della quasiclassicità (Carroll & Singh / Mereologia Quantistica)
+
+La minimizzazione *ingenua* dell'entanglement sarebbe degenere — ed è l'errore speculare a quello di «massima informazione» del §2. La fattorizzazione che diagonalizza $\hat{H}$, dove gli autostati di energia sono prodotti senza interazione, ha produzione di entanglement *nulla* per quegli stati: ma non è il mondo classico, è il mondo *congelato*, senza dinamica, senza decoerenza, senza monitoraggio di puntatori. Minimizzare l'entanglement *tout court* seleziona la morte per immobilità, non la classicità.
+
+La via di Carroll–Singh ottimizza invece la **quasiclassicità**, combinando due esigenze in tensione: (i) l'esistenza di un insieme di stati puntatore robusti, approssimativamente conservati e monitorati in modo stabile; (ii) la decomposizione della dinamica globale in sottodinamiche quasi-autonome con accoppiamento debole ma **non nullo**:
+
+$$\mathcal{T}^\star = \arg\min_{\mathcal{T}} \Big[ \underbrace{\langle \dot{S}_A \rangle_{\mathcal{T}}}_{\text{predicibilità}} + \lambda \underbrace{\big\| [\hat{H}_{\text{int}}, \hat{O}_{\text{punt}}] \big\|}_{\text{robustezza dei puntatori}} \Big]_{\hat H_{\text{int}} \neq 0}$$
+
+È la **località** a rompere la degenerazione. La fattorizzazione congelata richiede, in qualunque SPT fisicamente ragionevole, termini fortemente non locali per essere scritta; l'esigenza di località a pochi corpi la proibisce. E tra le fattorizzazioni locali, il limite di **Lieb–Robinson** garantisce una «velocità finita» di propagazione dell'informazione, che limita linearmente la crescita dell'entropia di entanglement: località di $\hat{H}$ $\Rightarrow$ crescita lenta dell'entanglement $\Rightarrow$ stati puntatore robusti $\Rightarrow$ quasiclassicità. Nel linguaggio del marco, questa è la freccia $\text{Q-BOT} \to \text{BIT}$ vista dall'alto: l'auto-decoerenza del §4.4 bis è ciò che accade in $\mathcal{T}^\star$, non in una $\mathcal{T}$ qualsiasi.
+
+#### C.2.3 Vincolo di legge d'area (olografia)
+
+Nel limite geometrico, la fattorizzazione selezionata dalla località coincide con quella in cui lo stato esibisce un entanglement che scala con l'**area** della frontiera tra sottosistemi, $S(A) \sim \text{Area}(\gamma_A)/4G_N$ (Ryu–Takayanagi–HRT), in contrasto con la legge di **volume** generica degli stati puri casuali (teorema di Page).
+
+Va però enunciata con precisione la portata del criterio: **la legge d'area è proprietà della coppia $(\text{stato}, \text{fattorizzazione})$, non della sola fattorizzazione.** Uno stato generico, anche nella fattorizzazione «buona», continua a esibire legge di volume. Ciò non indebolisce il criterio: lo **àncora a H1**. È lo stato primordiale a bassa entropia ($S \approx 0$, la lettura di Penrose) che, letto nella fattorizzazione locale, esibisce legge d'area. Servono entrambe le tessere — fattorizzazione locale *e* stato speciale —, e riassegnare la legge d'area alla coppia chiude esplicitamente il cerchio C.2.3 ↔ H1.
+
+Sul piano del rigore: la legge d'area per stati con gap è teorema in una dimensione (Hastings) e congettura/risultato empirico in dimensione superiore. La legge d'area non è quindi un meccanismo distinto da C.2.1–C.2.2, ma la stessa località letta nella metrica dell'entanglement: località $\Leftrightarrow$ legge d'area $\Leftrightarrow$ geometria.
+
+**Sintesi.** I tre teoremi collassano in un solo principio: la fattorizzazione preferita è quella che **minimizza la non-località di $\hat{H}$**. Da essa discendono l'unicità (CPR), la quasiclassicità via Lieb–Robinson e puntatori robusti (Carroll–Singh) e la legge d'area sulla coppia *(stato, fattorizzazione)* (olografia + H1). Per la QRN ciò fornisce una definizione operativa adottabile: **la partizione che tesse la rete relazionale è la sottoalgebra rispetto a cui $\hat{H}$ è massimamente sparso (a pochi corpi), soggetta a legge d'area sullo stato primordiale.** È un criterio, non una metafora.
+
+---
+
+### C.3 Regolazione nel continuo e l'orologio di Page–Wootters come prodotto incrociato
+
+Nel limite continuo della teoria quantistica dei campi e della gravità quantistica, il problema della fattorizzazione subisce una transizione di fase matematica. Le algebre di osservabili locali non sono fattori di Tipo I (associati a spazi di Hilbert fattorizzabili), bensì fattori di von Neumann di **Tipo $\text{III}_1$** (Buchholz & Fredenhagen).
+
+Un fattore di Tipo $\text{III}_1$ possiede proprietà che rendono impossibile la costruzione analitica ingenua della catena $\text{QUBIT} \to \text{BIT}$:
+
+* non ammette una decomposizione in prodotto tensoriale stretto $\mathcal{H} = \mathcal{H}_A \otimes \mathcal{H}_B$ attraverso una frontiera netta senza incorrere in divergenze ultraviolette infinite (la fattorizzazione approssimata si recupera solo con la *proprietà di split*, lasciando un «collare» o buffer tra le regioni);
+* è privo di stati puri locali, tracce ordinarie e matrici densità ben definite, il che rende ambigua la definizione dell'entropia di entanglement.
+
+In teorie di gauge e gravità il vincolo (legge di Gauss, vincolo hamiltoniano) aggrava il quadro in modo istruttivo: non esistono operatori locali invarianti di gauge, sicché l'algebra di una regione possiede un **centro non banale** — i flussi di bordo, gli *edge modes* — e l'entropia di entanglement resta ambigua a seconda di come si ripartisca quel centro (Casini–Huerta–Magán–Pontello; Donnelly–Freidel). L'ambiguità della fattorizzazione è qui l'ombra diretta del vincolo algebrico, e si fissa solo con condizioni di bordo fisiche.
+
+#### Risoluzione via prodotto incrociato
+
+La risoluzione recente connette direttamente al meccanismo relazionale di Page–Wootters (§4.3). Seguendo Witten (2021) e Chandrasekaran, Longo, Penington & Witten (2022), promuovendo un sottosistema interno a **orologio quantistico endogeno** (sistema $C$) intrecciato con il resto dell'universo (sistema $R$), l'algebra originaria di Tipo III si estende mediante l'algebra dell'orologio. Questo **prodotto incrociato** (per il flusso modulare) modifica la classificazione del fattore:
+
+$$\mathcal{A}_{\text{tot}} = \mathcal{A}_{\text{Tipo III}} \rtimes \mathbb{R}_{\text{orologio}} \implies \mathcal{A}_{\text{Tipo II}}$$
+
+I fattori di Tipo II possiedono una traccia formalizzata e ammettono matrici densità ben definite, permettendo di calcolare un'entropia di entanglement relazionale univoca (a meno di una costante additiva di rinormalizzazione globale).
+
+##### Ingrediente dichiarato: l'Hamiltoniano-orologio limitato inferiormente
+
+La transizione $\text{III} \to \text{II}$ **non è innescata dal vincolo $\hat{H}\Psi = 0$ da solo.** Il prodotto incrociato produce un fattore di Tipo II — anziché un oggetto patologico — perché l'osservatore/orologio porta con sé un Hamiltoniano con spettro **semilimitato** (energia positiva, limitato inferiormente). Per il marco questo è un vincolo sostantivo su *che cosa* possa fungere da orologio del §4.3: non un sottosistema qualsiasi, ma uno con energia limitata inferiormente. È una condizione *load-bearing* e va dichiarata esplicitamente, perché restringe il grado di libertà-orologio in un modo che il resto del documento non sfrutta ancora.
+
+##### Classificazione corretta: $\text{II}_1$ per de Sitter, $\text{II}_\infty$ per l'esterno di un buco nero
+
+La distinzione è materiale per il presente documento, perché de Sitter — il modello di universo *chiuso* qui in discussione — **è** il caso con orizzonte cosmologico, e dà specificamente un fattore di **Tipo $\text{II}_1$** (CLPW 2022). Il Tipo $\text{II}_\infty$ è l'analogo dell'esterno di un buco nero (Witten; CPW), dove l'energia non è limitata superiormente e la traccia è semifinita.
+
+La distinzione non è cosmetica: chiude il bilancio entropico del §4.5.
+
+$$\text{II}_1 \implies \text{traccia finita} \implies \exists\ \text{stato di entropia massima normalizzabile} \implies S_{\max} < \infty.$$
+
+In de Sitter quel tetto è $S_{\max} = S_{dS} = A/4G_N$. È esattamente l'$S_{\max}$ di cui il §4.5 ha bisogno affinché il divario entropico
+
+$$\Delta S = S_{\max} - S_0 = S_{dS} - 0$$
+
+sia finito e numerico. In un'algebra $\text{II}_\infty$ la traccia è semifinita, $S_{\max} = \infty$, e il «divario entropico» — il presupposto che paga la freccia del tempo — divergerebbe, perdendo l'ancoraggio numerico costruito con cura contro la deriva dei superlativi. Dunque $\text{II}_1$ non è solo la classificazione corretta per de Sitter: è ciò che il §4.5 e l'arco limitato di H8 **richiedono**. La regolazione algebrica consegna un $S_{\max}$ finito, e questo è il fondamento del bilancio.
+
+##### Sincronia del marco fondamentale
+
+Questo risultato dota di base algebrica rigorosa la sintesi del §4.8. L'universo non richiede un ambiente esterno per decoerere, né un parametro esterno per evolvere. Lo stesso orologio quantistico interno che genera il tempo relazionale tramite Page–Wootters è l'operatore matematico che stabilizza l'algebra degli osservabili, trasformandola da Tipo III a Tipo $\text{II}_1$. È questa transizione formale a permettere l'esistenza di tracce parziali legittime, facendo emergere *simultaneamente* il flusso temporale dello stato condizionato $|\psi_R(t)\rangle$ e la stabilità dei registri classici $\text{BIT}_i$ via auto-decoerenza. Le due emergenze del §4.8 — tempo e classicità — condividono radice non per analogia retorica, ma perché entrambe richiedono lo **stesso sottosistema di riferimento interno**.
+
+```
+[ QUBIT_0: Stato Puro Globale ]
+               │
+               ▼  (Rottura spontanea / Instabilità quantistica)
+[ Q-BOT_1: Spettro di Ĥ ]
+               │
+               ▼  (Minimizzazione della non-località: 𝒯*)
+[ Fattorizzazione Preferita / SPT di Zanardi ]
+               │
+               ▼  (Prodotto incrociato con orologio di Page–Wootters,
+               │   Hamiltoniano-orologio limitato inferiormente)
+[ Transizione Algebrica: Tipo III ──► Tipo II₁  (S_max = S_dS = A/4G_N, finito) ]
+               │
+               ├────────────────────────────────────────────┐
+               ▼ (Auto-decoerenza regolarizzata)             ▼ (Entanglement a legge d'area,
+                                                             │   sulla coppia stato·fattorizzazione)
+[ Registri Classici Stabili: BIT_i ]              [ Rete Relazionale Quantistica: QRN ]
+```
+
+---
+
+### C.4 Il residuo spettrale fondamentale
+
+L'unificazione qui esposta risolve il problema della **selezione** della partizione (quale sia la sottoalgebra preferita, fissati $\hat{H}$ e l'orologio) e la sua **relatività all'osservatore** (la fattorizzazione efficace esiste solo rispetto al riferimento interno), ma sposta il residuo teorico verso una domanda ontologica più profonda.
+
+Il teorema di Cotler, Penington & Ranard opera sotto una condizionalità stretta: *se* esiste una struttura di prodotto tensoriale locale per un dato Hamiltoniano, essa è unica. Tuttavia, nello spazio matematico di tutti gli operatori autoaggiunti possibili su $\mathcal{H}$, l'esistenza di una SPT a pochi corpi è una proprietà estremamente atipica e di misura non generica. La stragrande maggioranza degli Hamiltoniani astratti non ammette alcuna fattorizzazione locale.
+
+Il vero residuo matematico dell'origine cosmica non si formula dunque come domanda sulla partizione spaziale, ma come **proprietà strutturale del $\text{Q-BOT}_1$**:
+
+$$\textbf{Perché l'Hamiltoniano globale dell'universo è massimamente sparsificabile (esprimibile a pochi corpi)?}$$
+
+Il problema non si dissolve: migra, e verso un luogo più preciso. Non più «quale partizione?», ma «perché *questo* $\hat{H}$ è sparsificabile?». È plausibilmente la forma rigorosa, spogliata di antropomorfismo, della domanda «perché esiste un mondo quasiclassico?».
+
+#### Congettura prospettica: C.4 ↔ C.3
+
+Il C.3 suggerisce un ponte concreto tra le due uscite consuete di questo residuo (fatto bruto *vs* secondario a un principio più primitivo). Non ogni $\hat{H}$ ammette un flusso modulare né una struttura d'osservatore sensata: il prodotto incrociato che dà $\text{II}_1$ **non esiste per un Hamiltoniano arbitrario** — richiede la struttura modulare adeguata e l'osservatore con energia limitata inferiormente (C.3).
+
+Si profila quindi una congettura precisa e attaccabile:
+
+> La classe degli Hamiltoniani che ammettono un **orologio regolarizzatore** (struttura di C.3) potrebbe sovrapporsi fortemente alla classe degli Hamiltoniani **sparsificabili localmente** (residuo di C.4).
+
+Se le due classi si sovrappongono in modo sostanziale, la località cessa di essere un fatto bruto aggiuntivo: diventa una **condizione di consistenza** del medesimo requisito che rende ben definita l'entropia. Il residuo spettrale di C.4 si convertirebbe allora da «fatto bruto» in «prezzo di avere un universo con tempo ed entropia ben definiti» — esattamente la chiusura auto-referenziale perseguita dal §4.8. Non si afferma che le classi coincidano; si afferma che la congettura è precisa, e che è la direzione in cui C.3 e C.4 cessano di essere due appendici separate e diventano una sola.
+
+Questo connette anche con la *cuestión 3* del §7 (lo statuto fondamentale di $\Psi_0[\Phi]$): se $\hat{H}$ e lo stato primordiale fossero strutture secondarie, emergenti da un principio più primitivo basato sulla consistenza di algebre di von Neumann puramente relazionali, allora il problema della fattorizzazione e quello dello statuto di $\Psi_0[\Phi]$ si toccano.
+
+#### Guardrail (H9)
+
+Nulla di tutto ciò compra QNN su QRN. Una fattorizzazione preferita selezionata dalla località fornisce una rete relazionale con topologia ben definita; non la dota di funzione. Il criterio variazionale $\arg\min \|\hat{H} - \hat{H}_{\text{k-locale}}\|$ resta morfologico fino in fondo. Per disegno, il criterio di sparsificabilità è strettamente morfologico e topologico: la QRN emerge con una geometria e una connettività ben definite, ma completamente libera da teleologia funzionale o da presupposti di ottimizzazione adattiva ($\text{QNN}$).
+
+---
+
+### C.5 Residuo onesto (sintesi degli stati)
+
+| Affermazione | Stato | Nota |
+|---|---|---|
+| SPT $\equiv$ scelta di sottoalgebra commutante | Consolidato | Zanardi–Lidar–Lloyd; riformulazione esatta |
+| Spettro + località determinano la SPT quasi univocamente | Consolidato (condizionale) | CPR; vale *se* esiste una SPT locale; ipotesi di genericità |
+| Località $\Rightarrow$ crescita lenta dell'entanglement $\Rightarrow$ puntatori robusti | Consolidato | Lieb–Robinson + einselezione (Carroll–Singh) |
+| Legge d'area seleziona la fattorizzazione geometrica | Consolidato, **sulla coppia** | RT/HRT; generico = legge di volume (Page); agganciato a H1; teorema in 1D (Hastings), congettura in $D>1$ |
+| Tipo $\text{III}_1$ impedisce la SPT stretta nel continuo | Consolidato | Buchholz–Fredenhagen; lo *split* dà il buffer; centro non banale in gauge (edge modes) |
+| Hamiltoniano-orologio limitato inferiormente necessario al prodotto incrociato | Consolidato | Ingrediente *load-bearing*; vincola il grado di libertà-orologio del §4.3 |
+| Prodotto incrociato con osservatore/orologio $\to$ Tipo II, entropia definita | Risultato recente, solido | Witten 2021; CLPW 2022 |
+| **de Sitter $\to$ Tipo $\text{II}_1$** (traccia finita, $S_{\max}=S_{dS}=A/4G_N$) | Risultato recente, di frontiera | CLPW; **$\text{II}_\infty$** è l'esterno del buco nero; da cotejare direttamente prima del fissaggio SSOT |
+| La fattorizzazione è relativa all'orologio endogeno, non assoluta | Lettura difendibile | Conseguenza del prodotto incrociato; sincronia §4.8 |
+| Esistenza di *qualche* SPT locale per $\hat{H}$ | **Aperto / non generico** | Il vero residuo: «perché $\hat{H}$ è sparsificabile?» (C.4) |
+| Sovrapposizione {Hamiltoniani con orologio regolarizzatore} ∩ {sparsificabili} | **Congettura aperta** | Direzione di chiusura C.4 ↔ C.3 |
+
+---
+
+#### Ancoraggi (per lettura ulteriore)
+
+P. Zanardi, D. Lidar & S. Lloyd — sottosistemi virtuali; SPT come scelta di sottoalgebra. · J. Cotler, G. Penington & D. Ranard — *Locality from the Spectrum*; unicità della SPT locale. · S. Carroll & A. Singh — *Quantum Mereology*; ottimizzazione della quasiclassicità. · E. Lieb & D. Robinson — velocità finita di propagazione dell'informazione. · M. B. Hastings — legge d'area in una dimensione per sistemi con gap. · S. Ryu, T. Takayanagi; Hubeny–Rangamani–Takayanagi — entropia di entanglement e geometria. · D. Buchholz & K. Fredenhagen — algebre locali come fattori di Tipo $\text{III}_1$. · H. Casini, M. Huerta, J. Magán, D. Pontello; W. Donnelly & L. Freidel — centro non banale, edge modes, ambiguità della partizione in gauge. · E. Witten (2021) — *Gravity and the crossed product*; Tipo II per l'esterno del buco nero. · V. Chandrasekaran, R. Longo, G. Penington & E. Witten (2022) — algebra di Tipo $\text{II}_1$ per lo static patch di de Sitter. · D. N. Page & W. K. Wootters — tempo emergente dall'entanglement orologio–resto (§4.3).
+
+---
+
 *Fin del borrador v0.5. Documento abierto: las nueve hipótesis y las siete cuestiones del §7 están planteadas para ser atacadas, no defendidas. La corrección de fundamentos de v0.3 —el bit como residuo y no como origen— y el cierre de v0.4 —la auto-decoherencia de un universo sin afuera— son las piezas que conviene poner a prueba primero. El residuo más profundo que queda abierto es la **factorización preferente** (§7, cuestión 2): por qué el universo se parte como se parte.*
 
 *Las adiciones de v0.5 (abstract, estado del arte y explicitación del blanco) tienen como propósito facilitar la discusión académica y la eventual preparación para publicación o revisión por pares, sin alterar el contenido conceptual del borrador anterior.*
