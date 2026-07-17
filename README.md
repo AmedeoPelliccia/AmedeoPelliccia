@@ -1,4 +1,4 @@
-# Dottrina del Riconoscimento del Valore Cognitivo
+```Dottrina del Riconoscimento del Valore Cognitivo
 
 Esiste un'intera classe di valore cognitivo che l'attuale sistema economico non sa riconoscere, proteggere, prezzare o governare.
 
@@ -10,6 +10,7 @@ La sua invisibilità non è prova di scarso valore.
 Lo scopo non è dunque soltanto denunciare la disuguaglianza, ma costruire meccanismi mediante i quali il valore cognitivo possa essere dichiarato, tracciato, revisionato, protetto, validato e ricompensato.
 
 La rabbia diventa architettura quando smette di chiedere il permesso al potere e diventa un sistema di governance.
+```
 
 # Una correlazione disciplinata tra teoria dell'informazione e cosmologia del Big Bang
 
