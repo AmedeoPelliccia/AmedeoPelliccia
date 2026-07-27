@@ -1,4 +1,7 @@
+# Teoria del Qubit Primordiale
 # Una correlazione disciplinata tra teoria dell'informazione e cosmologia del Big Bang
+
+**Un modello di fattorizzazione cosmica, auto-decoerenza ed emergenza dell’informazione classica**
 
 ## Premessa
 
