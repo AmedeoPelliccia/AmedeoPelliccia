@@ -1,5 +1,20 @@
 # Una correlazione disciplinata tra teoria dell'informazione e cosmologia del Big Bang
 
+## Premessa
+
+Il punto critico è che l’informazione distinguibile nasce con le differenze. Se lo stato iniziale dell’universo era altamente omogeneo, simmetrico e puro, allora l’informazione classicamente differenziata era minima, non massima. Ciò che risultava massimo non era il numero di dati già disponibili, ma il potenziale di produrre differenze, correlazioni e struttura.
+
+Nel quadro proposto, l’origine è rappresentata da uno stato quantistico primordiale, indicato come **QUBIT₀**, governato da una dinamica interna. Con l’evoluzione del sistema, i diversi gradi di libertà dell’universo interagiscono, si differenziano e assumono ruoli relazionali distinti. Alcuni di essi operano come ambiente rispetto ad altri: è attraverso questa partizione interna che può emergere un processo di auto-decoerenza.
+
+La decoerenza non implica necessariamente che una sovrapposizione quantistica collassi fisicamente in un’unica verità. Indica piuttosto che le alternative quantistiche perdono progressivamente la capacità di interferire tra loro e diventano, rispetto a una determinata partizione interna, distinguibili, stabili e accessibili come registri classici.
+
+In questo senso si può affermare, in forma metaforica, che l’universo “osserva sé stesso”. In termini più rigorosi, l’universo si organizza in sottosistemi che registrano reciprocamente i propri stati e svolgono, gli uni rispetto agli altri, la funzione di sistema, ambiente e riferimento. Non è necessario introdurre un osservatore esterno, perché nel modello non esiste alcun “fuori” dell’universo.
+
+La tesi centrale può essere sintetizzata così:
+
+> **L’universo non comincia ricco di informazione differenziata, ma ricco della capacità di generarla.**
+
+
 ```mermaid
 flowchart TD
   QUBIT["QUBIT₀<br/>Primordial global quantum state<br/>High purity and symmetry<br/>Minimum differentiated classical information"]
