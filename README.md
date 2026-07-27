@@ -1,18 +1,43 @@
-```Dottrina del Riconoscimento del Valore Cognitivo
-
-Esiste un'intera classe di valore cognitivo che l'attuale sistema economico non sa riconoscere, proteggere, prezzare o governare.
-
-Questo valore può essere prodotto da lavoratori, ricercatori indipendenti, tecnici, persone precarie, studenti, ingegneri, cittadini o comunità escluse.
-
-La sua invisibilità non è prova di scarso valore.
-È prova di un'architettura istituzionale mancante.
-
-Lo scopo non è dunque soltanto denunciare la disuguaglianza, ma costruire meccanismi mediante i quali il valore cognitivo possa essere dichiarato, tracciato, revisionato, protetto, validato e ricompensato.
-
-La rabbia diventa architettura quando smette di chiedere il permesso al potere e diventa un sistema di governance.
-```
-
 # Una correlazione disciplinata tra teoria dell'informazione e cosmologia del Big Bang
+
+```mermaid
+flowchart TD
+  QUBIT["QUBIT₀<br/>Primordial global quantum state<br/>High purity and symmetry<br/>Minimum differentiated classical information"]
+
+  QBOT["Q-BOT₁<br/>Intrinsic quantum dynamics<br/>Hamiltonian constraint and evolution rule<br/>Endogenous, not externally triggered"]
+
+  PART["𝒫*<br/>Emergent internal partition<br/>Clock / system / environment roles<br/>Preferred factorization remains conditional"]
+
+  BIT["BITᵢ<br/>Emergent classical records<br/>Stable decohered observables<br/>Relative to the selected partition"]
+
+  QRN["QRN<br/>Quantum Relational Network<br/>Accumulated stable correlations<br/>Matter, geometry and causal structure"]
+
+  QUBIT -->|"State governed by intrinsic dynamics"| QBOT
+
+  QBOT -->|"Interaction structure<br/>and dynamical differentiation"| PART
+
+  PART -->|"Internal decoherence<br/>Einselection and redundancy"| BIT
+
+  BIT -->|"Accumulation and stabilization<br/>of relational records"| QRN
+
+  QUBIT -.->|"Global state remains pure<br/>under unitary evolution"| QRN
+
+  QBOT -.->|"Dynamics remains operative<br/>at every emergent level"| QRN
+
+  PART -.->|"Factorization is relational<br/>and not yet uniquely derived"| QRN
+
+  classDef quantum fill:#EEF2FF,stroke:#4F46E5,stroke-width:2px;
+  classDef operator fill:#F5F3FF,stroke:#7C3AED,stroke-width:2px;
+  classDef partition fill:#FFF7ED,stroke:#EA580C,stroke-width:2px;
+  classDef classical fill:#F0FDF4,stroke:#16A34A,stroke-width:2px;
+  classDef network fill:#ECFEFF,stroke:#0891B2,stroke-width:2px;
+
+  class QUBIT quantum;
+  class QBOT operator;
+  class PART partition;
+  class BIT classical;
+  class QRN network;
+```
 
 **Versione:** v0.5 — *Bozza per la discussione*  
 *(Affina e sostituisce la catena `BIT → BOT → NEURONAL BOOM` delle versioni v0.1–v0.2; consolida la correzione dei fondamenti della v0.3; aggiunge struttura accademica formale nella v0.5.)*
