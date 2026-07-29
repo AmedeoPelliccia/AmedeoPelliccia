@@ -1,0 +1,149 @@
+##############################################################################
+# Quantum HUB — Naples-Anchored Quantum Coordination Architecture
+# Operational Coordination Hub for ESSA Quantum Ecosystems
+# Machine-readable companion to ESSA/QUANTUM-HUB.md
+##############################################################################
+
+document_id: ESSA-DOC-QHUB-001
+document_type: essa_quantum_hub_architecture
+title: "Quantum HUB — Naples-Anchored Quantum Coordination Architecture"
+version: "0.1-draft"
+schema_version: "1.0.0"
+status: draft_architecture
+parent: ESSA-DOC-ACQUA-001
+parent_framework: ESSA-DOC-QQQ-001
+sector_authority: ESSA-DOC-QCSSA-001
+constitutional_ceiling: ESSA-CONST-001
+last_updated: "2026-04-25T00:00:00Z"
+
+description: >
+  The Quantum HUB is the Naples-anchored operational coordination layer that
+  binds ESSA quantum ecosystems — QPU access, NBT gate operations, Quantum
+  Simplicial Neural Network (QSN) pipelines, and quantum-classical bridge
+  services — into a single federated point of orchestration. It does not
+  replace ACQUA's L_Q (Quantum Layer) or QQQ's regime theory; it is the
+  physical and institutional locus through which their operational services
+  are coordinated, monitored, and federated to sector implementations
+  (AMPEL360 Q100, AMPEL360 Q10, GAIA-AIR / QAOS).
+
+# ─────────────────────────────────────────────
+# Governance — Naples-led jurisdictional posture
+# ─────────────────────────────────────────────
+governance:
+  lead_location: "Naples, Campania, Italy"
+  lead_jurisdiction: "Italy / European Union"
+  regulatory_posture: >
+    Naples-led governance; apply applicable municipal, Italian national,
+    and EU requirements jointly. Where requirements overlap, the stricter
+    safety or containment control governs.
+  conflict_rule: stricter_control_governs
+  applicable_layers:
+    - municipal: "Comune di Napoli — local operational permits and zoning"
+    - regional: "Regione Campania — regional safety and environmental rules"
+    - national: "Italian Republic — national law and sector regulators"
+    - supranational: "European Union — EU regulations, directives, and applicable acts"
+  constitutional_subordination: >
+    No municipal or national accommodation may weaken the ESSA Safety-First
+    baseline or override QCSSA quantum-domain safety mandates. Naples-led
+    governance is jurisdictionally specific but constitutionally subordinate
+    to ESSA invariants (ESSA-CONST-001).
+
+# ─────────────────────────────────────────────
+# Stack Placement
+# ─────────────────────────────────────────────
+stack_placement:
+  tier: operational_coordination
+  parents:
+    - id: ESSA-DOC-ACQUA-001
+      role: formal_five_layer_architecture
+    - id: ESSA-DOC-QQQ-001
+      role: regime_theory_framework
+  sector_authority:
+    id: ESSA-DOC-QCSSA-001
+    role: quantum_computing_safety_and_security_mandates
+  constitutional_ceiling:
+    id: ESSA-CONST-001
+    role: safety_first_doctrine_invariants
+
+# ─────────────────────────────────────────────
+# Functional Scope — Coordinated Service Families
+# ─────────────────────────────────────────────
+service_families:
+  - id: SVC-QPU-ACCESS
+    name: QPU Access Coordination
+    description: >
+      Scheduling, queue management, and provenance tagging for quantum
+      processing requests originating from ACQUA L_C / L_Q boundaries.
+    couples_to: [ACQUA.L_C, ACQUA.L_Q]
+
+  - id: SVC-NBT-GATE
+    name: NBT Gate Operations
+    description: >
+      Bridge and tunnel control for the Neural Network Bridging and Tunneling
+      layer defined in the OPT-IN N-axis, including gate invariants
+      INV-001 through INV-003.
+    invariants: [INV-001, INV-002, INV-003]
+
+  - id: SVC-QSN-PIPELINE
+    name: QSN Pipeline Services
+    description: >
+      Execution coordination for Quantum Simplicial Neural Network inference,
+      persistent homology computations, and topological evidence return paths.
+
+  - id: SVC-BRIDGE
+    name: Quantum-Classical Bridge Services
+    description: >
+      Temporal synchronization, simplicial state preparation, and tunnel-back
+      registration into the classical PATH → MTL pipeline.
+
+execution_disclaimer: >
+  The Quantum HUB does not itself execute quantum computation. It coordinates,
+  governs, and federates access to such execution.
+
+# ─────────────────────────────────────────────
+# Federation Surface
+# ─────────────────────────────────────────────
+federation_surface:
+  internal_consumers:
+    - id: ESSA-DOC-AMPEL360-Q100-001
+      profile: civil_aviation_circa_100_pax
+      regime: EASA / CS-25 / Part-21
+    - id: ESSA-DOC-AMPEL360-Q10-001
+      profile: spacecraft_orbital_reusable
+      regime: ESA / ECSS / EU Space Reg
+    - id: GAIA-AIR / QAOS
+      profile: quantum_aerospace_operating_system
+      function: telemetry · digital twins · predictive maintenance
+  external_federation:
+    - id: ESSA-GLOBAL-001
+      role: tier_0_un_planetary_federation
+      protocol: peer_essa_class_hub_federation
+  conformance_basis:
+    classical: same_gates_as_essa_artefact_registration
+    quantum_extensions: administered_by_QCSSA
+
+# ─────────────────────────────────────────────
+# Relationship Summary
+# ─────────────────────────────────────────────
+relationship_summary:
+  qqq_role: regime_theory_quasi_quanto_quantum
+  acqua_role: formal_five_layer_architecture
+  quantum_hub_role: physical_and_institutional_realization_of_operational_interface
+  metaphor: >
+    Quantum HUB is to ACQUA what an operations centre is to an architectural
+    blueprint.
+
+# ─────────────────────────────────────────────
+# Document Index
+# ─────────────────────────────────────────────
+documents:
+  - file: QUANTUM-HUB.md
+    purpose: human_readable_specification
+  - file: quantum-hub.yaml
+    purpose: machine_readable_companion
+  - file: QCSSA.md
+    purpose: sector_authority_quantum_computing_safety_and_security
+  - file: ACQUA.md
+    purpose: parent_architecture_five_layer_stack
+  - file: QQQ.md
+    purpose: parent_framework_regime_theory
