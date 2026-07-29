@@ -28,8 +28,7 @@ Three products, each with its own OPT-IN_FRAMEWORK instance inside this OPT-INS 
 
 ```
 OPT-INS/
-├── AMPEL360-Q10/
-│   └── OPT-IN_FRAMEWORK/
+├── AMPEL360-Q10_SPACECRAFT/
 ├── GAIA/
 │   └── OPT-IN_FRAMEWORK/
 └── ROBBBO-T/
